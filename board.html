@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <div class="layout">
+        <nav>
+            
+        </nav>
+        <main>
+            <header class="main-header">
+                
+            </header>
+            <section class="board-page">
+                <header class="board-header">
+                    <h2>Board</h2>
+                    <div class="board-actions">
+                        <form action="search-bar" class="search-task">
+                            <input type="text" placeholder="Find Task" id="search-bar">
+                            <div class="search-divider"></div>
+                            <div class="search-logos">
+                                <img src="./img/icons/search_hover.png" alt="search button">
+                                <img src="./img/icons/search.png" alt="search button" class="search-logo">
+                            </div>
+                        </form>
+                        <button>Add task <img src="./img/icons/add.png" alt="add button"></button>
+                    </div>
+                </header>
+                <section class="kanban-board">
+                    <section class="kanban-column">
+                        <header>
+                            <h4>To Do</h4>
+                            <img src="./img/icons/add_box_hover.png" alt="add task button">
+                            <img src="./img/icons/add_box.png" alt="add task button" class="add-task-bottom">
+                        </header>
+                        <div class="task-list">
+                            <div class="no-task">
+                                No tasks To do
+                            </div>
+                        </div>
+                    </section>
+                    <section class="kanban-column">
+                        <header>
+                            <h4>In progress</h4>
+                            <img src="./img/icons/add_box_hover.png" alt="add task button">
+                            <img src="./img/icons/add_box.png" alt="add task button" class="add-task-bottom">
+                        </header>
+                        <div class="task-list">
+                            <div class="task">
+                                <p class="task-type">User Story</p>
+                                <h5>Join mit den besten zusammenstellen</h5>
+                                <p class="task-desc">Building all Pages with HTML and CSS and then we add functionality for the website!</p>
+                                <section class="progress">
+                                    <div class="progress-track">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <p class="subtasks">2/5 Subtasks</p>
+                                </section>
+                                <footer>
+                                    <div class="task-assignees">
+                                        <div class="user-logo">FY</div>
+                                        <div class="user-logo">CM</div>
+                                        <div class="user-logo">SD</div>
+                                        <div class="more-user-logo">+2</div>
+                                    </div>
+                                    <img src="./img/icons/urgent.png" alt="">
+                                </footer>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="kanban-column">
+                        <header>
+                            <h4>Await feedback</h4>
+                            <img src="./img/icons/add_box_hover.png" alt="add task button">
+                            <img src="./img/icons/add_box.png" alt="add task button" class="add-task-bottom">
+                        </header>
+                        <div class="task-list">
+                            <div class="task">
+                                <p class="task-type" style="background-color: rgba(31, 215, 193, 1);">Technical Task</p>
+                                <h5>JavaScript Templates</h5>
+                                <p class="task-desc">Adding all JS Templates</p>
+                                <footer>
+                                    <div class="task-assignees">
+                                        <div class="user-logo">KB</div>
+                                    </div>
+                                    <img src="./img/icons/low.png" alt="">
+                                </footer>
+                            </div>
+                            <div class="task">
+                                <p class="task-type" style="background-color: rgba(31, 215, 193, 1);">Technical Task</p>
+                                <h5>Code optimizing</h5>
+                                <p class="task-desc">optimizing the code by checking the semantic and the class names</p>
+                                <footer>
+                                    <div class="task-assignees">
+                                        <div class="user-logo">DG</div>
+                                    </div>
+                                    <img src="./img/icons/medium.png" alt="">
+                                </footer>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="kanban-column">
+                        <header>
+                            <h4>Done</h4>
+                        </header>
+                        <div class="task-list">
+                            <div class="task">
+                                <p class="task-type">User Story</p>
+                                <h5>What is Can doing?</h5>
+                                <p class="task-desc">Just hanging around</p>
+                                <section class="progress">
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: 100%;"></div>
+                                    </div>
+                                    <p class="subtasks">10/10 Subtasks</p>
+                                </section>
+                                <footer>
+                                    <div class="task-assignees">
+                                        <div class="user-logo">CM</div>
+                                    </div>
+                                    <img src="./img/icons/urgent.png" alt="">
+                                </footer>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

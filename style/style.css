@@ -1,5 +1,7 @@
 @import url(./style/standart.css);
 @import url(./style/summary.css);
+@import url(./board.css);
+@import url(./navbar.css);
 
 :root {
   --summary-color: #f6f7f8;

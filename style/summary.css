@@ -1,0 +1,184 @@
+@import url(./style/standart.css);
+@import url(./style/summary.css);
+
+:root {
+  --summary-color: #f6f7f8;
+  --header-color: #ffffff;
+  --side-color: #2a3647;
+  --side-active-color: #091931;
+  --text-color: #000000;
+  --inter-text-color: #2a3647;
+  --inter-text-accent-color: #29abe2;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  background-color: var(--summary-color);
+}
+
+/** Summary Page Styles **/
+.summary-text-1 {
+  font-family: "Inter", serif;
+  font-weight: 400;
+  font-style: bold;
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+.summary-text-2 {
+  font-family: "Inter", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--inter-text-color);
+}
+
+.summary-text-3 {
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--inter-text-color);
+}
+
+.summary-text-4 {
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-style: Bold;
+  color: var(--inter-text-accent-color);
+}
+
+.summary-title {
+  width: 100%;
+  margin: 0px;
+  padding: 0;
+  background-color: var(--summary-color);
+  margin-top: 176px;
+}
+
+.summary-header {
+  width: 100%;
+  height: 96px;
+  background-color: var(--header-color);
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-header-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--text-color);
+  margin-left: 348px;
+}
+
+.summary-title-text {
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-size: 61px;
+  color: var(--text-color);
+  padding-left: 348px;
+}
+
+/*** Board Overview Section ***/
+.summary-board-overview {
+  width: 600px;
+  height: auto;
+  margin-left: 348px;
+  margin-top: 100px;
+}
+.summary-board-overview-row-1 {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+.summary-board-overview-todo {
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-board-overview-done {
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-board-overview-row-2 {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+.summary-board-overview-urgent {
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-board-overview-row-3 {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+.summary-board-overview-tasks-in-board {
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-board-overview-tasks-in-progress {
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-board-overview-awaiting-feedback {
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/** ToDo Card Styles ***/
+.todo-content{
+
+} 
+.todo-picture{
+  
+} 
+.todo-value{
+
+}

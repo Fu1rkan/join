@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-
+    text-decoration: none;
 }
 
 body{
@@ -56,6 +56,7 @@ h5{
     font-size: 16px;
     font-weight: 700;
 }
+
 
 @font-face {
   font-family: 'Inter';

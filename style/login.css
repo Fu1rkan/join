@@ -1,0 +1,72 @@
+body {
+    background-color: #F6F7F8;
+}
+
+/* sign up header top right */
+.sign_up_header {
+    width: 250px;
+    position: absolute;
+    right: 10%;
+    top: 67px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 35px;
+}
+
+/* main design and align / basic background */
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* login section align and structure */
+.login_section {
+    height: 450px;
+    width: 650px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 14px 3px #0000000A;
+    gap: 32px;
+}
+
+/* login section header align */
+.login_section header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+
+/* login section header h1 style */
+.login_section header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 61px;
+}
+
+
+/* login section input group style */
+.login_section .input_group {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+/* login section input group input style */
+.login_section .input_group input {
+    padding: 12px 21px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    gap: 10px;
+}

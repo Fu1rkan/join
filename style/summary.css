@@ -43,6 +43,34 @@ body {
   font-style: Bold;
   color: var(--inter-text-accent-color);
 }
+.summary-text-5{
+  font-family: "Inter", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 64px;
+  color: var(--text-color);
+}
+.summary-text-6{
+  font-family: "Inter", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--text-color);
+}
+.summary-text-7{
+  font-family: "Inter", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: var(--text-color);
+}
+.summary-text-8{
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-weight: bold;
+  font-size: 21px;
+  color: var(--side-active-color);
+}
 
 .summary-title {
   width: 100%;
@@ -94,7 +122,7 @@ body {
 
 /*** Board Overview Section ***/
 .summary-board-overview {
-  width: 600px;
+  width: 560px;
   height: auto;
 }
 .summary-board-overview-row-1 {

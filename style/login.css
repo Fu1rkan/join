@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+main {
+    background-color: #F6F7F8;
+    display: flex;
+    flex-direction: column;
+}
+
+/* sign up header top right */
+.sign_up_header {
+    width: 280px;
+    position: absolute;
+    right: 10%;
+    top: 67px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 35px;
+}
+
+/* sign up header p/text design */
+.sign_up_header p {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+/* sign up header button design */
+.sign_up_header button {
+    color: #ffffff;
+    background-color: #2A3647;
+    padding: 15px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.sign_up_header button:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.sign_up_header button:active {
+    background-color: #091931;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+/* main design and align / basic background */
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* login section align and structure */
+.login_section {
+    height: 450px;
+    width: 650px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 14px 3px #0000000A;
+    gap: 32px;
+}
+
+/* login section header align */
+.login_section header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+
+/* login section header h1 style */
+.login_section header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 61px;
+}
+
+
+/* login section input group style */
+.login_section .input_group {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+/* login section input group input style */
+.login_section .input_group input {
+    padding: 12px 21px;
+    outline: 1px solid #d1d1d1;
+    border: none;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.login_section .input_group input:focus {
+    outline: 1px solid #29ABE2;
+}
+
+/* login section buttons align */
+.login_section .login_buttons {
+    display: flex;
+    gap: 35px;
+}
+
+/* login section login button design incl hover and after click */
+.login_section .login_buttons .login_button {
+    color: #ffffff;
+    background-color: #2A3647;
+    padding: 15px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.login_section .login_buttons .login_button:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.login_section .login_buttons .login_button:active {
+    background-color: #091931;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+/* login section guest login button design */
+.login_section .login_buttons .guest_login_button {
+    color: #2A3647;
+    background-color: #ffffff;
+    padding: 15px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    border: 2px solid #2A3647;
+    cursor: pointer;
+}
+
+.login_section .login_buttons .guest_login_button:hover {
+    color: #29ABE2;
+    border: 2px solid #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.login_section .login_buttons .guest_login_button:active {
+    color: #2A3647;
+    border: 2px solid #2A3647;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+/* main footer design and align */
+.main_footer {
+    color: #888888;
+    position: absolute;
+    bottom: 35px;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* main footer link design */
+.main_footer a {
+    color: #888888;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 8px;
+    cursor: pointer;
+}

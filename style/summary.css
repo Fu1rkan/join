@@ -264,6 +264,12 @@ body {
 }
 
 /** Profile Header Styles **/
+.summary-profil{
+  display: flex;
+  gap: 16px;
+  margin-right: 50px;
+}
+
 .profil-header{
   width: 56px;
   height: 56px;

@@ -148,10 +148,25 @@ button {
 
 .clear_btn {
   border: 1px solid #2a3647;
+
 }
 
 .creat_task_btn {
-  color: #ffffff;
-  background: #2a3647;
-  border: none;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background-color: #2a3647;
+  color: white;
+  padding: 0.2em 0.6em;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  height: 1.75em;
+  display: flex;
+  align-items: center;
+  transition: background-color 125ms ease-in-out;
 }
+
+.creat_task_btn:hover {
+  background-color: #29abe2;
+}
+

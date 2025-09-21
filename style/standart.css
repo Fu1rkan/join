@@ -22,19 +22,19 @@ body{
 nav{
     height: 100vh;
     background-color: #2A3647;
-    width: 20%;
+    width: 15%;
 }
 
 main{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 85%;
     background-color: rgba(246, 247, 248, 1);
 }
 
 .main-header{
     width: 100%;
-    height: 120px;
+    height: 96px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
     display: flex;

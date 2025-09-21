@@ -3,22 +3,30 @@
     display: flex;
 }
 
-/* .contacts-content>section {
-    width: 50%;
-    height: 100%;
-} */
-
 .contact-list-area {
-    width: 35%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: calc(100vh - 120px);
-    overflow-y: scroll;
+    height: calc(100vh - 96px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .contact {
-    width: 65%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contact-list-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
 }
 
 .add-new-contact-btn {
@@ -27,12 +35,21 @@
     color: #FFFFFF;
     display: flex;
     align-items: center;
+    justify-content: center;
     border-radius: 10px;
+    margin: 22.5px 0;
     padding: 12px 16px;
     gap: 16px;
+    font-size: 21px;
+    font-weight: 700;
 }
 
 .add-new-contact-btn:hover {
+    background-color: #29abe2;
+    border-color: #29abe2;
+}
+
+.add-new-contact-btn:active {
     background-color: #091931;
     border-color: #091931;
 }
@@ -49,7 +66,7 @@
 .contact-list-section-head {
     font-weight: 400;
     color: #000000;
-    padding: 17px 36px;
+    padding: 0px 36px;
     height: 58px;
     align-content: center;
 }
@@ -57,4 +74,62 @@
 .section-seperator {
     border: 1px solid #d1d1d1;
     border-radius: 3px;
+}
+
+.list-items {
+    list-style: none;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 35px;
+    padding: 15px 24px;
+}
+
+.vector-img {
+    height: 42px;
+    width: 42px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.contact-e-mail {
+    color: #007cee;
+    font-weight: 400;
+}
+
+
+.contacts-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 24px;
+    width: 80%;
+    height: 73px;
+    gap: 30px;
+    margin-top: 110px;
+}
+
+.contacts-header-seperator {
+    border: 1.5px solid #29abe2;
+    height: 59px;
+}
+
+.contacts-header-txt {
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.d_none {
+    display: none;
 }

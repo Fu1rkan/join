@@ -1,6 +1,3 @@
-@import url(./style/standart.css);
-@import url(./style/summary.css);
-
 :root {
   --summary-color: #f6f7f8;
   --header-color: #ffffff;
@@ -9,6 +6,7 @@
   --text-color: #000000;
   --inter-text-color: #2a3647;
   --inter-text-accent-color: #29abe2;
+  --seperator-color: #D1D1D1;
 }
 
 body {
@@ -24,6 +22,9 @@ body {
   font-style: bold;
   font-size: 20px;
   color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .summary-text-2 {
@@ -31,6 +32,7 @@ body {
   font-weight: 400;
   font-style: normal;
   color: var(--inter-text-color);
+  gap: 13px;
 }
 
 .summary-text-3 {
@@ -46,13 +48,48 @@ body {
   font-style: Bold;
   color: var(--inter-text-accent-color);
 }
+.summary-text-5{
+  font-family: "Inter", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 64px;
+  color: var(--text-color);
+}
+.summary-text-6{
+  font-family: "Inter", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--text-color);
+}
+.summary-text-7{
+  font-family: "Inter", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: var(--text-color);
+}
+.summary-text-8{
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-weight: bold;
+  font-size: 21px;
+  color: var(--side-active-color);
+}
+.summary-text-9{
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--inter-text-color);
+  align-items: start;
+}
 
 .summary-title {
   width: 100%;
   margin: 0px;
   padding: 0;
   background-color: var(--summary-color);
-  margin-top: 176px;
+  margin-top: 80px;
 }
 
 .summary-header {
@@ -60,6 +97,7 @@ body {
   height: 96px;
   background-color: var(--header-color);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   isolation: isolate;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
@@ -73,21 +111,38 @@ body {
   color: var(--text-color);
   margin-left: 348px;
 }
-
+#summary-title-360{
+  font-size: 61px;
+  font-weight: 700;
+}
 .summary-title-text {
   font-family: "Inter", serif;
-  font-weight: 700;
-  font-size: 61px;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 27px;
   color: var(--text-color);
-  padding-left: 348px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.summary-title-separator-blue{
+  width: 0px;
+  height: 59px;
+  border: 2px solid var(--inter-text-accent-color);
+  border-radius: 3px;
+}
+.summary-title-separator-grey{
+  width: 0px;
+  height: 102px;
+  border: 2px solid var(--seperator-color);
+  border-radius: 3px;
 }
 
 /*** Board Overview Section ***/
 .summary-board-overview {
-  width: 600px;
+  width: 560px;
   height: auto;
-  margin-left: 348px;
-  margin-top: 100px;
 }
 .summary-board-overview-row-1 {
   display: flex;
@@ -118,8 +173,12 @@ body {
 }
 .summary-board-overview-row-2 {
   margin-top: 32px;
+}
+.urgent-content{
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 64px;
 }
 .summary-board-overview-urgent {
   width: 100%;
@@ -148,6 +207,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .summary-board-overview-tasks-in-progress {
   width: 100%;
@@ -159,6 +219,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .summary-board-overview-awaiting-feedback {
   width: 100%;
@@ -170,15 +231,58 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-
 /** ToDo Card Styles ***/
 .todo-content{
-
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
 } 
-.todo-picture{
-  
-} 
-.todo-value{
+.summary-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-left: 348px;
+}
+.summary-greetings{
+  font-family: "Inter", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 47px;
+  color: var(--text-color);
+  margin-left: 150px;
+}
+#summary-greetings-name{
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 64px;
+  color: var(--inter-text-accent-color);
+}
 
+/** Profile Header Styles **/
+.summary-profil{
+  display: flex;
+  gap: 16px;
+  margin-right: 50px;
+}
+
+.profil-header{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid black;
+  top: 28px;
+  right: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.summary-help{
+  width: 20px;
+  height: auto;
 }

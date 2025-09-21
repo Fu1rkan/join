@@ -275,3 +275,8 @@ body {
   display: flex;
   align-items: center;
 }
+
+.summary-help{
+  width: 20px;
+  height: auto;
+}

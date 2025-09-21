@@ -154,9 +154,14 @@ body {
 }
 .summary-board-overview-row-2 {
   margin-top: 32px;
+}
+.urgent-content{
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 64px;
 }
+
 .summary-board-overview-urgent {
   width: 100%;
   height: 168px;
@@ -184,6 +189,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .summary-board-overview-tasks-in-progress {
   width: 100%;
@@ -195,6 +201,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .summary-board-overview-awaiting-feedback {
   width: 100%;
@@ -206,6 +213,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 /** ToDo Card Styles ***/
@@ -221,7 +229,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 148px;
+  margin-top: 80px;
   margin-left: 348px;
 }
 

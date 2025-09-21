@@ -1,0 +1,44 @@
+function signUpTemplate() {
+    return ` <main>
+
+        <section class="sign_up_section">                
+        <svg class="sign_up_back_arrow" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 20" fill="none"
+                    >
+                    <path
+                        d="M4.70752 8.63255H22.1981C22.9345 8.63255 23.5314 9.2295 23.5314 9.96588C23.5314 10.7023 22.9345 11.2992 22.1981 11.2992H4.70752L10.9169 17.5085C11.4375 18.0292 11.4375 18.8733 10.9168 19.3939C10.3962 19.9145 9.55214 19.9145 9.03152 19.3939L1.01773 11.3801C0.236679 10.599 0.236681 9.33272 1.01773 8.55167L9.03152 0.537881C9.55214 0.0172601 10.3962 0.0172609 10.9168 0.537881C11.4375 1.0585 11.4375 1.90259 10.9168 2.42322L4.70752 8.63255Z"
+                        fill="#29ABE2" />
+                </svg>
+            <header>
+
+                <div class="sign_up_logo">
+                <h1>Sign Up</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
+                    <path d="M152 1.5L2 1.5" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                </div>
+            </header>
+
+
+            <div class="sign_up_input_group">
+                <input type="text" id="username" name="username" required placeholder="Username">
+                <input type="Email" id="Email" name="Email" required placeholder="Email">
+                <input type="password" id="password" name="password" required placeholder="Password">
+                <input type="password" id="confirm_password" name="confirm_password" required
+                    placeholder="Confirm Password">
+            </div>
+
+
+            <div class="sign_up_button_group">
+                <span>I accept the <a href="">Privacy policy</a></span>
+                <button class="sign_up_button" type="">Sign Up</button>
+            </div>
+        </section>
+
+
+        <footer class="main_footer">
+            <a href="">Privacy Policy</a>
+            <a href="">Legal notice</a>
+        </footer>
+
+    </main>`;
+}

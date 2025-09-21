@@ -1,38 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
 
-    <link rel="stylesheet" href="./style/style.css">
-</head>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/add_task.css" />
 
-<body>
-    <div class="layout">
-        <nav>
+  </head>
 
-        </nav>
-        <main>
-            <header class="main-header">
+  <body>
+    <nav class="navbar">
+      <img class="navbar-logo" src="./img/icons/logo_join_nav.png" alt="" />
+      <ul class="nav-list">
+        <li>
+          <a class="navbar-link" href="./summary.html">
+            <div class="navbar-link-content">
+              <img
+                class="navbar_img"
+                src="./img/icons/summary_icon.png"
+                alt="Summary Logo"
+              />
+              <p>Summary</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="navbar-link" href="./add_task.html">
+            <div class="navbar-link-content">
+              <img
+                class="navbar_img"
+                src="./img/icons/add_task_icon.png"
+                alt="Add-Task Logo"
+              />
+              <p>Add Task</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="navbar-link" href="./board.html">
+            <div class="navbar-link-content">
+              <img
+                class="navbar_img"
+                src="./img/icons/board_icon.png"
+                alt="Board Logo"
+              />
+              <p>Board</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="navbar-link navbar-active" href="./contacts.html">
+            <div class="navbar-link-content">
+              <img
+                class="navbar_img"
+                src="./img/icons/contacts_icon.png"
+                alt="Contacts Logo"
+              />
+              <p>Contacts</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-footer">
+        <li>
+          <a class="navbar-footer-link" href="">
+            <p>Private Policy</p>
+          </a>
+        </li>
+        <li>
+          <a class="navbar-footer-link" href="">
+            <p>Legal Notice</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <header class="main-header"></header>
+      <section class="">
+        <h2>Add Task</h2>
+        <form action="">
+          <div class="input_container">
+            <div >
+              <label for="title">Title <span style="color:red">*</span></label> <br />
 
-            </header>
-            <section class="board-page">
-                <header class="board-header">
-                </header>
-                <div class="task-list">
-                   
-                        <footer>
-                            
-                        </footer>
-                    </div>
-                </div>
-            </section>
-            </section>
-            </section>
-        </main>
-    </div>
-</body>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Enter a title"
+                required
+              />
+            </div>
+            <div>
+              <label for="description">Description</label> <br />
 
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Enter a Description"
+              />
+            </div>
+            <div>
+              <label for="date">Due Date <span style="color:red">*</span></label> <br />
+              <input type="date" id="date" required />
+
+              <script>
+                // Get today's date in YYYY-MM-DD format
+                const today = new Date().toISOString().split("T")[0];
+                document.getElementById("date").setAttribute("min", today);
+              </script>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="input_container">
+            <div >
+              <label for="">Priority</label>
+              <div>
+                <button class="urgent_btn">Urgent</button>
+                <button class="medium_btn">Medium</button>
+                <button class="low_btn">Low</button>
+              </div>
+            </div>
+            <div>
+              <label for="">Assigned to</label> <br />
+              <select id="assigned_to" name="assigned_to">
+                <option value="">Select contacts to assign</option>
+                <option value="xy">Sven</option>
+                <option value="xy">Furkan</option>
+                <option value="xy">Can</option>
+                <option value="xy">Kim</option>
+                <option value="xy">Can</option>
+                <option value="xy">David</option>
+              </select>
+            </div>
+            <div>
+              <label for="">Category <span style="color:red">*</span></label> <br />
+
+              <select id="category" name="category">
+                <option value="">Select task category</option>
+                <option value="xy">Sven</option>
+                <option value="xy">Furkan</option>
+                <option value="xy">Can</option>
+                <option value="xy">Kim</option>
+                <option value="xy">Can</option>
+                <option value="xy">David</option>
+              </select>
+            </div>
+            <div>
+                <label for="subtask">Subtask</label> <br>
+                <input type="text" name="subtask" id="subtask" placeholder="Add new subtask">
+            </div>
+          </div>
+        </form>
+
+        <div>
+            <button>Clear</button>
+            <button>Create Task</button>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

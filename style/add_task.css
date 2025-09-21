@@ -1,0 +1,111 @@
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  height: 60%;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+form div{
+    width: 90%;
+}
+
+h2 {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+
+.input_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+label {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+}
+
+span {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+input {
+  width: 80%;
+
+  
+  opacity: 1;
+  padding-top: 12px;
+  padding-right: 21px;
+  padding-bottom: 12px;
+  padding-left: 21px;
+  gap: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  border: 1px solid #D1D1D1
+}
+
+select {
+  width: 80%;
+  justify-content: space-between;
+  opacity: 1;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  border-radius: 10px;
+  border-width: 1px;
+  border: 1px solid #D1D1D1
+}
+
+
+hr{
+ width: 0px;
+ height: 100%;
+
+opacity: 1;
+border-width: 1px;
+border: 1px solid #D1D1D1
+}
+
+button{
+    width: 30%;
+
+opacity: 1;
+padding-top: 16px;
+padding-right: 10px;
+padding-bottom: 16px;
+padding-left: 10px;
+gap: 8px;
+border-radius: 10px;
+
+}
+
+.urgent_btn{
+background: #FFFFFF;
+box-shadow: 0px 0px 4px 0px #0000001A;
+
+}
+
+.medium_btn{
+background: #FFA800;
+
+}
+
+.low_btn{
+background: #FFFFFF;
+
+}

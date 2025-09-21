@@ -105,7 +105,7 @@
             </div>
             <div>
               <label for="date">Due Date <span style="color:red">*</span></label> <br />
-              <input type="date" id="date" required />
+              <input type="text" id="date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required />
 
               <script>
                 // Get today's date in YYYY-MM-DD format
@@ -120,10 +120,10 @@
           <div class="input_container">
             <div >
               <label for="">Priority</label>
-              <div>
-                <button class="urgent_btn">Urgent</button>
-                <button class="medium_btn">Medium</button>
-                <button class="low_btn">Low</button>
+              <div class="priority_wrapper">
+                <button class="urgent_btn">Urgent <img src="./assets/svg/Prio_alta.svg" alt=""></button>
+                <button class="medium_btn">Medium <img src="./assets/svg/Prio_media.svg" alt=""></button>
+                <button class="low_btn">Low <img src="./assets/svg/Prio_baja.svg" alt="" sizes="" srcset=""></button>
               </div>
             </div>
             <div>
@@ -158,9 +158,11 @@
           </div>
         </form>
 
-        <div>
-            <button>Clear</button>
-            <button>Create Task</button>
+        <div class="submit_container">
+            <button class="clear_btn">Clear  <img src="./assets/svg/iconoir_cancel.svg" alt="">
+            </button>
+            <button class="creat_task_btn">Create Task <img src="./assets/svg/check.svg" alt="">
+            </button>
         </div>
       </section>
     </main>

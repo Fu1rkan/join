@@ -1,9 +1,13 @@
-*{
+main *{
     box-sizing: border-box;
 
 }
 .w100{
   width: 100% !important;
+}
+
+.w80{
+  width: 80%;
 }
 
 form {

@@ -129,10 +129,21 @@
     font-weight: 400;
 }
 
+.contact-template {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 21px;
+    margin-left: 72px;
+    margin-top: 32px;
+}
+
 .contact-info-big {
     display: flex;
+    align-items: center;
     gap: 54px;
-    margin-left: 32px;
+    
 }
 
 .svg-img-big {
@@ -145,6 +156,12 @@
     height: 24px;
 }
 
+.contact-info-big-name-edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .contact-info-big-name {
     font-size: 47px;
     font-weight: 500;
@@ -152,6 +169,7 @@
 
 .contact-info-big-edit {
     display: flex;
+    gap: 13px;
 }
 
 .contact-btn {
@@ -161,6 +179,40 @@
     gap: 8px;
 }
 
-.d_none {
-    display: none;
+.contact-btn-txt {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.contact-inforamtion-txt {
+    font-size: 20px;
+    font-weight: 400;
+    height: 74px;
+    align-content: center;
+}
+
+.contact-informations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 22px;
+}
+
+.contact-informations>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    height: 53px;
+}
+
+.contact-informations a {
+    color: #007cee;
+    font-weight: 400;
+}
+
+.contact-informations-phone-number {
+    font-weight: 400;
 }

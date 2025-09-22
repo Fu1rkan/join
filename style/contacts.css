@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+
 .contacts-content {
     flex: 1;
     display: flex;
@@ -225,4 +229,201 @@
 
 .contact-informations-phone-number {
     font-weight: 400;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 150%;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 300ms ease forwards;
+}
+
+.overlay-card {
+    height: 592px;
+    width: 1212px;
+    background-color: #FFFFFF;
+    border-radius: 31px;
+    display: flex;
+}
+
+.overlay-left-side {
+    width: 467px;
+    height: 100%;
+    background-color: #2A3647;
+    border: 1px solid black;
+    border-radius: 30px 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 66px 48px;
+}
+
+.overlay-left-side-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+}
+
+.add-content-card-headline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.add-contact-card-underline-styled {
+    width: 90px;
+    border: 1.5px solid #29ABE2;
+    border-radius: 3px;
+}
+
+.overlay-right-side {
+    width: calc(1212px - 467px);
+    height: 100%;
+    border-radius: 0 30px 30px 0;
+    border: 1px solid black;
+}
+
+.add-contact-card-svg {
+    height: 66.48px;
+    width: 55.6px;
+}
+
+.add-contact-card-title {
+    font-style: bold;
+    color: #FFFFFF;
+    height: 73px;
+}
+
+.add-contact-card-txt {
+    font-size: 27px;
+    font-weight: 400;
+    color: #FFFFFF;
+    height: 32px;
+}
+
+.overlay-right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+}
+
+.overlay-character-icon {
+    height: 120px;
+    width: 120px;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 32px;
+    gap: 32px;
+}
+
+.create-form-inputfields {
+    height: 215px;
+    width: 422px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+}
+
+.create-form>section>div {
+    position: relative;
+}
+
+.create-form>section>div>input {
+    height: 50px;
+    width: 100%;
+    padding: 13px 21px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.create-form>section>div>input::placeholder {
+    font-size: 20px;
+    font-weight: 400;
+    height: 24px;
+    color: #D1D1D1;
+}
+
+.create-form>section>div>img {
+    cursor: text;
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 21px;
+}
+
+.add-contact-buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.add-contact-buttons button {
+    cursor: pointer;
+}
+
+.add-contact-cancel-btn {
+    display: flex;
+    height: 56px;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+}
+
+.add-contact-create-contact-btn {
+    background-color: #2A3647;
+    display: flex;
+    height: 57px;
+    gap: 4px;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.add-contact-btn-svg {
+    height: 24px;
+    width: 24px;
+}
+
+.add-contact-cancel-btn-txt {
+    font-size: 20px;
+    font-weight: 400;
+    color: #2A3647;
+    height: 24px;
+}
+
+.add-contact-create-contact-btn-txt {
+    font-size: 21px;
+    font-weight: 700;
+    font-style: bold;
+    color: #FFFFFF;
+}
+
+.d_none {
+    display: none;
+}
+
+@keyframes fadeIn {
+    100% {
+        left:0;
+    }
 }

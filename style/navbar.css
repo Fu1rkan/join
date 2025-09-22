@@ -64,7 +64,9 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     gap: 8px;
+    height: 245px;
 }
 
 .navbar-footer a {
@@ -73,7 +75,7 @@
 }
 
 .navbar-footer-link p {
-    height: 19px;
+    height: 35px;
     padding: 8px;
 }
 

@@ -7,83 +7,55 @@
 
     <link rel="stylesheet" href="./style/style.css" />
     <link rel="stylesheet" href="./style/add_task.css" />
-
   </head>
 
   <body>
     <nav class="navbar">
-      <img class="navbar-logo" src="./img/icons/logo_join_nav.png" alt="" />
-      <ul class="nav-list">
-        <li>
-          <a class="navbar-link" href="./summary.html">
-            <div class="navbar-link-content">
-              <img
-                class="navbar_img"
-                src="./assets/svg/summary.svg"
-                alt="Summary Logo"
-              />
-              <p>Summary</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="navbar-link navbar-active" href="./add_task.html">
-            <div class="navbar-link-content">
-              <img
-                class="navbar_img"
-                src="./assets/svg/edit_square.svg"
-                alt="Add-Task Logo"
-              />
-              <p>Add Task</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="navbar-link" href="./board.html">
-            <div class="navbar-link-content">
-              <img
-                class="navbar_img"
-                src="./assets/svg/board.svg"
-                alt="Board Logo"
-              />
-              <p>Board</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="navbar-link " href="./contacts.html">
-            <div class="navbar-link-content">
-              <img
-                class="navbar_img"
-                src="./assets/svg/perm_contact_calendar.svg"
-                alt="Contacts Logo"
-              />
-              <p>Contacts</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <ul class="navbar-footer">
-        <li>
-          <a class="navbar-footer-link" href="">
-            <p>Private Policy</p>
-          </a>
-        </li>
-        <li>
-          <a class="navbar-footer-link" href="">
-            <p>Legal Notice</p>
-          </a>
-        </li>
-      </ul>
+        <img class="navbar-logo" src="./img/icons/logo_join_nav.png" alt="">
+        <ul class="nav-list">
+            <li><a class="navbar-link" href="./summary.html">
+                    <div class="navbar-link-content"><img class="navbar_img" src="./img/icons/summary_icon.png"
+                            alt="Summary Logo">
+                        <p>Summary</p>
+                    </div>
+                </a></li>
+            <li><a class="navbar-link" href="./add_task.html">
+                    <div class="navbar-link-content"><img class="navbar_img" src="./img/icons/add_task_icon.png"
+                            alt="Add-Task Logo">
+                        <p>Add Task</p>
+                    </div>
+                </a></li>
+            <li><a class="navbar-link" href="./board.html">
+                    <div class="navbar-link-content"><img class="navbar_img" src="./img/icons/board_icon.png"
+                            alt="Board Logo">
+                        <p>Board</p>
+                    </div>
+                </a></li>
+            <li><a class="navbar-link navbar-active" href="./contacts.html">
+                    <div class="navbar-link-content"><img class="navbar_img" src="./img/icons/contacts_icon.png"
+                            alt="Contacts Logo">
+                        <p>Contacts</p>
+                    </div>
+                </a></li>
+        </ul>
+        <ul class="navbar-footer">
+            <li><a class="navbar-footer-link" href="">
+                    <p>Private Policy</p>
+                </a></li>
+            <li><a class="navbar-footer-link" href="">
+                    <p>Legal Notice</p>
+                </a></li>
+        </ul>
     </nav>
     <main>
       <header class="main-header"></header>
       <section class="">
         <h2>Add Task</h2>
         <form action="">
-          <div class="input_container">
-            <div >
-              <label for="title">Title <span style="color:red">*</span></label> <br />
+          <div class="input_container w100">
+            <div class="w100">
+              <label for="title">Title <span style="color: red">*</span></label>
+              <br />
 
               <input
                 type="text"
@@ -93,7 +65,7 @@
                 required
               />
             </div>
-            <div>
+            <div class="w100">
               <label for="description">Description</label> <br />
 
               <input
@@ -103,9 +75,18 @@
                 placeholder="Enter a Description"
               />
             </div>
-            <div>
-              <label for="date">Due Date <span style="color:red">*</span></label> <br />
-              <input type="text" id="date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required />
+            <div class="w100">
+              <label for="date"
+                >Due Date <span style="color: red">*</span></label
+              >
+              <br />
+              <input
+                type="text"
+                id="date"
+                placeholder="dd/mm/yyyy"
+                onfocus="this.type='date'"
+                required
+              />
 
               <script>
                 // Get today's date in YYYY-MM-DD format
@@ -118,28 +99,92 @@
           <hr />
 
           <div class="input_container">
-            <div >
+            <div>
               <label for="">Priority</label>
               <div class="priority_wrapper">
-                <button class="urgent_btn">Urgent <img src="./assets/svg/Prio_alta.svg" alt=""></button>
-                <button class="medium_btn">Medium <img src="./assets/svg/Prio_media.svg" alt=""></button>
-                <button class="low_btn">Low <img src="./assets/svg/Prio_baja.svg" alt="" sizes="" srcset=""></button>
+                <button class="urgent_btn">
+                  Urgent <img src="./assets/svg/Prio_urgent_red.svg" alt="" />
+                </button>
+                <button class="medium_btn">
+                  Medium
+                  <img src="./assets/svg/Prio_medium_orange.svg" alt="" />
+                </button>
+                <button class="low_btn">
+                  Low
+                  <img
+                    src="./assets/svg/Prio_low_green.svg"
+                    alt=""
+                    sizes=""
+                    srcset=""
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="asssigned_to">
+              <label for="">Assigned to</label> <br />
+              <input type="text" placeholder="Select contacts to assign" />
+              <div class="contacts">
+                <button class="single_contact">
+                  <div>
+                    <div class="assignet_pb">SD</div>
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </button>
+                <button class="single_contact">
+                  <div>
+                    <div class="assignet_pb">SD</div>
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </button>
+                <button class="single_contact">
+                  <div>
+                    <div class="assignet_pb">SD</div>
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </button>
+                <button class="single_contact">
+                  <div>
+                    <div class="assignet_pb">SD</div>
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </button>
+                <button class="single_contact">
+                  <div>
+                    <div class="assignet_pb">SD</div>
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </button>
+                <button class="single_contact">
+                  <div>
+                    <div class="assignet_pb">SD</div>
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </button>
+               
+                
               </div>
             </div>
             <div>
-              <label for="">Assigned to</label> <br />
-              <select id="assigned_to" name="assigned_to">
-                <option value="">Select contacts to assign</option>
-                <option value="xy">Sven</option>
-                <option value="xy">Furkan</option>
-                <option value="xy">Can</option>
-                <option value="xy">Kim</option>
-                <option value="xy">Can</option>
-                <option value="xy">David</option>
-              </select>
-            </div>
-            <div>
-              <label for="">Category <span style="color:red">*</span></label> <br />
+              <label for="">Category <span style="color: red">*</span></label>
+              <br />
 
               <select id="category" name="category">
                 <option value="">Select task category</option>
@@ -152,17 +197,24 @@
               </select>
             </div>
             <div>
-                <label for="subtask">Subtask</label> <br>
-                <input type="text" name="subtask" id="subtask" placeholder="Add new subtask">
+              <label for="subtask">Subtask</label> <br />
+              <input
+                type="text"
+                name="subtask"
+                id="subtask"
+                placeholder="Add new subtask"
+              />
             </div>
           </div>
         </form>
 
         <div class="submit_container">
-            <button class="clear_btn">Clear  <img src="./assets/svg/iconoir_cancel.svg" alt="">
-            </button>
-            <button class="creat_task_btn">Create Task <img src="./assets/svg/check.svg" alt="">
-            </button>
+          <button class="clear_btn">
+            Clear <img src="./assets/svg/iconoir_cancel.svg" alt="" />
+          </button>
+          <button class="creat_task_btn">
+            Create Task <img src="./assets/svg/check.svg" alt="" />
+          </button>
         </div>
       </section>
     </main>

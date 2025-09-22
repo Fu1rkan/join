@@ -384,19 +384,38 @@ body {
 .add-contact-cancel-btn {
     display: flex;
     height: 56px;
+    width: 126px;
     gap: 4px;
     padding: 16px;
     border: 1px solid #2A3647;
     border-radius: 10px;
 }
 
+.add-contact-cancel-btn:hover {
+    border: 2px solid #29ABE2;
+}
+
+.add-contact-cancel-btn:active {
+    border: 1px solid #091931;
+}
+
 .add-contact-create-contact-btn {
     background-color: #2A3647;
     display: flex;
+    border-width: 0;
     height: 57px;
+    width: 214px;
     gap: 4px;
     padding: 16px;
     border-radius: 10px;
+}
+
+.add-contact-create-contact-btn:hover {
+    background-color: #29ABE2;
+}
+
+.add-contact-create-contact-btn:active {
+    background-color: #091931;
 }
 
 .add-contact-btn-svg {

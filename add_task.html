@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./style/style.css" />
     <link rel="stylesheet" href="./style/add_task.css" />
+    <script src="./script/add_task.js"></script>
   </head>
 
   <body>
@@ -124,65 +125,118 @@
             </div>
             <div class="asssigned_to">
               <label for="">Assigned to</label> <br />
-              <input type="text" placeholder="Select contacts to assign" />
-              <div class="contacts">
-                <button class="single_contact">
+              <input type="text" placeholder="Select contacts to assign" onblur="closeContactlist()"  onfocus="openContactlist()" />
+              <ul class="contacts " id="contacts">
+              
+                <li class="single_contact ">
                   <div>
-                    <div class="assignet_pb">SD</div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
                     <p>Sven Degen</p>
                   </div>
                   
-                    <img src="./assets/svg/checkbox.svg" alt="" />
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
                   
-                </button>
-                <button class="single_contact">
+                </li>
+                <li class="single_contact">
                   <div>
-                    <div class="assignet_pb">SD</div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
                     <p>Sven Degen</p>
                   </div>
                   
-                    <img src="./assets/svg/checkbox.svg" alt="" />
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
                   
-                </button>
-                <button class="single_contact">
+                </li>
+                <li class="single_contact">
                   <div>
-                    <div class="assignet_pb">SD</div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
                     <p>Sven Degen</p>
                   </div>
                   
-                    <img src="./assets/svg/checkbox.svg" alt="" />
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
                   
-                </button>
-                <button class="single_contact">
+                </li>
+                <li class="single_contact">
                   <div>
-                    <div class="assignet_pb">SD</div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
                     <p>Sven Degen</p>
                   </div>
                   
-                    <img src="./assets/svg/checkbox.svg" alt="" />
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
                   
-                </button>
-                <button class="single_contact">
+                </li>
+                <li class="single_contact">
                   <div>
-                    <div class="assignet_pb">SD</div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
                     <p>Sven Degen</p>
                   </div>
                   
-                    <img src="./assets/svg/checkbox.svg" alt="" />
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
                   
-                </button>
-                <button class="single_contact">
+                </li>
+                <li class="single_contact">
                   <div>
-                    <div class="assignet_pb">SD</div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
                     <p>Sven Degen</p>
                   </div>
                   
-                    <img src="./assets/svg/checkbox.svg" alt="" />
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
                   
-                </button>
-               
-                
-              </div>
+                </li>
+                <li class="single_contact">
+                  <div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </li>
+                <li class="single_contact">
+                  <div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </li>
+                <li class="single_contact">
+                  <div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </li>
+                <li class="single_contact">
+                  <div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </li>
+                <li class="single_contact">
+                  <div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </li>
+                <li class="single_contact">
+                  <div>
+                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <p>Sven Degen</p>
+                  </div>
+                  
+                    <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
+                  
+                </li>
+            </ul>
             </div>
             <div>
               <label for="">Category <span style="color: red">*</span></label>

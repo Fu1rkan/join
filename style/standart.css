@@ -57,6 +57,9 @@ h5{
     font-weight: 700;
 }
 
+.d_none{
+    display: none;
+}
 
 @font-face {
   font-family: 'Inter';

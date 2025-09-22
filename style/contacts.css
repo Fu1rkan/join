@@ -80,10 +80,16 @@
 }
 
 .contact-container {
+    cursor: pointer;
     display: flex;
     justify-content: flex-start;
     gap: 35px;
     padding: 15px 24px;
+    border-radius: 10px;
+}
+
+.contact-container:hover {
+    background: linear-gradient(#F9F9F9,#F0F0F0);
 }
 
 .svg-img-small {

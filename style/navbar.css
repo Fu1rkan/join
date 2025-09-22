@@ -3,10 +3,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 64px 0;
 }
 
 .navbar-logo {
-    margin-top: 64px;
     width: 40%;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .nav-list li a img {
-    padding-left: 20%; 
+    margin-left: 20%;
 }
 
 .navbar-link {
@@ -58,7 +58,6 @@
 
 .navbar-footer {
     list-style: none;
-    margin-bottom: 64px;
     display: flex;
     flex-direction: column;
     gap: 8px;

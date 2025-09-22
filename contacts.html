@@ -14,7 +14,7 @@
             <section class="overlay-left-side">
                 <div class="overlay-left-side-content">
                     <img class="add-contact-card-svg" src="./assets/svg/logo_join_navbar.svg" alt="Join Logo">
-                    <div class="add-content-card-headline">
+                    <div class="add-contact-card-headline">
                         <h2 class="add-contact-card-title">Add contact</h2>
                         <p class="add-contact-card-txt">Tasks are better with a team!</p>
                         <div class="add-contact-card-underline-styled"></div>
@@ -107,17 +107,17 @@
                         <div class="section-seperator"></div>
                         <ul class="list-items">
                             <li>
-                                <div class="contact-container">
-                                    <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-am.icon.png"
+                                <div id="contact_card_am" class="contact-container contact-container-hoverclass" onclick="showContact()">
+                                    <img id="img_am" class="svg-img-small" src="./img/icons/contacts-test-icons/test-am.icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
-                                        <p class="contact-name">Anton Mayer</p>
-                                        <a class="contact-e-mail" href="mailto:antonm@gmail.com">antonm@gmail.com</a>
+                                        <p id="name_am" class="contact-name">Anton Mayer</p>
+                                        <a id="email_am" class="contact-e-mail" href="mailto:antonm@gmail.com">antonm@gmail.com</a>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <div class="contact-container">
+                                <div class="contact-container contact-container-hoverclass">
                                     <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-as-icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
@@ -132,7 +132,7 @@
                         <div class="section-seperator"></div>
                         <ul class="list-items">
                             <li>
-                                <div class="contact-container">
+                                <div class="contact-container contact-container-hoverclass">
                                     <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-bz-icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
@@ -152,7 +152,7 @@
                         <div class="section-seperator"></div>
                         <ul class="list-items">
                             <li>
-                                <div class="contact-container">
+                                <div class="contact-container contact-container-hoverclass">
                                     <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-de-icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
@@ -168,7 +168,7 @@
                         <div class="section-seperator"></div>
                         <ul class="list-items">
                             <li>
-                                <div class="contact-container">
+                                <div class="contact-container contact-container-hoverclass">
                                     <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-ef-icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
@@ -178,7 +178,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="contact-container">
+                                <div class="contact-container contact-container-hoverclass">
                                     <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-em-icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
@@ -222,7 +222,7 @@
                         <div class="section-seperator"></div>
                         <ul class="list-items">
                             <li>
-                                <div class="contact-container">
+                                <div class="contact-container contact-container-hoverclass">
                                     <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-em-icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
@@ -261,7 +261,7 @@
                         <div class="section-seperator"></div>
                         <ul class="list-items">
                             <li>
-                                <div class="contact-container">
+                                <div class="contact-container contact-container-hoverclass">
                                     <img class="svg-img-small" src="./img/icons/contacts-test-icons/test-em-icon.png"
                                         alt="Icon Test Contact">
                                     <div class="contact-info">
@@ -304,34 +304,8 @@
                     <div class="contacts-header-seperator"></div>
                     <p class="contacts-header-txt">Better with a Team</p>
                 </div>
-                <section class="contact-template">
-                    <section class="contact-info-big">
-                        <img class="svg-img-big" src="./img/icons/test-am-icon-svg.svg" alt="">
-                        <div class="contact-info-big-name-edit-container">
-                            <p class="contact-info-big-name">Anton Mayer</p>
-                            <div class="contact-info-big-edit">
-                                <button class="contact-btn"><img class="contact-btn-img" src="./img/icons/edit.svg"
-                                        alt="Edit Icon">
-                                    <p class="contact-btn-txt">Edit</p>
-                                </button>
-                                <button class="contact-btn"><img class="contact-btn-img" src="./img/icons/delete.svg"
-                                        alt="Delete Icon">
-                                    <p class="contact-btn-txt">Delete</p>
-                                </button>
-                            </div>
-                        </div>
-                    </section>
-                    <p class="contact-inforamtion-txt">Contact Information</p>
-                    <section class="contact-informations">
-                        <div>
-                            <h5>Email</h5>
-                            <a href="mailto:antom@gmail.com">antom@gmail.com</a>
-                        </div>
-                        <div>
-                            <h5>Phone</h5>
-                            <p class="contact-informations-phone-number">+49 1111 111 11 1</p>
-                        </div>
-                    </section>
+                <section id="contact_template" class="contact-template">
+                    
                 </section>
 
 

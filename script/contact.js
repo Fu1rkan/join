@@ -25,12 +25,12 @@ function getContactTemplate(name, email) {
                         <div class="contact-info-big-name-edit-container">
                             <p class="contact-info-big-name">${name}</p>
                             <div class="contact-info-big-edit">
-                                <button class="contact-btn"><img class="contact-btn-img" src="./img/icons/edit.svg"
-                                        alt="Edit Icon">
+                                <button class="contact-btn contact-edit-btn">
+                                    <div class="contact-btn-img contact-btn-img-edit"></div>
                                     <p class="contact-btn-txt">Edit</p>
                                 </button>
-                                <button class="contact-btn"><img class="contact-btn-img" src="./img/icons/delete.svg"
-                                        alt="Delete Icon">
+                                <button class="contact-btn contact-delete-btn">
+                                    <div class="contact-btn-img contact-btn-img-delete"></div>
                                     <p class="contact-btn-txt">Delete</p>
                                 </button>
                             </div>

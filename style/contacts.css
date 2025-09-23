@@ -165,11 +165,6 @@ body {
     width: 120px;
 }
 
-.contact-btn-img {
-    width: 24px;
-    height: 24px;
-}
-
 .contact-info-big-name-edit-container {
     display: flex;
     flex-direction: column;
@@ -189,13 +184,58 @@ body {
 .contact-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: 24px;
     border-width: 0;
     gap: 8px;
-}
-
-.contact-btn-txt {
     font-size: 16px;
     font-weight: 400;
+}
+
+.contact-btn-img {
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.contact-btn-img-edit {
+    background-image: url('/assets/svg/edit.svg');
+}
+
+.contact-btn-img-delete {
+    background-image: url('/assets/svg/delete.svg');
+}
+
+.contact-edit-btn {
+    width: 62px;
+}
+
+.contact-edit-btn>p {
+    min-width: 30px;
+}
+
+.contact-edit-btn:hover .contact-btn-img-edit {
+     background-image: url('/assets/svg/edit_blue.svg');
+}
+
+.contact-delete-btn {
+    width: 81px;
+}
+
+.contact-delete-btn>p {
+    min-width: 50px;
+}
+
+.contact-delete-btn:hover .contact-btn-img-delete {
+    background-image: url('/assets/svg/delete_blue.svg');
+}
+
+.contact-btn:hover {
+    cursor: pointer;
+    color: #29ABE2;
+    font-weight: 700;
 }
 
 .contact-inforamtion-txt {

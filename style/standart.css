@@ -9,14 +9,12 @@ body{
     display: flex;
     justify-content: center;
     font-family: 'Inter', sans-serif;
-    background-color: black;
 }
 
 .layout{
     display: flex;
     width: 100%;
-    max-width: 1440px;
-    /* max-width: 2160px; */
+    max-width: 2160px;
 }
 
 nav{

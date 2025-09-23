@@ -25,7 +25,7 @@ function getContactTemplate(name, email) {
                         <div class="contact-info-big-name-edit-container">
                             <p class="contact-info-big-name">${name}</p>
                             <div class="contact-info-big-edit">
-                                <button class="contact-btn contact-edit-btn">
+                                <button class="contact-btn contact-edit-btn" onclick="editContact()">
                                     <div class="contact-btn-img contact-btn-img-edit"></div>
                                     <p class="contact-btn-txt">Edit</p>
                                 </button>
@@ -47,4 +47,8 @@ function getContactTemplate(name, email) {
                             <p class="contact-informations-phone-number">+49 1111 111 11 1</p>
                         </div>
                     </section>`
+}
+
+function editContact() {
+    
 }

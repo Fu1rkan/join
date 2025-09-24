@@ -49,10 +49,19 @@
     padding: 8px 16px;
     height: 100%;
     width: 312px;
+    cursor: pointer;
 }
 
 .search-task:focus-within{
     border-color: rgba(41, 171, 226, 1);
+}
+
+.search-task label{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
 }
 
 .search-task input{
@@ -61,6 +70,7 @@
     height: 100%;
     background-color: transparent;
     width: 200px;
+    cursor: pointer;
 }
 
 .search-task input:focus{
@@ -73,12 +83,14 @@
     align-items: center;
     width: 48px;
     gap: 16px;
+    cursor: pointer;
 }
 
 .search-task .search-button-section .search-divider{
     background-color: rgba(209, 209, 209, 1);
     height: 30px;
     width: 1px;
+    cursor: pointer;
 }
 
 .search-button{
@@ -88,6 +100,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .search-button:hover{
@@ -172,7 +185,7 @@
     color: rgba(168, 168, 168, 1);
 }
 
-.task-type{
+.task-label{
     width: fit-content;
     padding: 4px 16px;
     background-color: rgba(0, 56, 255, 1);

@@ -1,30 +1,31 @@
 /* sign up section align and structure */
 .sign_up_section {
-    height: 630px;
-    width: 600px;
     background-color: #ffffff;
     border-radius: 30px;
+    box-shadow: 0px 0px 14px 3px #0000000A;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0px 0px 14px 3px #0000000A;
+    padding: 48px 88px;
     gap: 32px;
+}
+
+/* sign up section header align */
+.sign_up_section header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 16px;
 }
 
 /* back arrow design and position */
 .sign_up_section .sign_up_back_arrow {
     position: relative;
-    right: 250px;
     top: 10px;
+    left: -250px;
     cursor: pointer;
-}
-
-.sign_up_section header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    position: relative;
 }
 
 /* sign up section header h1 and underline align */
@@ -47,44 +48,76 @@
 .sign_up_section .sign_up_input_group {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    border-radius: 10px;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
 }
 
 /* design for each input */
 .sign_up_section .sign_up_input_group input {
+    width: 380px;
+    height: 24px;
+    font-size: 20px;
+    font-weight: 400;
     padding: 12px 21px;
     outline: 1px solid #d1d1d1;
     border: none;
     border-radius: 10px;
-    gap: 10px;
+}
+
+.sign_up_section .sign_up_input_group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* input focus and placeholder style */
+.sign_up_section .sign_up_input_group input::placeholder {
+    color: #d1d1d1;
 }
 
 .sign_up_section .sign_up_input_group input:focus {
     outline: 1px solid #29ABE2;
 }
 
-/* button group align */
-.sign_up_section .sign_up_button_group {
+/* input field with icon align */
+.sign_up_section .sign_up_input_group li {
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 16px;
-    width: 400px;
 }
 
-/* span design inside button group */
-.sign_up_section .sign_up_button_group span {
+/* position the icon inside the input field */
+.sign_up_input_group .user_icon,
+.sign_up_input_group .email_icon,
+.sign_up_input_group .password_lock_icon {
+    position: absolute;
+    left: 378px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* span design inside inside input group */
+.sign_up_section .sign_up_input_group span {
     font-weight: 400;
     font-size: 14px;
     color: #7A7A7A;
 }
 
-/* privacy policy link style inside button group */
-.sign_up_section .sign_up_button_group span a {
+/* privacy policy link style inside input span */
+.sign_up_section .sign_up_input_group span a {
     text-decoration: none;
     color: #29ABE2;
+}
+/* button group align */
+.sign_up_section .sign_up_button_group {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* sign up button design */

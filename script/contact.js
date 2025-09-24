@@ -20,6 +20,14 @@ function showContact() {
     templateRef.innerHTML = getContactTemplate(name, email);
 }
 
+function displayContact() {
+    let contactRef = document.getElementById('contact_card_am');
+    let contentAreaRef = document.getElementById('contact_template');
+
+    contactRef.style.display = "none";
+    contentAreaRef.style.display = "none";
+}
+
 function getContactTemplate(name, email) {
     return `<section class="contact-info-big">
                         <img id="user_svg" class="svg-img-big" src="./img/icons/test-am-icon-svg.svg" alt="">
@@ -30,7 +38,7 @@ function getContactTemplate(name, email) {
                                     <div class="contact-btn-img contact-btn-img-edit"></div>
                                     <p class="contact-btn-txt">Edit</p>
                                 </button>
-                                <button class="contact-btn contact-delete-btn">
+                                <button class="contact-btn contact-delete-btn" onclick="displayContact()">
                                     <div class="contact-btn-img contact-btn-img-delete"></div>
                                     <p class="contact-btn-txt">Delete</p>
                                 </button>
@@ -136,7 +144,7 @@ function showContactEditCard(name, email, svgRef) {
                                 <img class="add-contact-close-icon" src="./assets/svg/close.svg" alt="Close Icon">
                             </div>
                         </div>
-                        <form action="" class="create-form">
+                        <form action="" class="create-form" onsubmit="return false">
                             <section class="create-form-inputfields">
                                 <div>
                                     <input placeholder="Name" value="${name}" type="text">
@@ -153,7 +161,7 @@ function showContactEditCard(name, email, svgRef) {
                             </section>
 
                             <section class="edit-contact-d-s-buttons">
-                                <button class="edit-contact-delete-btn" onclick="closeOverlay()">
+                                <button class="edit-contact-delete-btn" onclick="closeOverlay(); displayContact()">
                                     <p class="edti-contact-delete-btn-txt">Delete</p>
                                 </button>
                                 <button class="edit-contact-save-contact-btn">

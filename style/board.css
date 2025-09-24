@@ -172,7 +172,7 @@
     color: rgba(168, 168, 168, 1);
 }
 
-.task-type{
+.task-label{
     width: fit-content;
     padding: 4px 16px;
     background-color: rgba(0, 56, 255, 1);

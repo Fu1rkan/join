@@ -23,7 +23,7 @@
     position: fixed;
 }
 
-/* .navbar {
+.navbar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

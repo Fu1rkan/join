@@ -101,15 +101,39 @@ main {
 
 /* login section input group input style */
 .login_section .input_group input {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
     padding: 12px 21px;
     outline: 1px solid #d1d1d1;
     border: none;
     border-radius: 10px;
-    gap: 10px;
+}
+
+/* input placeholder style */
+.login_section .input_group input::placeholder {
+    color: #d1d1d1;
 }
 
 .login_section .input_group input:focus {
     outline: 1px solid #29ABE2;
+}
+
+/* input field with icon align */
+.login_section .input_group .input_with_icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* position the icon inside the input field */
+.input_with_icon .email_icon,
+.input_with_icon .password_lock_icon {
+    position: absolute;
+    left: 358px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
 /* login section buttons align */

@@ -10,58 +10,8 @@
 
 <body>
     <section id="overlay" class="overlay d_none" onclick="closeOverlay()">
-        <div class="overlay-shadow-pos-rel-container">
-            <section class="overlay-card" onclick="event.stopPropagation()">
-                <section class="overlay-left-side">
-                    <div class="overlay-left-side-content">
-                        <img class="add-contact-card-svg" src="./assets/svg/logo_join_navbar.svg" alt="Join Logo">
-                        <div class="add-contact-card-headline">
-                            <h2 class="add-contact-card-title">Add contact</h2>
-                            <p class="add-contact-card-txt">Tasks are better with a team!</p>
-                            <div class="add-contact-card-underline-styled"></div>
-                        </div>
-                    </div>
-                </section>
-                <section class="overlay-right-side">
-                    <img class="overlay-character-icon" src="./assets/svg/char_icon_add_contact.svg"
-                        alt=" Empty Character Logo ">
-                    <section class="add-contact-content-container">
-                        <div class="position-container-close-icon">
-                            <div class="add-contact-close-icon-container" onclick="closeOverlay()">
-                                <img class="add-contact-close-icon" src="./assets/svg/close.svg" alt="Close Icon">
-                            </div>
-                        </div>
-                        <form action="" class="create-form">
-                            <section class="create-form-inputfields">
-                                <div>
-                                    <input placeholder="Name" type="text">
-                                    <img src="./assets/svg/person.svg" alt="Person Logo">
-                                </div>
-                                <div>
-                                    <input placeholder="Email" type="text">
-                                    <img src="./assets/svg/mail.svg" alt="Mail Logo">
-                                </div>
-                                <div>
-                                    <input placeholder="Phone" type="text">
-                                    <img src="./assets/svg/call.svg" alt="Phone Logo">
-                                </div>
-                            </section>
-
-                            <section class="add-contact-buttons">
-                                <button class="add-contact-cancel-btn" onclick="closeOverlay()">
-                                    <p class="add-contact-cancel-btn-txt">Cancel</p><img class="add-contact-btn-svg"
-                                        src="./assets/svg/iconoir_cancel.svg" alt="Cancel Icon">
-                                </button>
-                                <button class="add-contact-create-contact-btn">
-                                    <p class="add-contact-create-contact-btn-txt">Create contact</p><img
-                                        class="add-contact-btn-svg" src="./assets/svg/check.svg" alt="Check Icon">
-                                </button>
-                            </section>
-                        </form>
-                    </section>
-
-                </section>
-            </section>
+        <div id="overlay_content" class="overlay-shadow-pos-rel-container">
+            
         </div>
     </section>
     <nav class="navbar">
@@ -108,7 +58,7 @@
         <div class="contacts-content">
             <section class="contact-list-area">
                 <div class="contact-list-content">
-                    <button class="add-new-contact-btn" onclick="openOverlay()">
+                    <button class="add-new-contact-btn" onclick="addNewContact()">
                         <p>Add new contact</p><img class="add-new-contact-img" src="./img/icons/add_contact_icon.png"
                             alt="Add-new-Contact Logo">
                     </button>

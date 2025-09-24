@@ -12,6 +12,7 @@
 body {
   width: 100%;
   margin: 0;
+  background-color: var(--summary-color);
 }
 
 /** Summary Page Styles **/
@@ -25,7 +26,6 @@ body {
   justify-content: center;
   text-align: center;
 }
-
 .summary-text-2 {
   font-family: "Inter", serif;
   font-weight: 400;
@@ -33,14 +33,12 @@ body {
   color: var(--inter-text-color);
   gap: 13px;
 }
-
 .summary-text-3 {
   font-family: "Inter", serif;
   font-weight: 500;
   font-style: normal;
   color: var(--inter-text-color);
 }
-
 .summary-text-4 {
   font-family: "Inter", serif;
   font-weight: 700;
@@ -87,8 +85,8 @@ body {
   width: 100%;
   margin: 0px;
   padding: 0;
-  background-color: var(--summary-color);
   margin-top: 80px;
+  padding-left: 448px;
 }
 
 .summary-header {
@@ -121,7 +119,6 @@ body {
   font-size: 27px;
   color: var(--text-color);
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 24px;
 }

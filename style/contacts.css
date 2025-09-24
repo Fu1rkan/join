@@ -6,6 +6,26 @@ body {
     overflow: hidden;
 }
 
+.contact-area {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100%;
+}
+
+.content-area {
+    width: 100%;
+    max-height: 1024px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.content-limit {
+    width: calc(1440px - 232px);
+}
+
 .contacts-content {
     flex: 1;
     display: flex;
@@ -17,6 +37,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: calc(100vh - 96px);
+    max-height: calc(1024px - 96px);
     overflow-y: auto;
     scrollbar-width: thin;
     background-color: #FFFFFF;
@@ -55,10 +76,12 @@ body {
 
 .add-new-contact-btn:hover {
     background-color: #29abe2;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .add-new-contact-btn:active {
     background-color: #091931;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .add-new-contact-btn p {
@@ -120,7 +143,6 @@ body {
     color: #007cee;
     font-weight: 400;
 }
-
 
 .contacts-header {
     display: flex;
@@ -633,29 +655,61 @@ body {
 
 @keyframes fadeIn {
 
-    0% {
-        left: 100%;
-    }
-    25% {
-        left:75%;
+        0% {
+            left: 100%;
+        }
+
+        25% {
+            left: 75%;
+        }
+
+        50% {
+            left: 50%;
+        }
+
+        75% {
+            left: 25%;
+        }
+
+        90% {
+            left: 20%
+        }
+
+        100% {
+            left: auto;
+        }
     }
 
-    50% {
-        left: 50%;
-    }
+@media (max-width: 1440px) {
+    @keyframes fadeIn {
 
-    75% {
-        left: 25%;
-    }
+        0% {
+            left: 100%;
+        }
 
-    90% {
-        left:10%;
-    }
+        25% {
+            left: 75%;
+        }
 
-    100% {
-        left: auto;
+        50% {
+            left: 50%;
+        }
+
+        75% {
+            left: 25%;
+        }
+
+        90% {
+            left: 10%;
+        }
+
+        100% {
+            left: auto;
+        }
     }
 }
+
+
 
 @keyframes overlayShadow {
     100% {

@@ -20,13 +20,13 @@ body{
 nav{
     height: 100vh;
     background-color: #2A3647;
-    width: 15%;
+    width: 232px;
 }
 
 main{
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 100%;
     background-color: rgba(246, 247, 248, 1);
 }
 

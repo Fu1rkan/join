@@ -2,28 +2,7 @@
     box-sizing: border-box;
 }
 
-:root{
-    --nav-w: 280px;
-    --nav-color: #fff;
-    --nav-bg-color: #2a3647;
-    --side-color:var(--nav-bg-color);
-}
-
-.navbar{
-    z-index: 100;
-    overflow-y: auto;
-    gap: 24px;
-    display: flex;
-    flex-direction: column;
-    padding: 24px 16px;
-    background: var(--side-color);
-    color: var(--nav-bg-color);
-    width: var(--nav-w);
-    inset: 0 auto 0 0;
-    position: fixed;
-}
-
-/* .navbar {
+.navbar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

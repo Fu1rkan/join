@@ -1,0 +1,22 @@
+@keyframes slideMidToLeft {
+  from {
+    transform: translateY(0) translateX(0);
+    scale: 1;
+  }
+  to {
+    transform: translateY(-800px) translateX(-1450px);
+    scale: 0.4;
+    display: block;
+  }
+    
+}
+
+@keyframes backgroundBlendOut {
+  from {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0);
+  }
+    
+}

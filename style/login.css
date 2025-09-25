@@ -3,6 +3,26 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundBlendOut 1.5s forwards;
+    z-index: 9999;
+}
+
+.overlay .join_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideMidToLeft 1.5s forwards;
+}
+
 main {
     background-color: #F6F7F8;
     display: flex;

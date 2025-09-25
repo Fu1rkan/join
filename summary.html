@@ -11,7 +11,6 @@
   <body>
 
     <section class="layout">
-    
       <nav class="navbar">
       <div class="navbar-logo-container">
         <img class="navbar-logo" src="./assets/svg/logo_join_navbar.svg" alt="">
@@ -27,7 +26,6 @@
             <li><a href="">Legal Notice</a></li>
         </ul>
     </nav>
-    
     <section class="main">
     <div class="summary-header">
       <div class="summary-header-text">Kanban Project Management Tool</div>
@@ -45,20 +43,35 @@
     <section class="summary-container">
       <section class="summary-board-container">
       <div class="summary-board-panels">
-        <div class="summary-board-panel">hallo</div>
-        <div class="summary-board-panel">Welt</div>
+        <div class="summary-board-panel s-txt-64-600">
+          <img src="./assets/svg/pencil_1.svg" class="s-img">
+          <div></div>
+          <div></div>
+        </div>
+        <div class="summary-board-panel s-txt-64-600">
+          <img src="./assets/svg/right_1.svg" class="s-img">
+          <div></div>
+          <div></div>
+        </div>
       </div>
       <div class="summary-board-panels">
-        <div class="summary-board-panel">hallo</div>
+        <div class="summary-board-panel s-txt-64-600" id="s-b-separator">
+          <img src="./assets/svg/prio.svg" class="s-img">
+          <div>1</div>
+          <div>Urgent</div>
+          <div class="summary-title-separator-grey"></div>
+          <div class="">October 16 2022</div>
+          <div class="">upcoming Deadline</div>
+        </div>
       </div>
       <div class="summary-board-panels">
-        <div class="summary-board-panel">hallo</div>
-        <div class="summary-board-panel">hallo</div>
-        <div class="summary-board-panel">hallo</div>
+        <div class="summary-board-panel s-txt-64-600">1</div>
+        <div class="summary-board-panel s-txt-64-600">1</div>
+        <div class="summary-board-panel s-txt-64-600">1</div>
       </div>
       </section>
       <section class="summary-greeting-container">
-      <div class="summary-greeting">good morning,
+        <div class="summary-greeting" id="greeting-text"></div>
         <div class="summary-greeting" id="summary-greeting-name">Kim Burmester</div>
       </div>
       </section>
@@ -66,4 +79,5 @@
   </section>
   </section>
   </body>
+  <script src="./script/summary.js"></script>
 </html>

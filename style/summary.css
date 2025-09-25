@@ -33,9 +33,6 @@
   border: 2px solid var(--inter-text-accent-color);
   border-radius: 3px;
 }
-.s-b-separator{
-  gap: 32px;
-}
 .summary-title-separator-grey {
   width: 0px;
   height: 102px;
@@ -43,7 +40,6 @@
   border-radius: 3px;
 }
 .summary-panel {
-  gap: 32px;
   width: 100%;
   height: 168px;
   border-radius: 20px;
@@ -90,15 +86,37 @@
 }
 
 /* Text Styles */
+.s-txt-16-400{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-16);
+  font-weight: var(--weight-400);
+}
 .s-txt-20-400{
   font-family: "Inter", serif;
-    font-size: var(--font-size-20);
+  font-size: var(--font-size-20);
   font-weight: var(--weight-400);
+}
+.s-txt-21-700{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-21);
+  font-weight: var(--weight-700);
+  color: var(--side-color);
+}
+.s-txt-47-500{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-47);
+  font-weight: var(--weight-500);
 }
 .s-txt-64-600{
   font-family: "Inter", serif;
   font-size: var(--font-size-64);
   font-weight: var(--weight-600);
+}
+.s-txt-64-700{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-64);
+  font-weight: var(--weight-700);
+  color: var(--inter-text-accent-color);
 }
 
 #summary-title-360 {
@@ -118,6 +136,7 @@
 .summary-greeting{
   font-weight: var(--weight-500);
   font-size: var(--font-size-47);
+  color: var(--side-color);
 }
 #summary-greeting-name{
   color: var(--inter-text-accent-color);
@@ -125,8 +144,63 @@
   font-size: var(--font-size-64);
 }
 
-/*Summary Panel Content Style*/
+/*Summary Panel Image Styles*/
 .s-img{
   width: 69px;
   height: 69px;
+}
+
+/*Tasks Panel Content Styles*/
+.s-panel-gap{
+  gap: 32px;
+}
+
+.tasks-In-Todo{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Done{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Urgent{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Deadline{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  gap: 13px;
+}
+.tasks-In-Board{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Progress{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.awaiting-In-Feedback{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }

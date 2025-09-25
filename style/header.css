@@ -5,7 +5,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  isolation: isolate;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -15,7 +14,7 @@
   font-style: normal;
   font-size: 20px;
   color: var(--text-color);
-  margin-left: 348px;
+  margin-left: 120px;
 }
 
 .summary-profil{

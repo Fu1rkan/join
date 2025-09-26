@@ -155,6 +155,13 @@
   gap: 32px;
 }
 
+.summary-board-urgent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+}
+
 .tasks-In-Todo{
   display: flex;
   justify-content: center;

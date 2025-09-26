@@ -1,16 +1,28 @@
+let logoAnimated = false;
+
 function init(){
     renderLogIn();
-    setTimeout(renderJoinLogo, 990);
+    if (!logoAnimated) {
+        setTimeout(() => {
+            renderJoinLogo();
+            logoAnimated = true;
+        }, 1000);
+    } else {
+        renderJoinLogo();
+    }
 }
 
 function renderLogIn() {
-    document.body.innerHTML = '';
-    document.body.innerHTML += logInTemplate();
+    document.getElementById('main').innerHTML = '';
+    document.getElementById('main').innerHTML += logInTemplate();
+    if (logoAnimated) {
+        renderJoinLogo();
+    }
 }
 
 function renderSignUp() {
-    document.body.innerHTML = '';
-    document.body.innerHTML += signUpTemplate();
+    document.getElementById('main').innerHTML = '';
+    document.getElementById('main').innerHTML += signUpTemplate();
     renderJoinLogo();
 }
 

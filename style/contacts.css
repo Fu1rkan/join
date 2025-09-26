@@ -26,6 +26,13 @@ body {
     width: calc(1440px - 232px);
 }
 
+.contacts-main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(246, 247, 248, 1);
+}
+
 .contacts-content {
     flex: 1;
     display: flex;

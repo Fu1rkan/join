@@ -1,5 +1,11 @@
 function init(){
+    renderLogIn();
     setTimeout(renderJoinLogo, 990);
+}
+
+function renderLogIn() {
+    document.body.innerHTML = '';
+    document.body.innerHTML += logInTemplate();
 }
 
 function renderSignUp() {

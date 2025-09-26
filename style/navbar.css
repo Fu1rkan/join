@@ -8,7 +8,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 64px 0;
-    /* max-height: 1024px; */
+    max-height: 1024px;
+    height: 100vh;
+    background-color: #2A3647;
+    width: 232px;
 }
 
 .navbar-logo {

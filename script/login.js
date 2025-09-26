@@ -6,7 +6,7 @@ function init(){
         setTimeout(() => {
             renderJoinLogo();
             logoAnimated = true;
-        }, 1000);
+        }, 980);
     } else {
         renderJoinLogo();
     }

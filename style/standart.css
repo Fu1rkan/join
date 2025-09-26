@@ -1,20 +1,44 @@
-*{
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    text-decoration: none;
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  text-decoration: none;
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    font-family: 'Inter', sans-serif;
+:root {
+  --summary-color: #f6f7f8;
+  --header-color: #ffffff;
+  --side-color: #2a3647;
+  --side-active-color: #091931;
+  --text-color: #000000;
+  --inter-text-color: #2a3647;
+  --inter-text-accent-color: #29abe2;
+  --seperator-color: #d1d1d1;
+
+  --weight-100: 100;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+
+  --font-size-16: 16px;
+  --font-size-20: 20px;
+  --font-size-21: 21px;
+  --font-size-27: 27px;
+  --font-size-47: 47px;
+  --font-size-61: 61px;
+  --font-size-64: 64px;
 }
 
-.layout{
-    display: flex;
-    width: 100%;
-    max-width: 1440px;
+body {
+  font-family: "Inter", sans-serif;
+  flex-direction: column;
+}
+
+.layout {
+  display: flex;
+  width: 100%;
+  /* max-width: 1440px; */
 }
 
 nav{
@@ -30,39 +54,41 @@ main{
     background-color: rgba(246, 247, 248, 1);
 }
 
-.main-header{
-    width: 100%;
-    height: 96px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
+.main-header {
+  width: 100%;
+  height: 96px;
+  background-color: var(--header-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  isolation: isolate;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
-h2{
-    font-size: 61px;
-    font-weight: 700;
+h2 {
+  font-size: 61px;
+  font-weight: 700;
 }
 
-h4{
-    font-size: 20px;
-    font-weight: 700;
-    color: rgba(66, 82, 110, 1);
+h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(66, 82, 110, 1);
 }
 
-h5{
-    font-size: 16px;
-    font-weight: 700;
+h5 {
+  font-size: 16px;
+  font-weight: 700;
 }
 
-.d_none{
-    display: none;
+.d_none {
+  display: none;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype'),
-       url('../fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype"),
+    url("../fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;

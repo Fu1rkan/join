@@ -1,7 +1,7 @@
 @keyframes slideMidToLeft {
   from {
-    width: 300px;
-    height: 300px;
+    width: 274px; 
+    height: 335px;
     position: absolute;
     top: 50%;
     left: 50%;

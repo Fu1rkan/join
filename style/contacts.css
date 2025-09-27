@@ -26,6 +26,10 @@ body {
     width: calc(1440px - 232px);
 }
 
+.content-limit-header {
+    max-width: calc(1440px - 232px) ;
+}
+
 .contacts-main-content {
     display: flex;
     flex-direction: column;

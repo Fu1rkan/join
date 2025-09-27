@@ -22,8 +22,7 @@
 
 .overlay-card {
     position: absolute;
-    left: auto;
-    animation: fadeIn 300ms ease-in forwards;
+    animation: fadeIn 300ms linear forwards;
     height: 594px;
     width: 1212px;
     border-radius: 31px;
@@ -126,7 +125,7 @@
 }
 
 .add-contact-close-icon-container:hover {
-    background-color: #D9D9D9;
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
 .add-contact-close-icon {
@@ -151,35 +150,39 @@
     gap: 32px;
 }
 
-.create-form>section>div {
-    position: relative;
-}
-
-.create-form>section>div>input {
-    height: 50px;
-    width: 422px;
-    padding: 13px 21px;
-    border: 1px solid #d1d1d1;
+.create-form>section>label {
     border-radius: 10px;
-    font-size: 20px;
-    font-weight: 400;
+    border: 1px solid #d1d1d1;
+    padding: 13px 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
 }
 
-.create-form>section>div>input::placeholder {
+.create-form>section>label>input {
+    height: 24px;
+    align-items: center;
+    width: 422px;
+    outline: none;
     font-size: 20px;
     font-weight: 400;
-    height: 24px;
+    border-width: 0;
+    cursor: pointer;
+}
+
+
+
+.create-form>section>label>input::placeholder {
+    font-size: 20px;
+    font-weight: 400;
     color: #D1D1D1;
 }
 
-.create-form>section>div>img {
-    cursor: text;
-    height: 24px;
+.create-form>section>label>img {
+    cursor: pointer;
     width: 24px;
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 21px;
 }
 
 .add-contact-buttons {
@@ -355,63 +358,32 @@
     display: none;
 }
 
+/*Animation for 1920px by Card-width : 1212px*/
 @keyframes fadeIn {
 
         0% {
             left: 100%;
         }
 
-        25% {
-            left: 75%;
-        }
-
-        50% {
-            left: 50%;
-        }
-
-        75% {
-            left: 25%;
-        }
-
-        90% {
-            left: 20%
-        }
-
         100% {
-            left: auto;
+            left: 18.5%;
         }
     }
 
 @media (max-width: 1440px) {
+
+    /*Animation for 1440px by Card-width : 1212px*/
     @keyframes fadeIn {
 
         0% {
             left: 100%;
         }
 
-        25% {
-            left: 75%;
-        }
-
-        50% {
-            left: 50%;
-        }
-
-        75% {
-            left: 25%;
-        }
-
-        90% {
-            left: 10%;
-        }
-
         100% {
-            left: auto;
+            left: 8%;
         }
     }
 }
-
-
 
 @keyframes overlayShadow {
     100% {

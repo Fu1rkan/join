@@ -87,18 +87,18 @@ function showAddContactCard() {
                         </div>
                         <form action="" class="create-form">
                             <section class="create-form-inputfields">
-                                <div>
-                                    <input placeholder="Name" type="text">
+                                <label for="input_1">
+                                    <input id="input_1" placeholder="Name" type="text">
                                     <img src="./assets/svg/person.svg" alt="Person Logo">
-                                </div>
-                                <div>
+                                </label>
+                                <label>
                                     <input placeholder="Email" type="text">
                                     <img src="./assets/svg/mail.svg" alt="Mail Logo">
-                                </div>
-                                <div>
+                                </label>
+                                <label>
                                     <input placeholder="Phone" type="text">
                                     <img src="./assets/svg/call.svg" alt="Phone Logo">
-                                </div>
+                                </label>
                             </section>
 
                             <section class="add-contact-buttons">

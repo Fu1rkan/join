@@ -8,10 +8,20 @@
     justify-content: space-between;
     align-items: center;
     padding: 64px 0;
-    max-height: 1024px;
     height: 100vh;
     background-color: #2A3647;
+    min-width: 232px;
     width: 232px;
+}
+
+.navbar-content-limiter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    max-height: 1300px;
 }
 
 .navbar-logo {
@@ -33,10 +43,6 @@
     width: 100%;
 }
 
-.nav-list li a img {
-    margin-left: 20%;
-}
-
 .navbar-link {
     display: flex;
     justify-content: center;
@@ -50,8 +56,9 @@
 .navbar-link-content {
     display: flex;
     align-items: center;
-    min-width: 200px;
+    width: 100%;
     gap: 8px;
+    padding: 8px 56px;
 }
 
 .navbar-link:hover:not(.navbar-active) {

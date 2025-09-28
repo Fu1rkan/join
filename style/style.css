@@ -1,5 +1,10 @@
 @import url(./standart.css);
 @import url(./summary.css);
+@import url(./board.css);
+@import url(./navbar.css);
+@import url(./contacts.css);
+@import url(./task_overlay.css);
+@import url(./contacts_overlay.css);
 @import url(./login.css);
 @import url(./sign_up.css);
 @import url(./keyframes.css);

@@ -1,0 +1,213 @@
+
+.summary-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 101px;
+  margin-top: 80px;
+}
+
+.summary-panels {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--summary-color);
+}
+.summary-container {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  margin-left: 101px;
+  margin-top: 80px;
+}
+
+.summary-title-separator-blue {
+  width: 0px;
+  height: 59px;
+  border: 2px solid var(--inter-text-accent-color);
+  border-radius: 3px;
+}
+.summary-title-separator-grey {
+  width: 0px;
+  height: 102px;
+  border: 2px solid var(--seperator-color);
+  border-radius: 3px;
+}
+.summary-panel {
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-greeting-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin-left: 80px;
+}
+
+.summary-board-container{
+  width: 550px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.summary-board-panels{
+  width: 100%;
+  display: flex;
+  gap: 32px;
+}
+
+.summary-board-panel{
+  width: 100%;
+  height: 168px;
+  border-radius: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Text Styles */
+.s-txt-16-400{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-16);
+  font-weight: var(--weight-400);
+}
+.s-txt-20-400{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-20);
+  font-weight: var(--weight-400);
+}
+.s-txt-21-700{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-21);
+  font-weight: var(--weight-700);
+  color: var(--side-color);
+}
+.s-txt-47-500{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-47);
+  font-weight: var(--weight-500);
+}
+.s-txt-64-600{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-64);
+  font-weight: var(--weight-600);
+}
+.s-txt-64-700{
+  font-family: "Inter", serif;
+  font-size: var(--font-size-64);
+  font-weight: var(--weight-700);
+  color: var(--inter-text-accent-color);
+}
+
+#summary-title-360 {
+  font-size: var(--font-size-61);
+  font-weight: var(--weight-700);
+}
+.summary-title-text {
+  font-family: "Inter", serif;
+  font-weight: var(--weight-400);
+  font-style: normal;
+  font-size: var(--font-size-27);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.summary-greeting{
+  font-weight: var(--weight-500);
+  font-size: var(--font-size-47);
+  color: var(--side-color);
+}
+#summary-greeting-name{
+  color: var(--inter-text-accent-color);
+  font-weight: var(--weight-700);
+  font-size: var(--font-size-64);
+}
+
+/*Summary Panel Image Styles*/
+.s-img{
+  width: 69px;
+  height: 69px;
+}
+
+/*Tasks Panel Content Styles*/
+.s-panel-gap{
+  gap: 32px;
+}
+
+.summary-board-urgent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+}
+
+.tasks-In-Todo{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Done{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Urgent{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Deadline{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  gap: 13px;
+}
+.tasks-In-Board{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.tasks-In-Progress{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.awaiting-In-Feedback{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}

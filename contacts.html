@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/svg/favicon.svg">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Contacts</title>
+</head>
+
+<body>
+    <section class="layout">
+        <section id="overlay" class="overlay d_none" onclick="closeOverlay()">
+            <div id="overlay_content" class="overlay-shadow-pos-rel-container">
+
+            </div>
+        </section>
+        <nav class="navbar">
+            <div class="navbar-content-limiter">
+                <svg class="navbar-logo" xmlns="http://www.w3.org/2000/svg" width="102" height="122"
+                    viewBox="0 0 102 122" fill="none">
+                    <path d="M72.655 0H50.4972V25.4923H72.655V0Z" fill="white" />
+                    <path
+                        d="M50.4971 46.2251H72.655V82.1779C72.7562 90.8292 70.2941 99.3153 65.5815 106.557C60.9284 113.594 51.9459 121.966 35.3275 121.966C17.2263 121.966 6.67577 113.406 0.98291 108.715L14.9594 91.4743C20.5159 96.0112 25.8679 99.7435 35.4128 99.7435C42.6396 99.7435 45.5202 96.7988 47.2076 94.2307C49.5015 90.6637 50.6881 86.4923 50.6165 82.2464L50.4971 46.2251Z"
+                        fill="white" />
+                    <path d="M39.1967 30.1318H17.0388V52.3884H39.1967V30.1318Z" fill="#29ABE2" />
+                    <path
+                        d="M84.2622 111.522C84.2622 116.265 81.859 118.815 78.5012 118.815C75.1434 118.815 72.9447 115.785 72.9447 111.762C72.9447 107.739 75.2116 104.554 78.6887 104.554C82.1658 104.554 84.2622 107.687 84.2622 111.522ZM75.5184 111.711C75.5184 114.57 76.6604 116.675 78.6205 116.675C80.5806 116.675 81.6885 114.45 81.6885 111.539C81.6885 108.988 80.6659 106.592 78.6205 106.592C76.5752 106.592 75.5184 108.903 75.5184 111.711Z"
+                        fill="white" />
+                    <path d="M88.6597 104.76V118.593H86.2053V104.76H88.6597Z" fill="white" />
+                    <path
+                        d="M91.3187 118.593V104.76H94.0458L96.9775 110.461C97.7322 111.952 98.4036 113.483 98.9887 115.049C98.8353 113.337 98.7672 111.368 98.7672 109.177V104.76H101.017V118.593H98.4774L95.5117 112.772C94.7265 111.243 94.0266 109.671 93.4152 108.064C93.4152 109.776 93.5345 111.711 93.5345 114.09V118.576L91.3187 118.593Z"
+                        fill="white" />
+                </svg>
+                <ul class="nav-list">
+                    <li><a class="navbar-link" href="./summary.html">
+                            <div class="navbar-link-content">
+                                <svg class="navbar_img" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    viewBox="0 0 30 30" fill="none">
+                                    <path
+                                        d="M25.2273 3.48291H4.77273H4.5C3.39543 3.48291 2.5 4.37864 2.5 5.48321C2.5 5.663 2.5 5.79037 2.5 5.82288V26.2774V26.4829C2.5 27.5875 3.39572 28.4829 4.50029 28.4829C4.64377 28.4829 4.74401 28.4829 4.77272 28.4829H25.2273C25.256 28.4829 25.3562 28.4829 25.4997 28.4829C26.6043 28.4829 27.5 27.587 27.5 26.4824C27.5 26.3756 27.5 26.3017 27.5 26.2774V5.82285C27.5 5.79035 27.5 5.66299 27.5 5.48321C27.5 4.37864 26.6043 3.48291 25.4997 3.48291C25.3562 3.48291 25.256 3.48291 25.2273 3.48291ZM17.2727 26.2774H4.77273V17.1865H17.2727V26.2774ZM17.2727 14.9138H4.77273V5.82288L17.2727 5.82285V14.9138ZM25.2273 26.2774H19.5455V5.82288H25.2273V26.2774Z"
+                                        fill="#CDCDCD" />
+                                </svg>
+                                <p>Summary</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a class="navbar-link" href="./add_task.html">
+                            <div class="navbar-link-content">
+                                <svg class="navbar_img" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    viewBox="0 0 30 30" fill="none">
+                                    <mask id="mask0_373102_726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                        y="0" width="30" height="30">
+                                        <rect y="0.98291" width="30" height="30" fill="#D9D9D9" />
+                                    </mask>
+                                    <g mask="url(#mask0_373102_726)">
+                                        <path
+                                            d="M4.62652 28.1853C3.95579 28.1853 3.38161 27.9465 2.90396 27.4688C2.42632 26.9912 2.1875 26.417 2.1875 25.7462V8.67308C2.1875 8.00235 2.42632 7.42816 2.90396 6.95052C3.38161 6.47287 3.95579 6.23405 4.62652 6.23405H15.5107L13.0716 8.67308H4.62652V25.7462H21.6997V17.2706L24.1387 14.8316V25.7462C24.1387 26.417 23.8999 26.9912 23.4223 27.4688C22.9446 27.9465 22.3704 28.1853 21.6997 28.1853H4.62652ZM18.2546 6.93527L19.9924 8.64259L11.9436 16.6914V18.4292H13.6509L21.7302 10.3499L23.468 12.0572L15.3887 20.1365C15.1651 20.3601 14.906 20.5379 14.6113 20.67C14.3166 20.8021 14.0066 20.8682 13.6814 20.8682H10.7241C10.3786 20.8682 10.0889 20.7513 9.85518 20.5176C9.62144 20.2839 9.50457 19.9942 9.50457 19.6487V16.6914C9.50457 16.3662 9.56555 16.0562 9.6875 15.7615C9.80945 15.4668 9.98222 15.2076 10.2058 14.9841L18.2546 6.93527ZM23.468 12.0572L18.2546 6.93527L21.3034 3.88649C21.7912 3.39869 22.3755 3.15479 23.0564 3.15479C23.7373 3.15479 24.3115 3.39869 24.779 3.88649L26.4863 5.6243C26.9538 6.09178 27.1875 6.66088 27.1875 7.33161C27.1875 8.00235 26.9538 8.57145 26.4863 9.03893L23.468 12.0572Z"
+                                            fill="#CDCDCD" />
+                                    </g>
+                                </svg>
+                                <p>Add Task</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a class="navbar-link" href="./board.html">
+                            <div class="navbar-link-content">
+                                <svg class="navbar_img" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    viewBox="0 0 30 30" fill="none">
+                                    <path
+                                        d="M22.9544 5.75564L22.9545 26.21C22.9538 26.8125 22.7142 27.3903 22.2881 27.8163C21.862 28.2424 21.2843 28.4821 20.6817 28.4827L16.1363 28.4827C15.5338 28.4821 14.956 28.2424 14.53 27.8163C14.1039 27.3903 13.8642 26.8125 13.8636 26.21L13.8636 5.75564C13.8642 5.15306 14.1039 4.57534 14.53 4.14926C14.956 3.72317 15.5338 3.48353 16.1363 3.48293L20.6817 3.48293C21.2843 3.48353 21.862 3.72317 22.2881 4.14926C22.7142 4.57534 22.9538 5.15306 22.9544 5.75564ZM16.1363 26.21L20.6817 26.21L20.6817 5.75564L16.1363 5.75564L16.1363 26.21ZM16.1363 5.75564L16.1363 26.21C16.1357 26.8125 15.8961 27.3902 15.47 27.8163C15.0439 28.2424 14.4662 28.482 13.8636 28.4826L9.31823 28.4826C8.71566 28.482 8.13794 28.2424 7.71185 27.8163C7.28577 27.3902 7.04613 26.8125 7.04553 26.2099L7.04553 5.75561C7.04613 5.15304 7.28577 4.57532 7.71185 4.14923C8.13793 3.72315 8.71566 3.48351 9.31823 3.48291L13.8636 3.48291C14.4662 3.48351 15.0439 3.72315 15.47 4.14923C15.8961 4.57532 16.1357 5.15306 16.1363 5.75564ZM9.31823 26.2099L13.8636 26.21L13.8636 5.75564L9.31823 5.75561L9.31823 26.2099ZM9.31823 5.75561L9.31823 26.2099C9.31763 26.8125 9.07799 27.3902 8.65191 27.8163C8.22582 28.2424 7.6481 28.482 7.04553 28.4826L2.50012 28.4826C1.89755 28.482 1.31983 28.2424 0.893741 27.8163C0.467657 27.3902 0.228019 26.8125 0.227417 26.2099L0.227416 5.75561C0.228018 5.15304 0.467656 4.57532 0.89374 4.14923C1.31982 3.72315 1.89755 3.48351 2.50012 3.48291L7.04553 3.48291C7.6481 3.48351 8.22582 3.72315 8.6519 4.14923C9.07799 4.57532 9.31763 5.15304 9.31823 5.75561ZM2.50012 26.2099L7.04553 26.2099L7.04553 5.75561L2.50012 5.75561L2.50012 26.2099Z"
+                                        fill="#CDCDCD" />
+                                    <path
+                                        d="M29.7726 5.75589L29.7726 26.2102C29.772 26.8128 29.5323 27.3905 29.1062 27.8166C28.6802 28.2427 28.1024 28.4823 27.4999 28.4829L22.9545 28.4829C22.3519 28.4823 21.7742 28.2427 21.3481 27.8166C20.922 27.3905 20.6824 26.8125 20.6817 26.21L20.6817 5.75564C20.6823 5.15306 20.922 4.57559 21.3481 4.14951C21.7742 3.72342 22.3519 3.48379 22.9544 3.48318L27.4999 3.48318C28.1024 3.48379 28.6801 3.72342 29.1062 4.14951C29.5323 4.57559 29.772 5.15331 29.7726 5.75589ZM22.9545 26.21L27.4999 26.2102L27.4999 5.75589L22.9544 5.75564L22.9545 26.21Z"
+                                        fill="#CDCDCD" />
+                                </svg>
+                                <p>Board</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li><a class="navbar-link navbar-active" href="./contacts.html" aria-current="page">
+                            <div class="navbar-link-content">
+                                <svg class="navbar_img" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    viewBox="0 0 30 30" fill="none">
+                                    <mask id="mask0_373102_737" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                        y="0" width="30" height="30">
+                                        <rect y="0.98291" width="30" height="30" fill="#D9D9D9" />
+                                    </mask>
+                                    <g mask="url(#mask0_373102_737)">
+                                        <path
+                                            d="M15 23.4829C13.8333 23.4829 12.7188 23.6652 11.6563 24.0298C10.5938 24.3944 9.625 24.9412 8.75 25.6704V25.9829H21.25V25.6704C20.375 24.9412 19.4062 24.3944 18.3438 24.0298C17.2812 23.6652 16.1667 23.4829 15 23.4829ZM6.25 24.5454C7.375 23.4412 8.68229 22.5715 10.1719 21.936C11.6615 21.3006 13.2708 20.9829 15 20.9829C16.7292 20.9829 18.3385 21.3006 19.8281 21.936C21.3177 22.5715 22.625 23.4412 23.75 24.5454V8.48291H6.25V24.5454ZM15 18.4829C13.7917 18.4829 12.7604 18.0558 11.9062 17.2017C11.0521 16.3475 10.625 15.3162 10.625 14.1079C10.625 12.8996 11.0521 11.8683 11.9062 11.0142C12.7604 10.16 13.7917 9.73291 15 9.73291C16.2083 9.73291 17.2396 10.16 18.0938 11.0142C18.9479 11.8683 19.375 12.8996 19.375 14.1079C19.375 15.3162 18.9479 16.3475 18.0938 17.2017C17.2396 18.0558 16.2083 18.4829 15 18.4829ZM15 15.9829C15.5208 15.9829 15.9635 15.8006 16.3281 15.436C16.6927 15.0715 16.875 14.6287 16.875 14.1079C16.875 13.5871 16.6927 13.1444 16.3281 12.7798C15.9635 12.4152 15.5208 12.2329 15 12.2329C14.4792 12.2329 14.0365 12.4152 13.6719 12.7798C13.3073 13.1444 13.125 13.5871 13.125 14.1079C13.125 14.6287 13.3073 15.0715 13.6719 15.436C14.0365 15.8006 14.4792 15.9829 15 15.9829ZM6.25 28.4829C5.5625 28.4829 4.97396 28.2381 4.48438 27.7485C3.99479 27.259 3.75 26.6704 3.75 25.9829V8.48291C3.75 7.79541 3.99479 7.20687 4.48438 6.71729C4.97396 6.2277 5.5625 5.98291 6.25 5.98291H7.5V3.48291H10V5.98291H20V3.48291H22.5V5.98291H23.75C24.4375 5.98291 25.026 6.2277 25.5156 6.71729C26.0052 7.20687 26.25 7.79541 26.25 8.48291V25.9829C26.25 26.6704 26.0052 27.259 25.5156 27.7485C25.026 28.2381 24.4375 28.4829 23.75 28.4829H6.25Z"
+                                            fill="white" />
+                                    </g>
+                                </svg>
+                                <p>Contacts</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-footer">
+                    <li><a class="navbar-footer-link" href="">
+                            <p>Private Policy</p>
+                        </a></li>
+                    <li><a class="navbar-footer-link" href="">
+                            <p>Legal Notice</p>
+                        </a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="contacts-main-content">
+            <header>
+                <div class="content-limit-header">
+                    <div class="header-text">Kanban Project Management Tool</div>
+                    <div class="header-profil">
+                        <img src="./assets/svg/help.svg" alt="help" class="summary-help" />
+                        <div class="profil-header"></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="contacts-content content-limit">
+                <section class="contact-list-area">
+                    <div class="contact-list-container">
+                        <div class="contact-list-content">
+                            <div class="add-new-contact-btn-container">
+                                <button class="add-new-contact-btn" onclick="addNewContact()">
+                                    <p>Add new contact</p>
+                                    <svg class="add-new-contact-img" xmlns="http://www.w3.org/2000/svg" width="33"
+                                        height="33" viewBox="0 0 33 33" fill="none">
+                                        <mask id="mask0_373102_21" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                            x="0" y="0" width="33" height="33">
+                                            <rect x="0.5" y="0.5" width="32" height="32" fill="#D9D9D9" />
+                                        </mask>
+                                        <g mask="url(#mask0_373102_21)">
+                                            <path
+                                                d="M25.8294 19.1667C25.5134 19.1667 25.2499 19.0602 25.0388 18.8473C24.8277 18.6343 24.7222 18.3704 24.7222 18.0556V14.9445H21.611C21.2962 14.9445 21.0323 14.8376 20.8194 14.6239C20.6064 14.4102 20.4999 14.1454 20.4999 13.8295C20.4999 13.5136 20.6064 13.2501 20.8194 13.0389C21.0323 12.8278 21.2962 12.7223 21.611 12.7223H24.7222V9.61115C24.7222 9.29635 24.829 9.03246 25.0427 8.81948C25.2564 8.60653 25.5212 8.50005 25.8372 8.50005C26.1531 8.50005 26.4166 8.60653 26.6277 8.81948C26.8388 9.03246 26.9444 9.29635 26.9444 9.61115V12.7223H30.0555C30.3703 12.7223 30.6342 12.8291 30.8472 13.0428C31.0601 13.2566 31.1666 13.5214 31.1666 13.8373C31.1666 14.1532 31.0601 14.4167 30.8472 14.6278C30.6342 14.8389 30.3703 14.9445 30.0555 14.9445H26.9444V18.0556C26.9444 18.3704 26.8375 18.6343 26.6238 18.8473C26.4101 19.0602 26.1453 19.1667 25.8294 19.1667ZM12.4999 16.4778C11.0333 16.4778 9.81473 15.9926 8.84435 15.0223C7.874 14.0519 7.38882 12.8334 7.38882 11.3667C7.38882 9.90005 7.874 8.68154 8.84435 7.71118C9.81473 6.7408 11.0333 6.25562 12.4999 6.25562C13.9666 6.25562 15.1851 6.7408 16.1555 7.71118C17.1258 8.68154 17.611 9.90005 17.611 11.3667C17.611 12.8334 17.1258 14.0519 16.1555 15.0223C15.1851 15.9926 13.9666 16.4778 12.4999 16.4778ZM2.94435 27.1667C2.62955 27.1667 2.36566 27.0602 2.15269 26.8473C1.93973 26.6343 1.83325 26.3704 1.83325 26.0556V23.8334C1.83325 23.063 2.0314 22.3612 2.42769 21.7279C2.824 21.0945 3.3666 20.6186 4.05549 20.3C5.62586 19.5815 7.08022 19.0649 8.41855 18.75C9.75691 18.4352 11.1162 18.2779 12.4963 18.2779C13.8765 18.2779 15.237 18.4352 16.5777 18.75C17.9184 19.0649 19.3666 19.5815 20.9222 20.3C21.611 20.6334 22.1573 21.113 22.561 21.7389C22.9647 22.3649 23.1666 23.063 23.1666 23.8334V26.0556C23.1666 26.3704 23.0601 26.6343 22.8472 26.8473C22.6342 27.0602 22.3703 27.1667 22.0555 27.1667H2.94435ZM4.05545 24.9445H20.9444V23.8334C20.9444 23.5149 20.8648 23.2149 20.7055 22.9334C20.5462 22.6519 20.3073 22.4408 19.9888 22.3C18.5518 21.5963 17.2629 21.1204 16.1222 20.8723C14.9814 20.6241 13.774 20.5 12.4999 20.5C11.2259 20.5 10.0184 20.6278 8.87769 20.8834C7.73695 21.1389 6.44066 21.6112 4.98882 22.3C4.69991 22.4408 4.47212 22.6519 4.30545 22.9334C4.13879 23.2149 4.05545 23.5149 4.05545 23.8334V24.9445ZM12.4999 14.2556C13.3221 14.2556 14.0092 13.9797 14.561 13.4278C15.1129 12.876 15.3888 12.1889 15.3888 11.3667C15.3888 10.5445 15.1129 9.85746 14.561 9.30562C14.0092 8.75375 13.3221 8.47782 12.4999 8.47782C11.6777 8.47782 10.9907 8.75375 10.4388 9.30562C9.88695 9.85746 9.61102 10.5445 9.61102 11.3667C9.61102 12.1889 9.88695 12.876 10.4388 13.4278C10.9907 13.9797 11.6777 14.2556 12.4999 14.2556Z"
+                                                fill="white" />
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+                            <section class="contact-list">
+                                <h4 class="contact-list-section-head">A</h4>
+                                <div class="section-seperator-container">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items">
+                                    <li>
+                                        <div id="contact_card_am" class="contact-container contact-container-hoverclass"
+                                            onclick="showContact()">
+                                            <img id="img_am" class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-am.icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p id="name_am" class="contact-name">Anton Mayer</p>
+                                                <a id="email_am" class="contact-e-mail"
+                                                    href="mailto:antonm@gmail.com">antonm@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="contact-container contact-container-hoverclass">
+                                            <img class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-as-icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p class="contact-name">Anja Schulz</p>
+                                                <a class="contact-e-mail"
+                                                    href="mailto:schulz@gmail.com">schulz@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <h4 class="contact-list-section-head">B</h4>
+                                <div class="section-seperator-container">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items">
+                                    <li>
+                                        <div class="contact-container contact-container-hoverclass">
+                                            <img class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-bz-icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p class="contact-name">Benedikt Ziegler</p>
+                                                <a class="contact-e-mail"
+                                                    href="mailto:benedikt@gmail.com">benedikt@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <h4 class="contact-list-section-head d_none">C</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head">D</h4>
+                                <div class="section-seperator-container">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items">
+                                    <li>
+                                        <div class="contact-container contact-container-hoverclass">
+                                            <img class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-de-icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p class="contact-name">David Eisenberg</p>
+                                                <a class="contact-e-mail"
+                                                    href="mailto:davidberg@gmail.com">davidberg@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <h4 class="contact-list-section-head">E</h4>
+                                <div class="section-seperator-container">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items">
+                                    <li>
+                                        <div class="contact-container contact-container-hoverclass">
+                                            <img class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-ef-icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p class="contact-name">Eva Fischer</p>
+                                                <a class="contact-e-mail" href="mailto:eva@gmail.com">eva@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="contact-container contact-container-hoverclass">
+                                            <img class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-em-icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p class="contact-name">Emmanuel Mauer</p>
+                                                <a class="contact-e-mail"
+                                                    href="mailto:emmanuelma@gmail.com">emmanuelma@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <h4 class="contact-list-section-head d_none">F</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">G</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">H</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">I</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">J</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">K</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">L</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head">M</h4>
+                                <div class="section-seperator-container">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items">
+                                    <li>
+                                        <div class="contact-container contact-container-hoverclass">
+                                            <img class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-em-icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p class="contact-name">Marcel Bauer</p>
+                                                <a class="contact-e-mail"
+                                                    href="mailto:bauer@gmail.com">bauer@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <h4 class="contact-list-section-head d_none">N</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">O</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">P</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">Q</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">R</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">S</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head">T</h4>
+                                <div class="section-seperator-container">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items">
+                                    <li>
+                                        <div class="contact-container contact-container-hoverclass">
+                                            <img class="svg-img-small"
+                                                src="./img/icons/contacts-test-icons/test-em-icon.png"
+                                                alt="Icon Test Contact">
+                                            <div class="contact-info">
+                                                <p class="contact-name">Tatjana Wolf</p>
+                                                <a class="contact-e-mail"
+                                                    href="mailto:wolf@gmail.com">wolf@gmail.com</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <h4 class="contact-list-section-head d_none">U</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">V</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">W</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">X</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">Y</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+
+                                <h4 class="contact-list-section-head d_none">Z</h4>
+                                <div class="section-seperator-container d_none">
+                                    <div class="section-seperator"></div>
+                                </div>
+                                <ul class="list-items"></ul>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <section class="contact">
+                    <div class="contact-rightside-big-container">
+                        <div class="contacts-header">
+                            <h2>Contacts</h2>
+                            <div class="contacts-header-seperator"></div>
+                            <p class="contacts-header-txt">Better with a Team</p>
+                        </div>
+                        <section id="contact_template" class="contact-template">
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </section>
+
+
+    <script src="./script/contact_templates.js"></script>
+    <script src="./script/contact.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+@keyframes slideMidToLeft {
+  from {
+    width: 274px; 
+    height: 335px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  to {
+    width: 109px;
+    height: 134px;
+    position: absolute;
+    top: 67px;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+    
+}
+
+@keyframes backgroundBlendOut {
+  from {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0);
+    display: none;
+  } 
+}

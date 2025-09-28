@@ -41,17 +41,17 @@ body {
   /* max-width: 1440px; */
 }
 
-nav{
-    height: 100vh;
-    background-color: #2A3647;
-    width: 20%;
+nav {
+  height: 100vh;
+  background-color: #2a3647;
+  width: 20%;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    background-color: rgba(246, 247, 248, 1);
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background-color: rgba(246, 247, 248, 1);
 }
 
 .main-header {

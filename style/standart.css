@@ -3,6 +3,7 @@
   padding: 0;
   scroll-behavior: smooth;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 :root {
@@ -73,13 +74,13 @@ header {
   margin-left: 120px;
 }
 
-.header-profil{
+.header-profil {
   display: flex;
   gap: 16px;
   margin-right: 50px;
 }
 
-.profil-header{
+.profil-header {
   width: 56px;
   height: 56px;
   border-radius: 50%;

@@ -136,7 +136,7 @@ function signUpTemplate() {
 
 function joinLogoTemplate() {
     return `<div class="join_logo">
-                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 274 335" fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 274 335" fill="none">
                     <path d="M196.314 0H135.623V69.8251H196.314V0Z" fill="#2A3647" />
                     <path
                         d="M135.623 126.614H196.315V225.091C196.592 248.787 189.848 272.031 176.94 291.868C164.195 311.141 139.591 334.072 94.0723 334.072C44.4917 334.072 15.5931 310.626 0 297.777L38.2825 250.554C53.5021 262.981 68.1615 273.204 94.3057 273.204C114.101 273.204 121.99 265.138 126.612 258.104C132.896 248.334 136.146 236.908 135.95 225.279L135.623 126.614Z"
@@ -154,7 +154,7 @@ function joinLogoTemplate() {
 }
 
 function checkboxTemplate() {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+    return `<svg xmlns="http://www.w3.org/2000/svg" class="pp_checkbox" width="18" height="19" viewBox="0 0 18 19" fill="none">
                 <path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                 <path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>`;

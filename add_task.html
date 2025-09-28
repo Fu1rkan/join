@@ -11,7 +11,7 @@
   <script src="./script/add_task.js"></script>
 </head>
 
-<body>
+<body onclick="closeContactlist(), closeCategoryList()">
   <div class="layout">
     <nav class="navbar">
       <div class="navbar-content-limiter">
@@ -115,17 +115,37 @@
               <label for="title">Title <span style="color: red">*</span></label>
               <br />
 
-              <input type="text" id="title" name="title" placeholder="Enter a title" required />
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Enter a title"
+                required
+              />
             </div>
             <div class="w100">
               <label for="description">Description</label> <br />
 
-              <input type="text" id="description" name="description" placeholder="Enter a Description" />
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Enter a Description"
+              />
             </div>
             <div class="w100">
-              <label for="date">Due Date <span style="color: red">*</span></label>
+              <label for="date"
+                >Due Date <span style="color: red">*</span></label
+              >
               <br />
-              <input type="text" id="date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required leng="en-GB" />
+              <input
+                type="text"
+                id="date"
+                placeholder="dd/mm/yyyy"
+                onfocus="this.type='date'"
+                required
+                leng="en-GB"
+              />
 
               <script>
                 // Get today's date in YYYY-MM-DD format
@@ -139,154 +159,321 @@
 
           <div class="input_container w100">
             <div>
-              <label for="">Priority</label>
-              <div class="priority_wrapper">
-                <button class="urgent_btn">
+              <label for="" >Priority</label>
+              <input type="hidden"  id="priority">
+              <div  class="priority_wrapper">
+                <button type="button"  class="urgent_btn" id="urgent_btn" onclick="buttonActive('urgent')">
                   Urgent <img src="./assets/svg/Prio_urgent_red.svg" alt="" />
                 </button>
-                <button class="medium_btn">
+                <button type="button" class="medium_btn" id="medium_btn" onclick="buttonActive('medium')">
                   Medium
                   <img src="./assets/svg/Prio_medium_orange.svg" alt="" />
                 </button>
-                <button class="low_btn">
+                <button type="button" class="low_btn" id="low_btn"  onclick="buttonActive('low')">
                   Low
-                  <img src="./assets/svg/Prio_low_green.svg" alt="" sizes="" srcset="" />
+                  <img
+                    src="./assets/svg/Prio_low_green.svg"
+                    alt=""
+                    sizes=""
+                    srcset=""
+                  />
                 </button>
               </div>
             </div>
-            <div class="asssigned_to">
+            <div class="asssigned_to" onclick="closeProtection(event)">
               <label for="">Assigned to</label> <br />
-              <input type="text" placeholder="Select contacts to assign" onblur="closeContactlist()"
-                onfocus="openContactlist()" />
-              <ul class="contacts " id="contacts">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  placeholder="Select contacts to assign"
+                  onfocus="openContactlist()"
+                />
 
-                <li class="single_contact ">
+                <img
+                  class="arrow"
+                  id="arrow"
+                  src="./assets/svg/arrow_drop_down.svg"
+                  alt="arrow"
+                />
+              </div>
+              <ul class="contacts" id="contacts">
+                <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
                 <li class="single_contact">
                   <div>
-                    <img class="pb_bubble" src="./assets/svg/SM_nametag.svg" alt="">
+                    <img
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
                     <p>Sven Degen</p>
                   </div>
 
-                  <img class="checkbox" src="./assets/svg/checkbox.svg" alt="" />
-
+                  <img
+                    class="checkbox"
+                    src="./assets/svg/checkbox.svg"
+                    alt=""
+                  />
                 </li>
               </ul>
             </div>
-            <div>
-              <label for="">Category <span style="color: red">*</span></label>
-              <br />
 
-              <select id="category" name="category">
-                <option value="">Select task category</option>
-                <option value="xy">Sven</option>
-                <option value="xy">Furkan</option>
-                <option value="xy">Can</option>
-                <option value="xy">Kim</option>
-                <option value="xy">Can</option>
-                <option value="xy">David</option>
-              </select>
-            </div>
+
+
+<div> <div class="asssigned_to" onclick="closeProtection(event)">
+              <label for="">Category <span style="color: red">*</span></label> <br />
+              <div class="input-wrapper">
+                <input
+                id="category_input"
+                  type="text"
+                  placeholder="Select task category"
+                  onfocus="openCategoryList()"
+readonly
+                />
+
+                <img
+                  class="arrow"
+                  id="arrow"
+                  src="./assets/svg/arrow_drop_down.svg"
+                  alt="arrow"
+                />
+              </div>
+
+              <ul class="contacts  " id="categorys" >
+                <li class="single_contact"  onclick="closeCategoryList(), selectCategory('Technical Task')">
+                  <div>
+                    <p>Technical Task</p>
+                  </div>
+
+                </li>
+                <li class="single_contact"  onclick="closeCategoryList(), selectCategory('User Story')">
+                  <div>
+                    <imgs
+                      class="pb_bubble"
+                      src="./assets/svg/SM_nametag.svg"
+                      alt=""
+                    />
+                    <p>User Story</p>
+                  </div>
+                </li>
+           </div>
+
+
+
+
+
+
+
+
+            
             <div>
               <label for="subtask">Subtask</label> <br />
-              <input type="text" name="subtask" id="subtask" placeholder="Add new subtask" />
+              <input
+                type="text"
+                name="subtask"
+                id="subtask"
+                placeholder="Add new subtask"
+              />
+<div class="subtask_item_wrapper  subtask_item_wrapper_edit "> 
+            •  
+  
+  <input class="subtask_item" value="Contact form" type="text" readonly>
+
+
+              <div class="subtask_item_edit">
+                <img src="./assets/svg/Subtask_delete.svg" alt="">
+              <hr>
+<img src="./assets/svg/Subtask_edit.svg" alt="">
+            </div>
+              
+</div>
+<div class="subtask_item_wrapper   "> 
+            •  
+  
+  <input class="subtask_item" value="Contact form" type="text" readonly>
+
+
+              <div class="subtask_item_edit">
+                <img src="./assets/svg/Subtask_delete.svg" alt="">
+              <hr>
+<img src="./assets/svg/Subtask_edit.svg" alt="">
+            </div>
+              
+</div>
             </div>
           </div>
         </form>

@@ -1,4 +1,4 @@
-
+/* Container for the summary title section */
 .summary-title {
   display: flex;
   flex-direction: column;
@@ -7,18 +7,22 @@
   margin-top: 80px;
 }
 
+/* Panels container in the summary section */
 .summary-panels {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
+/* Main content area styling */
 .main {
   display: flex;
   flex-direction: column;
   width: 100%;
   background-color: var(--summary-color);
 }
+
+/* Container for the summary section */
 .summary-container {
   display: flex;
   width: 100%;
@@ -27,18 +31,23 @@
   margin-top: 80px;
 }
 
+/* Blue separator line for summary title */
 .summary-title-separator-blue {
   width: 0px;
   height: 59px;
   border: 2px solid var(--inter-text-accent-color);
   border-radius: 3px;
 }
+
+/* Grey separator line for summary title */
 .summary-title-separator-grey {
   width: 0px;
   height: 102px;
   border: 2px solid var(--seperator-color);
   border-radius: 3px;
 }
+
+/* Single summary panel styling */
 .summary-panel {
   width: 100%;
   height: 168px;
@@ -50,7 +59,9 @@
   justify-content: center;
   align-items: center;
 }
-.summary-greeting-container{
+
+/* Container for greeting section in summary */
+.summary-greeting-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,7 +69,8 @@
   margin-left: 80px;
 }
 
-.summary-board-container{
+/* Container for the summary board */
+.summary-board-container {
   width: 550px;
   height: auto;
   display: flex;
@@ -67,13 +79,15 @@
   gap: 32px;
 }
 
-.summary-board-panels{
+/* Container for multiple summary board panels */
+.summary-board-panels {
   width: 100%;
   display: flex;
   gap: 32px;
 }
 
-.summary-board-panel{
+/* Single summary board panel styling */
+.summary-board-panel {
   width: 100%;
   height: 168px;
   border-radius: 20px;
@@ -85,44 +99,57 @@
   align-items: center;
 }
 
-/* Text Styles */
-.s-txt-16-400{
+/* Text style: 16px, weight 400 */
+.s-txt-16-400 {
   font-family: "Inter", serif;
   font-size: var(--font-size-16);
   font-weight: var(--weight-400);
 }
-.s-txt-20-400{
+
+/* Text style: 20px, weight 400 */
+.s-txt-20-400 {
   font-family: "Inter", serif;
   font-size: var(--font-size-20);
   font-weight: var(--weight-400);
 }
-.s-txt-21-700{
+
+/* Text style: 21px, weight 700, accent color */
+.s-txt-21-700 {
   font-family: "Inter", serif;
   font-size: var(--font-size-21);
   font-weight: var(--weight-700);
   color: var(--side-color);
 }
-.s-txt-47-500{
+
+/* Text style: 47px, weight 500 */
+.s-txt-47-500 {
   font-family: "Inter", serif;
   font-size: var(--font-size-47);
   font-weight: var(--weight-500);
 }
-.s-txt-64-600{
+
+/* Text style: 64px, weight 600 */
+.s-txt-64-600 {
   font-family: "Inter", serif;
   font-size: var(--font-size-64);
   font-weight: var(--weight-600);
 }
-.s-txt-64-700{
+
+/* Text style: 64px, weight 700, accent color */
+.s-txt-64-700 {
   font-family: "Inter", serif;
   font-size: var(--font-size-64);
   font-weight: var(--weight-700);
   color: var(--inter-text-accent-color);
 }
 
+/* Title style for summary (responsive 360px) */
 #summary-title-360 {
   font-size: var(--font-size-61);
   font-weight: var(--weight-700);
 }
+
+/* Text style for summary title */
 .summary-title-text {
   font-family: "Inter", serif;
   font-weight: var(--weight-400);
@@ -133,78 +160,96 @@
   align-items: center;
   gap: 24px;
 }
-.summary-greeting{
+
+/* Greeting text style in summary */
+.summary-greeting {
   font-weight: var(--weight-500);
   font-size: var(--font-size-47);
   color: var(--side-color);
 }
-#summary-greeting-name{
+
+/* Name style in summary greeting */
+#summary-greeting-name {
   color: var(--inter-text-accent-color);
   font-weight: var(--weight-700);
   font-size: var(--font-size-64);
 }
 
-/*Summary Panel Image Styles*/
-.s-img{
+/* Image size for summary icons */
+.s-img {
   width: 69px;
   height: 69px;
 }
 
-/*Tasks Panel Content Styles*/
-.s-panel-gap{
+/* Gap between summary panels */
+.s-panel-gap {
   gap: 32px;
 }
 
-.summary-board-urgent{
+/* Container for urgent board panel */
+.summary-board-urgent {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 130px;
 }
 
-.tasks-In-Todo{
+/* Task container for "To Do" tasks */
+.tasks-In-Todo {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Done{
+
+/* Task container for "Done" tasks */
+.tasks-In-Done {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Urgent{
+
+/* Task container for "Urgent" tasks */
+.tasks-In-Urgent {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Deadline{
+
+/* Task container for "Deadline" tasks */
+.tasks-In-Deadline {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: start;
   gap: 13px;
 }
-.tasks-In-Board{
+
+/* Task container for "Board" tasks */
+.tasks-In-Board {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Progress{
+
+/* Task container for "In Progress" tasks */
+.tasks-In-Progress {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.awaiting-In-Feedback{
+
+/* Container for "Awaiting Feedback" tasks */
+.awaiting-In-Feedback {
   display: flex;
   justify-content: center;
   flex-direction: column;

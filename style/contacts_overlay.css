@@ -172,15 +172,13 @@
     cursor: pointer;
 }
 
-
-
 .create-form>section>label>input::placeholder {
     font-size: 20px;
     font-weight: 400;
     color: #D1D1D1;
 }
 
-.create-form>section>label>img {
+.create-form>section>label>svg {
     cursor: pointer;
     width: 24px;
 }

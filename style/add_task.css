@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-body{
-  display: flex;
-  flex-direction: row;
-}
-
 .w100 {
   width: 100% !important;
 }

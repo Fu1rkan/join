@@ -6,28 +6,12 @@ body {
     overflow: hidden;
 }
 
-.contact-area {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100vh;
-    width: 100%;
-}
-
-.content-area {
-    width: 100%;
-    max-height: 1024px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.content-limit {
-    width: calc(1440px - 232px);
-}
-
 .content-limit-header {
-    max-width: calc(1440px - 232px) ;
+    max-width: calc(1440px - 232px);
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .contacts-main-content {
@@ -37,28 +21,17 @@ body {
     background-color: rgba(246, 247, 248, 1);
 }
 
-.main-contacts-header {
-    width: 100%;
-    height: 96px;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-}
-
 .contacts-content {
     flex: 1;
     display: flex;
 }
 
 .contact-list-area {
-    width: 40%;
+    width: 456px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: calc(100vh - 96px);
-    max-height: calc(1024px - 96px);
     overflow-y: auto;
     scrollbar-width: thin;
     background-color: #FFFFFF;
@@ -66,7 +39,7 @@ body {
 }
 
 .contact {
-    width: 60%;
+    width: calc(1440px - (232px + 456px));
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -74,7 +47,7 @@ body {
 }
 
 .contact-list-content {
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
@@ -86,10 +59,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-width: 0;
+    border: 1px solid #2A3647;
     border-radius: 10px;
     margin: 22.5px 0;
-    padding: 12px 16px;
+    padding: 12px 12px;
     gap: 16px;
     font-size: 21px;
     font-weight: 700;
@@ -97,11 +70,13 @@ body {
 
 .add-new-contact-btn:hover {
     background-color: #29abe2;
+    border: 1px solid #29ABE2;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .add-new-contact-btn:active {
     background-color: #091931;
+    border: 1px solid #091931;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -238,22 +213,6 @@ body {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.contact-btn-img {
-    width: 24px;
-    height: 24px;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.contact-btn-img-edit {
-    background-image: url('/assets/svg/edit.svg');
-}
-
-.contact-btn-img-delete {
-    background-image: url('/assets/svg/delete.svg');
-}
-
 .contact-edit-btn {
     width: 62px;
 }
@@ -262,8 +221,8 @@ body {
     min-width: 30px;
 }
 
-.contact-edit-btn:hover .contact-btn-img-edit {
-    background-image: url('/assets/svg/edit_blue.svg');
+.contact-edit-btn:hover svg path{
+    fill: #29ABE2;
 }
 
 .contact-delete-btn {
@@ -274,8 +233,8 @@ body {
     min-width: 50px;
 }
 
-.contact-delete-btn:hover .contact-btn-img-delete {
-    background-image: url('/assets/svg/delete_blue.svg');
+.contact-delete-btn:hover svg path {
+    fill: #29ABE2;
 }
 
 .contact-btn:hover {

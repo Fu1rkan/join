@@ -1,5 +1,5 @@
 function getContactTemplate(name, email) {
-    return `<section class="contact-info-big">
+    return `<div class="contact-info-big-container"><section class="contact-info-big">
         <svg class="svg-img-big" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
             fill="none">
             <circle cx="60" cy="60" r="60" fill="#FF7A00" />
@@ -51,7 +51,8 @@ function getContactTemplate(name, email) {
             <h5>Phone</h5>
             <p class="contact-informations-phone-number">+49 1111 111 11 1</p>
         </div>
-    </section>`;
+    </section>
+    </div>`;
 }
 
 function showAddContactCard() {
@@ -161,10 +162,10 @@ function showAddContactCard() {
                         </label>
                         <label>
                             <input placeholder="Phone" type="text">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1039" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
-                                    y="0" width="24" height="25">
+                                    y="0" width="24" height="24">
                                     <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
                                 </mask>
                                 <g mask="url(#mask0_373102_1039)">
@@ -180,7 +181,7 @@ function showAddContactCard() {
                         <button class="add-contact-cancel-btn" onclick="closeOverlay()">
                             <p class="add-contact-cancel-btn-txt">Cancel</p>
                             <!--<div class="add-contact-btn-svg add-contact-btn-cancel-svg"></div>-->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <path
                                     d="M12.0692 12.0001L17.3122 17.2431M6.82617 17.2431L12.0692 12.0001L6.82617 17.2431ZM17.3122 6.75708L12.0682 12.0001L17.3122 6.75708ZM12.0682 12.0001L6.82617 6.75708L12.0682 12.0001Z"
@@ -263,7 +264,17 @@ function showContactEditCard(name, email) {
             <section class="add-contact-content-container">
                 <div class="position-container-close-icon">
                     <div class="add-contact-close-icon-container" onclick="closeOverlay()">
-                        <img class="add-contact-close-icon" src="./assets/svg/close.svg" alt="Close Icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <mask id="mask0_71720_5491" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4"
+                                width="24" height="25">
+                                <rect x="4" y="4.96582" width="24" height="24" fill="#D9D9D9" />
+                            </mask>
+                            <g mask="url(#mask0_71720_5491)">
+                                <path
+                                    d="M15.9998 18.3659L11.0998 23.2659C10.9165 23.4492 10.6831 23.5409 10.3998 23.5409C10.1165 23.5409 9.88314 23.4492 9.6998 23.2659C9.51647 23.0825 9.4248 22.8492 9.4248 22.5659C9.4248 22.2825 9.51647 22.0492 9.6998 21.8659L14.5998 16.9659L9.6998 12.0659C9.51647 11.8825 9.4248 11.6492 9.4248 11.3659C9.4248 11.0825 9.51647 10.8492 9.6998 10.6659C9.88314 10.4825 10.1165 10.3909 10.3998 10.3909C10.6831 10.3909 10.9165 10.4825 11.0998 10.6659L15.9998 15.5659L20.8998 10.6659C21.0831 10.4825 21.3165 10.3909 21.5998 10.3909C21.8831 10.3909 22.1165 10.4825 22.2998 10.6659C22.4831 10.8492 22.5748 11.0825 22.5748 11.3659C22.5748 11.6492 22.4831 11.8825 22.2998 12.0659L17.3998 16.9659L22.2998 21.8659C22.4831 22.0492 22.5748 22.2825 22.5748 22.5659C22.5748 22.8492 22.4831 23.0825 22.2998 23.2659C22.1165 23.4492 21.8831 23.5409 21.5998 23.5409C21.3165 23.5409 21.0831 23.4492 20.8998 23.2659L15.9998 18.3659Z"
+                                    fill="#2A3647" />
+                            </g>
+                        </svg>
                     </div>
                 </div>
                 <form action="" class="create-form" onsubmit="return false">
@@ -300,7 +311,7 @@ function showContactEditCard(name, email) {
                         </label>
                         <label>
                             <input placeholder="Phone" value="+49 1111 111 11 1" type="text">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1039" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
                                     y="0" width="24" height="25">

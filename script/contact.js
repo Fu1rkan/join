@@ -10,16 +10,28 @@ function closeOverlay() {
 
 function showContact() {
     let contactCardRef = document.getElementById('contact_card_am');
+    let templateRef = document.getElementById('contact_template');
     let name = document.getElementById('name_am').innerHTML;
     let email = document.getElementById('email_am').innerHTML;
 
-
-    contactCardRef.classList.remove('contact-container-hoverclass')
+    contactCardRef.onclick = hideContact;
+    contactCardRef.classList.remove('contact-container-hoverclass');
     contactCardRef.style.backgroundColor = "#2A3647";
-    contactCardRef.style.color = "white";
-    let templateRef = document.getElementById('contact_template');
+    contactCardRef.style.color = "#FFFFFF";
+    templateRef.classList.remove('d_none');
     templateRef.innerHTML = getContactTemplate(name, email);
 }
+
+function hideContact() {
+    let contactCardRef = document.getElementById('contact_card_am');
+    let templateRef = document.getElementById('contact_template');
+    contactCardRef.classList.add('contact-container-hoverclass');
+    contactCardRef.style.backgroundColor = "";
+    contactCardRef.style.color = "";
+    contactCardRef.onclick = showContact;
+    templateRef.classList.add('d_none');
+}
+
 
 function displayContact() {
     let contactRef = document.getElementById('contact_card_am');

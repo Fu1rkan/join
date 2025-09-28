@@ -69,17 +69,19 @@ body {
 }
 
 .contact-list {
-    margin-top: 84px;
+    display: flex;
+    flex-direction: column;
 }
 
 .add-new-contact-btn-container {
-    width: 352px;
-    height: 100px;
-    position: fixed;
+    width: 456px;
+    min-height: 100px;
+    position: sticky;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #FFFFFF;
+    top: 0;
 }
 
 .add-new-contact-btn {
@@ -122,9 +124,21 @@ body {
 .contact-list-section-head {
     font-weight: 400;
     color: #000000;
-    padding: 17px 36px;
-    height: 58px;
+    height: 24px;
     align-content: center;
+}
+
+.contact-list-head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 58px;
+    padding: 17px 36px;
+}
+
+.first-list-element {
+    padding-top: 0;
+    height: 41px;
 }
 
 .section-seperator-container {

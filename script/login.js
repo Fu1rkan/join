@@ -26,6 +26,13 @@ function renderSignUp() {
     renderJoinLogo();
 }
 
+// renders main Join Logo top left corner
 function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
+}
+
+// changes checkbox from empty to checked
+function changeCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
+    privacyPolicyCheckbox.outerHTML = checkboxTemplate();
 }

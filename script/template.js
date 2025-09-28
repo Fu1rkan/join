@@ -65,13 +65,11 @@ function signUpTemplate() {
                 </header>
 
                 <section class="sign_up_section">
-                    <svg onclick="renderLogIn()" class="sign_up_back_arrow" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 20" fill="none">
-                        <path
-                            d="M4.70752 8.63255H22.1981C22.9345 8.63255 23.5314 9.2295 23.5314 9.96588C23.5314 10.7023 22.9345 11.2992 22.1981 11.2992H4.70752L10.9169 17.5085C11.4375 18.0292 11.4375 18.8733 10.9168 19.3939C10.3962 19.9145 9.55214 19.9145 9.03152 19.3939L1.01773 11.3801C0.236679 10.599 0.236681 9.33272 1.01773 8.55167L9.03152 0.537881C9.55214 0.0172601 10.3962 0.0172609 10.9168 0.537881C11.4375 1.0585 11.4375 1.90259 10.9168 2.42322L4.70752 8.63255Z"
-                            fill="#29ABE2" />
-                        </svg>
+                <header>
+                    <svg onclick="renderLogIn()" class="sign_up_back_arrow" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
+                    </svg>
 
-                    <header>
                         <div class="sign_up_logo">
                             <h1>Sign Up</h1>
                             <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
@@ -115,8 +113,13 @@ function signUpTemplate() {
                                     </svg>
                             </li>
                         </ul>
-
-                        <span>I accept the <a href="">Privacy policy</a></span>
+                    
+                        <div class="privacy_policy_checkbox_group">
+                                <svg class="pp_checkbox" id="pp_checkbox_id" onclick="changeCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
+                                    <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                                </svg>
+                                <span>I accept the <a href="">Privacy policy</a></span>
+                        </div>
                     </div>
 
                     <div class="sign_up_button_group">
@@ -148,4 +151,11 @@ function joinLogoTemplate() {
                         fill="#2A3647" />
                 </svg>
             </div>`;
+}
+
+function checkboxTemplate() {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                <path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>`;
 }

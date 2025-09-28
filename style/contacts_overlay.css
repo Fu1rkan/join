@@ -214,8 +214,8 @@
     color: #29ABE2;
 }
 
-.add-contact-cancel-btn:hover .add-contact-btn-cancel-svg {
-    background-image: url('/assets/svg/iconoir_cancel_blue.svg');
+.add-contact-cancel-btn:hover svg path {
+    stroke: #29ABE2;
 }
 
 .add-contact-cancel-btn:active {
@@ -227,8 +227,8 @@
     color: #091931;
 }
 
-.add-contact-cancel-btn:active .add-contact-btn-cancel-svg {
-    background-image: url('/assets/svg/iconoir_cancel_darkblue.svg');
+.add-contact-cancel-btn:active svg path {
+    stroke: #091931;
 }
 
 .add-contact-create-contact-btn {

@@ -36,3 +36,16 @@ function changeCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
     privacyPolicyCheckbox.outerHTML = checkboxTemplate();
 }
+
+// toggles password visibility
+function togglePasswordVisibility() {
+    let passwordInput = document.getElementById('password_input_id');
+    let toggleButton = document.getElementById('toggle_password_visibility_button');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.innerHTML = hidePasswordTemplate();
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.innerHTML = showPasswordTemplate();
+    }
+}

@@ -52,3 +52,18 @@ function editContact(name, email) {
     let overlayContentRef = document.getElementById('overlay_content');
     overlayContentRef.innerHTML = showContactEditCard(name, email);
 }
+
+function fadeInCreateMsg() {
+    let createMsgRef = document.getElementById('create_Msg');
+    createMsgRef.classList.remove('animate-out');
+    createMsgRef.classList.add('animate-in');
+    createMsgRef.classList.remove('d_none');
+
+    setTimeout(() => {
+        createMsgRef.classList.remove('animate-in');
+        createMsgRef.classList.add('animate-out');
+        setTimeout(() => {
+            createMsgRef.classList.add('d_none');
+        }, 300);
+    }, 1300);
+}

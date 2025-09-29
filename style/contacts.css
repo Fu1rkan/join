@@ -74,8 +74,9 @@ body {
 }
 
 .add-new-contact-btn-container {
-    width: 456px;
-    min-height: 100px;
+    width: 100%;
+    height: 100px;
+    padding: 24px 32px;
     position: sticky;
     display: flex;
     justify-content: center;
@@ -87,7 +88,7 @@ body {
 .add-new-contact-btn {
     cursor: pointer;
     background-color: #2a3647;
-    color: #FFFFFF;
+    color: var(--header-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,12 +97,13 @@ body {
     padding: 12px 12px;
     gap: 16px;
     width: 352px;
-    font-size: 21px;
-    font-weight: 700;
+    height: 56px;
+    font-size: var(--font-size-21);
+    font-weight: var(--weight-700);
 }
 
 .add-new-contact-btn:hover {
-    background-color: #29abe2;
+    background-color: #29ABE2;
     border: 1px solid #29ABE2;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -112,9 +114,9 @@ body {
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.add-new-contact-btn p {
-    font-size: 21px;
-    font-weight: 700;
+.add-new-contact-btn h3 {
+    font-size: var(--font-size-21);
+    font-weight: var(--weight-700);
 }
 
 .add-new-contact-img {
@@ -122,8 +124,8 @@ body {
 }
 
 .contact-list-section-head {
-    font-weight: 400;
-    color: #000000;
+    font-weight: var(--weight-400);
+    color: var(--text-color);
     height: 24px;
     align-content: center;
 }
@@ -180,13 +182,13 @@ body {
 }
 
 .contact-name {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
 }
 
 .contact-e-mail {
     color: #007cee;
-    font-weight: 400;
+    font-weight: var(--weight-400);
 }
 
 .contacts-header {
@@ -200,15 +202,15 @@ body {
 }
 
 .contacts-header-seperator {
-    border: 1.5px solid #29abe2;
+    border: 1.5px solid #29ABE2;
     height: 59px;
     border-radius: 3px;
 }
 
 .contacts-header-txt {
-    font-size: 27px;
-    font-weight: 400;
-    color: #2A3647;
+    font-size: var(--font-size-27);
+    font-weight: var(--weight-400);
+    color: var(--inter-text-color);
 }
 
 .contact-template {
@@ -252,8 +254,8 @@ body {
 }
 
 .contact-info-big-name {
-    font-size: 47px;
-    font-weight: 500;
+    font-size: var(--font-size-47);
+    font-weight: var(--weight-500);
 }
 
 .contact-info-big-edit {
@@ -268,8 +270,8 @@ body {
     height: 24px;
     border-width: 0;
     gap: 8px;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: var(--font-size-16);
+    font-weight: var(--weight-400);
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -299,8 +301,8 @@ body {
 
 .contact-btn:hover {
     cursor: pointer;
-    color: #29ABE2;
-    font-weight: 700;
+    color: var(--inter-text-accent-color);
+    font-weight: var(--weight-700);
 }
 
 .contact-inforamtion-txt {
@@ -328,20 +330,78 @@ body {
 }
 
 .contact-informations a {
-    color: #007cee;
-    font-weight: 400;
+    color: #007CEE;
+    font-weight: var(--weight-400);
 }
 
 .contact-informations-phone-number {
-    font-weight: 400;
+    font-weight: var(--weight-400);
+}
+
+.succes-created-container {
+    width: calc(1440px - (232px + 456px));
+    position: relative;
+    margin-top: 101px;
+}
+
+.creates-msg {
+    height: 74px;
+    width: 326px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2A3647;
+    border-radius: 20px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+}
+
+.animate-in {
+    animation: createdMsgIn 300ms linear forwards;
+}
+
+.animate-out {
+    animation: createdMsgOut 300ms linear forwards;
+}
+
+.succesfully-created-msg {
+    color: var(--header-color);
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    height: 24px;
+}
+
+.d_none {
+    display: none;
 }
 
 @keyframes contactTemplate {
     0% {
         left: 100vw;
+        display: flex;
     }
 
     100% {
         left:0;
+    }
+}
+
+@keyframes createdMsgIn {
+    0% {
+        left: 100vw;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes createdMsgOut {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: 100%;
     }
 }

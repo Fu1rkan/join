@@ -6,14 +6,14 @@
 }
 
 :root {
-  --summary-color: #f6f7f8;
-  --header-color: #ffffff;
-  --side-color: #2a3647;
+  --summary-color: #F6F7F8;
+  --header-color: #FFFFFF;
+  --side-color: #2A3647;
   --side-active-color: #091931;
   --text-color: #000000;
-  --inter-text-color: #2a3647;
-  --inter-text-accent-color: #29abe2;
-  --seperator-color: #d1d1d1;
+  --inter-text-color: #2A3647;
+  --inter-text-accent-color: #29ABE2;
+  --seperator-color: #D1D1D1;
 
   --weight-100: 100;
   --weight-400: 400;

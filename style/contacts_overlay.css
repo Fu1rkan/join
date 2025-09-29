@@ -78,14 +78,14 @@
 
 .add-contact-card-title {
     font-style: bold;
-    color: #FFFFFF;
+    color: var(--header-color);
     height: 73px;
 }
 
 .add-contact-card-txt {
-    font-size: 27px;
-    font-weight: 400;
-    color: #FFFFFF;
+    font-size: var(--font-size-27);
+    font-weight: var(--weight-400);
+    color: var(--header-color);
     height: 32px;
 }
 
@@ -167,15 +167,15 @@
     align-items: center;
     width: 422px;
     outline: none;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
     border-width: 0;
     cursor: pointer;
 }
 
 .create-form>section>label>input::placeholder {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
     color: #D1D1D1;
 }
 
@@ -212,7 +212,7 @@
 }
 
 .add-contact-cancel-btn:hover .add-contact-cancel-btn-txt {
-    color: #29ABE2;
+    color: var(--inter-text-accent-color);
 }
 
 .add-contact-cancel-btn:hover svg path {
@@ -225,7 +225,7 @@
 }
 
 .add-contact-cancel-btn:active .add-contact-cancel-btn-txt {
-    color: #091931;
+    color: var(--side-active-color);
 }
 
 .add-contact-cancel-btn:active svg path {
@@ -265,17 +265,17 @@
 }
 
 .add-contact-cancel-btn-txt {
-    font-size: 20px;
-    font-weight: 400;
-    color: #2A3647;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    color: var(--inter-text-color);
     height: 24px;
 }
 
 .add-contact-create-contact-btn-txt {
-    font-size: 21px;
-    font-weight: 700;
+    font-size: var(--font-size-21);
+    font-weight: var(--weight-700);
     font-style: bold;
-    color: #FFFFFF;
+    color: var(--header-color);
 }
 
 .edit-contact-d-s-buttons {
@@ -303,7 +303,7 @@
 }
 
 .edit-contact-delete-btn:hover .edti-contact-delete-btn-txt {
-    color: #29ABE2;
+    color: var(--inter-text-accent-color);
 }
 
 .edit-contact-delete-btn:active {
@@ -312,13 +312,13 @@
 }
 
 .edit-contact-delete-btn:active .edti-contact-delete-btn-txt {
-    color: #091931;
+    color: var(--side-active-color);
 }
 
 .edti-contact-delete-btn-txt {
-    font-size: 20px;
-    font-weight: 400;
-    color: #2A3647;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    color: var(--inter-text-color);
     height: 24px;
 }
 
@@ -347,10 +347,10 @@
 }
 
 .edit-contact-save-contact-btn-txt {
-    font-size: 21px;
-    font-weight: 700;
+    font-size: var(--font-size-21);
+    font-weight: var(--weight-700);
     font-style: bold;
-    color: #FFFFFF;
+    color: var(--header-color);
 }
 
 .d_none {

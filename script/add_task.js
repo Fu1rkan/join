@@ -1,3 +1,7 @@
+function init() {
+  addCalender();
+}
+
 function openContactlist() {
   const list = document.getElementById("contacts");
   const arrow = document.getElementById("arrow");
@@ -18,14 +22,14 @@ function closeProtection(event) {
 
 function openCategoryList() {
   const list = document.getElementById("categorys");
-  const arrow = document.getElementById("arrow");
+  const arrow = document.getElementById("arrow2");
   list.classList.add("open");
   arrow.classList.add("arrow_up");
 }
 
 function closeCategoryList() {
   const list = document.getElementById("categorys");
-  const arrow = document.getElementById("arrow");
+  const arrow = document.getElementById("arrow2");
   list.classList.remove("open");
   arrow.classList.remove("arrow_up");
 }
@@ -74,3 +78,21 @@ function btnReset() {
                   <img src="./assets/svg/Prio_urgent_red.svg" alt="" />
                 `;
 }
+
+function addCalender() {
+  const dateInput = document.getElementById("date");
+
+  dateInput.addEventListener("focus", () => {
+    dateInput.showPicker?.();
+  });
+}
+
+function openCalender() {
+  const dateInput = document.getElementById("date");
+  dateInput.focus();
+}
+
+function addSubtask(){
+
+}
+

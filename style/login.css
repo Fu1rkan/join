@@ -23,7 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     animation: slideMidToLeft 1s forwards;
-    animation-timing-function: cubic-bezier(.50,0,0,0);
+    animation-timing-function: cubic-bezier(.50, 0, 0, 0);
 }
 
 /* main design and align / basic background */
@@ -92,12 +92,12 @@ main {
 
 /* login section align and structure */
 .login_section {
-    background-color: #ffffff;
-    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 30px;
+    background-color: #ffffff;
     box-shadow: 0px 0px 14px 3px #0000000A;
     padding: 48px 115px;
     gap: 32px;
@@ -121,50 +121,47 @@ main {
 
 /* login section input group style */
 .login_section .input_group {
+    width: 400px;
     display: flex;
     flex-direction: column;
-    width: 400px;
     border-radius: 10px;
     gap: 20px;
-    margin-bottom: 20px;
 }
 
-/* login section input group input style */
-.login_section .input_group input {
-    width: 100%;
-    height: 24px;
-    font-size: 20px;
-    font-weight: 400;
+.login_section .input_group form {
     padding: 12px 21px;
-    outline: 1px solid #d1d1d1;
-    border: none;
     border-radius: 10px;
-}
-
-/* input focus and placeholder style */
-.login_section .input_group input::placeholder {
-    color: #d1d1d1;
-}
-
-.login_section .input_group input:focus {
-    outline: 1px solid #29ABE2;
+    outline: 1px solid #d1d1d1;
+    gap: 20px;
 }
 
 /* input field with icon align */
-.login_section .input_group .input_with_icon {
-    position: relative;
+.login_section .input_group form label {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    border: none;
 }
 
-/* position the icon inside the input field */
-.input_with_icon .email_icon,
-.input_with_icon .password_lock_icon {
-    position: absolute;
-    left: 358px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
+/* login section input group input style */
+.login_section .input_group form label input {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+}
+
+/* delete input outline in focus */
+.login_section .input_group form label input:focus {
+    outline: none;
+}
+
+/* input focus and placeholder style */
+.login_section .input_group form label input::placeholder {
+    color: #d1d1d1;
+}
+
+.login_section .input_group form:focus {
 }
 
 /* login section buttons align */

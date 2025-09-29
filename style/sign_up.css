@@ -51,11 +51,26 @@
 
 /* input group align */
 .sign_up_section .sign_up_input_group {
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 40px;
+}
+
+.sign_up_section .sign_up_input_group form {
+    padding: 12px 21px;
+    border-radius: 10px;
+    outline: 1px solid #d1d1d1;
+    gap: 20px;
+}
+
+.sign_up_section .sign_up_input_group form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
 }
 
 /* design for each input */
@@ -64,10 +79,7 @@
     height: 24px;
     font-size: 20px;
     font-weight: 400;
-    padding: 12px 21px;
-    outline: 1px solid #d1d1d1;
     border: none;
-    border-radius: 10px;
 }
 
 .sign_up_section .sign_up_input_group ul {
@@ -84,25 +96,7 @@
 }
 
 .sign_up_section .sign_up_input_group input:focus {
-    outline: 1px solid #29ABE2;
-}
-
-/* input field with icon align */
-.sign_up_section .sign_up_input_group li {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-/* position the icon inside the input field */
-.sign_up_input_group .user_icon,
-.sign_up_input_group .email_icon,
-.sign_up_input_group .password_lock_icon {
-    position: absolute;
-    left: 378px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
+    outline: none;
 }
 
 /* privacy policy checkbox align and design */
@@ -135,6 +129,7 @@
     text-decoration: none;
     color: #29ABE2;
 }
+
 /* button group align */
 .sign_up_section .sign_up_button_group {
     width: 400px;

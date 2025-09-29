@@ -192,7 +192,7 @@ function checkboxTemplate() {
 }
 
 function showPasswordTemplate() {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none"> 
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 20" fill="none"> 
                 <path d="M15.1 10.3001L13.65 8.8501C13.8 8.06676 13.575 7.33343 12.975 6.6501C12.375 5.96676 11.6 
                     5.7001 10.65 5.8501L9.20005 4.4001C9.48338 4.26676 9.77088 4.16676 10.0625 4.1001C10.3542 4.03343 
                     10.6667 4.0001 11 4.0001C12.25 4.0001 13.3125 4.4376 14.1875 5.3126C15.0625 6.1876 15.5 7.2501 15.5 8.5001C15.5 8.83343 
@@ -210,7 +210,7 @@ function showPasswordTemplate() {
 }
 
 function hidePasswordTemplate() {
-    return `<svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return `<svg width="22" height="21" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 12C12.25 12 13.3125 11.5625 14.1875 10.6875C15.0625 9.8125 15.5 8.75 15.5 7.5C15.5 6.25 15.0625 5.1875 14.1875 
                 4.3125C13.3125 3.4375 12.25 3 11 3C9.75005 3 8.68755 3.4375 7.81255 4.3125C6.93755 5.1875 6.50005 6.25 6.50005 7.5C6.50005 8.75 
                 6.93755 9.8125 7.81255 10.6875C8.68755 11.5625 9.75005 12 11 12ZM11 10.2C10.25 10.2 9.61255 9.9375 9.08755 9.4125C8.56255 8.8875 8.30005 

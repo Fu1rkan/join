@@ -161,9 +161,6 @@ main {
     color: #d1d1d1;
 }
 
-.login_section .input_group form:focus {
-}
-
 /* login section buttons align */
 .login_section .login_buttons {
     display: flex;

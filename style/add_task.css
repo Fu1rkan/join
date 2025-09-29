@@ -74,7 +74,7 @@ section {
 .priority_wrapper button {
   display: flex;
   flex-direction: row;
-
+align-items: center;
   width: 30%;
   justify-content: center;
   border: 0;
@@ -189,6 +189,16 @@ input:focus {
   top: 50%;
   transform: translateY(-50%);
   height: 20px;
+  cursor: pointer;
+}
+
+.datepicker svg {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
   cursor: pointer;
 }
 
@@ -341,6 +351,7 @@ button {
   top: 50%;
   transform: translateY(-50%);
   height: 5px;
+  width: 8px;
   cursor: pointer;
 }
 
@@ -376,6 +387,10 @@ button {
 
 .checkbox {
   height: 16px;
+  width: 16px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .single_contact {
@@ -393,8 +408,12 @@ button {
 }
 
 .pb_bubble {
-  height: 42spx;
+  height: 42px;
+  width: 42px;
   margin-right: 8px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .single_contact p {
@@ -537,7 +556,12 @@ width: 47%;
 
 .subtask_item_edit img {
   height: 16px;
-  
+  width: 16px;
+}
+
+.subtask_item_edit svg {
+  height: 16px;
+  width: 16px;
 }
 
 .subtask_item_wrapper_edit {
@@ -591,4 +615,11 @@ flex-direction: column;
   display: flex;
   flex-direction: row;
  font-size: 20px;
+}
+
+.priority_wrapper button svg {
+  height: 16px;
+  width: 21px;
+  min-width: 21px;
+  min-height: 16px;
 }

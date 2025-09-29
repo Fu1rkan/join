@@ -53,11 +53,12 @@ function buttonActive(xy) {
   const valueTarget = document.getElementById("priority");
   btnReset();
   activeButton.classList.add(xy + "_btn_active");
-  activeButton.innerHTML = ` ${capitalizeFirst(xy)}
-                  <img src="./assets/svg/Prio_${toLower(
-                    xy
-                  )}_white.svg" alt="" />
-                `;
+  // Use SVG template functions
+  let svg;
+  if (xy === "urgent") svg = prioUrgentSVG(true);
+  else if (xy === "medium") svg = prioMediumSVG(true);
+  else if (xy === "low") svg = prioLowSVG(true);
+  activeButton.innerHTML = ` ${capitalizeFirst(xy)}${svg}`;
   valueTarget.value = xy;
 }
 
@@ -68,15 +69,10 @@ function btnReset() {
   btnLow.classList.remove("low_btn_active");
   btnMedium.classList.remove("medium_btn_active");
   btnUrgent.classList.remove("urgent_btn_active");
-  btnLow.innerHTML = `Low
-                  <img src="./assets/svg/Prio_low_green.svg" alt="" />
-                `;
-  btnMedium.innerHTML = `Medium
-                  <img src="./assets/svg/Prio_medium_orange.svg" alt="" />
-                `;
-  btnUrgent.innerHTML = `Urgent
-                  <img src="./assets/svg/Prio_urgent_red.svg" alt="" />
-                `;
+  // Use SVG template functions
+  btnLow.innerHTML = `Low${prioLowSVG(false)}`;
+  btnMedium.innerHTML = `Medium${prioMediumSVG(false)}`;
+  btnUrgent.innerHTML = `Urgent${prioUrgentSVG(false)}`;
 }
 
 function addCalender() {
@@ -90,6 +86,10 @@ function addCalender() {
 function openCalender() {
   const dateInput = document.getElementById("date");
   dateInput.focus();
+}
+
+function addSubtask(){
+
 }
 
 function addSubtask(){

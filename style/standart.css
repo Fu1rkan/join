@@ -14,6 +14,7 @@
   --inter-text-color: #2a3647;
   --inter-text-accent-color: #29abe2;
   --seperator-color: #d1d1d1;
+  --inter-urgent-color: #ff3d00;
 
   --weight-100: 100;
   --weight-400: 400;
@@ -41,17 +42,17 @@ body {
   /* max-width: 1440px; */
 }
 
-nav{
-    height: 100vh;
-    background-color: #2A3647;
-    width: 20%;
+nav {
+  height: 100vh;
+  background-color: #2a3647;
+  width: 20%;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    background-color: rgba(246, 247, 248, 1);
+main {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background-color: rgba(246, 247, 248, 1);
 }
 
 .main-header {

@@ -51,7 +51,7 @@
 .summary-panel {
   width: 100%;
   height: 168px;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: var(--header-color);
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -97,6 +97,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: ease-in-out 80ms;
 }
 
 /* Text style: 16px, weight 400 */
@@ -255,4 +256,104 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
+}
+
+/* Icon wrapper with circular background and hover effects */
+.icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #2a3647;
+  width: 69px;
+  height: 69px;
+  /* transition: background-color 0.18s; */
+  cursor: pointer;
+}
+
+/* Edit icon styling with fill transition */
+.icon-edit path {
+  fill: #ffffff;
+  /* transition: fill 0.18s; */
+  transition: ease-in-out 80ms;
+  /* display: block; */
+}
+
+/* Hover state for icon wrapper - changes background to white */
+.icon-wrap:hover {
+  background-color: #ffffff;
+}
+
+/* Hover state for edit icon - changes fill to black */
+.icon-wrap:hover .icon-edit path {
+  fill: #000000;
+}
+
+/* Secondary icon wrapper with circular background and hover effects */
+.icon-wrap-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #2a3647;
+  width: 69px;
+  height: 69px;
+  /* transition: background-color 0.18s; */
+  transition: ease-in-out 80ms;
+  cursor: pointer;
+}
+
+/* Arrow icon styling with stroke transition */
+.icon-arrow {
+  display: block;
+}
+
+/* Arrow icon path styling with stroke transition */
+.icon-arrow path {
+  stroke: #ffffff;
+  /* transition: stroke 0.18s; */
+  transition: ease-in-out 80ms;
+}
+
+/* Hover state for secondary icon wrapper - changes background to white */
+.icon-wrap-2:hover {
+  background-color: #ffffff;
+}
+
+/* Hover state for arrow icon - changes stroke to black */
+.icon-wrap-2:hover .icon-arrow path {
+  stroke: #000000;
+}
+
+.summary-board-panel:hover {
+  background-color: var(--side-color);
+  color: #ffffff;
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Beim Hover auf summary-board-panel: icon-wrap Background ändern */
+.summary-board-panel:hover .icon-wrap {
+  background-color: #ffffff;
+}
+
+/* Beim Hover auf summary-board-panel: icon-wrap-2 Background ändern */
+.summary-board-panel:hover .icon-wrap-2 {
+  background-color: #ffffff;
+}
+
+/* Beim Hover auf summary-board-panel: Icon-Farben anpassen */
+.summary-board-panel:hover .icon-edit path {
+  fill: #2a3647;
+}
+
+.summary-board-panel:hover .icon-arrow path {
+  stroke: #2a3647;
+}
+
+.profil-header:hover{
+  cursor: pointer;
+  transition: ease-in-out 80ms;
+  background-color: rgba(12,46,98, 0.12);
 }

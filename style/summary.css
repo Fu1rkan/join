@@ -95,7 +95,7 @@
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   transition: ease-in-out 80ms;
 }
@@ -182,6 +182,12 @@
   height: 69px;
 }
 
+/* Image size for summary icons */
+.s-img-2 {
+  width: 60px;
+  height: 60px;
+}
+
 /* Gap between summary panels */
 .s-panel-gap {
   gap: 32px;
@@ -190,9 +196,10 @@
 /* Container for urgent board panel */
 .summary-board-urgent {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 130px;
+  gap: 18px;
 }
 
 /* Task container for "To Do" tasks */
@@ -267,16 +274,13 @@
   background-color: #2a3647;
   width: 69px;
   height: 69px;
-  /* transition: background-color 0.18s; */
   cursor: pointer;
 }
 
 /* Edit icon styling with fill transition */
 .icon-edit path {
   fill: #ffffff;
-  /* transition: fill 0.18s; */
   transition: ease-in-out 80ms;
-  /* display: block; */
 }
 
 /* Hover state for icon wrapper - changes background to white */
@@ -298,7 +302,6 @@
   background-color: #2a3647;
   width: 69px;
   height: 69px;
-  /* transition: background-color 0.18s; */
   transition: ease-in-out 80ms;
   cursor: pointer;
 }
@@ -325,6 +328,7 @@
   stroke: #000000;
 }
 
+/* Hover state for summary board panel - scales and changes appearance */
 .summary-board-panel:hover {
   background-color: var(--side-color);
   color: #ffffff;
@@ -333,27 +337,34 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Beim Hover auf summary-board-panel: icon-wrap Background ändern */
+/* On summary-board-panel hover: change icon-wrap background */
 .summary-board-panel:hover .icon-wrap {
   background-color: #ffffff;
 }
 
-/* Beim Hover auf summary-board-panel: icon-wrap-2 Background ändern */
+/* On summary-board-panel hover: change icon-wrap-2 background */
 .summary-board-panel:hover .icon-wrap-2 {
   background-color: #ffffff;
 }
 
-/* Beim Hover auf summary-board-panel: Icon-Farben anpassen */
+/* On summary-board-panel hover: adjust icon colors */
 .summary-board-panel:hover .icon-edit path {
   fill: #2a3647;
 }
 
+/* On summary-board-panel hover: change arrow icon stroke color */
 .summary-board-panel:hover .icon-arrow path {
   stroke: #2a3647;
 }
 
-.profil-header:hover{
+/* On summary-board-panel hover: change text color for .s-txt-21-700 */
+.summary-board-panel:hover .s-txt-21-700 {
+  color: #ffffff;
+}
+
+/* Hover state for profile header - adds background color transition */
+.profil-header:hover {
   cursor: pointer;
   transition: ease-in-out 80ms;
-  background-color: rgba(12,46,98, 0.12);
+  background-color: rgba(12, 46, 98, 0.12);
 }

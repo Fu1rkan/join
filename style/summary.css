@@ -328,6 +328,12 @@
   stroke: #000000;
 }
 
+/* Link styling for summary board panels - removes default link styles */
+a.summary-board-panel {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Hover state for summary board panel - scales and changes appearance */
 .summary-board-panel:hover {
   background-color: var(--side-color);

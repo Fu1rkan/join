@@ -37,6 +37,14 @@
   border-radius: 50%;
 }
 
+.link-list {
+  list-style: none;
+}
+
+.mb8 {
+  margin-bottom: 8px;
+}
+
 .mb16 {
   margin-bottom: 16px;
 }

@@ -1,0 +1,80 @@
+.help h2 {
+  margin-bottom: 48px;
+}
+
+.help section {
+  padding-top: 80px;
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 100%;
+  max-width: calc(1440px - 232px);
+  height: calc(100vh - 96px);
+  overflow: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.help section::-webkit-scrollbar {
+  display: none;
+}
+
+.go_back {
+  position: fixed;
+  top: 204px;
+  left: 1272px;
+  opacity: 1;
+  height: 37px;
+  width: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.go_back:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.mb80{
+    margin-bottom: 80px;
+}
+
+.how_to_list {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.how_to_list h4 {
+  margin-right: 40px;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 120%;
+  color: #000000;
+}
+
+.help h3 {
+  font-family: Inter;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 27px;
+  line-height: 120%;
+}
+
+.help p {
+  font-family: Inter;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+p .highlight-join {
+  color: #29abe2;
+}

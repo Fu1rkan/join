@@ -60,10 +60,12 @@ function fadeInCreateMsg() {
     createMsgRef.classList.remove('d_none');
 
     setTimeout(() => {
-        createMsgRef.classList.remove('animate-in');
-        createMsgRef.classList.add('animate-out');
         setTimeout(() => {
-            createMsgRef.classList.add('d_none');
-        }, 300);
-    }, 1300);
+            createMsgRef.classList.remove('animate-in');
+            createMsgRef.classList.add('animate-out');
+            setTimeout(() => {
+                createMsgRef.classList.add('d_none');
+            }, 300);
+        }, 1000);
+    },800);
 }

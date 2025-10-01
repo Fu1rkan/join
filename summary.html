@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/example.css">
     <title>Summary</title>
   </head>
   <body>
@@ -78,12 +79,23 @@
         </ul>
       </nav>
 
+    <div class="nav-container" id="profile-menu">
+      <div class="nav-link-container">
+        <ul class="nav-links">
+          <li class="nav-link-item"><a href="">Help</a></li>
+          <li class="nav-link-item"><a href="">Legal Notice</a></li>
+          <li class="nav-link-item"><a href="">Privacy Policy</a></li>
+          <li class="nav-link-item"><a href="">Log out</a></li>
+        </ul>
+      </div>
+    </div>
+
       <section class="main">
         <div class="summary-header">
           <div class="summary-header-text">Kanban Project Management Tool</div>
           <div class="summary-profil">
             <img src="./assets/svg/help.svg" alt="help" class="summary-help" />
-            <div class="profil-header"></div>
+            <div class="profil-header" id="profile-toggle"></div>
           </div>
         </div>
 

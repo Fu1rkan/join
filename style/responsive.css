@@ -77,6 +77,11 @@
         gap: 21px;
     }
 
+    .login_section .login_buttons button,
+    .sign_up_section .sign_up_button_group button{
+        width: 180px;
+    }
+
     .login_section .input_group,
     .sign_up_section .sign_up_input_group {
         width: 90%;

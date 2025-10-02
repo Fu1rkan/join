@@ -1,0 +1,114 @@
+@media (max-width: 955px) {
+    .join_logo {
+        width: 64px;
+        height: 78px;
+        top: 25px;
+    }
+
+    @keyframes slideMidToLeft {
+        from {
+            width: 274px;
+            height: 335px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+
+        to {
+            width: 64px;
+            height: 78px;
+            position: absolute;
+            top: 25px;
+            left: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+    }
+}
+
+@media (max-width: 665px) {
+    .login_section {
+        width: 94%;
+    }
+}
+
+@media (max-width: 614px) {
+    .sign_up_section {
+        width: 94%;
+    }
+
+    .sign_up_section .sign_up_back_arrow {
+        top: 10px;
+        left: -100px;
+    }
+}
+
+@media (max-width: 547px) {
+    .sign_up_header {
+        top: 85%;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    .login_section .title_headline h1,
+    .sign_up_section .title_headline h1 {
+        font-size: 47px;
+    }
+
+    .login_section .title_headline svg,
+    .sign_up_section .title_headline .sign_up_logo svg {
+        width: 88px;
+    }
+
+    .login_section,
+    .sign_up_section {
+        padding: 32px 0;
+    }
+
+    .login_section .login_buttons {
+        flex-direction: column;
+        gap: 21px;
+    }
+
+    .login_section .input_group,
+    .sign_up_section .sign_up_input_group {
+        width: 90%;
+    }
+
+    .sign_up_section .sign_up_input_group ul {
+        width: 100%;
+    }
+
+    .sign_up_section .sign_up_input_group ul li {
+        width: 90%;
+    }
+
+    .sign_up_section .sign_up_input_group ul li form input {
+        width: 90%;
+    }
+
+    .sign_up_section .sign_up_button_group {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sign_up_section .sign_up_back_arrow {
+        top: 10px;
+        left: -80px;
+    }
+}
+
+@media (max-width: 440px) {
+    .sign_up_section .sign_up_back_arrow {
+        top: 10px;
+        left: -50px;
+    }
+}

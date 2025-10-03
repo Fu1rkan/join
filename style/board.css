@@ -9,10 +9,16 @@
     box-shadow: none;
     height: auto;
     display: flex;
+    flex-direction: column;
+    width: calc(100% - 160px);
+    margin: 80px 80px 16px 80px;
+}
+
+.search-section{
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 160px);
-    margin: 80px 80px 56px 80px;
+    margin-bottom: 40px;
 }
 
 .board-actions{
@@ -115,6 +121,27 @@
 .search-task svg:active{
     fill: rgba(41, 171, 226, 1);
 }
+
+.task-assignment{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-assignment section{
+    display: flex;
+    justify-content: space-between;
+    width: 23%;
+}
+
+.task-assignment section svg{
+    cursor: pointer;
+    stroke: #2A3647;
+}
+
+.task-assignment section svg:hover{
+    stroke: #29abe2;
+}
+
 
 .kanban-board{
     display: flex;

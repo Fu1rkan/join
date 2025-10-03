@@ -8,11 +8,9 @@ function closeOverlay() {
     overlayRef.classList.add('d_none');
 }
 
-function showContact() {
-    let contactCardRef = document.getElementById('contact_card_am');
+function showContact(name, email, keys, index) {
+    let contactCardRef = document.getElementById(`letter_${keys}_${index}`);
     let templateRef = document.getElementById('contact_template');
-    let name = document.getElementById('name_am').innerHTML;
-    let email = document.getElementById('email_am').innerHTML;
 
     contactCardRef.onclick = hideContact;
     contactCardRef.classList.remove('contact-container-hoverclass');
@@ -67,5 +65,44 @@ function fadeInCreateMsg() {
                 createMsgRef.classList.add('d_none');
             }, 300);
         }, 1000);
-    },800);
+    }, 800);
+}
+
+function filterContacts() {
+    const groupedContacts = contacts.reduce((acc, contact) => {
+        const firstLetter = contact.name.trim().charAt(0).toUpperCase();
+        if (!acc[firstLetter]) {
+            acc[firstLetter] = [];
+        }
+        acc[firstLetter].push(contact);
+        return acc;
+    }, {});
+
+    renderContacts(groupedContacts);
+}
+
+function renderContacts(groupedContacts) {
+    let keys = Object.keys(groupedContacts);
+    
+    for (let index = 0; index < keys.length; index++) {
+        let listRef = document.getElementById(`letter_${keys[index].toLowerCase()}`);
+        listRef.innerHTML = "";
+
+        for (let i = 0; i < groupedContacts[keys[index]].length; i++) {
+            listRef.innerHTML += getSmallContactTemplate(groupedContacts[keys[index]], i, keys[index].toLowerCase());  
+        }  
+    }
+    
+}
+
+function getSmallContactTemplate(array, index, keys) {
+    return `<li>
+                <div id="letter_${keys}_${index}" onclick="showContact('${array[index].name}', '${array[index].email}', '${keys}', '${index}')" class="contact-container contact-container-hoverclass">
+                    ${array[index].svg}
+                    <div class="contact-info">
+                        <h5 class="contact-name">${array[index].name}</h5>
+                        <a class="contact-e-mail" href="mailto:${array[index].email}">${array[index].email}</a>
+                    </div>
+                </div>
+            </li>`
 }

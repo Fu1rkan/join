@@ -17,6 +17,7 @@ body {
 }
 
 .overlay_animation .logo_color {
+    fill: #2A3647;
     animation: animatedLogoColor 1s ease-in;
 }
 

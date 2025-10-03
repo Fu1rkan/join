@@ -51,6 +51,27 @@
 }
 
 @media (max-width: 547px) {
+    @keyframes backgroundBlendOut {
+        from {
+            background-color: #2A3647;
+        }
+
+        to {
+            background-color: rgba(255, 255, 255, 0);
+            display: none;
+        }
+    }
+
+    @keyframes animatedLogoColor {
+        from {
+            fill: white;
+        }
+
+        to {
+            fill: #2A3647;
+        }
+    }
+
     .sign_up_header {
         top: 85%;
         right: 50%;
@@ -78,7 +99,7 @@
     }
 
     .login_section .login_buttons button,
-    .sign_up_section .sign_up_button_group button{
+    .sign_up_section .sign_up_button_group button {
         width: 180px;
     }
 

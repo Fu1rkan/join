@@ -16,6 +16,10 @@ body {
     z-index: 1;
 }
 
+.overlay_animation .logo_color {
+    animation: animatedLogoColor 1s ease-in;
+}
+
 /* animation join logo design and align */
 .overlay_animation .animation_join_logo {
     position: relative;

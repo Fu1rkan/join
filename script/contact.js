@@ -10,23 +10,37 @@ function closeOverlay() {
 
 function showContact(name, email, keys, index) {
     let contactCardRef = document.getElementById(`letter_${keys}_${index}`);
-    let templateRef = document.getElementById('contact_template');
+    let contactListRef = document.getElementById('contact_list');
+    let contactsList = contactListRef.querySelectorAll("li>div");
 
-    contactCardRef.onclick = hideContact;
+    contactsList.forEach(el => {
+        el.style.backgroundColor ="";
+        el.style.color = "";
+        el.classList.add('contact-container-hoverclass');
+    });
+    
+    let templateRef = document.getElementById('contact_template');
+    let contactRef = contacts.filter(t => t["name"] == name && t["email"] == email);
+    
+    contactCardRef.onclick = () => {
+        hideContact(name, email, keys, index);
+    };
     contactCardRef.classList.remove('contact-container-hoverclass');
     contactCardRef.style.backgroundColor = "#2A3647";
     contactCardRef.style.color = "#FFFFFF";
     templateRef.classList.remove('d_none');
-    templateRef.innerHTML = getContactTemplate(name, email);
+    templateRef.innerHTML = getContactTemplate(contactRef[0]);
 }
 
-function hideContact() {
-    let contactCardRef = document.getElementById('contact_card_am');
+function hideContact(name, email, keys, index) {
+    let contactCardRef = document.getElementById(`letter_${keys}_${index}`);
     let templateRef = document.getElementById('contact_template');
     contactCardRef.classList.add('contact-container-hoverclass');
     contactCardRef.style.backgroundColor = "";
     contactCardRef.style.color = "";
-    contactCardRef.onclick = showContact;
+    contactCardRef.onclick = () => {
+        showContact(name, email, keys, index)
+    };
     templateRef.classList.add('d_none');
 }
 

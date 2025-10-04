@@ -1,17 +1,11 @@
-function getContactTemplate(name, email) {
+function getContactTemplate(contact) {
     return `<div class="contact-info-big-container">
         <section class="contact-info-big">
-            <svg class="svg-img-big" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
-                fill="none">
-                <circle cx="60" cy="60" r="60" fill="#FF7A00" />
-                <path
-                    d="M29.0977 76.7144H23.6233L35.9241 42.5325H41.8825L54.1833 76.7144H48.7089L39.0452 48.7413H38.7781L29.0977 76.7144ZM30.0157 63.3287H47.7742V67.6682H30.0157V63.3287ZM59.1195 42.5325H65.3784L76.2605 69.1036H76.661L87.5431 42.5325H93.802V76.7144H88.8951V51.9793H88.5779L78.497 76.6643H74.4245L64.3436 51.9626H64.0265V76.7144H59.1195V42.5325Z"
-                    fill="white" />
-            </svg>
+            ${contact.svg_big}
             <div class="contact-info-big-name-edit-container">
-                <p class="contact-info-big-name">${name}</p>
+                <p class="contact-info-big-name">${contact.name}</p>
                 <div class="contact-info-big-edit">
-                    <button class="contact-btn contact-edit-btn" onclick="editContact('${name}', '${email}')">
+                    <button class="contact-btn contact-edit-btn" onclick="editContact('${contact.name}', '${contact.email}')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_373102_2514" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                 width="24" height="24">
@@ -46,11 +40,11 @@ function getContactTemplate(name, email) {
         <section class="contact-informations">
             <div>
                 <h5>Email</h5>
-                <a href="mailto:antom@gmail.com">${email}</a>
+                <a href="mailto:antom@gmail.com">${contact.email}</a>
             </div>
             <div>
                 <h5>Phone</h5>
-                <p class="contact-informations-phone-number">+49 1111 111 11 1</p>
+                <p class="contact-informations-phone-number">${contact.phone}</p>
             </div>
         </section>
         <div id="create_Msg" class="succes-created-container d_none">

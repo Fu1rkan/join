@@ -1,5 +1,6 @@
 .overlay {
     position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
     right: 0;
@@ -22,8 +23,7 @@
 
 .overlay-card {
     position: absolute;
-    left: auto;
-    animation: fadeIn 300ms ease-in forwards;
+    animation: fadeIn 300ms linear forwards;
     height: 594px;
     width: 1212px;
     border-radius: 31px;
@@ -78,14 +78,14 @@
 
 .add-contact-card-title {
     font-style: bold;
-    color: #FFFFFF;
+    color: var(--header-color);
     height: 73px;
 }
 
 .add-contact-card-txt {
-    font-size: 27px;
-    font-weight: 400;
-    color: #FFFFFF;
+    font-size: var(--font-size-27);
+    font-weight: var(--weight-400);
+    color: var(--header-color);
     height: 32px;
 }
 
@@ -126,7 +126,7 @@
 }
 
 .add-contact-close-icon-container:hover {
-    background-color: #D9D9D9;
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
 .add-contact-close-icon {
@@ -151,35 +151,37 @@
     gap: 32px;
 }
 
-.create-form>section>div {
-    position: relative;
-}
-
-.create-form>section>div>input {
-    height: 50px;
-    width: 422px;
-    padding: 13px 21px;
-    border: 1px solid #d1d1d1;
+.create-form>section>label {
     border-radius: 10px;
-    font-size: 20px;
-    font-weight: 400;
+    border: 1px solid #d1d1d1;
+    padding: 13px 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
 }
 
-.create-form>section>div>input::placeholder {
-    font-size: 20px;
-    font-weight: 400;
+.create-form>section>label>input {
     height: 24px;
+    align-items: center;
+    width: 422px;
+    outline: none;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    border-width: 0;
+    cursor: pointer;
+}
+
+.create-form>section>label>input::placeholder {
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
     color: #D1D1D1;
 }
 
-.create-form>section>div>img {
-    cursor: text;
-    height: 24px;
+.create-form>section>label>svg {
+    cursor: pointer;
     width: 24px;
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 21px;
 }
 
 .add-contact-buttons {
@@ -210,11 +212,11 @@
 }
 
 .add-contact-cancel-btn:hover .add-contact-cancel-btn-txt {
-    color: #29ABE2;
+    color: var(--inter-text-accent-color);
 }
 
-.add-contact-cancel-btn:hover .add-contact-btn-cancel-svg {
-    background-image: url('/assets/svg/iconoir_cancel_blue.svg');
+.add-contact-cancel-btn:hover svg path {
+    stroke: #29ABE2;
 }
 
 .add-contact-cancel-btn:active {
@@ -223,11 +225,11 @@
 }
 
 .add-contact-cancel-btn:active .add-contact-cancel-btn-txt {
-    color: #091931;
+    color: var(--side-active-color);
 }
 
-.add-contact-cancel-btn:active .add-contact-btn-cancel-svg {
-    background-image: url('/assets/svg/iconoir_cancel_darkblue.svg');
+.add-contact-cancel-btn:active svg path {
+    stroke: #091931;
 }
 
 .add-contact-create-contact-btn {
@@ -263,17 +265,17 @@
 }
 
 .add-contact-cancel-btn-txt {
-    font-size: 20px;
-    font-weight: 400;
-    color: #2A3647;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    color: var(--inter-text-color);
     height: 24px;
 }
 
 .add-contact-create-contact-btn-txt {
-    font-size: 21px;
-    font-weight: 700;
+    font-size: var(--font-size-21);
+    font-weight: var(--weight-700);
     font-style: bold;
-    color: #FFFFFF;
+    color: var(--header-color);
 }
 
 .edit-contact-d-s-buttons {
@@ -301,7 +303,7 @@
 }
 
 .edit-contact-delete-btn:hover .edti-contact-delete-btn-txt {
-    color: #29ABE2;
+    color: var(--inter-text-accent-color);
 }
 
 .edit-contact-delete-btn:active {
@@ -310,13 +312,13 @@
 }
 
 .edit-contact-delete-btn:active .edti-contact-delete-btn-txt {
-    color: #091931;
+    color: var(--side-active-color);
 }
 
 .edti-contact-delete-btn-txt {
-    font-size: 20px;
-    font-weight: 400;
-    color: #2A3647;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    color: var(--inter-text-color);
     height: 24px;
 }
 
@@ -345,73 +347,42 @@
 }
 
 .edit-contact-save-contact-btn-txt {
-    font-size: 21px;
-    font-weight: 700;
+    font-size: var(--font-size-21);
+    font-weight: var(--weight-700);
     font-style: bold;
-    color: #FFFFFF;
+    color: var(--header-color);
 }
 
 .d_none {
     display: none;
 }
 
+/*Animation for 1920px by Card-width : 1212px*/
 @keyframes fadeIn {
 
         0% {
             left: 100%;
         }
 
-        25% {
-            left: 75%;
-        }
-
-        50% {
-            left: 50%;
-        }
-
-        75% {
-            left: 25%;
-        }
-
-        90% {
-            left: 20%
-        }
-
         100% {
-            left: auto;
+            left: 18.5%;
         }
     }
 
 @media (max-width: 1440px) {
+
+    /*Animation for 1440px by Card-width : 1212px*/
     @keyframes fadeIn {
 
         0% {
             left: 100%;
         }
 
-        25% {
-            left: 75%;
-        }
-
-        50% {
-            left: 50%;
-        }
-
-        75% {
-            left: 25%;
-        }
-
-        90% {
-            left: 10%;
-        }
-
         100% {
-            left: auto;
+            left: 8%;
         }
     }
 }
-
-
 
 @keyframes overlayShadow {
     100% {

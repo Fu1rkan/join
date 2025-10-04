@@ -3,10 +3,55 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-main {
-    background-color: #F6F7F8;
+/* animation overlay design and align */
+.overlay_animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    animation: backgroundBlendOut 1s ease-in forwards;
+    z-index: 1;
+}
+
+.overlay_animation .logo_color {
+    fill: #2A3647;
+    animation: animatedLogoColor 1s ease-in;
+}
+
+/* animation join logo design and align */
+.overlay_animation .animation_join_logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideMidToLeft 1s forwards;
+    animation-timing-function: cubic-bezier(.50, 0, 0, 0);
+}
+
+/* main design and align / basic background */
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    background-color: #F6F7F8;
+}
+
+/* join logo header left top design */
+.join_logo {
+    width: 109px;
+    height: 134px;
+    position: absolute;
+    top: 67px;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 }
 
 /* sign up header top right */
@@ -50,66 +95,75 @@ main {
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-/* main design and align / basic background */
-main {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* login section align and structure */
 .login_section {
-    height: 450px;
-    width: 650px;
-    background-color: #ffffff;
-    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 30px;
+    background-color: #ffffff;
     box-shadow: 0px 0px 14px 3px #0000000A;
+    padding: 48px 115px;
     gap: 32px;
 }
 
 /* login section header align */
-.login_section header {
+.login_section .title_headline {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
 }
 
-
 /* login section header h1 style */
-.login_section header h1 {
+.login_section .title_headline h1 {
     margin: 0;
     font-weight: 700;
     font-style: bold;
     font-size: 61px;
 }
 
-
 /* login section input group style */
 .login_section .input_group {
+    width: 400px;
     display: flex;
     flex-direction: column;
-    width: 400px;
     border-radius: 10px;
     gap: 20px;
 }
 
-/* login section input group input style */
-.login_section .input_group input {
+.login_section .input_group form {
     padding: 12px 21px;
-    outline: 1px solid #d1d1d1;
-    border: none;
     border-radius: 10px;
-    gap: 10px;
+    outline: 1px solid #d1d1d1;
+    gap: 20px;
 }
 
-.login_section .input_group input:focus {
-    outline: 1px solid #29ABE2;
+/* input field with icon align */
+.login_section .input_group form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+}
+
+/* login section input group input style */
+.login_section .input_group form label input {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+}
+
+/* delete input outline in focus */
+.login_section .input_group form label input:focus {
+    outline: none;
+}
+
+/* input focus and placeholder style */
+.login_section .input_group form label input::placeholder {
+    color: #d1d1d1;
 }
 
 /* login section buttons align */

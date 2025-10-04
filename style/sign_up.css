@@ -1,0 +1,161 @@
+/* sign up section align and structure */
+.sign_up_section {
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 0px 14px 3px #0000000A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 48px 88px;
+    gap: 32px;
+}
+
+/* sign up section header align */
+.sign_up_section .title_headline {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* back arrow design and position */
+.sign_up_section .sign_up_back_arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: -150px;
+    z-index: 2;
+}
+
+.sign_up_section .sign_up_back_arrow:hover {
+    background-color: #EDF2FA;
+    scale: 1.2;
+    border-radius: 42px;
+}
+
+/* sign up section title_headline h1 and underline align */
+.sign_up_section .title_headline .sign_up_logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+/* sign up section title_headline h1 style */
+.sign_up_section .title_headline h1 {
+    margin: 0;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 61px;
+}
+
+/* input group align */
+.sign_up_section .sign_up_input_group {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sign_up_section .sign_up_input_group form {
+    padding: 12px 21px;
+    border-radius: 10px;
+    outline: 1px solid #d1d1d1;
+    gap: 20px;
+}
+
+.sign_up_section .sign_up_input_group form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+}
+
+/* design for each input */
+.sign_up_section .sign_up_input_group input {
+    width: 380px;
+    height: 24px;
+    font-size: 20px;
+    font-weight: 400;
+    border: none;
+}
+
+.sign_up_section .sign_up_input_group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* input focus and placeholder style */
+.sign_up_section .sign_up_input_group input::placeholder {
+    color: #d1d1d1;
+}
+
+.sign_up_section .sign_up_input_group input:focus {
+    outline: none;
+}
+
+/* privacy policy checkbox align and design */
+.sign_up_section .sign_up_input_group .privacy_policy_checkbox_group {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7A7A7A;
+    gap: 8px;
+}
+
+.sign_up_section .sign_up_input_group .privacy_policy_checkbox_group .pp_checkbox {
+    cursor: pointer;
+}
+
+.sign_up_section .sign_up_input_group .privacy_policy_checkbox_group .pp_checkbox:hover {
+    background-color: #EDF2FA;
+}
+
+/* span design inside input group */
+.sign_up_section .sign_up_input_group span {
+    font-weight: 400;
+    font-size: 14px;
+    color: #7A7A7A;
+}
+
+/* privacy policy link style inside input span */
+.sign_up_section .sign_up_input_group span a {
+    text-decoration: none;
+    color: #29ABE2;
+}
+
+/* button group align */
+.sign_up_section .sign_up_button_group {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* sign up button design */
+.sign_up_section .sign_up_button_group .sign_up_button {
+    color: #ffffff;
+    background-color: #2A3647;
+    padding: 15px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.sign_up_section .sign_up_button_group .sign_up_button:hover {
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.sign_up_section .sign_up_button_group .sign_up_button:active {
+    background-color: #091931;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}

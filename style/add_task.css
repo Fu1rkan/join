@@ -1,11 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-.d_none{
-  display: none !important;
-}
-
 .w100 {
   width: 100% !important;
 }

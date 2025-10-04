@@ -1,8 +1,18 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype"),
+    url("../fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 :root {
@@ -33,6 +43,22 @@
 body {
   font-family: "Inter", sans-serif;
   flex-direction: column;
+}
+
+h2 {
+  font-size: 61px;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(66, 82, 110, 1);
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .layout {
@@ -74,13 +100,13 @@ main {
   margin-left: 120px;
 }
 
-.header-profil{
+.header-profil {
   display: flex;
   gap: 16px;
   margin-right: 50px;
 }
 
-.profil-header{
+.profil-header {
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -92,31 +118,6 @@ main {
   align-items: center;
 }
 
-h2 {
-  font-size: 61px;
-  font-weight: 700;
-}
-
-h4 {
-  font-size: 20px;
-  font-weight: 700;
-  color: rgba(66, 82, 110, 1);
-}
-
-h5 {
-  font-size: 16px;
-  font-weight: 700;
-}
-
 .d_none {
   display: none;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype"),
-    url("../fonts/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
 }

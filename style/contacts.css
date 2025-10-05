@@ -179,6 +179,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    min-height: 48px;
 }
 
 .contact-name {

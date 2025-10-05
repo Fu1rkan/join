@@ -2,12 +2,12 @@ function logInTemplate() {
     return `
         <section id="main_header">
             <!-- The join logo will be rendered here -->
-            </section>
+        </section>
              
-            <section class="sign_up_header">
-                <p>Not a Join user?</p>
-                <button type="" onclick="renderSignUp()">Sign Up</button>
-            </section>
+        <section class="sign_up_header">
+            <p>Not a Join user?</p>
+            <button type="" onclick="renderSignUp()">Sign Up</button>
+        </section>
 
 
         <section class="login_section">
@@ -20,7 +20,6 @@ function logInTemplate() {
 
 
             <section class="input_group">
-
                 <form class="email_input" id="input_email">
                     <label for="input_email">
                         <input class="email_input" type="text" id="Email" name="Email" required placeholder="Email">
@@ -37,19 +36,17 @@ function logInTemplate() {
                     <label for="password_input_id">
                         <input class="password_input" type="password" id="password" name="password" required
                             placeholder="Password">
-                            <div onclick="togglePasswordVisibility()" id="toggle_password_visibility_button">
-                        <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
-                            viewBox="0 0 17 22" fill="none">
-                            <path
-                                d="M2.14453 21.8083C1.59453 21.8083 1.1237 21.6125 0.732031 21.2208C0.340365 20.8292 0.144531 20.3583 0.144531 19.8083V9.80835C0.144531 9.25835 0.340365 8.78752 0.732031 8.39585C1.1237 8.00418 1.59453 7.80835 2.14453 7.80835H3.14453V5.80835C3.14453 4.42502 3.63203 3.24585 4.60703 2.27085C5.58203 1.29585 6.7612 0.80835 8.14453 0.80835C9.52786 0.80835 10.707 1.29585 11.682 2.27085C12.657 3.24585 13.1445 4.42502 13.1445 5.80835V7.80835H14.1445C14.6945 7.80835 15.1654 8.00418 15.557 8.39585C15.9487 8.78752 16.1445 9.25835 16.1445 9.80835V19.8083C16.1445 20.3583 15.9487 20.8292 15.557 21.2208C15.1654 21.6125 14.6945 21.8083 14.1445 21.8083H2.14453ZM2.14453 19.8083H14.1445V9.80835H2.14453V19.8083ZM8.14453 16.8083C8.69453 16.8083 9.16537 16.6125 9.55703 16.2208C9.9487 15.8292 10.1445 15.3583 10.1445 14.8083C10.1445 14.2583 9.9487 13.7875 9.55703 13.3959C9.16537 13.0042 8.69453 12.8083 8.14453 12.8083C7.59453 12.8083 7.1237 13.0042 6.73203 13.3959C6.34036 13.7875 6.14453 14.2583 6.14453 14.8083C6.14453 15.3583 6.34036 15.8292 6.73203 16.2208C7.1237 16.6125 7.59453 16.8083 8.14453 16.8083ZM5.14453 7.80835H11.1445V5.80835C11.1445 4.97502 10.8529 4.26668 10.2695 3.68335C9.6862 3.10002 8.97786 2.80835 8.14453 2.80835C7.3112 2.80835 6.60286 3.10002 6.01953 3.68335C5.4362 4.26668 5.14453 4.97502 5.14453 5.80835V7.80835Z"
-                                fill="#A8A8A8" />
-                        </svg>
+                        <div onclick="togglePasswordVisibility()" id="toggle_password_visibility_button">
+                            <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
+                                viewBox="0 0 17 22" fill="none">
+                                <path
+                                    d="M2.14453 21.8083C1.59453 21.8083 1.1237 21.6125 0.732031 21.2208C0.340365 20.8292 0.144531 20.3583 0.144531 19.8083V9.80835C0.144531 9.25835 0.340365 8.78752 0.732031 8.39585C1.1237 8.00418 1.59453 7.80835 2.14453 7.80835H3.14453V5.80835C3.14453 4.42502 3.63203 3.24585 4.60703 2.27085C5.58203 1.29585 6.7612 0.80835 8.14453 0.80835C9.52786 0.80835 10.707 1.29585 11.682 2.27085C12.657 3.24585 13.1445 4.42502 13.1445 5.80835V7.80835H14.1445C14.6945 7.80835 15.1654 8.00418 15.557 8.39585C15.9487 8.78752 16.1445 9.25835 16.1445 9.80835V19.8083C16.1445 20.3583 15.9487 20.8292 15.557 21.2208C15.1654 21.6125 14.6945 21.8083 14.1445 21.8083H2.14453ZM2.14453 19.8083H14.1445V9.80835H2.14453V19.8083ZM8.14453 16.8083C8.69453 16.8083 9.16537 16.6125 9.55703 16.2208C9.9487 15.8292 10.1445 15.3583 10.1445 14.8083C10.1445 14.2583 9.9487 13.7875 9.55703 13.3959C9.16537 13.0042 8.69453 12.8083 8.14453 12.8083C7.59453 12.8083 7.1237 13.0042 6.73203 13.3959C6.34036 13.7875 6.14453 14.2583 6.14453 14.8083C6.14453 15.3583 6.34036 15.8292 6.73203 16.2208C7.1237 16.6125 7.59453 16.8083 8.14453 16.8083ZM5.14453 7.80835H11.1445V5.80835C11.1445 4.97502 10.8529 4.26668 10.2695 3.68335C9.6862 3.10002 8.97786 2.80835 8.14453 2.80835C7.3112 2.80835 6.60286 3.10002 6.01953 3.68335C5.4362 4.26668 5.14453 4.97502 5.14453 5.80835V7.80835Z"
+                                    fill="#A8A8A8" />
+                            </svg>
                         </div>
                     </label>
                 </form>
-
             </section>
-
 
             <section class="login_buttons">
                 <button class="login_button" type="">Log in</button>
@@ -61,108 +58,108 @@ function logInTemplate() {
         <footer class="main_footer">
             <a href="">Privacy Policy</a>
             <a href="">Legal notice</a>
-        </footer>
-    </main>`;
+        </footer>`;
 }
 
 function signUpTemplate() {
     return `
-                <section id="main_header">
+            <section id="main_header">
                 <!-- The join logo will be rendered here -->
+            </section>
+
+
+            <section class="sign_up_section">
+                <section class="title_headline">
+                    <svg class="sign_up_back_arrow" onclick="renderLogIn()" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
+                    </svg>
+                        <div class="sign_up_logo">
+                            <h1>Sign Up</h1>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
+                                <path d="M152 1.5L2 1.5" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
+                            </svg>
+                        </div>
                 </section>
 
-                <section class="sign_up_section">
-                    <section class="title_headline">
-                        <svg onclick="renderLogIn()" class="sign_up_back_arrow" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
-                        </svg>
-
-                            <div class="sign_up_logo">
-                                <h1>Sign Up</h1>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
-                                    <path d="M152 1.5L2 1.5" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                    </section>
-
-                    <div class="sign_up_input_group">
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li>
-                                <form action="username" class="username_input" id="username_input_id">
-                                    <label>
-                                        <input type="text" id="username" name="username" required placeholder="Username">
-                                        <svg class="user_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                            <path
-                                            d="M8 8C6.9 8 5.95833 7.60833 5.175 6.825C4.39167 6.04167 4 5.1 4 4C4 2.9 4.39167 1.95833 5.175 1.175C5.95833 0.391667 6.9 0 8 0C9.1 0 10.0417 0.391667 10.825 1.175C11.6083 1.95833 12 2.9 12 4C12 5.1 11.6083 6.04167 10.825 6.825C10.0417 7.60833 9.1 8 8 8ZM14 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V13.2C0 12.6333 0.145833 12.1125 0.4375 11.6375C0.729167 11.1625 1.11667 10.8 1.6 10.55C2.63333 10.0333 3.68333 9.64583 4.75 9.3875C5.81667 9.12917 6.9 9 8 9C9.1 9 10.1833 9.12917 11.25 9.3875C12.3167 9.64583 13.3667 10.0333 14.4 10.55C14.8833 10.8 15.2708 11.1625 15.5625 11.6375C15.8542 12.1125 16 12.6333 16 13.2V14C16 14.55 15.8042 15.0208 15.4125 15.4125C15.0208 15.8042 14.55 16 14 16ZM2 14H14V13.2C14 13.0167 13.9542 12.85 13.8625 12.7C13.7708 12.55 13.65 12.4333 13.5 12.35C12.6 11.9 11.6917 11.5625 10.775 11.3375C9.85833 11.1125 8.93333 11 8 11C7.06667 11 6.14167 11.1125 5.225 11.3375C4.30833 11.5625 3.4 11.9 2.5 12.35C2.35 12.4333 2.22917 12.55 2.1375 12.7C2.04583 12.85 2 13.0167 2 13.2V14ZM8 6C8.55 6 9.02083 5.80417 9.4125 5.4125C9.80417 5.02083 10 4.55 10 4C10 3.45 9.80417 2.97917 9.4125 2.5875C9.02083 2.19583 8.55 2 8 2C7.45 2 6.97917 2.19583 6.5875 2.5875C6.19583 2.97917 6 3.45 6 4C6 4.55 6.19583 5.02083 6.5875 5.4125C6.97917 5.80417 7.45 6 8 6Z"
-                                            fill="#A8A8A8" />
-                                        </svg>
-                                    </label>
-                                </form>
-                            </li>
-                            <li>
-                                <form action="email" class="email_input" id="email_input_id">
-                                    <label for="email_input_id">
-                                <input type="Email" id="Email" name="Email" required placeholder="Email">
+                <div class="sign_up_input_group">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li>
+                            <form action="username" class="username_input" id="username_input_id">
+                                <label>
+                                    <input type="text" id="username" name="username" required placeholder="Username">
+                                    <div>
+                                    <svg class="user_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path
+                                        d="M8 8C6.9 8 5.95833 7.60833 5.175 6.825C4.39167 6.04167 4 5.1 4 4C4 2.9 4.39167 1.95833 5.175 1.175C5.95833 0.391667 6.9 0 8 0C9.1 0 10.0417 0.391667 10.825 1.175C11.6083 1.95833 12 2.9 12 4C12 5.1 11.6083 6.04167 10.825 6.825C10.0417 7.60833 9.1 8 8 8ZM14 16H2C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V13.2C0 12.6333 0.145833 12.1125 0.4375 11.6375C0.729167 11.1625 1.11667 10.8 1.6 10.55C2.63333 10.0333 3.68333 9.64583 4.75 9.3875C5.81667 9.12917 6.9 9 8 9C9.1 9 10.1833 9.12917 11.25 9.3875C12.3167 9.64583 13.3667 10.0333 14.4 10.55C14.8833 10.8 15.2708 11.1625 15.5625 11.6375C15.8542 12.1125 16 12.6333 16 13.2V14C16 14.55 15.8042 15.0208 15.4125 15.4125C15.0208 15.8042 14.55 16 14 16ZM2 14H14V13.2C14 13.0167 13.9542 12.85 13.8625 12.7C13.7708 12.55 13.65 12.4333 13.5 12.35C12.6 11.9 11.6917 11.5625 10.775 11.3375C9.85833 11.1125 8.93333 11 8 11C7.06667 11 6.14167 11.1125 5.225 11.3375C4.30833 11.5625 3.4 11.9 2.5 12.35C2.35 12.4333 2.22917 12.55 2.1375 12.7C2.04583 12.85 2 13.0167 2 13.2V14ZM8 6C8.55 6 9.02083 5.80417 9.4125 5.4125C9.80417 5.02083 10 4.55 10 4C10 3.45 9.80417 2.97917 9.4125 2.5875C9.02083 2.19583 8.55 2 8 2C7.45 2 6.97917 2.19583 6.5875 2.5875C6.19583 2.97917 6 3.45 6 4C6 4.55 6.19583 5.02083 6.5875 5.4125C6.97917 5.80417 7.45 6 8 6Z"
+                                        fill="#A8A8A8" />
+                                    </svg>
+                                    </div>
+                                </label>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="email" class="email_input" id="email_input_id">
+                                <label for="email_input_id">
+                                    <input type="Email" id="Email" name="Email" required placeholder="Email">
+                                    <div>
                                     <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16" fill="none">
-                                    <path
+                                        <path
                                         d="M2 16.5C1.45 16.5 0.979167 16.3042 0.5875 15.9125C0.195833 15.5208 0 15.05 0 14.5V2.5C0 1.95 0.195833 1.47917 0.5875 1.0875C0.979167 0.695833 1.45 0.5 2 0.5H18C18.55 0.5 19.0208 0.695833 19.4125 1.0875C19.8042 1.47917 20 1.95 20 2.5V14.5C20 15.05 19.8042 15.5208 19.4125 15.9125C19.0208 16.3042 18.55 16.5 18 16.5H2ZM18 4.5L10.525 9.175C10.4417 9.225 10.3542 9.2625 10.2625 9.2875C10.1708 9.3125 10.0833 9.325 10 9.325C9.91667 9.325 9.82917 9.3125 9.7375 9.2875C9.64583 9.2625 9.55833 9.225 9.475 9.175L2 4.5V14.5H18V4.5ZM10 7.5L18 2.5H2L10 7.5ZM2 4.75V3.275V3.3V3.2875V4.75Z"
                                         fill="#A8A8A8" />
                                     </svg>
+                                    </div>
                                 </label>
-                                </form>    
-                            </li>
-                            <li>
-                                <form action="password_input" class="password_input" id="password_input_id">
-                                    <label for="password_input">
-                                        <input class="password_input" type="password" id="password" name="password" required
-                                            placeholder="Password">
-                                            <div onclick="togglePasswordVisibility()" id="toggle_password_visibility_button">
+                            </form>    
+                        </li>
+                        <li>
+                            <form action="password_input" class="password_input" id="password_input_id">
+                                <label for="password_input">
+                                    <input class="password_input" type="password" id="password" name="password" required placeholder="Password">
+                                    <div onclick="togglePasswordVisibility()" id="toggle_password_visibility_button">
                                         <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                             viewBox="0 0 17 22" fill="none">
                                             <path
                                                 d="M2.14453 21.8083C1.59453 21.8083 1.1237 21.6125 0.732031 21.2208C0.340365 20.8292 0.144531 20.3583 0.144531 19.8083V9.80835C0.144531 9.25835 0.340365 8.78752 0.732031 8.39585C1.1237 8.00418 1.59453 7.80835 2.14453 7.80835H3.14453V5.80835C3.14453 4.42502 3.63203 3.24585 4.60703 2.27085C5.58203 1.29585 6.7612 0.80835 8.14453 0.80835C9.52786 0.80835 10.707 1.29585 11.682 2.27085C12.657 3.24585 13.1445 4.42502 13.1445 5.80835V7.80835H14.1445C14.6945 7.80835 15.1654 8.00418 15.557 8.39585C15.9487 8.78752 16.1445 9.25835 16.1445 9.80835V19.8083C16.1445 20.3583 15.9487 20.8292 15.557 21.2208C15.1654 21.6125 14.6945 21.8083 14.1445 21.8083H2.14453ZM2.14453 19.8083H14.1445V9.80835H2.14453V19.8083ZM8.14453 16.8083C8.69453 16.8083 9.16537 16.6125 9.55703 16.2208C9.9487 15.8292 10.1445 15.3583 10.1445 14.8083C10.1445 14.2583 9.9487 13.7875 9.55703 13.3959C9.16537 13.0042 8.69453 12.8083 8.14453 12.8083C7.59453 12.8083 7.1237 13.0042 6.73203 13.3959C6.34036 13.7875 6.14453 14.2583 6.14453 14.8083C6.14453 15.3583 6.34036 15.8292 6.73203 16.2208C7.1237 16.6125 7.59453 16.8083 8.14453 16.8083ZM5.14453 7.80835H11.1445V5.80835C11.1445 4.97502 10.8529 4.26668 10.2695 3.68335C9.6862 3.10002 8.97786 2.80835 8.14453 2.80835C7.3112 2.80835 6.60286 3.10002 6.01953 3.68335C5.4362 4.26668 5.14453 4.97502 5.14453 5.80835V7.80835Z"
                                                 fill="#A8A8A8" />
                                         </svg>
-                                        </div>
-                                    </label>
-                                </form>
-                            </li>
-                            <li>
-                                <form action="password_input" class="password_input" id="password_input_id">
-                                    <label for="password_input">
-                                        <input class="password_input" type="password" id="password" name="password" required
-                                            placeholder="Password">
-                                            <div onclick="togglePasswordVisibility()" id="toggle_password_visibility_button">
+                                    </div>
+                                </label>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="password_input" class="password_input" id="password_input_id">
+                                <label for="password_input">
+                                    <input class="password_input" type="password" id="password_repeat" name="password_repeat" required placeholder="Password">
+                                    <div onclick="toggleRepeatPasswordVisibility()" id="toggle_password_repeat_button">
                                         <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                             viewBox="0 0 17 22" fill="none">
                                             <path
                                                 d="M2.14453 21.8083C1.59453 21.8083 1.1237 21.6125 0.732031 21.2208C0.340365 20.8292 0.144531 20.3583 0.144531 19.8083V9.80835C0.144531 9.25835 0.340365 8.78752 0.732031 8.39585C1.1237 8.00418 1.59453 7.80835 2.14453 7.80835H3.14453V5.80835C3.14453 4.42502 3.63203 3.24585 4.60703 2.27085C5.58203 1.29585 6.7612 0.80835 8.14453 0.80835C9.52786 0.80835 10.707 1.29585 11.682 2.27085C12.657 3.24585 13.1445 4.42502 13.1445 5.80835V7.80835H14.1445C14.6945 7.80835 15.1654 8.00418 15.557 8.39585C15.9487 8.78752 16.1445 9.25835 16.1445 9.80835V19.8083C16.1445 20.3583 15.9487 20.8292 15.557 21.2208C15.1654 21.6125 14.6945 21.8083 14.1445 21.8083H2.14453ZM2.14453 19.8083H14.1445V9.80835H2.14453V19.8083ZM8.14453 16.8083C8.69453 16.8083 9.16537 16.6125 9.55703 16.2208C9.9487 15.8292 10.1445 15.3583 10.1445 14.8083C10.1445 14.2583 9.9487 13.7875 9.55703 13.3959C9.16537 13.0042 8.69453 12.8083 8.14453 12.8083C7.59453 12.8083 7.1237 13.0042 6.73203 13.3959C6.34036 13.7875 6.14453 14.2583 6.14453 14.8083C6.14453 15.3583 6.34036 15.8292 6.73203 16.2208C7.1237 16.6125 7.59453 16.8083 8.14453 16.8083ZM5.14453 7.80835H11.1445V5.80835C11.1445 4.97502 10.8529 4.26668 10.2695 3.68335C9.6862 3.10002 8.97786 2.80835 8.14453 2.80835C7.3112 2.80835 6.60286 3.10002 6.01953 3.68335C5.4362 4.26668 5.14453 4.97502 5.14453 5.80835V7.80835Z"
                                                 fill="#A8A8A8" />
                                         </svg>
-                                        </div>
-                                    </label>
-                                </form>
-                            </li>
-                        </ul>
-                    
-                        <div class="privacy_policy_checkbox_group">
-                                <svg class="pp_checkbox" id="pp_checkbox_id" onclick="changeCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
-                                    <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
-                                </svg>
-                                <span>I accept the <a href="">Privacy policy</a></span>
-                        </div>
+                                    </div>
+                                </label>
+                            </form>
+                        </li>
+                    </ul>
+                
+                    <div class="privacy_policy_checkbox_group">
+                            <svg class="pp_checkbox" id="pp_checkbox_id" onclick="changeCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
+                                <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                            </svg>
+                            <span>I accept the <a href="">Privacy policy</a></span>
                     </div>
+                </div>
 
-                    <div class="sign_up_button_group">
-                        <button class="sign_up_button" type="">Sign Up</button>
-                    </div>
-
-                    <footer class="main_footer">
-                        <a href="">Privacy Policy</a>
-                        <a href="">Legal notice</a>
-                    </footer>
-                </section>
-            `;
+                <div class="sign_up_button_group">
+                    <button class="sign_up_button" type="">Sign Up</button>
+                </div>
+                
+                <footer class="main_footer">
+                    <a href="">Privacy Policy</a>
+                    <a href="">Legal notice</a>
+                </footer>
+            </section>`;
 }
 
 function joinLogoTemplate() {

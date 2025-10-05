@@ -98,6 +98,12 @@
 .sign_up_section .sign_up_input_group input:focus {
     outline: none;
 }
+.sign_up_section .sign_up_input_group label div {
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* privacy policy checkbox align and design */
 .sign_up_section .sign_up_input_group .privacy_policy_checkbox_group {

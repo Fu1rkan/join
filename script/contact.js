@@ -8,40 +8,26 @@ function closeOverlay() {
     overlayRef.classList.add('d_none');
 }
 
-function showContact(name, email, keys, index) {
-    let contactCardRef = document.getElementById(`letter_${keys}_${index}`);
-    let contactListRef = document.getElementById('contact_list');
-    let contactsList = contactListRef.querySelectorAll("li>div");
-
-    contactsList.forEach(el => {
-        el.style.backgroundColor ="";
-        el.style.color = "";
-        el.classList.add('contact-container-hoverclass');
+function toggleContact(name, email, keys, index) {
+    const contactCardRef = document.getElementById(`letter_${keys}_${index}`);
+    const templateRef = document.getElementById("contact_template");
+    const contactRef = contacts.find(t => t.name === name && t.email === email);
+    const isActive = contactCardRef.classList.contains("active-contact");
+    document.querySelectorAll("#contact_list li > div").forEach(el => {
+        el.classList.remove("active-contact");
+        el.classList.add("contact-container-hoverclass");
     });
-    
-    let templateRef = document.getElementById('contact_template');
-    let contactRef = contacts.filter(t => t["name"] == name && t["email"] == email);
-    
-    contactCardRef.onclick = () => {
-        hideContact(name, email, keys, index);
-    };
-    contactCardRef.classList.remove('contact-container-hoverclass');
-    contactCardRef.style.backgroundColor = "#2A3647";
-    contactCardRef.style.color = "#FFFFFF";
-    templateRef.classList.remove('d_none');
-    templateRef.innerHTML = getContactTemplate(contactRef[0]);
-}
 
-function hideContact(name, email, keys, index) {
-    let contactCardRef = document.getElementById(`letter_${keys}_${index}`);
-    let templateRef = document.getElementById('contact_template');
-    contactCardRef.classList.add('contact-container-hoverclass');
-    contactCardRef.style.backgroundColor = "";
-    contactCardRef.style.color = "";
-    contactCardRef.onclick = () => {
-        showContact(name, email, keys, index)
-    };
-    templateRef.classList.add('d_none');
+    if (!isActive) {
+        contactCardRef.classList.add("active-contact");
+        contactCardRef.classList.remove("contact-container-hoverclass");
+        templateRef.classList.remove("d_none");
+        templateRef.innerHTML = getContactTemplate(contactRef);
+    } else {
+        contactCardRef.classList.remove("active-contact");
+        contactCardRef.classList.add("contact-container-hoverclass");
+        templateRef.classList.add("d_none");
+    }
 }
 
 
@@ -59,10 +45,24 @@ function addNewContact() {
     overlayContentRef.innerHTML = showAddContactCard();
 }
 
-function editContact(name, email) {
+function editContact(name, email, phone) {
     overlayRef.classList.remove('d_none');
     let overlayContentRef = document.getElementById('overlay_content');
-    overlayContentRef.innerHTML = showContactEditCard(name, email);
+    overlayContentRef.innerHTML = showContactEditCard(name, email, phone);
+}
+
+function saveChangedContact(name, email) {
+    const contactRef = contacts.find(t => t.name === name && t.email === email);
+    const templateRef = document.getElementById("contact_template");
+    let contactName = document.getElementById('edit_name').value;
+    let contactEmail = document.getElementById('edit_email').value;
+    let contactPhone = document.getElementById('edit_phone').value;
+    contactRef.name = contactName;
+    contactRef.email = contactEmail;
+    contactRef.phone = contactPhone;
+
+    filterContacts();
+    templateRef.classList.add('d_none')
 }
 
 function fadeInCreateMsg() {
@@ -91,27 +91,39 @@ function filterContacts() {
         acc[firstLetter].push(contact);
         return acc;
     }, {});
-
     renderContacts(groupedContacts);
 }
 
 function renderContacts(groupedContacts) {
     let keys = Object.keys(groupedContacts);
-    
+    renderContactList(keys);
+
     for (let index = 0; index < keys.length; index++) {
         let listRef = document.getElementById(`letter_${keys[index].toLowerCase()}`);
         listRef.innerHTML = "";
 
         for (let i = 0; i < groupedContacts[keys[index]].length; i++) {
-            listRef.innerHTML += getSmallContactTemplate(groupedContacts[keys[index]], i, keys[index].toLowerCase());  
-        }  
+            listRef.innerHTML += getSmallContactTemplate(groupedContacts[keys[index]], i, keys[index].toLowerCase());
+        }
     }
-    
+
+}
+
+function renderContactList(keys) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const contactListRef = document.getElementById("contact_list");
+
+    contactListRef.innerHTML ="";
+    alphabet.forEach(letter => {
+        const section = document.createElement("section");
+        section.innerHTML = contactListTemplates(keys, letter);
+        contactListRef.appendChild(section);  
+    });
 }
 
 function getSmallContactTemplate(array, index, keys) {
     return `<li>
-                <div id="letter_${keys}_${index}" onclick="showContact('${array[index].name}', '${array[index].email}', '${keys}', '${index}')" class="contact-container contact-container-hoverclass">
+                <div id="letter_${keys}_${index}" onclick="toggleContact('${array[index].name}', '${array[index].email}', '${keys}', '${index}')" class="contact-container contact-container-hoverclass">
                     ${array[index].svg}
                     <div class="contact-info">
                         <h5 class="contact-name">${array[index].name}</h5>
@@ -119,4 +131,21 @@ function getSmallContactTemplate(array, index, keys) {
                     </div>
                 </div>
             </li>`
+}
+
+function createNewContact() {
+    let createName = document.getElementById('create_name').value;
+    let createEmail = document.getElementById('create_email').value;
+    let createPhone = document.getElementById('create_phone').value;
+
+    if (createName != "") {
+        let newContact = {
+            "name": createName,
+            "email": createEmail,
+            "phone": createPhone
+        }
+
+        contacts.push(newContact);
+    }
+    filterContacts();
 }

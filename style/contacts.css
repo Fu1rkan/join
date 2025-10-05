@@ -187,6 +187,11 @@ body {
     font-weight: var(--weight-400);
 }
 
+.active-contact {
+  background-color: #2A3647;
+  color: #FFFFFF;
+}
+
 .contacts-header {
     display: flex;
     justify-content: space-between;

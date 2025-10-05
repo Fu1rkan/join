@@ -1,3 +1,13 @@
+function contactListTemplates(keys, letter) {
+    return `<div class="contact-list-head ${keys.includes(letter) ? "" : " d_none"}">
+        <h4 class="contact-list-section-head">${letter}</h4>
+    </div>
+    <div class="section-seperator-container ${keys.includes(letter) ? "" : " d_none"}">
+        <div class="section-seperator"></div>
+    </div>
+    <ul id="letter_${letter.toLowerCase()}" class="list-items"></ul>`
+}
+
 function getContactTemplate(contact) {
     return `<div class="contact-info-big-container">
         <section class="contact-info-big">
@@ -5,7 +15,7 @@ function getContactTemplate(contact) {
             <div class="contact-info-big-name-edit-container">
                 <p class="contact-info-big-name">${contact.name}</p>
                 <div class="contact-info-big-edit">
-                    <button class="contact-btn contact-edit-btn" onclick="editContact('${contact.name}', '${contact.email}')">
+                    <button class="contact-btn contact-edit-btn" onclick="editContact('${contact.name}', '${contact.email}', '${contact.phone}')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_373102_2514" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                 width="24" height="24">
@@ -130,8 +140,8 @@ function showAddContactCard() {
                 </div>
                 <form action="" class="create-form" onsubmit="closeOverlay();return false">
                     <section class="create-form-inputfields">
-                        <label for="input_1">
-                            <input id="input_1" placeholder="Name" type="text">
+                        <label for="create_name">
+                            <input id="create_name" placeholder="Name" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1025" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -145,8 +155,8 @@ function showAddContactCard() {
                                 </g>
                             </svg>
                         </label>
-                        <label>
-                            <input placeholder="Email" type="text">
+                        <label for="create_email">
+                            <input id="create_email" placeholder="Email" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1032" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -160,8 +170,8 @@ function showAddContactCard() {
                                 </g>
                             </svg>
                         </label>
-                        <label>
-                            <input placeholder="Phone" type="text">
+                        <label for="create_phone">
+                            <input id="create_phone" placeholder="Phone" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1039" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -178,7 +188,7 @@ function showAddContactCard() {
                     </section>
 
                     <section class="add-contact-buttons">
-                        <button class="add-contact-cancel-btn" onclick="closeOverlay()">
+                        <button class="add-contact-cancel-btn" onclick="closeOverlay(); reeturn false">
                             <p class="add-contact-cancel-btn-txt">Cancel</p>
                             <!--<div class="add-contact-btn-svg add-contact-btn-cancel-svg"></div>-->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -188,7 +198,7 @@ function showAddContactCard() {
                                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <button class="add-contact-create-contact-btn" onclick="fadeInCreateMsg()">
+                        <button class="add-contact-create-contact-btn" onclick="createNewContact()">
                             <p class="add-contact-create-contact-btn-txt">Create contact</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -211,7 +221,7 @@ function showAddContactCard() {
     </section>`;
 }
 
-function showContactEditCard(name, email) {
+function showContactEditCard(name, email, phone) {
     return `<section class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
             <div class="overlay-left-side-content">
@@ -280,7 +290,7 @@ function showContactEditCard(name, email) {
                 <form action="" class="create-form" onsubmit="return false">
                     <section class="create-form-inputfields">
                         <label>
-                            <input placeholder="Name" value="${name}" type="text">
+                            <input id="edit_name" placeholder="Name" value="${name}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1025" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -295,7 +305,7 @@ function showContactEditCard(name, email) {
                             </svg>
                         </label>
                         <label>
-                            <input placeholder="Email" value="${email}" type="text">
+                            <input id="edit_email" placeholder="Email" value="${email}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1032" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -310,7 +320,7 @@ function showContactEditCard(name, email) {
                             </svg>
                         </label>
                         <label>
-                            <input placeholder="Phone" value="+49 1111 111 11 1" type="text">
+                            <input id="edit_phone" placeholder="Phone" value="${phone}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1039" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -330,7 +340,7 @@ function showContactEditCard(name, email) {
                         <button class="edit-contact-delete-btn" onclick="closeOverlay(); displayContact()">
                             <p class="edti-contact-delete-btn-txt">Delete</p>
                         </button>
-                        <button class="edit-contact-save-contact-btn">
+                        <button class="edit-contact-save-contact-btn" onclick=" closeOverlay(); saveChangedContact('${name}','${email}')">
                             <p class="edit-contact-save-contact-btn-txt">Save</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">

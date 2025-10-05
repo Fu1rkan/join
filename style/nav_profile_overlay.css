@@ -1,0 +1,41 @@
+/* Navigation profile container - slide-in menu from right side */
+.nav-profile-container {
+  position: fixed;
+  top: 0;
+  right: 800px;
+  width: 150px;
+  height: 150px;
+  background-color: var(--side-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  margin-top: 96px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Visible state for navigation profile container */
+.nav-profile-container.show {
+  right: -200px;
+}
+
+.nav-profile-link-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.nav-profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style-type: none;
+}
+
+.nav-profile-link-item a {
+  color: #cdcdcd;
+}

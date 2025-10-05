@@ -1,4 +1,3 @@
-
 .summary-title {
   display: flex;
   flex-direction: column;
@@ -7,18 +6,22 @@
   margin-top: 80px;
 }
 
+/* Panels container in the summary section */
 .summary-panels {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
+/* Main content area styling */
 .main {
   display: flex;
   flex-direction: column;
   width: 100%;
   background-color: var(--summary-color);
 }
+
+/* Container for the summary section */
 .summary-container {
   display: flex;
   width: 100%;
@@ -27,22 +30,27 @@
   margin-top: 80px;
 }
 
+/* Blue separator line for summary title */
 .summary-title-separator-blue {
   width: 0px;
   height: 59px;
   border: 2px solid var(--inter-text-accent-color);
   border-radius: 3px;
 }
+
+/* Grey separator line for summary title */
 .summary-title-separator-grey {
   width: 0px;
   height: 102px;
   border: 2px solid var(--seperator-color);
   border-radius: 3px;
 }
+
+/* Single summary panel styling */
 .summary-panel {
   width: 100%;
   height: 168px;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: var(--header-color);
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -50,7 +58,9 @@
   justify-content: center;
   align-items: center;
 }
-.summary-greeting-container{
+
+/* Container for greeting section in summary */
+.summary-greeting-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,7 +68,8 @@
   margin-left: 80px;
 }
 
-.summary-board-container{
+/* Container for the summary board */
+.summary-board-container {
   width: 550px;
   height: auto;
   display: flex;
@@ -67,13 +78,15 @@
   gap: 32px;
 }
 
-.summary-board-panels{
+/* Container for multiple summary board panels */
+.summary-board-panels {
   width: 100%;
   display: flex;
   gap: 32px;
 }
 
-.summary-board-panel{
+/* Single summary board panel styling */
+.summary-board-panel {
   width: 100%;
   height: 168px;
   border-radius: 20px;
@@ -81,48 +94,62 @@
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  transition: ease-in-out 80ms;
 }
 
-/* Text Styles */
-.s-txt-16-400{
+/* Text style: 16px, weight 400 */
+.s-txt-16-400 {
   font-family: "Inter", serif;
   font-size: var(--font-size-16);
   font-weight: var(--weight-400);
 }
-.s-txt-20-400{
+
+/* Text style: 20px, weight 400 */
+.s-txt-20-400 {
   font-family: "Inter", serif;
   font-size: var(--font-size-20);
   font-weight: var(--weight-400);
 }
-.s-txt-21-700{
+
+/* Text style: 21px, weight 700, accent color */
+.s-txt-21-700 {
   font-family: "Inter", serif;
   font-size: var(--font-size-21);
   font-weight: var(--weight-700);
   color: var(--side-color);
 }
-.s-txt-47-500{
+
+/* Text style: 47px, weight 500 */
+.s-txt-47-500 {
   font-family: "Inter", serif;
   font-size: var(--font-size-47);
   font-weight: var(--weight-500);
 }
-.s-txt-64-600{
+
+/* Text style: 64px, weight 600 */
+.s-txt-64-600 {
   font-family: "Inter", serif;
   font-size: var(--font-size-64);
   font-weight: var(--weight-600);
 }
-.s-txt-64-700{
+
+/* Text style: 64px, weight 700, accent color */
+.s-txt-64-700 {
   font-family: "Inter", serif;
   font-size: var(--font-size-64);
   font-weight: var(--weight-700);
   color: var(--inter-text-accent-color);
 }
 
+/* Title style for summary (responsive 360px) */
 #summary-title-360 {
   font-size: var(--font-size-61);
   font-weight: var(--weight-700);
 }
+
+/* Text style for summary title */
 .summary-title-text {
   font-family: "Inter", serif;
   font-weight: var(--weight-400);
@@ -133,81 +160,216 @@
   align-items: center;
   gap: 24px;
 }
-.summary-greeting{
+
+/* Greeting text style in summary */
+.summary-greeting {
   font-weight: var(--weight-500);
   font-size: var(--font-size-47);
   color: var(--side-color);
 }
-#summary-greeting-name{
+
+/* Name style in summary greeting */
+#summary-greeting-name {
   color: var(--inter-text-accent-color);
   font-weight: var(--weight-700);
   font-size: var(--font-size-64);
 }
 
-/*Summary Panel Image Styles*/
-.s-img{
+/* Image size for summary icons */
+.s-img {
   width: 69px;
   height: 69px;
 }
 
-/*Tasks Panel Content Styles*/
-.s-panel-gap{
+/* Image size for summary icons */
+.s-img-2 {
+  width: 60px;
+  height: 60px;
+}
+
+/* Gap between summary panels */
+.s-panel-gap {
   gap: 32px;
 }
 
-.summary-board-urgent{
+/* Container for urgent board panel */
+.summary-board-urgent {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 130px;
+  gap: 18px;
 }
 
-.tasks-In-Todo{
+/* Task container for "To Do" tasks */
+.tasks-In-Todo {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Done{
+
+/* Task container for "Done" tasks */
+.tasks-In-Done {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Urgent{
+
+/* Task container for "Urgent" tasks */
+.tasks-In-Urgent {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Deadline{
+
+/* Task container for "Deadline" tasks */
+.tasks-In-Deadline {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: start;
   gap: 13px;
 }
-.tasks-In-Board{
+
+/* Task container for "Board" tasks */
+.tasks-In-Board {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.tasks-In-Progress{
+
+/* Task container for "In Progress" tasks */
+.tasks-In-Progress {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
 }
-.awaiting-In-Feedback{
+
+/* Container for "Awaiting Feedback" tasks */
+.awaiting-In-Feedback {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   align-items: center;
+}
+
+/* Icon wrapper with circular background and hover effects */
+.icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #2a3647;
+  width: 69px;
+  height: 69px;
+  cursor: pointer;
+}
+
+/* Edit icon styling with fill transition */
+.icon-edit path {
+  fill: #ffffff;
+  transition: ease-in-out 80ms;
+}
+
+/* Hover state for icon wrapper - changes background to white */
+.icon-wrap:hover {
+  background-color: #ffffff;
+}
+
+/* Hover state for edit icon - changes fill to black */
+.icon-wrap:hover .icon-edit path {
+  fill: #000000;
+}
+
+/* Secondary icon wrapper with circular background and hover effects */
+.icon-wrap-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #2a3647;
+  width: 69px;
+  height: 69px;
+  transition: ease-in-out 80ms;
+  cursor: pointer;
+}
+
+/* Arrow icon styling with stroke transition */
+.icon-arrow {
+  display: block;
+}
+
+/* Arrow icon path styling with stroke transition */
+.icon-arrow path {
+  stroke: #ffffff;
+  /* transition: stroke 0.18s; */
+  transition: ease-in-out 80ms;
+}
+
+/* Hover state for secondary icon wrapper - changes background to white */
+.icon-wrap-2:hover {
+  background-color: #ffffff;
+}
+
+/* Hover state for arrow icon - changes stroke to black */
+.icon-wrap-2:hover .icon-arrow path {
+  stroke: #000000;
+}
+
+/* Link styling for summary board panels - removes default link styles */
+a.summary-board-panel {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hover state for summary board panel - scales and changes appearance */
+.summary-board-panel:hover {
+  background-color: var(--side-color);
+  color: #ffffff;
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* On summary-board-panel hover: change icon-wrap background */
+.summary-board-panel:hover .icon-wrap {
+  background-color: #ffffff;
+}
+
+/* On summary-board-panel hover: change icon-wrap-2 background */
+.summary-board-panel:hover .icon-wrap-2 {
+  background-color: #ffffff;
+}
+
+/* On summary-board-panel hover: adjust icon colors */
+.summary-board-panel:hover .icon-edit path {
+  fill: #2a3647;
+}
+
+/* On summary-board-panel hover: change arrow icon stroke color */
+.summary-board-panel:hover .icon-arrow path {
+  stroke: #2a3647;
+}
+
+/* On summary-board-panel hover: change text color for .s-txt-21-700 */
+.summary-board-panel:hover .s-txt-21-700 {
+  color: #ffffff;
+}
+
+/* Hover state for profile header - adds background color transition */
+.profil-header:hover {
+  cursor: pointer;
+  transition: ease-in-out 80ms;
+  background-color: rgba(12, 46, 98, 0.12);
 }

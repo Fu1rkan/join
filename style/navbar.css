@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 .navbar {
     display: flex;
     flex-direction: column;

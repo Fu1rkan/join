@@ -8,6 +8,18 @@ function contactListTemplates(keys, letter) {
     <ul id="letter_${letter.toLowerCase()}" class="list-items"></ul>`
 }
 
+function getSmallContactTemplate(array, index, keys) {
+    return `<li>
+                <div id="letter_${keys}_${index}" onclick="toggleContact('${array[index].name}', '${array[index].email}', '${keys}', '${index}')" class="contact-container contact-container-hoverclass">
+                    ${array[index].svg}
+                    <div class="contact-info">
+                        <h5 class="contact-name">${array[index].name}</h5>
+                        <a class="contact-e-mail" href="mailto:${array[index].email}">${array[index].email}</a>
+                    </div>
+                </div>
+            </li>`
+}
+
 function getContactTemplate(contact) {
     return `<div class="contact-info-big-container">
         <section class="contact-info-big">
@@ -29,7 +41,7 @@ function getContactTemplate(contact) {
                         </svg>
                         <p class="contact-btn-txt">Edit</p>
                     </button>
-                    <button class="contact-btn contact-delete-btn" onclick="displayContact()">
+                    <button class="contact-btn contact-delete-btn" onclick="deleteCurrentContact('${contact.name}', '${contact.email}')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_373102_1542" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                 width="24" height="24">
@@ -188,7 +200,7 @@ function showAddContactCard() {
                     </section>
 
                     <section class="add-contact-buttons">
-                        <button class="add-contact-cancel-btn" onclick="closeOverlay(); reeturn false">
+                        <button class="add-contact-cancel-btn" onclick="closeOverlay(); return false">
                             <p class="add-contact-cancel-btn-txt">Cancel</p>
                             <!--<div class="add-contact-btn-svg add-contact-btn-cancel-svg"></div>-->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -198,7 +210,7 @@ function showAddContactCard() {
                                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <button class="add-contact-create-contact-btn" onclick="createNewContact()">
+                        <button class="add-contact-create-contact-btn" onclick="createNewContact(); return false">
                             <p class="add-contact-create-contact-btn-txt">Create contact</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -337,7 +349,7 @@ function showContactEditCard(name, email, phone) {
                     </section>
 
                     <section class="edit-contact-d-s-buttons">
-                        <button class="edit-contact-delete-btn" onclick="closeOverlay(); displayContact()">
+                        <button class="edit-contact-delete-btn" onclick="closeOverlay(); deleteCurrentContact('${name}','${email}')">
                             <p class="edti-contact-delete-btn-txt">Delete</p>
                         </button>
                         <button class="edit-contact-save-contact-btn" onclick=" closeOverlay(); saveChangedContact('${name}','${email}')">
@@ -361,4 +373,18 @@ function showContactEditCard(name, email, phone) {
 
         </section>
     </section>`;
+}
+
+function createOutlinedCircleSVG(text, size, fillColor, fontSize) {
+    const radius = size / 2 - 1;
+    const svg = `
+    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none">
+      <circle cx="${size / 2}" cy="${size / 2}" r="${radius}" fill="${fillColor}" stroke="white" stroke-width="2"/>
+        <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle"
+            fill="white" font-size="${fontSize}px" font-family="Inter" font-weight="400" dy="${fontSize * 0.1}px">
+            ${text}
+        </text>
+    </svg>
+  `;
+    return svg;
 }

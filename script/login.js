@@ -12,6 +12,7 @@ function init(){
     }
 }
 
+// render LogIn incl. password show and hide functions
 function renderLogIn() {
     document.getElementById('main').innerHTML = '';
     document.getElementById('main').innerHTML += logInTemplate();
@@ -21,6 +22,7 @@ function renderLogIn() {
     addPasswordInputListener();
 }
 
+// render SignUp incl. password show and hide functions
 function renderSignUp() {
     document.getElementById('main').innerHTML = '';
     document.getElementById('main').innerHTML += signUpTemplate();
@@ -29,7 +31,7 @@ function renderSignUp() {
     addRepeatPasswordListener();
 }
 
-// renders main Join Logo top left corner
+// renders main Join Logo top left corner after animation
 function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
 }
@@ -97,4 +99,3 @@ function addRepeatPasswordListener() {
         });
     }
 }
-

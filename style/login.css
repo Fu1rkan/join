@@ -136,8 +136,13 @@ main {
 .login_section .input_group form {
     padding: 12px 21px;
     border-radius: 10px;
-    outline: 1px solid #d1d1d1;
     gap: 20px;
+    outline: 1px solid #d1d1d1;
+}
+
+/* input outline in focus */
+.login_section .input_group form:focus-within {
+    outline: 1px solid #29ABE2;
 }
 
 /* input field with icon align */
@@ -154,10 +159,6 @@ main {
     font-size: 20px;
     font-weight: 400;
     border: none;
-}
-
-/* delete input outline in focus */
-.login_section .input_group form label input:focus {
     outline: none;
 }
 

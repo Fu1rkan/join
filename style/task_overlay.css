@@ -1,17 +1,31 @@
 .dialog{
     width: 100%;
     height: 100vh;
+    top: 0;
     position: fixed;
-    transform: translateX(100%);
     transition: 125ms ease-in-out;
+    transform: translateX(100%);
+}
+
+.tf_tlx100{
+    transform: translateX(0);
 }
 
 .bleur-bg{
-    position: relative;
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.244);
     transition: 0ms;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.244);
+}
+
+.open-close-dialog{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100vh;
 }
 
 .task-overlay{
@@ -28,6 +42,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 .task-overlay header{
@@ -137,10 +152,14 @@
     gap: 8px;
 }
 
-/* .subtask-list{
+.subtask-list::-webkit-scrollbar{
+    display: none;
+}
+
+.subtask-list{
     height: 200px;
     overflow-y: scroll;
-} */
+}
 
 .subtask{
     display: flex;

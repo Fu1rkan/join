@@ -152,13 +152,17 @@ function signUpTemplate() {
                 </div>
 
                 <div class="sign_up_button_group">
-                    <button class="sign_up_button" type="">Sign Up</button>
+                    <button onclick="openSignUpOverlay()" class="sign_up_button" type="">Sign Up</button>
                 </div>
                 
                 <footer class="main_footer">
                     <a href="">Privacy Policy</a>
                     <a href="">Legal notice</a>
                 </footer>
+            </section>
+            
+            <section id="signup-overlay-id">
+                <!-- SignUp Successfully will be render here  -->
             </section>`;
 }
 
@@ -227,4 +231,13 @@ function hidePasswordTemplate() {
                 12.5042 9.11672 13 11 13Z" fill="#A8A8A8"/>
             </svg>
 `;
+}
+
+function signUpSuccessfull() {
+    return `    
+        <div class="signup-overlay-background">
+            <dialog>
+                <span>You Signed Up successfully</span>
+            </dialog>
+        </div>`;
 }

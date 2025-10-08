@@ -242,10 +242,18 @@
     color: rgba(168, 168, 168, 1);
 }
 
+.task-desc:empty{
+    display: none;
+}
+
 .progress{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.progress:empty{
+    display: none;
 }
 
 .progress-track{
@@ -273,8 +281,20 @@
     align-items: center;
 }
 
+.task footer:empty{
+    display: none;
+}
+
 .task-assignees{
     display: flex;
+}
+
+.task-priority{
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .user-logo{

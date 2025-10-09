@@ -235,7 +235,7 @@ function hidePasswordTemplate() {
 
 function signUpSuccessfull() {
     return `    
-        <div class="signup-overlay-background">
+        <div class="signup-overlay-background slideInFromBottom">
             <dialog>
                 <span>You Signed Up successfully</span>
             </dialog>
@@ -271,8 +271,8 @@ function progressTemp(){
 
 function taskFooterTemp(){
     return `
-        <div class="task-assignees" id="task-assignees"></div>
-        <div class="task-priority" id="prio-main-task"></div>
+        <div class="task-assignees"></div>
+        <div class="task-priority"></div>
     `
 }
 

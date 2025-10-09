@@ -22,7 +22,7 @@
     align-items: center;
     gap: 16px;
   }
-    
+
 }
 
 @keyframes backgroundBlendOut {
@@ -33,4 +33,17 @@
     background-color: rgba(255, 255, 255, 0);
     display: none;
   } 
+}
+
+@keyframes slideInFromBottom {
+  from {
+    left: 50%;
+    bottom: -150px;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

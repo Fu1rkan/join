@@ -99,3 +99,14 @@ function addRepeatPasswordListener() {
         });
     }
 }
+
+function openSignUpOverlay() {
+    document.getElementById('signup-overlay-id').innerHTML = signUpSuccessfull();
+    closeSignUpOverlay();
+}
+
+function closeSignUpOverlay() {
+    setTimeout(() => {
+        document.getElementById('signup-overlay-id').classList.add('d_none');
+    }, 2000);
+}

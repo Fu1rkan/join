@@ -48,7 +48,7 @@
   margin-left: 10%;
 }
 
-.AD section {
+.AD{
   max-width: calc(1440px - 232px);
   max-height: calc(100vh - 180px);
 }
@@ -581,10 +581,10 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 .subtask_item_wrapper {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 47%;
   padding-left: 16px;
   padding-right: 16px;
-  margin-top: 8px;
 }
 
 .subtask_item_wrapper input {
@@ -646,13 +646,16 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   height: 100%;
 }
 
+
 .subtask_list {
   margin-left: 10%;
   width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-end;
+  overflow-y: auto;
+  max-height: 112px;
 }
 
 .required_info {

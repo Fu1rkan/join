@@ -1,12 +1,66 @@
-let task = {
-    'to_do' :[
+let taskList = {
+    'to_do' : [
 
     ],
     'in_progress' : [
         {
-            'type' : userStory,
+            'type' : 'User Story',
             'name' : 'Join mit den besten zusammenstellen',
             'description' : 'Building all Pages with HTML and CSS and then we add functionality for the website!',
+            'subtasks' : [
+                {'name' : 'Page Overlays', 'status' : true},
+                {'name' : 'functions', 'status' : false},
+                {'name' : 'responsive', 'status' : true},
+                {'name' : 'databank', 'status' : false},
+                {'name' : 'final control', 'status' : true}
+            ],
+            'participants' : [
+                {'name' : 'Furkan'},
+                {'name' : 'Can'},
+                {'name' : 'Sven'},
+                {'name' : 'David'},
+                {'name' : 'Kim'}
+            ],
+            'priority' : 'urgent'
+        },
+        {
+            'type' : 'User Story',
+            'name' : 'Join mit den besten zusammenstellen',
+            'description' : 'Building all Pages with HTML and CSS and then we add functionality for the website!',
+            'subtasks' : [
+                {'name' : 'Page Overlays', 'status' : true},
+                {'name' : 'functions', 'status' : false},
+                {'name' : 'responsive', 'status' : true},
+                {'name' : 'databank', 'status' : false},
+                {'name' : 'final control', 'status' : true}
+            ],
+            'participants' : [
+                {'name' : 'Furkan'},
+                {'name' : 'Can'},
+                {'name' : 'Sven'},
+                {'name' : 'David'},
+                {'name' : 'Kim'}
+            ],
+            'priority' : 'urgent'
+        }
+    ],
+
+    'await_feedback' : [
+        {
+            'type' : null,
+            'name' : 'JavaScript Templates',
+            'description' : null,
+            'subtasks' : [null],
+            'participants' : [null],
+            'priority' : null
+        }
+    ],
+    
+    'done' : [
+        {
+            'type' : 'Technical Task',
+            'name' : 'Join mit den besten zusammenstellen',
+            'description' : null,
             'subtasks' : [
                 {'name' : 'Page Overlays', 'status' : true},
                 {'name' : 'functions', 'status' : true},
@@ -21,24 +75,7 @@ let task = {
                 {'name' : 'David'},
                 {'name' : 'Kim'}
             ],
-            'priority' : urgent
+            'priority' : 'urgent'
         }
-    ],
-
-    'await_feedback' : [
-        {
-            'type' : userStory,
-            'name' : 'JavaScript Templates',
-            'description' : 'Adding all JS Templates',
-            'subtasks' : [null],
-            'participants' : [
-                {'name' : 'Furkan'},
-            ],
-            'priority' : low
-        }
-    ],
-    
-    'done' : [
-
     ]
 }

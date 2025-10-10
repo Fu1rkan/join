@@ -233,6 +233,10 @@
     color: white;
 }
 
+.task-label:empty{
+    display: none;
+}
+
 .task-desc{
     display: -webkit-box;
     line-clamp: 2;

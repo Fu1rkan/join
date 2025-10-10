@@ -11,7 +11,9 @@ function contactListTemplates(keys, letter) {
 function getSmallContactTemplate(array, index, keys) {
     return `<li>
                 <div id="letter_${keys}_${index}" onclick="toggleContact('${array[index].name}', '${array[index].email}', '${keys}', '${index}')" class="contact-container contact-container-hoverclass">
-                    ${array[index].svg}
+                    <div class="contact-circle-img-small" style="background-color:${array[index].fillColor};">
+                        <p>${array[index].nameLetters}</p>
+                    </div>
                     <div class="contact-info">
                         <h5 class="contact-name">${array[index].name}</h5>
                         <a class="contact-e-mail" href="mailto:${array[index].email}">${array[index].email}</a>
@@ -21,9 +23,11 @@ function getSmallContactTemplate(array, index, keys) {
 }
 
 function getContactTemplate(contact) {
-    return `<div class="contact-info-big-container">
+    return `<div id="contact_info_big_template" class="contact-info-big-container fade-in-template">
         <section class="contact-info-big">
-            ${contact.svg_big}
+            <div class="contact-circle-img-big" style="background-color:${contact.fillColor};">
+                        <p>${contact.nameLetters}</p>
+                    </div>
             <div class="contact-info-big-name-edit-container">
                 <p class="contact-info-big-name">${contact.name}</p>
                 <div class="contact-info-big-edit">
@@ -373,18 +377,4 @@ function showContactEditCard(name, email, phone) {
 
         </section>
     </section>`;
-}
-
-function createOutlinedCircleSVG(text, size, fillColor, fontSize) {
-    const radius = size / 2 - 1;
-    const svg = `
-    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none">
-      <circle cx="${size / 2}" cy="${size / 2}" r="${radius}" fill="${fillColor}" stroke="white" stroke-width="2"/>
-        <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle"
-            fill="white" font-size="${fontSize}px" font-family="Inter" font-weight="400" dy="${fontSize * 0.1}px">
-            ${text}
-        </text>
-    </svg>
-  `;
-    return svg;
 }

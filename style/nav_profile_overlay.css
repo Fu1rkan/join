@@ -1,10 +1,11 @@
 /* Navigation profile container - slide-in menu from right side */
 .nav-profile-container {
-  position: fixed;
+  position: absolute;
   top: 0;
-  right: 800px;
+
   width: 150px;
   height: 150px;
+  right: 50px;
   background-color: var(--side-color);
   display: flex;
   justify-content: center;
@@ -20,7 +21,7 @@
 
 /* Visible state for navigation profile container */
 .nav-profile-container.show {
-  right: -200px;
+  right: -120%;
 }
 
 .nav-profile-link-container {

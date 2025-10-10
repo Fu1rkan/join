@@ -4,6 +4,8 @@
   justify-content: center;
   margin-left: 101px;
   margin-top: 80px;
+  max-width: calc(1440px -232px);
+  position: relative;
 }
 
 /* Panels container in the summary section */

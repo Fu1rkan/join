@@ -8,18 +8,18 @@ let taskList = {
             'name' : 'Join mit den besten zusammenstellen',
             'description' : 'Building all Pages with HTML and CSS and then we add functionality for the website!',
             'subtasks' : [
-                {'name' : 'Page Overlays', 'status' : true},
+                {'name' : 'Page Overlays', 'status' : false},
                 {'name' : 'functions', 'status' : false},
-                {'name' : 'responsive', 'status' : true},
+                {'name' : 'responsive', 'status' : false},
                 {'name' : 'databank', 'status' : false},
-                {'name' : 'final control', 'status' : true}
+                {'name' : 'final control', 'status' : false}
             ],
             'participants' : [
-                {'name' : 'Furkan'},
-                {'name' : 'Can'},
-                {'name' : 'Sven'},
-                {'name' : 'David'},
-                {'name' : 'Kim'}
+                {'name' : ['Furkan', 'Yigit']},
+                {'name' : ['Can', 'Marco']},
+                {'name' : ['Sven', 'Degen']},
+                {'name' : ['David', 'Groß']},
+                {'name' : ['Kim', 'B']}
             ],
             'priority' : 'urgent'
         },
@@ -35,13 +35,13 @@ let taskList = {
                 {'name' : 'final control', 'status' : true}
             ],
             'participants' : [
-                {'name' : 'Furkan'},
-                {'name' : 'Can'},
-                {'name' : 'Sven'},
-                {'name' : 'David'},
-                {'name' : 'Kim'}
+                {'name' : ['Furkan', 'Yigit']},
+                {'name' : ['Can', 'Marco']},
+                {'name' : ['Sven', 'Degen']},
+                {'name' : ['David', 'Groß']},
+                {'name' : ['Kim', 'B']}
             ],
-            'priority' : 'urgent'
+            'priority' : 'medium'
         }
     ],
 
@@ -50,8 +50,8 @@ let taskList = {
             'type' : null,
             'name' : 'JavaScript Templates',
             'description' : null,
-            'subtasks' : [null],
-            'participants' : [null],
+            'subtasks' : null,
+            'participants' : null,
             'priority' : null
         }
     ],
@@ -69,13 +69,13 @@ let taskList = {
                 {'name' : 'final control', 'status' : true}
             ],
             'participants' : [
-                {'name' : 'Furkan'},
-                {'name' : 'Can'},
-                {'name' : 'Sven'},
-                {'name' : 'David'},
-                {'name' : 'Kim'}
+                {'name' : ['Furkan', 'Yigit']},
+                {'name' : ['Can', 'Marco']},
+                {'name' : ['Sven', 'Degen']},
+                {'name' : ['David', 'Groß']},
+                {'name' : ['Kim', 'B']}
             ],
-            'priority' : 'urgent'
+            'priority' : 'low'
         }
     ]
 }

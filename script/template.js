@@ -251,34 +251,34 @@ function emptyTaskList(){
 function taskTemp(category, task){
     return `
         <div class="task" onclick="toggleTaskOverlay${category}${task}('task-dialog')">
-            <p class="task-label"></p>
-            <h5></h5>
-            <p class="task-desc"></p>
-            <section class="progress" id="progress"></section>
-            <footer></footer>
+            <p class="task-label" id="type-${category}-${task}"></p>
+            <h5>${taskList[category][task].name}</h5>
+            <p class="task-desc" id="desc-${category}-${task}"></p>
+            <section class="progress" id="subtasks-${category}-${task}"></section>
+            <footer id="footer-${category}-${task}"></footer>
         </div>
     `
 }
 
-function progressTemp(){
+function progressTemp(taskCount, trueCount){
     return `
         <div class="progress-track">
-            <div class="progress-fill"></div>
+            <div class="progress-fill" style="width: ${trueCount * 100 / taskCount}%;"></div>
         </div>
-        <p class="subtasks">2/5 Subtasks</p>
+        <p class="subtasks">${trueCount}/${taskCount} Subtasks</p>
     `
 }
 
-function taskFooterTemp(){
+function taskFooterTemp(category, task){
     return `
-        <div class="task-assignees" id="task-assignees"></div>
-        <div class="task-priority" id="prio-main-task"></div>
+        <div class="task-assignees" id="participants-${category}-${task}"></div>
+        <div class="task-priority" id="prio-${category}-${task}"></div>
     `
 }
 
-function participantsTemp(){
+function participantsTemp(task, index){
     return `
-        <div class="user-logo">${name}</div>
+        <div class="user-logo">${task.participants[index].name[0].charAt(0).toUpperCase()+task.participants[index].name[1].charAt(0).toUpperCase()}</div>
     `
 }
 

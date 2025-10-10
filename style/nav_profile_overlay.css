@@ -5,7 +5,7 @@
 
   width: 150px;
   height: 150px;
-  right: 50px;
+  right: -120%;
   background-color: var(--side-color);
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-  margin-top: 96px;
+  transform: translateY(96px);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   transition: right 0.3s ease-in-out;
   z-index: 1000;
@@ -21,7 +21,7 @@
 
 /* Visible state for navigation profile container */
 .nav-profile-container.show {
-  right: -120%;
+  right: 50px;
 }
 
 .nav-profile-link-container {

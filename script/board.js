@@ -29,18 +29,23 @@ function stopPropagation(event) {
 }
 
 function renderTask(){
-    for (let i = 0; i < kanbans.length; i++) {
-        if (taskList[kanbans[i]].length > 0) {
-            for (let index = 0; index < taskList[kanbans[i]].length; index++) {
-                kanbansRef[i].innerHTML += taskTemp();
-                checkTaskInfos(i);
+    for (let iCategory = 0; iCategory < kanbans.length; iCategory++) {
+        if (taskList[kanbans[iCategory]].length > 0) {
+            for (let index = 0; index < taskList[kanbans[iCategory]].length; index++) {
+                kanbansRef[iCategory].innerHTML += taskTemp(kanbans[iCategory], index);
+                checkTaskInfos(kanbans[iCategory], index);
             }
         }else{
-            kanbansRef[i].innerHTML = emptyTaskList();
+            kanbansRef[iCategory].innerHTML = emptyTaskList();
         }
     }
 }
 
-function checkTaskInfos(index){
-    let task = taskList[kanbans[index]];
+function checkTaskInfos(category, iTask){
+    let task = taskList[category][iTask];
+    console.log(task);
+    
+    if (taskList.category) {
+        
+    }
 }

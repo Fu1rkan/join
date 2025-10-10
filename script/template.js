@@ -248,9 +248,9 @@ function emptyTaskList(){
     `
 }
 
-function taskTemp(){
+function taskTemp(category, task){
     return `
-        <div class="task" onclick="toggleTaskOverlay('task-dialog')">
+        <div class="task" onclick="toggleTaskOverlay${category}${task}('task-dialog')">
             <p class="task-label"></p>
             <h5></h5>
             <p class="task-desc"></p>

@@ -14,13 +14,9 @@
   margin-bottom: 16px;
 }
 
-form{
+.ad form {
   position: relative;
- 
 }
-
-
-
 
 .form_wrapper {
   display: flex;
@@ -46,13 +42,13 @@ form{
   z-index: 4;
 }
 
-h2 {
+.ad h2 {
   margin-top: 80px;
   margin-bottom: 40px;
   margin-left: 10%;
 }
 
-section {
+.ad{
   max-width: calc(1440px - 232px);
   max-height: calc(100vh - 180px);
 }
@@ -66,7 +62,7 @@ section {
 .priority_wrapper button {
   display: flex;
   flex-direction: row;
-align-items: center;
+  align-items: center;
   width: 30%;
   justify-content: center;
   border: 0;
@@ -89,13 +85,13 @@ align-items: center;
 }
 
 /* Only apply hover shadow if not active */
-.priority_wrapper button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hover {
+.priority_wrapper 
+button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hover {
   box-shadow: 0px 0px 4px 0px #0000001a, 0px 4px 4px 0px #00000040;
 }
 
 .medium_btn_active {
   background: #ffa800 !important;
-
   color: #ffffff !important;
 }
 
@@ -111,7 +107,7 @@ align-items: center;
   background: #7ae229 !important;
 }
 
-label {
+.ad label {
   display: inline-block;
   font-family: Inter;
   font-weight: 400;
@@ -121,7 +117,7 @@ label {
   margin-bottom: 8px;
 }
 
-span {
+.ad span {
   font-family: Inter;
   font-weight: 400;
   font-style: Regular;
@@ -131,7 +127,7 @@ span {
   letter-spacing: 0%;
 }
 
-input {
+.ad input {
   width: 100%;
   opacity: 1;
   padding-top: 12px;
@@ -148,14 +144,16 @@ input {
   font-size: 20px;
   line-height: 120%;
 }
-textarea {
+
+.ad textarea {
   width: 100%;
   height: 120px;
   opacity: 1;
-  padding-top: 12px;
+  /* padding-top: 12px;
   padding-right: 21px;
   padding-bottom: 12px;
-  padding-left: 21px;
+  padding-left: 21px; */
+  padding: 12px 21px;
   gap: 10px;
   border-radius: 10px;
   border-width: 1px;
@@ -169,12 +167,12 @@ textarea {
   letter-spacing: 0%;
 }
 
-input:focus {
+.ad input:focus {
   border: 1px solid #29abe2;
 }
 
 /* Add focus effect for textarea like input */
-textarea:focus {
+.ad textarea:focus {
   border: 1px solid #29abe2;
 }
 
@@ -201,18 +199,18 @@ textarea:focus {
   cursor: pointer;
 }
 
-input[type="date"] {
+.ad input[type="date"] {
   appearance: none; /* modern way */
   -moz-appearance: textfield; /* Firefox */
   -webkit-appearance: none; /* WebKit */
   position: relative;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+.ad input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-select {
+.ad select {
   width: 100%;
   justify-content: space-between;
   opacity: 1;
@@ -225,9 +223,9 @@ select {
   border: 1px solid #d1d1d1;
 }
 
-hr {
+.ad hr {
   width: 0px;
- 
+
   opacity: 1;
   border-width: 1px;
   border: 1px solid #d1d1d1;
@@ -235,7 +233,7 @@ hr {
   margin-right: 3%;
 }
 
-button {
+.ad button {
   opacity: 1;
   padding-top: 16px;
   padding-right: 10px;
@@ -260,13 +258,11 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  
 }
 
-.submit_butn_wrapper{
+.submit_butn_wrapper {
   display: flex;
   flex-direction: row;
-
 }
 
 .submit_container button {
@@ -276,7 +272,7 @@ button {
 }
 
 .clear_btn {
-  width:110px;
+  width: 110px;
   height: 56px;
   border: 1px solid #2a3647;
 }
@@ -289,7 +285,7 @@ button {
   background-color: #2a3647;
   color: white;
   padding: 0.2em 0.6em;
-  
+
   font-weight: 400;
   cursor: pointer;
   display: flex;
@@ -377,7 +373,6 @@ button {
   overflow-y: auto;
   border-top: 20px solid white; /* thickness, style, color */
   margin-top: -20px;
-  
 }
 
 .checkbox {
@@ -402,7 +397,7 @@ button {
   border-radius: 10px;
   background: transparent;
   transition: background 0.15s, color 0.15s;
-  color: #2A3647;
+  color: #2a3647;
 }
 
 .single_contact p {
@@ -428,7 +423,7 @@ button {
 }
 #contacts .single_contact:hover,
 #contacts .single_contact.active:hover {
-  background: #2A3647 !important;
+  background: #2a3647 !important;
   color: #fff !important;
 }
 #contacts .single_contact:hover p,
@@ -448,12 +443,12 @@ button {
 
 /* Hover for non-active assigned-to list items */
 #contacts .single_contact:not(.active):hover {
-  background: #EEEEEE !important;
-  color: #2A3647 !important;
+  background: #eeeeee !important;
+  color: #2a3647 !important;
 }
 #contacts .single_contact:not(.active):hover p,
 #contacts .single_contact:not(.active):hover div {
-  color: #2A3647 !important;
+  color: #2a3647 !important;
 }
 
 /* Category list: hover background and pointer */
@@ -461,7 +456,7 @@ button {
   cursor: pointer;
 }
 #categorys .single_contact:hover {
-  background: #EEEEEE !important;
+  background: #eeeeee !important;
 }
 
 /* Both lists: pointer cursor for all list items */
@@ -488,7 +483,7 @@ button {
   transform: translateY(-10px); /* start a bit higher */
   transition: all 0.3s ease; /* smooth animation */
   position: absolute;
-  
+
   width: 100%;
   background-color: #ffffff;
 }
@@ -570,10 +565,10 @@ button {
   margin: 0;
 }
 
-.subtask_item_wrapper:hover{
-  background: #EEEEEE;
-border-radius: 8px;
-cursor: pointer;
+.subtask_item_wrapper:hover {
+  background: #eeeeee;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* Remove hover background in editing mode */
@@ -587,10 +582,10 @@ cursor: pointer;
 .subtask_item_wrapper {
   display: flex;
   flex-direction: row;
-width: 47%;
+  align-items: center;
+  width: 47%;
   padding-left: 16px;
   padding-right: 16px;
-  margin-top: 8px;
 }
 
 .subtask_item_wrapper input {
@@ -603,7 +598,7 @@ width: 47%;
   align-items: center;
   justify-content: space-between;
   width: 56px;
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .subtask_item_edit img {
@@ -630,11 +625,11 @@ width: 47%;
   height: 90%;
 }
 
-.subtask_input_wrapper{
-position: relative;
+.subtask_input_wrapper {
+  position: relative;
 }
 
-.subtask_input_button{
+.subtask_input_button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -646,27 +641,28 @@ position: relative;
   transform: translateY(-50%);
   height: 20px;
   cursor: pointer;
-
 }
 
-.subtask_input_button hr{
+.subtask_input_button hr {
   height: 100%;
 }
 
-.subtask_list{
+
+.subtask_list {
   margin-left: 10%;
-  
   width: 80%;
   display: flex;
-flex-direction: column;  
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-end;
+  overflow-y: auto;
+  max-height: 112px;
 }
 
-.required_info{
+.required_info {
   display: flex;
   flex-direction: row;
- font-size: 20px;
+  font-size: 20px;
 }
 
 .priority_wrapper button svg {

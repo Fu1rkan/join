@@ -31,6 +31,7 @@
   --weight-600: 600;
   --weight-700: 700;
 
+  --font-size-12: 12px;
   --font-size-16: 16px;
   --font-size-20: 20px;
   --font-size-21: 21px;
@@ -65,13 +66,11 @@ h5 {
   display: flex;
   width: 100%;
   background-color: rgba(246, 247, 248, 1);
-  /* max-width: 1440px; */
 }
 
 main {
   display: flex;
   width: 100%;
-  /* max-width: calc(1440px - 232px); */
   flex-direction: column;
 }
 

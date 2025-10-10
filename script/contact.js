@@ -1,4 +1,7 @@
-let overlayRef = document.getElementById("overlay");
+const overlayRef = document.getElementById("overlay");
+const overlayContentRef = document.getElementById('overlay_content');
+const contactListRef = document.getElementById("contact_list");
+const templateRef = document.getElementById("contact_template");
 
 function openOverlay() {
     overlayRef.classList.remove('d_none');
@@ -10,11 +13,10 @@ function closeOverlay() {
 
 function toggleContact(name, email, keys, index) {
     const contactCardRef = document.getElementById(`letter_${keys}_${index}`);
-    const templateRef = document.getElementById("contact_template");
     const contactRef = contacts.find(t => t.name === name && t.email === email);
     const isActive = contactCardRef.classList.contains("active-contact");
     removeActiveClass();
-    highlightContactAndOpenContactTemplate(contactCardRef, templateRef, contactRef, isActive);
+    highlightContactAndOpenContactTemplate(contactCardRef, contactRef, isActive);
 }
 
 function removeActiveClass() {
@@ -24,7 +26,7 @@ function removeActiveClass() {
     });
 }
 
-function highlightContactAndOpenContactTemplate(contactCardRef, templateRef, contactRef, isActive) {
+function highlightContactAndOpenContactTemplate(contactCardRef, contactRef, isActive) {
 
     if (!isActive) {
         contactCardRef.classList.add("active-contact");
@@ -40,19 +42,17 @@ function highlightContactAndOpenContactTemplate(contactCardRef, templateRef, con
 
 function addNewContact() {
     overlayRef.classList.remove('d_none');
-    let overlayContentRef = document.getElementById('overlay_content');
     overlayContentRef.innerHTML = showAddContactCard();
 }
 
 function editContact(name, email, phone) {
     overlayRef.classList.remove('d_none');
-    let overlayContentRef = document.getElementById('overlay_content');
     overlayContentRef.innerHTML = showContactEditCard(name, email, phone);
+
 }
 
 function saveChangedContact(name, email) {
     const contactRef = contacts.find(t => t.name === name && t.email === email);
-    const templateRef = document.getElementById("contact_template");
     let contactName = document.getElementById('edit_name').value;
     let contactEmail = document.getElementById('edit_email').value;
     let contactPhone = document.getElementById('edit_phone').value;
@@ -60,7 +60,20 @@ function saveChangedContact(name, email) {
     contactRef.email = contactEmail;
     contactRef.phone = contactPhone;
     filterContacts();
-    templateRef.classList.add('d_none')
+    templateRef.innerHTML = getContactTemplate(contactRef);
+    const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
+    contactInfoBigTemplateRef.classList.remove('fade-in-template');
+    highlightChangedContact(contactRef);
+}
+
+function highlightChangedContact(contactRef) {
+    removeActiveClass();
+    const firstLetter = contactRef.name.trim().charAt(0).toUpperCase();
+    const groupedContacts = builtAcc();
+    const index = groupedContacts[firstLetter].findIndex(
+        c => c.name === contactRef.name && c.email === contactRef.email
+    );
+    highlightContact(firstLetter, index);
 }
 
 function fadeInCreateMsg() {
@@ -81,7 +94,12 @@ function fadeInCreateMsg() {
 }
 
 function filterContacts() {
-    const groupedContacts = contacts.reduce((acc, contact) => {
+    const groupedContacts = builtAcc();
+    renderContacts(groupedContacts);
+}
+
+function builtAcc() {
+    return contacts.reduce((acc, contact) => {
         const firstLetter = contact.name.trim().charAt(0).toUpperCase();
         if (!acc[firstLetter]) {
             acc[firstLetter] = [];
@@ -89,7 +107,6 @@ function filterContacts() {
         acc[firstLetter].push(contact);
         return acc;
     }, {});
-    renderContacts(groupedContacts);
 }
 
 function renderContacts(groupedContacts) {
@@ -108,7 +125,6 @@ function renderContacts(groupedContacts) {
 
 function renderContactList(keys) {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-    const contactListRef = document.getElementById("contact_list");
     contactListRef.innerHTML = "";
     alphabet.forEach(letter => {
         const section = document.createElement("section");
@@ -122,7 +138,7 @@ function createNewContact() {
     let createEmail = document.getElementById('create_email').value;
     let createPhone = document.getElementById('create_phone').value;
 
-    if (createName != "") {
+    if (createName != "" && createEmail != "") {
         let capitalizedName = generatecapitalizedName(createName);
         let nameLetters = generateLetters(capitalizedName);
         let fillColor = getRandomColor();
@@ -149,20 +165,14 @@ function generatecapitalizedName(createName) {
 }
 
 function findNewestContactAndHighlightIt(createName) {
-    document.querySelectorAll('.active-contact').forEach(el => el.classList.remove('active-contact'));
-    // Find the index and key for the new contact
-    const groupedContacts = contacts.reduce((acc, contact) => {
-        const firstLetter = contact.name.trim().charAt(0).toUpperCase();
-        if (!acc[firstLetter]) acc[firstLetter] = [];
-        acc[firstLetter].push(contact);
-        return acc;
-    }, {});
+    removeActiveClass();
+    const groupedContacts = builtAcc();
     const firstLetter = createName.trim().charAt(0).toUpperCase();
     const index = groupedContacts[firstLetter].length - 1;
-    highlightNewestContact(firstLetter, index);
+    highlightContact(firstLetter, index);
 }
 
-function highlightNewestContact(firstLetter, index) {
+function highlightContact(firstLetter, index) {
     const contactElem = document.getElementById(`letter_${firstLetter.toLowerCase()}_${index}`);
     if (contactElem) {
         contactElem.classList.add('active-contact');
@@ -181,8 +191,8 @@ function createObjectNewContact(createName, createEmail, createPhone, nameLetter
             "name": createName,
             "email": createEmail,
             "phone": createPhone,
-            "svg": createOutlinedCircleSVG(nameLetters, 42, fillColor, 12),
-            "svg_big": createOutlinedCircleSVG(nameLetters, 120, fillColor, 47)
+            "fillColor": fillColor,
+            "nameLetters" : nameLetters
         }
         contacts.push(newContact);
         showCreatedContactTemplate(newContact);
@@ -215,7 +225,6 @@ function getRandomColor() {
 }
 
 function showCreatedContactTemplate(newContact) {
-    const templateRef = document.getElementById("contact_template");
     templateRef.classList.remove("d_none");
     templateRef.innerHTML = getContactTemplate(newContact);
     setTimeout(() => {
@@ -224,10 +233,7 @@ function showCreatedContactTemplate(newContact) {
 }
 
 function deleteCurrentContact(name, email) {
-    const templateRef = document.getElementById("contact_template");
     contacts.splice(contacts.findIndex(t => t.name == name && t.email == email),1);
     filterContacts();
     templateRef.classList.add('d_none');
-
-    
 }

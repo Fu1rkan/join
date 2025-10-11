@@ -1,0 +1,39 @@
+
+@media (max-width:1400px) {
+    .navbar {
+    width: 15%;
+}
+
+.contacts-main-content {
+    width: 85%;
+}
+
+.contacts-content {
+    width: 100%;
+}
+
+.contact-list-area {
+    width: 40%;
+}
+
+
+.contact {
+    width: 60%;
+}
+
+.contacts-header {
+    width: 90%;
+}
+
+.contact-info-big-container {
+    width: 100%;
+}
+
+.contact-template {
+    width: 100%;
+}
+
+.succes-created-container {
+    width: 100%;
+}
+}

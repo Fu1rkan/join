@@ -208,10 +208,23 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 569px;
+    /* width: 569px; */
     height: 73px;
     gap: 30px;
     margin-top: 110px;
+}
+
+.contacts-header>h2 {
+    font-size: var(--font-size-61);
+    font-weight: var(--weight-700);
+}
+
+.contact-header-second-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 73px;
+    gap: 30px;
 }
 
 .contacts-header-seperator {

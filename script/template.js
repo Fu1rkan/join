@@ -242,25 +242,25 @@ function signUpSuccessfull() {
         </div>`;
 }
 
-function emptyTaskList(){
+function emptyTaskList() {
     return `
         <div class="no-task">No tasks${'To do'}</div>
     `
 }
 
-function taskTemp(category, task){
+function taskTemp(category, task) {
     return `
-        <div class="task" onclick="toggleTaskOverlay${category}${task}('task-dialog')">
-            <p class="task-label" id="type-${category}-${task}"></p>
+        <div class="task" onclick="toggleTaskOverlay('${category}', '${task}')">
+            <p class="task-label" id="task-type-${category}-${task}"></p>
             <h5>${taskList[category][task].name}</h5>
-            <p class="task-desc" id="desc-${category}-${task}"></p>
-            <section class="progress" id="subtasks-${category}-${task}"></section>
-            <footer id="footer-${category}-${task}"></footer>
+            <p class="task-desc" id="task-desc-${category}-${task}"></p>
+            <section class="progress" id="task-subtasks-${category}-${task}"></section>
+            <footer id="task-footer-${category}-${task}"></footer>
         </div>
     `
 }
 
-function progressTemp(taskCount, trueCount){
+function progressTemp(taskCount, trueCount) {
     return `
         <div class="progress-track">
             <div class="progress-fill" style="width: ${trueCount * 100 / taskCount}%;"></div>
@@ -269,20 +269,20 @@ function progressTemp(taskCount, trueCount){
     `
 }
 
-function taskFooterTemp(category, task){
+function taskFooterTemp(category, task) {
     return `
-        <div class="task-assignees" id="participants-${category}-${task}"></div>
-        <div class="task-priority" id="prio-${category}-${task}"></div>
+        <div class="task-assignees" id="task-participants-${category}-${task}"></div>
+        <div class="task-priority" id="task-prio-${category}-${task}"></div>
     `
 }
 
-function participantsTemp(task, index){
+function participantsTemp(task, index) {
     return `
-        <div class="user-logo">${task.participants[index].name[0].charAt(0).toUpperCase()+task.participants[index].name[1].charAt(0).toUpperCase()}</div>
+        <div class="user-logo">${task.participants[index].name[0].charAt(0).toUpperCase() + task.participants[index].name[1].charAt(0).toUpperCase()}</div>
     `
 }
 
-function urgentPrioTemp(){
+function urgentPrioTemp() {
     return `
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
             <path d="M9.00026 4.75476C9.19969 4.75443 9.39397 4.81633 9.55451 4.93137L17.123 10.3653C17.2215 10.4361 17.3046 10.525 17.3678 10.627C17.4309 10.7291 17.4727 10.8422 17.4909 10.9599C17.5276 11.1977 17.4656 11.4399 17.3186 11.6333C17.1716 11.8266 16.9516 11.9553 16.7071 11.9909C16.4625 12.0266 16.2134 11.9664 16.0145 11.8234L9.00026 6.7925L1.98602 11.8234C1.88754 11.8942 1.7757 11.9454 1.65687 11.9742C1.53803 12.0029 1.41455 12.0086 1.29345 11.9909C1.17235 11.9733 1.05602 11.9326 0.951088 11.8712C0.846159 11.8099 0.754691 11.729 0.681906 11.6333C0.609122 11.5375 0.556445 11.4288 0.526885 11.3132C0.497325 11.1977 0.491459 11.0776 0.509623 10.9599C0.527789 10.8422 0.569626 10.7291 0.632752 10.627C0.695876 10.525 0.779049 10.4361 0.877524 10.3653L8.44602 4.93137C8.60656 4.81633 8.80083 4.75443 9.00026 4.75476Z" fill="#FF3D00"/>
@@ -291,7 +291,7 @@ function urgentPrioTemp(){
     `
 }
 
-function lowPrioTemp(){
+function lowPrioTemp() {
     return `
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
             <path d="M8.99974 7.24524C8.80031 7.24557 8.60603 7.18367 8.44549 7.06863L0.876998 1.63467C0.778524 1.56391 0.695351 1.47498 0.632227 1.37296C0.569103 1.27094 0.527264 1.15784 0.5091 1.0401C0.472414 0.802317 0.534386 0.560105 0.681381 0.366747C0.828377 0.17339 1.04835 0.0447247 1.29292 0.00905743C1.53749 -0.0266099 1.78661 0.0336422 1.98549 0.176559L8.99974 5.2075L16.014 0.17656C16.1125 0.105795 16.2243 0.0545799 16.3431 0.02584C16.462 -0.00289994 16.5855 -0.00860237 16.7066 0.00905829C16.8277 0.0267189 16.944 0.0673968 17.0489 0.128769C17.1538 0.190142 17.2453 0.271007 17.3181 0.366748C17.3909 0.462489 17.4436 0.571231 17.4731 0.686765C17.5027 0.802299 17.5085 0.922362 17.4904 1.0401C17.4722 1.15784 17.4304 1.27094 17.3672 1.37296C17.3041 1.47498 17.221 1.56391 17.1225 1.63467L9.55398 7.06863C9.39344 7.18367 9.19917 7.24557 8.99974 7.24524Z" fill="#7AE229"/>
@@ -300,7 +300,7 @@ function lowPrioTemp(){
     `
 }
 
-function mediumPrioTemp(){
+function mediumPrioTemp() {
     return `
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="8" viewBox="0 0 18 8" fill="none">
             <g clip-path="url(#clip0_378808_2069)">
@@ -316,13 +316,14 @@ function mediumPrioTemp(){
     `
 }
 
-function taskOverlayTemp(){
+function taskOverlayTemp(category, task) {
+    
     return `
-        <div class="open-close-dialog" onclick="toggleTaskOverlay('task-dialog')">
+        <div class="open-close-dialog" onclick="toggleTaskOverlay('task-dialog')" id="task-overlay-${category}${task}">
             <div class="task-overlay" onclick="stopPropagation(event)">
 
                 <header>
-                    <p class="main-task-label"></p>
+                    <p class="main-task-label" id="overlay-type-${category}-${task}"></p>
                     <div class="close-button" onclick="toggleTaskOverlay('task-dialog')">
                         <svg width="14" height="14" viewBox="0 0 14 14">
                             <path d="M6.99999 8.40005L2.09999 13.3C1.91665 13.4834 1.68332 13.575 1.39999 13.575C1.11665 13.575 0.883321 13.4834 0.699988 13.3C0.516654 13.1167 0.424988 12.8834 0.424988 12.6C0.424988 12.3167 0.516654 12.0834 0.699988 11.9L5.59999 7.00005L0.699988 2.10005C0.516654 1.91672 0.424988 1.68338 0.424988 1.40005C0.424988 1.11672 0.516654 0.883382 0.699988 0.700049C0.883321 0.516715 1.11665 0.425049 1.39999 0.425049C1.68332 0.425049 1.91665 0.516715 2.09999 0.700049L6.99999 5.60005L11.9 0.700049C12.0833 0.516715 12.3167 0.425049 12.6 0.425049C12.8833 0.425049 13.1167 0.516715 13.3 0.700049C13.4833 0.883382 13.575 1.11672 13.575 1.40005C13.575 1.68338 13.4833 1.91672 13.3 2.10005L8.39999 7.00005L13.3 11.9C13.4833 12.0834 13.575 12.3167 13.575 12.6C13.575 12.8834 13.4833 13.1167 13.3 13.3C13.1167 13.4834 12.8833 13.575 12.6 13.575C12.3167 13.575 12.0833 13.4834 11.9 13.3L6.99999 8.40005Z" />
@@ -330,20 +331,20 @@ function taskOverlayTemp(){
                     </div>
                 </header>
 
-                <h2>What is Can doing?</h2>
+                <h2>${taskList[category][task].name}</h2>
 
-                <p class="main-task-decription"></p>
+                <p class="main-task-decription" id="overlay-desc-${category}-${task}"></p>
 
                 <section class="main-task-date">
                     <p class="due-date">Due date:</p>
-                    <p class="date" id="date-task-overlay"></p>
+                    <p class="date">${taskList[category][task].date}</p>
                 </section>
 
-                <section class="main-task-priority" id="prio-task-overlay"></section>
+                <section class="main-task-priority" id="overlay-prio-${category}-${task}"></section>
 
-                <section class="main-task-assigned-list"></section>
+                <section class="main-task-assigned-list" id="overlay-participants-${category}-${task}"></section>
 
-                <section class="main-task-subtasks"></section>
+                <section class="main-task-subtasks" id="overlay-subtasks-${category}-${task}"></section>
                 
                 <footer>
                     <div class="main-task-edit">
@@ -370,49 +371,50 @@ function taskOverlayTemp(){
     `
 }
 
-function prioTaskOverlayTemp(){
+function prioTaskOverlayTemp(task, type) {
     return `
-        p class="due-date">Priority:</p>
+        <p class="due-date">Priority:</p>
         <div class="priority-class">
-            <p class="date"></p>
-            <div id="prio-type-task-overlay"></div>
+            <p class="date">${task.priority}</p>
+            <div>${type}</div>
         </div>
     `
 }
 
-function participantsTaskOverlayTemp(){
+function participantsTaskOverlayTemp(category, task) {
     return `
         <p class="due-date">Assigned To:</p>
-        <div class="assigned-list">
-            <div class="assigned"></div>
+        <div class="assigned-list" id="participants-list-${category}-${task}"></div>
+    `
+}
+
+function participantTemp(task, index) {
+    return `
+    
+        <div class="assigned">
+            <div class="asssigned-person-logo">${task.participants[index].name[0].charAt(0).toUpperCase() + task.participants[index].name[1].charAt(0).toUpperCase()}</div>
+            <p class="asssigned-person">${task.participants[index].name}</p>
         </div>
     `
 }
 
-function participantTemp(){
-    return `
-        <div class="asssigned-person-logo"></div>
-        <p class="asssigned-person"></p>
-    `
-}
-
-function subtasksTaskOverlay(){
+function subtasksTaskOverlay(category, task) {
     return `
         <p class="due-date">Subtasks</p>
-        <div class="subtask-list"></div>
+        <div class="subtask-list" id="subtasks-list-${category}-${task}"></div>
     `
 }
 
-function subtaskListTemp(){
-    return`
+function subtaskListTemp(task, index, status) {
+    return `
         <div class="subtask">
-            <div class="subtask-checkbox"></div>
-            <p class="subtask-quest"></p>
+            <div class="subtask-checkbox">${status}</div>
+            <p class="subtask-quest">${task.subtasks[index].name}</p>
         </div>
     `
 }
 
-function subtaskDoneTemp(){
+function subtaskDoneTemp() {
     return `
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
             <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
@@ -421,7 +423,7 @@ function subtaskDoneTemp(){
     `
 }
 
-function subtaskToDoTemp(){
+function subtaskToDoTemp() {
     return `
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
             <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>

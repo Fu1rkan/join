@@ -17,15 +17,16 @@ let taskList = {
             'participants' : [
                 {'name' : ['Furkan', 'Yigit']},
                 {'name' : ['Can', 'Marco']},
-                {'name' : ['Sven', 'Degen']},
+                {'name' : ['Test', 'Person']},
                 {'name' : ['David', 'Groß']},
                 {'name' : ['Kim', 'B']}
             ],
-            'priority' : 'urgent'
+            'priority' : 'urgent',
+            'date' : '11/10/2025'
         },
         {
             'type' : 'User Story',
-            'name' : 'Join mit den besten zusammenstellen',
+            'name' : 'Test',
             'description' : 'Building all Pages with HTML and CSS and then we add functionality for the website!',
             'subtasks' : [
                 {'name' : 'Page Overlays', 'status' : true},
@@ -41,7 +42,8 @@ let taskList = {
                 {'name' : ['David', 'Groß']},
                 {'name' : ['Kim', 'B']}
             ],
-            'priority' : 'medium'
+            'priority' : 'medium',
+            'date' : '11/10/2025'
         }
     ],
 
@@ -52,14 +54,15 @@ let taskList = {
             'description' : null,
             'subtasks' : null,
             'participants' : null,
-            'priority' : null
+            'priority' : null,
+            'date' : '11/10/2025'
         }
     ],
     
     'done' : [
         {
             'type' : 'Technical Task',
-            'name' : 'Join mit den besten zusammenstellen',
+            'name' : 'Join Test',
             'description' : null,
             'subtasks' : [
                 {'name' : 'Page Overlays', 'status' : true},
@@ -75,7 +78,8 @@ let taskList = {
                 {'name' : ['David', 'Groß']},
                 {'name' : ['Kim', 'B']}
             ],
-            'priority' : 'low'
+            'priority' : 'low',
+            'date' : '11/10/2025'
         }
     ]
 }

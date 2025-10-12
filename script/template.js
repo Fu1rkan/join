@@ -88,7 +88,7 @@ function signUpTemplate() {
                         <li>
                             <form action="username" class="username_input" id="username_input_id">
                                 <label>
-                                    <input type="text" id="username" name="username" required placeholder="Username">
+                                    <input type="text" id="username" name="username" placeholder="Username">
                                     <div>
                                     <svg class="user_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path
@@ -102,7 +102,7 @@ function signUpTemplate() {
                         <li>
                             <form action="email" class="email_input" id="email_input_id">
                                 <label for="email_input_id">
-                                    <input type="Email" id="Email" name="Email" required placeholder="Email">
+                                    <input type="Email" id="Email" name="Email" placeholder="Email">
                                     <div>
                                     <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16" fill="none">
                                         <path
@@ -116,7 +116,7 @@ function signUpTemplate() {
                         <li>
                             <form action="password_input" class="password_input" id="password_input_id">
                                 <label for="password_input">
-                                    <input class="password_input" type="password" id="password" name="password" required placeholder="Password">
+                                    <input class="password_input" type="password" id="password" name="password" placeholder="Password">
                                     <div id="toggle_password_visibility_button">
                                         <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                             viewBox="0 0 17 22" fill="none">
@@ -131,7 +131,7 @@ function signUpTemplate() {
                         <li>
                             <form action="password_input" class="password_input" id="password_input_id">
                                 <label for="password_input">
-                                    <input class="password_input" type="password" id="password_repeat" name="password_repeat" required placeholder="Password">
+                                    <input class="password_input" type="password" id="password_repeat" name="password_repeat" placeholder="Password">
                                     <div id="toggle_password_repeat_button">
                                         <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                             viewBox="0 0 17 22" fill="none">

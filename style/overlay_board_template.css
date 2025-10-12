@@ -1,0 +1,65 @@
+.overlay-board {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.add-task-card {
+    width: 1116px;
+    height: 870px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+}
+
+.add-task-header {
+    margin: 64px 40px 32px 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-task-header>h2 {
+    height: 78px;
+}
+
+.close-board-overlay {
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+
+.close-board-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.board-overlay-form {
+    display: flex;
+    height: 392px;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.board-overlay-submit-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 184px 0 0 10%;
+    width: 80%;
+}
+
+.board-overlay-submit-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3%;
+    white-space: nowrap;
+    font-size: 21px;
+}

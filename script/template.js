@@ -1,3 +1,4 @@
+// LogIn page template
 function logInTemplate() {
     return `
         <section id="main_header">
@@ -36,7 +37,7 @@ function logInTemplate() {
                     <label for="password_input_id">
                         <input class="password_input" type="password" id="password" name="password" required
                             placeholder="Password">
-                        <div onclick="togglePasswordVisibility()" id="toggle_password_visibility_button">
+                        <div id="toggle_password_visibility_button" >
                             <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                 viewBox="0 0 17 22" fill="none">
                                 <path
@@ -61,6 +62,7 @@ function logInTemplate() {
         </footer>`;
 }
 
+// SignUp page template
 function signUpTemplate() {
     return `
             <section id="main_header">
@@ -86,7 +88,7 @@ function signUpTemplate() {
                         <li>
                             <form action="username" class="username_input" id="username_input_id">
                                 <label>
-                                    <input type="text" id="username" name="username" required placeholder="Username">
+                                    <input type="text" id="username" name="username" placeholder="Username">
                                     <div>
                                     <svg class="user_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path
@@ -100,7 +102,7 @@ function signUpTemplate() {
                         <li>
                             <form action="email" class="email_input" id="email_input_id">
                                 <label for="email_input_id">
-                                    <input type="Email" id="Email" name="Email" required placeholder="Email">
+                                    <input type="Email" id="Email" name="Email" placeholder="Email">
                                     <div>
                                     <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16" fill="none">
                                         <path
@@ -114,8 +116,8 @@ function signUpTemplate() {
                         <li>
                             <form action="password_input" class="password_input" id="password_input_id">
                                 <label for="password_input">
-                                    <input class="password_input" type="password" id="password" name="password" required placeholder="Password">
-                                    <div onclick="togglePasswordVisibility()" id="toggle_password_visibility_button">
+                                    <input class="password_input" type="password" id="password" name="password" placeholder="Password">
+                                    <div id="toggle_password_visibility_button">
                                         <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                             viewBox="0 0 17 22" fill="none">
                                             <path
@@ -129,8 +131,8 @@ function signUpTemplate() {
                         <li>
                             <form action="password_input" class="password_input" id="password_input_id">
                                 <label for="password_input">
-                                    <input class="password_input" type="password" id="password_repeat" name="password_repeat" required placeholder="Password">
-                                    <div onclick="toggleRepeatPasswordVisibility()" id="toggle_password_repeat_button">
+                                    <input class="password_input" type="password" id="password_repeat" name="password_repeat" placeholder="Password">
+                                    <div id="toggle_password_repeat_button">
                                         <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                             viewBox="0 0 17 22" fill="none">
                                             <path
@@ -144,15 +146,17 @@ function signUpTemplate() {
                     </ul>
                 
                     <div class="privacy_policy_checkbox_group">
-                            <svg class="pp_checkbox" id="pp_checkbox_id" onclick="changeCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
+                        <label role="checkbox" aria-checked="false" id="pp_checkbox_id" >
+                            <svg class="pp_checkbox" onclick="acceptCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
                                 <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                             </svg>
+                        </label>
                             <span>I accept the <a href="">Privacy policy</a></span>
                     </div>
                 </div>
 
                 <div class="sign_up_button_group">
-                    <button onclick="openSignUpOverlay()" class="sign_up_button" type="">Sign Up</button>
+                        <button onclick="openSignUpOverlay()" class="sign_up_button" type="">Sign Up</button>
                 </div>
                 
                 <footer class="main_footer">
@@ -166,6 +170,7 @@ function signUpTemplate() {
             </section>`;
 }
 
+//  join logo (top left) template
 function joinLogoTemplate() {
     return `<div class="join_logo">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 274 335" fill="none">
@@ -185,13 +190,26 @@ function joinLogoTemplate() {
             </div>`;
 }
 
-function checkboxTemplate() {
-    return `<svg xmlns="http://www.w3.org/2000/svg" class="pp_checkbox" width="18" height="19" viewBox="0 0 18 19" fill="none">
-                <path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                <path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>`;
+// privacy policy accept checkbox template
+function acceptCheckboxTemplate() {
+    return `<label role="checkbox" aria-checked="true" id="pp_checkbox_id" onclick="refuseCheckbox()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="pp_checkbox" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                    <path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </label>`;
 }
 
+// privacy policy refuse checkbox template
+function refuseCheckboxTemplate() {
+    return `<label role="checkbox" aria-checked="false" id="pp_checkbox_id" >
+                <svg class="pp_checkbox" onclick="acceptCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
+                    <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
+                </svg>
+            </label>`;
+}
+
+// password lock icon - inside input field
 function showPasswordLock() {
     return `<svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
         viewBox="0 0 17 22" fill="none">
@@ -203,8 +221,9 @@ function showPasswordLock() {
     </svg>`;
 }
 
+// show password eye icon for rgular password input
 function showPasswordTemplate() {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 20" fill="none"> 
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 20" fill="none"  onclick="togglePasswordVisibility()"> 
                 <path d="M15.1 10.3001L13.65 8.8501C13.8 8.06676 13.575 7.33343 12.975 6.6501C12.375 5.96676 11.6 
                     5.7001 10.65 5.8501L9.20005 4.4001C9.48338 4.26676 9.77088 4.16676 10.0625 4.1001C10.3542 4.03343 
                     10.6667 4.0001 11 4.0001C12.25 4.0001 13.3125 4.4376 14.1875 5.3126C15.0625 6.1876 15.5 7.2501 15.5 8.5001C15.5 8.83343 
@@ -221,21 +240,53 @@ function showPasswordTemplate() {
             </svg>`;
 }
 
+// hide password eye icon for rgular password input
 function hidePasswordTemplate() {
-    return `<svg width="22" height="21" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return `<svg width="22" height="21" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg"  onclick="togglePasswordVisibility()">
                 <path d="M11 12C12.25 12 13.3125 11.5625 14.1875 10.6875C15.0625 9.8125 15.5 8.75 15.5 7.5C15.5 6.25 15.0625 5.1875 14.1875 
                 4.3125C13.3125 3.4375 12.25 3 11 3C9.75005 3 8.68755 3.4375 7.81255 4.3125C6.93755 5.1875 6.50005 6.25 6.50005 7.5C6.50005 8.75 
                 6.93755 9.8125 7.81255 10.6875C8.68755 11.5625 9.75005 12 11 12ZM11 10.2C10.25 10.2 9.61255 9.9375 9.08755 9.4125C8.56255 8.8875 8.30005 
                 8.25 8.30005 7.5C8.30005 6.75 8.56255 6.1125 9.08755 5.5875C9.61255 5.0625 10.25 4.8 11 4.8C11.75 4.8 12.3875 5.0625 12.9125 5.5875C13.4375 
                 6.1125 13.7 6.75 13.7 7.5C13.7 8.25 13.4375 8.8875 12.9125 9.4125C12.3875 9.9375 11.75 10.2 11 10.2ZM11 15C8.68338 15 6.56672 14.3875 4.65005 13.1625C2.73338 11.9375 1.28338 10.2833 0.300049 8.2C0.250049 8.11667 0.216715 8.0125 0.200049 7.8875C0.183382 7.7625 0.175049 7.63333 0.175049 7.5C0.175049 7.36667 0.183382 7.2375 0.200049 7.1125C0.216715 6.9875 0.250049 6.88333 0.300049 6.8C1.28338 4.71667 2.73338 3.0625 4.65005 1.8375C6.56672 0.6125 8.68338 0 11 0C13.3167 0 15.4334 0.6125 17.35 1.8375C19.2667 3.0625 20.7167 4.71667 21.7 6.8C21.75 6.88333 21.7834 6.9875 21.8 7.1125C21.8167 7.2375 21.825 7.36667 21.825 7.5C21.825 7.63333 21.8167 7.7625 21.8 7.8875C21.7834 8.0125 21.75 8.11667 21.7 8.2C20.7167 10.2833 19.2667 11.9375 17.35 13.1625C15.4334 14.3875 13.3167 15 11 15ZM11 13C12.8834 13 14.6125 12.5042 16.1875 11.5125C17.7626 10.5208 18.9667 9.18333 19.8 7.5C18.9667 5.81667 17.7626 4.47917 16.1875 3.4875C14.6125 2.49583 12.8834 2 11 2C9.11672 2 7.38755 2.49583 5.81255 3.4875C4.23755 4.47917 3.03338 5.81667 2.20005 7.5C3.03338 9.18333 4.23755 10.5208 5.81255 11.5125C7.38755 
                 12.5042 9.11672 13 11 13Z" fill="#A8A8A8"/>
-            </svg>
-`;
+            </svg>`;
 }
 
+// show password eye icon for password repeat input
+function showPasswordRepeatTemplate() {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 20" fill="none"  onclick="toggleRepeatPasswordVisibility()"> 
+                <path d="M15.1 10.3001L13.65 8.8501C13.8 8.06676 13.575 7.33343 12.975 6.6501C12.375 5.96676 11.6 
+                    5.7001 10.65 5.8501L9.20005 4.4001C9.48338 4.26676 9.77088 4.16676 10.0625 4.1001C10.3542 4.03343 
+                    10.6667 4.0001 11 4.0001C12.25 4.0001 13.3125 4.4376 14.1875 5.3126C15.0625 6.1876 15.5 7.2501 15.5 8.5001C15.5 8.83343 
+                    15.4667 9.14593 15.4 9.4376C15.3334 9.72927 15.2334 10.0168 15.1 10.3001ZM18.3 13.4501L16.85 12.0501C17.4834 11.5668 18.0459 
+                    11.0376 18.5375 10.4626C19.0292 9.8876 19.45 9.23343 19.8 8.5001C18.9667 6.81676 17.7709 5.47926 16.2125 4.4876C14.6542 3.49593 
+                    12.9167 3.0001 11 3.0001C10.5167 3.0001 10.0417 3.03343 9.57505 3.1001C9.10838 3.16676 8.65005 3.26676 8.20005 3.4001L6.65005 
+                    1.8501C7.33338 1.56676 8.03338 1.35426 8.75005 1.2126C9.46671 1.07093 10.2167 1.0001 11 1.0001C13.3834 1.0001 15.525 1.62926 
+                    17.425 2.8876C19.325 4.14593 20.75 5.78343 21.7 7.8001C21.75 7.88343 21.7834 7.9876 21.8 8.1126C21.8167 8.2376 21.825 8.36677 
+                    21.825 8.5001C21.825 8.63343 21.8125 8.7626 21.7875 8.8876C21.7626 9.0126 21.7334 9.11677 21.7 9.2001C21.3167 10.0501 20.8375 
+                    10.8334 20.2625 11.5501C19.6875 12.2668 19.0334 12.9001 18.3 13.4501ZM18.1 18.9001L14.6 15.4501C14.0167 15.6334 13.4292 15.7709 
+                    12.8375 15.8626C12.2459 15.9543 11.6334 16.0001 11 16.0001C8.61672 16.0001 6.47505 15.3709 4.57505 14.1126C2.67505 12.8543 1.25005 
+                    11.2168 0.300049 9.2001C0.250049 9.11677 0.216715 9.0126 0.200049 8.8876C0.183382 8.7626 0.175049 8.63343 0.175049 8.5001C0.175049 8.36677 0.183382 8.24176 0.200049 8.1251C0.216715 8.00843 0.250049 7.90843 0.300049 7.8251C0.650049 7.0751 1.06672 6.38343 1.55005 5.7501C2.03338 5.11676 2.56672 4.53343 3.15005 4.0001L1.07505 1.9001C0.891716 1.71676 0.800049 1.4876 0.800049 1.2126C0.800049 0.937598 0.900049 0.700098 1.10005 0.500098C1.28338 0.316764 1.51672 0.225098 1.80005 0.225098C2.08338 0.225098 2.31672 0.316764 2.50005 0.500098L19.5 17.5001C19.6834 17.6834 19.7792 17.9126 19.7875 18.1876C19.7959 18.4626 19.7001 18.7001 19.5 18.9001C19.3167 19.0834 19.0834 19.1751 18.8 19.1751C18.5167 19.1751 18.2834 19.0834 18.1 18.9001ZM4.55005 5.4001C4.06672 5.83343 3.62505 6.30843 3.22505 6.8251C2.82505 7.34176 2.48338 7.9001 2.20005 8.5001C3.03338 10.1834 4.22922 11.5209 5.78755 12.5126C7.34588 13.5043 9.08338 14.0001 11 14.0001C11.3334 14.0001 11.6584 13.9793 11.975 13.9376C12.2917 13.8959 12.6167 13.8501 12.95 13.8001L12.05 12.8501C11.8667 12.9001 11.6917 12.9376 11.525 12.9626C11.3584 12.9876 11.1834 13.0001 11 13.0001C9.75005 13.0001 8.68755 12.5626 7.81255 11.6876C6.93755 10.8126 6.50005 9.7501 6.50005 8.5001C6.50005 
+                    8.31676 6.51255 8.14176 6.53755 7.9751C6.56255 7.80843 6.60005 7.63343 6.65005 7.4501L4.55005 5.4001Z" fill="#A8A8A8"/>
+            </svg>`;
+}
+
+// hide password eye icon for password repeat input
+function hidePasswordRepeatTemplate() {
+    return `<svg width="22" height="21" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg"  onclick="toggleRepeatPasswordVisibility()">
+                <path d="M11 12C12.25 12 13.3125 11.5625 14.1875 10.6875C15.0625 9.8125 15.5 8.75 15.5 7.5C15.5 6.25 15.0625 5.1875 14.1875 
+                4.3125C13.3125 3.4375 12.25 3 11 3C9.75005 3 8.68755 3.4375 7.81255 4.3125C6.93755 5.1875 6.50005 6.25 6.50005 7.5C6.50005 8.75 
+                6.93755 9.8125 7.81255 10.6875C8.68755 11.5625 9.75005 12 11 12ZM11 10.2C10.25 10.2 9.61255 9.9375 9.08755 9.4125C8.56255 8.8875 8.30005 
+                8.25 8.30005 7.5C8.30005 6.75 8.56255 6.1125 9.08755 5.5875C9.61255 5.0625 10.25 4.8 11 4.8C11.75 4.8 12.3875 5.0625 12.9125 5.5875C13.4375 
+                6.1125 13.7 6.75 13.7 7.5C13.7 8.25 13.4375 8.8875 12.9125 9.4125C12.3875 9.9375 11.75 10.2 11 10.2ZM11 15C8.68338 15 6.56672 14.3875 4.65005 13.1625C2.73338 11.9375 1.28338 10.2833 0.300049 8.2C0.250049 8.11667 0.216715 8.0125 0.200049 7.8875C0.183382 7.7625 0.175049 7.63333 0.175049 7.5C0.175049 7.36667 0.183382 7.2375 0.200049 7.1125C0.216715 6.9875 0.250049 6.88333 0.300049 6.8C1.28338 4.71667 2.73338 3.0625 4.65005 1.8375C6.56672 0.6125 8.68338 0 11 0C13.3167 0 15.4334 0.6125 17.35 1.8375C19.2667 3.0625 20.7167 4.71667 21.7 6.8C21.75 6.88333 21.7834 6.9875 21.8 7.1125C21.8167 7.2375 21.825 7.36667 21.825 7.5C21.825 7.63333 21.8167 7.7625 21.8 7.8875C21.7834 8.0125 21.75 8.11667 21.7 8.2C20.7167 10.2833 19.2667 11.9375 17.35 13.1625C15.4334 14.3875 13.3167 15 11 15ZM11 13C12.8834 13 14.6125 12.5042 16.1875 11.5125C17.7626 10.5208 18.9667 9.18333 19.8 7.5C18.9667 5.81667 17.7626 4.47917 16.1875 3.4875C14.6125 2.49583 12.8834 2 11 2C9.11672 2 7.38755 2.49583 5.81255 3.4875C4.23755 4.47917 3.03338 5.81667 2.20005 7.5C3.03338 9.18333 4.23755 10.5208 5.81255 11.5125C7.38755 
+                12.5042 9.11672 13 11 13Z" fill="#A8A8A8"/>
+            </svg>`;
+}
+
+// sign up successfull template - animated dialog 
 function signUpSuccessfull() {
     return `    
-        <div class="signup-overlay-background">
+        <div class="signup-overlay-background slideInFromBottom">
             <dialog>
                 <span>You Signed Up successfully</span>
             </dialog>

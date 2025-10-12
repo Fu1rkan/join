@@ -42,7 +42,7 @@
   z-index: 4;
 }
 
-.ad h2 {
+.ad>h2 {
   margin-top: 80px;
   margin-bottom: 40px;
   margin-left: 10%;
@@ -245,9 +245,8 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .submit_container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-top: 54px;
   margin-left: 10%;
   width: 80%;
@@ -255,14 +254,12 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .submit_container button {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 .submit_butn_wrapper {
   display: flex;
-  flex-direction: row;
 }
 
 .submit_container button {
@@ -670,4 +667,8 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   width: 21px;
   min-width: 21px;
   min-height: 16px;
+}
+
+.d_none {
+  display: none;
 }

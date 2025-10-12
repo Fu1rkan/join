@@ -6,15 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Board</title>
 
-  <link rel="stylesheet" href="./style/style.css" />
+  <link rel="stylesheet" href="./style/style.css"/>
 
   <script src="./script/obj.js"></script>
   <script src="./script/template.js"></script>
+  <script src="./script/add_task.js"></script>
 </head>
 
 <body onload="renderTask()">
 
   <div class="layout">
+    <div id="overlay_board" class="overlay-board d_none" onclick="closeOverlayBoard()">
+      <div id="overlay_board_content" class="add-task-card" onclick="event.stopPropagation()">
+        
+      </div>
+    </div>
     <nav class="navbar">
       <div class="navbar-content-limiter">
         <svg class="navbar-logo" xmlns="http://www.w3.org/2000/svg" width="102" height="122" viewBox="0 0 102 122"
@@ -136,7 +142,7 @@
                   </div>
                 </label>
               </form>
-              <button>
+              <button onclick="openAddTask()">
                 Add task
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path
@@ -195,7 +201,7 @@
 
   <div class="dialog" id="task-dialog"></div>
 
-
+  <script src="./script/overlay_board.js"></script>
   <script src="./script/board.js"></script>
 </body>
 

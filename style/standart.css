@@ -13,6 +13,9 @@
   scroll-behavior: smooth;
   text-decoration: none;
   box-sizing: border-box;
+  overflow-wrap: break-word;
+  hyphens: auto;   
+  touch-action: manipulation
 }
 
 :root {

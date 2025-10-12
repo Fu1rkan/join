@@ -7,7 +7,7 @@ let taskList = [
         'subtasks': null,
         'participants': null,
         'priority': 'medium',
-        'date': '19/10/2025'
+        'date': '19/10/2025',
     },
     {
         'category': 'to_do',
@@ -161,4 +161,3 @@ let taskList = [
         'date': '17/10/2025'
     },
 ];
-

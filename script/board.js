@@ -1,5 +1,7 @@
 let checkOverlay = 0
 
+let currentDraggedElement;
+
 let allObj = [];
 
 function toggleTaskOverlay(i) {
@@ -20,37 +22,66 @@ function stopPropagation(event) {
     event.stopPropagation();
 }
 
-function renderTask() {
+function init() {
+    renderToDo();
+    renderInProgress();
+    renderAwaitFeedback();
+    renderDone();
+}
+
+function renderToDo(){
     let toDo = taskList.filter(t => t['category'] =='to_do');
     document.getElementById('to-do-kanban').innerHTML = "";
-    for (let i = 0; i < toDo.length; i++) {
-        document.getElementById('to-do-kanban').innerHTML += taskTemp(toDo[i]);
-        allObj.push(toDo[i]);        
-        checkTaskInfos(toDo[i]);
+    if (toDo.length > 0) {
+        for (let i = 0; i < toDo.length; i++) {
+            document.getElementById('to-do-kanban').innerHTML += taskTemp(toDo[i]);
+            allObj.push(toDo[i]);        
+            checkTaskInfos(toDo[i]);
+        }
+    }else{
+        document.getElementById('to-do-kanban').innerHTML = emptyTaskList();
     }
+}
 
+function renderInProgress(){
     let inProgress = taskList.filter(t => t['category'] =='in_progress');
     document.getElementById('in-progress-kanban').innerHTML = "";
-    for (let i = 0; i < inProgress.length; i++) {
-        document.getElementById('in-progress-kanban').innerHTML += taskTemp(inProgress[i]);
-        allObj.push(inProgress[i]);       
-        checkTaskInfos(inProgress[i]);
+    if (inProgress.length > 0) {
+        for (let i = 0; i < inProgress.length; i++) {
+            document.getElementById('in-progress-kanban').innerHTML += taskTemp(inProgress[i]);
+            allObj.push(inProgress[i]);       
+            checkTaskInfos(inProgress[i]);
+        }
+    }else{
+        document.getElementById('in-progress-kanban').innerHTML = emptyTaskList();
     }
+}
 
+function renderAwaitFeedback(){
     let awaitFeedback = taskList.filter(t => t['category'] =='await_feedback');
     document.getElementById('await-feedback-kanban').innerHTML = "";
-    for (let i = 0; i < awaitFeedback.length; i++) {
-        document.getElementById('await-feedback-kanban').innerHTML += taskTemp(awaitFeedback[i]);
-        allObj.push(awaitFeedback[i]);       
-        checkTaskInfos(awaitFeedback[i]);
+    if (awaitFeedback.length > 0) {
+        for (let i = 0; i < awaitFeedback.length; i++) {
+            document.getElementById('await-feedback-kanban').innerHTML += taskTemp(awaitFeedback[i]);
+            allObj.push(awaitFeedback[i]);       
+            checkTaskInfos(awaitFeedback[i]);
+        }
+    }else{
+        document.getElementById('await-feedback-kanban').innerHTML = emptyTaskList();
     }
+}
 
+function renderDone(){
     let done = taskList.filter(t => t['category'] =='done');
     document.getElementById('done-kanban').innerHTML = "";
-    for (let i = 0; i < done.length; i++) {
-        document.getElementById('done-kanban').innerHTML += taskTemp(done[i]);
-        allObj.push(done[i]);       
-        checkTaskInfos(done[i]);
+    if (done.length > 0) {
+        for (let i = 0; i < done.length; i++) {
+            document.getElementById('done-kanban').innerHTML += taskTemp(done[i]);
+            allObj.push(done[i]);       
+            checkTaskInfos(done[i]);
+        }
+    }else{
+        document.getElementById('done-kanban').innerHTML = emptyTaskList();
     }
 }
 
@@ -161,4 +192,26 @@ function checkTaskOverlaySubtasks(i, taskOverlay){
             }
         }
     }
+}
+
+function startDragging(id){
+    currentDraggedElement = id;
+}
+
+function allowDrop(card){
+    card.preventDefault();
+}
+
+function moveTo(category, id){
+    allObj[currentDraggedElement]['category'] = category;
+    document.getElementById(id).classList.remove('drag-area-highlight');
+    init();
+}
+
+function highlight(id){
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+function removeHighlight(id){
+    document.getElementById(id).classList.remove('drag-area-highlight');
 }

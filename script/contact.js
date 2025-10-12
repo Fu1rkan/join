@@ -1,5 +1,5 @@
-const overlayRef = document.getElementById("overlay");
-const overlayContentRef = document.getElementById('overlay_content');
+const overlayRef = document.getElementById("overlay_contacts");
+const overlayContentRef = document.getElementById('overlay_contacts_content');
 const contactListRef = document.getElementById("contact_list");
 const templateRef = document.getElementById("contact_template");
 

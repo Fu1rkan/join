@@ -166,9 +166,20 @@ body {
     background: linear-gradient(#F9F9F9, #F0F0F0);
 }
 
-.svg-img-small {
+.contact-circle-img-small {
     height: 42px;
     width: 42px;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-circle-img-small>p {
+    font-size: var(--font-size-12);
+    font-weight: var(--weight-400);
+    color: var(--header-color);
 }
 
 .contact-info {
@@ -189,18 +200,31 @@ body {
 }
 
 .active-contact {
-  background-color: #2A3647;
-  color: #FFFFFF;
+    background-color: #2A3647;
+    color: #FFFFFF;
 }
 
 .contacts-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 569px;
+    /* width: 569px; */
     height: 73px;
     gap: 30px;
     margin-top: 110px;
+}
+
+.contacts-header>h2 {
+    font-size: var(--font-size-61);
+    font-weight: var(--weight-700);
+}
+
+.contact-header-second-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 73px;
+    gap: 30px;
 }
 
 .contacts-header-seperator {
@@ -229,12 +253,15 @@ body {
 .contact-info-big-container {
     width: calc(1440px - (232px + 456px));
     position: absolute;
-    animation: contactTemplate 300ms linear forwards;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     gap: 21px;
+}
+
+.fade-in-template {
+    animation: contactTemplate 300ms linear forwards;
 }
 
 .contact-info-big {
@@ -244,9 +271,20 @@ body {
     width: 100%;
 }
 
-.svg-img-big {
+.contact-circle-img-big {
     height: 120px;
     width: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-circle-img-big>p {
+    font-size: var(--font-size-47);
+    font-weight: var(--weight-500);
+    color: var(--header-color);
 }
 
 .contact-info-big-name-edit-container {
@@ -285,7 +323,7 @@ body {
     min-width: 30px;
 }
 
-.contact-edit-btn:hover svg path{
+.contact-edit-btn:hover svg path {
     fill: #29ABE2;
 }
 
@@ -384,7 +422,7 @@ body {
     }
 
     100% {
-        left:0;
+        left: 0;
     }
 }
 

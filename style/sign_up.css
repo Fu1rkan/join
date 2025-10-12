@@ -133,6 +133,9 @@
     background-color: #EDF2FA;
 }
 
+.red_border {
+    outline: 1px solid red !important;
+}
 /* span design inside input group */
 .sign_up_section .sign_up_input_group span {
     font-weight: 400;

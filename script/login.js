@@ -40,6 +40,7 @@ function renderJoinLogo() {
 function acceptCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
     privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
+        privacyPolicyCheckbox.classList.remove('red_border');
 }
 
 // changes checkbox refuse
@@ -106,6 +107,16 @@ function addRepeatPasswordListener() {
 
             }
         });
+    }
+}
+
+function checkPrivacyPolicyCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
+    if (privacyPolicyCheckbox.getAttribute('aria-checked') === 'true') {
+        privacyPolicyCheckbox.classList.remove('red_border');
+        openSignUpOverlay();
+    } else {
+        privacyPolicyCheckbox.classList.add('red_border');
     }
 }
 

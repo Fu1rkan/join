@@ -67,6 +67,11 @@
     gap: 20px;
 }
 
+/* onclick blue border on input */
+.sign_up_section .sign_up_input_group form:focus-within {
+    outline: 1px solid #29ABE2;
+}
+
 /* input label design */
 .sign_up_section .sign_up_input_group form label {
     display: flex;

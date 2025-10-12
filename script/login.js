@@ -39,7 +39,7 @@ function renderJoinLogo() {
 // changes checkbox from empty to checked
 function changeCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
-    privacyPolicyCheckbox.outerHTML = checkboxTemplate();
+    privacyPolicyCheckbox.innerHTML = checkboxTemplate();
 }
 
 // toggles password visibility
@@ -61,10 +61,10 @@ function toggleRepeatPasswordVisibility() {
     let toggleButton = document.getElementById('toggle_password_repeat_button');
     if (repeatInput.type === 'password') {
         repeatInput.type = 'text';
-        toggleButton.innerHTML = showPasswordTemplate();
+        toggleButton.innerHTML = showPasswordRepeatTemplate();
     } else {
         repeatInput.type = 'password';
-        toggleButton.innerHTML = hidePasswordTemplate();
+        toggleButton.innerHTML = hidePasswordRepeatTemplate();
     }
 }
 
@@ -91,15 +91,19 @@ function addRepeatPasswordListener() {
     if (repeatInput && passwordRepeatButton) {
         repeatInput.addEventListener('input', function () {
             if (repeatInput.value.length > 0) {
-                passwordRepeatButton.innerHTML = hidePasswordTemplate();
+                document.getElementById('toggle_password_visibility_button').disabled = false;
+                passwordRepeatButton.innerHTML = hidePasswordRepeatTemplate();
                 repeatInput.type = 'password';
             } else {
+                document.getElementById('toggle_password_visibility_button').disabled = true;
                 passwordRepeatButton.innerHTML = showPasswordLock();
+
             }
         });
     }
 }
 
+// open and close Sign Up Successfull Overlay
 function openSignUpOverlay() {
     document.getElementById('signup-overlay-id').innerHTML = signUpSuccessfull();
     closeSignUpOverlay();

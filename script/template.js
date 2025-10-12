@@ -147,7 +147,7 @@ function signUpTemplate() {
                 
                     <div class="privacy_policy_checkbox_group">
                         <label role="checkbox" aria-checked="false" id="pp_checkbox_id" >
-                            <svg class="pp_checkbox" onclick="changeCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
+                            <svg class="pp_checkbox" onclick="acceptCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
                                 <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                             </svg>
                         </label>
@@ -190,12 +190,21 @@ function joinLogoTemplate() {
             </div>`;
 }
 
-// privacy policy checkbox template
-function checkboxTemplate() {
-    return `<label role="checkbox" aria-checked="true">
+// privacy policy accept checkbox template
+function acceptCheckboxTemplate() {
+    return `<label role="checkbox" aria-checked="true" id="pp_checkbox_id" onclick="refuseCheckbox()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="pp_checkbox" width="18" height="19" viewBox="0 0 18 19" fill="none">
                     <path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                     <path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </label>`;
+}
+
+// privacy policy refuse checkbox template
+function refuseCheckboxTemplate() {
+    return `<label role="checkbox" aria-checked="false" id="pp_checkbox_id" >
+                <svg class="pp_checkbox" onclick="acceptCheckbox()" xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
+                    <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                 </svg>
             </label>`;
 }

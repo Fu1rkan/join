@@ -36,10 +36,16 @@ function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
 }
 
-// changes checkbox from empty to checked
-function changeCheckbox() {
+// changes checkbox accepted
+function acceptCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
-    privacyPolicyCheckbox.innerHTML = checkboxTemplate();
+    privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
+}
+
+// changes checkbox refuse
+function refuseCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
+    privacyPolicyCheckbox.innerHTML = refuseCheckboxTemplate();
 }
 
 // toggles password visibility

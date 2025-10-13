@@ -145,32 +145,36 @@ function createNewContact() {
     let createFormLabelEmailRef = document.getElementById('create-form-label-email');
 
     checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg);
+
 }
 
 function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg) {
-    if (createName != "" && createEmail != "") {
-        let capitalizedName = generatecapitalizedName(createName);
-        let nameLetters = generateLetters(capitalizedName);
-        let fillColor = getRandomColor();
-        createContactAndHighlight(capitalizedName, createEmail, createPhone, nameLetters, fillColor, createName)
+    if (createName != "" && createEmail != "" && createEmail.includes('@')) {
+        createContactAndHighlight(createName, createEmail, createPhone)
     } else if (createName == "" && createEmail != "") {
-        showMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
+        showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
     } else if (createName != "" && createEmail == "") {
-        showMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+    } else if (createName == "" && createEmail == "") {
+        showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     } else {
-        showMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
-        showMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+        createEmailRequiredMsg.innerText = "Email must include '@'";
     }
 }
 
-function createContactAndHighlight(capitalizedName, createEmail, createPhone, nameLetters, fillColor, createName) {
+function createContactAndHighlight(createName, createEmail, createPhone) {
+    let capitalizedName = generatecapitalizedName(createName);
+    let nameLetters = generateLetters(capitalizedName);
+    let fillColor = getRandomColor();
     createObjectNewContact(capitalizedName, createEmail, createPhone, nameLetters, fillColor);
     closeOverlay();
     filterContacts();
     findNewestContactAndHighlightIt(createName);
 }
 
-function showMsgAndHighlight(target, targetMsg) {
+function showRequiredMsgAndHighlight(target, targetMsg) {
     target.classList.add('create-form-label-highlight');
     targetMsg.classList.remove('d_none');
 }

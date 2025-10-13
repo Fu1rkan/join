@@ -148,10 +148,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 32px;
+    gap: 16px;
 }
 
-.create-form>section>label {
+.create-form-label {
     border-radius: 10px;
     border: 1px solid #d1d1d1;
     padding: 13px 21px;
@@ -162,7 +162,11 @@
     cursor: pointer;
 }
 
-.create-form>section>label>input {
+.create-form-label-highlight {
+    border: 1px solid #E60026;
+}
+
+.create-form>section>div>label>input {
     height: 24px;
     align-items: center;
     width: 422px;
@@ -173,15 +177,29 @@
     cursor: pointer;
 }
 
-.create-form>section>label>input::placeholder {
+.create-form>section>div>label>input::placeholder {
     font-size: var(--font-size-20);
     font-weight: var(--weight-400);
     color: #D1D1D1;
 }
 
-.create-form>section>label>svg {
+.create-form>section>div>label>svg {
     cursor: pointer;
     width: 24px;
+}
+
+/* .create-form-inputfields-container {
+    height: 66px;
+} */
+
+.create-form-inputfields-required {
+    height: 16px;
+}
+
+.create-form-inputfields-required-msg {
+    font-size: var(--font-size-14);
+    font-weight: var(--weight-400);
+    color: #E60026;
 }
 
 .add-contact-buttons {

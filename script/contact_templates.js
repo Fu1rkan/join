@@ -156,7 +156,8 @@ function showAddContactCard() {
                 </div>
                 <form action="" class="create-form" onsubmit="closeOverlay();return false">
                     <section class="create-form-inputfields">
-                        <label for="create_name">
+                    <div class="create-form-inputfields-container">
+                        <label id="create-form-label-name" class="create-form-label" for="create_name">
                             <input id="create_name" placeholder="Name" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -171,7 +172,10 @@ function showAddContactCard() {
                                 </g>
                             </svg>
                         </label>
-                        <label for="create_email">
+                        <div class="create-form-inputfields-required"><p id="create_name_required_msg" class="create-form-inputfields-required-msg d_none">This field is required</p></div> 
+                    </div>
+                    <div class="create-form-inputfields-container">    
+                        <label id="create-form-label-email" class="create-form-label" for="create_email">
                             <input id="create_email" placeholder="Email" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -186,7 +190,10 @@ function showAddContactCard() {
                                 </g>
                             </svg>
                         </label>
-                        <label for="create_phone">
+                        <div class="create-form-inputfields-required"><p id="create_email_required_msg" class="create-form-inputfields-required-msg d_none">This field is required</p></div>
+                    </div>
+                    <div class="create-form-inputfields-container">    
+                        <label for="create_phone" class="create-form-label">
                             <input id="create_phone" placeholder="Phone" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -201,6 +208,7 @@ function showAddContactCard() {
                                 </g>
                             </svg>
                         </label>
+                    </div>    
                     </section>
 
                     <section class="add-contact-buttons">
@@ -305,7 +313,8 @@ function showContactEditCard(name, email, phone) {
                 </div>
                 <form action="" class="create-form" onsubmit="return false">
                     <section class="create-form-inputfields">
-                        <label>
+                    <div class="create-form-inputfields-container">
+                        <label class="create-form-label">
                             <input id="edit_name" placeholder="Name" value="${name}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -320,7 +329,9 @@ function showContactEditCard(name, email, phone) {
                                 </g>
                             </svg>
                         </label>
-                        <label>
+                    </div>
+                    <div class="create-form-inputfields-container">
+                        <label class="create-form-label">
                             <input id="edit_email" placeholder="Email" value="${email}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -335,7 +346,9 @@ function showContactEditCard(name, email, phone) {
                                 </g>
                             </svg>
                         </label>
-                        <label>
+                    </div>
+                    <div class="create-form-inputfields-container">    
+                        <label class="create-form-label">
                             <input id="edit_phone" placeholder="Phone" value="${phone}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -350,6 +363,7 @@ function showContactEditCard(name, email, phone) {
                                 </g>
                             </svg>
                         </label>
+                    </div>    
                     </section>
 
                     <section class="edit-contact-d-s-buttons">

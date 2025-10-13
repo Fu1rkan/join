@@ -1,5 +1,5 @@
-const overlayRef = document.getElementById("overlay");
-const overlayContentRef = document.getElementById('overlay_content');
+const overlayRef = document.getElementById("overlay_contacts");
+const overlayContentRef = document.getElementById('overlay_contacts_content');
 const contactListRef = document.getElementById("contact_list");
 const templateRef = document.getElementById("contact_template");
 
@@ -134,19 +134,49 @@ function renderContactList(keys) {
 }
 
 function createNewContact() {
+    document.querySelectorAll('.create-form-label').forEach(el => el.classList.remove('create-form-label-highlight'));
+    document.querySelectorAll('.create-form-inputfields-required-msg').forEach(el => el.classList.add('d_none'));
     let createName = document.getElementById('create_name').value;
     let createEmail = document.getElementById('create_email').value;
     let createPhone = document.getElementById('create_phone').value;
+    let createNameRequiredMsg = document.getElementById('create_name_required_msg');
+    let createEmailRequiredMsg = document.getElementById('create_email_required_msg');
+    let createFormLabelNameRef = document.getElementById('create-form-label-name');
+    let createFormLabelEmailRef = document.getElementById('create-form-label-email');
 
-    if (createName != "" && createEmail != "") {
-        let capitalizedName = generatecapitalizedName(createName);
-        let nameLetters = generateLetters(capitalizedName);
-        let fillColor = getRandomColor();
-        createObjectNewContact(capitalizedName, createEmail, createPhone, nameLetters, fillColor);
-        closeOverlay();
-        filterContacts();
-        findNewestContactAndHighlightIt(createName);
+    checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg);
+
+}
+
+function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg) {
+    if (createName != "" && createEmail != "" && createEmail.includes('@')) {
+        createContactAndHighlight(createName, createEmail, createPhone)
+    } else if (createName == "" && createEmail != "") {
+        showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
+    } else if (createName != "" && createEmail == "") {
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+    } else if (createName == "" && createEmail == "") {
+        showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+    } else {
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+        createEmailRequiredMsg.innerText = "Email must include '@'";
     }
+}
+
+function createContactAndHighlight(createName, createEmail, createPhone) {
+    let capitalizedName = generatecapitalizedName(createName);
+    let nameLetters = generateLetters(capitalizedName);
+    let fillColor = getRandomColor();
+    createObjectNewContact(capitalizedName, createEmail, createPhone, nameLetters, fillColor);
+    closeOverlay();
+    filterContacts();
+    findNewestContactAndHighlightIt(createName);
+}
+
+function showRequiredMsgAndHighlight(target, targetMsg) {
+    target.classList.add('create-form-label-highlight');
+    targetMsg.classList.remove('d_none');
 }
 
 function generatecapitalizedName(createName) {
@@ -192,7 +222,7 @@ function createObjectNewContact(createName, createEmail, createPhone, nameLetter
             "email": createEmail,
             "phone": createPhone,
             "fillColor": fillColor,
-            "nameLetters" : nameLetters
+            "nameLetters": nameLetters
         }
         contacts.push(newContact);
         showCreatedContactTemplate(newContact);
@@ -202,10 +232,16 @@ function createObjectNewContact(createName, createEmail, createPhone, nameLetter
 function generateLetters(capitolName) {
     let createtFullName = capitolName;
     let nameArray = createtFullName.split(" ");
-    let firstNameLetter = (nameArray[0]);
-    let lastNameletter = (nameArray[nameArray.length - 1]);
-    let firstLetters = firstNameLetter.charAt(0).concat(lastNameletter.charAt(0));
-    return firstLetters;
+    if (nameArray.length >= 2) {
+        let firstNameLetter = nameArray[0];
+        let lastNameletter = nameArray[nameArray.length - 1];
+        let firstLetters = firstNameLetter.charAt(0).concat(lastNameletter.charAt(0));
+        return firstLetters;
+    } else {
+        let singleLetter = nameArray[0].charAt(0);
+        return singleLetter;
+    }
+
 }
 
 function getRandomColor() {
@@ -233,7 +269,7 @@ function showCreatedContactTemplate(newContact) {
 }
 
 function deleteCurrentContact(name, email) {
-    contacts.splice(contacts.findIndex(t => t.name == name && t.email == email),1);
+    contacts.splice(contacts.findIndex(t => t.name == name && t.email == email), 1);
     filterContacts();
     templateRef.classList.add('d_none');
 }

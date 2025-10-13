@@ -12,7 +12,7 @@
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-  margin-top: 96px;
+  transform: translateY(96px);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   transition: right 0.3s ease-in-out;
   z-index: 1000;

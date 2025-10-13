@@ -145,6 +145,11 @@ body {
     outline: 1px solid #29ABE2;
 }
 
+/* onclick blue border on input */
+.login_section .input_group form:focus-within {
+    outline: 1px solid #29ABE2;
+}
+
 /* input field with icon align */
 .login_section .input_group form label {
     display: flex;

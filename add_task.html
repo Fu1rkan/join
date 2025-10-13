@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="./style/style.css" />
     <script src="./script/add_task.js"></script>
     <script src="./script/add_task_template.js"></script>
+    <script src="./script/add_task_firebase.js"></script>
   </head>
 
-  <body onclick="closeContactlist(), closeCategoryList()" onload="init()">
+  <body onclick="closeContactlist(), closeCategoryList()" onload="init(), loadData() ">
     <div class="layout">
       <nav class="navbar">
         <div class="navbar-content-limiter">
@@ -192,7 +193,7 @@
         </header>
         <section class="ad">
           <h2>Add Task</h2>
-          <form action="">
+          <form action="" novalidate>
             <div class="form_wrapper">
               <div class="input_container w100">
                 <!-- Title -->
@@ -232,7 +233,8 @@
                       placeholder="dd/mm/yyyy"
                       onfocus="this.type='date'"
                       required
-                      leng="en-GB"
+                      lang="en-GB"
+                      value=""
                     />
                     <!-- event.svg -->
                     <svg
@@ -790,7 +792,7 @@
                     />
                   </svg>
                 </button>
-                <button class="creat_task_btn">
+                <button class="creat_task_btn" onclick="checkNPost()">
                   Create Task
                   <!-- check.svg -->
                   <svg

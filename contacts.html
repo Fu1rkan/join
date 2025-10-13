@@ -11,8 +11,8 @@
 
 <body onload="filterContacts()">
     <section class="layout">
-        <section id="overlay" class="overlay d_none" onclick="closeOverlay()">
-            <div id="overlay_content" class="overlay-shadow-pos-rel-container">
+        <section id="overlay_contacts" class="overlay d_none" onclick="closeOverlay()">
+            <div id="overlay_contacts_content" class="overlay-shadow-pos-rel-container">
 
             </div>
         </section>
@@ -151,8 +151,10 @@
                     <div class="contact-rightside-big-container">
                         <div class="contacts-header">
                             <h2>Contacts</h2>
-                            <div class="contacts-header-seperator"></div>
-                            <p class="contacts-header-txt">Better with a Team</p>
+                            <div class="contact-header-second-container">
+                                <div class="contacts-header-seperator"></div>
+                                <p class="contacts-header-txt">Better with a Team</p>
+                            </div>
                         </div>
                         <section id="contact_template" class="contact-template">
                         </section>
@@ -165,5 +167,4 @@
     <script src="./script/contact_templates.js"></script>
     <script src="./script/contact.js"></script>
 </body>
-
 </html>

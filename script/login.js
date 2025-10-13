@@ -36,10 +36,17 @@ function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
 }
 
-// changes checkbox from empty to checked
-function changeCheckbox() {
+// changes checkbox accepted
+function acceptCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
-    privacyPolicyCheckbox.outerHTML = checkboxTemplate();
+    privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
+        privacyPolicyCheckbox.classList.remove('red_border');
+}
+
+// changes checkbox refuse
+function refuseCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
+    privacyPolicyCheckbox.innerHTML = refuseCheckboxTemplate();
 }
 
 // toggles password visibility
@@ -61,10 +68,10 @@ function toggleRepeatPasswordVisibility() {
     let toggleButton = document.getElementById('toggle_password_repeat_button');
     if (repeatInput.type === 'password') {
         repeatInput.type = 'text';
-        toggleButton.innerHTML = showPasswordTemplate();
+        toggleButton.innerHTML = showPasswordRepeatTemplate();
     } else {
         repeatInput.type = 'password';
-        toggleButton.innerHTML = hidePasswordTemplate();
+        toggleButton.innerHTML = hidePasswordRepeatTemplate();
     }
 }
 
@@ -91,15 +98,29 @@ function addRepeatPasswordListener() {
     if (repeatInput && passwordRepeatButton) {
         repeatInput.addEventListener('input', function () {
             if (repeatInput.value.length > 0) {
-                passwordRepeatButton.innerHTML = hidePasswordTemplate();
+                document.getElementById('toggle_password_visibility_button').disabled = false;
+                passwordRepeatButton.innerHTML = hidePasswordRepeatTemplate();
                 repeatInput.type = 'password';
             } else {
+                document.getElementById('toggle_password_visibility_button').disabled = true;
                 passwordRepeatButton.innerHTML = showPasswordLock();
+
             }
         });
     }
 }
 
+function checkPrivacyPolicyCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
+    if (privacyPolicyCheckbox.getAttribute('aria-checked') === 'true') {
+        privacyPolicyCheckbox.classList.remove('red_border');
+        openSignUpOverlay();
+    } else {
+        privacyPolicyCheckbox.classList.add('red_border');
+    }
+}
+
+// open and close Sign Up Successfull Overlay
 function openSignUpOverlay() {
     document.getElementById('signup-overlay-id').innerHTML = signUpSuccessfull();
     closeSignUpOverlay();

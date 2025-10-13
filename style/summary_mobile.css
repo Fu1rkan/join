@@ -1,6 +1,6 @@
 @media (max-width: 800px) {
 .summary-title {
-
+    
 }
 
 /* Panels container in the summary section */
@@ -14,9 +14,6 @@
 }
 
 /* Container for the summary section */
-.summary-container {
-
-}
 
 /* Blue separator line for summary title */
 .summary-title-separator-blue {
@@ -345,7 +342,25 @@ a.summary-board-panel {
 }
 
 /* Menu styling */
+.main-header{
+    height: 80px;
+}
+.header-text{
+    display: none;
+}
 .navbar{
+    display: none;
+}
+
+.summary-container{
+    width: 396px;
+
+}
+
+.summary-greeting{
+    display: none;
+}
+#summary-greeting-name{
     display: none;
 }
 }

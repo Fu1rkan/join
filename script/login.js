@@ -36,10 +36,17 @@ function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
 }
 
-// changes checkbox from empty to checked
-function changeCheckbox() {
+// changes checkbox accepted
+function acceptCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
-    privacyPolicyCheckbox.innerHTML = checkboxTemplate();
+    privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
+        privacyPolicyCheckbox.classList.remove('red_border');
+}
+
+// changes checkbox refuse
+function refuseCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
+    privacyPolicyCheckbox.innerHTML = refuseCheckboxTemplate();
 }
 
 // toggles password visibility
@@ -100,6 +107,16 @@ function addRepeatPasswordListener() {
 
             }
         });
+    }
+}
+
+function checkPrivacyPolicyCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
+    if (privacyPolicyCheckbox.getAttribute('aria-checked') === 'true') {
+        privacyPolicyCheckbox.classList.remove('red_border');
+        openSignUpOverlay();
+    } else {
+        privacyPolicyCheckbox.classList.add('red_border');
     }
 }
 

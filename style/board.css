@@ -72,6 +72,12 @@
     cursor: pointer;
 }
 
+.search-task input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .search-task input{
     border: none;
     font-size: 20px;
@@ -154,11 +160,11 @@
     justify-content: space-between;
 }
 
-.kanban-column::-webkit-scrollbar{
+.task-list::-webkit-scrollbar{
     display: none;
 }
 
-.kanban-column{
+.task-list{
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -167,36 +173,8 @@
     overflow-x: visible;
     overflow-y: auto;
     max-height: calc(100vh - 331px);
-    padding: 10px 0;
-}
-
-.kanban-column header{
-    width: 95%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    height: auto;
-}
-
-.kanban-column header img{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
-
-.add-task-bottom:hover{
-    opacity: 0;
-}
-
-.task-list{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 16px;
-    width: 90%;
+    padding: 10px 10px;
+    border: 1px dashed transparent;
 }
 
 .task{
@@ -327,4 +305,10 @@
     justify-content: center;
     align-items: center;
     margin-left: -8px;
+}
+
+.drag-area-highlight{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    border-color: grey;
 }

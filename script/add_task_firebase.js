@@ -17,22 +17,48 @@ async function postTask(path = "", data = {}) {
 }
 
 function checkNPost() {
-  let title = document.getElementById("title").value;
+  let title = document.getElementById("title");
   let description = document.getElementById("description").value;
-  let dueDate = document.getElementById("date").value;
+  let dueDate = document.getElementById("date");
   let priority = document.getElementById("priority").value;
+  let category = document.getElementById("category_input");
 
-  if (title.length < 1 || dueDate.length < 1 || priority.length < 1) {
-    alert("Please fill in all required fields");
-    return;
+  if (
+    title.value.length < 1 ||
+    dueDate.value.length < 1 ||
+    category.value.length < 1
+  ) {
+    requiredNotice(title, "title");
+    requiredNotice(dueDate, "due_date");
+    requiredNotice(category, "category");
+    
   } else {
     postTask("", {
-      "title": title,
-      "description": description,
-      "dueDate": dueDate,
-      "priority": priority,/* add the other inputs */
+      title: title.value,
+      description: description,
+      dueDate: dueDate.value,
+      priority: priority,
+      assigned_to: "placeholder",
+      category: category.value,
+      subtask: ["text1", "text2", "text3"],
+      /* add the other inputs */
+
     });
+     window.location.href = "/board.html";
   }
 }
 
-
+function requiredNotice(x, y) {
+    let notice = document.getElementById("required_notice_" + y);
+  if (x.value.length < 1) {
+    
+    x.classList.add("required_input");
+    notice.classList.remove("d_none");
+  } else{
+    x.classList.remove("required_input");
+     console.log(notice);
+    notice.classList.add("d_none");
+    console.log(notice);
+    
+  }
+}

@@ -210,6 +210,8 @@
                     placeholder="Enter a title"
                     required
                   />
+
+                  <p class="required_notice d_none " id="required_notice_title">This field is required</p>
                 </div>
                 <!-- Description -->
                 <div class="w100">
@@ -259,6 +261,9 @@
                     const today = new Date().toISOString().split("T")[0];
                     document.getElementById("date").setAttribute("min", today);
                   </script>
+
+                  
+                  <p class="required_notice d_none " id="required_notice_due_date">This field is required</p>
                 </div>
               </div>
 
@@ -716,6 +721,8 @@
                       <p>User Story</p>
                     </li>
                   </ul>
+                  
+                  <p class="required_notice d_none " id="required_notice_category">This field is required</p>
                 </div>
                 <!-- Subtask -->
                 <div>
@@ -792,7 +799,7 @@
                     />
                   </svg>
                 </button>
-                <button class="creat_task_btn" onclick="checkNPost()">
+                <button type="button" class="creat_task_btn" onclick="closeProtection(event), checkNPost()">
                   Create Task
                   <!-- check.svg -->
                   <svg

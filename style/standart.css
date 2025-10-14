@@ -14,9 +14,13 @@
   text-decoration: none;
   box-sizing: border-box;
   overflow-wrap: break-word;
-  hyphens: auto;   
+  hyphens: auto;
   -webkit-hyphens: auto;
   touch-action: manipulation
+}
+
+body {
+    overflow: hidden;
 }
 
 :root {
@@ -124,4 +128,14 @@ main {
 
 .d_none {
   display: none;
+}
+
+@media (max-width: 800px) {
+  body{
+    overflow: auto;
+  }
+
+  .layout{
+    flex-direction: column-reverse;
+  }
 }

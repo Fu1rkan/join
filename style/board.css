@@ -173,7 +173,7 @@
     overflow-x: visible;
     overflow-y: auto;
     max-height: calc(100vh - 331px);
-    padding: 10px 10px;
+    padding: 10px 16px;
     border: 1px dashed transparent;
 }
 
@@ -188,6 +188,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.task:active{
+    cursor: grab;
 }
 
 .no-task{
@@ -311,4 +315,8 @@
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 24px;
     border-color: grey;
+}
+
+.drag-area-highlight * { 
+    pointer-events: none; 
 }

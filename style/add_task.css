@@ -20,11 +20,9 @@
 
 .form_wrapper {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 80%;
-  margin-left: 10%;
-  margin-top: 20px;
+  margin: 20px 0 0 10%;
 }
 
 .z1 {
@@ -34,6 +32,7 @@
 .z2 {
   z-index: 2;
 }
+
 .z3 {
   z-index: 3;
 }
@@ -43,9 +42,7 @@
 }
 
 .ad>h2 {
-  margin-top: 80px;
-  margin-bottom: 40px;
-  margin-left: 10%;
+  margin: 80px 0 40px 10%;
 }
 
 .ad{
@@ -61,7 +58,6 @@
 
 .priority_wrapper button {
   display: flex;
-  flex-direction: row;
   align-items: center;
   width: 30%;
   justify-content: center;
@@ -70,7 +66,6 @@
 
 .priority_wrapper {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 100%;
 }
@@ -78,7 +73,6 @@
 .priority_wrapper button {
   font-family: Inter;
   font-weight: 400;
-  font-style: Regular;
   font-size: 20px;
   background: #ffffff;
   cursor: pointer;
@@ -111,7 +105,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   display: inline-block;
   font-family: Inter;
   font-weight: 400;
-  font-style: Regular;
   font-size: 20px;
   line-height: 120%;
   margin-bottom: 8px;
@@ -122,7 +115,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   font-weight: 400;
   font-style: Regular;
   font-size: 20px;
-
   line-height: 120%;
   letter-spacing: 0%;
 }
@@ -130,10 +122,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 .ad input {
   width: 100%;
   opacity: 1;
-  padding-top: 12px;
-  padding-right: 21px;
-  padding-bottom: 12px;
-  padding-left: 21px;
+  padding: 12px 21px;
   gap: 10px;
   border-radius: 10px;
   border-width: 1px;
@@ -149,10 +138,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   width: 100%;
   height: 120px;
   opacity: 1;
-  /* padding-top: 12px;
-  padding-right: 21px;
-  padding-bottom: 12px;
-  padding-left: 21px; */
   padding: 12px 21px;
   gap: 10px;
   border-radius: 10px;
@@ -161,7 +146,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   outline: none;
   font-family: Inter;
   font-weight: 400;
-  font-style: Regular;
   font-size: 20px;
   line-height: 120%;
   letter-spacing: 0%;
@@ -214,10 +198,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   width: 100%;
   justify-content: space-between;
   opacity: 1;
-  padding-top: 12px;
-  padding-right: 16px;
-  padding-bottom: 12px;
-  padding-left: 16px;
+  padding: 12px 16px;
   border-radius: 10px;
   border-width: 1px;
   border: 1px solid #d1d1d1;
@@ -225,20 +206,15 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .ad hr {
   width: 0px;
-
   opacity: 1;
   border-width: 1px;
   border: 1px solid #d1d1d1;
-  margin-left: 3%;
-  margin-right: 3%;
+  margin: 0 3%;
 }
 
 .ad button {
   opacity: 1;
-  padding-top: 16px;
-  padding-right: 10px;
-  padding-bottom: 16px;
-  padding-left: 10px;
+  padding: 16px 10px;
   gap: 8px;
   border-radius: 10px;
 }
@@ -256,16 +232,13 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 3%;
+  white-space: nowrap;
+  font-size: 21px;
 }
 
 .submit_butn_wrapper {
   display: flex;
-}
-
-.submit_container button {
-  margin-left: 3%;
-  white-space: nowrap;
-  font-size: 21px;
 }
 
 .clear_btn {
@@ -405,7 +378,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .single_contact div {
   display: flex;
-  flex-direction: row;
   align-items: center;
   color: inherit;
 }
@@ -464,10 +436,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .contacts li {
   opacity: 1;
-  padding-top: 16px;
-  padding-right: 10px;
-  padding-bottom: 16px;
-  padding-left: 10px;
+  padding: 16px 10px;
   gap: 8px;
   border-radius: 10px;
   margin-bottom: 1px;
@@ -539,10 +508,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .category_wrapper option {
   opacity: 1;
-  padding-top: 16px;
-  padding-right: 10px;
-  padding-bottom: 16px;
-  padding-left: 10px;
+  padding: 16px 10px;
   gap: 8px;
   border-radius: 10px;
 }
@@ -578,11 +544,11 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .subtask_item_wrapper {
   display: flex;
-  flex-direction: row;
   align-items: center;
   width: 47%;
   padding-left: 16px;
   padding-right: 16px;
+  min-width: 320px;
 }
 
 .subtask_item_wrapper input {
@@ -591,7 +557,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .subtask_item_edit {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 56px;
@@ -628,7 +593,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .subtask_input_button {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 56px;
@@ -658,7 +622,6 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .required_info {
   display: flex;
-  flex-direction: row;
   font-size: 20px;
 }
 
@@ -671,4 +634,15 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .d_none {
   display: none;
+}
+
+.required_notice{
+font-weight: 400;
+font-size: 14px;
+color: #E60026;
+margin: 4px 0 0 0 ;
+}
+
+.required_input{
+  border-color: #E60026 !important;
 }

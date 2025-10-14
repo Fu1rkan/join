@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="./style/style.css" />
     <script src="./script/add_task.js"></script>
     <script src="./script/add_task_template.js"></script>
+    <script src="./script/add_task_firebase.js"></script>
   </head>
 
-  <body onclick="closeContactlist(), closeCategoryList()" onload="init()">
+  <body onclick="closeContactlist(), closeCategoryList()" onload="init(), loadData() ">
     <div class="layout">
       <nav class="navbar">
         <div class="navbar-content-limiter">
@@ -192,7 +193,7 @@
         </header>
         <section class="ad">
           <h2>Add Task</h2>
-          <form action="">
+          <form action="" novalidate>
             <div class="form_wrapper">
               <div class="input_container w100">
                 <!-- Title -->
@@ -209,6 +210,8 @@
                     placeholder="Enter a title"
                     required
                   />
+
+                  <p class="required_notice d_none " id="required_notice_title">This field is required</p>
                 </div>
                 <!-- Description -->
                 <div class="w100">
@@ -232,7 +235,8 @@
                       placeholder="dd/mm/yyyy"
                       onfocus="this.type='date'"
                       required
-                      leng="en-GB"
+                      lang="en-GB"
+                      value=""
                     />
                     <!-- event.svg -->
                     <svg
@@ -257,6 +261,9 @@
                     const today = new Date().toISOString().split("T")[0];
                     document.getElementById("date").setAttribute("min", today);
                   </script>
+
+                  
+                  <p class="required_notice d_none " id="required_notice_due_date">This field is required</p>
                 </div>
               </div>
 
@@ -714,6 +721,8 @@
                       <p>User Story</p>
                     </li>
                   </ul>
+                  
+                  <p class="required_notice d_none " id="required_notice_category">This field is required</p>
                 </div>
                 <!-- Subtask -->
                 <div>
@@ -790,7 +799,7 @@
                     />
                   </svg>
                 </button>
-                <button class="creat_task_btn">
+                <button type="button" class="creat_task_btn" onclick="closeProtection(event), checkNPost()">
                   Create Task
                   <!-- check.svg -->
                   <svg

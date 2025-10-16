@@ -57,8 +57,8 @@ function logInTemplate() {
 
 
         <footer class="main_footer">
-            <a href="">Privacy Policy</a>
-            <a href="">Legal notice</a>
+            <a href="./privacy_policy.html">Privacy Policy</a>
+            <a href="./legal_notice.html">Legal notice</a>
         </footer>`;
 }
 
@@ -156,7 +156,7 @@ function signUpTemplate() {
                             </svg>
                         </label>
                         </div>
-                            <span>I accept the <a href="">Privacy policy</a></span>
+                            <span>I accept the <a href="./privacy_policy.html">Privacy policy</a></span>
                     </div>
                 </div>
 
@@ -165,8 +165,8 @@ function signUpTemplate() {
                 </div>
                 
                 <footer class="main_footer">
-                    <a href="">Privacy Policy</a>
-                    <a href="">Legal notice</a>
+                    <a href="./privacy_policy.html">Privacy Policy</a>
+                    <a href="./legal_notice.html">Legal notice</a>
                 </footer>
             </section>
             

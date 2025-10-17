@@ -331,6 +331,43 @@
     .board-page {
         max-width: 1440px;
     }
+
+    .task-list {
+        max-height: calc(100vh - 411px);
+    }
 }
 
-@media (max-width: 900px) {}
+@media (max-width: 950px) {
+    .kanban-board {
+        flex-direction: column;
+        overflow: auto;
+        height: calc(100vh - 386px);
+    }
+
+    .kanban-board::-webkit-scrollbar {
+        display: none;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .task-list {
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        overflow-x: scroll;
+    }
+
+    .task {
+        min-height: 218px;
+        max-height: 218px;
+        min-width: 218px;
+        max-width: 218px;
+        box-sizing: content-box;
+    }
+
+    .no-task {
+
+    }
+}

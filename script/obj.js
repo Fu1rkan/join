@@ -127,12 +127,12 @@ let taskList = [
     },
     {
         'category': 'await_feedback',
-        'type': null,
+        'type': 'Technical Task',
         'name': 'JavaScript Templates',
         'description': null,
         'subtasks': null,
         'participants': null,
-        'priority': null,
+        'priority': 'urgent',
         'date': '11/10/2025'
     },
     {

@@ -1,6 +1,6 @@
 let logoAnimated = false;
 
-function init(){
+function init() {
     renderLogIn();
     if (!logoAnimated) {
         setTimeout(() => {
@@ -40,7 +40,7 @@ function renderJoinLogo() {
 function acceptCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
     privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
-        privacyPolicyCheckbox.classList.remove('red_border');
+    privacyPolicyCheckbox.classList.remove('red_border');
 }
 
 // changes checkbox refuse
@@ -104,7 +104,6 @@ function addRepeatPasswordListener() {
             } else {
                 document.getElementById('toggle_password_visibility_button').disabled = true;
                 passwordRepeatButton.innerHTML = showPasswordLock();
-
             }
         });
     }
@@ -129,5 +128,13 @@ function openSignUpOverlay() {
 function closeSignUpOverlay() {
     setTimeout(() => {
         document.getElementById('signup-overlay-id').classList.add('d_none');
-    }, 2000);
+    }, 1000);
+    setTimeout(() => {
+        loginUser();
+    }, 1000);
+}
+
+// Login function - redirects to summary.html
+function loginUser() {
+    window.location.href = './summary.html';
 }

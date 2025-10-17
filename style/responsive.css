@@ -103,9 +103,12 @@
         width: 180px;
     }
 
-    .login_section .input_group,
+    .login_section .input_group {
+        width: 94%;
+    }
+
     .sign_up_section .sign_up_input_group {
-        width: 90%;
+        width: 100%;
     }
 
     .sign_up_section .sign_up_input_group ul {

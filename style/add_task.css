@@ -548,6 +548,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   width: 47%;
   padding-left: 16px;
   padding-right: 16px;
+  min-width: 320px;
 }
 
 .subtask_item_wrapper input {
@@ -633,4 +634,15 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .d_none {
   display: none;
+}
+
+.required_notice{
+font-weight: 400;
+font-size: 14px;
+color: #E60026;
+margin: 4px 0 0 0 ;
+}
+
+.required_input{
+  border-color: #E60026 !important;
 }

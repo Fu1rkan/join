@@ -50,15 +50,15 @@ function logInTemplate() {
             </section>
 
             <section class="login_buttons">
-                <button class="login_button" type="">Log in</button>
+                <button class="login_button" type="" onclick="loginUser()">Log in</button>
                 <button class="guest_login_button" type="">Guest Log in</button>
             </section>
         </section>
 
 
         <footer class="main_footer">
-            <a href="">Privacy Policy</a>
-            <a href="">Legal notice</a>
+            <a href="./privacy_policy.html">Privacy Policy</a>
+            <a href="./legal_notice.html">Legal notice</a>
         </footer>`;
 }
 
@@ -72,7 +72,8 @@ function signUpTemplate() {
 
             <section class="sign_up_section">
                 <section class="title_headline">
-                    <svg class="sign_up_back_arrow" onclick="renderLogIn()" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="sign_up_back_arrow" tabindex="0" onclick="renderLogIn()"
+                    onkeydown="if(event.code==='Space'){renderLogIn();}" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
                     </svg>
                         <div class="sign_up_logo">
@@ -155,7 +156,7 @@ function signUpTemplate() {
                             </svg>
                         </label>
                         </div>
-                            <span>I accept the <a href="">Privacy policy</a></span>
+                            <span>I accept the <a href="./privacy_policy.html">Privacy policy</a></span>
                     </div>
                 </div>
 
@@ -164,8 +165,8 @@ function signUpTemplate() {
                 </div>
                 
                 <footer class="main_footer">
-                    <a href="">Privacy Policy</a>
-                    <a href="">Legal notice</a>
+                    <a href="./privacy_policy.html">Privacy Policy</a>
+                    <a href="./legal_notice.html">Legal notice</a>
                 </footer>
             </section>
             
@@ -338,6 +339,16 @@ function taskFooterTemp(i) {
 function participantsTemp(i, index) {
     return `
         <div class="user-logo">${i.participants[index].name[0].charAt(0).toUpperCase() + i.participants[index].name[1].charAt(0).toUpperCase()}</div>
+    `
+}
+
+function moreParticipantsTemp() {
+    return `
+        <div class="more-user-logo">
+            <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                <path d="M6.14453 8H1.14453C0.861198 8 0.623698 7.90417 0.432031 7.7125C0.240365 7.52083 0.144531 7.28333 0.144531 7C0.144531 6.71667 0.240365 6.47917 0.432031 6.2875C0.623698 6.09583 0.861198 6 1.14453 6H6.14453V1C6.14453 0.716667 6.24036 0.479167 6.43203 0.2875C6.6237 0.0958333 6.8612 0 7.14453 0C7.42786 0 7.66536 0.0958333 7.85703 0.2875C8.0487 0.479167 8.14453 0.716667 8.14453 1V6H13.1445C13.4279 6 13.6654 6.09583 13.857 6.2875C14.0487 6.47917 14.1445 6.71667 14.1445 7C14.1445 7.28333 14.0487 7.52083 13.857 7.7125C13.6654 7.90417 13.4279 8 13.1445 8H8.14453V13C8.14453 13.2833 8.0487 13.5208 7.85703 13.7125C7.66536 13.9042 7.42786 14 7.14453 14C6.8612 14 6.6237 13.9042 6.43203 13.7125C6.24036 13.5208 6.14453 13.2833 6.14453 13V8Z" fill="#2A3647"/>
+            </svg>
+        </div>
     `
 }
 

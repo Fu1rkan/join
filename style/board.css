@@ -367,7 +367,49 @@
         box-sizing: content-box;
     }
 
-    .no-task {
+    .no-task {}
 
+    /* Wrapper + Fades only in mobile */
+    .hs-wrap {
+        position: relative;
+    }
+
+    .hs-wrap .hs-fade {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        width: 20px;
+        /* width of the "bar" */
+        pointer-events: none;
+        /* no interction block */
+        opacity: 0;
+        /* blend in and out by js */
+        transition: opacity 160ms ease;
+        /* same look as task shadow */
+        --fade: rgba(117, 117, 117, 0.123);
+        z-index: 1;
+        /* above the tasks */
+    }
+
+    .hs-wrap .hs-fade--left {
+        left: 0;
+        background: linear-gradient(to right, var(--fade), transparent);
+    }
+
+    .hs-wrap .hs-fade--right {
+        right: 0;
+        background: linear-gradient(to left, var(--fade), transparent);
+    }
+
+    /* no overflow = no fades */
+    .hs-wrap:not(.has-overflow) .hs-fade {
+        display: none;
+    }
+
+    /* reduce animations */
+    @media (prefers-reduced-motion: reduce) {
+        .hs-wrap .hs-fade {
+            transition: none;
+        }
     }
 }

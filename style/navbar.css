@@ -81,6 +81,7 @@
     cursor: default;
 }
 
+<<<<<<< HEAD
 @media (max-width: 1400px) {
     .navbar {
         height: 80px;
@@ -134,6 +135,9 @@
 }
 
 @media (max-width: 1100px) {
+=======
+@media (max-width: 1350px) {
+>>>>>>> 4aeaf844ea94f644d9293ad35bf6f981cc3037e1
     .navbar {
         padding: 0;
         height: 80px;

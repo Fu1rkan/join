@@ -130,25 +130,24 @@
     fill: rgba(41, 171, 226, 1);
 }
 
-.task-assignment {
+.column {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 23%;
 }
 
-.task-assignment section {
+.column header {
     display: flex;
     justify-content: space-between;
-    width: 25%;
-    padding: 0 12px;
-    overflow: hidden;
+    width: 100%;
 }
 
-.task-assignment section svg {
+.column header svg {
     cursor: pointer;
     stroke: #2A3647;
 }
 
-.task-assignment section svg:hover {
+.column header svg:hover {
     stroke: #29abe2;
 }
 
@@ -164,7 +163,7 @@
 }
 
 .task-list {
-    width: 25%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,7 +171,7 @@
     overflow-x: visible;
     overflow-y: auto;
     max-height: calc(100vh - 331px);
-    padding: 10px 16px;
+    padding: 10px;
     border: 1px dashed transparent;
 }
 
@@ -328,28 +327,10 @@
     .subtasks {
         display: none;
     }
-}
 
-@media (max-width: 1200px) {
     .board-page {
-        max-width: calc(1440px - 200px);
-    }
-
-    .task-list {
-        padding: 10px 12px;
-    }
-
-    .board-header {
-        margin: 40px 40px 16px 40px;
-        width: calc(100% - 80px);
-    }
-
-    .kanban-board {
-        margin: 0 40px;
-        width: calc(100% - 80px);
+        max-width: 1440px;
     }
 }
 
-@media (max-width: 900px) {
-    
-}
+@media (max-width: 900px) {}

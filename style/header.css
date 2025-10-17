@@ -129,7 +129,6 @@
   align-items: center;
 }
 
-
 @media(max-width: 1350px) {
   .content-limit-header {
     max-width: 1440px;

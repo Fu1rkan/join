@@ -128,7 +128,12 @@ function checkFooter(i, taskCard) {
 function checkParticipants(i, taskCard) {
     if (i.participants != null) {
         for (let index = 0; index < i.participants.length; index++) {
-            document.getElementById(`${taskCard}-participants-${i.name}`).innerHTML += participantsTemp(i, index)
+            if (index < 3) {
+                document.getElementById(`${taskCard}-participants-${i.name}`).innerHTML += participantsTemp(i, index)
+            }else{
+                document.getElementById(`${taskCard}-participants-${i.name}`).innerHTML += moreParticipantsTemp()
+                break
+            }
         }
     }
 }

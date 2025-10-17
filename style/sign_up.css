@@ -33,6 +33,10 @@
     border-radius: 42px;
 }
 
+.sign_up_section .sign_up_back_arrow:focus {
+    outline: none;
+}
+
 /* sign up section title_headline h1 and underline align */
 .sign_up_section .title_headline .sign_up_logo {
     display: flex;

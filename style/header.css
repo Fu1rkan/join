@@ -20,14 +20,14 @@
 }
 
 /* Profile section container - holds help icon and profile header */
-.summary-profil{
+.summary-profil {
   display: flex;
   gap: 16px;
   margin-right: 50px;
 }
 
 /* Profile header circle - circular profile avatar with border */
-.profil-header{
+.profil-header {
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -40,7 +40,7 @@
 }
 
 /* Navigation container - static positioned menu container */
-.nav-container{
+.nav-container {
   margin-right: 50px;
   width: 150px;
   height: 150px;
@@ -50,21 +50,21 @@
   align-items: center;
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px; 
+  border-bottom-right-radius: 16px;
   margin-top: 100px;
   margin-left: 300px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Navigation link container - wrapper for navigation links */
-.nav-link-container{
+.nav-link-container {
   display: flex;
   justify-content: left;
   align-items: center;
 }
 
 /* Navigation links list - vertical list of navigation items */
-.nav-links{
+.nav-links {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -72,7 +72,7 @@
 }
 
 /* Navigation link item styling - gray colored links */
-.nav-link-item a{
+.nav-link-item a {
   color: #cdcdcd;
 }
 
@@ -119,4 +119,18 @@
 /* Link styling for navigation menu items - light gray text color */
 .nav-link-item a {
   color: #cdcdcd;
+}
+
+.content-limit-header {
+  max-width: calc(1440px - 232px);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media(max-width: 1350px) {
+  .content-limit-header {
+    max-width: 1440px;
+  }
 }

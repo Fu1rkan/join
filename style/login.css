@@ -245,3 +245,7 @@ body {
     padding: 8px;
     cursor: pointer;
 }
+
+.main_footer a:hover {
+    color: #29ABE2;
+}

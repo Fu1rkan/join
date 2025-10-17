@@ -124,7 +124,17 @@
             <section class="board-page">
                 <header class="board-header">
                     <section class="search-section">
-                        <h2>Board</h2>
+                        <div class="resp-add-task-button">
+                            <h2>Board</h2>
+                            <button onclick="openAddTask()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path
+                                        d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
+                                        fill="white" />
+                                </svg>
+                            </button>
+                        </div>
                         <div class="board-actions">
                             <form action="search-bar" class="search-task">
                                 <label for="search-bar">
@@ -141,7 +151,7 @@
                                 </label>
                             </form>
                             <button onclick="openAddTask()">
-                                Add task
+                                <p>Add task</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                     fill="none">
                                     <path
@@ -157,7 +167,7 @@
 
                         <header>
                             <h4>To do</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
                                 <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
@@ -174,7 +184,7 @@
 
                         <header>
                             <h4>In progress</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
                                 <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
@@ -192,7 +202,7 @@
 
                         <header>
                             <h4>Await feedback</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
                                 <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
@@ -210,7 +220,7 @@
 
                         <header>
                             <h4>Done</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
                                 <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />

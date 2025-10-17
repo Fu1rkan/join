@@ -12,14 +12,13 @@
     display: flex;
     flex-direction: column;
     width: calc(100% - 160px);
-    margin: 80px 80px 16px 80px;
+    margin: 80px 80px 40px 80px;
 }
 
 .search-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
 }
 
 .board-actions {
@@ -27,6 +26,31 @@
     align-items: center;
     gap: 24px;
     height: 48px;
+}
+
+.resp-add-task-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.resp-add-task-button button {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 3px;
+    background-color: rgba(42, 54, 71, 1);
+    border: none;
+    cursor: pointer;
+    transition: 100ms;
+    justify-content: center;
+    align-items: center;
+}
+
+.resp-add-task-button button:hover {
+    background-color: rgba(41, 171, 226, 1);
 }
 
 .board-actions button {
@@ -42,6 +66,7 @@
     height: 100%;
     cursor: pointer;
     transition: 100ms;
+    text-wrap-mode: nowrap;
 }
 
 .board-actions button:hover {
@@ -170,7 +195,7 @@
     gap: 16px;
     overflow-x: visible;
     overflow-y: auto;
-    max-height: calc(100vh - 331px);
+    max-height: calc(100vh - 314px);
     padding: 10px;
     border: 1px dashed transparent;
 }
@@ -333,7 +358,7 @@
     }
 
     .task-list {
-        max-height: calc(100vh - 411px);
+        max-height: calc(100vh - 394px);
     }
 }
 
@@ -341,7 +366,7 @@
     .kanban-board {
         flex-direction: column;
         overflow: auto;
-        height: calc(100vh - 386px);
+        height: calc(100vh - 400px);
     }
 
     .kanban-board::-webkit-scrollbar {
@@ -367,7 +392,71 @@
         box-sizing: content-box;
     }
 
-    .no-task {
+    .board-header {
+        margin: 40px 20px 20px 20px;
+        width: calc(100% - 40px);
+    }
 
+    .kanban-board {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+    }
+
+    .search-section {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+
+    .board-actions button {
+        display: none;
+    }
+
+    .resp-add-task-button button {
+        display: flex;
+    }
+
+    .board-actions {
+        width: 100%;
+    }
+
+    .search-task {
+        width: 100%;
+    }
+
+    /* standart CSS */
+    h4 {
+        font-size: 27px;
+    }
+
+    h2{
+        font-size: 47px;
+    }
+
+    /* standart CSS */
+
+    .column header svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .progress-track {
+        width: 50%;
+    }
+
+    .subtasks {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    .board-header {
+        margin: 40px 8px 20px 8px;
+        width: calc(100% - 16px);
+    }
+
+    .kanban-board {
+        width: calc(100% - 16px);
+        margin: 0 8px;
     }
 }

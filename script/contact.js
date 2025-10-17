@@ -1,6 +1,8 @@
 const overlayRef = document.getElementById("overlay_contacts");
 const overlayContentRef = document.getElementById('overlay_contacts_content');
+const contactListAreaRef = document.getElementById('contact_list_area');
 const contactListRef = document.getElementById("contact_list");
+const contactAreaRef = document.getElementById('contact_area');
 const templateRef = document.getElementById("contact_template");
 
 function openOverlay() {
@@ -15,6 +17,11 @@ function toggleContact(name, email, keys, index) {
     const contactCardRef = document.getElementById(`letter_${keys}_${index}`);
     const contactRef = contacts.find(t => t.name === name && t.email === email);
     const isActive = contactCardRef.classList.contains("active-contact");
+    let currentWidth = window.innerWidth;
+    // if (currentWidth <= 1000) {
+    //     contactListAreaRef.classList.add('width-0');
+    //     contactAreaRef.classList.add('width-100');
+    // }
     removeActiveClass();
     highlightContactAndOpenContactTemplate(contactCardRef, contactRef, isActive);
 }

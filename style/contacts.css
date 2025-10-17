@@ -64,6 +64,11 @@ body {
     flex-direction: column;
 }
 
+.first-contact-list-element {
+    padding-top: 0;
+    height: 41px;
+}
+
 .contact-list {
     display: flex;
     flex-direction: column;
@@ -117,6 +122,10 @@ body {
 
 .add-new-contact-img {
     width: 32px;
+}
+
+.responsiv-add-new-contact-container {
+    display: none;
 }
 
 .contact-list-section-head {
@@ -410,6 +419,8 @@ body {
     font-weight: var(--weight-400);
     height: 24px;
 }
+
+
 
 .d_none {
     display: none;

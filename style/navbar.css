@@ -81,63 +81,8 @@
     cursor: default;
 }
 
-<<<<<<< HEAD
-@media (max-width: 1400px) {
-    .navbar {
-        height: 80px;
-        width: 100%;
-        padding: 0 16px;
-        position: fixed;
-        bottom: 0;
-    }
 
-    .navbar-content-limiter {
-        flex-direction: row;
-    }
-
-    .navbar > svg{
-        display: none;
-    }
-
-    .navbar-logo {
-        display: none;
-    }
-
-    .nav-list {
-        flex-direction: row;
-        height: 100%;
-    }
-
-    .navbar-link-content {
-        justify-content: center;
-    }
-
-    .nav-list li {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        width: 100%;
-        height: 100%;
-    }
-
-    .navbar-link {
-        height: 100%;
-        border-radius: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .navbar-footer {
-        display: none;
-    }
-
-}
-
-@media (max-width: 1100px) {
-=======
 @media (max-width: 1350px) {
->>>>>>> 4aeaf844ea94f644d9293ad35bf6f981cc3037e1
     .navbar {
         padding: 0;
         height: 80px;

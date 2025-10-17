@@ -1,62 +1,44 @@
-@media (max-width: 800px) {
+@media (max-width: 1400px) {
+/* Main title container with responsive margins and width constraints */
 .summary-title {
-    
+  margin: 40px 20px 0;
+  max-width: 1200px;
+  width: calc(100% - 40px);
 }
-
-/* Panels container in the summary section */
-.summary-panels {
- 
+/* Main container for summary content with auto margins and padding */
+.summary-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
-
-/* Main content area styling */
-.main {
-
-}
-
-/* Container for the summary section */
-
-/* Blue separator line for summary title */
-.summary-title-separator-blue {
-
-}
-
-/* Grey separator line for summary title */
-.summary-title-separator-grey {
-
-}
-
-/* Single summary panel styling */
-.summary-panel {
-
-}
-
-/* Container for greeting section in summary */
+/* Hidden greeting container for mobile view */
 .summary-greeting-container {
-
+  display: none;
 }
-
-/* Container for the summary board */
+/* Main content area with reset padding and horizontal overflow prevention */
+.main {
+  padding: 0;
+  overflow-x: hidden;
+}
+/* Container for summary board elements with fixed width and vertical layout */
 .summary-board-container {
-  width: 550px;
-  height: auto;
+  width: 450px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
-
-/* Container for multiple summary board panels */
+/* Container for horizontal board panel groups */
 .summary-board-panels {
   width: 100%;
   display: flex;
-  gap: 32px;
+  gap: 28px;
 }
-
-/* Single summary board panel styling */
+/* Individual summary board panel with styling and hover transition */
 .summary-board-panel {
   width: 100%;
-  height: 168px;
-  border-radius: 20px;
+  height: 150px;
+  border-radius: 18px;
   background-color: var(--header-color);
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -65,164 +47,53 @@
   align-items: center;
   transition: ease-in-out 80ms;
 }
-
-/* Text style: 16px, weight 400 */
+/* Large text style for numbers with Inter font and medium weight */
+.s-txt-64-600 {
+  font-family: "Inter", serif;
+  font-size: var(--font-size-54);
+  font-weight: var(--weight-600);
+}
+/* Medium text style for labels with Inter font */
+.s-txt-20-400 {
+  font-family: "Inter", serif;
+  font-size: var(--font-size-18);
+  font-weight: var(--weight-400);
+}
+/* Small text style for secondary labels */
 .s-txt-16-400 {
   font-family: "Inter", serif;
   font-size: var(--font-size-16);
   font-weight: var(--weight-400);
 }
-
-/* Text style: 20px, weight 400 */
-.s-txt-20-400 {
-  font-family: "Inter", serif;
-  font-size: var(--font-size-20);
-  font-weight: var(--weight-400);
-}
-
-/* Text style: 21px, weight 700, accent color */
+/* Bold accent text style for dates and important information */
 .s-txt-21-700 {
   font-family: "Inter", serif;
-  font-size: var(--font-size-21);
+  font-size: var(--font-size-18);
   font-weight: var(--weight-700);
   color: var(--side-color);
 }
-
-/* Text style: 47px, weight 500 */
-.s-txt-47-500 {
-  font-family: "Inter", serif;
-  font-size: var(--font-size-47);
-  font-weight: var(--weight-500);
-}
-
-/* Text style: 64px, weight 600 */
-.s-txt-64-600 {
-  font-family: "Inter", serif;
-  font-size: var(--font-size-64);
-  font-weight: var(--weight-600);
-}
-
-/* Text style: 64px, weight 700, accent color */
-.s-txt-64-700 {
-  font-family: "Inter", serif;
-  font-size: var(--font-size-64);
-  font-weight: var(--weight-700);
-  color: var(--inter-text-accent-color);
-}
-
-/* Title style for summary (responsive 360px) */
+/* Responsive title styling for 360px breakpoint */
 #summary-title-360 {
   font-size: var(--font-size-61);
   font-weight: var(--weight-700);
 }
-
-/* Text style for summary title */
+/* Main title text with column layout and left alignment */
 .summary-title-text {
   font-family: "Inter", serif;
   font-weight: var(--weight-400);
-  font-style: normal;
   font-size: var(--font-size-27);
   color: var(--text-color);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 24px;
 }
-
-/* Greeting text style in summary */
-.summary-greeting {
-  font-weight: var(--weight-500);
-  font-size: var(--font-size-47);
-  color: var(--side-color);
-}
-
-/* Name style in summary greeting */
-#summary-greeting-name {
-  color: var(--inter-text-accent-color);
-  font-weight: var(--weight-700);
-  font-size: var(--font-size-64);
-}
-
-/* Image size for summary icons */
-.s-img {
-  width: 69px;
-  height: 69px;
-}
-
-/* Image size for summary icons */
-.s-img-2 {
-  width: 60px;
-  height: 60px;
-}
-
-/* Gap between summary panels */
-.s-panel-gap {
-  gap: 32px;
-}
-
-/* Container for urgent board panel */
-.summary-board-urgent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 130px;
-  gap: 18px;
-}
-
-/* Task container for "To Do" tasks */
-.tasks-In-Todo {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
-
-/* Task container for "Done" tasks */
-.tasks-In-Done {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
-
-/* Task container for "Urgent" tasks */
-.tasks-In-Urgent {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
-
-/* Task container for "Deadline" tasks */
-.tasks-In-Deadline {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: start;
-  gap: 13px;
-}
-
-/* Task container for "Board" tasks */
-.tasks-In-Board {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
-
-/* Task container for "In Progress" tasks */
-.tasks-In-Progress {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
-
-/* Container for "Awaiting Feedback" tasks */
+/* Consolidated task container styles for centered content layout */
+.tasks-In-Todo,
+.tasks-In-Done,
+.tasks-In-Urgent,
+.tasks-In-Board,
+.tasks-In-Progress,
 .awaiting-In-Feedback {
   display: flex;
   justify-content: center;
@@ -230,77 +101,41 @@
   text-align: center;
   align-items: center;
 }
-
-/* Icon wrapper with circular background and hover effects */
-.icon-wrap {
+/* Deadline task container with left alignment and custom gap */
+.tasks-In-Deadline {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  gap: 13px;
+}
+/* Standard icon size for summary images */
+.s-img {
+  width: 60px;
+  height: 60px;
+}
+/* Urgent panel container with space-between layout */
+.summary-board-urgent {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 50%;
-  background-color: #2a3647;
-  width: 69px;
-  height: 69px;
-  cursor: pointer;
+  width: 115px;
+  gap: 16px;
 }
-
-/* Edit icon styling with fill transition */
-.icon-edit path {
-  fill: #ffffff;
-  transition: ease-in-out 80ms;
-}
-
-/* Hover state for icon wrapper - changes background to white */
-.icon-wrap:hover {
-  background-color: #ffffff;
-}
-
-/* Hover state for edit icon - changes fill to black */
-.icon-wrap:hover .icon-edit path {
-  fill: #000000;
-}
-
-/* Secondary icon wrapper with circular background and hover effects */
+/* Circular icon wrappers with dark background and hover transition */
+.icon-wrap,
 .icon-wrap-2 {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #2a3647;
-  width: 69px;
-  height: 69px;
-  transition: ease-in-out 80ms;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
-}
-
-/* Arrow icon styling with stroke transition */
-.icon-arrow {
-  display: block;
-}
-
-/* Arrow icon path styling with stroke transition */
-.icon-arrow path {
-  stroke: #ffffff;
-  /* transition: stroke 0.18s; */
   transition: ease-in-out 80ms;
 }
-
-/* Hover state for secondary icon wrapper - changes background to white */
-.icon-wrap-2:hover {
-  background-color: #ffffff;
-}
-
-/* Hover state for arrow icon - changes stroke to black */
-.icon-wrap-2:hover .icon-arrow path {
-  stroke: #000000;
-}
-
-/* Link styling for summary board panels - removes default link styles */
-a.summary-board-panel {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Hover state for summary board panel - scales and changes appearance */
+/* Board panel hover effect with scaling and color change */
 .summary-board-panel:hover {
   background-color: var(--side-color);
   color: #ffffff;
@@ -308,59 +143,222 @@ a.summary-board-panel {
   transform: scale(1.1);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }
-
-/* On summary-board-panel hover: change icon-wrap background */
-.summary-board-panel:hover .icon-wrap {
-  background-color: #ffffff;
-}
-
-/* On summary-board-panel hover: change icon-wrap-2 background */
+/* Icon background color change on board panel hover */
+.summary-board-panel:hover .icon-wrap,
 .summary-board-panel:hover .icon-wrap-2 {
   background-color: #ffffff;
 }
-
-/* On summary-board-panel hover: adjust icon colors */
+/* Edit icon color change on board panel hover */
 .summary-board-panel:hover .icon-edit path {
   fill: #2a3647;
 }
-
-/* On summary-board-panel hover: change arrow icon stroke color */
+/* Arrow icon color change on board panel hover */
 .summary-board-panel:hover .icon-arrow path {
   stroke: #2a3647;
 }
-
-/* On summary-board-panel hover: change text color for .s-txt-21-700 */
+/* Text color override on board panel hover */
 .summary-board-panel:hover .s-txt-21-700 {
   color: #ffffff;
 }
-
-/* Hover state for profile header - adds background color transition */
-.profil-header:hover {
-  cursor: pointer;
-  transition: ease-in-out 80ms;
-  background-color: rgba(12, 46, 98, 0.12);
+/* Individual icon wrapper hover effects */
+.icon-wrap:hover,
+.icon-wrap-2:hover {
+  background-color: #ffffff;
+}
+/* Edit icon color change on individual icon hover */
+.icon-wrap:hover .icon-edit path {
+  fill: #000000;
+}
+/* Arrow icon color change on individual icon hover */
+.icon-wrap-2:hover .icon-arrow path {
+  stroke: #000000;
+}
+/* Main header with fixed height and overflow control */
+.main-header {
+  height: 80px;
+  overflow: hidden;
+}
+/* Hidden header text for mobile view */
+.header-text {
+  display: none;
+}
+/* Mobile logo placeholder with accent color background */
+.mobile-header-logo {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: var(--inter-text-accent-color);
+  border-radius: 8px;
+  position: relative;
+}
+/* Mobile logo text overlay with centered positioning */
+.mobile-header-logo::after {
+  content: "LOGO";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}
+/* Header content container with space-between layout */
+.content-limit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0 20px;
+}
+/* Profile section in header with flex layout */
+.header-profil {
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Profile dropdown container positioning */
+.nav-profile-container {
+  right: -150px;
+  width: 130px;
+}
+/* Visible state for profile dropdown */
+.nav-profile-container.show {
+  right: 20px;
+}
+/* Global overflow prevention and background color */
+body,
+html {
+  overflow-x: hidden;
+  background-color: var(--summary-color);
+}
+/* Blue horizontal separator line for title section */
+.summary-title-separator-blue {
+  width: 90px;
+  height: 0px;
+  border: 3px solid var(--inter-text-accent-color);
+  border-radius: 3px;
+}
+/* Grey vertical separator line for content sections */
+.summary-title-separator-grey {
+  width: 0px;
+  height: 102px;
+  border: 2px solid var(--seperator-color);
+  border-radius: 3px;
+}
+/* Specific separator height adjustment for mobile */
+#s-b-separator {
+  height: 90px;
+}
 }
 
-/* Menu styling */
-.main-header{
-    height: 80px;
+@media (max-width: 800px) {
+/* Profile dropdown container with adjusted width and positioning */
+.nav-profile-container {
+  width: 125px;
+  right: -135px;
 }
-.header-text{
-    display: none;
+/* Visible state for profile dropdown with adjusted right position */
+.nav-profile-container.show {
+  right: 15px;
 }
-.navbar{
-    display: none;
+/* Overflow control for body and header elements */
+body,
+.main-header,
+.content-limit-header {
+  overflow: hidden;
+}
 }
 
-.summary-container{
-    width: 396px;
-
+@media (max-width: 768px) {
+/* Summary container with full width and reduced padding for tablets */
+.summary-container {
+  max-width: 100%;
+  padding: 15px;
+}
+/* Board container with full width and reduced gap for tablets */
+.summary-board-container {
+  max-width: 100%;
+  gap: 20px;
+  width: 100%;
+}
+/* Board panels with reduced gap between elements */
+.summary-board-panels {
+  gap: 15px;
+}
+/* Board panel with reduced height and added padding */
+.summary-board-panel {
+  height: 100px;
+  padding: 10px;
+}
+/* Smaller text size for large numbers on tablets */
+.s-txt-64-600 {
+  font-size: var(--font-size-36);
+}
+/* Title with adjusted margins for tablet view */
+.summary-title {
+  margin: 20px 15px;
+  width: calc(100% - 30px);
+}
+/* Title text with smaller font size for tablets */
+.summary-title-text {
+  font-size: var(--font-size-20);
+}
+/* Smaller mobile logo for tablet screens */
+.mobile-header-logo {
+  width: 45px;
+  height: 45px;
+}
+/* Profile dropdown with adjusted dimensions for tablets */
+.nav-profile-container {
+  width: 120px;
+  right: -130px;
+}
+/* Visible profile dropdown position for tablets */
+.nav-profile-container.show {
+  right: 10px;
+}
 }
 
-.summary-greeting{
-    display: none;
+@media (max-width: 480px) {
+/* Board panels with minimal gap for small mobile screens */
+.summary-board-panels {
+  gap: 12px;
 }
-#summary-greeting-name{
-    display: none;
+/* Compact board panel with reduced height and border radius */
+.summary-board-panel {
+  height: 90px;
+  border-radius: 15px;
+}
+/* Urgent panel with compact width and minimal gap */
+.summary-board-urgent {
+  width: 80px;
+  gap: 8px;
+}
+/* Small icons and images for mobile phones */
+.icon-wrap,
+.icon-wrap-2,
+.s-img {
+  width: 40px;
+  height: 40px;
+}
+/* Compact mobile logo for small screens */
+.mobile-header-logo {
+  width: 40px;
+  height: 40px;
+}
+/* Smaller logo text for mobile phones */
+.mobile-header-logo::after {
+  font-size: 8px;
+}
+/* Compact profile dropdown for mobile phones */
+.nav-profile-container {
+  width: 110px;
+  right: -120px;
+}
+/* Visible profile dropdown with minimal right offset */
+.nav-profile-container.show {
+  right: 5px;
 }
 }

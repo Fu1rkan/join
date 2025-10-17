@@ -375,3 +375,8 @@ a.summary-board-panel {
   transition: ease-in-out 80ms;
   background-color: rgba(12, 46, 98, 0.12);
 }
+
+/* Hide mobile header logo in desktop view */
+.mobile-header-logo {
+  display: none;
+}

@@ -15,26 +15,26 @@
     /* left side / contact-list */
 
     .contact-list-area {
-        width: 38%;
+        /* width: 38%; */
     }
 
     .add-new-contact-btn {
-        width: 100%;
+        /* width: 100%; */
     }
 
     .contact-list-container {
-        width: 100%;
+        /* width: 100%; */
     }
 
     .contact-list-content {
-        width: 100%;
+        /* width: 100%; */
     }
 
 
     /* right side / contact + template */
 
     .contact {
-        width: 62%;
+        width: calc(100vw - 456px);
     }
 
     /* .contacts-header {
@@ -100,10 +100,7 @@
 
 
 @media (max-width: 1400px) {
-    /* body {
-        overflow-y: scroll;
-    } */
-
+    
     .layout {
         flex-direction: column-reverse;
     }
@@ -125,10 +122,6 @@
         padding: 0 16px;
         position: fixed;
         bottom: 0;
-    }
-
-    .succes-created-container {
-        margin-top: 64px;
     }
 
     .navbar-content-limiter {
@@ -165,10 +158,13 @@
         display: none;
     }
 
+    .succes-created-container {
+        margin-top: 64px;
+    }
+
     .contact-list-area {
         height: calc(100vh - (96px + 80px));
     }
-
 
     /*Overlay*/
 
@@ -250,7 +246,7 @@
 
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1064px) {
     /* .contact-list-area {
         width: 100%;
     }
@@ -291,6 +287,11 @@
     .contact-circle-img-big {
         height: 100px;
         width: 100px;
+    }
+
+    .contact-circle-img-big>p {
+        font-size: 30px;
+        font-weight: var(--font-weight-400);
     }
 }
 

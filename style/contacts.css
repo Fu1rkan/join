@@ -52,6 +52,11 @@
     flex-direction: column;
 }
 
+.first-contact-list-element {
+    padding-top: 0;
+    height: 41px;
+}
+
 .contact-list {
     display: flex;
     flex-direction: column;
@@ -105,6 +110,10 @@
 
 .add-new-contact-img {
     width: 32px;
+}
+
+.responsiv-add-new-contact-container {
+    display: none;
 }
 
 .contact-list-section-head {
@@ -308,7 +317,7 @@
 }
 
 .contact-edit-btn>p {
-    min-width: 30px;
+    min-width: 31px;
 }
 
 .contact-edit-btn:hover svg path {
@@ -398,6 +407,8 @@
     font-weight: var(--weight-400);
     height: 24px;
 }
+
+
 
 .d_none {
     display: none;

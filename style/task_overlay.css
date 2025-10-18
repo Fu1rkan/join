@@ -58,10 +58,6 @@
     gap: 24px;
 }
 
-.task-overlay main::-webkit-scrollbar{
-    display: none;
-}
-
 .task-overlay header {
     height: 36px;
     display: flex;

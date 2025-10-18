@@ -94,7 +94,7 @@
         flex-direction: row;
     }
 
-    .navbar > svg{
+    .navbar>svg {
         display: none;
     }
 
@@ -133,59 +133,7 @@
 
 }
 
-@media (max-width: 1100px) {
-    .navbar {
-        padding: 0;
-        height: 80px;
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        display: flex;
-    }
-
-    .nav-list {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        gap: 0;
-        width: 100%;
-        height: 80px;
-    }
-
-    .navbar-footer {
-        display: none;
-    }
-
-    
-
-    .nav-list li {
-        flex-direction: column;
-        width: 76px;
-        height: 76px;
-
-    }
-
-    .navbar-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        border-radius: 16px;
-        font-size: 14px;
-    }
-
-    .navbar-active {
-        border-radius: 16px;
-    }
-
-}
-
-@media (max-width: 960px) {
+@media (max-width: 970px) {
 
     .nav-list {
         list-style: none;
@@ -195,36 +143,29 @@
         align-items: center;
         gap: 15px;
         width: 100%;
-    }
-
-    .navbar-footer {
-        display: none;
-    }
-
-    .navbar-logo {
-        display: none;
-    }
-
-    .navbar-link-content {
-        /* width: 76px;
-        height: 76px; */
+        height: 80px;
         padding: 0;
-        border-radius: 16px;
     }
 
     .nav-list li {
         flex-direction: column;
-        /* width: 76px;
-        height: 76px; */
-
     }
 
     .navbar-link {
-        height: auto;
-    }
-
-    .navbar-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
         border-radius: 16px;
+        font-size: 14px;
+        padding: 15px 0;
     }
+}
 
+@media (max-width: 330px) {
+    .navbar-link>p {
+        font-size: 12px;
+    }
 }

@@ -4,15 +4,21 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 40px;
   margin-left: 0px;
   opacity: 0;
   animation: fadeInContent 1s ease-in-out 3s forwards;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 20px;
 }
 /* Summary title initially hidden, fades in after greeting animation */
 .summary-title {
   opacity: 0;
   animation: fadeInContent 1s ease-in-out 3s forwards;
+  position: relative;
+  z-index: 1;
+  margin-top: 40px;
 }
 /* Greeting container fullscreen animation - initially visible then fades out */
 .summary-greeting-container {
@@ -45,6 +51,8 @@
 .main {
   padding: 0;
   overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
 /* Container for summary board elements with fixed width and vertical layout */
 .summary-board-container {
@@ -239,6 +247,11 @@ html {
   overflow-x: hidden;
   background-color: var(--summary-color);
 }
+/* Navbar positioning and z-index for proper layering */
+.navbar {
+  position: relative;
+  z-index: 100;
+}
 /* Blue horizontal separator line for title section */
 .summary-title-separator-blue {
   width: 90px;
@@ -296,6 +309,8 @@ body,
 .summary-container {
   opacity: 0;
   animation: fadeInContent 1s ease-in-out 3s forwards;
+  position: relative;
+  z-index: 1;
 }
 /* Smaller text size for large numbers on tablets */
 .s-txt-64-600 {
@@ -362,6 +377,8 @@ body,
 .summary-container {
   opacity: 0;
   animation: fadeInContent 1s ease-in-out 3s forwards;
+  position: relative;
+  z-index: 1;
 }
 /* Board panels with minimal gap for small mobile screens */
 .summary-board-panels {

@@ -358,13 +358,13 @@
     }
 
     .task-list {
-        max-height: calc(100vh - 375px);
+        max-height: calc(100vh - 360px);
     }
 
     .kanban-board {
         margin: 0 60px;
         width: calc(100% - 120px);
-        height: calc(100vh - 350px);
+        height: calc(100vh - 335px);
     }
 
     .board-header {
@@ -377,7 +377,7 @@
     .kanban-board {
         flex-direction: column;
         overflow: auto;
-        height: calc(100vh - 400px);
+        height: calc(100vh - 385px);
     }
 
     .kanban-board::-webkit-scrollbar {

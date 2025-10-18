@@ -1,17 +1,12 @@
 @media (max-width: 1400px) {
-/* Main title container with responsive margins and width constraints */
-.summary-title {
-  margin: 40px 20px 0;
-  max-width: 1200px;
-  width: calc(100% - 40px);
-}
-/* Main container for summary content with auto margins and padding */
 .summary-container {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  margin-top: 80px;
+  margin-left: 0px;
 }
+
 /* Hidden greeting container for mobile view */
 .summary-greeting-container {
   display: none;
@@ -23,34 +18,15 @@
 }
 /* Container for summary board elements with fixed width and vertical layout */
 .summary-board-container {
-  width: 450px;
+  width: 550px;
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
-/* Container for horizontal board panel groups */
-.summary-board-panels {
-  width: 100%;
-  display: flex;
-  gap: 28px;
-}
-/* Individual summary board panel with styling and hover transition */
-.summary-board-panel {
-  width: 100%;
-  height: 150px;
-  border-radius: 18px;
-  background-color: var(--header-color);
-  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  transition: ease-in-out 80ms;
-}
 /* Large text style for numbers with Inter font and medium weight */
 .s-txt-64-600 {
   font-family: "Inter", serif;
-  font-size: var(--font-size-54);
+  font-size: var(--font-size-64);
   font-weight: var(--weight-600);
 }
 /* Medium text style for labels with Inter font */
@@ -270,40 +246,14 @@ body,
   overflow: hidden;
 }
 }
-
 @media (max-width: 768px) {
-/* Summary container with full width and reduced padding for tablets */
-.summary-container {
-  max-width: 100%;
-  padding: 15px;
-}
-/* Board container with full width and reduced gap for tablets */
-.summary-board-container {
-  max-width: 100%;
-  gap: 20px;
-  width: 100%;
-}
-/* Board panels with reduced gap between elements */
-.summary-board-panels {
-  gap: 15px;
-}
-/* Board panel with reduced height and added padding */
-.summary-board-panel {
-  height: 100px;
-  padding: 10px;
-}
 /* Smaller text size for large numbers on tablets */
 .s-txt-64-600 {
-  font-size: var(--font-size-36);
-}
-/* Title with adjusted margins for tablet view */
-.summary-title {
-  margin: 20px 15px;
-  width: calc(100% - 30px);
+  font-size: var(--font-size-64);
 }
 /* Title text with smaller font size for tablets */
 .summary-title-text {
-  font-size: var(--font-size-20);
+  font-size: var(--font-size-27);
 }
 /* Smaller mobile logo for tablet screens */
 .mobile-header-logo {
@@ -320,6 +270,27 @@ body,
   right: 10px;
 }
 }
+@media (max-width: 750px) {
+  /* Summary title with reduced left margin for smaller tablets */
+  .summary-title{
+    margin-left: 60px;
+  }
+}
+@media (max-width: 580px) {
+  .summary-board-container {
+    width: 500px;
+  }
+}
+@media (max-width: 550px) {
+  .summary-board-container {
+    width: 450px;
+  }
+}
+@media (max-width: 490px) {
+  .summary-board-container {
+    width: 400px;
+  }
+}
 
 @media (max-width: 480px) {
 /* Board panels with minimal gap for small mobile screens */
@@ -328,7 +299,6 @@ body,
 }
 /* Compact board panel with reduced height and border radius */
 .summary-board-panel {
-  height: 90px;
   border-radius: 15px;
 }
 /* Urgent panel with compact width and minimal gap */

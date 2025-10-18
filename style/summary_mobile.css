@@ -1,15 +1,45 @@
 @media (max-width: 1400px) {
+/* Summary container initially hidden, fades in after greeting animation */
 .summary-container {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 80px;
   margin-left: 0px;
+  opacity: 0;
+  animation: fadeInContent 1s ease-in-out 3s forwards;
 }
-
-/* Hidden greeting container for mobile view */
+/* Summary title initially hidden, fades in after greeting animation */
+.summary-title {
+  opacity: 0;
+  animation: fadeInContent 1s ease-in-out 3s forwards;
+}
+/* Greeting container fullscreen animation - initially visible then fades out */
 .summary-greeting-container {
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--summary-color);
+  z-index: 1000;
+  opacity: 1;
+  animation: fadeOutGreeting 3s ease-in-out forwards;
+  margin-left: 0;
+}
+/* Greeting fade out animation */
+@keyframes fadeOutGreeting {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+/* Content fade in animation */
+@keyframes fadeInContent {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 /* Main content area with reset padding and horizontal overflow prevention */
 .main {
@@ -247,6 +277,26 @@ body,
 }
 }
 @media (max-width: 768px) {
+/* Greeting container maintains fullscreen behavior on tablets */
+.summary-greeting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--summary-color);
+  z-index: 1000;
+  margin-left: 0;
+}
+/* Summary title and container remain hidden initially on tablets */
+.summary-title,
+.summary-container {
+  opacity: 0;
+  animation: fadeInContent 1s ease-in-out 3s forwards;
+}
 /* Smaller text size for large numbers on tablets */
 .s-txt-64-600 {
   font-size: var(--font-size-64);
@@ -293,6 +343,26 @@ body,
 }
 
 @media (max-width: 480px) {
+/* Greeting container maintains fullscreen behavior on mobile phones */
+.summary-greeting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--summary-color);
+  z-index: 1000;
+  margin-left: 0;
+}
+/* Summary title and container remain hidden initially on mobile phones */
+.summary-title,
+.summary-container {
+  opacity: 0;
+  animation: fadeInContent 1s ease-in-out 3s forwards;
+}
 /* Board panels with minimal gap for small mobile screens */
 .summary-board-panels {
   gap: 12px;

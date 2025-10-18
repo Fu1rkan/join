@@ -311,11 +311,14 @@ function emptyTaskList() {
 function taskTemp(i) {
     return `
         <div class="task" draggable="true" ondragstart="startDragging(${allObj.length})" onclick="toggleTaskOverlay('${allObj.length}')">
-            <p class="task-label" id="task-card-type-${i.name}"></p>
+            <p class="task-label" id="task-card-type-${i.name}">${i.type}</p>
             <h5>${i.name}</h5>
             <p class="task-desc" id="task-card-desc-${i.name}"></p>
             <section class="progress" id="task-card-subtasks-${i.name}"></section>
-            <footer id="task-card-footer-${i.name}"></footer>
+            <footer id="task-card-footer-${i.name}">
+                <div class="task-assignees" id="task-card-participants-${i.name}"></div>
+                <div class="task-priority" id="task-card-prio-${i.name}"></div>
+            </footer>
         </div>
     `
 }
@@ -326,13 +329,6 @@ function progressTemp(taskCount, trueCount) {
             <div class="progress-fill" style="width: ${trueCount * 100 / taskCount}%;"></div>
         </div>
         <p class="subtasks">${trueCount}/${taskCount} Subtasks</p>
-    `
-}
-
-function taskFooterTemp(i) {
-    return `
-        <div class="task-assignees" id="task-card-participants-${i.name}"></div>
-        <div class="task-priority" id="task-card-prio-${i.name}"></div>
     `
 }
 
@@ -393,7 +389,7 @@ function taskOverlayTemp(i) {
             <div class="task-overlay" onclick="stopPropagation(event)">
 
                 <header>
-                    <p class="main-task-label" id="task-overlay-type-${i.name}"></p>
+                    <p class="main-task-label" id="task-overlay-type-${i.name}">${i.type}</p>
                     <div class="close-button" onclick="toggleTaskOverlay('task-dialog')">
                         <svg width="14" height="14" viewBox="0 0 14 14">
                             <path d="M6.99999 8.40005L2.09999 13.3C1.91665 13.4834 1.68332 13.575 1.39999 13.575C1.11665 13.575 0.883321 13.4834 0.699988 13.3C0.516654 13.1167 0.424988 12.8834 0.424988 12.6C0.424988 12.3167 0.516654 12.0834 0.699988 11.9L5.59999 7.00005L0.699988 2.10005C0.516654 1.91672 0.424988 1.68338 0.424988 1.40005C0.424988 1.11672 0.516654 0.883382 0.699988 0.700049C0.883321 0.516715 1.11665 0.425049 1.39999 0.425049C1.68332 0.425049 1.91665 0.516715 2.09999 0.700049L6.99999 5.60005L11.9 0.700049C12.0833 0.516715 12.3167 0.425049 12.6 0.425049C12.8833 0.425049 13.1167 0.516715 13.3 0.700049C13.4833 0.883382 13.575 1.11672 13.575 1.40005C13.575 1.68338 13.4833 1.91672 13.3 2.10005L8.39999 7.00005L13.3 11.9C13.4833 12.0834 13.575 12.3167 13.575 12.6C13.575 12.8834 13.4833 13.1167 13.3 13.3C13.1167 13.4834 12.8833 13.575 12.6 13.575C12.3167 13.575 12.0833 13.4834 11.9 13.3L6.99999 8.40005Z" />
@@ -401,20 +397,22 @@ function taskOverlayTemp(i) {
                     </div>
                 </header>
 
-                <h2>${i.name}</h2>
+                <main>
+                    <h2>${i.name}</h2>
 
-                <p class="main-task-decription" id="task-overlay-desc-${i.name}"></p>
+                    <p class="main-task-description" id="task-overlay-desc-${i.name}"></p>
 
-                <section class="main-task-date">
-                    <p class="due-date">Due date:</p>
-                    <p class="date">${i.date}</p>
-                </section>
+                    <section class="main-task-date">
+                        <p class="task-info-type">Due date:</p>
+                        <p class="task-info">${i.date}</p>
+                    </section>
 
-                <section class="main-task-priority" id="task-overlay-prio-${i.name}"></section>
+                    <section class="main-task-priority" id="task-overlay-prio-${i.name}"></section>
 
-                <section class="main-task-assigned-list" id="task-overlay-participants-${i.name}"></section>
+                    <section class="main-task-assigned-list" id="task-overlay-participants-${i.name}"></section>
 
-                <section class="main-task-subtasks" id="task-overlay-subtasks-${i.name}"></section>
+                    <section class="main-task-subtasks" id="task-overlay-subtasks-${i.name}"></section>
+                </main>
                 
                 <footer>
                     <div class="main-task-edit">
@@ -443,9 +441,9 @@ function taskOverlayTemp(i) {
 
 function prioTaskOverlayTemp(i, type) {
     return `
-        <p class="due-date">Priority:</p>
+        <p class="task-info-type">Priority:</p>
         <div class="priority-class">
-            <p class="date">${i.priority}</p>
+            <p class="task-info">${i.priority}</p>
             <div>${type}</div>
         </div>
     `
@@ -453,7 +451,7 @@ function prioTaskOverlayTemp(i, type) {
 
 function participantsTaskOverlayTemp(i) {
     return `
-        <p class="due-date">Assigned To:</p>
+        <p class="task-info-type">Assigned To:</p>
         <div class="assigned-list" id="participants-list-${i.name}"></div>
     `
 }
@@ -470,7 +468,7 @@ function participantTemp(i, index) {
 
 function subtasksTaskOverlay(i) {
     return `
-        <p class="due-date">Subtasks</p>
+        <p class="task-info-type">Subtasks</p>
         <div class="subtask-list" id="subtasks-list-${i.name}"></div>
     `
 }

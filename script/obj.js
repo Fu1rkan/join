@@ -71,7 +71,12 @@ let taskList = [
             { 'name': ['Can', 'Marco'] },
             { 'name': ['Test', 'Person'] },
             { 'name': ['David', 'Groß'] },
-            { 'name': ['Kim', 'B'] }
+            { 'name': ['Kim', 'B'] },
+            { 'name': ['Furkan', 'Yigit'] },
+            { 'name': ['Can', 'Marco'] },
+            { 'name': ['Test', 'Person'] },
+            { 'name': ['David', 'Groß'] },
+            { 'name': ['Kim', 'B'] },
         ],
         'priority': 'urgent',
         'date': '11/10/2025'

@@ -130,7 +130,6 @@
     .navbar-footer {
         display: none;
     }
-
 }
 
 @media (max-width: 1100px) {
@@ -178,53 +177,4 @@
         border-radius: 16px;
         font-size: 14px;
     }
-
-    .navbar-active {
-        border-radius: 16px;
-    }
-
-}
-
-@media (max-width: 960px) {
-
-    .nav-list {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .navbar-footer {
-        display: none;
-    }
-
-    .navbar-logo {
-        display: none;
-    }
-
-    .navbar-link-content {
-        /* width: 76px;
-        height: 76px; */
-        padding: 0;
-        border-radius: 16px;
-    }
-
-    .nav-list li {
-        flex-direction: column;
-        /* width: 76px;
-        height: 76px; */
-
-    }
-
-    .navbar-link {
-        height: auto;
-    }
-
-    .navbar-active {
-        border-radius: 16px;
-    }
-
 }

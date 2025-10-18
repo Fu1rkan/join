@@ -1,4 +1,4 @@
-.dialog{
+.dialog {
     width: 100%;
     height: 100vh;
     top: 0;
@@ -7,11 +7,11 @@
     transform: translateX(100%);
 }
 
-.tf_tlx100{
+.tf_tlx100 {
     transform: translateX(0);
 }
 
-.bleur-bg{
+.bleur-bg {
     position: absolute;
     top: 0;
     width: 100%;
@@ -21,19 +21,19 @@
     background-color: rgba(0, 0, 0, 0.244);
 }
 
-.open-close-dialog{
+.open-close-dialog {
     position: relative;
     top: 0;
     width: 100%;
     height: 100vh;
 }
 
-.main-task-label:empty{
+.main-task-label:empty {
     background-color: transparent;
     padding: 0;
 }
 
-.task-overlay{
+.task-overlay {
     width: 525px;
     height: fit-content;
     border-radius: 30px;
@@ -48,16 +48,28 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
+    max-height: 80%;
+    max-width: 90%;
 }
 
-.task-overlay header{
+.task-overlay main{
+    height: 70%;
+    overflow: auto;
+    gap: 24px;
+}
+
+.task-overlay main::-webkit-scrollbar{
+    display: none;
+}
+
+.task-overlay header {
     height: 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.main-task-label{
+.main-task-label {
     width: 164px;
     height: 100%;
     border-radius: 8px;
@@ -71,7 +83,7 @@
     align-items: center;
 }
 
-.close-button{
+.close-button {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -81,51 +93,51 @@
     cursor: pointer;
 }
 
-.close-button:hover{
+.close-button:hover {
     background-color: rgb(238, 238, 238);
 }
 
-.close-button svg{
+.close-button svg {
     fill: #2A3647;
 }
 
-.main-task-decription{
+.main-task-description {
     font-size: 20px;
 }
 
-.main-task-decription:empty{
+.main-task-description:empty {
     display: none;
 }
 
-.main-task-date{
+.main-task-date {
     display: flex;
     gap: 25px;
 }
 
-.main-task-date:empty{
+.main-task-date:empty {
     display: none;
 }
 
-.date{
+.task-info {
     font-size: 20px;
 }
 
-.due-date{
+.task-info-type {
     color: #2A3647;
     font-size: 20px;
 }
 
-.main-task-priority{
+.main-task-priority {
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
-.main-task-priority:empty{
+.main-task-priority:empty {
     display: none;
 }
 
-.priority-class{
+.priority-class {
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -133,17 +145,17 @@
     gap: 10px;
 }
 
-.main-task-assigned-list{
+.main-task-assigned-list {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.main-task-assigned-list:empty{
+.main-task-assigned-list:empty {
     display: none;
 }
 
-.assigned{
+.assigned {
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -151,7 +163,7 @@
     gap: 16px;
 }
 
-.asssigned-person-logo{
+.asssigned-person-logo {
     width: 42px;
     height: 42px;
     border: 2px solid white;
@@ -163,30 +175,30 @@
     font-size: 12px;
 }
 
-.asssigned-person{
+.asssigned-person {
     font-size: 19px;
 }
 
-.main-task-subtasks{
+.main-task-subtasks {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.main-task-subtasks:empty{
+.main-task-subtasks:empty {
     display: none;
 }
 
-.subtask-list::-webkit-scrollbar{
+.subtask-list::-webkit-scrollbar {
     display: none;
 }
 
-.subtask-list{
+.subtask-list {
     max-height: 200px;
     overflow-y: scroll;
 }
 
-.subtask{
+.subtask {
     display: flex;
     align-items: center;
     padding: 6px 16px;
@@ -194,7 +206,7 @@
     cursor: default;
 }
 
-.subtask-checkbox{
+.subtask-checkbox {
     width: 24px;
     height: 24px;
     display: flex;
@@ -204,15 +216,15 @@
     cursor: pointer;
 }
 
-.subtask-checkbox:hover{
+.subtask-checkbox:hover {
     background-color: rgb(238, 238, 238);
 }
 
-.subtask-quest{
+.subtask-quest {
     font-size: 16px;
 }
 
-.task-overlay footer{
+.task-overlay footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -220,21 +232,20 @@
     cursor: pointer;
 }
 
-.main-task-edit{
+.main-task-edit {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .main-task-edit:hover p,
-.main-task-edit:hover svg path {
+.main-task-edit:hover svg path{
     color: rgba(41, 171, 226, 1);
     fill: rgba(41, 171, 226, 1);
-    font-weight: 700;
 }
 
 
-.edit-logo{
+.edit-logo {
     width: 24px;
     height: 24px;
     display: flex;
@@ -242,12 +253,43 @@
     justify-content: center;
 }
 
-.edit-logo svg{
+.edit-logo svg {
     fill: #2A3647;
 }
 
-.edit-divider{
+.edit-divider {
     width: 1px;
     height: 24px;
     background-color: rgba(209, 209, 209, 1);
+}
+
+@media(max-width: 600px) {
+    .task-overlay{
+        padding: 32px 24px;
+    }
+   
+    .task-overlay h2 {
+        font-size: 36px;
+    }
+
+    .main-task-label {
+        font-size: 16px;
+        padding: 4px 16px;
+    }
+
+    .main-task-description {
+        font-size: 16px;
+    }
+
+    .task-info {
+        font-size: 16px;
+    }
+
+    .task-info-type {
+        font-size: 16px;
+    }
+
+    .asssigned-person{
+        font-size: 16px;
+    }
 }

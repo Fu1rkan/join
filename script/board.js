@@ -90,17 +90,15 @@ function checkTaskInfos(i) {
     checkTaskType(i, taskCard);
     checkTaskDesc(i, taskCard);
     checkProgress(i, taskCard);
-    checkFooter(i, taskCard);
+    checkParticipants(i, taskCard);
+    checkPrio(i, taskCard);
 }
 
 function checkTaskType(i, taskCard) {
-    if (i.type != null) {
-        document.getElementById(`${taskCard}-type-${i.name}`).innerHTML += i.type;
-        if (i.type.includes('User')) {
-            document.getElementById(`${taskCard}-type-${i.name}`).style.backgroundColor = 'rgba(0, 56, 255, 1)';
-        } else {
-            document.getElementById(`${taskCard}-type-${i.name}`).style.backgroundColor = 'rgba(31, 215, 193, 1)';
-        }
+    if (i.type.includes('User')) {
+        document.getElementById(`${taskCard}-type-${i.name}`).style.backgroundColor = 'rgba(0, 56, 255, 1)';
+    } else {
+        document.getElementById(`${taskCard}-type-${i.name}`).style.backgroundColor = 'rgba(31, 215, 193, 1)';
     }
 }
 
@@ -114,14 +112,6 @@ function checkProgress(i, taskCard) {
     if (i.subtasks != null) {
         let trueCount = i.subtasks.filter(s => s.status === true).length;
         document.getElementById(`${taskCard}-subtasks-${i.name}`).innerHTML = progressTemp(i.subtasks.length, trueCount);
-    }
-}
-
-function checkFooter(i, taskCard) {
-    if (i.participants > 0 || i.priority != null) {
-        document.getElementById(`${taskCard}-footer-${i.name}`).innerHTML = taskFooterTemp(i);
-        checkParticipants(i, taskCard);
-        checkPrio(i, taskCard);
     }
 }
 
@@ -166,14 +156,12 @@ function checkTaskOverlayInfos(i) {
 }
 
 function checkTaskOverlayPrio(i, taskOverlay) {
-    if (i.priority != null) {
-        if (i.priority.includes('urgent')) {
-            document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, urgentPrioTemp());
-        } else if (i.priority.includes('medium')) {
-            document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, mediumPrioTemp());
-        } else {
-            document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, lowPrioTemp());
-        }
+    if (i.priority.includes('urgent')) {
+        document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, urgentPrioTemp());
+    } else if (i.priority.includes('medium')) {
+        document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, mediumPrioTemp());
+    } else {
+        document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, lowPrioTemp());
     }
 }
 

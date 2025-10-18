@@ -243,8 +243,8 @@
 
 .task-desc {
     display: -webkit-box;
-    line-clamp: 2;
-    box-orient: vertical;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     font-size: 16px;
     color: rgba(168, 168, 168, 1);
@@ -344,13 +344,13 @@
     pointer-events: none;
 }
 
-@media(max-width: 1350px) {
+@media(max-width: 1400px) {
     .progress-track {
-        width: 100%;
+        width: 40%;
     }
 
     .subtasks {
-        display: none;
+        font-size: 12px;
     }
 
     .board-page {
@@ -358,7 +358,18 @@
     }
 
     .task-list {
-        max-height: calc(100vh - 394px);
+        max-height: calc(100vh - 375px);
+    }
+
+    .kanban-board {
+        margin: 0 60px;
+        width: calc(100% - 120px);
+        height: calc(100vh - 350px);
+    }
+
+    .board-header {
+        margin: 60px 60px 40px 60px;
+        width: calc(100% - 120px);
     }
 }
 
@@ -424,6 +435,10 @@
         width: 100%;
     }
 
+    .task footer {
+        margin-top: auto;
+    }
+
     /* standart CSS */
     h4 {
         font-size: 27px;
@@ -445,6 +460,7 @@
     }
 
     .subtasks {
+        font-size: 14px;
         display: block;
     }
 

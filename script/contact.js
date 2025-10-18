@@ -18,10 +18,10 @@ function toggleContact(name, email, keys, index) {
     const contactRef = contacts.find(t => t.name === name && t.email === email);
     const isActive = contactCardRef.classList.contains("active-contact");
     let currentWidth = window.innerWidth;
-    // if (currentWidth <= 1000) {
-    //     contactListAreaRef.classList.add('width-0');
-    //     contactAreaRef.classList.add('width-100');
-    // }
+    if (currentWidth <= 960) {
+        contactListAreaRef.classList.add('d_none');
+        contactAreaRef.style.display = "flex";
+    }
     removeActiveClass();
     highlightContactAndOpenContactTemplate(contactCardRef, contactRef, isActive);
 }
@@ -98,6 +98,8 @@ function fadeInCreateMsg() {
             }, 300);
         }, 1000);
     }, 800);
+
+
 }
 
 function filterContacts() {
@@ -268,15 +270,33 @@ function getRandomColor() {
 }
 
 function showCreatedContactTemplate(newContact) {
+    let currentWidth = window.innerWidth;
+
+    if (currentWidth <= 960) {
+        contactListAreaRef.classList.add('d_none');
+        contactAreaRef.style.display = "flex";
+    }
     templateRef.classList.remove("d_none");
     templateRef.innerHTML = getContactTemplate(newContact);
     setTimeout(() => {
         fadeInCreateMsg();
     }, 800);
+
 }
 
 function deleteCurrentContact(name, email) {
+    let currentWidth = window.innerWidth;
     contacts.splice(contacts.findIndex(t => t.name == name && t.email == email), 1);
     filterContacts();
     templateRef.classList.add('d_none');
+    if (currentWidth <= 960) {
+        backToContactList();
+    }
+
+}
+
+function backToContactList() {
+    contactListAreaRef.classList.remove('d_none');
+    contactAreaRef.style.display = "";
+    removeActiveClass();
 }

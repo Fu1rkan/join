@@ -4,6 +4,7 @@ const contactListAreaRef = document.getElementById('contact_list_area');
 const contactListRef = document.getElementById("contact_list");
 const contactAreaRef = document.getElementById('contact_area');
 const templateRef = document.getElementById("contact_template");
+const responsivMenuRef = document.getElementById('responsiv_contact_edit_menu');
 
 function openOverlay() {
     overlayRef.classList.remove('d_none');
@@ -299,4 +300,8 @@ function backToContactList() {
     contactListAreaRef.classList.remove('d_none');
     contactAreaRef.style.display = "";
     removeActiveClass();
+}
+
+function openResponsiveContactEditMenu() {
+    responsivMenuRef.classList.remove('d_none');
 }

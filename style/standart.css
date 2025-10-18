@@ -16,7 +16,8 @@
   overflow-wrap: break-word;
   hyphens: auto;
   -webkit-hyphens: auto;
-  touch-action: manipulation
+  touch-action: manipulation;
+  font-family: 'Inter';
 }
 
 body {

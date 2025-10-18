@@ -267,3 +267,9 @@ function removeHighlight(id) {
         update();
     });
 })();
+
+function openDatePicker() {
+    const input = document.getElementById('input-date');
+    input.showPicker?.();
+    input.focus();
+}

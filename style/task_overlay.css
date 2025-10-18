@@ -1,3 +1,17 @@
+input[type="date"] {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
 .dialog {
     width: 100%;
     height: 100vh;
@@ -52,7 +66,7 @@
     max-width: 90%;
 }
 
-.task-overlay main{
+.task-overlay main {
     height: 70%;
     overflow: auto;
     gap: 24px;
@@ -235,7 +249,7 @@
 }
 
 .main-task-edit:hover p,
-.main-task-edit:hover svg path{
+.main-task-edit:hover svg path {
     color: rgba(41, 171, 226, 1);
     fill: rgba(41, 171, 226, 1);
 }
@@ -259,33 +273,188 @@
     background-color: rgba(209, 209, 209, 1);
 }
 
-@media(max-width: 600px) {
-    .task-overlay{
-        padding: 32px 24px;
-    }
-   
-    .task-overlay h2 {
-        font-size: 36px;
-    }
+.inter-text-color {
+    color: rgba(42, 54, 71, 1) !important;
+}
 
-    .main-task-label {
-        font-size: 16px;
-        padding: 4px 16px;
-    }
+.edit-task-overlay {
+    gap: 0 !important;
+}
 
-    .main-task-description {
-        font-size: 16px;
-    }
+.edit-task-overlay button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .task-info {
-        font-size: 16px;
-    }
+.edit-task-overlay .task-info-type {
+    color: black;
+}
 
-    .task-info-type {
-        font-size: 16px;
-    }
+.change-title {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 21px;
+    border: 1px solid rgba(209, 209, 209, 1);
+    outline: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    margin: 8px 0 32px 0;
+}
 
-    .asssigned-person{
-        font-size: 16px;
-    }
+.change-title:focus {
+    border-color: rgba(41, 171, 226, 1);
+}
+
+.change-desc {
+    width: 100%;
+    border-radius: 10px;
+    padding: 18px 21px;
+    border: 1px solid rgba(209, 209, 209, 1);
+    width: 396;
+    min-height: 88px;
+    font-size: 16px;
+    font-family: 'Inter';
+    width: 100%;
+    margin: 8px 0 32px 0;
+}
+
+.date-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(209, 209, 209, 1);
+    border-radius: 10px;
+    padding: 10px 21px;
+    margin: 8px 0 32px 0;
+}
+
+.date-input input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    cursor: pointer;
+}
+
+.change-priority {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0 32px 0;
+}
+
+.change-priority button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    gap: 8px;
+    width: 30%;
+    border-radius: 10px;
+    padding: 18px 10px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.change-participants {
+    width: 100%;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border: 1px solid #2A3647;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.change-participants input {
+    border: none;
+    outline: none;
+}
+
+.participants-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.choose-paticipant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.choose-paticipant:hover {
+    background-color: #EEEEEE;
+}
+
+.logo-and-name-participant {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.included-participants {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.add-subtasks {
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border: 1px solid #2A3647;
+    margin: 8px 0;
+}
+
+.confirm-buttons-add-subtasks {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.change-task-divider {
+    height: 100%;
+    width: 1px;
+    background-color: rgba(209, 209, 209, 1);
+}
+
+.add-subtasks input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.change-subtasks-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-subtasks {
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 4px 16px;
+}
+
+.change-subtasks:hover {
+    background-color: #EEEEEE;
 }

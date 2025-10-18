@@ -1,3 +1,47 @@
+.main-header {
+  width: 100%;
+  background-color: var(--header-color);
+  display: flex;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-limit-header {
+  max-width: calc(1440px - 232px);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px 20px 116px;
+}
+
+.content-limit-header>svg {
+  display: none;
+}
+
+.header-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+.header-profil {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profil-header {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid rgba(42, 54, 71, 1);
+  display: flex;
+  align-items: center;
+}
+
 /* Main header container - full width header with shadow */
 .summary-header {
   width: 100%;
@@ -23,20 +67,6 @@
 .summary-profil {
   display: flex;
   gap: 16px;
-  margin-right: 50px;
-}
-
-/* Profile header circle - circular profile avatar with border */
-.profil-header {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: white;
-  border: 2px solid black;
-  top: 28px;
-  right: 48px;
-  display: flex;
-  align-items: center;
 }
 
 /* Navigation container - static positioned menu container */
@@ -121,16 +151,37 @@
   color: #cdcdcd;
 }
 
-.content-limit-header {
-  max-width: calc(1440px - 232px);
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
+@media(max-width: 1400px) {
+  .main-header svg {
+    display: flex;
+  }
+
+  .content-limit-header {
+    padding: 20px 40px 20px 40px;
+    max-width: 100%;
+  }
+
+  .header-text {
+    display: none;
+  }
+
+  .header-profil svg{
+    display: none;
+  }
+
+  .profil-header{
+    width: 40px;
+    height: 40px;
+  }
 }
 
-@media(max-width: 1350px) {
+@media(max-width: 950px) {
   .content-limit-header {
-    max-width: 1440px;
+    max-width: calc(1440px - 232px);
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 16px;
   }
 }

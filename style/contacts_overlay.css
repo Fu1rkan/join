@@ -40,6 +40,27 @@
     align-items: center;
     justify-content: center;
     padding: 66px 48px;
+    position: relative;
+}
+
+.responsiv-overlay-card-close-btn-container {
+    display: none;
+    position: absolute;
+    top: 24px;
+    right: 16px;
+}
+
+.responsiv-overlay-card-close-btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border-width: 0;
+    background-color: #2A3647;
+
 }
 
 .overlay-left-side-content {
@@ -123,6 +144,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-width: 0;
 }
 
 .add-contact-close-icon-container:hover {
@@ -404,18 +426,33 @@
     }
 }
 
-@media (max-width: 525px) {
-    .overlay-card {
-        transform: rotate(90deg);
-        height: 396px;
-        width: 760px;
+@media (max-width: 960px) {
+     .overlay-card {
+        height: 760px;
+        width: 396px;
         animation: fadeInRes 300ms linear forwards;
+        flex-direction: column;
     }
 
-    .overlay-left-side-content,
-    .overlay-right-side>svg,
-    .add-contact-content-container {
-        transform: rotate(-90deg);
+    .overlay-left-side {
+        border-radius: 30px 30px 0 0 ;
+        width: 100%;
+    }
+
+    .responsiv-overlay-card-close-btn-container {
+        display: flex;
+    }
+
+    .overlay-right-side {
+        border-radius: 0 0 30px 30px;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .overlay-character-icon {
+        top: 0;
+        left: auto;
+        transform: translateY(-50%);
     }
 
     .add-contact-card-svg,
@@ -424,8 +461,10 @@
     }
 
     .overlay-left-side {
-        padding: 24px 66px;
+        padding: 66px 24px;
         gap: 12px;
+        min-height: 352px;
+    align-items: flex-start;
     }
 
     .add-contact-card-headline {
@@ -442,9 +481,43 @@
         font-size: 20px;
     }
 
+    .add-contact-content-container {
+        padding-top: 92px;
+        align-items: center;
+    }
 
+    .create-form {
+        margin-bottom: 32px;
+        width: 364px;
+    }
 
+    .create-form-inputfields {
+        gap: 7px;
+        height: 153px;
+    }
 
+    .create-form-label {
+        height: 41px;
+    }
+
+    .create-form>section>div>label>input {
+        width: 100%;
+    }
+
+    .add-contact-buttons {
+        justify-content: center;
+    }
+
+    .add-contact-cancel-btn {
+        display: none;
+    }
+
+    .add-contact-create-contact-btn {
+        height: 51px;
+        width: 202px;
+        gap: 4px;
+        padding: 18px 10px;
+    }
 
     @keyframes fadeInRes {
 

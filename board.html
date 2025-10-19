@@ -14,7 +14,7 @@
     <script src="./script/add_task_template.js"></script>
 </head>
 
-<body onload="init(); toggleTaskOverlay('4')">
+<body onload="init()">
 
     <div class="layout">
         <div id="overlay_board" class="overlay-board d_none" onclick="closeOverlayBoard()">
@@ -191,7 +191,7 @@
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
                             </svg>
                         </header>
-                        <section class="task-list" id="to-do-kanban" ondrop="moveTo('to_do', 'to-do-kanban')"
+                        <section class="task-list" id="to-do-kanban" ondrop="moveTo('to-do', 'to-do-kanban')"
                             ondragenter="highlight('to-do-kanban')" ondragleave="removeHighlight('to-do-kanban')"
                             ondragover="allowDrop(event)">
                         </section>
@@ -209,7 +209,7 @@
                             </svg>
                         </header>
                         <section class="task-list" id="in-progress-kanban"
-                            ondrop="moveTo('in_progress', 'in-progress-kanban')"
+                            ondrop="moveTo('in-progress', 'in-progress-kanban')"
                             ondragenter="highlight('in-progress-kanban')"
                             ondragleave="removeHighlight('in-progress-kanban')" ondragover="allowDrop(event)">
                         </section>
@@ -227,7 +227,7 @@
                             </svg>
                         </header>
                         <section class="task-list" id="await-feedback-kanban"
-                            ondrop="moveTo('await_feedback', 'await-feedback-kanban')"
+                            ondrop="moveTo('await-feedback', 'await-feedback-kanban')"
                             ondragenter="highlight('await-feedback-kanban')"
                             ondragleave="removeHighlight('await-feedback-kanban')" ondragover="allowDrop(event)">
                         </section>

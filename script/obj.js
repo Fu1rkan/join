@@ -1,6 +1,7 @@
 let taskList = [
     {
-        'category': 'to_do',
+        'id' : '0',
+        'category': 'to-do',
         'type': 'User Story',
         'name': 'Task Board Drag & Drop',
         'description': 'Add drag and drop functionality for better UX.',
@@ -10,7 +11,8 @@ let taskList = [
         'date': '19/10/2025',
     },
     {
-        'category': 'to_do',
+        'id' : '1',
+        'category': 'to-do',
         'type': 'Technical Task',
         'name': 'Unit Testing Setup',
         'description': 'Initialize Jest and write basic test cases.',
@@ -25,7 +27,8 @@ let taskList = [
         'date': '20/10/2025'
     },
     {
-        'category': 'to_do',
+        'id' : '2',
+        'category': 'to-do',
         'type': 'User Story',
         'name': 'Contact Form Validation',
         'description': null,
@@ -38,7 +41,8 @@ let taskList = [
         'date': '21/10/2025'
     },
     {
-        'category': 'to_do',
+        'id' : '3',
+        'category': 'to-do',
         'type': 'Technical Task',
         'name': 'Deployment Pipeline',
         'description': 'Setup CI/CD with GitHub Actions.',
@@ -55,7 +59,8 @@ let taskList = [
         'date': '22/10/2025'
     },
     {
-        'category': 'in_progress',
+        'id' : '4',
+        'category': 'in-progress',
         'type': 'User Story',
         'name': 'Join mit den besten zusammenstellen',
         'description': 'Building all Pages with HTML and CSS and then we add functionality for the website!',
@@ -82,7 +87,8 @@ let taskList = [
         'date': '11/10/2025'
     },
     {
-        'category': 'in_progress',
+        'id' : '5',
+        'category': 'in-progress',
         'type': 'User Story',
         'name': 'Landing Page Redesign',
         'description': 'Improve layout and visuals for better conversion rate.',
@@ -99,7 +105,8 @@ let taskList = [
         'date': '12/10/2025'
     },
     {
-        'category': 'in_progress',
+        'id' : '6',
+        'category': 'in-progress',
         'type': 'Technical Task',
         'name': 'Database Optimization',
         'description': 'Reduce query load times and add indexing.',
@@ -114,7 +121,8 @@ let taskList = [
         'date': '13/10/2025'
     },
     {
-        'category': 'in_progress',
+        'id' : '7',
+        'category': 'in-progress',
         'type': 'User Story',
         'name': 'User Authentication Flow',
         'description': 'Add secure login and signup with validation.',
@@ -131,7 +139,8 @@ let taskList = [
         'date': '15/10/2025'
     },
     {
-        'category': 'await_feedback',
+        'id' : '8',
+        'category': 'await-feedback',
         'type': 'Technical Task',
         'name': 'JavaScript Templates',
         'description': null,
@@ -141,7 +150,8 @@ let taskList = [
         'date': '11/10/2025'
     },
     {
-        'category': 'await_feedback',
+        'id' : '9',
+        'category': 'await-feedback',
         'type': 'Technical Task',
         'name': 'API Integration Weather Data',
         'description': 'Fetch live weather data from OpenWeather API.',
@@ -151,7 +161,8 @@ let taskList = [
         'date': '16/10/2025'
     },
     {
-        'category': 'await_feedback',
+        'id' : '10',
+        'category': 'await-feedback',
         'type': 'User Story',
         'name': 'Profile Settings Page',
         'description': null,

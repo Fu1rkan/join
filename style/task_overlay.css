@@ -239,13 +239,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     justify-content: flex-end;
     align-items: center;
     gap: 8px;
-    cursor: pointer;
 }
 
 .main-task-edit {
     display: flex;
     align-items: center;
     gap: 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .main-task-edit:hover p,
@@ -275,6 +277,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .inter-text-color {
     color: rgba(42, 54, 71, 1) !important;
+}
+
+.edit-task-overlay:empty{
+    display: none;
 }
 
 .edit-task-overlay {

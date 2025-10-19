@@ -164,29 +164,18 @@
 }
 
 @media (max-width: 960px) {
-    .contact-list-area {
-        width: 100%;
-    }
-
-    .add-new-contact-btn {
-        width: 100%;
-    }
-
-    .contact-list-container {
-        width: 100%;
-    }
-
-    .contact-list-content {
-        width: 100%;
-    }
-
-    .contact-list {
+    .contact-list-area,
+    .add-new-contact-btn,
+    .contact-list-container,
+    .contact-list-content,
+    .contact-list,
+    .contact,
+    .contact-info-big-container {
         width: 100%;
     }
 
     .contact {
         display: none;
-        width: 100%;
     }
 
     .contact-big-back-btn {
@@ -204,10 +193,6 @@
 
     .contact-template {
         margin-left: 0;
-    }
-
-    .contact-info-big-container {
-        width: 100%;
     }
 
     .fade-in-template {
@@ -233,6 +218,11 @@
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     }
 
+    /*Only for Feedback*/
+    .responsiv-add-new-contact-container:hover {
+        background-color:#024764;
+    }
+
     .responsiv-add-new-contact-container:active {
         border: 1px solid #29ABE2;
         background-color: #29ABE2;
@@ -252,7 +242,6 @@
         align-items: flex-start;
         height: auto;
         gap: 8px;
-        /* margin-top: 32px; */
     }
 
     .contacts-header>h2 {
@@ -318,12 +307,15 @@
         height: 56px;
         width: 56px;
         border-radius: 50%;
-        /* border: 1px solid #2A3647;
-        background-color: #2A3647; */
         position: fixed;
         bottom: 112px;
         right: 16px;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    /*Only for Feedback*/
+    .contact-rightside-menu-btn:hover  {
+        background-color:#024764;
     }
 
     .contact-rightside-menu-btn:active {
@@ -345,22 +337,51 @@
 
     .responsiv-edit-delete-menu-container {
         position: relative;
+        width: 100%;
     }
 
     .responsiv-edit-delete-menu {
+        z-index: 1;
         position: absolute;
         height: 100px;
         width: 116px;
         background-color: #FFFFFF;
-        right: -8px;
+        right: 0;
         top: 0;
-        transform: translateY(-60%);
+        transform: translate3d(-8px, 25%, 0);
         display: flex;
         flex-direction: column;
         padding: 10px;
         border-radius: 20px 20px 0 20px;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     }
+
+    .animate-smallMenuIn {
+        animation: smallMenuIn 300ms ease;
+    }
+
+    .animate-smallMenuOut {
+        animation: smallMenuOut 300ms ease;
+    }
+
+    @keyframes smallMenuIn {
+        from {
+            right: -116px;
+        }
+        to {
+            right:0;
+        }
+    }
+
+    @keyframes smallMenuOut {
+        from {
+            right: 0;
+        }
+        to {
+            right: -116px;
+        }
+    }
+
 
     .responsiv-edit-delete-menu button {
         cursor: pointer;
@@ -372,6 +393,22 @@
         height: 40px;
         border-width: 0;
     }
+
+    /*Only for Feedback*/
+    .responsiv-edit-delete-menu>button:hover svg path,
+    .responsiv-edit-delete-menu>button:hover p {
+        fill:#024764;
+        color:#024764;
+        font-weight: 700;
+    }
+
+    .responsiv-edit-delete-menu>button:active svg path,
+    .responsiv-edit-delete-menu>button:active p {
+        fill:#29ABE2;
+        color:#29ABE2;
+        font-weight: 700;
+    }
+
 
     .responsiv-edit-delete-menu button svg {
         height: 24px;
@@ -459,8 +496,6 @@
         height: auto;
     }
 }
-
-
 
 .width-100 {
     width: 100%;

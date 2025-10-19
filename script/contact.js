@@ -303,5 +303,23 @@ function backToContactList() {
 }
 
 function openResponsiveContactEditMenu() {
+    const responsivMenuRef = document.getElementById('responsiv_contact_edit_menu');
+    const responsivSmallMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
+    responsivSmallMenuRef.classList.remove('animate-smallMenuOut');
     responsivMenuRef.classList.remove('d_none');
+    responsivMenuRef.classList.add('animate-smallMenuIn');
+
 }
+
+
+document.addEventListener('click', (event) => {
+    const responsivMenuRef = document.getElementById('responsiv_contact_edit_menu');
+    const responsivSmallMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
+    const button = document.querySelector('.contact-rightside-menu-btn');
+
+    if (!responsivMenuRef.contains(event.target) && !button.contains(event.target)) {
+        responsivSmallMenuRef.classList.remove('animate-smallMenuIn');
+        responsivSmallMenuRef.classList.add('animate-smallMenuOut');
+        setTimeout(() => {responsivMenuRef.classList.add('d_none');},290);
+    }
+});

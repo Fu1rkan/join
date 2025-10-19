@@ -1,3 +1,7 @@
+.contacts-body {
+    overflow-x: hidden;
+}
+
 .contacts-main-content {
     display: flex;
     flex-direction: column;
@@ -408,6 +412,7 @@
     width: calc(1440px - (232px + 456px));
     position: relative;
     margin-top: 101px;
+    min-height: 74px;
 }
 
 .creates-msg {

@@ -1,6 +1,6 @@
 .overlay {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     right: 0;
@@ -374,14 +374,14 @@
 /*Animation for 1920px by Card-width : 1212px*/
 @keyframes fadeIn {
 
-        0% {
-            left: 100%;
-        }
-
-        100% {
-            left: 18.5%;
-        }
+    0% {
+        left: 100%;
     }
+
+    100% {
+        left: 18.5%;
+    }
+}
 
 @media (max-width: 1440px) {
 
@@ -401,5 +401,52 @@
 @keyframes overlayShadow {
     100% {
         background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 525px) {
+    .overlay-card {
+        transform: rotate(90deg);
+        height: 396px;
+        width: 760px;
+        animation: fadeInRes 300ms linear forwards;
+    }
+
+    .overlay-left-side-content,
+    .overlay-right-side>svg,
+    .add-contact-content-container {
+        transform: rotate(-90deg);
+    }
+
+    .add-contact-card-svg,
+    .add-contact-close-icon-container {
+        display: none;
+    }
+
+    .overlay-left-side {
+        padding: 24px 66px;
+        gap: 12px;
+    }
+
+    .add-contact-card-headline {
+        height: 104px;
+        width: 282px;
+    }
+
+    .add-contact-card-title {
+        font-weight: 700;
+        height: 58px;
+    }
+
+    .add-contact-card-txt {
+        font-size: 20px;
+    }
+
+
+
+
+
+    @keyframes fadeInRes {
+
     }
 }

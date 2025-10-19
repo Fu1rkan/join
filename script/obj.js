@@ -8,7 +8,7 @@ let taskList = [
         'subtasks': null,
         'participants': null,
         'priority': 'medium',
-        'date': '19/10/2025',
+        'date': '2025-10-19',
     },
     {
         'id' : '1',
@@ -24,7 +24,7 @@ let taskList = [
             { 'name': ['Sven', 'Degen'] }
         ],
         'priority': 'low',
-        'date': '20/10/2025'
+        'date': '2025-10-20'
     },
     {
         'id' : '2',
@@ -38,14 +38,14 @@ let taskList = [
         ],
         'participants': null,
         'priority': 'medium',
-        'date': '21/10/2025'
+        'date': '2025-10-21'
     },
     {
         'id' : '3',
         'category': 'to-do',
         'type': 'Technical Task',
         'name': 'Deployment Pipeline',
-        'description': 'Setup CI/CD with GitHub Actions.',
+        'description': 'Setup CI-CD with GitHub Actions.',
         'subtasks': [
             { 'name': 'Create Workflow', 'status': true },
             { 'name': 'Add Test Step', 'status': true },
@@ -56,7 +56,7 @@ let taskList = [
             { 'name': ['David', 'Groß'] }
         ],
         'priority': 'urgent',
-        'date': '22/10/2025'
+        'date': '2025-10-22'
     },
     {
         'id' : '4',
@@ -84,7 +84,7 @@ let taskList = [
             { 'name': ['Kim', 'B'] },
         ],
         'priority': 'urgent',
-        'date': '11/10/2025'
+        'date': '2025-10-11'
     },
     {
         'id' : '5',
@@ -102,7 +102,7 @@ let taskList = [
             { 'name': ['Can', 'Marco'] }
         ],
         'priority': 'medium',
-        'date': '12/10/2025'
+        'date': '2025-10-12'
     },
     {
         'id' : '6',
@@ -118,7 +118,7 @@ let taskList = [
             { 'name': ['Sven', 'Degen'] }
         ],
         'priority': 'urgent',
-        'date': '13/10/2025'
+        'date': '2025-10-13'
     },
     {
         'id' : '7',
@@ -136,7 +136,7 @@ let taskList = [
             { 'name': ['Kim', 'B'] }
         ],
         'priority': 'high',
-        'date': '15/10/2025'
+        'date': '2025-10-15'
     },
     {
         'id' : '8',
@@ -147,7 +147,7 @@ let taskList = [
         'subtasks': null,
         'participants': null,
         'priority': 'urgent',
-        'date': '11/10/2025'
+        'date': '2025-10-11'
     },
     {
         'id' : '9',
@@ -158,7 +158,7 @@ let taskList = [
         'subtasks': null,
         'participants': null,
         'priority': 'low',
-        'date': '16/10/2025'
+        'date': '2025-10-16'
     },
     {
         'id' : '10',
@@ -174,6 +174,6 @@ let taskList = [
             { 'name': ['Can', 'Marco'] }
         ],
         'priority': 'medium',
-        'date': '17/10/2025'
+        'date': '2025-10-17'
     },
 ];

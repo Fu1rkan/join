@@ -31,7 +31,6 @@ function toggleTaskOverlay(i) {
     if (checkOverlay == 0) {
         let task = taskList.filter(t => t['id'] == i);
         document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task[0]);
-        document.getElementById(`task-main-overlay-${task[0].id}`).innerHTML = taskMainOverlayTemp(task[0]);
         checkTaskOverlayInfos(task[0])
         checkOverlay += 1;
     } else {
@@ -89,14 +88,12 @@ function checkParticipants(i, taskCard) {
 
 
 function checkPrio(i, taskCard) {
-    if (i.priority != null) {
-        if (i.priority.includes('urgent')) {
-            document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = urgentPrioTemp();
-        } else if (i.priority.includes('medium')) {
-            document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = mediumPrioTemp();
-        } else {
-            document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = lowPrioTemp();
-        }
+    if (i.priority.includes('urgent')) {
+        document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = urgentPrioTemp();
+    } else if (i.priority.includes('medium')) {
+        document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = mediumPrioTemp();
+    } else {
+        document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = lowPrioTemp();
     }
 }
 
@@ -152,8 +149,33 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
     }
 }
 
+function openEditTaskOverlay(id) {
+    let task = taskList.filter(t => t['id'] == id);
+    document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task[0]);
+    document.getElementById('change-title').value = task[0].name;
+    document.getElementById('change-desc').value = task[0].description;
+    document.getElementById('input-date').value = task[0].date;
+    checkPriorityStatus(task[0])
+}
 
-function startDragging(id) {    
+function checkPriorityStatus(task) {
+    if (task.priority.includes('urgent')) {
+        document.getElementById(`prio-urgent`).classList.add('bc_r');
+        document.getElementById(`urgent-path`).style.fill = 'white';
+        document.getElementById(`urgent-path-2`).style.fill = 'white';
+    } else if (task.priority.includes('medium')) {
+        document.getElementById(`prio-medium`).classList.add('bc_o');
+        document.getElementById(`medium-path`).style.fill = 'white';
+        document.getElementById(`medium-path-2`).style.fill = 'white';
+    } else {
+        document.getElementById(`prio-low`).classList.add('bc_g');
+        document.getElementById(`low-path`).style.fill = 'white';
+        document.getElementById(`low-path-2`).style.fill = 'white';
+    }
+}
+
+
+function startDragging(id) {
     currentDraggedElement = id;
 }
 
@@ -163,10 +185,12 @@ function allowDrop(card) {
 }
 
 
-function moveTo(category, id) {
+function moveTo(categoryTo, id) {
     let task = taskList.filter(t => t['id'] == currentDraggedElement);
-    task[0]['category'] = category;
+    let categoryFrom = task[0]['category'];
+    task[0]['category'] = categoryTo;
     document.getElementById(id).classList.remove('drag-area-highlight');
+    ids = [categoryFrom, categoryTo]
     init();
 }
 

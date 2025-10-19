@@ -279,17 +279,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: rgba(42, 54, 71, 1) !important;
 }
 
-.edit-task-overlay:empty{
-    display: none;
-}
-
 .edit-task-overlay {
     gap: 0 !important;
 }
 
-.edit-task-overlay button {
-    width: 24px;
-    height: 24px;
+.edit-task-header {
+    justify-content: flex-end !important;
+}
+
+.task-overlay button {
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -328,6 +326,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-family: 'Inter';
     width: 100%;
     margin: 8px 0 32px 0;
+    resize: none;
 }
 
 .date-input {
@@ -347,6 +346,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 16px;
     font-family: 'Inter';
     cursor: pointer;
+}
+
+.date-input button {
+    height: 24px;
+    width: 24px;
+    transition: 100ms;
+}
+
+.date-input button:hover {
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 50%;
 }
 
 .change-priority {
@@ -372,6 +382,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+.change-priority button:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 .change-participants {
     width: 100%;
     border-radius: 10px;
@@ -387,6 +401,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .change-participants input {
     border: none;
     outline: none;
+}
+
+.change-participants button {
+    width: 24px;
+    height: 24px;
+    transition: 100ms;
+}
+
+.change-participants button:hover {
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 50%;
 }
 
 .participants-list {
@@ -437,6 +462,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 4px;
 }
 
+.confirm-buttons-add-subtasks button {
+    width: 24px;
+    height: 24px;
+    transition: 100ms;
+}
+
+.confirm-buttons-add-subtasks button:hover {
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 50%;
+}
+
 .change-task-divider {
     height: 100%;
     width: 1px;
@@ -462,5 +498,49 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .change-subtasks:hover {
-    background-color: #EEEEEE;
+    background-color: rgba(238, 238, 238, 1);
+}
+
+.edit-task-footer {
+    justify-content: flex-end;
+}
+
+.edit-task-footer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 4px;
+    padding: 18px 10px;
+    color: white;
+    background-color: rgba(42, 54, 71, 1);
+    font-size: 21px;
+    transition: 100ms;
+}
+
+.edit-task-footer button:hover {
+    background-color: rgba(41, 171, 226, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.bc_r{
+    background-color: rgba(255, 61, 0, 1) !important;
+    font-weight: 700;
+    color: white;
+}
+
+.bc_o{
+    background-color: rgba(255, 168, 0, 1) !important;
+    font-weight: 700;
+    color: white;
+}
+
+.bc_g{
+    background-color: rgba(122, 226, 41, 1) !important;
+    font-weight: 700;
+    color: white;
+}
+
+.fill_red{
+    fill: white !important;
 }

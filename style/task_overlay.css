@@ -68,7 +68,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .task-overlay main {
     height: 70%;
-    overflow: auto;
+    overflow: overlay;
     gap: 24px;
 }
 

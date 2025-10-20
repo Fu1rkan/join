@@ -158,6 +158,7 @@ function openEditTaskOverlay(id) {
     checkPriorityStatus(task[0]);
     changeParticipants(task[0]);
     renderContactList();
+    renderSubtaskList(task[0]);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -213,6 +214,14 @@ function renderContactList(){
     if (contacts.length > 0){
         for (let index = 0; index < contacts.length; index++) {
             document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index]);
+        }
+    }
+}
+
+function renderSubtaskList(task){
+    if (task.subtasks != null){
+        for (let index = 0; index < task.subtasks.length; index++) {
+            document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(task.subtasks[index]);
         }
     }
 }

@@ -307,7 +307,7 @@ function openResponsiveContactEditMenu() {
     const responsivSmallMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
     responsivSmallMenuRef.classList.remove('animate-smallMenuOut');
     responsivMenuRef.classList.remove('d_none');
-    responsivMenuRef.classList.add('animate-smallMenuIn');
+    responsivSmallMenuRef.classList.add('animate-smallMenuIn');
 
 }
 
@@ -323,3 +323,4 @@ document.addEventListener('click', (event) => {
         setTimeout(() => {responsivMenuRef.classList.add('d_none');},290);
     }
 });
+

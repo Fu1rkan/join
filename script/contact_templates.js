@@ -290,6 +290,13 @@ function showContactEditCard(name, email, phone) {
     return `<section class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
             <div class="overlay-left-side-content">
+            <div class="responsiv-overlay-card-close-btn-container">
+            <button class="responsiv-overlay-card-close-btn" onclick="closeOverlay()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z" fill="white"/>
+                </svg>
+            </button>
+        </div>
                 <svg class="add-contact-card-svg" xmlns="http://www.w3.org/2000/svg" width="57" height="67"
                     viewBox="0 0 57 67" fill="none">
                     <path d="M40.7397 0H28.4242V13.8957H40.7397V0Z" fill="white" />
@@ -305,7 +312,7 @@ function showContactEditCard(name, email, phone) {
                         d="M51.1131 64.6445V57.104H52.6289L54.2583 60.2116C54.6778 61.0242 55.051 61.8592 55.3762 62.7127C55.2909 61.7795 55.253 60.7063 55.253 59.5117V57.104H56.5035V64.6445H55.092L53.4436 61.4715C53.0072 60.638 52.6182 59.7812 52.2784 58.9051C52.2784 59.8384 52.3447 60.8929 52.3447 62.1901V64.6351L51.1131 64.6445Z"
                         fill="white" />
                 </svg>
-                <div class="add-contact-card-headline">
+                <div class="add-contact-card-edit-headline">
                     <h2 class="add-contact-card-title">Edit contact</h2>
                     <div class="add-contact-card-underline-styled"></div>
                 </div>
@@ -353,7 +360,7 @@ function showContactEditCard(name, email, phone) {
                     </div>
                 </div>
                 <form action="" class="create-form" onsubmit="return false">
-                    <section class="create-form-inputfields">
+                    <section class="create-form-inputfields responsiv-edit-create-form-inputfields">
                     <div class="create-form-inputfields-container">
                         <label class="create-form-label">
                             <input id="edit_name" placeholder="Name" value="${name}" type="text">

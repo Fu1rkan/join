@@ -1,5 +1,6 @@
 .contacts-body {
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .contacts-main-content {

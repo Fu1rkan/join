@@ -426,16 +426,47 @@
     }
 }
 
-@media (max-width: 960px) {
-     .overlay-card {
-        height: 760px;
+@media (max-width:1400px) {
+    .overlay-card {
+        width: 90%;
+    }
+
+    @keyframes fadeIn {
+
+        0% {
+            left: 100%;
+        }
+
+        100% {
+            left: 5%;
+        }
+    }
+
+    .overlay-left-side {
+        width: 39%;
+        padding: 66px 8px;
+    }
+
+    .add-contact-card-title {
+        height: auto;
+    }
+
+    .overlay-right-side {
+        width: 61%;
+    }
+}
+
+@media (max-width: 1100px) { 
+    .overlay-card {
+        height: 80%;
         width: 396px;
         animation: fadeInRes 300ms linear forwards;
         flex-direction: column;
     }
 
     .overlay-left-side {
-        border-radius: 30px 30px 0 0 ;
+        border-radius: 30px 30px 0 0;
+        max-height: 352px;
         width: 100%;
     }
 
@@ -463,13 +494,21 @@
     .overlay-left-side {
         padding: 66px 24px;
         gap: 12px;
-        min-height: 352px;
-    align-items: flex-start;
+        /* min-height: 352px; */
+        align-items: flex-start;
     }
 
     .add-contact-card-headline {
         height: 104px;
         width: 282px;
+    }
+
+    .add-contact-card-edit-headline {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 282px;
+        gap: 12px;
     }
 
     .add-contact-card-title {
@@ -487,13 +526,20 @@
     }
 
     .create-form {
-        margin-bottom: 32px;
+        margin-bottom: 0;
         width: 364px;
+        gap: 33px;
     }
 
     .create-form-inputfields {
         gap: 7px;
         height: 153px;
+    }
+
+    .responsiv-edit-create-form-inputfields {
+        height: 171px;
+        justify-content: space-between;
+        gap: 24px;
     }
 
     .create-form-label {
@@ -508,6 +554,11 @@
         justify-content: center;
     }
 
+    .edit-contact-d-s-buttons {
+        justify-content: center;
+        gap: 20px;
+    }
+
     .add-contact-cancel-btn {
         display: none;
     }
@@ -520,6 +571,33 @@
     }
 
     @keyframes fadeInRes {
+        from {
+            top: 100vh;
+        }
+        to {
+            top: 10%;
+        }
+    }
+}
 
+@media (max-width:400px) {
+    .overlay-card {
+        width: 100%;
+    }
+
+    .add-contact-content-container {
+        width: 90%;
+    }
+
+    .add-contact-card-headline {
+        width: auto;
+    }
+
+    .create-form {
+        width: auto;
+    }
+
+    .add-contact-create-contact-btn {
+        width: auto;
     }
 }

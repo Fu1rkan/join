@@ -161,9 +161,31 @@
         font-size: 36px;
         font-weight: 700;
     }
+
+    @keyframes createdMsgIn {
+        0% {
+            top: 100vh;
+        }
+
+        100% {
+            top: 0;
+        }
+    }
+
+    @keyframes createdMsgOut {
+        0% {
+            top: 0;
+        }
+
+        100% {
+            top: 100vh;
+        }
+    }
+
 }
 
 @media (max-width: 960px) {
+
     .contact-list-area,
     .add-new-contact-btn,
     .contact-list-container,
@@ -220,7 +242,7 @@
 
     /*Only for Feedback*/
     .responsiv-add-new-contact-container:hover {
-        background-color:#024764;
+        background-color: #024764;
     }
 
     .responsiv-add-new-contact-container:active {
@@ -242,6 +264,10 @@
         align-items: flex-start;
         height: auto;
         gap: 8px;
+    }
+
+    .contact-rightside-big-container {
+        padding-left: 16px;
     }
 
     .contacts-header>h2 {
@@ -314,8 +340,8 @@
     }
 
     /*Only for Feedback*/
-    .contact-rightside-menu-btn:hover  {
-        background-color:#024764;
+    .contact-rightside-menu-btn:hover {
+        background-color: #024764;
     }
 
     .contact-rightside-menu-btn:active {
@@ -338,17 +364,17 @@
     .responsiv-edit-delete-menu-container {
         position: relative;
         width: 100%;
+        flex: 1;
     }
 
     .responsiv-edit-delete-menu {
         z-index: 1;
-        position: absolute;
+        position: fixed;
         height: 100px;
         width: 116px;
         background-color: #FFFFFF;
-        right: 0;
-        top: 0;
-        transform: translate3d(-8px, 25%, 0);
+        right: 8px;
+        bottom: 104px;
         display: flex;
         flex-direction: column;
         padding: 10px;
@@ -366,17 +392,19 @@
 
     @keyframes smallMenuIn {
         from {
-            right: -116px;
+            right: -250px;
         }
+
         to {
-            right:0;
+            right: 8px;
         }
     }
 
     @keyframes smallMenuOut {
         from {
-            right: 0;
+            right: 8px;
         }
+
         to {
             right: -116px;
         }
@@ -397,15 +425,15 @@
     /*Only for Feedback*/
     .responsiv-edit-delete-menu>button:hover svg path,
     .responsiv-edit-delete-menu>button:hover p {
-        fill:#024764;
-        color:#024764;
+        fill: #024764;
+        color: #024764;
         font-weight: 700;
     }
 
     .responsiv-edit-delete-menu>button:active svg path,
     .responsiv-edit-delete-menu>button:active p {
-        fill:#29ABE2;
-        color:#29ABE2;
+        fill: #29ABE2;
+        color: #29ABE2;
         font-weight: 700;
     }
 
@@ -422,7 +450,7 @@
 
 }
 
-@media(max-width: 428px) {
+/* @media(max-width: 428px) {
     .add-new-contact-btn-container {
         display: none;
     }
@@ -434,7 +462,7 @@
 
     .contact-rightside-big-container {
         width: 100%;
-        margin-left: 16px;
+        padding-left: 16px;
     }
 
     .contacts-header {
@@ -495,7 +523,7 @@
     .contact-inforamtion-txt {
         height: auto;
     }
-}
+} */
 
 .width-100 {
     width: 100%;

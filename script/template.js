@@ -464,7 +464,7 @@ function taskEditOverlayTemp(i) {
                     </div>
                     <label class="task-info-type inter-text-color">Priority</label>
                     <div class="change-priority">
-                        <button id="prio-urgent">
+                        <button id="prio-urgent" onclick="changePriority('urgent', ${i.id})">
                             <p>Urgent</p>
                             <svg width="20" height="15" viewBox="0 0 20 15" fill="none">
                                 <path id="urgent-path"
@@ -475,7 +475,7 @@ function taskEditOverlayTemp(i) {
                                     fill="#FF3D00" />
                             </svg>
                         </button>
-                        <button id="prio-medium">
+                        <button id="prio-medium" onclick="changePriority('medium', ${i.id})">
                             <p>Medium</p>
                             <svg width="21" height="9" viewBox="0 0 21 9" fill="none">
                                 <path id="medium-path"
@@ -486,7 +486,7 @@ function taskEditOverlayTemp(i) {
                                     fill="#FFA800" />
                             </svg>
                         </button>
-                        <button id="prio-low">
+                        <button id="prio-low" onclick="changePriority('low', ${i.id})">
                             <p>Low</p>
                             <svg width="20" height="15" viewBox="0 0 20 15" fill="none">
                                 <path id="low-path"
@@ -501,7 +501,7 @@ function taskEditOverlayTemp(i) {
                     <label class="task-info-type inter-text-color">Assigned to</label>
                     <div class="change-participants">
                         <input type="text" placeholder="Select Contacts to assign">
-                        <button>
+                        <button onclick="toggleContactList()" id="change-participants-button">
                             <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
                                 <path
                                     d="M3.29998 4.3L0.699975 1.7C0.383309 1.38333 0.312475 1.02083 0.487475 0.6125C0.662475 0.204167 0.974975 0 1.42498 0H6.57498C7.02498 0 7.33747 0.204167 7.51248 0.6125C7.68748 1.02083 7.61664 1.38333 7.29997 1.7L4.69998 4.3C4.59998 4.4 4.49164 4.475 4.37498 4.525C4.25831 4.575 4.13331 4.6 3.99998 4.6C3.86664 4.6 3.74164 4.575 3.62498 4.525C3.50831 4.475 3.39998 4.4 3.29998 4.3Z"
@@ -509,31 +509,14 @@ function taskEditOverlayTemp(i) {
                             </svg>
                         </button>
                     </div>
-                    <div class="participants-list d_none">
-                        <div class="choose-paticipant">
-                            <div class="logo-and-name-participant">
-                                <span class="asssigned-person-logo">FY</span>
-                                <span>Furkan Yigit</span>
-                            </div>
-                            <button>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="included-participants">
-                        <span class="asssigned-person-logo">FY</span>
-                        <span class="asssigned-person-logo">FY</span>
-                        <span class="asssigned-person-logo">FY</span>
-                        <span class="asssigned-person-logo">FY</span>
-                    </div>
+                    <div class="participants-list d_none" id="participants-list"></div>
+                    <div class="included-participants" id="included-participants"></div>
                     <label class="task-info-type inter-text-color" for="">Subtasks</label>
                     <div class="add-subtasks">
                         <input type="text" placeholder="Add new Subtasks">
                         <div class="confirm-buttons-add-subtasks">
                             <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                                     <path
                                         d="M7.00078 8.40005L2.10078 13.3C1.91745 13.4834 1.68411 13.575 1.40078 13.575C1.11745 13.575 0.884115 13.4834 0.700781 13.3C0.517448 13.1167 0.425781 12.8834 0.425781 12.6C0.425781 12.3167 0.517448 12.0834 0.700781 11.9L5.60078 7.00005L0.700781 2.10005C0.517448 1.91672 0.425781 1.68338 0.425781 1.40005C0.425781 1.11672 0.517448 0.883382 0.700781 0.700049C0.884115 0.516715 1.11745 0.425049 1.40078 0.425049C1.68411 0.425049 1.91745 0.516715 2.10078 0.700049L7.00078 5.60005L11.9008 0.700049C12.0841 0.516715 12.3174 0.425049 12.6008 0.425049C12.8841 0.425049 13.1174 0.516715 13.3008 0.700049C13.4841 0.883382 13.5758 1.11672 13.5758 1.40005C13.5758 1.68338 13.4841 1.91672 13.3008 2.10005L8.40078 7.00005L13.3008 11.9C13.4841 12.0834 13.5758 12.3167 13.5758 12.6C13.5758 12.8834 13.4841 13.1167 13.3008 13.3C13.1174 13.4834 12.8841 13.575 12.6008 13.575C12.3174 13.575 12.0841 13.4834 11.9008 13.3L7.00078 8.40005Z"
                                         fill="#2A3647" />
@@ -541,7 +524,7 @@ function taskEditOverlayTemp(i) {
                             </button>
                             <div class="change-task-divider"></div>
                             <button>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+                                <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
                                     <path
                                         d="M5.55118 9.15L14.0262 0.675C14.2262 0.475 14.4637 0.375 14.7387 0.375C15.0137 0.375 15.2512 0.475 15.4512 0.675C15.6512 0.875 15.7512 1.1125 15.7512 1.3875C15.7512 1.6625 15.6512 1.9 15.4512 2.1L6.25118 11.3C6.05118 11.5 5.81785 11.6 5.55118 11.6C5.28452 11.6 5.05118 11.5 4.85118 11.3L0.551184 7C0.351184 6.8 0.25535 6.5625 0.263684 6.2875C0.272017 6.0125 0.376184 5.775 0.576184 5.575C0.776184 5.375 1.01368 5.275 1.28868 5.275C1.56368 5.275 1.80118 5.375 2.00118 5.575L5.55118 9.15Z"
                                         fill="#2A3647" />
@@ -554,7 +537,7 @@ function taskEditOverlayTemp(i) {
                             <span>• One Task to do</span>
                             <div class="confirm-buttons-add-subtasks">
                                 <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
                                         <path
                                             d="M2 17H3.4L12.025 8.375L10.625 6.975L2 15.6V17ZM16.3 6.925L12.05 2.725L13.45 1.325C13.8333 0.941667 14.3042 0.75 14.8625 0.75C15.4208 0.75 15.8917 0.941667 16.275 1.325L17.675 2.725C18.0583 3.10833 18.2583 3.57083 18.275 4.1125C18.2917 4.65417 18.1083 5.11667 17.725 5.5L16.3 6.925ZM14.85 8.4L4.25 19H0V14.75L10.6 4.15L14.85 8.4Z"
                                             fill="#2A3647" />
@@ -562,7 +545,7 @@ function taskEditOverlayTemp(i) {
                                 </button>
                                 <div class="change-task-divider"></div>
                                 <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+                                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
                                         <path
                                             d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3C0.716667 3 0.479167 2.90417 0.2875 2.7125C0.0958333 2.52083 0 2.28333 0 2C0 1.71667 0.0958333 1.47917 0.2875 1.2875C0.479167 1.09583 0.716667 1 1 1H5C5 0.716667 5.09583 0.479167 5.2875 0.2875C5.47917 0.0958333 5.71667 0 6 0H10C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1H15C15.2833 1 15.5208 1.09583 15.7125 1.2875C15.9042 1.47917 16 1.71667 16 2C16 2.28333 15.9042 2.52083 15.7125 2.7125C15.5208 2.90417 15.2833 3 15 3V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM3 3V16H13V3H3ZM5 13C5 13.2833 5.09583 13.5208 5.2875 13.7125C5.47917 13.9042 5.71667 14 6 14C6.28333 14 6.52083 13.9042 6.7125 13.7125C6.90417 13.5208 7 13.2833 7 13V6C7 5.71667 6.90417 5.47917 6.7125 5.2875C6.52083 5.09583 6.28333 5 6 5C5.71667 5 5.47917 5.09583 5.2875 5.2875C5.09583 5.47917 5 5.71667 5 6V13ZM9 13C9 13.2833 9.09583 13.5208 9.2875 13.7125C9.47917 13.9042 9.71667 14 10 14C10.2833 14 10.5208 13.9042 10.7125 13.7125C10.9042 13.5208 11 13.2833 11 13V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V13Z"
                                             fill="#2A3647" />
@@ -576,7 +559,7 @@ function taskEditOverlayTemp(i) {
                 <footer class="edit-task-footer">
                     <button class="confirm-task-edit">
                         <p>Ok</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
+                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none">
                             <path d="M5.55021 9.65L14.0252 1.175C14.2252 0.975 14.4627 0.875 14.7377 0.875C15.0127 0.875 15.2502 0.975 15.4502 1.175C15.6502 1.375 15.7502 1.6125 15.7502 1.8875C15.7502 2.1625 15.6502 2.4 15.4502 2.6L6.25021 11.8C6.05021 12 5.81687 12.1 5.55021 12.1C5.28354 12.1 5.05021 12 4.85021 11.8L0.550207 7.5C0.350207 7.3 0.254374 7.0625 0.262707 6.7875C0.27104 6.5125 0.375207 6.275 0.575207 6.075C0.775207 5.875 1.01271 5.775 1.28771 5.775C1.56271 5.775 1.80021 5.875 2.00021 6.075L5.55021 9.65Z" fill="white"/>
                         </svg>
                     </button>
@@ -644,5 +627,28 @@ function subtaskToDoTemp() {
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
             <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
         </svg>
+    `
+}
+
+function participantLogoTemp(participant){
+    return `
+        <span class="asssigned-person-logo">${participant.name[0].charAt(0).toUpperCase() + participant.name[1].charAt(0).toUpperCase()}</span>
+    `
+}
+
+
+function renderContactsTemp(contact){
+    return `
+        <div class="choose-paticipant">
+            <div class="logo-and-name-participant">
+                <span class="asssigned-person-logo">${contact.name[0].charAt(0).toUpperCase()}</span>
+                <span>${contact.name}</span>
+            </div>
+            <button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2" />
+                </svg>
+            </button>
+        </div>
     `
 }

@@ -406,7 +406,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .change-participants button {
     width: 24px;
     height: 24px;
-    transition: 100ms;
+    transition: 125ms;
 }
 
 .change-participants button:hover {
@@ -543,4 +543,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .fill_red{
     fill: white !important;
+}
+
+.tf_r180{
+    transform: rotate(180deg);
 }

@@ -155,8 +155,12 @@ function openEditTaskOverlay(id) {
     document.getElementById('change-title').value = task[0].name;
     document.getElementById('change-desc').value = task[0].description;
     document.getElementById('input-date').value = task[0].date;
-    checkPriorityStatus(task[0])
+    checkPriorityStatus(task[0]);
+    changeParticipants(task[0]);
+    renderContactList();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 function checkPriorityStatus(task) {
     if (task.priority.includes('urgent')) {
@@ -173,7 +177,50 @@ function checkPriorityStatus(task) {
         document.getElementById(`low-path-2`).style.fill = 'white';
     }
 }
+                                                                        //Bin unzufrieden damit... Wird optimiert, bald..
 
+function resetPriority(){
+    document.getElementById(`prio-urgent`).classList.remove('bc_r');
+    document.getElementById(`urgent-path`).style.fill = '#FF3D00';
+    document.getElementById(`urgent-path-2`).style.fill = '#FF3D00';
+    document.getElementById(`prio-medium`).classList.remove('bc_o');
+    document.getElementById(`medium-path`).style.fill = '#FFA800';
+    document.getElementById(`medium-path-2`).style.fill = '#FFA800';
+    document.getElementById(`prio-low`).classList.remove('bc_g');
+    document.getElementById(`low-path`).style.fill = '#7AE229';
+    document.getElementById(`low-path-2`).style.fill = '#7AE229';
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+function changePriority(prioType, taskId){
+    let task = taskList.filter(t => t['id'] == taskId);
+    task[0].priority = prioType;
+    resetPriority()
+    checkPriorityStatus(task[0]);
+}
+
+function changeParticipants(task){
+    if (task.participants != null) {   
+        for (let index = 0; index < task.participants.length; index++) {   
+            document.getElementById('included-participants').innerHTML += participantLogoTemp(task.participants[index]);
+        }
+    }
+}
+
+function renderContactList(){
+    if (contacts.length > 0){
+        for (let index = 0; index < contacts.length; index++) {
+            document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index]);
+        }
+    }
+}
+
+function toggleContactList(){
+    document.getElementById('change-participants-button').classList.toggle('tf_r180');
+    document.getElementById('participants-list').classList.toggle('d_none');
+}
 
 function startDragging(id) {
     currentDraggedElement = id;

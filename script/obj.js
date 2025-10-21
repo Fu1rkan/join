@@ -21,7 +21,7 @@ let taskList = [
             { 'name': 'Write Sample Tests', 'status': false }
         ],
         'participants': [
-            { 'name': ['Sven', 'Degen'] }
+            { 'name': ['Sven Degen'] }
         ],
         'priority': 'low',
         'date': '2025-10-20'
@@ -52,8 +52,8 @@ let taskList = [
             { 'name': 'Deploy to Server', 'status': false }
         ],
         'participants': [
-            { 'name': ['Furkan', 'Yigit'] },
-            { 'name': ['David', 'Groß'] }
+            { 'name': ['Furkan Yigit'] },
+            { 'name': ['David Groß'] }
         ],
         'priority': 'urgent',
         'date': '2025-10-22'
@@ -72,16 +72,16 @@ let taskList = [
             { 'name': 'final control', 'status': false }
         ],
         'participants': [
-            { 'name': ['Furkan', 'Yigit'] },
-            { 'name': ['Can', 'Marco'] },
-            { 'name': ['Test', 'Person'] },
-            { 'name': ['David', 'Groß'] },
-            { 'name': ['Kim', 'B'] },
-            { 'name': ['Furkan', 'Yigit'] },
-            { 'name': ['Can', 'Marco'] },
-            { 'name': ['Test', 'Person'] },
-            { 'name': ['David', 'Groß'] },
-            { 'name': ['Kim', 'B'] },
+            { 'name': ['Furkan Yigit'] },
+            { 'name': ['Can Marco'] },
+            { 'name': ['Test Person'] },
+            { 'name': ['David Groß'] },
+            { 'name': ['Kim B'] },
+            { 'name': ['Furkan Yigit'] },
+            { 'name': ['Can Marco'] },
+            { 'name': ['Test Person'] },
+            { 'name': ['David Groß'] },
+            { 'name': ['Kim B'] },
         ],
         'priority': 'urgent',
         'date': '2025-10-11'
@@ -98,8 +98,8 @@ let taskList = [
             { 'name': 'Accessibility', 'status': true }
         ],
         'participants': [
-            { 'name': ['Furkan', 'Yigit'] },
-            { 'name': ['Can', 'Marco'] }
+            { 'name': ['Furkan Yigit'] },
+            { 'name': ['Can Marco'] }
         ],
         'priority': 'medium',
         'date': '2025-10-12'
@@ -115,7 +115,7 @@ let taskList = [
             { 'name': 'Refactor Queries', 'status': false }
         ],
         'participants': [
-            { 'name': ['Sven', 'Degen'] }
+            { 'name': ['Sven Degen'] }
         ],
         'priority': 'urgent',
         'date': '2025-10-13'
@@ -132,8 +132,8 @@ let taskList = [
             { 'name': 'Password Reset', 'status': false }
         ],
         'participants': [
-            { 'name': ['David', 'Groß'] },
-            { 'name': ['Kim', 'B'] }
+            { 'name': ['David Groß'] },
+            { 'name': ['Kim B'] }
         ],
         'priority': 'high',
         'date': '2025-10-15'

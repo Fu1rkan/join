@@ -12,6 +12,7 @@
     <script src="./script/template.js"></script>
     <script src="./script/add_task.js"></script>
     <script src="./script/add_task_template.js"></script>
+    <script src="./script/test_contacts.js"></script> <!-- Muss auf obj.js geändert werden -->
 </head>
 
 <body onload="init()">
@@ -114,9 +115,27 @@
         <main>
             <header class="main-header">
                 <div class="content-limit-header">
-                    <div class="header-text">Kanban Project Management Tool</div>
+                    <svg width="32" height="40" viewBox="0 0 32 40" fill="none">
+                        <path d="M22.927 0.492188H15.8389V8.64696H22.927V0.492188Z" fill="#2A3647" />
+                        <path
+                            d="M15.8392 15.2793H22.9273V26.7803C22.9597 29.5478 22.1721 32.2624 20.6646 34.5791C19.1761 36.83 16.3027 39.5081 10.9866 39.5081C5.19613 39.5081 1.8211 36.7698 0 35.2692L4.47096 29.7542C6.24844 31.2055 7.96049 32.3994 11.0138 32.3994C13.3256 32.3994 14.2471 31.4574 14.7869 30.6359C15.5207 29.4949 15.9003 28.1604 15.8774 26.8022L15.8392 15.2793Z"
+                            fill="#2A3647" />
+                        <path d="M12.2239 10.1309H5.13574V17.2505H12.2239V10.1309Z" fill="#29ABE2" />
+                        <path
+                            d="M26.6409 36.167C26.6409 37.684 25.8721 38.5001 24.798 38.5001C23.7239 38.5001 23.0205 37.5307 23.0205 36.2437C23.0205 34.9567 23.7457 33.938 24.858 33.938C25.9703 33.938 26.6409 34.9402 26.6409 36.167ZM23.8438 36.2272C23.8438 37.1418 24.2091 37.8155 24.8362 37.8155C25.4632 37.8155 25.8176 37.1035 25.8176 36.1725C25.8176 35.3564 25.4904 34.5897 24.8362 34.5897C24.1819 34.5897 23.8438 35.3291 23.8438 36.2272Z"
+                            fill="#2A3647" />
+                        <path d="M28.0478 34.0039V38.4291H27.2627V34.0039H28.0478Z" fill="#2A3647" />
+                        <path
+                            d="M28.8975 38.4291V34.0039H29.7698L30.7077 35.8276C30.9491 36.3045 31.1639 36.7945 31.351 37.2954C31.302 36.7477 31.2802 36.1179 31.2802 35.4169V34.0039H31.9999V38.4291H31.1875L30.2387 36.567C29.9876 36.0778 29.7637 35.575 29.5681 35.0609C29.5681 35.6086 29.6063 36.2274 29.6063 36.9887V38.4236L28.8975 38.4291Z"
+                            fill="#2A3647" />
+                    </svg>
+                    <p class="header-text">Kanban Project Management Tool</p>
                     <div class="header-profil">
-                        <img src="./assets/svg/help.svg" alt="help" class="summary-help" />
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path
+                                d="M9.95 16C10.3 16 10.5958 15.8792 10.8375 15.6375C11.0792 15.3958 11.2 15.1 11.2 14.75C11.2 14.4 11.0792 14.1042 10.8375 13.8625C10.5958 13.6208 10.3 13.5 9.95 13.5C9.6 13.5 9.30417 13.6208 9.0625 13.8625C8.82083 14.1042 8.7 14.4 8.7 14.75C8.7 15.1 8.82083 15.3958 9.0625 15.6375C9.30417 15.8792 9.6 16 9.95 16ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18ZM10.1 5.7C10.5167 5.7 10.8792 5.83333 11.1875 6.1C11.4958 6.36667 11.65 6.7 11.65 7.1C11.65 7.46667 11.5375 7.79167 11.3125 8.075C11.0875 8.35833 10.8333 8.625 10.55 8.875C10.1667 9.20833 9.82917 9.575 9.5375 9.975C9.24583 10.375 9.1 10.825 9.1 11.325C9.1 11.5583 9.1875 11.7542 9.3625 11.9125C9.5375 12.0708 9.74167 12.15 9.975 12.15C10.225 12.15 10.4375 12.0667 10.6125 11.9C10.7875 11.7333 10.9 11.525 10.95 11.275C11.0167 10.925 11.1667 10.6125 11.4 10.3375C11.6333 10.0625 11.8833 9.8 12.15 9.55C12.5333 9.18333 12.8625 8.78333 13.1375 8.35C13.4125 7.91667 13.55 7.43333 13.55 6.9C13.55 6.05 13.2042 5.35417 12.5125 4.8125C11.8208 4.27083 11.0167 4 10.1 4C9.46667 4 8.8625 4.13333 8.2875 4.4C7.7125 4.66667 7.275 5.075 6.975 5.625C6.85833 5.825 6.82083 6.0375 6.8625 6.2625C6.90417 6.4875 7.01667 6.65833 7.2 6.775C7.43333 6.90833 7.675 6.95 7.925 6.9C8.175 6.85 8.38333 6.70833 8.55 6.475C8.73333 6.225 8.9625 6.03333 9.2375 5.9C9.5125 5.76667 9.8 5.7 10.1 5.7Z"
+                                fill="#A8A8A8" />
+                        </svg>
                         <div class="profil-header"></div>
                     </div>
                 </div>
@@ -136,7 +155,7 @@
                             </button>
                         </div>
                         <div class="board-actions">
-                            <form action="search-bar" class="search-task">
+                            <div action="search-bar" class="search-task">
                                 <label for="search-bar">
                                     <input type="text" placeholder="Find Task" id="search-bar" />
                                     <div class="search-button-section">
@@ -149,7 +168,7 @@
                                         </div>
                                     </div>
                                 </label>
-                            </form>
+                            </div>
                             <button onclick="openAddTask()">
                                 <p>Add task</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
@@ -173,7 +192,7 @@
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
                             </svg>
                         </header>
-                        <section class="task-list" id="to-do-kanban" ondrop="moveTo('to_do', 'to-do-kanban')"
+                        <section class="task-list" id="to-do-kanban" ondrop="moveTo('to-do', 'to-do-kanban')"
                             ondragenter="highlight('to-do-kanban')" ondragleave="removeHighlight('to-do-kanban')"
                             ondragover="allowDrop(event)">
                         </section>
@@ -191,7 +210,7 @@
                             </svg>
                         </header>
                         <section class="task-list" id="in-progress-kanban"
-                            ondrop="moveTo('in_progress', 'in-progress-kanban')"
+                            ondrop="moveTo('in-progress', 'in-progress-kanban')"
                             ondragenter="highlight('in-progress-kanban')"
                             ondragleave="removeHighlight('in-progress-kanban')" ondragover="allowDrop(event)">
                         </section>
@@ -209,7 +228,7 @@
                             </svg>
                         </header>
                         <section class="task-list" id="await-feedback-kanban"
-                            ondrop="moveTo('await_feedback', 'await-feedback-kanban')"
+                            ondrop="moveTo('await-feedback', 'await-feedback-kanban')"
                             ondragenter="highlight('await-feedback-kanban')"
                             ondragleave="removeHighlight('await-feedback-kanban')" ondragover="allowDrop(event)">
                         </section>

@@ -2,88 +2,42 @@ let checkOverlay = 0
 
 let currentDraggedElement;
 
-let allObj = [];
+let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
+
+function stopPropagation(event) {
+    event.stopPropagation();
+}
+
+
+function init() {
+    for (let index = 0; index < ids.length; index++) {
+        let categoryTasks = taskList.filter(t => t['category'] == ids[index]);
+        document.getElementById(`${ids[index]}-kanban`).innerHTML = "";
+        if (categoryTasks.length > 0) {
+            for (let i = 0; i < categoryTasks.length; i++) {
+                document.getElementById(`${ids[index]}-kanban`).innerHTML += taskTemp(categoryTasks[i]);
+                checkTaskInfos(categoryTasks[i]);
+            }
+        } else {
+            document.getElementById(`${ids[index]}-kanban`).innerHTML = emptyTaskList();
+        }
+    }
+}
+
 
 function toggleTaskOverlay(i) {
-    let bleurBg = document.getElementById('bleur-bg');
-    let dialog = document.getElementById('task-dialog');
-    bleurBg.classList.toggle('d_none');
-    dialog.classList.toggle('tf_tlx100');
+    document.getElementById('bleur-bg').classList.toggle('d_none');
+    document.getElementById('task-dialog').classList.toggle('tf_tlx100');
     if (checkOverlay == 0) {
-        dialog.innerHTML = taskOverlayTemp(allObj[i]);
-        checkTaskOverlayInfos(allObj[i])
+        let task = taskList.filter(t => t['id'] == i);
+        document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task[0]);
+        checkTaskOverlayInfos(task[0])
         checkOverlay += 1;
     } else {
         checkOverlay = 0;
     }
 }
 
-function stopPropagation(event) {
-    event.stopPropagation();
-}
-
-function init() {
-    renderToDo();
-    renderInProgress();
-    renderAwaitFeedback();
-    renderDone();
-}
-
-function renderToDo() {
-    let toDo = taskList.filter(t => t['category'] == 'to_do');
-    document.getElementById('to-do-kanban').innerHTML = "";
-    if (toDo.length > 0) {
-        for (let i = 0; i < toDo.length; i++) {
-            document.getElementById('to-do-kanban').innerHTML += taskTemp(toDo[i]);
-            allObj.push(toDo[i]);
-            checkTaskInfos(toDo[i]);
-        }
-    } else {
-        document.getElementById('to-do-kanban').innerHTML = emptyTaskList();
-    }
-}
-
-function renderInProgress() {
-    let inProgress = taskList.filter(t => t['category'] == 'in_progress');
-    document.getElementById('in-progress-kanban').innerHTML = "";
-    if (inProgress.length > 0) {
-        for (let i = 0; i < inProgress.length; i++) {
-            document.getElementById('in-progress-kanban').innerHTML += taskTemp(inProgress[i]);
-            allObj.push(inProgress[i]);
-            checkTaskInfos(inProgress[i]);
-        }
-    } else {
-        document.getElementById('in-progress-kanban').innerHTML = emptyTaskList();
-    }
-}
-
-function renderAwaitFeedback() {
-    let awaitFeedback = taskList.filter(t => t['category'] == 'await_feedback');
-    document.getElementById('await-feedback-kanban').innerHTML = "";
-    if (awaitFeedback.length > 0) {
-        for (let i = 0; i < awaitFeedback.length; i++) {
-            document.getElementById('await-feedback-kanban').innerHTML += taskTemp(awaitFeedback[i]);
-            allObj.push(awaitFeedback[i]);
-            checkTaskInfos(awaitFeedback[i]);
-        }
-    } else {
-        document.getElementById('await-feedback-kanban').innerHTML = emptyTaskList();
-    }
-}
-
-function renderDone() {
-    let done = taskList.filter(t => t['category'] == 'done');
-    document.getElementById('done-kanban').innerHTML = "";
-    if (done.length > 0) {
-        for (let i = 0; i < done.length; i++) {
-            document.getElementById('done-kanban').innerHTML += taskTemp(done[i]);
-            allObj.push(done[i]);
-            checkTaskInfos(done[i]);
-        }
-    } else {
-        document.getElementById('done-kanban').innerHTML = emptyTaskList();
-    }
-}
 
 function checkTaskInfos(i) {
     const taskCard = 'task-card';
@@ -94,57 +48,62 @@ function checkTaskInfos(i) {
     checkPrio(i, taskCard);
 }
 
+
 function checkTaskType(i, taskCard) {
     if (i.type.includes('User')) {
-        document.getElementById(`${taskCard}-type-${i.name}`).style.backgroundColor = 'rgba(0, 56, 255, 1)';
+        document.getElementById(`${taskCard}-type-${i.id}`).style.backgroundColor = 'rgba(0, 56, 255, 1)';
     } else {
-        document.getElementById(`${taskCard}-type-${i.name}`).style.backgroundColor = 'rgba(31, 215, 193, 1)';
+        document.getElementById(`${taskCard}-type-${i.id}`).style.backgroundColor = 'rgba(31, 215, 193, 1)';
     }
 }
 
+
 function checkTaskDesc(i, taskCard) {
     if (i.description != null) {
-        document.getElementById(`${taskCard}-desc-${i.name}`).innerHTML += i.description;
+        document.getElementById(`${taskCard}-desc-${i.id}`).innerHTML += i.description;
     }
 }
+
 
 function checkProgress(i, taskCard) {
     if (i.subtasks != null) {
         let trueCount = i.subtasks.filter(s => s.status === true).length;
-        document.getElementById(`${taskCard}-subtasks-${i.name}`).innerHTML = progressTemp(i.subtasks.length, trueCount);
+        document.getElementById(`${taskCard}-subtasks-${i.id}`).innerHTML = progressTemp(i.subtasks.length, trueCount);
     }
 }
+
 
 function checkParticipants(i, taskCard) {
     if (i.participants != null) {
         for (let index = 0; index < i.participants.length; index++) {
             if (index < 3) {
-                document.getElementById(`${taskCard}-participants-${i.name}`).innerHTML += participantsTemp(i, index)
+                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += participantsTemp(i, index)
             } else {
-                document.getElementById(`${taskCard}-participants-${i.name}`).innerHTML += moreParticipantsTemp()
+                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += moreParticipantsTemp()
                 break
             }
         }
     }
 }
 
+
 function checkPrio(i, taskCard) {
-    if (i.priority != null) {
-        if (i.priority.includes('urgent')) {
-            document.getElementById(`${taskCard}-prio-${i.name}`).innerHTML = urgentPrioTemp();
-        } else if (i.priority.includes('medium')) {
-            document.getElementById(`${taskCard}-prio-${i.name}`).innerHTML = mediumPrioTemp();
-        } else {
-            document.getElementById(`${taskCard}-prio-${i.name}`).innerHTML = lowPrioTemp();
-        }
+    if (i.priority.includes('urgent')) {
+        document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = urgentPrioTemp();
+    } else if (i.priority.includes('medium')) {
+        document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = mediumPrioTemp();
+    } else {
+        document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = lowPrioTemp();
     }
 }
+
 
 function checkSubtasksMainOverlay(task, taskProgress, taskInfoId) {
     for (let index = 0; index < task.subtasks.length; index++) {
         taskProgress.innerHTML += task.subtasks[index].name;
     }
 }
+
 
 function checkTaskOverlayInfos(i) {
     const taskOverlay = 'task-overlay';
@@ -155,55 +114,147 @@ function checkTaskOverlayInfos(i) {
     checkTaskOverlaySubtasks(i, taskOverlay);
 }
 
+
 function checkTaskOverlayPrio(i, taskOverlay) {
     if (i.priority.includes('urgent')) {
-        document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, urgentPrioTemp());
+        document.getElementById(`${taskOverlay}-prio-${i.id}`).innerHTML = prioTaskOverlayTemp(i, urgentPrioTemp());
     } else if (i.priority.includes('medium')) {
-        document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, mediumPrioTemp());
+        document.getElementById(`${taskOverlay}-prio-${i.id}`).innerHTML = prioTaskOverlayTemp(i, mediumPrioTemp());
     } else {
-        document.getElementById(`${taskOverlay}-prio-${i.name}`).innerHTML = prioTaskOverlayTemp(i, lowPrioTemp());
+        document.getElementById(`${taskOverlay}-prio-${i.id}`).innerHTML = prioTaskOverlayTemp(i, lowPrioTemp());
     }
 }
+
 
 function checkTaskOverlayParticipants(i, taskOverlay) {
     if (i.participants != null) {
-        document.getElementById(`${taskOverlay}-participants-${i.name}`).innerHTML += participantsTaskOverlayTemp(i)
+        document.getElementById(`${taskOverlay}-participants-${i.id}`).innerHTML += participantsTaskOverlayTemp(i)
         for (let index = 0; index < i.participants.length; index++) {
-            document.getElementById(`participants-list-${i.name}`).innerHTML += participantTemp(i, index);
+            document.getElementById(`participants-list-${i.id}`).innerHTML += participantTemp(i, index);
         }
     }
 }
 
+
 function checkTaskOverlaySubtasks(i, taskOverlay) {
     if (i.participants != null) {
-        document.getElementById(`${taskOverlay}-subtasks-${i.name}`).innerHTML += subtasksTaskOverlay(i);
+        document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML += subtasksTaskOverlay(i);
         for (let index = 0; index < i.subtasks.length; index++) {
             if (i.subtasks[index].status == true) {
-                document.getElementById(`subtasks-list-${i.name}`).innerHTML += subtaskListTemp(i, index, subtaskDoneTemp());
+                document.getElementById(`subtasks-list-${i.id}`).innerHTML += subtaskListTemp(i, index, subtaskDoneTemp());
             } else {
-                document.getElementById(`subtasks-list-${i.name}`).innerHTML += subtaskListTemp(i, index, subtaskToDoTemp());
+                document.getElementById(`subtasks-list-${i.id}`).innerHTML += subtaskListTemp(i, index, subtaskToDoTemp());
             }
         }
     }
+}
+
+function openEditTaskOverlay(id) {
+    let task = taskList.filter(t => t['id'] == id);
+    document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task[0]);
+    document.getElementById('change-title').value = task[0].name;
+    document.getElementById('change-desc').value = task[0].description;
+    document.getElementById('input-date').value = task[0].date;
+    checkPriorityStatus(task[0]);
+    changeParticipants(task[0]);
+    renderContactList();
+    renderSubtaskList(task[0]);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+function checkPriorityStatus(task) {
+    if (task.priority.includes('urgent')) {
+        document.getElementById(`prio-urgent`).classList.add('bc_r');
+        document.getElementById(`urgent-path`).style.fill = 'white';
+        document.getElementById(`urgent-path-2`).style.fill = 'white';
+    } else if (task.priority.includes('medium')) {
+        document.getElementById(`prio-medium`).classList.add('bc_o');
+        document.getElementById(`medium-path`).style.fill = 'white';
+        document.getElementById(`medium-path-2`).style.fill = 'white';
+    } else {
+        document.getElementById(`prio-low`).classList.add('bc_g');
+        document.getElementById(`low-path`).style.fill = 'white';
+        document.getElementById(`low-path-2`).style.fill = 'white';
+    }
+}
+                                                                        //Bin unzufrieden damit... Wird optimiert, bald..
+
+function resetPriority(){
+    document.getElementById(`prio-urgent`).classList.remove('bc_r');
+    document.getElementById(`urgent-path`).style.fill = '#FF3D00';
+    document.getElementById(`urgent-path-2`).style.fill = '#FF3D00';
+    document.getElementById(`prio-medium`).classList.remove('bc_o');
+    document.getElementById(`medium-path`).style.fill = '#FFA800';
+    document.getElementById(`medium-path-2`).style.fill = '#FFA800';
+    document.getElementById(`prio-low`).classList.remove('bc_g');
+    document.getElementById(`low-path`).style.fill = '#7AE229';
+    document.getElementById(`low-path-2`).style.fill = '#7AE229';
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+function changePriority(prioType, taskId){
+    let task = taskList.filter(t => t['id'] == taskId);
+    task[0].priority = prioType;
+    resetPriority()
+    checkPriorityStatus(task[0]);
+}
+
+function changeParticipants(task){
+    if (task.participants != null) {   
+        for (let index = 0; index < task.participants.length; index++) {   
+            document.getElementById('included-participants').innerHTML += participantLogoTemp(task.participants[index]);
+        }
+    }
+}
+
+function renderContactList(){
+    if (contacts.length > 0){
+        for (let index = 0; index < contacts.length; index++) {
+            document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index]);
+        }
+    }
+}
+
+function renderSubtaskList(task){
+    if (task.subtasks != null){
+        for (let index = 0; index < task.subtasks.length; index++) {
+            document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(task.subtasks[index]);
+        }
+    }
+}
+
+function toggleContactList(){
+    document.getElementById('change-participants-button').classList.toggle('tf_r180');
+    document.getElementById('participants-list').classList.toggle('d_none');
 }
 
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
+
 function allowDrop(card) {
     card.preventDefault();
 }
 
-function moveTo(category, id) {
-    allObj[currentDraggedElement]['category'] = category;
+
+function moveTo(categoryTo, id) {
+    let task = taskList.filter(t => t['id'] == currentDraggedElement);
+    let categoryFrom = task[0]['category'];
+    task[0]['category'] = categoryTo;
     document.getElementById(id).classList.remove('drag-area-highlight');
+    ids = [categoryFrom, categoryTo]
     init();
 }
+
 
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
+
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
@@ -267,3 +318,10 @@ function removeHighlight(id) {
         update();
     });
 })();
+
+
+function openDatePicker() {
+    const input = document.getElementById('input-date');
+    input.showPicker?.();
+    input.focus();
+}

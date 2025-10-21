@@ -24,66 +24,107 @@ function getSmallContactTemplate(array, index, keys) {
 
 function getContactTemplate(contact) {
     return `<div id="contact_info_big_template" class="contact-info-big-container fade-in-template">
-        <section class="contact-info-big">
-            <div class="contact-circle-img-big" style="background-color:${contact.fillColor};">
-                        <p>${contact.nameLetters}</p>
-                    </div>
-            <div class="contact-info-big-name-edit-container">
-                <p class="contact-info-big-name">${contact.name}</p>
-                <div class="contact-info-big-edit">
-                    <button class="contact-btn contact-edit-btn" onclick="editContact('${contact.name}', '${contact.email}', '${contact.phone}')">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <mask id="mask0_373102_2514" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                                width="24" height="24">
-                                <rect width="24" height="24" fill="#D9D9D9" />
-                            </mask>
-                            <g mask="url(#mask0_373102_2514)">
-                                <path
-                                    d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
-                                    fill="#2A3647" />
-                            </g>
-                        </svg>
-                        <p class="contact-btn-txt">Edit</p>
-                    </button>
-                    <button class="contact-btn contact-delete-btn" onclick="deleteCurrentContact('${contact.name}', '${contact.email}')">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <mask id="mask0_373102_1542" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                                width="24" height="24">
-                                <rect width="24" height="24" fill="#D9D9D9" />
-                            </mask>
-                            <g mask="url(#mask0_373102_1542)">
-                                <path
-                                    d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
-                                    fill="#2A3647" />
-                            </g>
-                        </svg>
-                        <p class="contact-btn-txt">Delete</p>
-                    </button>
-                </div>
-            </div>
-        </section>
-        <p class="contact-inforamtion-txt">Contact Information</p>
-        <section class="contact-informations">
-            <div>
-                <h5>Email</h5>
-                <a href="mailto:antom@gmail.com">${contact.email}</a>
-            </div>
-            <div>
-                <h5>Phone</h5>
-                <p class="contact-informations-phone-number">${contact.phone}</p>
-            </div>
-        </section>
-        <div id="create_Msg" class="succes-created-container d_none">
-            <div class="creates-msg">
-                <h5 class="succesfully-created-msg">Contact succesfully created</h5>
+    <section class="contact-info-big">
+        <div class="contact-circle-img-big" style="background-color:${contact.fillColor};">
+            <p>${contact.nameLetters}</p>
+        </div>
+        <div class="contact-info-big-name-edit-container">
+            <p class="contact-info-big-name">${contact.name}</p>
+            <div class="contact-info-big-edit">
+                <button class="contact-btn contact-edit-btn"
+                    onclick="editContact('${contact.name}', '${contact.email}', '${contact.phone}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <mask id="mask0_373102_2514" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                            width="24" height="24">
+                            <rect width="24" height="24" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_373102_2514)">
+                            <path
+                                d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
+                                fill="#2A3647" />
+                        </g>
+                    </svg>
+                    <p class="contact-btn-txt">Edit</p>
+                </button>
+                <button class="contact-btn contact-delete-btn"
+                    onclick="deleteCurrentContact('${contact.name}', '${contact.email}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <mask id="mask0_373102_1542" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                            width="24" height="24">
+                            <rect width="24" height="24" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_373102_1542)">
+                            <path
+                                d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
+                                fill="#2A3647" />
+                        </g>
+                    </svg>
+                    <p class="contact-btn-txt">Delete</p>
+                </button>
             </div>
         </div>
-    </div>`;
+    </section>
+    <p class="contact-inforamtion-txt">Contact Information</p>
+    <section class="contact-informations">
+        <div>
+            <h5>Email</h5>
+            <a href="mailto:antom@gmail.com">${contact.email}</a>
+        </div>
+        <div>
+            <h5>Phone</h5>
+            <p class="contact-informations-phone-number">${contact.phone}</p>
+        </div>
+    </section>
+    <div class="succes-created-container">
+        <div id="create_Msg" class="creates-msg d_none">
+            <h5 class="succesfully-created-msg">Contact succesfully created</h5>
+        </div>
+    </div>
+    <div id="responsiv_contact_edit_menu" class="responsiv-edit-delete-menu-container d_none">
+        <div id="responsiv_contact_edit_small_menu" class="responsiv-edit-delete-menu">
+            <button onclick="editContact('${contact.name}', '${contact.email}', '${contact.phone}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <mask id="mask0_71395_18215" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="24" height="24">
+                        <rect width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_71395_18215)">
+                        <path
+                            d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
+                            fill="#2A3647" />
+                    </g>
+                </svg>
+                <p>Edit</p>
+            </button>
+            <button onclick="deleteCurrentContact('${contact.name}', '${contact.email}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <mask id="mask0_383915_3631" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="24" height="24">
+                        <rect width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_383915_3631)">
+                        <path
+                            d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
+                            fill="#2A3647" />
+                    </g>
+                </svg>
+                <p>Delete</p>
+            </button>
+        </div>
+    </div>
+</div>`;
 }
 
 function showAddContactCard() {
     return `<section class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
+        <div class="responsiv-overlay-card-close-btn-container">
+            <button class="responsiv-overlay-card-close-btn" onclick="closeOverlay()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z" fill="white"/>
+                </svg>
+            </button>
+        </div>
             <div class="overlay-left-side-content">
                 <svg class="add-contact-card-svg" xmlns="http://www.w3.org/2000/svg" width="57" height="67"
                     viewBox="0 0 57 67" fill="none">
@@ -249,6 +290,13 @@ function showContactEditCard(name, email, phone) {
     return `<section class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
             <div class="overlay-left-side-content">
+            <div class="responsiv-overlay-card-close-btn-container">
+            <button class="responsiv-overlay-card-close-btn" onclick="closeOverlay()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z" fill="white"/>
+                </svg>
+            </button>
+        </div>
                 <svg class="add-contact-card-svg" xmlns="http://www.w3.org/2000/svg" width="57" height="67"
                     viewBox="0 0 57 67" fill="none">
                     <path d="M40.7397 0H28.4242V13.8957H40.7397V0Z" fill="white" />
@@ -264,7 +312,7 @@ function showContactEditCard(name, email, phone) {
                         d="M51.1131 64.6445V57.104H52.6289L54.2583 60.2116C54.6778 61.0242 55.051 61.8592 55.3762 62.7127C55.2909 61.7795 55.253 60.7063 55.253 59.5117V57.104H56.5035V64.6445H55.092L53.4436 61.4715C53.0072 60.638 52.6182 59.7812 52.2784 58.9051C52.2784 59.8384 52.3447 60.8929 52.3447 62.1901V64.6351L51.1131 64.6445Z"
                         fill="white" />
                 </svg>
-                <div class="add-contact-card-headline">
+                <div class="add-contact-card-edit-headline">
                     <h2 class="add-contact-card-title">Edit contact</h2>
                     <div class="add-contact-card-underline-styled"></div>
                 </div>
@@ -312,7 +360,7 @@ function showContactEditCard(name, email, phone) {
                     </div>
                 </div>
                 <form action="" class="create-form" onsubmit="return false">
-                    <section class="create-form-inputfields">
+                    <section class="create-form-inputfields responsiv-edit-create-form-inputfields">
                     <div class="create-form-inputfields-container">
                         <label class="create-form-label">
                             <input id="edit_name" placeholder="Name" value="${name}" type="text">

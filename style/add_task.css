@@ -221,9 +221,9 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 .submit_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-end;
-  margin-top: 54px;
+  margin-top: 50px;
   margin-left: 10%;
   width: 80%;
 }
@@ -545,9 +545,8 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 .subtask_item_wrapper {
   display: flex;
   align-items: center;
-  width: 47%;
-  padding-left: 16px;
-  padding-right: 16px;
+  width: 100%;
+padding: 0 16px 0 16px;
   min-width: 320px;
 }
 
@@ -561,6 +560,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   justify-content: space-between;
   width: 56px;
   flex-shrink: 0;
+  height: 100%;
 }
 
 .subtask_item_edit img {
@@ -584,7 +584,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 }
 
 .subtask_item_edit hr {
-  height: 90%;
+  height: 24px;
 }
 
 .subtask_input_wrapper {
@@ -610,8 +610,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 
 
 .subtask_list {
-  margin-left: 10%;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -623,6 +622,9 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 .required_info {
   display: flex;
   font-size: 20px;
+      position: absolute;
+    bottom: 1%;
+    left: 10%;
 }
 
 .priority_wrapper button svg {

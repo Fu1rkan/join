@@ -1,16 +1,18 @@
 let taskList = [
     {
-        'category': 'to_do',
+        'id' : '0',
+        'category': 'to-do',
         'type': 'User Story',
         'name': 'Task Board Drag & Drop',
         'description': 'Add drag and drop functionality for better UX.',
         'subtasks': null,
         'participants': null,
         'priority': 'medium',
-        'date': '19/10/2025',
+        'date': '2025-10-19',
     },
     {
-        'category': 'to_do',
+        'id' : '1',
+        'category': 'to-do',
         'type': 'Technical Task',
         'name': 'Unit Testing Setup',
         'description': 'Initialize Jest and write basic test cases.',
@@ -22,10 +24,11 @@ let taskList = [
             { 'name': ['Sven', 'Degen'] }
         ],
         'priority': 'low',
-        'date': '20/10/2025'
+        'date': '2025-10-20'
     },
     {
-        'category': 'to_do',
+        'id' : '2',
+        'category': 'to-do',
         'type': 'User Story',
         'name': 'Contact Form Validation',
         'description': null,
@@ -35,13 +38,14 @@ let taskList = [
         ],
         'participants': null,
         'priority': 'medium',
-        'date': '21/10/2025'
+        'date': '2025-10-21'
     },
     {
-        'category': 'to_do',
+        'id' : '3',
+        'category': 'to-do',
         'type': 'Technical Task',
         'name': 'Deployment Pipeline',
-        'description': 'Setup CI/CD with GitHub Actions.',
+        'description': 'Setup CI-CD with GitHub Actions.',
         'subtasks': [
             { 'name': 'Create Workflow', 'status': true },
             { 'name': 'Add Test Step', 'status': true },
@@ -52,10 +56,11 @@ let taskList = [
             { 'name': ['David', 'Groß'] }
         ],
         'priority': 'urgent',
-        'date': '22/10/2025'
+        'date': '2025-10-22'
     },
     {
-        'category': 'in_progress',
+        'id' : '4',
+        'category': 'in-progress',
         'type': 'User Story',
         'name': 'Join mit den besten zusammenstellen',
         'description': 'Building all Pages with HTML and CSS and then we add functionality for the website!',
@@ -79,10 +84,11 @@ let taskList = [
             { 'name': ['Kim', 'B'] },
         ],
         'priority': 'urgent',
-        'date': '11/10/2025'
+        'date': '2025-10-11'
     },
     {
-        'category': 'in_progress',
+        'id' : '5',
+        'category': 'in-progress',
         'type': 'User Story',
         'name': 'Landing Page Redesign',
         'description': 'Improve layout and visuals for better conversion rate.',
@@ -96,10 +102,11 @@ let taskList = [
             { 'name': ['Can', 'Marco'] }
         ],
         'priority': 'medium',
-        'date': '12/10/2025'
+        'date': '2025-10-12'
     },
     {
-        'category': 'in_progress',
+        'id' : '6',
+        'category': 'in-progress',
         'type': 'Technical Task',
         'name': 'Database Optimization',
         'description': 'Reduce query load times and add indexing.',
@@ -111,10 +118,11 @@ let taskList = [
             { 'name': ['Sven', 'Degen'] }
         ],
         'priority': 'urgent',
-        'date': '13/10/2025'
+        'date': '2025-10-13'
     },
     {
-        'category': 'in_progress',
+        'id' : '7',
+        'category': 'in-progress',
         'type': 'User Story',
         'name': 'User Authentication Flow',
         'description': 'Add secure login and signup with validation.',
@@ -128,30 +136,33 @@ let taskList = [
             { 'name': ['Kim', 'B'] }
         ],
         'priority': 'high',
-        'date': '15/10/2025'
+        'date': '2025-10-15'
     },
     {
-        'category': 'await_feedback',
+        'id' : '8',
+        'category': 'await-feedback',
         'type': 'Technical Task',
         'name': 'JavaScript Templates',
         'description': null,
         'subtasks': null,
         'participants': null,
         'priority': 'urgent',
-        'date': '11/10/2025'
+        'date': '2025-10-11'
     },
     {
-        'category': 'await_feedback',
+        'id' : '9',
+        'category': 'await-feedback',
         'type': 'Technical Task',
         'name': 'API Integration Weather Data',
         'description': 'Fetch live weather data from OpenWeather API.',
         'subtasks': null,
         'participants': null,
         'priority': 'low',
-        'date': '16/10/2025'
+        'date': '2025-10-16'
     },
     {
-        'category': 'await_feedback',
+        'id' : '10',
+        'category': 'await-feedback',
         'type': 'User Story',
         'name': 'Profile Settings Page',
         'description': null,
@@ -163,6 +174,6 @@ let taskList = [
             { 'name': ['Can', 'Marco'] }
         ],
         'priority': 'medium',
-        'date': '17/10/2025'
+        'date': '2025-10-17'
     },
 ];

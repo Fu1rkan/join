@@ -9,34 +9,11 @@
         width: 100%;
     }
 
-    /* left side / contact-list */
-
-    .contact-list-area {
-        /* width: 38%; */
-    }
-
-    .add-new-contact-btn {
-        /* width: 100%; */
-    }
-
-    .contact-list-container {
-        /* width: 100%; */
-    }
-
-    .contact-list-content {
-        /* width: 100%; */
-    }
-
-
     /* right side / contact + template */
 
     .contact {
         width: calc(100vw - 456px);
     }
-
-    /* .contacts-header {
-        width: 100%;
-    } */
 
     .contact-info-big-container {
         width: 100%;
@@ -97,7 +74,7 @@
 
 
 @media (max-width: 1400px) {
-    
+
     .layout {
         flex-direction: column-reverse;
     }
@@ -109,13 +86,6 @@
     .content-limit-header {
         max-width: 100%;
 
-    }
-
-    /* Navbar */
-
-    
-    .succes-created-container {
-        margin-top: 64px;
     }
 
     .contact-list-area {
@@ -141,17 +111,9 @@
 }
 
 @media (max-width: 1064px) {
-    /* .contact-list-area {
-        width: 100%;
-    }
-
-    .contact {
-        width: 0%;
-    } */
 
     .contact-rightside-big-container {
         width: 100%;
-        /* margin-left: 16px; */
     }
 
     .contacts-header {
@@ -187,12 +149,73 @@
         font-size: 30px;
         font-weight: var(--font-weight-400);
     }
+
+    .contact-info-big-name {
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+    @keyframes createdMsgIn {
+        0% {
+            bottom: -74px;
+        }
+
+        100% {
+            bottom: 200px
+        }
+    }
+
+    @keyframes createdMsgOut {
+        0% {
+            bottom: 200px;
+        }
+
+        100% {
+            bottom: -74px;
+        }
+    }
+
 }
 
-@media(max-width: 428px) {
-    .add-new-contact-btn-container {
+@media (max-width: 960px) {
+
+    .contact-list-area,
+    .add-new-contact-btn,
+    .contact-list-container,
+    .contact-list-content,
+    .contact-list,
+    .contact,
+    .contact-info-big-container {
+        width: 100%;
+    }
+
+    .contact {
         display: none;
     }
+
+    .contact-big-back-btn {
+        display: flex;
+    }
+
+    .contact-rightside-big-container {
+        margin: 0;
+        padding-top: 32px;
+    }
+
+    .contacts-header {
+        margin: 0;
+    }
+
+    .contact-template {
+        margin-left: 0;
+    }
+
+    .fade-in-template {
+        animation: contactTemplate 0ms linear forwards;
+    }
+}
+
+@media (max-width: 525px) {
 
     .contact-list-container {
         position: relative;
@@ -214,14 +237,23 @@
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     }
 
+    /*Only for Feedback*/
+    .responsiv-add-new-contact-container:hover {
+        background-color: #024764;
+    }
+
     .responsiv-add-new-contact-container:active {
         border: 1px solid #29ABE2;
         background-color: #29ABE2;
     }
 
-    .contact-rightside-big-container {
-        width: 100%;
-        margin-left: 16px;
+    .contact-circle-img-big {
+        height: 80px;
+        width: 80px;
+    }
+
+    .contact-circle-img-big>p {
+        font-size: 27px;
     }
 
     .contacts-header {
@@ -229,7 +261,10 @@
         align-items: flex-start;
         height: auto;
         gap: 8px;
-        margin-top: 32px;
+    }
+
+    .contact-rightside-big-container {
+        padding-left: 16px;
     }
 
     .contacts-header>h2 {
@@ -253,12 +288,13 @@
     }
 
     .contact-template {
-        margin: 40px 0 0 0; 
+        margin-top: 40px;
     }
 
     .contact-info-big {
         gap: 20px;
     }
+
 
     .contact-circle-img-big {
         height: 80px;
@@ -279,15 +315,168 @@
         display: none;
     }
 
+    .add-new-contact-btn-container {
+        display: none;
+    }
+
     .contact-inforamtion-txt {
         height: auto;
     }
+
+    .contact-rightside-menu-btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 56px;
+        width: 56px;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 112px;
+        right: 16px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    /*Only for Feedback*/
+    .contact-rightside-menu-btn:hover {
+        background-color: #024764;
+    }
+
+    .contact-rightside-menu-btn:active {
+        border: 1px solid #29ABE2;
+        background-color: #29ABE2;
+    }
+
+    .contact-rightside-menu-btn {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        border: 1px solid #2A3647;
+        background-color: #2A3647;
+    }
+
+    .responsiv-edit-delete-menu-container {
+        position: relative;
+        width: 100%;
+        flex: 1;
+    }
+
+    .responsiv-edit-delete-menu {
+        z-index: 1;
+        position: fixed;
+        height: 100px;
+        width: 116px;
+        background-color: #FFFFFF;
+        right: 8px;
+        bottom: 104px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 20px 20px 0 20px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .animate-smallMenuIn {
+        animation: smallMenuIn 300ms ease;
+    }
+
+    .animate-smallMenuOut {
+        animation: smallMenuOut 300ms ease;
+    }
+
+    @keyframes smallMenuIn {
+        from {
+            right: -250px;
+        }
+
+        to {
+            right: 8px;
+        }
+    }
+
+    @keyframes smallMenuOut {
+        from {
+            right: 8px;
+        }
+
+        to {
+            right: -116px;
+        }
+    }
+
+
+    .responsiv-edit-delete-menu button {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        width: 96px;
+        height: 40px;
+        border-width: 0;
+    }
+
+    /*Only for Feedback*/
+    .responsiv-edit-delete-menu>button:hover svg path,
+    .responsiv-edit-delete-menu>button:hover p {
+        fill: #024764;
+        color: #024764;
+        font-weight: 700;
+    }
+
+    .responsiv-edit-delete-menu>button:active svg path,
+    .responsiv-edit-delete-menu>button:active p {
+        fill: #29ABE2;
+        color: #29ABE2;
+        font-weight: 700;
+    }
+
+
+    .responsiv-edit-delete-menu button svg {
+        height: 24px;
+        width: 24px;
+    }
+
+    .responsiv-edit-delete-menu button p {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
 }
 
-.width-100 {
-    width: 100%;
-}
+@media (max-width: 400px) {
+    .contact-container  {
+        padding: 15px 0 15px 15px;
+        gap: 8px;
+    }
 
-.width-0 {
-    width: 0%;
+    .contact-circle-img-small {
+        height: 32px;
+        width: 32px;
+    }
+
+    .contact-name {
+        font-size: var(--font-size-16);
+    }
+
+    .contact-circle-img-big {
+        height: 60px;
+        width: 60px;
+    }
+
+    .contact-circle-img-big>p {
+        font-size: 16px;
+    }
+
+    .contact-info-big-name {
+        font-size: 27px;
+    }
+
+    .creates-msg {
+        width: 90%;
+        left: 5%;
+    }
 }

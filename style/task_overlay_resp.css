@@ -1,0 +1,30 @@
+@media(max-width: 600px) {
+    .task-overlay{
+        padding: 32px 24px;
+    }
+   
+    .task-overlay h2 {
+        font-size: 36px;
+    }
+
+    .main-task-label {
+        font-size: 16px;
+        padding: 4px 16px;
+    }
+
+    .main-task-description {
+        font-size: 16px;
+    }
+
+    .task-info {
+        font-size: 16px;
+    }
+
+    .task-info-type {
+        font-size: 16px;
+    }
+
+    .asssigned-person{
+        font-size: 16px;
+    }
+}

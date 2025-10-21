@@ -570,6 +570,20 @@
         padding: 18px 10px;
     }
 
+    .edit-contact-d-s-buttons button {
+        padding: 18px 10px;
+    } 
+
+    .edit-contact-delete-btn {
+        width: 82px;
+        height: 51px;
+    }
+
+    .edit-contact-save-contact-btn {
+        width: 99px;
+        height: 51px;
+    }
+
     @keyframes fadeInRes {
         from {
             top: 100vh;

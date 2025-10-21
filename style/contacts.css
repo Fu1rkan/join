@@ -188,6 +188,7 @@
     cursor: pointer;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     gap: 35px;
     padding: 15px 24px;
     border-radius: 10px;
@@ -409,17 +410,12 @@
     font-weight: var(--weight-400);
 }
 
-.succes-created-container {
-    width: calc(1440px - (232px + 456px));
-    position: relative;
-    margin-top: 101px;
-    min-height: 74px;
-}
-
 .creates-msg {
     height: 74px;
     width: 326px;
-    position: absolute;
+    position: fixed;
+    bottom: 200px;
+    left: 16px;
     display: flex;
     justify-content: center;
     align-items: center;

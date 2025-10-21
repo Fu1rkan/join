@@ -88,13 +88,6 @@
 
     }
 
-    /* Navbar */
-
-
-    .succes-created-container {
-        margin-top: 64px;
-    }
-
     .contact-list-area {
         height: calc(100vh - (96px + 80px));
     }
@@ -164,21 +157,21 @@
 
     @keyframes createdMsgIn {
         0% {
-            top: 100vh;
+            bottom: -74px;
         }
 
         100% {
-            top: 0;
+            bottom: 200px
         }
     }
 
     @keyframes createdMsgOut {
         0% {
-            top: 0;
+            bottom: 200px;
         }
 
         100% {
-            top: 100vh;
+            bottom: -74px;
         }
     }
 
@@ -223,6 +216,10 @@
 }
 
 @media (max-width: 525px) {
+
+    .contact-list-container {
+        position: relative;
+    }
 
     .responsiv-add-new-contact-container {
         cursor: pointer;
@@ -450,85 +447,36 @@
 
 }
 
-/* @media(max-width: 428px) {
-    .add-new-contact-btn-container {
-        display: none;
-    }
-
-    .contact-list-container {
-        position: relative;
-    }
-
-
-    .contact-rightside-big-container {
-        width: 100%;
-        padding-left: 16px;
-    }
-
-    .contacts-header {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
+@media (max-width: 400px) {
+    .contact-container  {
+        padding: 15px 0 15px 15px;
         gap: 8px;
-        margin-top: 32px;
     }
 
-    .contacts-header>h2 {
-        font-size: var(--font-size-47);
+    .contact-circle-img-small {
+        height: 32px;
+        width: 32px;
     }
 
-    .contact-header-second-container {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        height: auto;
-        gap: 16px;
-    }
-
-    .contact-header-second-container>p {
-        font-size: var(--font-size-20);
-    }
-
-    .contacts-header-seperator {
-        height: 0;
-        width: 90px;
-    }
-
-    .contact-template {
-        margin: 40px 0 0 0;
-    }
-
-    .contact-info-big {
-        gap: 20px;
+    .contact-name {
+        font-size: var(--font-size-16);
     }
 
     .contact-circle-img-big {
-        height: 80px;
-        width: 80px;
+        height: 60px;
+        width: 60px;
     }
 
     .contact-circle-img-big>p {
-        font-size: 27px;
-        font-weight: var(--font-weight-400);
+        font-size: 16px;
     }
 
     .contact-info-big-name {
-        font-size: 36px;
-        font-weight: 700;
+        font-size: 27px;
     }
 
-    .contact-info-big-edit {
-        display: none;
+    .creates-msg {
+        width: 90%;
+        left: 5%;
     }
-
-    .contact-inforamtion-txt {
-        height: auto;
-    }
-} */
-
-.width-100 {
-    width: 100%;
-}
-
-.width-0 {
-    width: 0%;
 }

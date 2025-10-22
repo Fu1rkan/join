@@ -108,9 +108,35 @@
         width: 77%;
     }
 
+    .creates-msg {
+        left: 518px
+    }
+
+    @keyframes createdMsgIn {
+    0% {
+        left: 100vw;
+    }
+
+    100% {
+        left: 518px;
+    }
 }
 
-@media (max-width: 1064px) {
+@keyframes createdMsgOut {
+    0% {
+        left: 518px;
+    }
+
+    100% {
+        left: 100vw;
+    }
+}
+
+    
+
+}
+
+@media (max-width: 1100px) {
 
     .contact-rightside-big-container {
         width: 100%;
@@ -153,6 +179,10 @@
     .contact-info-big-name {
         font-size: 36px;
         font-weight: 700;
+    }
+
+    .creates-msg {
+        left: 16px
     }
 
     @keyframes createdMsgIn {
@@ -448,7 +478,7 @@
 }
 
 @media (max-width: 400px) {
-    .contact-container  {
+    .contact-container {
         padding: 15px 0 15px 15px;
         gap: 8px;
     }
@@ -479,4 +509,11 @@
         width: 90%;
         left: 5%;
     }
+}
+
+@media (max-height: 750px) {
+    .contacts-body {
+        overflow-y: scroll;
+    }
+
 }

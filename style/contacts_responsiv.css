@@ -335,7 +335,7 @@
     }
 
     .succes-created-container {
-        overflow: none;
+        overflow: visible;
     }
 }
 

@@ -41,7 +41,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    /* margin-left: 55px; */
     padding-left: 55px;
     position: relative;
 }
@@ -240,7 +239,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 569px; */
     height: 73px;
     gap: 30px;
     margin-top: 110px;
@@ -413,18 +411,15 @@
 .succes-created-container {
     width: 100%;
     height: 74px;
-    /* overflow: hidden; */
     margin-top: 80px;
     position: relative;
+    overflow: hidden;
 }
 
 .creates-msg {
     height: 74px;
     width: 326px;
     position: absolute;
-    /* bottom: 100px;
-    /* bottom: 200px; */
-    /* left: 750px; */
     left: 0; 
     display: flex;
     justify-content: center;
@@ -453,33 +448,3 @@
     display: none;
 }
 
-@keyframes contactTemplate {
-    0% {
-        left: 100vw;
-        display: flex;
-    }
-
-    100% {
-        left: 0;
-    }
-}
-
-@keyframes createdMsgIn {
-    0% {
-        left: 100vw;
-    }
-
-    100% {
-        left: 0;
-    }
-}
-
-@keyframes createdMsgOut {
-    0% {
-        left: 0;
-    }
-
-    100% {
-        left: 100vw;
-    }
-}

@@ -1,45 +1,23 @@
 @media (max-width:1400px) {
-
     .contacts-main-content {
         width: 84%;
     }
 
-    /* main without header */
-    .contacts-content {
-        width: 100%;
-    }
-
-    /* right side / contact + template */
     .contact {
         width: calc(100vw - 456px);
     }
 
-    .contact-info-big-container {
+    .contacts-content,
+    .contact-info-big-container,
+    .contact-template,
+    .contacts-main-content {
         width: 100%;
     }
-
-    .contact-template {
-        width: 100%;
-    }
-
-    /* overlay-Template*/
 
     .overlay-card {
         width: 80%;
     }
 
-    @keyframes fadeIn {
-
-        0% {
-            left: 100%;
-        }
-
-        100% {
-            left: 10%;
-        }
-    }
-
-    /* Overlay- left-Side*/
     .overlay-left-side {
         width: 39%;
     }
@@ -65,28 +43,14 @@
     .overlay-right-side {
         width: 61%;
     }
-}
-
-@media (max-width: 1400px) {
 
     .layout {
         flex-direction: column-reverse;
     }
 
-    .contacts-main-content {
-        width: 100%;
-    }
-
-    .content-limit-header {
-        max-width: 100%;
-
-    }
-
     .contact-list-area {
         height: calc(100vh - (96px + 80px));
     }
-
-    /*Overlay*/
 
     .overlay-right-side {
         position: relative;
@@ -101,11 +65,9 @@
     .add-contact-content-container {
         width: 77%;
     }
-
 }
 
 @media (max-width: 1100px) {
-
     .contact-rightside-big-container {
         width: 100%;
     }
@@ -140,19 +102,17 @@
     }
 
     .contact-circle-img-big>p {
-        font-size: 30px;
+        font-size: var(--font-size-30);
         font-weight: var(--font-weight-400);
     }
 
     .contact-info-big-name {
-        font-size: 36px;
-        font-weight: 700;
+        font-size: var(--font-size-36);
+        font-weight: var(--font-weight-700);
     }
-
 }
 
 @media (max-width: 960px) {
-
     .contact-list-area,
     .add-new-contact-btn,
     .contact-list-container,
@@ -187,11 +147,9 @@
     .fade-in-template {
         animation: contactTemplate 0ms linear forwards;
     }
-
 }
 
 @media (max-width: 525px) {
-
     .contact-list-container {
         position: relative;
     }
@@ -212,11 +170,6 @@
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     }
 
-    /*Only for Feedback*/
-    .responsiv-add-new-contact-container:hover {
-        background-color: #024764;
-    }
-
     .responsiv-add-new-contact-container:active {
         border: 1px solid #29ABE2;
         background-color: #29ABE2;
@@ -228,7 +181,7 @@
     }
 
     .contact-circle-img-big>p {
-        font-size: 27px;
+        font-size: var(--font-size-27);
     }
 
     .contacts-header {
@@ -276,19 +229,16 @@
     }
 
     .contact-circle-img-big>p {
-        font-size: 27px;
+        font-size: var(--font-size-27);
         font-weight: var(--font-weight-400);
     }
 
     .contact-info-big-name {
-        font-size: 36px;
-        font-weight: 700;
+        font-size: var(--font-size-36);
+        font-weight: var(--font-weight-700);
     }
 
-    .contact-info-big-edit {
-        display: none;
-    }
-
+    .contact-info-big-edit,
     .add-new-contact-btn-container {
         display: none;
     }
@@ -308,11 +258,6 @@
         bottom: 112px;
         right: 16px;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    }
-
-    /*Only for Feedback*/
-    .contact-rightside-menu-btn:hover {
-        background-color: #024764;
     }
 
     .contact-rightside-menu-btn:active {
@@ -361,27 +306,6 @@
         animation: smallMenuOut 300ms ease;
     }
 
-    @keyframes smallMenuIn {
-        from {
-            right: -250px;
-        }
-
-        to {
-            right: 8px;
-        }
-    }
-
-    @keyframes smallMenuOut {
-        from {
-            right: 8px;
-        }
-
-        to {
-            right: -116px;
-        }
-    }
-
-
     .responsiv-edit-delete-menu button {
         cursor: pointer;
         display: flex;
@@ -393,21 +317,12 @@
         border-width: 0;
     }
 
-    /*Only for Feedback*/
-    .responsiv-edit-delete-menu>button:hover svg path,
-    .responsiv-edit-delete-menu>button:hover p {
-        fill: #024764;
-        color: #024764;
-        font-weight: 700;
-    }
-
     .responsiv-edit-delete-menu>button:active svg path,
     .responsiv-edit-delete-menu>button:active p {
         fill: #29ABE2;
         color: #29ABE2;
-        font-weight: 700;
+        font-weight: var(--font-weight-700);
     }
-
 
     .responsiv-edit-delete-menu button svg {
         height: 24px;
@@ -415,30 +330,13 @@
     }
 
     .responsiv-edit-delete-menu button p {
-        font-size: 16px;
-        font-weight: 400;
+        font-size: var(--font-size-16);
+        font-weight: var(--font-weight-400);
     }
 
-    @keyframes createdMsgIn {
-        0% {
-            top: 100vh;
-        }
-
-        100% {
-            top: 0;
-        }
+    .succes-created-container {
+        overflow: none;
     }
-
-    @keyframes createdMsgOut {
-        0% {
-            top: 0;
-        }
-
-        100% {
-            top: 100vh;
-        }
-    }
-
 }
 
 @media (max-width: 400px) {
@@ -462,11 +360,11 @@
     }
 
     .contact-circle-img-big>p {
-        font-size: 16px;
+        font-size: var(--font-size-16);
     }
 
     .contact-info-big-name {
-        font-size: 27px;
+        font-size: var(--font-size-27);
     }
 
     .creates-msg {

@@ -415,7 +415,7 @@
     width: 326px;
     position: fixed;
     bottom: 200px;
-    left: 16px;
+    left: 750px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -460,13 +460,13 @@
     }
 
     100% {
-        left: 0;
+        left: 750px;
     }
 }
 
 @keyframes createdMsgOut {
     0% {
-        left: 0;
+        left: 750px;
     }
 
     100% {

@@ -1,11 +1,8 @@
 .summary-title {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 101px;
-  margin-top: 80px;
-  max-width: calc(1440px -232px);
-  position: relative;
+  gap: 20px;
+  margin-left: 70px;
+  margin-top: 60px;
 }
 
 /* Panels container in the summary section */
@@ -27,15 +24,15 @@
 .summary-container {
   display: flex;
   width: 100%;
-  max-width: 1440px;
-  margin-left: 101px;
-  margin-top: 80px;
+  max-width: 1200px;
+  margin-left: 70px;
+  margin-top: 40px;
 }
 
 /* Blue separator line for summary title */
 .summary-title-separator-blue {
   width: 0px;
-  height: 59px;
+  height: 45px;
   border: 2px solid var(--inter-text-accent-color);
   border-radius: 3px;
 }
@@ -43,7 +40,7 @@
 /* Grey separator line for summary title */
 .summary-title-separator-grey {
   width: 0px;
-  height: 102px;
+  height: 75px;
   border: 2px solid var(--seperator-color);
   border-radius: 3px;
 }
@@ -51,8 +48,8 @@
 /* Single summary panel styling */
 .summary-panel {
   width: 100%;
-  height: 168px;
-  border-radius: 30px;
+  height: 120px;
+  border-radius: 20px;
   background-color: var(--header-color);
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -67,31 +64,31 @@
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  margin-left: 80px;
+  margin-left: 60px;
 }
 
 /* Container for the summary board */
 .summary-board-container {
-  width: 550px;
+  width: 450px;
   height: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
 }
 
 /* Container for multiple summary board panels */
 .summary-board-panels {
   width: 100%;
   display: flex;
-  gap: 32px;
+  gap: 24px;
 }
 
 /* Single summary board panel styling */
 .summary-board-panel {
   width: 100%;
-  height: 168px;
-  border-radius: 20px;
+  height: 120px;
+  border-radius: 16px;
   background-color: var(--header-color);
   box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -123,84 +120,84 @@
   color: var(--side-color);
 }
 
-/* Text style: 47px, weight 500 */
+/* Text style: 47px, weight 500 - reduced for HD */
 .s-txt-47-500 {
   font-family: "Inter", serif;
-  font-size: var(--font-size-47);
+  font-size: 32px;
   font-weight: var(--weight-500);
 }
 
-/* Text style: 64px, weight 600 */
+/* Text style: 64px, weight 600 - reduced for HD */
 .s-txt-64-600 {
   font-family: "Inter", serif;
-  font-size: var(--font-size-64);
+  font-size: 42px;
   font-weight: var(--weight-600);
 }
 
-/* Text style: 64px, weight 700, accent color */
+/* Text style: 64px, weight 700, accent color - reduced for HD */
 .s-txt-64-700 {
   font-family: "Inter", serif;
-  font-size: var(--font-size-64);
+  font-size: 42px;
   font-weight: var(--weight-700);
   color: var(--inter-text-accent-color);
 }
 
-/* Title style for summary (responsive 360px) */
+/* Title style for summary (responsive 360px) - reduced for HD */
 #summary-title-360 {
-  font-size: var(--font-size-61);
+  font-size: 40px;
   font-weight: var(--weight-700);
 }
 
-/* Text style for summary title */
+/* Text style for summary title - reduced for HD */
 .summary-title-text {
   font-family: "Inter", serif;
   font-weight: var(--weight-400);
   font-style: normal;
-  font-size: var(--font-size-27);
+  font-size: 20px;
   color: var(--text-color);
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
-/* Greeting text style in summary */
+/* Greeting text style in summary - reduced for HD */
 .summary-greeting {
   font-weight: var(--weight-500);
-  font-size: var(--font-size-47);
+  font-size: 32px;
   color: var(--side-color);
 }
 
-/* Name style in summary greeting */
+/* Name style in summary greeting - reduced for HD */
 #summary-greeting-name {
   color: var(--inter-text-accent-color);
   font-weight: var(--weight-700);
-  font-size: var(--font-size-64);
+  font-size: 42px;
 }
 
-/* Image size for summary icons */
+/* Image size for summary icons - reduced for HD */
 .s-img {
-  width: 69px;
-  height: 69px;
+  width: 50px;
+  height: 50px;
 }
 
-/* Image size for summary icons */
+/* Image size for summary icons - reduced for HD */
 .s-img-2 {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
 }
 
-/* Gap between summary panels */
+/* Gap between summary panels - reduced for HD */
 .s-panel-gap {
-  gap: 32px;
+  gap: 24px;
 }
 
-/* Container for urgent board panel */
+/* Container for urgent board panel - reduced for HD */
 .summary-board-urgent {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 130px;
-  gap: 18px;
+  width: 110px;
+  gap: 14px;
 }
 
 /* Task container for "To Do" tasks */
@@ -266,15 +263,15 @@
   align-items: center;
 }
 
-/* Icon wrapper with circular background and hover effects */
+/* Icon wrapper with circular background and hover effects - reduced for HD */
 .icon-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #2a3647;
-  width: 69px;
-  height: 69px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -294,15 +291,15 @@
   fill: #000000;
 }
 
-/* Secondary icon wrapper with circular background and hover effects */
+/* Secondary icon wrapper with circular background and hover effects - reduced for HD */
 .icon-wrap-2 {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: #2a3647;
-  width: 69px;
-  height: 69px;
+  width: 50px;
+  height: 50px;
   transition: ease-in-out 80ms;
   cursor: pointer;
 }

@@ -1,0 +1,37 @@
+@media (max-width: 1110px) {
+    .summary-greeting-container {
+        display: none;
+    }
+    .summary-title {    
+        font-size: 27px;
+        margin-top: 50px;
+        gap: 16px;
+    }
+    
+    /* dnone for testing */
+    .nav-profile-container {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .summary-title {
+        margin-left: 32px;
+        flex-direction: column;
+        margin-top: 40px;
+    }
+    .summary-container {
+        margin-left: 32px;
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 620px) {
+    .summary-container {
+        justify-content: center;
+        margin: 0;
+    }
+    .summary-board-container {
+        width: 90%;
+    }
+}

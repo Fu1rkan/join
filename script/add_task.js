@@ -1,5 +1,6 @@
 function init() {
   addCalender();
+  buttonActive('medium')
 }
 
 function openContactlist() {

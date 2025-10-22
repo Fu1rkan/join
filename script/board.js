@@ -149,6 +149,7 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
     }
 }
 
+
 function openEditTaskOverlay(id) {
     let task = taskList.filter(t => t['id'] == id);
     document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task[0]);
@@ -198,9 +199,10 @@ function resetPriority(){
 function changePriority(prioType, taskId){
     let task = taskList.filter(t => t['id'] == taskId);
     task[0].priority = prioType;
-    resetPriority()
+    resetPriority();
     checkPriorityStatus(task[0]);
 }
+
 
 function changeParticipants(task){
     if (task.participants != null) {   
@@ -210,6 +212,7 @@ function changeParticipants(task){
     }
 }
 
+
 function renderContactList(){
     if (contacts.length > 0){
         for (let index = 0; index < contacts.length; index++) {
@@ -218,18 +221,44 @@ function renderContactList(){
     }
 }
 
+
 function renderSubtaskList(task){
+    document.getElementById('change-subtasks-list').innerHTML = "";
     if (task.subtasks != null){
         for (let index = 0; index < task.subtasks.length; index++) {
-            document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(task.subtasks[index]);
+            document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(task.subtasks[index], index, task);
         }
     }
 }
+
 
 function toggleContactList(){
     document.getElementById('change-participants-button').classList.toggle('tf_r180');
     document.getElementById('participants-list').classList.toggle('d_none');
 }
+
+
+function activeEditTask(index, subtask){
+    document.getElementById(`edit-subtask-${index}`).classList.remove('d_none');
+    document.getElementById(`edit-subtask-input-${index}`).classList.remove('d_none');
+    document.getElementById(`edit-subtask-input-${index}`).value = subtask;
+    document.getElementById(`subtask-span-${index}`).classList.add('d_none');
+    document.getElementById(`subtask-edit-${index}`).classList.add('d_none');
+}
+
+
+function acceptEditedTask(index, taskId){
+    let newSubtask = document.getElementById(`edit-subtask-input-${index}`).value;
+    taskList[taskId].subtasks[index].name = newSubtask;
+    renderSubtaskList(taskList[taskId]);
+}
+
+
+// function deleteSubtask(subtaskId, taskId){
+//     let task = taskList.find(t => t['id'] == taskId);
+//     taskList[task[0]].subtasks[subtaskId].splice();
+//     renderSubtaskList(task[0]);
+// }
 
 function startDragging(id) {
     currentDraggedElement = id;

@@ -236,6 +236,7 @@
 .nav-profile-container {
   right: -150px;
   width: 130px;
+  transform: translateY(60px);
 }
 /* Visible state for profile dropdown */
 .nav-profile-container.show {
@@ -277,6 +278,7 @@ html {
 .nav-profile-container {
   width: 125px;
   right: -135px;
+  transform: translateY(60px);
 }
 /* Visible state for profile dropdown with adjusted right position */
 .nav-profile-container.show {

@@ -31,9 +31,9 @@ function toggleTaskOverlay(i) {
     document.getElementById('bleur-bg').classList.toggle('d_none');
     document.getElementById('task-dialog').classList.toggle('tf_tlx100');
     if (checkOverlay == 0) {
-        let task = taskList.filter(t => t['id'] == i);
-        document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task[0]);
-        checkTaskOverlayInfos(task[0])
+        let task = taskList.find(t => t['id'] == i);
+        document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
+        checkTaskOverlayInfos(task)
         checkOverlay += 1;
     } else {
         checkOverlay = 0;
@@ -187,6 +187,15 @@ function openEditTaskOverlay(id) {
     changeParticipants(task);
     renderContactList();
     renderSubtaskList(task);
+}
+
+
+function closeEditTaskOverlay(id) {
+    let task = taskList.find(t => t['id'] == id);
+    taskEditor = undefined;
+    
+    document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
+    checkTaskOverlayInfos(task);
 }
 
 

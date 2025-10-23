@@ -19,6 +19,9 @@
   position: relative;
   z-index: 1;
   margin-top: 40px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
 }
 /* Greeting container fullscreen animation - initially visible then fades out */
 .summary-greeting-container {

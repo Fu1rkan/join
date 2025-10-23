@@ -277,15 +277,14 @@
         background-color: #2A3647;
     }
 
-    .responsiv-edit-delete-menu-container {
-        position: relative;
+    /* .responsiv-edit-delete-menu-container {
         width: 100%;
         flex: 1;
-    }
+    } */
 
     .responsiv-edit-delete-menu {
         z-index: 1;
-        position: fixed;
+        position: absolute;
         height: 100px;
         width: 116px;
         background-color: #FFFFFF;
@@ -315,6 +314,7 @@
         width: 96px;
         height: 40px;
         border-width: 0;
+        background-color: rgba(0, 0, 0, 0);
     }
 
     .responsiv-edit-delete-menu>button:active svg path,

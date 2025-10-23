@@ -8,8 +8,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.overlay-contacts-bckgrnd-animation {
     animation: overlayShadow 300ms ease forwards;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 .overlay-shadow-pos-rel-container {
@@ -21,13 +23,29 @@
     position: relative;
 }
 
+.overlay-edit-contact-card-container {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .overlay-card {
     position: absolute;
-    animation: fadeIn 300ms linear forwards;
     height: 594px;
     width: 1212px;
     border-radius: 31px;
     display: flex;
+}
+
+.overlay-card-fadeIn {
+    animation: fadeIn 300ms linear forwards;
+}
+
+.overlay-card-fadeOut {
+    animation: fadeOut 300ms linear forwards;
 }
 
 .overlay-left-side {
@@ -387,6 +405,18 @@
     font-weight: var(--weight-700);
     font-style: bold;
     color: var(--header-color);
+}
+
+.z-0 {
+    z-index: 0;
+}
+
+.z-1 {
+    z-index: 1;
+}
+
+.z-2 {
+    z-index: 2;
 }
 
 .d_none {

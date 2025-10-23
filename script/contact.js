@@ -5,6 +5,8 @@ const contactListRef = document.getElementById("contact_list");
 const contactAreaRef = document.getElementById('contact_area');
 const templateRef = document.getElementById("contact_template");
 
+
+
 function openOverlay() {
     overlayRef.classList.remove('d_none');
 }
@@ -49,13 +51,64 @@ function highlightContactAndOpenContactTemplate(contactCardRef, contactRef, isAc
 
 function addNewContact() {
     overlayRef.classList.remove('d_none');
+    overlayRef.classList.add('overlay-contacts-bckgrnd-animation');
     overlayContentRef.innerHTML = showAddContactCard();
+    const addContactCardRef = document.getElementById('overlay_add_contact_card');
+    animationOverlayCardFadeIn(addContactCardRef);
 }
 
-function editContact(name, email, phone) {
-    overlayRef.classList.remove('d_none');
-    overlayContentRef.innerHTML = showContactEditCard(name, email, phone);
+function editContact(name, email, phone, mobile = "false") {
 
+    overlayRef.classList.remove('d_none', 'overlay-contacts-bckgrnd-animation');
+    if (mobile == "false") {
+        overlayRef.classList.add('overlay-contacts-bckgrnd-animation');
+        overlayContentRef.innerHTML = showContactEditCard(name, email, phone);
+        const editContactCardRef = document.getElementById('overlay_edit_contact_card');
+        animationOverlayCardFadeIn(editContactCardRef);
+    } else {
+        overlayContentRef.innerHTML = showContactEditCard(name, email, phone);
+        const contactCardContainerRef = document.getElementById('overlay_edit_contact_card_container');
+        const smallResponsivMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
+        smallResponsivMenuRef.classList.remove('d_none');
+        contactCardContainerRef.classList.add('z-2');
+        const editContactCardRef = document.getElementById('overlay_edit_contact_card');
+        animationOverlayCardFadeIn(editContactCardRef);
+    }
+
+}
+
+function hideAddContactCard() {
+    const addContactCardRef = document.getElementById('overlay_add_contact_card');
+    animationOverlayCardFadeOut(addContactCardRef);
+}
+
+function hideEditContactCard() {
+    let currentWidth = window.innerWidth;
+    if (currentWidth <= 525) {
+        const editContactCardRef = document.getElementById('overlay_edit_contact_card');
+        const editCardContainerRef = document.getElementById('overlay_edit_contact_card_container');
+        editContactCardRef.classList.remove('overlay-card-fadeIn');
+        editContactCardRef.classList.add('overlay-card-fadeOut');
+        setTimeout(() => {
+            editCardContainerRef.classList.add('d_none');
+        }, 300)
+    } else {
+        const editContactCardRef = document.getElementById('overlay_edit_contact_card');
+        animationOverlayCardFadeOut(editContactCardRef);
+    }
+}
+
+function animationOverlayCardFadeIn(target) {
+    target.classList.remove('overlay-card-fadeOut');
+    target.classList.add('overlay-card-fadeIn');
+}
+
+function animationOverlayCardFadeOut(target) {
+    target.classList.remove('overlay-card-fadeIn');
+    target.classList.add('overlay-card-fadeOut');
+    setTimeout(() => {
+        closeOverlay();
+    }, 300)
 }
 
 function saveChangedContact(name, email) {
@@ -301,25 +354,28 @@ function backToContactList() {
     removeActiveClass();
 }
 
-function openResponsiveContactEditMenu() {
-    const responsivMenuRef = document.getElementById('responsiv_contact_edit_menu');
-    const responsivSmallMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
-    responsivSmallMenuRef.classList.remove('animate-smallMenuOut');
-    responsivMenuRef.classList.remove('d_none');
-    responsivSmallMenuRef.classList.add('animate-smallMenuIn');
+function openResponsiveContactEditMenu(name, email, phone) {
+    overlayRef.classList.remove('d_none', 'overlay-contacts-bckgrnd-animation');
+    overlayContentRef.innerHTML = showContactEditCard(name, email, phone);
+    const overlayCardRef = document.getElementById('overlay_edit_contact_card_container'); // ist der neue Container um die Card
+    const smallResponsivMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
 
+    overlayCardRef.classList.add('d_none');
+    smallResponsivMenuRef.classList.remove('animate-smallMenuOut');
+    smallResponsivMenuRef.classList.remove('d_none');
+    smallResponsivMenuRef.classList.add('animate-smallMenuIn');
 }
 
-
-document.addEventListener('click', (event) => {
-    const responsivMenuRef = document.getElementById('responsiv_contact_edit_menu');
-    const responsivSmallMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
-    const button = document.querySelector('.contact-rightside-menu-btn');
-
-    if (!responsivMenuRef.contains(event.target) && !button.contains(event.target)) {
-        responsivSmallMenuRef.classList.remove('animate-smallMenuIn');
-        responsivSmallMenuRef.classList.add('animate-smallMenuOut');
-        setTimeout(() => {responsivMenuRef.classList.add('d_none');},290);
-    }
-});
+function closeResponsiveContactEditMenu() {
+    const smallResponsivMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
+    if (!smallResponsivMenuRef.classList.contains('d_none')) {
+        const smallResponsivMenuRef = document.getElementById('responsiv_contact_edit_small_menu');
+        smallResponsivMenuRef.classList.remove('animate-smallMenuIn');
+        smallResponsivMenuRef.classList.add('animate-smallMenuOut');
+        setTimeout(() => {
+            smallResponsivMenuRef.classList.remove('d_none');
+            closeOverlay();
+        }, 300);
+    } 
+}
 

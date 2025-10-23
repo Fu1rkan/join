@@ -47,6 +47,17 @@
             left: 8%;
         }
     }
+
+    @keyframes fadeOut {
+        
+        from {
+            left: 8%;
+        }
+
+        to {
+            left: 100%;
+        }
+    }
 }
 
 @media (max-width: 1400px) {
@@ -61,16 +72,36 @@
             left: 5%;
         }
     }
+
+    @keyframes fadeOut {
+        
+        from {
+            left: 5%;
+        }
+
+        to {
+            left: 100%;
+        }
+    }
 }
 
 @media (max-width: 1100px) {
     
-    @keyframes fadeInRes {
+    @keyframes fadeIn {
         from {
             top: 100vh;
         }
         to {
             top: 10%;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            top: 10%;
+        }
+        to {
+            top: 100vh;
         }
     }
 }

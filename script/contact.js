@@ -373,7 +373,7 @@ function closeResponsiveContactEditMenu() {
         smallResponsivMenuRef.classList.remove('animate-smallMenuIn');
         smallResponsivMenuRef.classList.add('animate-smallMenuOut');
         setTimeout(() => {
-            smallResponsivMenuRef.classList.remove('d_none');
+            smallResponsivMenuRef.classList.add('d_none');
             closeOverlay();
         }, 300);
     } 

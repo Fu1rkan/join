@@ -1,0 +1,170 @@
+@media (max-width:1400px) {
+    .overlay-card {
+        width: 90%;
+    }
+
+    .overlay-left-side {
+        width: 39%;
+        padding: 66px 8px;
+    }
+
+    .add-contact-card-title {
+        height: auto;
+    }
+
+    .overlay-right-side {
+        width: 61%;
+    }
+}
+
+@media (max-width: 1100px) { 
+    .overlay-card {
+        height: 80%;
+        width: 396px;
+        animation: fadeInRes 300ms linear forwards;
+        flex-direction: column;
+    }
+
+    .overlay-left-side {
+        border-radius: 30px 30px 0 0;
+        max-height: 352px;
+        width: 100%;
+    }
+
+    .responsiv-overlay-card-close-btn-container {
+        display: flex;
+    }
+
+    .overlay-right-side {
+        border-radius: 0 0 30px 30px;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .overlay-character-icon {
+        top: 0;
+        left: auto;
+        transform: translateY(-50%);
+    }
+
+    .add-contact-card-svg,
+    .add-contact-close-icon-container {
+        display: none;
+    }
+
+    .overlay-left-side {
+        padding: 66px 24px;
+        gap: 12px;
+        /* min-height: 352px; */
+        align-items: flex-start;
+    }
+
+    .add-contact-card-headline {
+        height: 104px;
+        width: 282px;
+    }
+
+    .add-contact-card-edit-headline {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 282px;
+        gap: 12px;
+    }
+
+    .add-contact-card-title {
+        font-weight: 700;
+        height: 58px;
+    }
+
+    .add-contact-card-txt {
+        font-size: 20px;
+    }
+
+    .add-contact-content-container {
+        padding-top: 92px;
+        align-items: center;
+    }
+
+    .create-form {
+        margin-bottom: 0;
+        width: 364px;
+        gap: 33px;
+    }
+
+    .create-form-inputfields {
+        gap: 7px;
+        height: 153px;
+    }
+
+    .responsiv-edit-create-form-inputfields {
+        height: 171px;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    .create-form-label {
+        height: 41px;
+    }
+
+    .create-form>section>div>label>input {
+        width: 100%;
+    }
+
+    .add-contact-buttons {
+        justify-content: center;
+    }
+
+    .edit-contact-d-s-buttons {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .add-contact-cancel-btn {
+        display: none;
+    }
+
+    .add-contact-create-contact-btn {
+        height: 51px;
+        width: 202px;
+        gap: 4px;
+        padding: 18px 10px;
+    }
+
+    .edit-contact-d-s-buttons button {
+        padding: 18px 10px;
+    } 
+
+    .edit-contact-delete-btn {
+        width: 82px;
+        height: 51px;
+    }
+
+    .edit-contact-save-contact-btn {
+        width: 99px;
+        height: 51px;
+    }
+
+}
+
+@media (max-width:400px) {
+    .overlay-card {
+        width: 100%;
+    }
+
+    .add-contact-content-container {
+        width: 90%;
+    }
+
+    .add-contact-card-headline {
+        width: auto;
+    }
+
+    .create-form {
+        width: auto;
+    }
+
+    .add-contact-create-contact-btn {
+        width: auto;
+    }
+}

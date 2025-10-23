@@ -436,7 +436,7 @@ function taskOverlayTemp(i) {
 function taskEditOverlayTemp(i) {
     return `
         <div class="open-close-dialog" onclick="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
-            <div class="task-overlay" onclick="stopPropagation(event)">
+            <div class="task-overlay" onclick="stopPropagation(event)" id="task-overlay">
 
                 <header class="edit-task-header">
                     <button class="close-button" onclick="closeEditTaskOverlay(${i.id})">
@@ -591,6 +591,15 @@ function subtaskListTemp(i, index, status) {
     `
 }
 
+function checkParticipantTemp() {
+    return `
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#ffffffff" stroke-width="2" stroke-linecap="round" />
+            <path d="M5 9L9 13L17 1.5" stroke="#ffffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    `
+}
+
 function subtaskDoneTemp() {
     return `
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -615,16 +624,16 @@ function participantLogoTemp(participant) {
 }
 
 
-function renderContactsTemp(contact) {
+function renderContactsTemp(contact, index) {
     return `
-        <div class="choose-paticipant">
+        <div class="choose-paticipant" id="contact-layout-${index}">
             <div class="logo-and-name-participant">
                 <span class="asssigned-person-logo">${contact.name[0].split(" ").map(word => word[0]).join("")}</span>
                 <span>${contact.name}</span>
             </div>
-            <button>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2" />
+            <button id="check-contact-as-participant-${index}">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                 </svg>
             </button>
         </div>

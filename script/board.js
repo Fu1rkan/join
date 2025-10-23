@@ -248,8 +248,18 @@ function changeParticipants(task){
 function renderContactList(){
     if (contacts.length > 0){
         for (let index = 0; index < contacts.length; index++) {
-            document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index]);
+            document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index], index);
+            checkContactStatus(contacts[index].name, index);
         }
+    }
+}
+
+
+function checkContactStatus(contactIndex, index){
+    let task = taskEditor.participants.find(t => t['name'] == contactIndex);
+    if (task) {
+        document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
+        document.getElementById(`check-contact-as-participant-${index}`).innerHTML = checkParticipantTemp();
     }
 }
 
@@ -302,6 +312,8 @@ function pushSubtask(){
     taskEditor.subtasks.push({name: `${newSubtask}`, status: true});
     renderSubtaskList(taskEditor);
     clearInputField();
+    const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
+    overlay.scrollTop = overlay.scrollHeight;
 }
 
 

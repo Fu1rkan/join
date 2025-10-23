@@ -1,15 +1,18 @@
 @media (max-width: 1110px) {
-    .summary-greeting-container {
-        display: none;
-    }
-    .summary-title {    
+    .summary-title {
         font-size: 27px;
         margin-top: 50px;
         gap: 16px;
     }
-    
+
     /* dnone for testing */
     .nav-profile-container {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .summary-greeting-container {
         display: none;
     }
 }
@@ -20,6 +23,7 @@
         flex-direction: column;
         margin-top: 40px;
     }
+
     .summary-container {
         margin-left: 32px;
         margin-top: 32px;
@@ -31,7 +35,181 @@
         justify-content: center;
         margin: 0;
     }
+
     .summary-board-container {
-        width: 90%;
+        width: 85%;
+    }
+
+    .summary-container {
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 460px) {
+    .summary-title {
+        font-size: 24px;
+        margin-left: 28px;
+        margin-top: 32px;
+    }
+
+    /* Reduce all text sizes by ~20% for mobile */
+    .s-txt-16-400 {
+        font-size: 13px;
+    }
+
+    .s-txt-20-400 {
+        font-size: 16px;
+    }
+
+    .s-txt-21-700 {
+        font-size: 17px;
+    }
+
+    .s-txt-47-500 {
+        font-size: 26px;
+    }
+
+    .s-txt-64-600 {
+        font-size: 34px;
+    }
+
+    .s-txt-64-700 {
+        font-size: 34px;
+    }
+
+    #summary-title-360 {
+        font-size: 32px;
+    }
+
+    .summary-title-text {
+        font-size: 16px;
+        gap: 16px;
+    }
+
+    .summary-greeting {
+        font-size: 26px;
+    }
+
+    #summary-greeting-name {
+        font-size: 34px;
+    }
+
+    /* Reduce SVG/Icon sizes by ~20% */
+    .s-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .s-img-2 {
+        width: 36px;
+        height: 36px;
+    }
+
+    .icon-wrap {
+        width: 40px;
+        height: 40px;
+    }
+
+    .icon-wrap-2 {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Adjust container sizes */
+    .summary-board-urgent {
+        width: 88px;
+        gap: 11px;
+    }
+
+    .summary-panel {
+        height: 96px;
+    }
+
+    .summary-board-panel {
+        height: 96px;
+    }
+
+    .s-panel-gap {
+        gap: 19px;
+    }
+
+    .summary-board-panels {
+        gap: 19px;
+    }
+
+    .summary-board-container {
+        gap: 19px;
+    }
+
+    /* Adjust separators */
+    .summary-title-separator-blue {
+        height: 36px;
+    }
+
+    .summary-title-separator-grey {
+        height: 60px;
+    }
+}
+
+@media (max-width: 380px) {
+    .summary-title {
+        font-size: 20px;
+        margin-left: 20px;
+        margin-top: 24px;
+    }
+
+    .summary-container {
+        margin-top: 80px;
+    }
+
+    /* Further reduce text sizes for very small screens */
+    .s-txt-47-500 {
+        font-size: 22px;
+    }
+
+    .s-txt-64-600 {
+        font-size: 28px;
+    }
+
+    .s-txt-64-700 {
+        font-size: 28px;
+    }
+
+    #summary-title-360 {
+        font-size: 26px;
+    }
+
+    .summary-greeting {
+        font-size: 22px;
+    }
+
+    #summary-greeting-name {
+        font-size: 28px;
+    }
+
+    /* Further reduce icon sizes */
+    .s-img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .s-img-2 {
+        width: 32px;
+        height: 32px;
+    }
+
+    .icon-wrap {
+        width: 35px;
+        height: 35px;
+    }
+
+    .icon-wrap-2 {
+        width: 35px;
+        height: 35px;
+    }
+
+    .summary-board-urgent {
+        width: 75px;
+        gap: 8px;
     }
 }

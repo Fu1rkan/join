@@ -1,3 +1,15 @@
+/* Global keyframe animations - moved outside media queries for reuse */
+@keyframes fadeOutGreeting {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeInContent {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 @media (max-width: 1400px) {
 /* Summary container initially hidden, fades in after greeting animation */
 .summary-container {
@@ -20,8 +32,38 @@
   z-index: 1;
   margin-top: 40px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: flex-start;
+}
+
+/* Reorder elements for mobile: title first, then text, then separator */
+.summary-title-text#summary-title-360 {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* Move separator outside the title text for mobile */
+.summary-title-text#summary-title-360 .summary-title-separator-blue {
+  display: none; /* Hide the separator inside the title */
+}
+
+/* Create a new separator that appears after all text elements */
+.summary-title::after {
+  content: "";
+  order: 3;
+  width: 90px;
+  height: 0px;
+  border: 3px solid var(--inter-text-accent-color);
+  border-radius: 3px;
+  margin-top: 24px;
+}
+
+.summary-title-text:not(#summary-title-360) {
+  order: 2;
+  margin-top: 24px;
 }
 /* Greeting container fullscreen animation - initially visible then fades out */
 .summary-greeting-container {
@@ -39,17 +81,7 @@
   animation: fadeOutGreeting 3s ease-in-out forwards;
   margin-left: 0;
 }
-/* Greeting fade out animation */
-@keyframes fadeOutGreeting {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-/* Content fade in animation */
-@keyframes fadeInContent {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+
 /* Main content area with reset padding and horizontal overflow prevention */
 .main {
   padding: 0;
@@ -295,20 +327,6 @@ body,
 }
 }
 @media (max-width: 768px) {
-/* Greeting container maintains fullscreen behavior on tablets */
-.summary-greeting-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--summary-color);
-  z-index: 1000;
-  margin-left: 0;
-}
 /* Summary title and container remain hidden initially on tablets */
 .summary-title,
 .summary-container {
@@ -363,28 +381,6 @@ body,
 }
 
 @media (max-width: 480px) {
-/* Greeting container maintains fullscreen behavior on mobile phones */
-.summary-greeting-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--summary-color);
-  z-index: 1000;
-  margin-left: 0;
-}
-/* Summary title and container remain hidden initially on mobile phones */
-.summary-title,
-.summary-container {
-  opacity: 0;
-  animation: fadeInContent 1s ease-in-out 3s forwards;
-  position: relative;
-  z-index: 1;
-}
 /* Board panels with minimal gap for small mobile screens */
 .summary-board-panels {
   gap: 12px;

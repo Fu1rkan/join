@@ -2,6 +2,8 @@ let checkOverlay = 0
 
 let currentDraggedElement;
 
+let taskEditor;
+
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
 function stopPropagation(event) {
@@ -29,12 +31,13 @@ function toggleTaskOverlay(i) {
     document.getElementById('bleur-bg').classList.toggle('d_none');
     document.getElementById('task-dialog').classList.toggle('tf_tlx100');
     if (checkOverlay == 0) {
-        let task = taskList.filter(t => t['id'] == i);
-        document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task[0]);
-        checkTaskOverlayInfos(task[0])
+        let task = taskList.find(t => t['id'] == i);
+        document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
+        checkTaskOverlayInfos(task)
         checkOverlay += 1;
     } else {
         checkOverlay = 0;
+        taskEditor = undefined;
     }
 }
 
@@ -150,19 +153,51 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function openEditTaskOverlay(id) {
-    let task = taskList.filter(t => t['id'] == id);
-    document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task[0]);
-    document.getElementById('change-title').value = task[0].name;
-    document.getElementById('change-desc').value = task[0].description;
-    document.getElementById('input-date').value = task[0].date;
-    checkPriorityStatus(task[0]);
-    changeParticipants(task[0]);
+    let task = taskList.find(t => t['id'] == id);
+    taskEditor = structuredClone(task);
+    
+    document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task);
+    document.getElementById('change-title').value = task.name;
+    document.getElementById('change-desc').value = task.description;
+    document.getElementById('input-date').value = task.date;
+    checkPriorityStatus(task);
+    changeParticipants(task);
     renderContactList();
-    renderSubtaskList(task[0]);
+    renderSubtaskList(task);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////
+
+function closeEditTaskOverlay(id) {
+    let task = taskList.find(t => t['id'] == id);
+    taskEditor = undefined;
+    
+    document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
+    checkTaskOverlayInfos(task);
+}
+
 
 function checkPriorityStatus(task) {
     if (task.priority.includes('urgent')) {
@@ -194,13 +229,10 @@ function resetPriority(){
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////////
-
-function changePriority(prioType, taskId){
-    let task = taskList.filter(t => t['id'] == taskId);
-    task[0].priority = prioType;
+function changePriority(prioType){
+    taskEditor.priority = prioType;
     resetPriority();
-    checkPriorityStatus(task[0]);
+    checkPriorityStatus(taskEditor);
 }
 
 
@@ -216,8 +248,18 @@ function changeParticipants(task){
 function renderContactList(){
     if (contacts.length > 0){
         for (let index = 0; index < contacts.length; index++) {
-            document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index]);
+            document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index], index);
+            checkContactStatus(contacts[index].name, index);
         }
+    }
+}
+
+
+function checkContactStatus(contactIndex, index){
+    let task = taskEditor.participants.find(t => t['name'] == contactIndex);
+    if (task) {
+        document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
+        document.getElementById(`check-contact-as-participant-${index}`).innerHTML = checkParticipantTemp();
     }
 }
 
@@ -225,8 +267,8 @@ function renderContactList(){
 function renderSubtaskList(task){
     document.getElementById('change-subtasks-list').innerHTML = "";
     if (task.subtasks != null){
-        for (let index = 0; index < task.subtasks.length; index++) {
-            document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(task.subtasks[index], index, task);
+        for (let index = 0; index < taskEditor.subtasks.length; index++) {
+            document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(index);
         }
     }
 }
@@ -247,18 +289,63 @@ function activeEditTask(index, subtask){
 }
 
 
-function acceptEditedTask(index, taskId){
+function acceptEditedTask(index){
     let newSubtask = document.getElementById(`edit-subtask-input-${index}`).value;
-    taskList[taskId].subtasks[index].name = newSubtask;
-    renderSubtaskList(taskList[taskId]);
+    taskEditor.subtasks[index].name = newSubtask;
+    renderSubtaskList(taskEditor);
 }
 
 
-// function deleteSubtask(subtaskId, taskId){
-//     let task = taskList.find(t => t['id'] == taskId);
-//     taskList[task[0]].subtasks[subtaskId].splice();
-//     renderSubtaskList(task[0]);
-// }
+function deleteSubtask(subtaskId){
+    taskEditor.subtasks.splice(subtaskId, 1);
+    renderSubtaskList(taskEditor);    
+}
+
+
+function clearInputField(){
+    document.getElementById('new-subtask-input').value = "";
+}
+
+
+function pushSubtask(){
+    let newSubtask = document.getElementById('new-subtask-input').value;
+    taskEditor.subtasks.push({name: `${newSubtask}`, status: true});
+    renderSubtaskList(taskEditor);
+    clearInputField();
+    const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
+    overlay.scrollTop = overlay.scrollHeight;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -271,9 +358,9 @@ function allowDrop(card) {
 
 
 function moveTo(categoryTo, id) {
-    let task = taskList.filter(t => t['id'] == currentDraggedElement);
-    let categoryFrom = task[0]['category'];
-    task[0]['category'] = categoryTo;
+    let task = taskList.find(t => t['id'] == currentDraggedElement);
+    let categoryFrom = task['category'];
+    task['category'] = categoryTo;
     document.getElementById(id).classList.remove('drag-area-highlight');
     ids = [categoryFrom, categoryTo]
     init();
@@ -288,65 +375,6 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
-
-
-(function addHorizontalFades() {
-    const lists = document.querySelectorAll('.kanban-board .task-list');
-
-    lists.forEach((list) => {
-        // Wrapper erzeugen und list hineinverschieben
-        const wrap = document.createElement('div');
-        wrap.className = 'hs-wrap';
-        list.parentNode.insertBefore(wrap, list);
-        wrap.appendChild(list);
-
-        // Fade-Overlays erstellen
-        const fadeLeft = document.createElement('div');
-        const fadeRight = document.createElement('div');
-        fadeLeft.className = 'hs-fade hs-fade--left';
-        fadeRight.className = 'hs-fade hs-fade--right';
-        wrap.appendChild(fadeLeft);
-        wrap.appendChild(fadeRight);
-
-        // Update-Logik je nach Scrollposition
-        const update = () => {
-            // nur bei mobiler Ansicht relevant – dein Overflow ist dort aktiv
-            const max = list.scrollWidth - list.clientWidth;
-            const hasOverflow = max > 1;
-
-            wrap.classList.toggle('has-overflow', hasOverflow);
-
-            if (!hasOverflow) {
-                fadeLeft.style.opacity = '0';
-                fadeRight.style.opacity = '0';
-                return;
-            }
-
-            const atStart = list.scrollLeft <= 1;
-            const atEnd = list.scrollLeft >= max - 1;
-
-            // Am Anfang: nur rechter Fade sichtbar
-            // In der Mitte: beide sichtbar
-            // Am Ende: nur linker Fade sichtbar
-            fadeLeft.style.opacity = atStart ? '0' : '1';
-            fadeRight.style.opacity = atEnd ? '0' : '1';
-        };
-
-        // Events
-        list.addEventListener('scroll', update, { passive: true });
-
-        // Resize/Font/Layouträume können sich ändern
-        const ro = new ResizeObserver(update);
-        ro.observe(list);
-
-        // Tasks können dynamisch dazu kommen/entfernt werden
-        const mo = new MutationObserver(update);
-        mo.observe(list, { childList: true, subtree: true });
-
-        // Initial
-        update();
-    });
-})();
 
 
 function openDatePicker() {

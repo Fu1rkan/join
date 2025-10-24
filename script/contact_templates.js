@@ -80,46 +80,32 @@ function getContactTemplate(contact) {
             <h5 class="succesfully-created-msg">Contact succesfully created</h5>
         </div>
     </div>
-    <div id="responsiv_contact_edit_menu" class="responsiv-edit-delete-menu-container d_none">
-        <div id="responsiv_contact_edit_small_menu" class="responsiv-edit-delete-menu">
-            <button onclick="editContact('${contact.name}', '${contact.email}', '${contact.phone}')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <mask id="mask0_71395_18215" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                        width="24" height="24">
-                        <rect width="24" height="24" fill="#D9D9D9" />
-                    </mask>
-                    <g mask="url(#mask0_71395_18215)">
-                        <path
-                            d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
-                            fill="#2A3647" />
-                    </g>
-                </svg>
-                <p>Edit</p>
-            </button>
-            <button onclick="deleteCurrentContact('${contact.name}', '${contact.email}')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <mask id="mask0_383915_3631" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                        width="24" height="24">
-                        <rect width="24" height="24" fill="#D9D9D9" />
-                    </mask>
-                    <g mask="url(#mask0_383915_3631)">
-                        <path
-                            d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
-                            fill="#2A3647" />
-                    </g>
-                </svg>
-                <p>Delete</p>
-            </button>
-        </div>
-    </div>
+    <div class="contact-rightside-menu-btn-container">
+                            <button class="contact-rightside-menu-btn" onclick="openResponsiveContactEditMenu('${contact.name}', '${contact.email}', '${contact.phone}')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                    fill="none">
+                                    <mask id="mask0_383768_2743" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                        x="0" y="0" width="32" height="32">
+                                        <rect width="32" height="32" fill="#D9D9D9" />
+                                    </mask>
+                                    <g mask="url(#mask0_383768_2743)">
+                                        <path
+                                            d="M15.9997 26.6666C15.2663 26.6666 14.6386 26.4055 14.1163 25.8833C13.5941 25.361 13.333 24.7333 13.333 23.9999C13.333 23.2666 13.5941 22.6388 14.1163 22.1166C14.6386 21.5944 15.2663 21.3333 15.9997 21.3333C16.733 21.3333 17.3608 21.5944 17.883 22.1166C18.4052 22.6388 18.6663 23.2666 18.6663 23.9999C18.6663 24.7333 18.4052 25.361 17.883 25.8833C17.3608 26.4055 16.733 26.6666 15.9997 26.6666ZM15.9997 18.6666C15.2663 18.6666 14.6386 18.4055 14.1163 17.8833C13.5941 17.361 13.333 16.7333 13.333 15.9999C13.333 15.2666 13.5941 14.6388 14.1163 14.1166C14.6386 13.5944 15.2663 13.3333 15.9997 13.3333C16.733 13.3333 17.3608 13.5944 17.883 14.1166C18.4052 14.6388 18.6663 15.2666 18.6663 15.9999C18.6663 16.7333 18.4052 17.361 17.883 17.8833C17.3608 18.4055 16.733 18.6666 15.9997 18.6666ZM15.9997 10.6666C15.2663 10.6666 14.6386 10.4055 14.1163 9.88325C13.5941 9.36103 13.333 8.73325 13.333 7.99992C13.333 7.26659 13.5941 6.63881 14.1163 6.11659C14.6386 5.59436 15.2663 5.33325 15.9997 5.33325C16.733 5.33325 17.3608 5.59436 17.883 6.11659C18.4052 6.63881 18.6663 7.26659 18.6663 7.99992C18.6663 8.73325 18.4052 9.36103 17.883 9.88325C17.3608 10.4055 16.733 10.6666 15.9997 10.6666Z"
+                                            fill="white" />
+                                    </g>
+                                </svg>
+                            </button>
+
+                        </div>
 </div>`;
 }
 
 function showAddContactCard() {
-    return `<section class="overlay-card" onclick="event.stopPropagation()">
+    return `<div class="overlay-edit-contact-card-container" onclick="hideAddContactCard()">
+    <section id="overlay_add_contact_card" class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
         <div class="responsiv-overlay-card-close-btn-container">
-            <button class="responsiv-overlay-card-close-btn" onclick="closeOverlay()">
+            <button class="responsiv-overlay-card-close-btn" onclick="hideAddContactCard()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z" fill="white"/>
                 </svg>
@@ -181,7 +167,7 @@ function showAddContactCard() {
             </svg>
             <section class="add-contact-content-container">
                 <div class="position-container-close-icon">
-                    <div class="add-contact-close-icon-container" onclick="closeOverlay()">
+                    <div class="add-contact-close-icon-container" onclick="hideAddContactCard()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                             <mask id="mask0_71720_5491" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4"
                                 width="24" height="25">
@@ -253,7 +239,7 @@ function showAddContactCard() {
                     </section>
 
                     <section class="add-contact-buttons">
-                        <button class="add-contact-cancel-btn" onclick="closeOverlay(); return false">
+                        <button class="add-contact-cancel-btn" onclick="hideAddContactCard(); return false">
                             <p class="add-contact-cancel-btn-txt">Cancel</p>
                             <!--<div class="add-contact-btn-svg add-contact-btn-cancel-svg"></div>-->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -287,11 +273,12 @@ function showAddContactCard() {
 }
 
 function showContactEditCard(name, email, phone) {
-    return `<section class="overlay-card" onclick="event.stopPropagation()">
+    return `<div id="overlay_edit_contact_card_container" class="overlay-edit-contact-card-container" onclick="hideEditContactCard(), event.stopPropagation()">
+    <section id="overlay_edit_contact_card" class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
             <div class="overlay-left-side-content">
             <div class="responsiv-overlay-card-close-btn-container">
-            <button class="responsiv-overlay-card-close-btn" onclick="closeOverlay()">
+            <button class="responsiv-overlay-card-close-btn" onclick="hideEditContactCard()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z" fill="white"/>
                 </svg>
@@ -345,7 +332,7 @@ function showContactEditCard(name, email, phone) {
             </svg>
             <section class="add-contact-content-container">
                 <div class="position-container-close-icon">
-                    <div class="add-contact-close-icon-container" onclick="closeOverlay()">
+                    <div class="add-contact-close-icon-container" onclick="hideEditContactCard()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                             <mask id="mask0_71720_5491" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4"
                                 width="24" height="25">
@@ -438,5 +425,36 @@ function showContactEditCard(name, email, phone) {
             </section>
 
         </section>
-    </section>`;
+    </section>
+    </div>
+        <div id="responsiv_contact_edit_small_menu" class="responsiv-edit-delete-menu d_none" onclick="event.stopPropagation()">
+            <button onclick="editContact('${name}', '${email}', '${phone}', 'true')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <mask id="mask0_71395_18215" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="24" height="24">
+                        <rect width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_71395_18215)">
+                        <path
+                            d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
+                            fill="#2A3647" />
+                    </g>
+                </svg>
+                <p>Edit</p>
+            </button>
+            <button onclick="deleteCurrentContact('${name}', '${email}'); closeResponsiveContactEditMenu(0)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <mask id="mask0_383915_3631" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="24" height="24">
+                        <rect width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_383915_3631)">
+                        <path
+                            d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
+                            fill="#2A3647" />
+                    </g>
+                </svg>
+                <p>Delete</p>
+            </button>
+        </div>`;
 }

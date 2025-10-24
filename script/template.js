@@ -436,10 +436,10 @@ function taskOverlayTemp(i) {
 function taskEditOverlayTemp(i) {
     return `
         <div class="open-close-dialog" onclick="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
-            <div class="task-overlay" onclick="stopPropagation(event)">
+            <div class="task-overlay" onclick="stopPropagation(event)" id="task-overlay">
 
                 <header class="edit-task-header">
-                    <button class="close-button" onclick="toggleTaskOverlay('task-dialog')">
+                    <button class="close-button" onclick="closeEditTaskOverlay(${i.id})">
                         <svg width="14" height="14" viewBox="0 0 14 14">
                             <path d="M6.99999 8.40005L2.09999 13.3C1.91665 13.4834 1.68332 13.575 1.39999 13.575C1.11665 13.575 0.883321 13.4834 0.699988 13.3C0.516654 13.1167 0.424988 12.8834 0.424988 12.6C0.424988 12.3167 0.516654 12.0834 0.699988 11.9L5.59999 7.00005L0.699988 2.10005C0.516654 1.91672 0.424988 1.68338 0.424988 1.40005C0.424988 1.11672 0.516654 0.883382 0.699988 0.700049C0.883321 0.516715 1.11665 0.425049 1.39999 0.425049C1.68332 0.425049 1.91665 0.516715 2.09999 0.700049L6.99999 5.60005L11.9 0.700049C12.0833 0.516715 12.3167 0.425049 12.6 0.425049C12.8833 0.425049 13.1167 0.516715 13.3 0.700049C13.4833 0.883382 13.575 1.11672 13.575 1.40005C13.575 1.68338 13.4833 1.91672 13.3 2.10005L8.39999 7.00005L13.3 11.9C13.4833 12.0834 13.575 12.3167 13.575 12.6C13.575 12.8834 13.4833 13.1167 13.3 13.3C13.1167 13.4834 12.8833 13.575 12.6 13.575C12.3167 13.575 12.0833 13.4834 11.9 13.3L6.99999 8.40005Z" />
                         </svg>
@@ -513,9 +513,9 @@ function taskEditOverlayTemp(i) {
                     <div class="included-participants" id="included-participants"></div>
                     <label class="task-info-type inter-text-color" for="">Subtasks</label>
                     <div class="add-subtasks">
-                        <input type="text" placeholder="Add new Subtasks">
+                        <input type="text" placeholder="Add new Subtasks" id="new-subtask-input">
                         <div class="confirm-buttons-add-subtasks">
-                            <button>
+                            <button onclick="clearInputField()">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                                     <path
                                         d="M7.00078 8.40005L2.10078 13.3C1.91745 13.4834 1.68411 13.575 1.40078 13.575C1.11745 13.575 0.884115 13.4834 0.700781 13.3C0.517448 13.1167 0.425781 12.8834 0.425781 12.6C0.425781 12.3167 0.517448 12.0834 0.700781 11.9L5.60078 7.00005L0.700781 2.10005C0.517448 1.91672 0.425781 1.68338 0.425781 1.40005C0.425781 1.11672 0.517448 0.883382 0.700781 0.700049C0.884115 0.516715 1.11745 0.425049 1.40078 0.425049C1.68411 0.425049 1.91745 0.516715 2.10078 0.700049L7.00078 5.60005L11.9008 0.700049C12.0841 0.516715 12.3174 0.425049 12.6008 0.425049C12.8841 0.425049 13.1174 0.516715 13.3008 0.700049C13.4841 0.883382 13.5758 1.11672 13.5758 1.40005C13.5758 1.68338 13.4841 1.91672 13.3008 2.10005L8.40078 7.00005L13.3008 11.9C13.4841 12.0834 13.5758 12.3167 13.5758 12.6C13.5758 12.8834 13.4841 13.1167 13.3008 13.3C13.1174 13.4834 12.8841 13.575 12.6008 13.575C12.3174 13.575 12.0841 13.4834 11.9008 13.3L7.00078 8.40005Z"
@@ -523,7 +523,7 @@ function taskEditOverlayTemp(i) {
                                 </svg>
                             </button>
                             <div class="change-task-divider"></div>
-                            <button>
+                            <button onclick="pushSubtask()">
                                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
                                     <path
                                         d="M5.55118 9.15L14.0262 0.675C14.2262 0.475 14.4637 0.375 14.7387 0.375C15.0137 0.375 15.2512 0.475 15.4512 0.675C15.6512 0.875 15.7512 1.1125 15.7512 1.3875C15.7512 1.6625 15.6512 1.9 15.4512 2.1L6.25118 11.3C6.05118 11.5 5.81785 11.6 5.55118 11.6C5.28452 11.6 5.05118 11.5 4.85118 11.3L0.551184 7C0.351184 6.8 0.25535 6.5625 0.263684 6.2875C0.272017 6.0125 0.376184 5.775 0.576184 5.575C0.776184 5.375 1.01368 5.275 1.28868 5.275C1.56368 5.275 1.80118 5.375 2.00118 5.575L5.55118 9.15Z"
@@ -591,6 +591,15 @@ function subtaskListTemp(i, index, status) {
     `
 }
 
+function checkParticipantTemp() {
+    return `
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M17 8V14C17 15.6569 15.6569 17 14 17H4C2.34315 17 1 15.6569 1 14V4C1 2.34315 2.34315 1 4 1H12" stroke="#ffffffff" stroke-width="2" stroke-linecap="round" />
+            <path d="M5 9L9 13L17 1.5" stroke="#ffffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    `
+}
+
 function subtaskDoneTemp() {
     return `
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -615,16 +624,16 @@ function participantLogoTemp(participant) {
 }
 
 
-function renderContactsTemp(contact) {
+function renderContactsTemp(contact, index) {
     return `
-        <div class="choose-paticipant">
+        <div class="choose-paticipant" id="contact-layout-${index}">
             <div class="logo-and-name-participant">
                 <span class="asssigned-person-logo">${contact.name[0].split(" ").map(word => word[0]).join("")}</span>
                 <span>${contact.name}</span>
             </div>
-            <button>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2" />
+            <button id="check-contact-as-participant-${index}">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
                 </svg>
             </button>
         </div>
@@ -632,13 +641,13 @@ function renderContactsTemp(contact) {
 }
 
 
-function renderSubtasksTemp(subtask, index, task) {
+function renderSubtasksTemp(index) {
     return `
         <div class="change-subtasks">
             <div class="edit-subtask d_none" id="edit-subtask-${index}">
                 <input placeholder"Edit Subtask" id="edit-subtask-input-${index}">
                 <div class="confirm-buttons-add-subtasks">
-                    <button onclick="deleteSubtask(${index}, ${task.id})">
+                    <button onclick="deleteSubtask(${index})">
                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
                             <path
                                 d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3C0.716667 3 0.479167 2.90417 0.2875 2.7125C0.0958333 2.52083 0 2.28333 0 2C0 1.71667 0.0958333 1.47917 0.2875 1.2875C0.479167 1.09583 0.716667 1 1 1H5C5 0.716667 5.09583 0.479167 5.2875 0.2875C5.47917 0.0958333 5.71667 0 6 0H10C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1H15C15.2833 1 15.5208 1.09583 15.7125 1.2875C15.9042 1.47917 16 1.71667 16 2C16 2.28333 15.9042 2.52083 15.7125 2.7125C15.5208 2.90417 15.2833 3 15 3V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM3 3V16H13V3H3ZM5 13C5 13.2833 5.09583 13.5208 5.2875 13.7125C5.47917 13.9042 5.71667 14 6 14C6.28333 14 6.52083 13.9042 6.7125 13.7125C6.90417 13.5208 7 13.2833 7 13V6C7 5.71667 6.90417 5.47917 6.7125 5.2875C6.52083 5.09583 6.28333 5 6 5C5.71667 5 5.47917 5.09583 5.2875 5.2875C5.09583 5.47917 5 5.71667 5 6V13ZM9 13C9 13.2833 9.09583 13.5208 9.2875 13.7125C9.47917 13.9042 9.71667 14 10 14C10.2833 14 10.5208 13.9042 10.7125 13.7125C10.9042 13.5208 11 13.2833 11 13V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V13Z"
@@ -646,16 +655,16 @@ function renderSubtasksTemp(subtask, index, task) {
                         </svg>
                     </button>
                     <div class="change-task-divider"></div>
-                    <button onclick="acceptEditedTask(${index}, ${task.id})">
+                    <button onclick="acceptEditedTask(${index})">
                         <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
                             <path d="M5.288 8.775L13.763 0.3C13.963 0.1 14.2005 0 14.4755 0C14.7505 0 14.988 0.1 15.188 0.3C15.388 0.5 15.488 0.7375 15.488 1.0125C15.488 1.2875 15.388 1.525 15.188 1.725L5.988 10.925C5.788 11.125 5.55467 11.225 5.288 11.225C5.02133 11.225 4.788 11.125 4.588 10.925L0.288 6.625C0.088 6.425 -0.00783333 6.1875 0.0005 5.9125C0.00883333 5.6375 0.113 5.4 0.313 5.2C0.513 5 0.7505 4.9 1.0255 4.9C1.3005 4.9 1.538 5 1.738 5.2L5.288 8.775Z" fill="#2A3647"/>
                         </svg>
                     </button>
                 </div> 
             </div>
-            <span id="subtask-span-${index}">• ${subtask.name}</span>
+            <span id="subtask-span-${index}">• ${taskEditor.subtasks[index].name}</span>
             <div class="confirm-buttons-add-subtasks" id="subtask-edit-${index}">
-                <button onclick="activeEditTask(${index}, '${subtask.name}')">
+                <button onclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">
                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none">
                         <path
                             d="M2 17H3.4L12.025 8.375L10.625 6.975L2 15.6V17ZM16.3 6.925L12.05 2.725L13.45 1.325C13.8333 0.941667 14.3042 0.75 14.8625 0.75C15.4208 0.75 15.8917 0.941667 16.275 1.325L17.675 2.725C18.0583 3.10833 18.2583 3.57083 18.275 4.1125C18.2917 4.65417 18.1083 5.11667 17.725 5.5L16.3 6.925ZM14.85 8.4L4.25 19H0V14.75L10.6 4.15L14.85 8.4Z"
@@ -663,7 +672,7 @@ function renderSubtasksTemp(subtask, index, task) {
                     </svg>
                 </button>
                 <div class="change-task-divider"></div>
-                <button>
+                <button onclick="deleteSubtask(${index})">
                     <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
                         <path
                             d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3C0.716667 3 0.479167 2.90417 0.2875 2.7125C0.0958333 2.52083 0 2.28333 0 2C0 1.71667 0.0958333 1.47917 0.2875 1.2875C0.479167 1.09583 0.716667 1 1 1H5C5 0.716667 5.09583 0.479167 5.2875 0.2875C5.47917 0.0958333 5.71667 0 6 0H10C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1H15C15.2833 1 15.5208 1.09583 15.7125 1.2875C15.9042 1.47917 16 1.71667 16 2C16 2.28333 15.9042 2.52083 15.7125 2.7125C15.5208 2.90417 15.2833 3 15 3V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM3 3V16H13V3H3ZM5 13C5 13.2833 5.09583 13.5208 5.2875 13.7125C5.47917 13.9042 5.71667 14 6 14C6.28333 14 6.52083 13.9042 6.7125 13.7125C6.90417 13.5208 7 13.2833 7 13V6C7 5.71667 6.90417 5.47917 6.7125 5.2875C6.52083 5.09583 6.28333 5 6 5C5.71667 5 5.47917 5.09583 5.2875 5.2875C5.09583 5.47917 5 5.71667 5 6V13ZM9 13C9 13.2833 9.09583 13.5208 9.2875 13.7125C9.47917 13.9042 9.71667 14 10 14C10.2833 14 10.5208 13.9042 10.7125 13.7125C10.9042 13.5208 11 13.2833 11 13V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V13Z"

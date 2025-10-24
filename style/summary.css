@@ -1,3 +1,30 @@
+/* overlay align and design - positioned under header and navbar */
+.animated-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f6f7f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.animated-overlay .overlay-text {
+  text-align: center;
+  font-size: 40px;
+}
+
+/* show overlay when class is added */
+.animated-overlay-text {
+  font-family: "Inter", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #2a3647;
+}
+
 .summary-title {
   display: flex;
   gap: 20px;

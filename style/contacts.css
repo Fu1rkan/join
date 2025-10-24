@@ -37,14 +37,14 @@
 
 }
 
-.contact,
+.contacts-contact-section,
 .contact-rightside-big-container {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.contact {
+.contacts-contact-section {
     width: calc(1440px - (232px + 456px));
     
 }

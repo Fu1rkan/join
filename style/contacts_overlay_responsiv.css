@@ -14,6 +14,14 @@
 
     .overlay-right-side {
         width: 61%;
+         position: relative;
+    }
+
+    .overlay-character-icon,
+    .overlay-character-icon-edit-contact {
+        position: absolute;
+        left: 0;
+        transform: translateX(-50%);
     }
 }
 
@@ -41,7 +49,8 @@
         width: 100%;
     }
 
-    .overlay-character-icon {
+    .overlay-character-icon,
+    .overlay-character-icon-edit-contact {
         top: 0;
         left: auto;
         transform: translateY(-50%);

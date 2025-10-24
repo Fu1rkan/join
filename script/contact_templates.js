@@ -272,7 +272,7 @@ function showAddContactCard() {
     </section>`;
 }
 
-function showContactEditCard(name, email, phone) {
+function showContactEditCard(toEditContact) {
     return `<div id="overlay_edit_contact_card_container" class="overlay-edit-contact-card-container" onclick="hideEditContactCard(), event.stopPropagation()">
     <section id="overlay_edit_contact_card" class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
@@ -306,30 +306,9 @@ function showContactEditCard(name, email, phone) {
             </div>
         </section>
         <section class="overlay-right-side">
-            <svg class="overlay-character-icon" xmlns="http://www.w3.org/2000/svg" width="134" height="134"
-                viewBox="0 0 134 134" fill="none">
-                <g filter="url(#filter0_d_636_3723)">
-                    <rect x="7" y="7" width="120" height="120" rx="60" fill="white" />
-                    <rect x="5.5" y="5.5" width="123" height="123" rx="61.5" stroke="white" stroke-width="3" />
-                    <circle cx="67" cy="67" r="60" fill="#FF7A00" />
-                    <path
-                        d="M36.0977 83.7144H30.6233L42.9241 49.5325H48.8825L61.1833 83.7144H55.7089L46.0452 55.7413H45.7781L36.0977 83.7144ZM37.0157 70.3287H54.7742V74.6682H37.0157V70.3287ZM66.1195 49.5325H72.3783L83.2604 76.1036H83.661L94.5431 49.5325H100.802V83.7144H95.895V58.9793H95.5779L85.4969 83.6643H81.4245L71.3435 58.9626H71.0264V83.7144H66.1195V49.5325Z"
-                        fill="white" />
-                </g>
-                <defs>
-                    <filter id="filter0_d_636_3723" x="0" y="0" width="134" height="134" filterUnits="userSpaceOnUse"
-                        color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                            result="hardAlpha" />
-                        <feOffset />
-                        <feGaussianBlur stdDeviation="2" />
-                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_636_3723" />
-                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_636_3723" result="shape" />
-                    </filter>
-                </defs>
-            </svg>
+            <div class="overlay-character-icon-edit-contact" style="background-color:${toEditContact.fillColor};">
+                <p>${toEditContact.nameLetters}</p>
+            </div>
             <section class="add-contact-content-container">
                 <div class="position-container-close-icon">
                     <div class="add-contact-close-icon-container" onclick="hideEditContactCard()">
@@ -350,7 +329,7 @@ function showContactEditCard(name, email, phone) {
                     <section class="create-form-inputfields responsiv-edit-create-form-inputfields">
                     <div class="create-form-inputfields-container">
                         <label class="create-form-label">
-                            <input id="edit_name" placeholder="Name" value="${name}" type="text">
+                            <input id="edit_name" placeholder="Name" value="${toEditContact.name}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1025" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -367,7 +346,7 @@ function showContactEditCard(name, email, phone) {
                     </div>
                     <div class="create-form-inputfields-container">
                         <label class="create-form-label">
-                            <input id="edit_email" placeholder="Email" value="${email}" type="text">
+                            <input id="edit_email" placeholder="Email" value="${toEditContact.email}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1032" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -384,7 +363,7 @@ function showContactEditCard(name, email, phone) {
                     </div>
                     <div class="create-form-inputfields-container">    
                         <label class="create-form-label">
-                            <input id="edit_phone" placeholder="Phone" value="${phone}" type="text">
+                            <input id="edit_phone" placeholder="Phone" value="${toEditContact.phone}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <mask id="mask0_373102_1039" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -402,10 +381,10 @@ function showContactEditCard(name, email, phone) {
                     </section>
 
                     <section class="edit-contact-d-s-buttons">
-                        <button class="edit-contact-delete-btn" onclick="closeOverlay(); deleteCurrentContact('${name}','${email}')">
+                        <button class="edit-contact-delete-btn" onclick="closeOverlay(); deleteCurrentContact('${toEditContact.name}','${toEditContact.email}')">
                             <p class="edti-contact-delete-btn-txt">Delete</p>
                         </button>
-                        <button class="edit-contact-save-contact-btn" onclick=" closeOverlay(); saveChangedContact('${name}','${email}')">
+                        <button class="edit-contact-save-contact-btn" onclick=" closeOverlay(); saveChangedContact('${toEditContact.name}','${toEditContact.email}')">
                             <p class="edit-contact-save-contact-btn-txt">Save</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -428,7 +407,7 @@ function showContactEditCard(name, email, phone) {
     </section>
     </div>
         <div id="responsiv_contact_edit_small_menu" class="responsiv-edit-delete-menu d_none" onclick="event.stopPropagation()">
-            <button onclick="editContact('${name}', '${email}', '${phone}', 'true')">
+            <button onclick="editContact('${toEditContact.name}', '${toEditContact.email}', '${toEditContact.phone}', 'true')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_71395_18215" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                         width="24" height="24">
@@ -442,7 +421,7 @@ function showContactEditCard(name, email, phone) {
                 </svg>
                 <p>Edit</p>
             </button>
-            <button onclick="deleteCurrentContact('${name}', '${email}'); closeResponsiveContactEditMenu(0)">
+            <button onclick="deleteCurrentContact('${toEditContact.name}', '${toEditContact.email}'); closeResponsiveContactEditMenu(0)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_383915_3631" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                         width="24" height="24">

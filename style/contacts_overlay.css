@@ -1,9 +1,10 @@
-.overlay,
+.overlay-contacts,
 .overlay-shadow-pos-rel-container,
 .overlay-edit-contact-card-container,
 .overlay-left-side,
 .responsiv-overlay-card-close-btn,
 .overlay-right-side,
+.overlay-character-icon-edit-contact,
 .add-contact-close-icon-container,
 .add-contact-cancel-btn,
 .add-contact-create-contact-btn,
@@ -14,7 +15,7 @@
     align-items: center;
 }
 
-.overlay {
+.overlay-contacts {
     position: absolute;
     z-index: 2;
     top: 0;
@@ -137,9 +138,22 @@
     gap: 64px;
 }
 
-.overlay-character-icon {
+.overlay-character-icon,
+.overlay-character-icon-edit-contact {
     height: 120px;
     width: 120px;
+}
+
+.overlay-character-icon-edit-contact {
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.overlay-character-icon-edit-contact>p {
+    font-size: var(--font-size-47);
+    font-weight: var(--weight-500);
+    color: #FFFFFF;
 }
 
 .add-contact-content-container {

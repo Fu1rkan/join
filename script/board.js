@@ -258,7 +258,7 @@ function renderContactList() {
 
 
 function checkContactStatus(contactIndex, index) {
-    if (taskEditor.participants.length > 0) {
+    if (taskEditor.participants != null) {
         let task = taskEditor.participants.find(t => t['name'] == contactIndex);
         if (task) {
             document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
@@ -276,6 +276,8 @@ function renderSubtaskList(task) {
         for (let index = 0; index < taskEditor.subtasks.length; index++) {
             document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(index);
         }
+    }else{
+        taskEditor.subtasks = [];
     }
 }
 
@@ -320,7 +322,7 @@ function acceptEditedTask(index) {
 
 
 function deleteSubtask(subtaskId) {
-    taskEditor.subtasks.splice(subtaskId, 1);
+    taskEditor.subtasks.splice(subtaskId, 1);    
     renderSubtaskList(taskEditor);
 }
 
@@ -332,11 +334,28 @@ function clearInputField() {
 
 function pushSubtask() {
     let newSubtask = document.getElementById('new-subtask-input').value;
-    taskEditor.subtasks.push({ name: `${newSubtask}`, status: true });
+    taskEditor.subtasks.push({ name: `${newSubtask}`, status: false });
     renderSubtaskList(taskEditor);
     clearInputField();
     const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
     overlay.scrollTop = overlay.scrollHeight;
+}
+
+
+function pushEditedTaskToJSON(index){
+    taskEditor.name = document.getElementById('change-title').value
+    taskEditor.description = document.getElementById('change-desc').value
+    taskEditor.date = document.getElementById('input-date').value
+    if (!taskEditor.subtasks.length > 0) {
+        taskEditor.subtasks = null;
+    }
+    if (!taskEditor.participants.length > 0) {
+        taskEditor.participants = null;
+    }
+    let task = taskList.findIndex(t => t['id'] == index);    
+    taskList[task] = taskEditor;    
+    toggleTaskOverlay(task);
+    init();
 }
 
 

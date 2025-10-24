@@ -1,3 +1,19 @@
+.overlay,
+.overlay-shadow-pos-rel-container,
+.overlay-edit-contact-card-container,
+.overlay-left-side,
+.responsiv-overlay-card-close-btn,
+.overlay-right-side,
+.add-contact-close-icon-container,
+.add-contact-cancel-btn,
+.add-contact-create-contact-btn,
+.edit-contact-delete-btn,
+.edit-contact-save-contact-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .overlay {
     position: absolute;
     z-index: 2;
@@ -5,31 +21,25 @@
     left: 0;
     right: 0;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
 }
 
 .overlay-contacts-bckgrnd-animation {
     animation: overlayShadow 300ms ease forwards;
 }
 
-.overlay-shadow-pos-rel-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.overlay-shadow-pos-rel-container,
+.overlay-edit-contact-card-container {
+    height: 100%;
     width: 100%;
+}
+
+.overlay-shadow-pos-rel-container {
     position: relative;
 }
 
 .overlay-edit-contact-card-container {
-    height: 100%;
-    width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .overlay-card {
@@ -38,6 +48,7 @@
     width: 1212px;
     border-radius: 31px;
     display: flex;
+    max-height: 760px;
 }
 
 .overlay-card-fadeIn {
@@ -53,10 +64,7 @@
     height: 100%;
     background-color: #2A3647;
     border-radius: 30px 0 0 30px;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 66px 48px;
     position: relative;
 }
@@ -70,9 +78,6 @@
 
 .responsiv-overlay-card-close-btn {
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 24px;
     width: 24px;
     border-radius: 50%;
@@ -129,9 +134,6 @@
 }
 
 .overlay-right-side {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 64px;
 }
 
@@ -159,9 +161,6 @@
     height: 32px;
     width: 32px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-width: 0;
 }
 
@@ -249,9 +248,6 @@
 }
 
 .add-contact-cancel-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 56px;
     width: 126px;
     gap: 4px;
@@ -288,9 +284,6 @@
 
 .add-contact-create-contact-btn {
     background-color: #2A3647;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-width: 0;
     height: 57px;
     width: 214px;
@@ -340,9 +333,6 @@
 
 .edit-contact-delete-btn {
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 55px;
     width: 113px;
     gap: 4px;
@@ -379,9 +369,6 @@
 .edit-contact-save-contact-btn {
     cursor: pointer;
     background-color: #2A3647;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-width: 0;
     height: 57px;
     width: 111px;
@@ -407,18 +394,7 @@
     color: var(--header-color);
 }
 
-.z-0 {
-    z-index: 0;
-}
-
-.z-1 {
-    z-index: 1;
-}
-
 .z-2 {
     z-index: 2;
 }
 
-.d_none {
-    display: none;
-}

@@ -21,7 +21,6 @@
     .overlay-card {
         height: 80%;
         width: 396px;
-        /* animation: fadeInRes 300ms linear forwards; */
         flex-direction: column;
     }
 
@@ -49,14 +48,14 @@
     }
 
     .add-contact-card-svg,
-    .add-contact-close-icon-container {
+    .add-contact-close-icon-container,
+    .add-contact-cancel-btn {
         display: none;
     }
 
     .overlay-left-side {
         padding: 66px 24px;
         gap: 12px;
-        /* min-height: 352px; */
         align-items: flex-start;
     }
 
@@ -121,29 +120,28 @@
         gap: 20px;
     }
 
-    .add-contact-cancel-btn {
-        display: none;
-    }
-
     .add-contact-create-contact-btn {
-        height: 51px;
         width: 202px;
         gap: 4px;
-        padding: 18px 10px;
     }
 
+    .add-contact-create-contact-btn,
     .edit-contact-d-s-buttons button {
         padding: 18px 10px;
     } 
 
+    .add-contact-create-contact-btn,
+    .edit-contact-delete-btn,
+    .edit-contact-save-contact-btn {
+        height: 51px;
+    }
+
     .edit-contact-delete-btn {
         width: 82px;
-        height: 51px;
     }
 
     .edit-contact-save-contact-btn {
         width: 99px;
-        height: 51px;
     }
 
 }
@@ -157,14 +155,8 @@
         width: 90%;
     }
 
-    .add-contact-card-headline {
-        width: auto;
-    }
-
-    .create-form {
-        width: auto;
-    }
-
+    .add-contact-card-headline,
+    .create-form,
     .add-contact-create-contact-btn {
         width: auto;
     }

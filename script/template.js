@@ -334,7 +334,7 @@ function progressTemp(taskCount, trueCount) {
 
 function participantsTemp(i, index) {
     return `
-        <div class="user-logo">${i.participants[index].name[0].split(" ").map(word => word[0]).join("")}</div>
+        <div class="user-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
     `
 }
 
@@ -569,7 +569,7 @@ function participantsTaskOverlayTemp(i) {
 function participantTemp(i, index) {
     return `
         <div class="assigned">
-            <div class="asssigned-person-logo">${i.participants[index].name[0].split(" ").map(word => word[0]).join("")}</div>
+            <div class="asssigned-person-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
             <p class="asssigned-person">${i.participants[index].name}</p>
         </div>
     `
@@ -619,16 +619,16 @@ function subtaskToDoTemp() {
 
 function participantLogoTemp(participant) {
     return `
-        <span class="asssigned-person-logo">${participant.name[0].split(" ").map(word => word[0]).join("")}</span>
+        <span class="asssigned-person-logo">${participant.name.split(" ").map(word => word[0]).join("")}</span>
     `
 }
 
 
 function renderContactsTemp(contact, index) {
     return `
-        <div class="choose-paticipant" id="contact-layout-${index}">
+        <div class="choose-paticipant" id="contact-layout-${index}" onclick="putContactAsParticipant(${index})">
             <div class="logo-and-name-participant">
-                <span class="asssigned-person-logo">${contact.name[0].split(" ").map(word => word[0]).join("")}</span>
+                <span class="asssigned-person-logo">${contact.name.split(" ").map(word => word[0]).join("")}</span>
                 <span>${contact.name}</span>
             </div>
             <button id="check-contact-as-participant-${index}">

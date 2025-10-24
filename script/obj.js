@@ -21,7 +21,7 @@ let taskList = [
             { 'name': 'Write Sample Tests', 'status': false }
         ],
         'participants': [
-            { 'name': ['Anton Mayer'] }
+            { 'name': 'Anton Mayer'}
         ],
         'priority': 'low',
         'date': '2025-10-20'
@@ -52,8 +52,8 @@ let taskList = [
             { 'name': 'Deploy to Server', 'status': false }
         ],
         'participants': [
-            { 'name': ['Tatjana Wolf'] },
-            { 'name': ['Anja Schulz'] }
+            { 'name': 'Tatjana Wolf'},
+            { 'name': 'Anja Schulz'}
         ],
         'priority': 'urgent',
         'date': '2025-10-22'
@@ -72,11 +72,11 @@ let taskList = [
             { 'name': 'final control', 'status': false }
         ],
         'participants': [
-            { 'name': ['Tatjana Wolf'] },
-            { 'name': ['David Eisenberg'] },
-            { 'name': ['Emmanuel Mauer'] },
-            { 'name': ['Anja Schulz'] },
-            { 'name': ['Anton Mayer'] },
+            { 'name': 'Tatjana Wolf'},
+            { 'name': 'David Eisenberg'},
+            { 'name': 'Emmanuel Mauer'},
+            { 'name': 'Anja Schulz'},
+            { 'name': 'Anton Mayer'},
         ],
         'priority': 'urgent',
         'date': '2025-10-11'
@@ -93,8 +93,8 @@ let taskList = [
             { 'name': 'Accessibility', 'status': true }
         ],
         'participants': [
-            { 'name': ['Eva Fischer'] },
-            { 'name': ['Anja Schulz'] }
+            { 'name': 'Eva Fischer'},
+            { 'name': 'Anja Schulz'}
         ],
         'priority': 'medium',
         'date': '2025-10-12'
@@ -110,7 +110,7 @@ let taskList = [
             { 'name': 'Refactor Queries', 'status': false }
         ],
         'participants': [
-            { 'name': ['Eva Fischer'] }
+            { 'name': 'Eva Fischer'}
         ],
         'priority': 'urgent',
         'date': '2025-10-13'
@@ -127,8 +127,8 @@ let taskList = [
             { 'name': 'Password Reset', 'status': false }
         ],
         'participants': [
-            { 'name': ['Anton Mayer'] },
-            { 'name': ['David Eisenberg'] }
+            { 'name': 'Anton Mayer'},
+            { 'name': 'David Eisenberg'}
         ],
         'priority': 'high',
         'date': '2025-10-15'
@@ -166,7 +166,7 @@ let taskList = [
             { 'name': 'Change Password', 'status': false }
         ],
         'participants': [
-            { 'name': ['David Eisenberg'] }
+            { 'name': 'David Eisenberg'}
         ],
         'priority': 'medium',
         'date': '2025-10-17'

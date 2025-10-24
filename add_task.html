@@ -10,12 +10,9 @@
   <link rel="stylesheet" href="./style/add_task.css" />
   <link rel="stylesheet" href="./style/style.css" />
   <link rel="stylesheet" href="./style/add_task_responsiv.css" />
-  <script src="./script/add_task.js"></script>
-  <script src="./script/add_task_template.js"></script>
-  <script src="./script/add_task_firebase.js"></script>
 </head>
 
-<body  onclick="closeContactlist(), closeCategoryList()" onload="init(), loadData() ">
+<body onclick="closeContactlist(), closeCategoryList()" onload="init(), loadData() ">
   <div class="layout">
     <nav class="navbar">
       <svg width="102" height="122" viewBox="0 0 102 122" fill="none">
@@ -136,7 +133,7 @@
       </header>
       <section class="ad">
         <h2>Add Task</h2>
-        <form action="" novalidate>
+        <form id="add_task_form" action="" novalidate onsubmit="return false;" >
           <div class="form_wrapper">
             <div class="input_container w100">
               <!-- Title -->
@@ -167,17 +164,6 @@
                       fill="#2A3647" />
                   </svg>
                 </div>
-                <script>
-                  /*     const dateInput = document.getElementById("date");
-
-                  dateInput.addEventListener("focus", () => {
-                    dateInput.showPicker?.();
-                  });  */
-                  const today = new Date().toISOString().split("T")[0];
-                  document.getElementById("date").setAttribute("min", today);
-                </script>
-
-
                 <p class="required_notice d_none " id="required_notice_due_date">This field is required</p>
               </div>
             </div>
@@ -248,7 +234,7 @@
                       fill="#2A3647" />
                   </svg>
                 </div>
-                <ul class="contacts z3" id="contacts">
+                <ul class="contacts z3" id="task_contacts">
                   <li class="single_contact">
                     <div>
                       <!-- SM_nametag.svg -->
@@ -410,22 +396,22 @@
                 </div>
               </div>
               <div class="subtask_list">
- 
-          </div>
-          <div class="required_info">
-              <span style="color: red">*</span>
-              <p>This field is required</p>
-            </div>
+
+              </div>
+              <div class="required_info">
+                <span style="color: red">*</span>
+                <p>This field is required</p>
+              </div>
             </div>
           </div>
 
-          
+
 
           <div class="submit_container">
-           
+
 
             <div class="submit_butn_wrapper">
-              <button class="clear_btn" onclick="location.reload()">
+              <button class="clear_btn" onclick="clearForm()">
                 Clear
                 <!-- iconoir_cancel.svg -->
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -455,6 +441,20 @@
       </section>
     </main>
   </div>
+
+  <script>
+    /*     const dateInput = document.getElementById("date");
+
+    dateInput.addEventListener("focus", () => {
+      dateInput.showPicker?.();
+    });  */
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("date").setAttribute("min", today);
+  </script>
+  <script src="./script/test_contacts.js"></script>
+  <script src="./script/add_task.js"></script>
+  <script src="./script/add_task_template.js"></script>
+  <script src="./script/add_task_firebase.js"></script>
 </body>
 
 </html>

@@ -587,7 +587,7 @@ function subtasksTaskOverlay(i) {
 function subtaskListTemp(i, index, status) {
     return `
         <div class="subtask">
-            <div class="subtask-checkbox">${status}</div>
+            <button class="subtask-checkbox">${status}</button>
             <p class="subtask-quest">${i.subtasks[index].name}</p>
         </div>
     `

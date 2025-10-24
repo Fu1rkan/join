@@ -399,7 +399,7 @@ function pushEditedTaskToJSON(index) {
         toggleTaskOverlay(task);
         init();
     }
-}
+} ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
 
 
 

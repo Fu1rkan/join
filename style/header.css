@@ -3,6 +3,8 @@
   background-color: var(--header-color);
   display: flex;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100;
 }
 
 .content-limit-header {

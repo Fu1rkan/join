@@ -50,7 +50,7 @@ function logInTemplate() {
             </section>
 
             <section class="login_buttons">
-                <button class="login_button" type="" onclick="loginUser()">Log in</button>
+                <button class="login_button" type="" onclick="loginUser(); renderLogInUserAnimation();">Log in</button>
                 <button class="guest_login_button" type="">Guest Log in</button>
             </section>
         </section>

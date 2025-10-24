@@ -34,6 +34,9 @@
 }
 
 .contact-circle-img-big {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 120px;
     width: 120px;
     border-radius: 50%;
@@ -64,8 +67,12 @@
 .contact-btn {
     height: 24px;
     border-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 8px;
     font-size: var(--font-size-16);
+    font-weight: var(--weight-400);
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -88,11 +95,12 @@
 .contact-btn:hover {
     cursor: pointer;
     color: var(--inter-text-accent-color);
+    font-weight: var(--weight-700);
 }
 
 .contact-inforamtion-txt {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
     height: 74px;
     align-content: center;
 }
@@ -110,7 +118,11 @@
 
 .contact-informations a {
     color: #007CEE;
-    
+    font-weight: var(--weight-400);
+}
+
+.contact-informations-phone-number {
+    font-weight: var(--weight-400);
 }
 
 .succes-created-container {
@@ -126,6 +138,9 @@
     width: 326px;
     position: absolute;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #2A3647;
     border-radius: 20px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
@@ -142,5 +157,6 @@
 .succesfully-created-msg {
     color: var(--header-color);
     font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
     height: 24px;
 }

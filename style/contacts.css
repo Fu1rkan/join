@@ -17,10 +17,7 @@
 
 .add-new-contact-btn-container,
 .add-new-contact-btn,
-.contact-circle-img-small,
-.contact-circle-img-big,
-.contact-btn,
-.creates-msg {
+.contact-circle-img-small {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,8 +112,7 @@
 
 .add-new-contact-btn,
 .add-new-contact-btn h3,
-.contacts-header>h2,
-.contact-btn:hover {
+.contacts-header>h2 {
     font-weight: var(--weight-700);
 }
 
@@ -162,11 +158,7 @@
 .contact-circle-img-small>p,
 .contact-name,
 .contact-e-mail,
-.contacts-header-txt,
-.contact-btn, 
-.contact-informations a,
-.contact-informations-phone-number,
-.succesfully-created-msg {
+.contacts-header-txt {
     font-weight: var(--weight-400);
 }
 

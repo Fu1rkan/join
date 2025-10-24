@@ -282,6 +282,11 @@
   transition: ease-in-out 80ms;
 }
 
+.icon-edit {
+  width: 38px;
+  height: 30px;
+}
+
 /* Hover state for icon wrapper - changes background to white */
 .icon-wrap:hover {
   background-color: #ffffff;
@@ -305,12 +310,13 @@
   cursor: pointer;
 }
 
-/* Arrow icon styling with stroke transition */
+/* Arrow icon style and path styling with stroke transition */
 .icon-arrow {
   display: block;
+  width: 38px;
+  height: 30px;
 }
 
-/* Arrow icon path styling with stroke transition */
 .icon-arrow path {
   stroke: #ffffff;
   /* transition: stroke 0.18s; */

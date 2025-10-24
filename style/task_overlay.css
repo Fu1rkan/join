@@ -493,10 +493,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 10px;
     justify-content: space-between;
     padding: 4px 16px;
+    cursor: pointer;
 }
 
 .change-subtasks:hover {
     background-color: rgba(238, 238, 238, 1);
+}
+
+.change-subtasks span {
+    width: calc(100% - 70px);
 }
 
 .edit-task-footer {
@@ -532,6 +537,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border: none;
     outline: none;
     background-color: transparent;
+    width: calc(100% - 64px);
 }
 
 .bc_r{
@@ -579,4 +585,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .bgc_j:hover{
     background-color: #091931;
+}
+
+.bo_c_r{
+    border-color: red;
+    margin-bottom: 0;
+}
+
+.empty-field{
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px;
 }

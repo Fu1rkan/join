@@ -154,6 +154,14 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
 }
 
 
+function deleteTask(i) {
+    let task = taskList.findIndex(t => t['id'] == i)
+    taskList.splice(task, 1);
+    toggleTaskOverlay(i);
+    init();
+}
+
+
 
 
 
@@ -197,6 +205,30 @@ function closeEditTaskOverlay(id) {
 
     document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
     checkTaskOverlayInfos(task);
+}
+
+
+function ckeckTitleValue() {
+    let title = document.getElementById('change-title');
+    let titleValue = title.value;
+    if (titleValue.length <= 0) {
+        title.classList.add('bo_c_r');
+        document.getElementById('empty-title-text').classList.remove('d_none');
+    } else {
+        title.classList.remove('bo_c_r');
+        document.getElementById('empty-title-text').classList.add('d_none');
+    }
+}
+
+function ckeckDateValue() {
+    let date = document.getElementById('input-date').value;
+    if (date.length <= 0) {
+        document.getElementById('change-date').classList.add('bo_c_r');
+        document.getElementById('empty-date-text').classList.remove('d_none');
+    } else {
+        document.getElementById('change-date').classList.remove('bo_c_r');
+        document.getElementById('empty-date-text').classList.add('d_none');
+    }
 }
 
 
@@ -264,7 +296,7 @@ function checkContactStatus(contactIndex, index) {
             document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
             document.getElementById(`check-contact-as-participant-${index}`).innerHTML = checkParticipantTemp();
         }
-    }else{
+    } else {
         taskEditor.participants = [];
     }
 }
@@ -276,7 +308,7 @@ function renderSubtaskList(task) {
         for (let index = 0; index < taskEditor.subtasks.length; index++) {
             document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(index);
         }
-    }else{
+    } else {
         taskEditor.subtasks = [];
     }
 }
@@ -287,12 +319,12 @@ function putContactAsParticipant(index) {
     if (!contactLayout.contains('bgc_j')) {
         contactLayout.add('bgc_j');
         document.getElementById(`check-contact-as-participant-${index}`).innerHTML = checkParticipantTemp();
-        taskEditor.participants.push({ 'name': `${contacts[index].name}`});
+        taskEditor.participants.push({ 'name': `${contacts[index].name}` });
         renderParticipantLogos(taskEditor);
     } else {
         contactLayout.remove('bgc_j');
         document.getElementById(`check-contact-as-participant-${index}`).innerHTML = subtaskToDoTemp();
-        let participant = taskEditor.participants.findIndex(p => p.name === `${contacts[index].name}`);                
+        let participant = taskEditor.participants.findIndex(p => p.name === `${contacts[index].name}`);
         taskEditor.participants.splice(participant, 1);
         renderParticipantLogos(taskEditor);
     }
@@ -316,13 +348,17 @@ function activeEditTask(index, subtask) {
 
 function acceptEditedTask(index) {
     let newSubtask = document.getElementById(`edit-subtask-input-${index}`).value;
-    taskEditor.subtasks[index].name = newSubtask;
-    renderSubtaskList(taskEditor);
+    if (newSubtask.length > 0) {
+        taskEditor.subtasks[index].name = newSubtask;
+        renderSubtaskList(taskEditor);
+    } else {
+        deleteSubtask(index);
+    }
 }
 
 
-function deleteSubtask(subtaskId) {
-    taskEditor.subtasks.splice(subtaskId, 1);    
+function deleteSubtask(index) {
+    taskEditor.subtasks.splice(index, 1);
     renderSubtaskList(taskEditor);
 }
 
@@ -342,20 +378,27 @@ function pushSubtask() {
 }
 
 
-function pushEditedTaskToJSON(index){
+function pushEditedTaskToJSON(index) {
     taskEditor.name = document.getElementById('change-title').value
     taskEditor.description = document.getElementById('change-desc').value
     taskEditor.date = document.getElementById('input-date').value
+    let date = document.getElementById('input-date').value;
+    let title = document.getElementById('change-title').value;
     if (!taskEditor.subtasks.length > 0) {
         taskEditor.subtasks = null;
     }
     if (!taskEditor.participants.length > 0) {
         taskEditor.participants = null;
     }
-    let task = taskList.findIndex(t => t['id'] == index);    
-    taskList[task] = taskEditor;    
-    toggleTaskOverlay(task);
-    init();
+    if (title.length <= 0 || date.length <= 0) {
+        const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
+        overlay.scrollTop = 0;
+    } else {
+        let task = taskList.findIndex(t => t['id'] == index);
+        taskList[task] = taskEditor;
+        toggleTaskOverlay(task);
+        init();
+    }
 }
 
 

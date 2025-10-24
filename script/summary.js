@@ -33,3 +33,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function renderLogInUserAnimation() {
+    setTimeout(() => {
+    }, 3000);
+    closeLogInUserAnimation();
+}
+
+// Close animation overlay after login
+function closeLogInUserAnimation() {
+    let overlayRef = document.getElementById('animated_overlay_id');
+    overlayRef.classList.remove('animated-overlay');
+}

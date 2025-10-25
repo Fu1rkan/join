@@ -68,8 +68,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .task-overlay main {
     height: 70%;
-    overflow: overlay;
+    overflow: auto;
     gap: 24px;
+}
+
+.task-overlay main::-webkit-scrollbar{
+    display: none;
 }
 
 .task-overlay header {
@@ -197,15 +201,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .main-task-subtasks:empty {
     display: none;
-}
-
-.subtask-list::-webkit-scrollbar {
-    display: none;
-}
-
-.subtask-list {
-    max-height: 200px;
-    overflow-y: scroll;
 }
 
 .subtask {
@@ -648,10 +643,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-color: red;
 }
 
-.empty-subtask-input::placeholder {
+.color_red {
     color: red;
 }
 
+.empty-subtask-input::placeholder {
+    color: red;
+}
 
 /*                     wird noch standatisiert!!!                     */
 

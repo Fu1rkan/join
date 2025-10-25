@@ -502,7 +502,7 @@ function taskEditOverlayTemp(i) {
                     </div>
                     <label class="task-info-type inter-text-color">Assigned to</label>
                     <div class="change-participants">
-                        <input type="text" placeholder="Select Contacts to assign">
+                        <input type="text" placeholder="Select Contacts to assign" onkeyup="searchContact()" id="serchbar-edit-contacts">
                         <button onclick="toggleContactList()" id="change-participants-button">
                             <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
                                 <path
@@ -587,7 +587,7 @@ function subtasksTaskOverlay(i) {
 function subtaskListTemp(i, index, status) {
     return `
         <div class="subtask">
-            <button class="subtask-checkbox">${status}</button>
+            <button class="subtask-checkbox" id="subtask-status" onclick="toggleSubtaskStatus(${i.id}, ${index})">${status}</button>
             <p class="subtask-quest">${i.subtasks[index].name}</p>
         </div>
     `
@@ -651,6 +651,13 @@ function renderContactsTemp(contact, index) {
                 </svg>
             </button>
         </div>
+    `
+}
+
+
+function noContactsTemp() {
+    return `
+        <p class="color_red">No results</p>
     `
 }
 

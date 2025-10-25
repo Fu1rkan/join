@@ -273,7 +273,12 @@ function renderParticipantLogos(task) {
     document.getElementById('included-participants').innerHTML = "";
     if (task.participants != null) {
         for (let index = 0; index < task.participants.length; index++) {
-            document.getElementById('included-participants').innerHTML += participantLogoTemp(task.participants[index]);
+            if (index < 4) {
+                document.getElementById('included-participants').innerHTML += participantLogoTemp(task.participants[index]);
+            } else {
+                document.getElementById(`included-participants`).innerHTML += moreParticipantsEditTaskTemp(task.participants.length - 4);
+                break
+            }
         }
     }
 }
@@ -370,11 +375,24 @@ function clearInputField() {
 
 function pushSubtask() {
     let newSubtask = document.getElementById('new-subtask-input').value;
-    taskEditor.subtasks.push({ name: `${newSubtask}`, status: false });
-    renderSubtaskList(taskEditor);
-    clearInputField();
-    const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
-    overlay.scrollTop = overlay.scrollHeight;
+    if (newSubtask.length > 0) {
+        taskEditor.subtasks.push({ name: `${newSubtask}`, status: false });
+        renderSubtaskList(taskEditor);
+        clearInputField();
+        const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
+        overlay.scrollTop = overlay.scrollHeight;
+    } else {
+        document.getElementById('add-subtasks').classList.add('empty-subtask-input');
+        document.getElementById('new-subtask-input').classList.add('empty-subtask-input');
+        document.getElementById('new-subtask-input').placeholder = 'This field is required';
+    }
+}
+
+
+function resetPlaceholderSubtask() {
+    document.getElementById('add-subtasks').classList.remove('empty-subtask-input');
+    document.getElementById('new-subtask-input').classList.remove('empty-subtask-input');
+    document.getElementById('new-subtask-input').placeholder = 'Add new Subtasks';
 }
 
 

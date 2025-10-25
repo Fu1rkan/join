@@ -327,6 +327,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%;
     margin: 8px 0 32px 0;
     resize: none;
+    outline: none;
+}
+
+.change-desc:focus {
+    border-color: rgba(41, 171, 226, 1);
 }
 
 .date-input {
@@ -339,6 +344,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 10px 21px;
     margin: 8px 0 32px 0;
     cursor: pointer;
+}
+
+.date-input:focus-within {
+    border-color: rgba(41, 171, 226, 1);
 }
 
 .date-input input {
@@ -388,15 +397,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     justify-content: space-between;
     padding: 12px 16px;
     border: 1px solid #2A3647;
-    margin: 8px 0;
     display: flex;
     align-items: center;
     font-size: 16px;
+    margin-top: 8px;
+}
+
+.change-participants:focus-within {
+    border-color: rgba(41, 171, 226, 1);
 }
 
 .change-participants input {
     border: none;
     outline: none;
+    width: 100%;
 }
 
 .change-participants button {
@@ -415,7 +429,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     flex-direction: column;
     gap: 1px;
-    margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .choose-paticipant {
@@ -441,7 +455,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .included-participants {
     display: flex;
     gap: 8px;
-    margin-bottom: 32px;
+    margin: 8px 0 32px 0;
+}
+
+.included-participants:empty {
+    margin: 0 0 32px 0;
+}
+
+.more-asssigned-person-logo {
+    width: 42px;
+    height: 42px;
+    border: 2px solid white;
+    background-color: rgba(231, 231, 231, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+    gap: 2px;
 }
 
 .add-subtasks {
@@ -451,6 +482,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 12px 16px;
     border: 1px solid #2A3647;
     margin: 8px 0;
+}
+
+
+.add-subtasks:focus-within {
+    border-color: rgba(41, 171, 226, 1);
 }
 
 .confirm-buttons-add-subtasks {
@@ -604,6 +640,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 15px;
 }
 
+.empty-subtask-input {
+    border-color: red;
+}
+
+.empty-subtask-input:focus-within {
+    border-color: red;
+}
+
+.empty-subtask-input::placeholder {
+    color: red;
+}
+
 
 /*                     wird noch standatisiert!!!                     */
 
@@ -634,5 +682,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .gap_8 {
         gap: 8px;
+    }
+
+    .change-participants {
+        margin-top: 6px;
+    }
+
+    .participants-list {
+        margin-top: 6px;
+    }
+
+    .included-participants {
+        display: flex;
+        gap: 8px;
+        margin: 6px 0 16px 0;
+    }
+
+    .included-participants:empty {
+        margin: 0 0 16px 0;
     }
 }

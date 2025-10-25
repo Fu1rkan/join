@@ -18,20 +18,25 @@
     .kanban-board {
         margin: 0 60px;
         width: calc(100% - 120px);
-        height: calc(100vh - 335px);
     }
 
     .board-header {
-        margin: 60px 60px 40px 60px;
-        width: calc(100% - 120px);
+        padding: 60px 60px 40px 60px;
     }
 }
 
 @media (max-width: 950px) {
+
+    .resp-header{
+        position: fixed;
+        z-index: 2;
+    }
+
     .kanban-board {
         flex-direction: column;
         overflow: auto;
-        height: calc(100vh - 385px);
+        padding: 305px 0 80px 0;
+        width: calc(100% - 16px) !important;
     }
 
     .kanban-board::-webkit-scrollbar {
@@ -58,8 +63,9 @@
     }
 
     .board-header {
-        margin: 40px 20px 20px 20px;
-        width: calc(100% - 40px);
+        padding: 120px 20px 20px 20px;
+        position: fixed;
+        z-index: 1;
     }
 
     .kanban-board {
@@ -165,12 +171,10 @@
 
 @media (max-width: 500px) {
     .board-header {
-        margin: 40px 8px 20px 8px;
-        width: calc(100% - 16px);
+        padding: 120px 8px 20px 8px;
     }
 
     .kanban-board {
-        width: calc(100% - 16px);
         margin: 0 8px;
     }
 }

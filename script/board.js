@@ -36,12 +36,13 @@ function renderTasks() {
 function toggleTaskOverlay(i) {
     document.getElementById('bleur-bg').classList.toggle('d_none');
     document.getElementById('task-dialog').classList.toggle('tf_tlx100');
+    document.body.classList.toggle('of_hidden');
     if (checkOverlay == 0) {
         let task = taskList.find(t => t['id'] == i);
         document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
         checkTaskOverlayInfos(task)
         checkOverlay += 1;
-    } else {
+    }else{
         checkOverlay = 0;
         taskEditor = undefined;
         renderTasks();

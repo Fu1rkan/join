@@ -165,11 +165,11 @@
     display: none;
   }
 
-  .header-profil svg{
+  .header-profil svg {
     display: none;
   }
 
-  .profil-header{
+  .profil-header {
     width: 40px;
     height: 40px;
   }
@@ -184,4 +184,12 @@
     align-items: center;
     padding: 20px 16px;
   }
+
+  .main-header {
+    width: 100%;
+    background-color: var(--header-color);
+    display: flex;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
 }

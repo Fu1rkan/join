@@ -434,6 +434,14 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   cursor: pointer;
 }
 
+
+.single_contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 16px;
+}
+
 .task_contacts li {
   opacity: 1;
   padding: 16px 10px;
@@ -647,4 +655,26 @@ margin: 4px 0 0 0 ;
 
 .required_input{
   border-color: #E60026 !important;
+}
+
+
+.contactslist-icon-and-name-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pb_bubble {
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pb_bubble>p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #FFFFFF;
 }

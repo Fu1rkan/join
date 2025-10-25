@@ -436,7 +436,7 @@ function taskOverlayTemp(i) {
 function taskEditOverlayTemp(i) {
     return `
         <div class="open-close-dialog" onclick="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
-            <div class="task-overlay" onclick="stopPropagation(event)" id="task-overlay">
+            <div class="task-overlay gap_8" onclick="stopPropagation(event)" id="task-overlay">
 
                 <header class="edit-task-header">
                     <button class="close-button" onclick="closeEditTaskOverlay(${i.id})">

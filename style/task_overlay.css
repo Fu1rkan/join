@@ -526,74 +526,113 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.edit-subtask{
+.edit-subtask {
     width: 100%;
     display: flex;
     justify-content: space-between;
     /* border-bottom: 1px solid rgba(41, 171, 226, 1);                              zu change Subtasks rein, wenn edit Subtask aktiv ist */
 }
 
-.edit-subtask input{
+.edit-subtask input {
     border: none;
     outline: none;
     background-color: transparent;
     width: calc(100% - 64px);
 }
 
-.bc_r{
+
+
+
+
+/*                     wird noch standatisiert!!!                     */
+
+.bc_r {
     background-color: rgba(255, 61, 0, 1) !important;
     font-weight: 700;
     color: white;
 }
 
-.bc_o{
+.bc_o {
     background-color: rgba(255, 168, 0, 1) !important;
     font-weight: 700;
     color: white;
 }
 
-.bc_g{
+.bc_g {
     background-color: rgba(122, 226, 41, 1) !important;
     font-weight: 700;
     color: white;
 }
 
-.bc_r:hover{
+.bc_r:hover {
     box-shadow: none !important;
 }
 
-.bc_o:hover{
+.bc_o:hover {
     box-shadow: none !important;
 }
 
-.bc_g:hover{
+.bc_g:hover {
     box-shadow: none !important;
 }
 
-.fill_red{
+.fill_red {
     fill: white !important;
 }
 
-.tf_r180{
+.tf_r180 {
     transform: rotate(180deg);
 }
 
-.bgc_j{
+.bgc_j {
     background-color: #2A3647;
     color: white;
 }
 
-.bgc_j:hover{
+.bgc_j:hover {
     background-color: #091931;
 }
 
-.bo_c_r{
+.bo_c_r {
     border-color: red;
     margin-bottom: 0;
 }
 
-.empty-field{
+.empty-field {
     color: red;
     font-size: 14px;
     margin-bottom: 15px;
+}
+
+
+/*                     wird noch standatisiert!!!                     */
+
+@media (max-width: 600px) {
+    .change-title {
+        margin: 6px 0 16px 0;
+    }
+
+    .change-desc {
+        margin: 6px 0 16px 0;
+    }
+
+    .date-input {
+        margin: 6px 0 16px 0;
+    }
+
+    .change-priority {
+        margin: 6px 0 16px 0;
+    }
+
+    .included-participants {
+        margin-bottom: 16px;
+    }
+
+    .add-subtasks {
+        margin: 6px 0;
+    }
+
+    .gap_8 {
+        gap: 8px;
+    }
 }

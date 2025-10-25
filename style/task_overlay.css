@@ -19,6 +19,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: fixed;
     transition: 125ms ease-in-out;
     transform: translateX(100%);
+    z-index: 102;
 }
 
 .tf_tlx100 {
@@ -31,7 +32,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%;
     height: 100vh;
     transition: 0ms;
-    z-index: 0;
+    z-index: 101;
     background-color: rgba(0, 0, 0, 0.244);
 }
 

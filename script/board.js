@@ -44,6 +44,7 @@ function toggleTaskOverlay(i) {
     } else {
         checkOverlay = 0;
         taskEditor = undefined;
+        renderTasks();
     }
 }
 
@@ -147,6 +148,7 @@ function checkTaskOverlayParticipants(i, taskOverlay) {
 
 function checkTaskOverlaySubtasks(i, taskOverlay) {
     if (i.subtasks != null) {
+        document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML = "";
         document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML += subtasksTaskOverlay(i);
         for (let index = 0; index < i.subtasks.length; index++) {
             if (i.subtasks[index].status == true) {
@@ -171,13 +173,12 @@ function toggleSubtaskStatus(i, index) {
     let task = taskList.findIndex(t => t['id'] == i);
     if (taskList[task].subtasks[index].status == true) {
         taskList[task].subtasks[index].status = false;
-        
-    }else{
+
+    } else {
         taskList[task].subtasks[index].status = true;
     }
-    toggleTaskOverlay(i)
-    toggleTaskOverlay(i)
-}////////////////////////////////////// Muss optimiert werden
+    checkTaskOverlaySubtasks(taskList[task], 'task-overlay')
+}
 
 
 
@@ -212,7 +213,7 @@ function openEditTaskOverlay(id) {
     document.getElementById('input-date').value = task.date;
     checkPriorityStatus(task);
     renderParticipantLogos(task);
-    renderContactList();
+    renderContactList(contacts);
     renderSubtaskList(task);
 }
 
@@ -302,12 +303,15 @@ function renderParticipantLogos(task) {
 }
 
 
-function renderContactList() {
+function renderContactList(contacts) {
     if (contacts.length > 0) {
+        document.getElementById('participants-list').innerHTML = "";
         for (let index = 0; index < contacts.length; index++) {
             document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index], index);
             checkContactStatus(contacts[index].name, index);
         }
+    } else {
+        document.getElementById('participants-list').innerHTML = noContactsTemp();
     }
 }
 
@@ -354,9 +358,26 @@ function putContactAsParticipant(index) {
 }
 
 
+function searchContact() {
+    let word = document.getElementById('serchbar-edit-contacts').value;
+    if (word.length > 1) {
+        let list = contacts.filter(c => c.name.toLowerCase().includes(word.toLowerCase()))
+        renderContactList(list);
+        openContactList();
+    } else {
+        renderContactList(contacts);
+    }
+}
+
+
 function toggleContactList() {
     document.getElementById('change-participants-button').classList.toggle('tf_r180');
     document.getElementById('participants-list').classList.toggle('d_none');
+}
+
+function openContactList() {
+    document.getElementById('change-participants-button').classList.add('tf_r180');
+    document.getElementById('participants-list').classList.remove('d_none');
 }
 
 
@@ -364,6 +385,7 @@ function activeEditTask(index, subtask) {
     document.getElementById(`edit-subtask-${index}`).classList.remove('d_none');
     document.getElementById(`edit-subtask-input-${index}`).classList.remove('d_none');
     document.getElementById(`edit-subtask-input-${index}`).value = subtask;
+    document.getElementById(`edit-subtask-input-${index}`).focus();
     document.getElementById(`subtask-span-${index}`).classList.add('d_none');
     document.getElementById(`subtask-edit-${index}`).classList.add('d_none');
 }

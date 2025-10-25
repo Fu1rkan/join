@@ -15,7 +15,7 @@ function pushUserContactsToArray(responseToJson) {
     for (let index = 0; index < responseToJson.length; index++) {
         contacts.push(responseToJson[index]);
     }
-    filterContacts();
+    // filterContacts();
 }
 
 

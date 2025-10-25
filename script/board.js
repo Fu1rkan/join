@@ -13,6 +13,11 @@ function stopPropagation(event) {
 
 function init() {
     loadContacts();
+    renderTasks();
+}
+
+
+function renderTasks() {
     for (let index = 0; index < ids.length; index++) {
         let categoryTasks = taskList.filter(t => t['category'] == ids[index]);
         document.getElementById(`${ids[index]}-kanban`).innerHTML = "";
@@ -141,7 +146,7 @@ function checkTaskOverlayParticipants(i, taskOverlay) {
 
 
 function checkTaskOverlaySubtasks(i, taskOverlay) {
-    if (i.participants != null) {
+    if (i.subtasks != null) {
         document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML += subtasksTaskOverlay(i);
         for (let index = 0; index < i.subtasks.length; index++) {
             if (i.subtasks[index].status == true) {
@@ -155,11 +160,24 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
 
 
 function deleteTask(i) {
-    let task = taskList.findIndex(t => t['id'] == i)
+    let task = taskList.findIndex(t => t['id'] == i);
     taskList.splice(task, 1);
     toggleTaskOverlay(i);
     init();
 }
+
+
+function toggleSubtaskStatus(i, index) {
+    let task = taskList.findIndex(t => t['id'] == i);
+    if (taskList[task].subtasks[index].status == true) {
+        taskList[task].subtasks[index].status = false;
+        
+    }else{
+        taskList[task].subtasks[index].status = true;
+    }
+    toggleTaskOverlay(i)
+    toggleTaskOverlay(i)
+}////////////////////////////////////// Muss optimiert werden
 
 
 
@@ -402,20 +420,21 @@ function pushEditedTaskToJSON(index) {
     taskEditor.date = document.getElementById('input-date').value
     let date = document.getElementById('input-date').value;
     let title = document.getElementById('change-title').value;
-    if (!taskEditor.subtasks.length > 0) {
-        taskEditor.subtasks = null;
-    }
-    if (!taskEditor.participants.length > 0) {
-        taskEditor.participants = null;
-    }
     if (title.length <= 0 || date.length <= 0) {
         const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
         overlay.scrollTop = 0;
     } else {
+        if (!taskEditor.subtasks.length > 0) {
+            taskEditor.subtasks = null;
+        }
+        if (!taskEditor.participants.length > 0) {
+            taskEditor.participants = null;
+        }
         let task = taskList.findIndex(t => t['id'] == index);
         taskList[task] = taskEditor;
         toggleTaskOverlay(task);
-        init();
+        toggleTaskOverlay(task);
+        renderTasks();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
 

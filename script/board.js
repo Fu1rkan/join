@@ -12,6 +12,7 @@ function stopPropagation(event) {
 
 
 function init() {
+    loadContacts();
     for (let index = 0; index < ids.length; index++) {
         let categoryTasks = taskList.filter(t => t['category'] == ids[index]);
         document.getElementById(`${ids[index]}-kanban`).innerHTML = "";
@@ -153,6 +154,14 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
 }
 
 
+function deleteTask(i) {
+    let task = taskList.findIndex(t => t['id'] == i)
+    taskList.splice(task, 1);
+    toggleTaskOverlay(i);
+    init();
+}
+
+
 
 
 
@@ -178,13 +187,13 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
 function openEditTaskOverlay(id) {
     let task = taskList.find(t => t['id'] == id);
     taskEditor = structuredClone(task);
-    
+
     document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task);
     document.getElementById('change-title').value = task.name;
     document.getElementById('change-desc').value = task.description;
     document.getElementById('input-date').value = task.date;
     checkPriorityStatus(task);
-    changeParticipants(task);
+    renderParticipantLogos(task);
     renderContactList();
     renderSubtaskList(task);
 }
@@ -193,9 +202,33 @@ function openEditTaskOverlay(id) {
 function closeEditTaskOverlay(id) {
     let task = taskList.find(t => t['id'] == id);
     taskEditor = undefined;
-    
+
     document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
     checkTaskOverlayInfos(task);
+}
+
+
+function ckeckTitleValue() {
+    let title = document.getElementById('change-title');
+    let titleValue = title.value;
+    if (titleValue.length <= 0) {
+        title.classList.add('bo_c_r');
+        document.getElementById('empty-title-text').classList.remove('d_none');
+    } else {
+        title.classList.remove('bo_c_r');
+        document.getElementById('empty-title-text').classList.add('d_none');
+    }
+}
+
+function ckeckDateValue() {
+    let date = document.getElementById('input-date').value;
+    if (date.length <= 0) {
+        document.getElementById('change-date').classList.add('bo_c_r');
+        document.getElementById('empty-date-text').classList.remove('d_none');
+    } else {
+        document.getElementById('change-date').classList.remove('bo_c_r');
+        document.getElementById('empty-date-text').classList.add('d_none');
+    }
 }
 
 
@@ -214,9 +247,9 @@ function checkPriorityStatus(task) {
         document.getElementById(`low-path-2`).style.fill = 'white';
     }
 }
-                                                                        //Bin unzufrieden damit... Wird optimiert, bald..
+//Bin unzufrieden damit... Wird optimiert, bald..
 
-function resetPriority(){
+function resetPriority() {
     document.getElementById(`prio-urgent`).classList.remove('bc_r');
     document.getElementById(`urgent-path`).style.fill = '#FF3D00';
     document.getElementById(`urgent-path-2`).style.fill = '#FF3D00';
@@ -229,24 +262,25 @@ function resetPriority(){
 }
 
 
-function changePriority(prioType){
+function changePriority(prioType) {
     taskEditor.priority = prioType;
     resetPriority();
     checkPriorityStatus(taskEditor);
 }
 
 
-function changeParticipants(task){
-    if (task.participants != null) {   
-        for (let index = 0; index < task.participants.length; index++) {   
+function renderParticipantLogos(task) {
+    document.getElementById('included-participants').innerHTML = "";
+    if (task.participants != null) {
+        for (let index = 0; index < task.participants.length; index++) {
             document.getElementById('included-participants').innerHTML += participantLogoTemp(task.participants[index]);
         }
     }
 }
 
 
-function renderContactList(){
-    if (contacts.length > 0){
+function renderContactList() {
+    if (contacts.length > 0) {
         for (let index = 0; index < contacts.length; index++) {
             document.getElementById('participants-list').innerHTML += renderContactsTemp(contacts[index], index);
             checkContactStatus(contacts[index].name, index);
@@ -255,32 +289,55 @@ function renderContactList(){
 }
 
 
-function checkContactStatus(contactIndex, index){
-    let task = taskEditor.participants.find(t => t['name'] == contactIndex);
-    if (task) {
-        document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
-        document.getElementById(`check-contact-as-participant-${index}`).innerHTML = checkParticipantTemp();
+function checkContactStatus(contactIndex, index) {
+    if (taskEditor.participants != null) {
+        let task = taskEditor.participants.find(t => t['name'] == contactIndex);
+        if (task) {
+            document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
+            document.getElementById(`check-contact-as-participant-${index}`).innerHTML = checkParticipantTemp();
+        }
+    } else {
+        taskEditor.participants = [];
     }
 }
 
 
-function renderSubtaskList(task){
+function renderSubtaskList(task) {
     document.getElementById('change-subtasks-list').innerHTML = "";
-    if (task.subtasks != null){
+    if (task.subtasks != null) {
         for (let index = 0; index < taskEditor.subtasks.length; index++) {
             document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(index);
         }
+    } else {
+        taskEditor.subtasks = [];
     }
 }
 
 
-function toggleContactList(){
+function putContactAsParticipant(index) {
+    const contactLayout = document.getElementById(`contact-layout-${index}`).classList;
+    if (!contactLayout.contains('bgc_j')) {
+        contactLayout.add('bgc_j');
+        document.getElementById(`check-contact-as-participant-${index}`).innerHTML = checkParticipantTemp();
+        taskEditor.participants.push({ 'name': `${contacts[index].name}` });
+        renderParticipantLogos(taskEditor);
+    } else {
+        contactLayout.remove('bgc_j');
+        document.getElementById(`check-contact-as-participant-${index}`).innerHTML = subtaskToDoTemp();
+        let participant = taskEditor.participants.findIndex(p => p.name === `${contacts[index].name}`);
+        taskEditor.participants.splice(participant, 1);
+        renderParticipantLogos(taskEditor);
+    }
+}
+
+
+function toggleContactList() {
     document.getElementById('change-participants-button').classList.toggle('tf_r180');
     document.getElementById('participants-list').classList.toggle('d_none');
 }
 
 
-function activeEditTask(index, subtask){
+function activeEditTask(index, subtask) {
     document.getElementById(`edit-subtask-${index}`).classList.remove('d_none');
     document.getElementById(`edit-subtask-input-${index}`).classList.remove('d_none');
     document.getElementById(`edit-subtask-input-${index}`).value = subtask;
@@ -289,32 +346,62 @@ function activeEditTask(index, subtask){
 }
 
 
-function acceptEditedTask(index){
+function acceptEditedTask(index) {
     let newSubtask = document.getElementById(`edit-subtask-input-${index}`).value;
-    taskEditor.subtasks[index].name = newSubtask;
+    if (newSubtask.length > 0) {
+        taskEditor.subtasks[index].name = newSubtask;
+        renderSubtaskList(taskEditor);
+    } else {
+        deleteSubtask(index);
+    }
+}
+
+
+function deleteSubtask(index) {
+    taskEditor.subtasks.splice(index, 1);
     renderSubtaskList(taskEditor);
 }
 
 
-function deleteSubtask(subtaskId){
-    taskEditor.subtasks.splice(subtaskId, 1);
-    renderSubtaskList(taskEditor);    
-}
-
-
-function clearInputField(){
+function clearInputField() {
     document.getElementById('new-subtask-input').value = "";
 }
 
 
-function pushSubtask(){
+function pushSubtask() {
     let newSubtask = document.getElementById('new-subtask-input').value;
-    taskEditor.subtasks.push({name: `${newSubtask}`, status: true});
+    taskEditor.subtasks.push({ name: `${newSubtask}`, status: false });
     renderSubtaskList(taskEditor);
     clearInputField();
     const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
     overlay.scrollTop = overlay.scrollHeight;
 }
+
+
+function pushEditedTaskToJSON(index) {
+    taskEditor.name = document.getElementById('change-title').value
+    taskEditor.description = document.getElementById('change-desc').value
+    taskEditor.date = document.getElementById('input-date').value
+    let date = document.getElementById('input-date').value;
+    let title = document.getElementById('change-title').value;
+    if (!taskEditor.subtasks.length > 0) {
+        taskEditor.subtasks = null;
+    }
+    if (!taskEditor.participants.length > 0) {
+        taskEditor.participants = null;
+    }
+    if (title.length <= 0 || date.length <= 0) {
+        const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
+        overlay.scrollTop = 0;
+    } else {
+        let task = taskList.findIndex(t => t['id'] == index);
+        taskList[task] = taskEditor;
+        toggleTaskOverlay(task);
+        init();
+    }
+} ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
+
+
 
 
 

@@ -1,0 +1,162 @@
+.contact-template,
+.contact-info-big-container,
+.contact-informations,
+.contact-informations>div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.contact-template {
+    flex-direction: column;
+    margin-left: 7px;
+    gap: 21px;
+    margin-top: 32px;
+    position: relative;
+}
+
+.contact-info-big-container {
+    width: calc(1440px - (232px + 456px));
+    position: absolute;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.fade-in-template {
+    animation: contactTemplate 300ms linear forwards;
+}
+
+.contact-info-big {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+    width: 100%;
+}
+
+.contact-circle-img-big {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.contact-circle-img-big>p,
+.contact-info-big-name {
+    font-size: var(--font-size-47);
+    font-weight: var(--weight-500);
+}
+
+.contact-circle-img-big>p {
+    color: var(--header-color);
+}
+
+.contact-info-big-name-edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-info-big-edit {
+    display: flex;
+    gap: 13px;
+}
+
+.contact-btn {
+    height: 24px;
+    border-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-16);
+    font-weight: var(--weight-400);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.contact-edit-btn>p {
+    min-width: 31px;
+}
+
+.contact-edit-btn:hover svg path {
+    fill: #29ABE2;
+}
+
+.contact-delete-btn>p {
+    min-width: 50px;
+}
+
+.contact-delete-btn:hover svg path {
+    fill: #29ABE2;
+}
+
+.contact-btn:hover {
+    cursor: pointer;
+    color: var(--inter-text-accent-color);
+    font-weight: var(--weight-700);
+}
+
+.contact-inforamtion-txt {
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    height: 74px;
+    align-content: center;
+}
+
+.contact-informations {
+    flex-direction: column;
+    gap: 22px;
+}
+
+.contact-informations>div {
+    flex-direction: column;
+    gap: 15px;
+    height: 53px;
+}
+
+.contact-informations a {
+    color: #007CEE;
+    font-weight: var(--weight-400);
+}
+
+.contact-informations-phone-number {
+    font-weight: var(--weight-400);
+}
+
+.succes-created-container {
+    width: 100%;
+    height: 74px;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.creates-msg {
+    height: 74px;
+    width: 326px;
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2A3647;
+    border-radius: 20px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+}
+
+.animate-in {
+    animation: createdMsgIn 300ms linear forwards;
+}
+
+.animate-out {
+    animation: createdMsgOut 300ms linear forwards;
+}
+
+.succesfully-created-msg {
+    color: var(--header-color);
+    font-size: var(--font-size-20);
+    font-weight: var(--weight-400);
+    height: 24px;
+}

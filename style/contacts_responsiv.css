@@ -3,7 +3,7 @@
         width: 84%;
     }
 
-    .contact {
+    .contacts-contact-section {
         width: calc(100vw - 456px);
     }
 
@@ -50,16 +50,6 @@
 
     .contact-list-area {
         height: calc(100vh - (96px + 80px));
-    }
-
-    .overlay-right-side {
-        position: relative;
-    }
-
-    .overlay-character-icon {
-        position: absolute;
-        left: 0;
-        transform: translateX(-50%);
     }
 
     .add-contact-content-container {
@@ -118,12 +108,12 @@
     .contact-list-container,
     .contact-list-content,
     .contact-list,
-    .contact,
+    .contacts-contact-section,
     .contact-info-big-container {
         width: 100%;
     }
 
-    .contact {
+    .contacts-contact-section {
         display: none;
     }
 
@@ -277,14 +267,9 @@
         background-color: #2A3647;
     }
 
-    /* .responsiv-edit-delete-menu-container {
-        width: 100%;
-        flex: 1;
-    } */
-
     .responsiv-edit-delete-menu {
         z-index: 1;
-        position: absolute;
+        position: fixed;
         height: 100px;
         width: 116px;
         background-color: #FFFFFF;

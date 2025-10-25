@@ -334,7 +334,7 @@ function progressTemp(taskCount, trueCount) {
 
 function participantsTemp(i, index) {
     return `
-        <div class="user-logo">${i.participants[index].name[0].split(" ").map(word => word[0]).join("")}</div>
+        <div class="user-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
     `
 }
 
@@ -409,7 +409,7 @@ function taskOverlayTemp(i) {
                 </main>
                 
                 <footer>
-                    <button class="main-task-edit">
+                    <button class="main-task-edit" onclick="deleteTask(${i.id})">
                         <div class="edit-logo">
                             <svg width="16" height="18" viewBox="0 0 16 18">
                                 <path d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3C0.716667 3 0.479167 2.90417 0.2875 2.7125C0.0958333 2.52083 0 2.28333 0 2C0 1.71667 0.0958333 1.47917 0.2875 1.2875C0.479167 1.09583 0.716667 1 1 1H5C5 0.716667 5.09583 0.479167 5.2875 0.2875C5.47917 0.0958333 5.71667 0 6 0H10C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1H15C15.2833 1 15.5208 1.09583 15.7125 1.2875C15.9042 1.47917 16 1.71667 16 2C16 2.28333 15.9042 2.52083 15.7125 2.7125C15.5208 2.90417 15.2833 3 15 3V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM3 3V16H13V3H3ZM5 13C5 13.2833 5.09583 13.5208 5.2875 13.7125C5.47917 13.9042 5.71667 14 6 14C6.28333 14 6.52083 13.9042 6.7125 13.7125C6.90417 13.5208 7 13.2833 7 13V6C7 5.71667 6.90417 5.47917 6.7125 5.2875C6.52083 5.09583 6.28333 5 6 5C5.71667 5 5.47917 5.09583 5.2875 5.2875C5.09583 5.47917 5 5.71667 5 6V13ZM9 13C9 13.2833 9.09583 13.5208 9.2875 13.7125C9.47917 13.9042 9.71667 14 10 14C10.2833 14 10.5208 13.9042 10.7125 13.7125C10.9042 13.5208 11 13.2833 11 13V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V13Z" />
@@ -448,12 +448,13 @@ function taskEditOverlayTemp(i) {
 
                 <main id="task-main-overlay-${i.id}" class="edit-task-overlay">
                     <label class="task-info-type" for="change-title">Title</label>
-                    <input type="text" placeholder="Write your Title" class="change-title" id="change-title">
+                    <input type="text" placeholder="Write your Title" class="change-title" id="change-title" onblur="ckeckTitleValue()">
+                    <span class="empty-field d_none" id="empty-title-text">This field is required</span>
                     <label class="task-info-type" for="change-desc">Description</label>
                     <textarea class="change-desc" id="change-desc" placeholder="Write your Description"></textarea>
                     <label class="task-info-type">Due date</label>
-                    <div class="date-input" onclick="openDatePicker()">
-                        <input type="date" id="input-date">
+                    <div class="date-input" onclick="openDatePicker()" id="change-date">
+                        <input type="date" id="input-date" onblur="ckeckDateValue()">
                         <button>
                             <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
                                 <path
@@ -462,6 +463,7 @@ function taskEditOverlayTemp(i) {
                             </svg>
                         </button>
                     </div>
+                    <span class="empty-field d_none" id="empty-date-text">This field is required</span>
                     <label class="task-info-type inter-text-color">Priority</label>
                     <div class="change-priority">
                         <button id="prio-urgent" onclick="changePriority('urgent', ${i.id})">
@@ -536,7 +538,7 @@ function taskEditOverlayTemp(i) {
                 </main>
                 
                 <footer class="edit-task-footer">
-                    <button class="confirm-task-edit">
+                    <button class="confirm-task-edit" onclick="pushEditedTaskToJSON(${i.id})">
                         <p>Ok</p>
                         <svg width="16" height="13" viewBox="0 0 16 13" fill="none">
                             <path d="M5.55021 9.65L14.0252 1.175C14.2252 0.975 14.4627 0.875 14.7377 0.875C15.0127 0.875 15.2502 0.975 15.4502 1.175C15.6502 1.375 15.7502 1.6125 15.7502 1.8875C15.7502 2.1625 15.6502 2.4 15.4502 2.6L6.25021 11.8C6.05021 12 5.81687 12.1 5.55021 12.1C5.28354 12.1 5.05021 12 4.85021 11.8L0.550207 7.5C0.350207 7.3 0.254374 7.0625 0.262707 6.7875C0.27104 6.5125 0.375207 6.275 0.575207 6.075C0.775207 5.875 1.01271 5.775 1.28771 5.775C1.56271 5.775 1.80021 5.875 2.00021 6.075L5.55021 9.65Z" fill="white"/>
@@ -569,7 +571,7 @@ function participantsTaskOverlayTemp(i) {
 function participantTemp(i, index) {
     return `
         <div class="assigned">
-            <div class="asssigned-person-logo">${i.participants[index].name[0].split(" ").map(word => word[0]).join("")}</div>
+            <div class="asssigned-person-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
             <p class="asssigned-person">${i.participants[index].name}</p>
         </div>
     `
@@ -585,7 +587,7 @@ function subtasksTaskOverlay(i) {
 function subtaskListTemp(i, index, status) {
     return `
         <div class="subtask">
-            <div class="subtask-checkbox">${status}</div>
+            <button class="subtask-checkbox">${status}</button>
             <p class="subtask-quest">${i.subtasks[index].name}</p>
         </div>
     `
@@ -619,16 +621,16 @@ function subtaskToDoTemp() {
 
 function participantLogoTemp(participant) {
     return `
-        <span class="asssigned-person-logo">${participant.name[0].split(" ").map(word => word[0]).join("")}</span>
+        <span class="asssigned-person-logo">${participant.name.split(" ").map(word => word[0]).join("")}</span>
     `
 }
 
 
 function renderContactsTemp(contact, index) {
     return `
-        <div class="choose-paticipant" id="contact-layout-${index}">
+        <div class="choose-paticipant" id="contact-layout-${index}" onclick="putContactAsParticipant(${index})">
             <div class="logo-and-name-participant">
-                <span class="asssigned-person-logo">${contact.name[0].split(" ").map(word => word[0]).join("")}</span>
+                <span class="asssigned-person-logo">${contact.name.split(" ").map(word => word[0]).join("")}</span>
                 <span>${contact.name}</span>
             </div>
             <button id="check-contact-as-participant-${index}">
@@ -643,7 +645,7 @@ function renderContactsTemp(contact, index) {
 
 function renderSubtasksTemp(index) {
     return `
-        <div class="change-subtasks">
+        <div class="change-subtasks" ondblclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">
             <div class="edit-subtask d_none" id="edit-subtask-${index}">
                 <input placeholder"Edit Subtask" id="edit-subtask-input-${index}">
                 <div class="confirm-buttons-add-subtasks">

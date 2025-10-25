@@ -1,17 +1,20 @@
+let formRef = document.getElementById('add_task_form');
+
 function init() {
   addCalender();
   buttonActive('medium')
+  loadTasks();
 }
 
 function openContactlist() {
-  const list = document.getElementById("contacts");
+  const list = document.getElementById("task_contacts");
   const arrow = document.getElementById("arrow");
   list.classList.add("open");
   arrow.classList.add("arrow_up");
 }
 
 function closeContactlist() {
-  const list = document.getElementById("contacts");
+  const list = document.getElementById("task_contacts");
   const arrow = document.getElementById("arrow");
   list.classList.remove("open");
   arrow.classList.remove("arrow_up");
@@ -238,7 +241,7 @@ function handleOutsideEdit(e, wrapper, input, bullet) {
 }
 
 function toggleContactDropdown() {
-  const list = document.getElementById("contacts");
+  const list = document.getElementById("task_contacts");
   if (list.classList.contains("open")) closeContactlist();
   else openContactlist();
 }
@@ -262,7 +265,7 @@ function toggleContactActive(contact) {
 
 // ...existing code for prioUrgentSVG, prioMediumSVG, prioLowSVG, etc...
 function toggleContactDropdown() {
-  const list = document.getElementById("contacts");
+  const list = document.getElementById("task_contacts");
   const arrow = document.getElementById("arrow");
   if (list.classList.contains("open")) {
     closeContactlist();
@@ -292,4 +295,9 @@ function toggleContactActive(contact) {
     checkbox.innerHTML = `<path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
   }
 }
+
+function clearForm() {
+  formRef.reset();
+}
+
 

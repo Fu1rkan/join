@@ -382,12 +382,12 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   color: inherit;
 }
 
-#contacts .single_contact.active {
+#task_contacts .single_contact.active {
   background: #091931 !important;
   color: #fff !important;
 }
-#contacts .single_contact.active p,
-#contacts .single_contact.active div {
+#task_contacts .single_contact.active p,
+#task_contacts .single_contact.active div {
   color: #fff !important;
 }
 #contacts .single_contact:hover,
@@ -395,28 +395,28 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   background: #2a3647 !important;
   color: #fff !important;
 }
-#contacts .single_contact:hover p,
-#contacts .single_contact:hover div,
-#contacts .single_contact.active:hover p,
-#contacts .single_contact.active:hover div {
+#task_task_contacts .single_contact:hover p,
+#task_contacts .single_contact:hover div,
+#task_contacts .single_contact.active:hover p,
+#task_contactss .single_contact.active:hover div {
   color: #fff !important;
 }
-#contacts .single_contact.active .checkbox rect,
-#contacts .single_contact.active .checkbox path {
+#task_contacts .single_contact.active .checkbox rect,
+#task_contacts .single_contact.active .checkbox path {
   stroke: #fff !important;
   fill: none !important;
 }
-#contacts .single_contact.active .checkbox {
+#task_contacts .single_contact.active .checkbox {
   filter: drop-shadow(0 0 1px #fff);
 }
 
 /* Hover for non-active assigned-to list items */
-#contacts .single_contact:not(.active):hover {
+#task_contacts .single_contact:not(.active):hover {
   background: #eeeeee !important;
   color: #2a3647 !important;
 }
-#contacts .single_contact:not(.active):hover p,
-#contacts .single_contact:not(.active):hover div {
+#task_contacts .single_contact:not(.active):hover p,
+#task_contacts .single_contact:not(.active):hover div {
   color: #2a3647 !important;
 }
 
@@ -429,12 +429,12 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
 }
 
 /* Both lists: pointer cursor for all list items */
-#contacts .single_contact,
+#task_contacts .single_contact,
 #categorys .single_contact {
   cursor: pointer;
 }
 
-.contacts li {
+.task_contacts li {
   opacity: 1;
   padding: 16px 10px;
   gap: 8px;
@@ -442,7 +442,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   margin-bottom: 1px;
 }
 
-#contacts {
+#task_contacts {
   max-height: 0; /* collapsed by default */
   overflow: hidden; /* hide overflowing items */
   opacity: 0; /* invisible */
@@ -476,7 +476,7 @@ button:not(.urgent_btn_active):not(.medium_btn_active):not(.low_btn_active):hove
   background-color: #ffffff;
 }
 
-#contacts.open {
+#task_contacts.open {
   position: absolute;
   max-height: 200px; /* adjust to fit your list */
   opacity: 1;

@@ -12,6 +12,7 @@ async function loadContacts() {
 }
 
 function pushUserContactsToArray(responseToJson) {
+    contacts = [];
     for (let index = 0; index < responseToJson.length; index++) {
         contacts.push(responseToJson[index]);
     }
@@ -30,6 +31,7 @@ async function loadTasks() {
 }
 
 function pushUserTaskToArray(responseToJson) {
+    testTasks = [];
     for (let index = 0; index < responseToJson.length; index++) {
         testTasks.push(responseToJson[index]);
     }

@@ -50,8 +50,8 @@ function logInTemplate() {
             </section>
 
             <section class="login_buttons">
-                <button class="login_button" type="" onclick="loginUser(); renderLogInUserAnimation();">Log in</button>
-                <button class="guest_login_button" type="">Guest Log in</button>
+                <button class="login_button" type="" onclick="openSummary()">Log in</button>
+                <button class="guest_login_button" type="" onclick="openGuestSummary()">Guest Log in</button>
             </section>
         </section>
 
@@ -301,6 +301,27 @@ function signUpSuccessfull() {
             </dialog>
         </div>`;
 }
+
+function summaryOverlayTemplate() {
+    return `
+         <section class="overlay-greeting-container">
+
+          <div class="summary-greeting" id="greeting-text"></div>
+
+          <div class="summary-greeting" id="summary-greeting-name">
+            Sofia Müller
+          </div>
+        </section>`;
+}
+
+function summaryGuestOverlayTemplate() {
+    return `
+         <section class="overlay-greeting-container">
+          <div class="summary-greeting" id="greeting-text"></div>
+        </section>`;
+}
+
+// task templates
 
 function emptyTaskList() {
     return `

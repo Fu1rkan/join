@@ -17,13 +17,6 @@
   display: flex;
 }
 
-/* Always hide overlay on screens 900px and larger */
-@media (min-width: 900px) {
-  .animated-overlay {
-    display: none !important;
-  }
-}
-
 .animated-overlay .overlay-text {
   text-align: center;
   font-size: 40px;

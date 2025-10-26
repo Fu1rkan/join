@@ -176,3 +176,10 @@
         gap: 8px;
     }
 }
+
+/* Always hide overlay on screens 900px and larger */
+@media (min-width: 900px) {
+  .animated-overlay {
+    display: none !important;
+  }
+}

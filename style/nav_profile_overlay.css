@@ -1,4 +1,6 @@
-/* Show Menü for The Profile */
+
+
+/* Main profile menu container - positioned absolutely in the top-right corner, hidden by default with rounded corners and shadow */
 .nav-profile-container {
   position: absolute;
   top: 0;
@@ -17,18 +19,23 @@
   z-index: 1000;
 }
 
-/* Visible state für Desktop */
+
+/* Show state for profile menu - makes container visible and positions it to the left for desktop view */
 .nav-profile-container.show {
   display: flex;
   right: 520px;
 }
 
+
+/* Container for profile menu links - arranges items horizontally with left alignment */
 .nav-profile-link-container {
   display: flex;
   justify-content: left;
   align-items: center;
 }
 
+
+/* Profile menu navigation list - displays menu items vertically with gap spacing and no bullet points */
 .nav-profile-links {
   display: flex;
   flex-direction: column;
@@ -36,6 +43,48 @@
   list-style-type: none;
 }
 
+
+/* Profile menu link styling - sets light gray color for menu item links */
 .nav-profile-link-item a {
   color: #cdcdcd;
+}
+
+
+/* Medium screen adjustments - switches to fixed positioning with slide animation and prevents horizontal overflow */
+@media (max-width: 1440px) {
+  .nav-profile-container {
+    position: fixed;
+    top: 60px;
+    width: 150px;
+    height: 150px;
+    transform: none;
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+  }
+  .nav-profile-container.show {
+    right: 40px;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+
+
+/* Small screen adjustments - repositions menu closer to screen edge to align with relocated profile button */
+@media (max-width: 950px) {
+  .nav-profile-container {
+    position: fixed;
+    top: 60px;
+    width: 150px;
+    height: 150px;
+    transform: none;
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+  }
+  .nav-profile-container.show {
+    right: 15px;
+  }
+  body {
+    overflow-x: hidden;
+  }
 }

@@ -16,7 +16,6 @@ function pushUserContactsToArray(responseToJson) {
     for (let index = 0; index < responseToJson.length; index++) {
         contacts.push(responseToJson[index]);
     }
-    // filterContacts();
 }
 
 
@@ -43,7 +42,7 @@ function pushUserTaskToArray(responseToJson) {
 
 //Kopie von Svens Code zum Task erstellen
 
-function checkNPost() {
+function checkNPost(id) {
   let title = document.getElementById("title");
   let description = document.getElementById("description").value;
   let dueDate = document.getElementById("date");
@@ -78,11 +77,19 @@ function checkNPost() {
     }
 
     testTasks.push(newestTask);
-    clearForm();
+    clearFormAddTask(id)
     console.log(testTasks);
     
     postTask("user/tasks/", testTasks);
     init();
-
   };
+}
+
+async function postTask(path, data = {}) {    // "user/tasks/", testTasks
+  let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
 }

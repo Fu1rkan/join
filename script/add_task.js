@@ -1,5 +1,3 @@
-let formRef = document.getElementById('add_task_form');
-
 async function init() {
   addCalender();
   buttonActive('medium')
@@ -315,7 +313,8 @@ function toggleContactActive(contact) {
   }
 }
 
-function clearForm() {
+function clearFormAddTask(id) {
+  let formRef = document.getElementById(id);
   formRef.reset();
 }
 

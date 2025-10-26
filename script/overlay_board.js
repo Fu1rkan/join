@@ -12,8 +12,8 @@ function closeOverlayBoard() {
 }
 
 function boardAddTaskTemplate() {
-  return `<section class="ad add-task-card" onclick="event.stopPropagation()">
-    <div class="add-task-header">
+  return `<section class="ad add-task-card" onclick="event.stopPropagation(); closeContactlist(); closeCategoryList()">
+        <div class="add-task-header">
         <h2>Add Task</h2>
         <div class="close-board-overlay" onclick="closeOverlayBoard()">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -26,9 +26,8 @@ function boardAddTaskTemplate() {
 </svg>
         </div>
     </div>
-        
-        <form action="" onsubmit="return false;">
-          <div class="board-overlay-form">
+        <form id="add_task_form_board_overlay" action="" novalidate onsubmit="return false;">
+          <div class="form_wrapper">
             <div class="input_container w100">
               <!-- Title -->
               <div class="w100">
@@ -36,6 +35,8 @@ function boardAddTaskTemplate() {
                 <br />
 
                 <input type="text" id="title" name="title" placeholder="Enter a title" required />
+
+                <p class="required_notice d_none " id="required_notice_title">This field is required</p>
               </div>
               <!-- Description -->
               <div class="w100">
@@ -47,7 +48,8 @@ function boardAddTaskTemplate() {
                 <label for="date">Due Date <span style="color: red">*</span></label>
                 <br />
                 <div class="datepicker" onclick="openCalender()">
-                  <input type="text" id="date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" leng="en-GB" />
+                  <input type="text" id="date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required lang="en-GB"
+                    value="" />
                   <!-- event.svg -->
                   <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -55,15 +57,7 @@ function boardAddTaskTemplate() {
                       fill="#2A3647" />
                   </svg>
                 </div>
-                <script>
-                  /*     const dateInput = document.getElementById("date");
-
-                  dateInput.addEventListener("focus", () => {
-                    dateInput.showPicker?.();
-                  });  */
-                  const today = new Date().toISOString().split("T")[0];
-                  document.getElementById("date").setAttribute("min", today);
-                </script>
+                <p class="required_notice d_none " id="required_notice_due_date">This field is required</p>
               </div>
             </div>
 
@@ -161,6 +155,8 @@ function boardAddTaskTemplate() {
                     <p>User Story</p>
                   </li>
                 </ul>
+
+                <p class="required_notice d_none " id="required_notice_category">This field is required</p>
               </div>
               <!-- Subtask -->
               <div>
@@ -185,21 +181,23 @@ function boardAddTaskTemplate() {
                   </div>
                 </div>
               </div>
+              <div class="subtask_list">
+
+              </div>
+              <div class="required_info">
+                <span style="color: red">*</span>
+                <p>This field is required</p>
+              </div>
             </div>
           </div>
 
-          <div class="subtask_list">
 
-          </div>
 
-          <div class="board-overlay-submit-container">
-            <div class="required_info">
-              <span style="color: red">*</span>
-              <p>This field is required</p>
-            </div>
+          <div class="submit_container">
+
 
             <div class="submit_butn_wrapper">
-              <button class="clear_btn" onclick="clearForm()">
+              <button class="clear_btn" onclick="clearFormAddTask('add_task_form_board_overlay')">
                 Clear
                 <!-- iconoir_cancel.svg -->
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -208,7 +206,8 @@ function boardAddTaskTemplate() {
                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </button>
-              <button class="creat_task_btn" onclick="checkNPost()">
+              <button type="button" class="creat_task_btn" onclick="checkNPost('add_task_form_board_overlay')">
+                <!--closeProtection(event),   entfernt-->
                 Create Task
                 <!-- check.svg -->
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">

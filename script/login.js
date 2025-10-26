@@ -129,12 +129,14 @@ function closeSignUpOverlay() {
     setTimeout(() => {
         document.getElementById('signup-overlay-id').classList.add('d_none');
     }, 1000);
-    setTimeout(() => {
-        loginUser();
-    }, 1000);
 }
 
-// Login function - redirects to summary.html
-function loginUser() {
-    window.location.href = './summary.html';
+// Login with user data
+function openSummary() {
+    window.location.href = './summary.html?showOverlay=true&loginType=user';
+}
+
+// Guest login without user data  
+function openGuestSummary() {
+    window.location.href = './summary.html?showOverlay=true&loginType=guest';
 }

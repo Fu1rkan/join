@@ -65,7 +65,7 @@ function checkNPost(formId, dateId) {
     //   /* add the other inputs */
 
     let newestTask = {
-      "id" : testTasks.length,
+      "id" : taskList.length,
       "name": title.value,
       "description": description,
       "date": dueDate.value,

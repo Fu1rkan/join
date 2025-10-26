@@ -30,10 +30,13 @@ async function loadTasks() {
 }
 
 function pushUserTaskToArray(responseToJson) {
+  if (responseToJson.length > 0) {
     taskList = [];
     for (let index = 0; index < responseToJson.length; index++) {
         taskList.push(responseToJson[index]);
     }
+  }
+    
 }
 
 

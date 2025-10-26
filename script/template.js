@@ -384,8 +384,8 @@ function mediumPrioTemp() {
 
 function taskOverlayTemp(i) {
     return `
-        <div class="open-close-dialog" onclick="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
-            <div class="task-overlay" onclick="stopPropagation(event)">
+        <div class="open-close-dialog" onmousedown="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
+            <div class="task-overlay" onmousedown="stopPropagation(event)">
 
                 <header>
                     <p class="main-task-label" id="task-overlay-type-${i.id}">${i.type}</p>
@@ -435,8 +435,8 @@ function taskOverlayTemp(i) {
 
 function taskEditOverlayTemp(i) {
     return `
-        <div class="open-close-dialog" onclick="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
-            <div class="task-overlay" onclick="stopPropagation(event)" id="task-overlay">
+        <div class="open-close-dialog" onmousedown="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
+            <div class="task-overlay gap_8" onmousedown="stopPropagation(event)" id="task-overlay">
 
                 <header class="edit-task-header">
                     <button class="close-button" onclick="closeEditTaskOverlay(${i.id})">
@@ -502,7 +502,7 @@ function taskEditOverlayTemp(i) {
                     </div>
                     <label class="task-info-type inter-text-color">Assigned to</label>
                     <div class="change-participants">
-                        <input type="text" placeholder="Select Contacts to assign">
+                        <input type="text" placeholder="Select Contacts to assign" onkeyup="searchContact()" id="serchbar-edit-contacts">
                         <button onclick="toggleContactList()" id="change-participants-button">
                             <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
                                 <path
@@ -514,8 +514,8 @@ function taskEditOverlayTemp(i) {
                     <div class="participants-list d_none" id="participants-list"></div>
                     <div class="included-participants" id="included-participants"></div>
                     <label class="task-info-type inter-text-color" for="">Subtasks</label>
-                    <div class="add-subtasks">
-                        <input type="text" placeholder="Add new Subtasks" id="new-subtask-input">
+                    <div class="add-subtasks" id="add-subtasks">
+                        <input type="text" placeholder="Add new Subtasks" id="new-subtask-input" onkeydown="resetPlaceholderSubtask()">
                         <div class="confirm-buttons-add-subtasks">
                             <button onclick="clearInputField()">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -587,7 +587,7 @@ function subtasksTaskOverlay(i) {
 function subtaskListTemp(i, index, status) {
     return `
         <div class="subtask">
-            <button class="subtask-checkbox">${status}</button>
+            <button class="subtask-checkbox" id="subtask-status" onclick="toggleSubtaskStatus(${i.id}, ${index})">${status}</button>
             <p class="subtask-quest">${i.subtasks[index].name}</p>
         </div>
     `
@@ -626,6 +626,18 @@ function participantLogoTemp(participant) {
 }
 
 
+function moreParticipantsEditTaskTemp(participantsCount){
+    return `
+        <div class="more-asssigned-person-logo">
+            <span>${participantsCount}</span>
+            <svg width="10" height="10" viewBox="0 0 15 14" fill="none">
+                <path d="M6.14453 8H1.14453C0.861198 8 0.623698 7.90417 0.432031 7.7125C0.240365 7.52083 0.144531 7.28333 0.144531 7C0.144531 6.71667 0.240365 6.47917 0.432031 6.2875C0.623698 6.09583 0.861198 6 1.14453 6H6.14453V1C6.14453 0.716667 6.24036 0.479167 6.43203 0.2875C6.6237 0.0958333 6.8612 0 7.14453 0C7.42786 0 7.66536 0.0958333 7.85703 0.2875C8.0487 0.479167 8.14453 0.716667 8.14453 1V6H13.1445C13.4279 6 13.6654 6.09583 13.857 6.2875C14.0487 6.47917 14.1445 6.71667 14.1445 7C14.1445 7.28333 14.0487 7.52083 13.857 7.7125C13.6654 7.90417 13.4279 8 13.1445 8H8.14453V13C8.14453 13.2833 8.0487 13.5208 7.85703 13.7125C7.66536 13.9042 7.42786 14 7.14453 14C6.8612 14 6.6237 13.9042 6.43203 13.7125C6.24036 13.5208 6.14453 13.2833 6.14453 13V8Z" fill="#2A3647"/>
+            </svg>
+        </div>
+    `
+}
+
+
 function renderContactsTemp(contact, index) {
     return `
         <div class="choose-paticipant" id="contact-layout-${index}" onclick="putContactAsParticipant(${index})">
@@ -639,6 +651,13 @@ function renderContactsTemp(contact, index) {
                 </svg>
             </button>
         </div>
+    `
+}
+
+
+function noContactsTemp() {
+    return `
+        <p class="color_red">No results</p>
     `
 }
 

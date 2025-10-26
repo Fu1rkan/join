@@ -99,7 +99,7 @@
     .contact-info-big-name {
         font-size: var(--font-size-36);
         font-weight: var(--font-weight-700);
-    }
+    }  
 }
 
 @media (max-width: 960px) {

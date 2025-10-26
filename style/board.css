@@ -11,8 +11,8 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    width: calc(100% - 160px);
-    margin: 80px 80px 40px 80px;
+    padding: 80px 80px 40px 80px;
+    background-color: rgba(246, 247, 248, 1);
 }
 
 .search-section {

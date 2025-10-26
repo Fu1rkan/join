@@ -1,13 +1,30 @@
-let formRef = document.getElementById('add_task_form');
-
-function init() {
+async function init() {
   addCalender();
   buttonActive('medium')
-  loadTasks();
+  await loadTasks();
+  await loadContacts();  
 }
+
+
 
 function openContactlist() {
   const list = document.getElementById("task_contacts");
+  list.innerHTML = "";
+  // 
+  for (let index = 0; index < contacts.length; index++) {
+    list.innerHTML += `<li class="single_contact">
+  <div class="contactslist-icon-and-name-container">
+    <div class="pb_bubble" style="background-color: ${contacts[index]['fillColor']}">
+    <p>${contacts[index]['nameLetters']}</p>
+    </div>
+    <p>${contacts[index]['name']}</p>
+  </div>
+  <svg class="checkbox" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1.96582" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2" />
+  </svg>
+</li>`;
+  }
+
   const arrow = document.getElementById("arrow");
   list.classList.add("open");
   arrow.classList.add("arrow_up");
@@ -296,7 +313,8 @@ function toggleContactActive(contact) {
   }
 }
 
-function clearForm() {
+function clearFormAddTask(id) {
+  let formRef = document.getElementById(id);
   formRef.reset();
 }
 

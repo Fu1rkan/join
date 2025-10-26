@@ -27,4 +27,15 @@
     .asssigned-person{
         font-size: 16px;
     }
+
+    .change-priority button{
+        padding: 8px 4px;
+        flex-direction: column-reverse;
+        gap: 4px;
+    }
+
+    .change-priority button svg{
+        height: 24px;
+        width: 24px;
+    }
 }

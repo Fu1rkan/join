@@ -19,11 +19,11 @@
 <body onload="init()">
 
     <div class="layout">
-        <div id="overlay_board" class="overlay-board d_none" onclick="closeOverlayBoard()">
-            <div id="overlay_board_content" class="add-task-card" onclick="event.stopPropagation()">
+        <section id="overlay_board" class="overlay-board d_none" onclick="closeOverlayBoard()">
+            <div id="overlay_board_content" class="overlay-shadow-pos-rel-container">
 
             </div>
-        </div>
+        </section>
         <nav class="navbar">
             <svg width="102" height="122" viewBox="0 0 102 122" fill="none">
                 <path d="M72.6549 0H50.4971V25.4923H72.6549V0Z" fill="white" />
@@ -114,7 +114,7 @@
             </ul>
         </nav>
         <main>
-            <header class="main-header">
+            <header class="main-header resp-header">
                 <div class="content-limit-header">
                     <svg width="32" height="40" viewBox="0 0 32 40" fill="none">
                         <path d="M22.927 0.492188H15.8389V8.64696H22.927V0.492188Z" fill="#2A3647" />

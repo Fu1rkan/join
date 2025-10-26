@@ -70,11 +70,10 @@ function checkNPost(formId, dateId) {
       "description": description,
       "date": dueDate.value,
       "priority": priority,
-      "assigned_to": "placeholder",
+      "participants": false,
       "type": category.value,
       "category": "to-do",
-      "subtask": [],
-      "participants": []
+      "subtasks": false,
     }
 
     testTasks.push(newestTask);

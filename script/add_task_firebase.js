@@ -7,14 +7,14 @@
 //   // console.log(responseToJson);
 // }
 
-async function postTask(path, data = {}) {    // "user/tasks/", testTasks
-  let response = await fetch(BASE_URL + path + ".json", {
-    method: "PUT",
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return (responseToJson = await response.json());
-}
+// async function postTask(path, data = {}) {    // "user/tasks/", testTasks
+//   let response = await fetch(BASE_URL + path + ".json", {
+//     method: "PUT",
+//     header: { "Content-Type": "application/json" },
+//     body: JSON.stringify(data),
+//   });
+//   return (responseToJson = await response.json());
+// }
 
 // function checkNPost(id) {
 //   let title = document.getElementById("title");

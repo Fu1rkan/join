@@ -1,12 +1,12 @@
-/* Navigation profile container - slide-in menu from right side */
+/* Show Menü for The Profile */
 .nav-profile-container {
   position: absolute;
   top: 0;
   width: 150px;
   height: 150px;
-  right: -120%;
+  right: 0;
   background-color: var(--side-color);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   border-top-left-radius: 16px;
@@ -14,12 +14,12 @@
   border-bottom-right-radius: 16px;
   transform: translateY(96px);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-  transition: right 0.3s ease-in-out;
   z-index: 1000;
 }
 
-/* Visible state for navigation profile container */
+/* Visible state für Desktop */
 .nav-profile-container.show {
+  display: flex;
   right: 520px;
 }
 

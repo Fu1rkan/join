@@ -182,12 +182,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 42px;
     height: 42px;
     border: 2px solid white;
-    background-color: aqua;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     font-size: 12px;
+    color: white;
 }
 
 .asssigned-person {

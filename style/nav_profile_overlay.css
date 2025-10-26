@@ -17,6 +17,7 @@
   transform: translateY(96px);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  overflow-x: hidden;
 }
 
 
@@ -54,9 +55,10 @@
 @media (max-width: 1440px) {
   .nav-profile-container {
     position: fixed;
-    top: 60px;
+    top: 75px;
     width: 150px;
     height: 150px;
+    right: -150px;
     transform: none;
     transition: right 0.3s ease-in-out;
     z-index: 1001;
@@ -71,12 +73,32 @@
 
 
 /* Small screen adjustments - repositions menu closer to screen edge to align with relocated profile button */
+@media (max-width: 1400px) {
+  .nav-profile-container {
+    position: fixed;
+    top: 60px;
+    width: 150px;
+    height: 150px;
+    right: -150px;
+    transform: none;
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+  }
+  .nav-profile-container.show {
+    right: 40px;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+
 @media (max-width: 950px) {
   .nav-profile-container {
     position: fixed;
     top: 60px;
     width: 150px;
     height: 150px;
+    right: -150px;
     transform: none;
     transition: right 0.3s ease-in-out;
     z-index: 1001;

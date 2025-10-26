@@ -35,8 +35,7 @@ function pushUserTaskToArray(responseToJson) {
     for (let index = 0; index < responseToJson.length; index++) {
         taskList.push(responseToJson[index]);
     }
-  }
-    
+  }  
 }
 
 
@@ -88,10 +87,23 @@ function checkNPost(formId, dateId) {
 }
 
 async function postTask(path, data = {}) {    // "user/tasks/", testTasks
-  let response = await fetch(BASE_URL + path + ".json", {
+  if (taskList.length > 0) {
+    let response = await fetch(BASE_URL + path + ".json", {
     method: "PUT",
     header: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   return (responseToJson = await response.json());
+  } else {
+    let data = {
+      "placeholder" : "placeholder"
+    }
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  }
+
 }

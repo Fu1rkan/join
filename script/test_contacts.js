@@ -107,3 +107,26 @@ async function postTask(path, data = {}) {    // "user/tasks/", testTasks
   }
 
 }
+
+
+async function putCurrentContacts(path, data = {}) {    
+  if (contacts.length > 0) {
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  } else {
+    let data = {
+      "placeholder" : "placeholder"
+    }
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  }
+
+}

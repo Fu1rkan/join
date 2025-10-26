@@ -15,6 +15,12 @@
     background-color: rgba(246, 247, 248, 1);
 }
 
+
+.resp-header {
+    box-shadow: none !important;
+}
+
+
 .search-section {
     display: flex;
     justify-content: space-between;
@@ -307,7 +313,6 @@
 .user-logo {
     height: 32px;
     width: 32px;
-    background-color: rgba(255, 122, 0, 1);
     border: 2px solid white;
     border-radius: 45px;
     display: flex;

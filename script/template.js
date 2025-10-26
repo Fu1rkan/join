@@ -332,9 +332,9 @@ function progressTemp(taskCount, trueCount) {
     `
 }
 
-function participantsTemp(i, index) {
+function participantsTemp(inclContacts) {
     return `
-        <div class="user-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
+        <div class="user-logo" style="background-color: ${inclContacts.fillColor};">${inclContacts.nameLetters}</div>
     `
 }
 
@@ -568,11 +568,11 @@ function participantsTaskOverlayTemp(i) {
     `
 }
 
-function participantTemp(i, index) {
+function participantTemp(participant) {
     return `
         <div class="assigned">
-            <div class="asssigned-person-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
-            <p class="asssigned-person">${i.participants[index].name}</p>
+            <span class="asssigned-person-logo" style="background-color: ${participant.fillColor};">${participant.nameLetters}</span>
+            <p class="asssigned-person">${participant.name}</p>
         </div>
     `
 }
@@ -621,12 +621,12 @@ function subtaskToDoTemp() {
 
 function participantLogoTemp(participant) {
     return `
-        <span class="asssigned-person-logo">${participant.name.split(" ").map(word => word[0]).join("")}</span>
+        <span class="asssigned-person-logo" style="background-color: ${participant.fillColor};">${participant.nameLetters}</span>
     `
 }
 
 
-function moreParticipantsEditTaskTemp(participantsCount){
+function moreParticipantsEditTaskTemp(participantsCount) {
     return `
         <div class="more-asssigned-person-logo">
             <span>${participantsCount}</span>
@@ -642,7 +642,7 @@ function renderContactsTemp(contact, index) {
     return `
         <div class="choose-paticipant" id="contact-layout-${index}" onclick="putContactAsParticipant(${index})">
             <div class="logo-and-name-participant">
-                <span class="asssigned-person-logo">${contact.name.split(" ").map(word => word[0]).join("")}</span>
+                <span class="asssigned-person-logo" style="background-color: ${contact.fillColor};">${contact.nameLetters}</span>
                 <span>${contact.name}</span>
             </div>
             <button id="check-contact-as-participant-${index}">

@@ -11,8 +11,8 @@ function stopPropagation(event) {
 }
 
 
-function init() {
-    loadContacts();
+async function init() {
+    await loadContacts();
     renderTasks();
 }
 
@@ -42,7 +42,7 @@ function toggleTaskOverlay(i) {
         document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
         checkTaskOverlayInfos(task)
         checkOverlay += 1;
-    }else{
+    } else {
         checkOverlay = 0;
         taskEditor = undefined;
         renderTasks();
@@ -86,9 +86,10 @@ function checkProgress(i, taskCard) {
 
 function checkParticipants(i, taskCard) {
     if (i.participants != null) {
+        let inclContacts = contacts.filter(c => i.participants.some(p => p.name === c.name));
         for (let index = 0; index < i.participants.length; index++) {
             if (index < 3) {
-                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += participantsTemp(i, index)
+                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += participantsTemp(inclContacts[index])
             } else {
                 document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += moreParticipantsTemp()
                 break
@@ -109,14 +110,14 @@ function checkPrio(i, taskCard) {
 }
 
 
-function checkSubtasksMainOverlay(task, taskProgress, taskInfoId) {
+function checkSubtasksMainOverlay(task, taskProgress) {
     for (let index = 0; index < task.subtasks.length; index++) {
         taskProgress.innerHTML += task.subtasks[index].name;
     }
 }
 
 
-function checkTaskOverlayInfos(i) {
+function checkTaskOverlayInfos(i) {    
     const taskOverlay = 'task-overlay';
     checkTaskType(i, taskOverlay);
     checkTaskDesc(i, taskOverlay);
@@ -140,8 +141,9 @@ function checkTaskOverlayPrio(i, taskOverlay) {
 function checkTaskOverlayParticipants(i, taskOverlay) {
     if (i.participants != null) {
         document.getElementById(`${taskOverlay}-participants-${i.id}`).innerHTML += participantsTaskOverlayTemp(i)
+        let inclContacts = contacts.filter(c => i.participants.some(p => p.name === c.name));
         for (let index = 0; index < i.participants.length; index++) {
-            document.getElementById(`participants-list-${i.id}`).innerHTML += participantTemp(i, index);
+            document.getElementById(`participants-list-${i.id}`).innerHTML += participantTemp(inclContacts[index]);
         }
     }
 }
@@ -291,12 +293,13 @@ function changePriority(prioType) {
 
 function renderParticipantLogos(task) {
     document.getElementById('included-participants').innerHTML = "";
+    let inclContacts = contacts.filter(c => task.participants.some(p => p.name === c.name));
     if (task.participants != null) {
         for (let index = 0; index < task.participants.length; index++) {
             if (index < 4) {
-                document.getElementById('included-participants').innerHTML += participantLogoTemp(task.participants[index]);
+                document.getElementById('included-participants').innerHTML += participantLogoTemp(inclContacts[index]);
             } else {
-                document.getElementById(`included-participants`).innerHTML += moreParticipantsEditTaskTemp(task.participants.length - 4);
+                document.getElementById(`included-participants`).innerHTML += moreParticipantsEditTaskTemp(inclContacts.length - 4);
                 break
             }
         }

@@ -13,6 +13,7 @@ function stopPropagation(event) {
 
 async function init() {
     await loadContacts();
+    await loadTasks();
     renderTasks();
 }
 
@@ -70,14 +71,14 @@ function checkTaskType(i, taskCard) {
 
 
 function checkTaskDesc(i, taskCard) {
-    if (i.description != null) {
+    if (i.description != false) {
         document.getElementById(`${taskCard}-desc-${i.id}`).innerHTML += i.description;
     }
 }
 
 
 function checkProgress(i, taskCard) {
-    if (i.subtasks != null) {
+    if (i.subtasks != false) {
         let trueCount = i.subtasks.filter(s => s.status === true).length;
         document.getElementById(`${taskCard}-subtasks-${i.id}`).innerHTML = progressTemp(i.subtasks.length, trueCount);
     }
@@ -85,7 +86,7 @@ function checkProgress(i, taskCard) {
 
 
 function checkParticipants(i, taskCard) {
-    if (i.participants != null) {
+    if (i.participants != false) {
         let inclContacts = contacts.filter(c => i.participants.some(p => p.name === c.name));
         for (let index = 0; index < i.participants.length; index++) {
             if (index < 3) {
@@ -117,7 +118,7 @@ function checkSubtasksMainOverlay(task, taskProgress) {
 }
 
 
-function checkTaskOverlayInfos(i) {    
+function checkTaskOverlayInfos(i) {
     const taskOverlay = 'task-overlay';
     checkTaskType(i, taskOverlay);
     checkTaskDesc(i, taskOverlay);
@@ -139,7 +140,7 @@ function checkTaskOverlayPrio(i, taskOverlay) {
 
 
 function checkTaskOverlayParticipants(i, taskOverlay) {
-    if (i.participants != null) {
+    if (i.participants != false) {
         document.getElementById(`${taskOverlay}-participants-${i.id}`).innerHTML += participantsTaskOverlayTemp(i)
         let inclContacts = contacts.filter(c => i.participants.some(p => p.name === c.name));
         for (let index = 0; index < i.participants.length; index++) {
@@ -150,7 +151,7 @@ function checkTaskOverlayParticipants(i, taskOverlay) {
 
 
 function checkTaskOverlaySubtasks(i, taskOverlay) {
-    if (i.subtasks != null) {
+    if (i.subtasks != false) {
         document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML = "";
         document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML += subtasksTaskOverlay(i);
         for (let index = 0; index < i.subtasks.length; index++) {
@@ -168,6 +169,7 @@ function deleteTask(i) {
     let task = taskList.findIndex(t => t['id'] == i);
     taskList.splice(task, 1);
     toggleTaskOverlay(i);
+    postTask("user/tasks/", taskList);
     init();
 }
 
@@ -212,7 +214,9 @@ function openEditTaskOverlay(id) {
 
     document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task);
     document.getElementById('change-title').value = task.name;
-    document.getElementById('change-desc').value = task.description;
+    if (task.description != false) {
+        document.getElementById('change-desc').value = task.description;
+    }
     document.getElementById('input-date').value = task.date;
     checkPriorityStatus(task);
     renderParticipantLogos(task);
@@ -293,8 +297,8 @@ function changePriority(prioType) {
 
 function renderParticipantLogos(task) {
     document.getElementById('included-participants').innerHTML = "";
-    let inclContacts = contacts.filter(c => task.participants.some(p => p.name === c.name));
-    if (task.participants != null) {
+    if (task.participants != false) {
+        let inclContacts = contacts.filter(c => task.participants.some(p => p.name === c.name));
         for (let index = 0; index < task.participants.length; index++) {
             if (index < 4) {
                 document.getElementById('included-participants').innerHTML += participantLogoTemp(inclContacts[index]);
@@ -321,7 +325,7 @@ function renderContactList(contacts) {
 
 
 function checkContactStatus(contactIndex, index) {
-    if (taskEditor.participants != null) {
+    if (taskEditor.participants != false) {
         let task = taskEditor.participants.find(t => t['name'] == contactIndex);
         if (task) {
             document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
@@ -335,7 +339,7 @@ function checkContactStatus(contactIndex, index) {
 
 function renderSubtaskList(task) {
     document.getElementById('change-subtasks-list').innerHTML = "";
-    if (task.subtasks != null) {
+    if (task.subtasks != false) {
         for (let index = 0; index < taskEditor.subtasks.length; index++) {
             document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(index);
         }
@@ -451,16 +455,17 @@ function pushEditedTaskToJSON(index) {
         overlay.scrollTop = 0;
     } else {
         if (!taskEditor.subtasks.length > 0) {
-            taskEditor.subtasks = null;
+            taskEditor.subtasks = false;
         }
         if (!taskEditor.participants.length > 0) {
-            taskEditor.participants = null;
+            taskEditor.participants = false;
         }
         let task = taskList.findIndex(t => t['id'] == index);
         taskList[task] = taskEditor;
         toggleTaskOverlay(task);
         toggleTaskOverlay(task);
-        renderTasks();
+        postTask("user/tasks/", taskList);
+        init();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
 
@@ -513,7 +518,7 @@ function moveTo(categoryTo, id) {
     task['category'] = categoryTo;
     document.getElementById(id).classList.remove('drag-area-highlight');
     ids = [categoryFrom, categoryTo]
-    init();
+    renderTasks();
 }
 
 

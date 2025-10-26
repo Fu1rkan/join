@@ -1,5 +1,5 @@
 let contacts = [];
-let testTasks = [];
+let taskList = [];
 
 const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/";
 
@@ -30,9 +30,9 @@ async function loadTasks() {
 }
 
 function pushUserTaskToArray(responseToJson) {
-    testTasks = [];
+    taskList = [];
     for (let index = 0; index < responseToJson.length; index++) {
-        testTasks.push(responseToJson[index]);
+        taskList.push(responseToJson[index]);
     }
 }
 
@@ -76,10 +76,10 @@ function checkNPost(formId, dateId) {
       "subtasks": false,
     }
 
-    testTasks.push(newestTask);
+    taskList.push(newestTask);
     clearFormAddTask(formId)
     
-    postTask("user/tasks/", testTasks);
+    postTask("user/tasks/", taskList);
     init();
   };
 }

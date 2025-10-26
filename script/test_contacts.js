@@ -1,5 +1,5 @@
 let contacts = [];
-// let taskList = [];
+let taskList = [];
 
 const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/";
 
@@ -21,13 +21,13 @@ function pushUserContactsToArray(responseToJson) {
 
 //Tasks
 
-// async function loadTasks() {
-//     let user = "user/";
-//     let userContacts = "tasks/";
-//     let response = await fetch(BASE_URL + user + userContacts + ".json");
-//     let responseToJson = await response.json();
-//     pushUserTaskToArray(responseToJson);
-// }
+async function loadTasks() {
+    let user = "user/";
+    let userContacts = "tasks/";
+    let response = await fetch(BASE_URL + user + userContacts + ".json");
+    let responseToJson = await response.json();
+    pushUserTaskToArray(responseToJson);
+}
 
 function pushUserTaskToArray(responseToJson) {
   if (responseToJson.length > 0) {
@@ -86,27 +86,27 @@ function checkNPost(formId, dateId) {
   };
 }
 
-// async function postTask(path, data = {}) {    // "user/tasks/", testTasks
-//   if (taskList.length > 0) {
-//     let response = await fetch(BASE_URL + path + ".json", {
-//     method: "PUT",
-//     header: { "Content-Type": "application/json" },
-//     body: JSON.stringify(data),
-//   });
-//   return (responseToJson = await response.json());
-//   } else {
-//     let data = {
-//       "placeholder" : "placeholder"
-//     }
-//     let response = await fetch(BASE_URL + path + ".json", {
-//     method: "PUT",
-//     header: { "Content-Type": "application/json" },
-//     body: JSON.stringify(data),
-//   });
-//   return (responseToJson = await response.json());
-//   }
+async function postTask(path, data = {}) {    // "user/tasks/", testTasks
+  if (taskList.length > 0) {
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  } else {
+    let data = {
+      "placeholder" : "placeholder"
+    }
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  }
 
-// }
+}
 
 
 async function putCurrentContacts(path, data = {}) {    

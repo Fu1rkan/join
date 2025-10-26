@@ -47,8 +47,8 @@ function boardAddTaskTemplate() {
               <div class="w100">
                 <label for="date">Due Date <span style="color: red">*</span></label>
                 <br />
-                <div class="datepicker" onclick="openCalender()">
-                  <input type="text" id="date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required lang="en-GB"
+                <div class="datepicker" onclick="openCalender('add_tast_template_date')">
+                  <input type="text" id="add_tast_template_date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required lang="en-GB"
                     value="" />
                   <!-- event.svg -->
                   <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -206,7 +206,7 @@ function boardAddTaskTemplate() {
                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </button>
-              <button type="button" class="creat_task_btn" onclick="checkNPost('add_task_form_board_overlay')">
+              <button type="button" class="creat_task_btn" onclick="checkNPost('add_task_form_board_overlay', 'add_tast_template_date')">
                 <!--closeProtection(event),   entfernt-->
                 Create Task
                 <!-- check.svg -->

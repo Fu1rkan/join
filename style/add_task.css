@@ -657,7 +657,6 @@ margin: 4px 0 0 0 ;
   border-color: #E60026 !important;
 }
 
-
 .contactslist-icon-and-name-container {
   display: flex;
   align-items: center;
@@ -668,6 +667,7 @@ margin: 4px 0 0 0 ;
   height: 42px;
   width: 42px;
   border-radius: 50%;
+  border: 2px solid #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;

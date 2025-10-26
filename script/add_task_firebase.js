@@ -16,49 +16,50 @@ async function postTask(path, data = {}) {    // "user/tasks/", testTasks
   return (responseToJson = await response.json());
 }
 
-function checkNPost() {
-  let title = document.getElementById("title");
-  let description = document.getElementById("description").value;
-  let dueDate = document.getElementById("date");
-  let priority = document.getElementById("priority").value;
-  let category = document.getElementById("category_input");
+// function checkNPost(id) {
+//   let title = document.getElementById("title");
+//   let description = document.getElementById("description").value;
+//   let dueDate = document.getElementById("date");
+//   let priority = document.getElementById("priority").value;
+//   let category = document.getElementById("category_input");
 
-  if (title.value.length < 1 || dueDate.value.length < 1 || category.value.length < 1) {
-    requiredNotice(title, "title");
-    requiredNotice(dueDate, "due_date");
-    requiredNotice(category, "category");
+//   if (title.value.length < 1 || dueDate.value.length < 1 || category.value.length < 1) {
+//     requiredNotice(title, "title");
+//     requiredNotice(dueDate, "due_date");
+//     requiredNotice(category, "category");
 
-  } else {
-    // postTask("", {
-    // "name": title.value,
-    // "description": description,
-    // "date": dueDate.value,
-    // "priority": priority,
-    // "assigned_to": "placeholder",
-    // "category": category.value,
-    // "subtask": ["text1", "text2", "text3"],
-    //   /* add the other inputs */
+//   } else {
+//     // postTask("", {
+//     // "name": title.value,
+//     // "description": description,
+//     // "date": dueDate.value,
+//     // "priority": priority,
+//     // "assigned_to": "placeholder",
+//     // "category": category.value,
+//     // "subtask": ["text1", "text2", "text3"],
+//     //   /* add the other inputs */
 
-    let newestTask = {
-      "name": title.value,
-      "description": description,
-      "date": dueDate.value,
-      "priority": priority,
-      "assigned_to": "placeholder",
-      "categoryType": category.value,
-      "category": "to-do",
-      "subtask": ["text1", "text2", "text3"],
-    }
+//      let newestTask = {
+//       "id" : testTasks.length,
+//       "name": title.value,
+//       "description": description,
+//       "date": dueDate.value,
+//       "priority": priority,
+//       "assigned_to": "placeholder",
+//       "type": category.value,
+//       "category": "to-do",
+//       "subtask": [],
+//       "participants": []
+//     }
 
-    testTasks.push(newestTask);
-    clearForm();
-    console.log(testTasks);
+//     testTasks.push(newestTask);
+//     clearFormAddTask(id);
     
-    postTask("user/tasks/", testTasks);
-    init();
+//     postTask("user/tasks/", testTasks);
+//     init();
 
-  };
-}
+//   };
+// }
 
 function requiredNotice(x, y) {
   let notice = document.getElementById("required_notice_" + y);

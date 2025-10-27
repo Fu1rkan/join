@@ -1,9 +1,9 @@
 // Show and hide animated overlay for responsive/mobile devices when coming from login
-function checkAndShowOverlay() {
-    let urlParams = new URLSearchParams(window.location.search);
-    let showOverlay = urlParams.get('showOverlay');
-    let loginType = urlParams.get('loginType');
+let urlParams = new URLSearchParams(window.location.search);
+let showOverlay = urlParams.get('showOverlay');
+let loginType = urlParams.get('loginType');
 
+function checkAndShowOverlay() {
     if (showOverlay === 'true' && window.innerWidth < 900) {
         let overlay = document.getElementById('animated_overlay_id');
             if (loginType === 'guest') {
@@ -13,7 +13,7 @@ function checkAndShowOverlay() {
             }
             setTimeout(() => {
                 updateGreeting();
-            }, 100);
+            }, 10);
             overlay.classList.add('show');
             setTimeout(() => {
                 overlay.classList.remove('show');

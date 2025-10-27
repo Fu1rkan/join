@@ -1,4 +1,4 @@
-// Show and hide animated overlay for mobile devices when coming from login
+// Show and hide animated overlay for responsive/mobile devices when coming from login
 function checkAndShowOverlay() {
     let urlParams = new URLSearchParams(window.location.search);
     let showOverlay = urlParams.get('showOverlay');
@@ -21,6 +21,10 @@ function checkAndShowOverlay() {
     }
     let newUrl = window.location.pathname;
     window.history.replaceState(null, '', newUrl);
+}
+
+function openBoard() {
+    window.location.href = './board.html';
 }
 
 checkAndShowOverlay();/** Greeting changed by time*/
@@ -59,3 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// stop propagation on menu click
+function stopPropagation(event) {
+    event.stopPropagation();
+}

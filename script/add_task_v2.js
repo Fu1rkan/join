@@ -7,14 +7,12 @@ function activatePriority(para) {
     let svgRef = document.getElementById(`add_task_priority_${para}_svg`);
     if (para == 'urgent') {
         highlightPriorityButton(para, buttonRef, svgRef);
-        PriorityTaskActive ="urgent";
     } else if (para == 'medium') {
         highlightPriorityButton(para, buttonRef, svgRef);
-        PriorityTaskActive ="medium";
     } else {
         highlightPriorityButton(para, buttonRef, svgRef);
-        PriorityTaskActive ="low";
     }  
+    PriorityTaskActive = para;    
 }
 
 function resetPriorityButtonHighlight() {

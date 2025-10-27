@@ -154,7 +154,7 @@
               <div class="w100">
                 <label for="date">Due Date <span style="color: red">*</span></label>
                 <br />
-                <div class="datepicker" onclick="openCalender()">
+                <div class="datepicker" onclick="openCalender('date')">
                   <input type="text" id="date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required lang="en-GB"
                     value="" />
                   <!-- event.svg -->
@@ -228,7 +228,7 @@
                   <input type="text" placeholder="Select contacts to assign" onfocus="openContactlist()" />
                   <!-- arrow_drop_down.svg -->
                   <svg class="arrow" id="arrow" width="8" height="5" viewBox="0 0 8 5" fill="none"
-                    xmlns="http://www.w3.org/2000/svg" onclick="openContactList()">
+                    xmlns="http://www.w3.org/2000/svg" > <!--onclick="openContactList()"  entfernt-->
                     <path
                       d="M3.54851 4.3L0.94851 1.7C0.631844 1.38333 0.56101 1.02083 0.73601 0.6125C0.91101 0.204167 1.22351 0 1.67351 0H6.82351C7.27351 0 7.58601 0.204167 7.76101 0.6125C7.93601 1.02083 7.86518 1.38333 7.54851 1.7L4.94851 4.3C4.84851 4.4 4.74018 4.475 4.62351 4.525C4.50684 4.575 4.38184 4.6 4.24851 4.6C4.11518 4.6 3.99018 4.575 3.87351 4.525C3.75684 4.475 3.64851 4.4 3.54851 4.3Z"
                       fill="#2A3647" />
@@ -313,7 +313,7 @@
                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </button>
-              <button type="button" class="creat_task_btn" onclick="checkNPost('add_task_form')">
+              <button type="button" class="creat_task_btn" onclick="checkNPost('add_task_form', 'date')">
                 <!--closeProtection(event),   entfernt-->
                 Create Task
                 <!-- check.svg -->

@@ -1,4 +1,4 @@
-/* overlay align and design - positioned under header and navbar */
+/* animated overlay for responsive design */
 .animated-overlay {
   position: fixed;
   top: 0;
@@ -6,10 +6,15 @@
   width: 100%;
   height: 100%;
   background-color: #f6f7f8;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 50;
+}
+
+/* Show overlay only when needed */
+.animated-overlay.show {
+  display: flex;
 }
 
 .animated-overlay .overlay-text {
@@ -17,7 +22,6 @@
   font-size: 40px;
 }
 
-/* show overlay when class is added */
 .animated-overlay-text {
   font-family: "Inter", serif;
   font-size: 24px;
@@ -25,6 +29,7 @@
   color: #2a3647;
 }
 
+/* summary title design and align */
 .summary-title {
   display: flex;
   gap: 20px;
@@ -405,4 +410,8 @@ a.summary-board-panel {
   cursor: pointer;
   transition: ease-in-out 80ms;
   background-color: rgba(12, 46, 98, 0.12);
+}
+
+.d_none {
+  display: none !important;
 }

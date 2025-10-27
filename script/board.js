@@ -11,8 +11,9 @@ function stopPropagation(event) {
 }
 
 
-function init() {
-    loadContacts();
+async function init() {
+    await loadContacts();
+    // await loadTasks();
     renderTasks();
 }
 
@@ -42,7 +43,7 @@ function toggleTaskOverlay(i) {
         document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
         checkTaskOverlayInfos(task)
         checkOverlay += 1;
-    }else{
+    } else {
         checkOverlay = 0;
         taskEditor = undefined;
         renderTasks();
@@ -70,14 +71,14 @@ function checkTaskType(i, taskCard) {
 
 
 function checkTaskDesc(i, taskCard) {
-    if (i.description != null) {
+    if (i.description != false) {
         document.getElementById(`${taskCard}-desc-${i.id}`).innerHTML += i.description;
     }
 }
 
 
 function checkProgress(i, taskCard) {
-    if (i.subtasks != null) {
+    if (i.subtasks != false) {
         let trueCount = i.subtasks.filter(s => s.status === true).length;
         document.getElementById(`${taskCard}-subtasks-${i.id}`).innerHTML = progressTemp(i.subtasks.length, trueCount);
     }
@@ -85,10 +86,11 @@ function checkProgress(i, taskCard) {
 
 
 function checkParticipants(i, taskCard) {
-    if (i.participants != null) {
+    if (i.participants != false) {
+        let inclContacts = contacts.filter(c => i.participants.some(p => p.name === c.name));
         for (let index = 0; index < i.participants.length; index++) {
             if (index < 3) {
-                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += participantsTemp(i, index)
+                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += participantsTemp(inclContacts[index])
             } else {
                 document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += moreParticipantsTemp()
                 break
@@ -109,7 +111,7 @@ function checkPrio(i, taskCard) {
 }
 
 
-function checkSubtasksMainOverlay(task, taskProgress, taskInfoId) {
+function checkSubtasksMainOverlay(task, taskProgress) {
     for (let index = 0; index < task.subtasks.length; index++) {
         taskProgress.innerHTML += task.subtasks[index].name;
     }
@@ -138,17 +140,18 @@ function checkTaskOverlayPrio(i, taskOverlay) {
 
 
 function checkTaskOverlayParticipants(i, taskOverlay) {
-    if (i.participants != null) {
+    if (i.participants != false) {
         document.getElementById(`${taskOverlay}-participants-${i.id}`).innerHTML += participantsTaskOverlayTemp(i)
+        let inclContacts = contacts.filter(c => i.participants.some(p => p.name === c.name));
         for (let index = 0; index < i.participants.length; index++) {
-            document.getElementById(`participants-list-${i.id}`).innerHTML += participantTemp(i, index);
+            document.getElementById(`participants-list-${i.id}`).innerHTML += participantTemp(inclContacts[index]);
         }
     }
 }
 
 
 function checkTaskOverlaySubtasks(i, taskOverlay) {
-    if (i.subtasks != null) {
+    if (i.subtasks != false) {
         document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML = "";
         document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML += subtasksTaskOverlay(i);
         for (let index = 0; index < i.subtasks.length; index++) {
@@ -162,11 +165,12 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
 }
 
 
-function deleteTask(i) {
+async function deleteTask(i) {
     let task = taskList.findIndex(t => t['id'] == i);
     taskList.splice(task, 1);
     toggleTaskOverlay(i);
-    init();
+    await postTask("user/tasks/", taskList);
+    await init();
 }
 
 
@@ -210,7 +214,9 @@ function openEditTaskOverlay(id) {
 
     document.getElementById('task-dialog').innerHTML = taskEditOverlayTemp(task);
     document.getElementById('change-title').value = task.name;
-    document.getElementById('change-desc').value = task.description;
+    if (task.description != false) {
+        document.getElementById('change-desc').value = task.description;
+    }
     document.getElementById('input-date').value = task.date;
     checkPriorityStatus(task);
     renderParticipantLogos(task);
@@ -291,12 +297,13 @@ function changePriority(prioType) {
 
 function renderParticipantLogos(task) {
     document.getElementById('included-participants').innerHTML = "";
-    if (task.participants != null) {
+    if (task.participants != false) {
+        let inclContacts = contacts.filter(c => task.participants.some(p => p.name === c.name));
         for (let index = 0; index < task.participants.length; index++) {
             if (index < 4) {
-                document.getElementById('included-participants').innerHTML += participantLogoTemp(task.participants[index]);
+                document.getElementById('included-participants').innerHTML += participantLogoTemp(inclContacts[index]);
             } else {
-                document.getElementById(`included-participants`).innerHTML += moreParticipantsEditTaskTemp(task.participants.length - 4);
+                document.getElementById(`included-participants`).innerHTML += moreParticipantsEditTaskTemp(inclContacts.length - 4);
                 break
             }
         }
@@ -318,7 +325,7 @@ function renderContactList(contacts) {
 
 
 function checkContactStatus(contactIndex, index) {
-    if (taskEditor.participants != null) {
+    if (taskEditor.participants != false) {
         let task = taskEditor.participants.find(t => t['name'] == contactIndex);
         if (task) {
             document.getElementById(`contact-layout-${index}`).classList.add('bgc_j');
@@ -332,7 +339,7 @@ function checkContactStatus(contactIndex, index) {
 
 function renderSubtaskList(task) {
     document.getElementById('change-subtasks-list').innerHTML = "";
-    if (task.subtasks != null) {
+    if (task.subtasks != false) {
         for (let index = 0; index < taskEditor.subtasks.length; index++) {
             document.getElementById('change-subtasks-list').innerHTML += renderSubtasksTemp(index);
         }
@@ -437,7 +444,7 @@ function resetPlaceholderSubtask() {
 }
 
 
-function pushEditedTaskToJSON(index) {
+async function pushEditedTaskToJSON(index) {
     taskEditor.name = document.getElementById('change-title').value
     taskEditor.description = document.getElementById('change-desc').value
     taskEditor.date = document.getElementById('input-date').value
@@ -448,16 +455,17 @@ function pushEditedTaskToJSON(index) {
         overlay.scrollTop = 0;
     } else {
         if (!taskEditor.subtasks.length > 0) {
-            taskEditor.subtasks = null;
+            taskEditor.subtasks = false;
         }
         if (!taskEditor.participants.length > 0) {
-            taskEditor.participants = null;
+            taskEditor.participants = false;
         }
         let task = taskList.findIndex(t => t['id'] == index);
         taskList[task] = taskEditor;
         toggleTaskOverlay(task);
         toggleTaskOverlay(task);
-        renderTasks();
+        await postTask("user/tasks/", taskList);
+        await init();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
 
@@ -491,7 +499,24 @@ function pushEditedTaskToJSON(index) {
 
 
 
+function searchtasks() {
+    let input = document.getElementById('search-bar').value;
+    let tasks = taskList.filter(t => !t.name.toLowerCase().includes(input.toLowerCase()))
+    for (let index = 0; index < tasks.length; index++) {
+        document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none')
+    }
 
+}
+
+
+function showAllTasks() {
+    let input = document.getElementById('search-bar').value;
+    if (input.length < 4) {
+        for (let index = 0; index < taskList.length; index++) {
+            document.getElementById(`task-id-${taskList[index].id}`).classList.remove('d_none')
+        }
+    }
+}
 
 
 function startDragging(id) {
@@ -510,7 +535,7 @@ function moveTo(categoryTo, id) {
     task['category'] = categoryTo;
     document.getElementById(id).classList.remove('drag-area-highlight');
     ids = [categoryFrom, categoryTo]
-    init();
+    renderTasks();
 }
 
 

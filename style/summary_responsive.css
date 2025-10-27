@@ -16,11 +16,6 @@
         display: none;
     }
 }
-@media(min-with: 900px){
-    .animated-overlay{
-        display: none !important;
-    }
-}
 
 @media (max-width: 760px) {
     .summary-title {
@@ -180,4 +175,11 @@
         width: 75px;
         gap: 8px;
     }
+}
+
+/* Always hide overlay on screens 900px and larger */
+@media (min-width: 900px) {
+  .animated-overlay {
+    display: none !important;
+  }
 }

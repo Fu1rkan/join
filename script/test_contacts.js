@@ -1,5 +1,5 @@
 let contacts = [];
-let testTasks = [];
+let taskList = [];
 
 const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/";
 
@@ -30,11 +30,12 @@ async function loadTasks() {
 }
 
 function pushUserTaskToArray(responseToJson) {
-    testTasks = [];
+  if (responseToJson.length > 0) {
+    taskList = [];
     for (let index = 0; index < responseToJson.length; index++) {
-        testTasks.push(responseToJson[index]);
+        taskList.push(responseToJson[index]);
     }
-    console.log(testTasks);
+  }  
 }
 
 
@@ -42,10 +43,10 @@ function pushUserTaskToArray(responseToJson) {
 
 //Kopie von Svens Code zum Task erstellen
 
-function checkNPost(id) {
+function checkNPost(formId, dateId) {
   let title = document.getElementById("title");
   let description = document.getElementById("description").value;
-  let dueDate = document.getElementById("date");
+  let dueDate = document.getElementById(dateId);
   let priority = document.getElementById("priority").value;
   let category = document.getElementById("category_input");
 
@@ -66,30 +67,66 @@ function checkNPost(id) {
     //   /* add the other inputs */
 
     let newestTask = {
+      "id" : taskList.length,
       "name": title.value,
       "description": description,
       "date": dueDate.value,
       "priority": priority,
-      "assigned_to": "placeholder",
-      "categoryType": category.value,
+      "participants": false,
+      "type": category.value,
       "category": "to-do",
-      "subtask": ["text1", "text2", "text3"],
+      "subtasks": false,
     }
 
-    testTasks.push(newestTask);
-    clearFormAddTask(id)
-    console.log(testTasks);
+    taskList.push(newestTask);
+    clearFormAddTask(formId)
     
-    postTask("user/tasks/", testTasks);
+    postTask("user/tasks/", taskList);
     init();
   };
 }
 
 async function postTask(path, data = {}) {    // "user/tasks/", testTasks
-  let response = await fetch(BASE_URL + path + ".json", {
+  if (taskList.length > 0) {
+    let response = await fetch(BASE_URL + path + ".json", {
     method: "PUT",
     header: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   return (responseToJson = await response.json());
+  } else {
+    let data = {
+      "placeholder" : "placeholder"
+    }
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  }
+
+}
+
+
+async function putCurrentContacts(path, data = {}) {    
+  if (contacts.length > 0) {
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  } else {
+    let data = {
+      "placeholder" : "placeholder"
+    }
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  }
+
 }

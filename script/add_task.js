@@ -105,8 +105,8 @@ function addCalender() {
   });
 }
 
-function openCalender() {
-  const dateInput = document.getElementById("date");
+function openCalender(id) {
+  const dateInput = document.getElementById(id);
   dateInput.focus();
 }
 
@@ -309,7 +309,7 @@ function toggleContactActive(contact) {
   } else {
     contact.classList.add('active');
     // White checkbox_active.svg
-    checkbox.innerHTML = `<path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+  //   checkbox.innerHTML = `<path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M5 9.96582L9 13.9658L17 2.46582" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
   }
 }
 

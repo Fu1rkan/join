@@ -50,8 +50,8 @@ function logInTemplate() {
             </section>
 
             <section class="login_buttons">
-                <button class="login_button" type="" onclick="loginUser(); renderLogInUserAnimation();">Log in</button>
-                <button class="guest_login_button" type="">Guest Log in</button>
+                <button class="login_button" type="" onclick="openSummary()">Log in</button>
+                <button class="guest_login_button" type="" onclick="openGuestSummary()">Guest Log in</button>
             </section>
         </section>
 
@@ -302,6 +302,27 @@ function signUpSuccessfull() {
         </div>`;
 }
 
+function summaryOverlayTemplate() {
+    return `
+         <section class="overlay-greeting-container">
+
+          <div class="summary-greeting" id="greeting-text"></div>
+
+          <div class="summary-greeting" id="summary-greeting-name">
+            Sofia Müller
+          </div>
+        </section>`;
+}
+
+function summaryGuestOverlayTemplate() {
+    return `
+         <section class="overlay-greeting-container">
+          <div class="summary-greeting" id="greeting-text"></div>
+        </section>`;
+}
+
+// task templates
+
 function emptyTaskList() {
     return `
         <div class="no-task">No tasks${'To do'}</div>
@@ -310,7 +331,7 @@ function emptyTaskList() {
 
 function taskTemp(i) {
     return `
-        <div class="task" draggable="true" ondragstart="startDragging(${i.id})" onclick="toggleTaskOverlay('${i.id}')">
+        <div class="task" draggable="true" ondragstart="startDragging(${i.id})" onclick="toggleTaskOverlay('${i.id}')" id="task-id-${i.id}">
             <p class="task-label" id="task-card-type-${i.id}">${i.type}</p>
             <h5>${i.name}</h5>
             <p class="task-desc" id="task-card-desc-${i.id}"></p>
@@ -332,9 +353,9 @@ function progressTemp(taskCount, trueCount) {
     `
 }
 
-function participantsTemp(i, index) {
+function participantsTemp(inclContacts) {
     return `
-        <div class="user-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
+        <div class="user-logo" style="background-color: ${inclContacts.fillColor};">${inclContacts.nameLetters}</div>
     `
 }
 
@@ -568,11 +589,11 @@ function participantsTaskOverlayTemp(i) {
     `
 }
 
-function participantTemp(i, index) {
+function participantTemp(participant) {
     return `
         <div class="assigned">
-            <div class="asssigned-person-logo">${i.participants[index].name.split(" ").map(word => word[0]).join("")}</div>
-            <p class="asssigned-person">${i.participants[index].name}</p>
+            <span class="asssigned-person-logo" style="background-color: ${participant.fillColor};">${participant.nameLetters}</span>
+            <p class="asssigned-person">${participant.name}</p>
         </div>
     `
 }
@@ -621,12 +642,12 @@ function subtaskToDoTemp() {
 
 function participantLogoTemp(participant) {
     return `
-        <span class="asssigned-person-logo">${participant.name.split(" ").map(word => word[0]).join("")}</span>
+        <span class="asssigned-person-logo" style="background-color: ${participant.fillColor};">${participant.nameLetters}</span>
     `
 }
 
 
-function moreParticipantsEditTaskTemp(participantsCount){
+function moreParticipantsEditTaskTemp(participantsCount) {
     return `
         <div class="more-asssigned-person-logo">
             <span>${participantsCount}</span>
@@ -642,7 +663,7 @@ function renderContactsTemp(contact, index) {
     return `
         <div class="choose-paticipant" id="contact-layout-${index}" onclick="putContactAsParticipant(${index})">
             <div class="logo-and-name-participant">
-                <span class="asssigned-person-logo">${contact.name.split(" ").map(word => word[0]).join("")}</span>
+                <span class="asssigned-person-logo" style="background-color: ${contact.fillColor};">${contact.nameLetters}</span>
                 <span>${contact.name}</span>
             </div>
             <button id="check-contact-as-participant-${index}">

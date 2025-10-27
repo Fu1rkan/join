@@ -1,0 +1,150 @@
+
+.add-task-content-container {
+    padding: 80px 96px 0 96px;
+}
+
+.add-task-form {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-task-form-main {
+    display: flex;
+    gap: 48px;
+}
+
+.add-task-form-left,
+.add-task-form-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.add-task-form-left>div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+.add-task-form-left label {
+    display: flex;
+}
+
+.add-task-form-left input {
+    /* height: 48px; */
+    padding: 12px 21px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+}
+
+.add-tast-form-input-required-container {
+    height: 64px;
+}
+
+.add-task-form-required {
+    color: #FF8190;
+}
+
+.add-task-form-left {
+    width: 440px;
+    height: 376px;
+}
+
+.add-task-form-textarea {
+    height:100%;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    padding: 18px 16px;
+}
+
+.add-task-form-seperator {
+    width: 0;
+    height: 424px;
+    border: 1px solid #d1d1d1;
+}
+
+.add-task-form-right {
+    width: 440px;
+    height: 400px;
+}
+
+.add-task-priority-btns {
+    height: 88px;
+}
+
+
+
+
+
+.add-task-footer-and-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.add-task-form-info-container {
+    display: flex;
+}
+
+.add-task-form-btns {
+    display: flex;
+    height: 56px;
+    gap: 16px;
+}
+
+.add-task-form-btns>button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+}
+
+.add-task-form-clear-btn {
+    width: 110px;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    
+}
+
+.add-task-form-clear-btn>p {
+    font-size: 20px;
+    font-weight: 400px;
+}
+
+.add-task-form-create-btn {
+    width: 183px;
+    background-color: #2A3647;
+    border-width: 0;
+}
+
+.add-task-form-create-btn>p {
+    font-size: 21px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.add-tast-form-required-msg {
+    font-size: 14px;
+    font-weight: 400;
+    color: #E60026;
+}
+
+.h-136 {
+    height: 136px;
+}
+
+.h-96 {
+    height: 96px;
+}
+
+.h-16 {
+    height: 16px;
+}
+
+.w-100 {
+    width: 100%;
+}

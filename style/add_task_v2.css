@@ -3,13 +3,24 @@
 }
 
 .add-task-content-container {
-    padding: 80px 96px 0 96px;
+    padding: 60px 80px 0 80px;
 }
 
 .add-task-form {
+    width: 979px;
     margin-top: 48px;
     display: flex;
     flex-direction: column;
+}
+
+.add-task-form label {
+    display: flex;
+}
+
+.add-task-form label,
+.add-task-form input,
+.add-task-form textarea {
+    cursor: pointer;
 }
 
 .add-task-form-main {
@@ -33,15 +44,11 @@
     gap: 8px;
 }
 
-.add-task-form-left label,
-.add-task-form-right label {
-    display: flex;
-}
-
 .add-task-form-left-title-input,
 .add-task-form-default-inputs {
     border-radius: 10px;
     border: 1px solid #d1d1d1;
+    height: 48px;
 }
 
 .add-task-form-left-title-input {
@@ -66,10 +73,28 @@
 }
 
 .add-task-form-textarea {
-    height: 100%;
+    height: 120px;
     border: 1px solid #d1d1d1;
     border-radius: 10px;
     padding: 18px 16px;
+}
+
+.add-task-due-date-label,
+.add-task-assigned-to-category-label {
+    position: relative;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.add-task-required-label-head {
+    display: flex;
+}
+
+.add-task-due-date-label>svg {
+    position: absolute;
+    bottom: 40px;
+    right: 16px;
+    transform: translateY(50%);
 }
 
 .add-task-form-seperator {
@@ -111,10 +136,18 @@
     font-weight: 400;
 }
 
+.add-task-assigned-to-category-label>svg {
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+    transform: translateY(-50%);
+}
+
 
 
 
 .add-task-footer-and-btns {
+    margin-top: 56px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -186,4 +219,11 @@
 
 .w-100 {
     width: 100%;
+}
+
+
+@media (max-width: 1400px) {
+    .add-task-main {
+        max-width: 100%;
+    }
 }

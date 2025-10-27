@@ -16,6 +16,11 @@
         display: none;
     }
 }
+@media(min-with: 900px){
+    .animated-overlay{
+        display: none !important;
+    }
+}
 
 @media (max-width: 760px) {
     .summary-title {

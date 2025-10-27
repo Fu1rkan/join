@@ -415,3 +415,9 @@ a.summary-board-panel {
 .d_none {
   display: none !important;
 }
+
+.summary-board-panels > a {
+  display: contents;
+  color: inherit;
+  text-decoration: none;
+}

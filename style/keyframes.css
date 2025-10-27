@@ -1,6 +1,6 @@
 @keyframes slideMidToLeft {
   from {
-    width: 274px; 
+    width: 274px;
     height: 335px;
     position: absolute;
     top: 50%;
@@ -11,6 +11,7 @@
     align-items: center;
     gap: 16px;
   }
+
   to {
     width: 109px;
     height: 134px;
@@ -29,10 +30,11 @@
   from {
     background-color: rgba(255, 255, 255, 1);
   }
+
   to {
     background-color: rgba(255, 255, 255, 0);
     display: none;
-  } 
+  }
 }
 
 @keyframes slideInFromBottom {
@@ -41,9 +43,36 @@
     bottom: -150px;
     transform: translate(-50%, -50%);
   }
+
   to {
     left: 50%;
     bottom: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+/* Keyframes for slide-in animation from right */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%) translateY(96px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0) translateY(96px);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for slide-out animation to right */
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0) translateY(96px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%) translateY(96px);
+    opacity: 0;
   }
 }

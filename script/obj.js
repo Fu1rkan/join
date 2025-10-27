@@ -5,8 +5,8 @@
 //         'type': 'User Story',
 //         'name': 'Task Board Drag & Drop',
 //         'description': 'Add drag and drop functionality for better UX.',
-//         'subtasks': null,
-//         'participants': null,
+//         'subtasks': false,
+//         'participants': false,
 //         'priority': 'medium',
 //         'date': '2025-10-19',
 //     },
@@ -31,12 +31,12 @@
 //         'category': 'to-do',
 //         'type': 'User Story',
 //         'name': 'Contact Form Validation',
-//         'description': null,
+//         'description': false,
 //         'subtasks': [
 //             { 'name': 'Frontend Validation', 'status': true },
 //             { 'name': 'Backend Validation', 'status': false }
 //         ],
-//         'participants': null,
+//         'participants': false,
 //         'priority': 'medium',
 //         'date': '2025-10-21'
 //     },
@@ -138,9 +138,9 @@
 //         'category': 'await-feedback',
 //         'type': 'Technical Task',
 //         'name': 'JavaScript Templates',
-//         'description': null,
-//         'subtasks': null,
-//         'participants': null,
+//         'description': false,
+//         'subtasks': false,
+//         'participants': false,
 //         'priority': 'urgent',
 //         'date': '2025-10-11'
 //     },
@@ -150,8 +150,8 @@
 //         'type': 'Technical Task',
 //         'name': 'API Integration Weather Data',
 //         'description': 'Fetch live weather data from OpenWeather API.',
-//         'subtasks': null,
-//         'participants': null,
+//         'subtasks': false,
+//         'participants': false,
 //         'priority': 'low',
 //         'date': '2025-10-16'
 //     },
@@ -160,7 +160,7 @@
 //         'category': 'await-feedback',
 //         'type': 'User Story',
 //         'name': 'Profile Settings Page',
-//         'description': null,
+//         'description': false,
 //         'subtasks': [
 //             { 'name': 'Upload Avatar', 'status': true },
 //             { 'name': 'Change Password', 'status': false }

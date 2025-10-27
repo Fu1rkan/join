@@ -59,7 +59,7 @@
     background-color: rgba(41, 171, 226, 1);
 }
 
-.board-actions button {
+.board-actions > button {
     background-color: rgba(42, 54, 71, 1);
     border-radius: 10px;
     border: none;
@@ -75,7 +75,7 @@
     text-wrap-mode: nowrap;
 }
 
-.board-actions button:hover {
+.board-actions > button:hover {
     background-color: rgba(41, 171, 226, 1);
 }
 
@@ -146,10 +146,12 @@
     height: 32px;
     border-radius: 50%;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
 
 .search-button:hover {
-    background-color: rgb(168, 166, 166);
+    background-color: rgba(209, 209, 209, 1);
     cursor: pointer;
 }
 

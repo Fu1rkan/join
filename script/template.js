@@ -331,7 +331,7 @@ function emptyTaskList() {
 
 function taskTemp(i) {
     return `
-        <div class="task" draggable="true" ondragstart="startDragging(${i.id})" onclick="toggleTaskOverlay('${i.id}')">
+        <div class="task" draggable="true" ondragstart="startDragging(${i.id})" onclick="toggleTaskOverlay('${i.id}')" id="task-id-${i.id}">
             <p class="task-label" id="task-card-type-${i.id}">${i.type}</p>
             <h5>${i.name}</h5>
             <p class="task-desc" id="task-card-desc-${i.id}"></p>

@@ -13,7 +13,7 @@ function stopPropagation(event) {
 
 async function init() {
     await loadContacts();
-    await loadTasks();
+    // await loadTasks();
     renderTasks();
 }
 
@@ -165,12 +165,12 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
 }
 
 
-function deleteTask(i) {
+async function deleteTask(i) {
     let task = taskList.findIndex(t => t['id'] == i);
     taskList.splice(task, 1);
     toggleTaskOverlay(i);
-    postTask("user/tasks/", taskList);
-    init();
+    await postTask("user/tasks/", taskList);
+    await init();
 }
 
 
@@ -444,7 +444,7 @@ function resetPlaceholderSubtask() {
 }
 
 
-function pushEditedTaskToJSON(index) {
+async function pushEditedTaskToJSON(index) {
     taskEditor.name = document.getElementById('change-title').value
     taskEditor.description = document.getElementById('change-desc').value
     taskEditor.date = document.getElementById('input-date').value
@@ -464,8 +464,8 @@ function pushEditedTaskToJSON(index) {
         taskList[task] = taskEditor;
         toggleTaskOverlay(task);
         toggleTaskOverlay(task);
-        postTask("user/tasks/", taskList);
-        init();
+        await postTask("user/tasks/", taskList);
+        await init();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
 
@@ -499,7 +499,24 @@ function pushEditedTaskToJSON(index) {
 
 
 
+function searchtasks() {
+    let input = document.getElementById('search-bar').value;
+    let tasks = taskList.filter(t => !t.name.toLowerCase().includes(input.toLowerCase()))
+    for (let index = 0; index < tasks.length; index++) {
+        document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none')
+    }
 
+}
+
+
+function showAllTasks() {
+    let input = document.getElementById('search-bar').value;
+    if (input.length < 4) {
+        for (let index = 0; index < taskList.length; index++) {
+            document.getElementById(`task-id-${taskList[index].id}`).classList.remove('d_none')
+        }
+    }
+}
 
 
 function startDragging(id) {

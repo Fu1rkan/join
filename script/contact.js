@@ -130,6 +130,7 @@ function saveChangedContact(name, email) {
     contactRef.name = contactName;
     contactRef.email = contactEmail;
     contactRef.phone = contactPhone;
+    putCurrentContacts("user/contacts/", contacts);
     filterContacts();
     templateRef.innerHTML = getContactTemplate(contactRef);
     const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
@@ -282,7 +283,7 @@ function highlightContact(firstLetter, index) {
     }
 }
 
-function createObjectNewContact(createName, createEmail, createPhone, nameLetters, fillColor) {
+async function createObjectNewContact(createName, createEmail, createPhone, nameLetters, fillColor) {
 
     if (createName != "") {
         let newContact = {
@@ -293,6 +294,7 @@ function createObjectNewContact(createName, createEmail, createPhone, nameLetter
             "nameLetters": nameLetters
         }
         contacts.push(newContact);
+        await putCurrentContacts("user/contacts/", contacts);
         showCreatedContactTemplate(newContact);
     }
 }
@@ -343,10 +345,11 @@ function showCreatedContactTemplate(newContact) {
 
 }
 
-function deleteCurrentContact(name, email) {
+async function deleteCurrentContact(name, email) {
     let currentWidth = window.innerWidth;
     contacts.splice(contacts.findIndex(t => t.name == name && t.email == email), 1);
-    filterContacts();
+    await putCurrentContacts("user/contacts/", contacts);
+    init();
     templateRef.classList.add('d_none');
 
     if (currentWidth <= 960) {

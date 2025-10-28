@@ -13,7 +13,7 @@ function stopPropagation(event) {
 
 async function init() {
     await loadContacts();
-    // await loadTasks();
+    await loadTasks();
     renderTasks();
 }
 

@@ -55,11 +55,12 @@
 }
 
 @media (max-width: 550px) {
-
-    #add_task_priority_urgent_svg,
-    #add_task_priority_medium_svg,
-    #add_task_priority_low_svg {
-        display: none;
+    #add_task_priority_urgent,
+    #add_task_priority_medium,
+    #add_task_priority_low {
+        height: auto;
+        display: flex;
+        flex-direction: column-reverse;
     }
 
     .add-task-form-btns {

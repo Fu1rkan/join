@@ -19,7 +19,15 @@
         margin: 20px 0 0 20px;
     }
 
+    .add-task-form {
+        margin: 20px 0 0 0;
+        height: 71vh;
+    }
+
     .add-task-form-main {
+        scrollbar-width: none;
+        max-height: 100vh;
+        overflow-x: auto;
         align-items: center;
     }
 
@@ -35,12 +43,15 @@
     .add-task-form-left,
     .add-task-form-right {
         width: 95%;
+        gap: 24px;
     }
 
     .add-task-footer-and-btns {
         flex-direction: column;
         gap: 12px;
+        margin: 10px 10px 0 10px;
     }
+
 }
 
 @media (max-width: 550px) {

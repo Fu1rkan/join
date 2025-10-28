@@ -128,12 +128,38 @@
     gap: 8px;
     border-radius: 10px;
     border-width: 0;
+
+}
+
+.add-task-priority-btns-hover-class:hover {
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.add-task-priority-btn-urgent-active {
+    background-color: #FF3D00;
+}
+
+.add-task-priority-btn-medium-active {
+    background-color: #FFA800;
+}
+
+.add-task-priority-btn-low-active {
+    background-color: #7AE229;
+}
+
+.add-task-priority-btn-urgent-active p,
+.add-task-priority-btn-medium-active p,
+.add-task-priority-btn-low-active p {
+    color: #FFFFFF;
 }
 
 .add-task-priority-btns button>p {
     font-size: 20px;
     font-weight: 400;
+}
+
+.add_task_priority_active_svg path {
+    fill: white;
 }
 
 .add-task-assigned-to-category-label>svg {
@@ -143,8 +169,69 @@
     transform: translateY(-50%);
 }
 
+.add-task-form-assigned-to-dropdown {
+    display: flex;
+    flex-direction: column;
+}
 
+.add-task-form-assigned-to-dropdown-contacts {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background-color: #FFFFFF;
+}
 
+.add-task-form-assigned-to-dropdown-contacts li {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 16px;
+    border-radius: 10px;
+}
+
+.add-task-form-assigned-to-dropdown-contacts-default-hover-class:hover {
+    background-color: #EEEEEE;
+}
+
+.add-task-form-assigned-to-dropdown-contacts-checked {
+    background-color: #2A3647;
+}
+
+.add-task-form-assigned-to-dropdown-contacts-checked .add-task-form-assigned-to-dropdown-list-contact>p {
+    color: #FFFFFF;
+}
+
+.add-task-form-assigned-to-dropdown-contacts-checked>svg {
+    fill: #FFFFFF;
+}
+
+.add-task-form-assigned-to-dropdown-contacts-checked:hover {
+    background-color: #091931;
+}
+
+.add-task-form-assigned-to-dropdown-list-contact {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.add-task-form-assigned-to-dropdown-contacts-icon {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 122, 0, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-form-assigned-to-dropdown-contacts-icon>p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
 
 .add-task-footer-and-btns {
     margin-top: 56px;
@@ -219,6 +306,10 @@
 
 .w-100 {
     width: 100%;
+}
+
+.d_none {
+    display: none;
 }
 
 

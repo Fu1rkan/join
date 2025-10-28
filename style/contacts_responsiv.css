@@ -49,7 +49,7 @@
     }
 
     .contact-list-area {
-        height: calc(100vh - (96px + 80px));
+        height: calc(100vh - (80px + 80px));
     }
 
     .add-contact-content-container {

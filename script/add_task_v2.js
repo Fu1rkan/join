@@ -36,8 +36,8 @@ function selectContact(contact) {
     let contactRef = document.getElementById(contact);
     let svgUncheckedRef = document.getElementById(`${contact}_unchecked`);
     let svgCheckedRef = document.getElementById(`${contact}_checked`);
-    contactRef.classList.remove('add-task-form-assigned-to-dropdown-contacts-default-hover-class')
-    contactRef.classList.add('add-task-form-assigned-to-dropdown-contacts-checked')
-    svgUncheckedRef.classList.add('d_none');
-    svgCheckedRef.classList.remove('d_none');
+    contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-default-hover-class')
+    contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-checked')
+    svgUncheckedRef.classList.toggle('d_none');
+    svgCheckedRef.classList.toggle('d_none');
 }

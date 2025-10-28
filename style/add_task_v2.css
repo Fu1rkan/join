@@ -203,9 +203,9 @@
     color: #FFFFFF;
 }
 
-.add-task-form-assigned-to-dropdown-contacts-checked>svg {
+/* .add-task-form-assigned-to-dropdown-contacts-checked svg {
     fill: #FFFFFF;
-}
+} */
 
 .add-task-form-assigned-to-dropdown-contacts-checked:hover {
     background-color: #091931;
@@ -221,7 +221,7 @@
     height: 42px;
     width: 42px;
     border-radius: 50%;
-    background-color: rgba(255, 122, 0, 1);
+    /* background-color: rgba(255, 122, 0, 1); */
     display: flex;
     justify-content: center;
     align-items: center;

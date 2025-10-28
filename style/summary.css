@@ -59,7 +59,6 @@
 /* Container for the summary section */
 .summary-container {
   display: flex;
-  width: 100%;
   max-width: 1200px;
   margin-left: 70px;
   margin-top: 40px;

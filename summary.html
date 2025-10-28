@@ -100,7 +100,7 @@
 
       <ul class="navbar-footer">
         <li>
-          <a class="navbar-footer-link" href="./privacy_police.html">Private Policy</a>
+          <a class="navbar-footer-link" href="./privacy_policy.html">Private Policy</a>
         </li>
         <li>
           <a class="navbar-footer-link" href="./legal_notice.html">Legal Notice</a>
@@ -136,8 +136,7 @@
                 fill="#A8A8A8" />
             </svg>
 
-            <div class="profil-header"></div>
-            <!-- //BUG: Profile Menu doesn't show -->
+            <div class="profil-header" onclick="toggleBurgerMenu()"></div>
 
             <div class="nav-profile-container" id="profile-menu">
               <div class="nav-profile-link-container">
@@ -156,7 +155,7 @@
 
       <!-- animated overlay for responsive/mobile -->
       <section onclick="stopPropagation(event)" class="animated-overlay-background">
-        <div class="animated-overlay"  id="animated_overlay_id"></div>
+        <div class="animated-overlay" id="animated_overlay_id"></div>
       </section>
 
       <!-- summary content -->
@@ -262,6 +261,7 @@
   </section>
   <script src="./script/template.js"></script>
   <script src="./script/summary.js"></script>
+  <script src="./script/script.js"></script>
 </body>
 
 </html>

@@ -1,13 +1,12 @@
 .add-task-main {
+    height: 82vh;
+    overflow-x: auto;
     max-width: calc(1440px - 232px);
-}
-
-.add-task-content-container {
-    padding: 60px 80px 0 80px;
+    padding: 60px 80px 20px 80px;
+    z-index: 1;
 }
 
 .add-task-form {
-    width: 979px;
     margin-top: 48px;
     display: flex;
     flex-direction: column;
@@ -29,12 +28,14 @@
 }
 
 .add-task-form-main {
+    width: 100%;
     display: flex;
     gap: 48px;
 }
 
 .add-task-form-left,
 .add-task-form-right {
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -70,11 +71,6 @@
 
 .add-task-form-required {
     color: #FF8190;
-}
-
-.add-task-form-left {
-    width: 440px;
-    height: 376px;
 }
 
 .add-task-form-textarea {
@@ -117,11 +113,6 @@
     border: 1px solid #d1d1d1;
 }
 
-.add-task-form-right {
-    width: 440px;
-    height: 400px;
-}
-
 .add-task-priority-btns-container {
     height: 88px;
 }
@@ -133,7 +124,7 @@
 
 .add-task-priority-btns button {
     cursor: pointer;
-    width: 136px;
+    width: 30%;
     height: 56px;
     display: flex;
     align-items: center;
@@ -364,6 +355,7 @@
 
 .add-task-form-btns {
     display: flex;
+    justify-content: center;
     height: 56px;
     gap: 16px;
 }
@@ -377,7 +369,7 @@
 }
 
 .add-task-form-clear-btn {
-    width: 110px;
+    padding: 12px 12px;
     border-radius: 10px;
     border: 1px solid #2A3647;
 
@@ -389,7 +381,7 @@
 }
 
 .add-task-form-create-btn {
-    width: 183px;
+    padding: 12px 12px;
     background-color: #2A3647;
     border-width: 0;
 }
@@ -465,11 +457,4 @@
 
 .d_none {
     display: none;
-}
-
-
-@media (max-width: 1400px) {
-    .add-task-main {
-        max-width: 100%;
-    }
 }

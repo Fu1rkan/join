@@ -4,6 +4,8 @@ let currentDraggedElement;
 
 let taskEditor;
 
+let pressTimer;
+
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
 function stopPropagation(event) {
@@ -13,7 +15,7 @@ function stopPropagation(event) {
 
 async function init() {
     await loadContacts();
-    // await loadTasks();
+    await loadTasks();
     renderTasks();
 }
 
@@ -553,4 +555,17 @@ function openDatePicker() {
     const input = document.getElementById('input-date');
     input.showPicker?.();
     input.focus();
+}
+
+
+function startPress(taskId) {
+    pressTimer = setTimeout(() => {
+        let task = taskList.find(t => t['id'] == taskId);
+        document.getElementById(`task-id-${taskId}`).classList.add(`resp-menu-task-${taskId}`);
+    }, 500);
+}
+
+
+function endPress() {
+    clearTimeout(pressTimer);
 }

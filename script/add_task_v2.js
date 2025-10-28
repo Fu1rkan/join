@@ -146,13 +146,13 @@ function highlightInputFields(activeInputField) {
     removeHighlightInputFields();
     inputFieldRef.classList.add('add-task-inputfield-highlight');
 
-    switch (activeInputField ) {
+    switch (activeInputField) {
         case "add_task_subtasks":
-                inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
+            inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
             break;
 
         case "add_task_due_date":
-                inputFieldAddFormCalenderRef.classList.add('d_none');
+            inputFieldAddFormCalenderRef.classList.add('d_none');
             break;
         default:
             break;
@@ -173,7 +173,8 @@ function setSubtask(activeInputField = "add_task_subtasks") {
     let subtasksInputField = document.getElementById(activeInputField);
     currentCreatedSubtasks.push(
         {
-            "name": subtasksInputField.value
+            "name": subtasksInputField.value,
+            "status": false
         }
     );
     resetAddTaskSubtasksInputField();
@@ -239,7 +240,7 @@ function getSubtaskTemplate(index) {
 }
 
 function deleteCurrentSubtask(index) {
-    currentCreatedSubtasks.splice(index,1);
+    currentCreatedSubtasks.splice(index, 1);
     renderCurrentCreatedSubtasks();
 }
 
@@ -251,4 +252,62 @@ function saveChangedSubtask(index) {
     currentCreatedSubtasks[index].name = inputChangedSubtaskRef.value;
     subtaskListRef.classList.remove('list-style-none');
     renderCurrentCreatedSubtasks();
+}
+
+function createNewTask() {
+    let titleRef = document.getElementById('add_task_title');
+    let descriptionRef = document.getElementById('add_task_description');
+    let dueDateRef = document.getElementById('add_task_due_date');
+    if (titleRef.value != "" && dueDateRef.value != "" && currentChoosedCategory != "") {
+        taskList.push(
+        {
+            "id": taskList.length,
+            "name": titleRef.value,
+            "description": descriptionRef.value,
+            "date": dueDateRef.value,
+            "priority": priorityTaskActive,
+            "category": "to-do",
+            "type": currentChoosedCategory,
+            "participants": currentAssignedTo,
+            "subtasks": currentCreatedSubtasks
+        }
+    )
+    }
+    
+    priorityTaskActive = "medium";
+    currentAssignedTo = [];
+    currentChoosedCategory = "";
+    currentCreatedSubtasks = [];
+    clearForm();
+    init();
+    activatePriority();
+    postTask("user/tasks/", taskList);
+}
+
+function clearForm() {
+    let formRef = document.getElementById('add_task_form');
+    formRef.reset();
+}
+
+
+async function postTask(path, data = {}) {    // "user/tasks/", testTasks
+  if (taskList.length > 0) {
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  } else {
+    let data = {
+      "placeholder" : "placeholder"
+    }
+    let response = await fetch(BASE_URL + path + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+  }
+
 }

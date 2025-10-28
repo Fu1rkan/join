@@ -300,16 +300,18 @@
 }
 
 .add-task-form-subtasks-dropdown-subtasks {
-    list-style: disc;
+    /* list-style: disc; */
     padding-left: 44px;
 }
 
 .list-style-none {
     list-style: none;
-    padding: 0;
+    /* padding: 0; */
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item {
+    list-style: disc;
+    /* padding-left: 44px; */
     padding: 6px 16px 16px 0;
     height: 32px;
 }

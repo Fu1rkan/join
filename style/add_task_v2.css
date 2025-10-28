@@ -1,6 +1,5 @@
 .add-task-main {
     height: 82vh;
-    overflow-x: auto;
     max-width: calc(1440px - 232px);
     padding: 60px 80px 20px 80px;
     z-index: 1;

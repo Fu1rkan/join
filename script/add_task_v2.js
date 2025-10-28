@@ -6,6 +6,12 @@ async function init() {
 let priorityTaskActive = "medium";
 let currentAssignedTo = [];
 let currentChoosedCategory = "";
+let currentCreatedSubtasks = [];
+
+function openCalender() {
+    let calenderRef = document.getElementById('add_task_due_date')
+    calenderRef.showPicker();
+}
 
 function activatePriority(para = "medium") {
     PriorityTaskActive = "";
@@ -47,11 +53,11 @@ function selectContact(index) {
     contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-checked')
     svgUncheckedRef.classList.toggle('d_none');
     svgCheckedRef.classList.toggle('d_none');
-    if(currentAssignedTo.includes(contacts[index])) {
-        currentAssignedTo.splice(currentAssignedTo.findIndex(contact => contact.name == contacts[index].name && contact.email == contacts[index].email) ,1);
+    if (currentAssignedTo.includes(contacts[index])) {
+        currentAssignedTo.splice(currentAssignedTo.findIndex(contact => contact.name == contacts[index].name && contact.email == contacts[index].email), 1);
     } else {
         currentAssignedTo.push(contacts[index]);
-    } 
+    }
 }
 
 function toggleAssignedToContactList() {
@@ -61,7 +67,7 @@ function toggleAssignedToContactList() {
     addTaskAssignedToArrow.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
     if (!addTaskAssignedToList.classList.contains('d_none')) {
         renderContactsInList();
-    } 
+    }
 }
 
 function renderContactsInList() {
@@ -117,3 +123,57 @@ function chooseCategory(categoryName) {
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
 }
+
+function changeCurrentSubtask() {
+    let subtaskListRef = document.getElementById('add_task_form_subtasks_dropdown_subtasks');
+    let subtaskListItemRef = document.getElementById('current_subtask_li');
+    let currentSubtaskValue = document.getElementById('current_subtask');
+    let currentSubtaskChangeLabelRef = document.getElementById('label_current_subtask');
+    let currentSubtaskChangeinputRef = document.getElementById('change_current_element');
+    subtaskListRef.classList.add('list-style-none');
+    subtaskListItemRef.classList.remove('add-task-form-subtasks-dropdown-subtasks-list-item');
+    currentSubtaskValue.classList.add('d_none');
+    currentSubtaskChangeLabelRef.classList.remove('d_none');
+    currentSubtaskChangeinputRef.value = currentSubtaskValue.innerText
+}
+
+function highlightInputFields(activeInputField) {
+    let inputFieldRef = document.getElementById(activeInputField);
+    let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
+    inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
+    removeHighlightInputFields();
+    inputFieldRef.classList.add('add-task-inputfield-highlight');
+    if (activeInputField == "add_task_subtasks") {
+        inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
+    }
+}
+
+function removeHighlightInputFields() {
+    document.querySelectorAll('.add-task-form input').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
+    document.querySelectorAll('.add-task-form textarea').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
+}
+
+function resetAddTaskSubtasksInputField(activeInputField = "add_task_subtasks") {
+    let subtasksInputField = document.getElementById(activeInputField);
+    subtasksInputField.value = "";
+}
+
+function setSubtask(activeInputField = "add_task_subtasks") {
+    let subtasksInputField = document.getElementById(activeInputField);
+    currentCreatedSubtasks.push(
+        {
+            "name": subtasksInputField.value
+        }
+    );
+    resetAddTaskSubtasksInputField();
+    // renderCurrentCreatedSubtasks();
+}
+
+function renderCurrentCreatedSubtasks() {
+    let subtasksContentList = document.getElementById('add_task_form_subtasks_dropdown_subtasks');
+    subtasksContentList.innerHTML = "";
+    for (let index = 0; index < currentCreatedSubtasks.length; index++) {
+        subtasksContentList.innerHTML += getSubtaskTemplate(index);
+    }
+}
+

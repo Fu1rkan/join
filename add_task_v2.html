@@ -255,8 +255,8 @@
                                 <label for="add_task_assigned_to" class="add-task-assigned-to-category-label">
                                     <p>Assigned to</p>
                                     <input id="add_task_assigned_to" class="w-100 add-task-form-default-inputs"
-                                        type="text" onclick="renderContactsInList()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        type="text" onclick="toggleAssignedToContactList()">
+                                    <svg id="add_task_form_assigned_to_arrow_svg" class="add-task-form-assigned-to-arrow-down-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
                                         <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse"
                                             x="0" y="0" width="24" height="24">
@@ -270,9 +270,9 @@
                                     </svg>
                                 </label>
                                 <div class="add-task-form-assigned-to-dropdown">
-                                    <ul id="add_task_form_assigned_to_dropdown_contacts"
-                                        class="add-task-form-assigned-to-dropdown-contacts">
-                                    </ul>
+                                <ul id="add_task_form_assigned_to_dropdown_contacts"
+                                    class="add-task-form-assigned-to-dropdown-contacts d_none">
+                                </ul>
                                 </div>
                             </div>
                             <div class="h-80">
@@ -283,7 +283,7 @@
                                     </div>
                                     <input id="add_task_category" class="w-100 add-task-form-default-inputs"
                                         type="text">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    <svg class="add-task-form-assigned-to-arrow-down-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
                                         <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse"
                                             x="0" y="0" width="24" height="24">

@@ -107,6 +107,15 @@ function selectContact(index) {
     console.log(currentAssignedTo);
 }
 
+function toggleAssignedToContactList() {
+    let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
+    let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
+    addTaskAssignedToList.classList.toggle('d_none');
+    addTaskAssignedToArrow.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
+    if (!addTaskAssignedToList.classList.contains('d_none')) {
+        renderContactsInList();
+    } 
+}
 
 function renderContactsInList() {
     let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');

@@ -1,13 +1,11 @@
 .add-task-main {
+    height: 82vh;
     max-width: calc(1440px - 232px);
-}
-
-.add-task-content-container {
-    padding: 60px 80px 0 80px;
+    padding: 60px 80px 20px 80px;
+    z-index: 1;
 }
 
 .add-task-form {
-    width: 979px;
     margin-top: 48px;
     display: flex;
     flex-direction: column;
@@ -17,6 +15,11 @@
     display: flex;
 }
 
+.add-task-form input,
+.add-task-form textarea {
+    outline: none;
+}
+
 .add-task-form label,
 .add-task-form input,
 .add-task-form textarea {
@@ -24,12 +27,14 @@
 }
 
 .add-task-form-main {
+    width: 100%;
     display: flex;
     gap: 48px;
 }
 
 .add-task-form-left,
 .add-task-form-right {
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -59,17 +64,12 @@
     padding: 12px 16px;
 }
 
-.add-tast-form-input-required-container {
+.add-task-form-input-required-container {
     height: 64px;
 }
 
 .add-task-form-required {
     color: #FF8190;
-}
-
-.add-task-form-left {
-    width: 440px;
-    height: 376px;
 }
 
 .add-task-form-textarea {
@@ -90,22 +90,26 @@
     display: flex;
 }
 
-.add-task-due-date-label>svg {
+.add-task-due-date-label-calender-svg {
     position: absolute;
     bottom: 40px;
     right: 16px;
     transform: translateY(50%);
 }
 
+.add-task-due-date-label-placeholder-svg {
+    z-index: 1;
+    position: absolute;
+    bottom: 38px;
+    left: 16px;
+    transform: translateY(50%);
+    background-color: #FFFFFF;
+}
+
 .add-task-form-seperator {
     width: 0;
     height: 424px;
     border: 1px solid #d1d1d1;
-}
-
-.add-task-form-right {
-    width: 440px;
-    height: 400px;
 }
 
 .add-task-priority-btns-container {
@@ -119,7 +123,7 @@
 
 .add-task-priority-btns button {
     cursor: pointer;
-    width: 136px;
+    width: 30%;
     height: 56px;
     display: flex;
     align-items: center;
@@ -180,20 +184,29 @@
 .add-task-form-assigned-to-dropdown,
 .add-task-form-assigned-to-dropdown-contacts,
 .add-task-form-category-dropdown,
-.add-task-form-category-dropdown-category {
+.add-task-form-category-dropdown-category,
+.add-task-subtaks-dropdown,
+.add-task-form-subtasks-dropdown-subtasks {
     display: flex;
     flex-direction: column;
-
 }
 
-.add-task-form-category-dropdown-category,
-.add-task-form-assigned-to-dropdown-contacts {
-    z-index: 1;
+
+.add-task-form-assigned-to-dropdown-contacts,
+.add-task-form-category-dropdown-category {
     gap: 2px;
     background-color: #FFFFFF;
     max-height: 288px;
     overflow-y: auto;
     scrollbar-width: thin;
+}
+
+.add-task-form-assigned-to-dropdown-contacts {
+    z-index: 2;
+}
+
+.add-task-form-category-dropdown-category {
+    z-index: 1;
 }
 
 .add-task-form-assigned-to-dropdown-contacts li,
@@ -226,10 +239,6 @@
     color: #FFFFFF;
 }
 
-/* .add-task-form-assigned-to-dropdown-contacts-checked svg {
-    fill: #FFFFFF;
-} */
-
 .add-task-form-assigned-to-dropdown-contacts-checked:hover {
     background-color: #091931;
 }
@@ -244,7 +253,6 @@
     height: 42px;
     width: 42px;
     border-radius: 50%;
-    /* background-color: rgba(255, 122, 0, 1); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,6 +262,83 @@
     font-size: 12px;
     font-weight: 400;
     color: #FFFFFF;
+}
+
+.add-task-form-subtasks-btns,
+.add_task_form_subtasks_dropdown_subtasks-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.add-task-form-subtasks-btns {
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+    transform: translateY(-50%);
+}
+
+.add-task-form-subtasks-btns button,
+.add_task_form_subtasks_dropdown_subtasks-btns button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 0;
+    height: 24px;
+    width: 24px;
+}
+
+.add-task-form-subtasks-dropdown-subtasks {
+    /* list-style: disc; */
+    padding-left: 44px;
+}
+
+.list-style-none {
+    list-style: none;
+    /* padding: 0; */
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item {
+    list-style: disc;
+    /* padding-left: 44px; */
+    padding: 6px 16px 16px 0;
+    height: 32px;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title {
+    /* font-size: 16px; */
+    font-weight: 400;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item-subtask-input {
+    padding: 4px 16px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.add-task-subtasks-input-seperator,
+.add-task-subtasks-dropdown-subtasks-item-seperator {
+    width: 0;
+    height: 24px;
+}
+
+.add-task-subtasks-input-seperator {
+    border: 1px solid #D1D1D1;
+}
+
+.add-task-subtasks-dropdown-subtasks-item-seperator {
+    border: 1px solid #A8A8A8;
+}
+
+.add-task-inputfield-highlight {
+    border-color: #29ABE2; 
 }
 
 .add-task-footer-and-btns {
@@ -269,6 +354,7 @@
 
 .add-task-form-btns {
     display: flex;
+    justify-content: center;
     height: 56px;
     gap: 16px;
 }
@@ -282,7 +368,7 @@
 }
 
 .add-task-form-clear-btn {
-    width: 110px;
+    padding: 12px 12px;
     border-radius: 10px;
     border: 1px solid #2A3647;
 
@@ -294,7 +380,7 @@
 }
 
 .add-task-form-create-btn {
-    width: 183px;
+    padding: 12px 12px;
     background-color: #2A3647;
     border-width: 0;
 }
@@ -309,6 +395,43 @@
     font-size: 14px;
     font-weight: 400;
     color: #E60026;
+}
+
+.add-task-form-input-placeholder-default::placeholder,
+.add-task-form-input-placeholder-black::placeholder {
+    font-size: 20px;
+    font-weight: 400;
+    color: #D1D1D1;
+}
+
+.add-task-form-input-placeholder-default::placeholder {
+    color: #D1D1D1;
+}
+
+.add-task-form-input-placeholder-black::placeholder {
+    color: #000000;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-item label,
+.add-task-form-subtasks-dropdown-subtasks-item input {
+    width: 100%;
+    height: 32px;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-item label {
+    position: relative;
+}
+
+.add_task_form_subtasks_dropdown_subtasks-btns {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.add-task-form-subtasks-dropdown-subtasks-item input {
+    border: none;
+    border-bottom: 1px solid #29ABE2;
 }
 
 .h-136 {
@@ -333,11 +456,4 @@
 
 .d_none {
     display: none;
-}
-
-
-@media (max-width: 1400px) {
-    .add-task-main {
-        max-width: 100%;
-    }
 }

@@ -5,8 +5,7 @@ body {
 /* Navigation profile container - slide-in menu from right side */
 .nav-profile-container {
   position: absolute;
-  top: 0;
-  right: 50px;
+  top: 0px;
   width: 150px;
   height: 150px;
   background-color: var(--side-color);
@@ -25,6 +24,8 @@ body {
 /* Visible state - slides in from right */
 .nav-profile-container.show {
   display: flex;
+  top: 0px;
+  right: 520px;
   animation: slideInFromRight 0.3s ease-out forwards;
 }
 
@@ -83,7 +84,6 @@ body {
 @media (max-width: 1400px) {
   .nav-profile-container {
     position: fixed;
-    top: 60px;
     width: 150px;
     height: 150px;
     right: -150px;
@@ -93,6 +93,7 @@ body {
   }
   .nav-profile-container.show {
     right: 40px;
+    top: -15px;
   }
   body {
     overflow-x: hidden;
@@ -102,7 +103,6 @@ body {
 @media (max-width: 950px) {
   .nav-profile-container {
     position: fixed;
-    top: 60px;
     width: 150px;
     height: 150px;
     right: -150px;
@@ -112,6 +112,7 @@ body {
   }
   .nav-profile-container.show {
     right: 15px;
+    top: -36px;
   }
   body {
     overflow-x: hidden;

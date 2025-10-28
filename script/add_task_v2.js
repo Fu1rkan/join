@@ -58,6 +58,7 @@ let testContacts = [
 
 let priorityTaskActive = "medium";
 let currentAssignedTo = [];
+let currentChoosedCategory = "";
 
 function activatePriority(para = "medium") {
     PriorityTaskActive = "";
@@ -155,4 +156,18 @@ function getAddTaskAssignedToListItem(testContacts, index) {
                                                 </svg>
                                             </div>
                                         </li>`
+}
+
+function toggleCategoryList() {
+    let addTaskCategoryListRef = document.getElementById('add_task_form_category_dropdown_category');
+    let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
+    addTaskCategoryListRef.classList.toggle('d_none');
+    addTaskCategoryArrowRef.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
+}
+
+function chooseCategory(categoryName) {
+    let addTaskCategoryInputRef = document.getElementById('add_task_category');
+    toggleCategoryList();
+    addTaskCategoryInputRef.value = categoryName;
+    currentChoosedCategory = categoryName;
 }

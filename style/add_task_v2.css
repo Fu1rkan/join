@@ -178,12 +178,15 @@
 }
 
 .add-task-form-assigned-to-dropdown,
-.add-task-form-assigned-to-dropdown-contacts {
+.add-task-form-assigned-to-dropdown-contacts,
+.add-task-form-category-dropdown,
+.add-task-form-category-dropdown-category {
     display: flex;
     flex-direction: column;
 
 }
 
+.add-task-form-category-dropdown-category,
 .add-task-form-assigned-to-dropdown-contacts {
     z-index: 1;
     gap: 2px;
@@ -193,13 +196,22 @@
     scrollbar-width: thin;
 }
 
-.add-task-form-assigned-to-dropdown-contacts li {
+.add-task-form-assigned-to-dropdown-contacts li,
+.add-task-form-category-dropdown-category li {
     cursor: pointer;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 7px 16px;
     border-radius: 10px;
+}
+
+.add-task-form-assigned-to-dropdown-contacts li {
+    justify-content: space-between;
+    padding: 7px 16px;
+}
+
+.add-task-form-category-dropdown-category li {
+    justify-content: flex-start;
+    padding: 12px 16px;
 }
 
 .add-task-form-assigned-to-dropdown-contacts-default-hover-class:hover {

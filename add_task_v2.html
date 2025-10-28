@@ -255,7 +255,7 @@
                                 <label for="add_task_assigned_to" class="add-task-assigned-to-category-label">
                                     <p>Assigned to</p>
                                     <input id="add_task_assigned_to" class="w-100 add-task-form-default-inputs"
-                                        type="text" onclick="toggleAssignedToContactList()">
+                                        type="text" onclick="toggleAssignedToContactList()" placeholder="Select contacts to assign">
                                     <svg id="add_task_form_assigned_to_arrow_svg" class="add-task-form-assigned-to-arrow-down-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
                                         <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse"
@@ -282,8 +282,8 @@
                                         <p class="add-task-form-required">*</p>
                                     </div>
                                     <input id="add_task_category" class="w-100 add-task-form-default-inputs"
-                                        type="text">
-                                    <svg class="add-task-form-assigned-to-arrow-down-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        type="text" placeholder="Select task category" onclick="toggleCategoryList()">
+                                    <svg id="add_task_form_category_arrow_svg" class="add-task-form-assigned-to-arrow-down-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
                                         <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse"
                                             x="0" y="0" width="24" height="24">
@@ -296,6 +296,17 @@
                                         </g>
                                     </svg>
                                 </label>
+                                <div class="add-task-form-category-dropdown">
+                                <ul id="add_task_form_category_dropdown_category"
+                                    class="add-task-form-category-dropdown-category d_none">
+                                    <li onclick="chooseCategory('Technical Task')" class="add-task-form-assigned-to-dropdown-contacts-default-hover-class">
+                                        <p>Technical Task</p>
+                                    </li>
+                                    <li onclick="chooseCategory('User Story')" class="add-task-form-assigned-to-dropdown-contacts-default-hover-class">
+                                        <p>User Story</p>
+                                    </li>
+                                </ul>
+                                </div>
                             </div>
                             <div class="h-80">
                                 <label for="add_task_subtasks">

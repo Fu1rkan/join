@@ -9,7 +9,7 @@
     <title>Add Task</title>
 </head>
 
-<body>
+<body onload="init()">
     <div class="layout">
         <nav class="navbar">
             <svg width="102" height="122" viewBox="0 0 102 122" fill="none">
@@ -312,7 +312,7 @@
                                 <label for="add_task_subtasks">
                                     <p>Subtasks</p>
                                 </label>
-                                <input id="add_task_subtasks" class="w-100 add-task-form-default-inputs" type="text">
+                                <input id="add_task_subtasks" class="w-100 add-task-form-default-inputs" type="text" placeholder="Add new subtask">
                             </div>
 
                         </section>
@@ -355,6 +355,7 @@
         </main>
 
     </div>
+    <script src="./script/test_contacts.js"></script>
     <script src="./script/add_task_v2.js"></script>
 </body>
 

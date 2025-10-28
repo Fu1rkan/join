@@ -1,60 +1,7 @@
-let testContacts = [
-    {
-        "name": "Anton Mayer",
-        "email": "antonm@gmail.com",
-        "phone": "+49 1111 111 11 1", "fillColor": "rgba(255, 122, 0, 1)",
-        "nameLetters": "AM"
-    },
-    {
-        "name": "Anja Schulz",
-        "email": "schulz@gmail.com",
-        "phone": "+49 2222 222 22 2",
-        "fillColor": "rgba(147, 39, 255, 1)",
-        "nameLetters": "AS"
-    },
-    {
-        "name": "Benedikt Ziegler", "email": "benedikt@gmail.com",
-        "phone": "+49 3333 333 33 3",
-        "fillColor": "rgba(110, 82, 255, 1)",
-        "nameLetters": "BZ"
-    },
-    {
-        "name": "David Eisenberg",
-        "email": "davidberg@gmail.com",
-        "phone": "+49 4444 444 44 4",
-        "fillColor": "rgba(252, 113, 255, 1)",
-        "nameLetters": "DE"
-    },
-    {
-        "name": "Eva Fischer",
-        "email": "eva@gmail.com",
-        "phone": "+49 5555 555 55 5",
-        "fillColor": "rgba(255, 187, 43, 1)",
-        "nameLetters": "EF"
-    },
-    {
-        "name": "Emmanuel Mauer",
-        "email": "emmanuelma@gmail.com",
-        "phone": "+49 6666 666 66 6",
-        "fillColor": "rgba(31, 215, 193, 1)",
-        "nameLetters": "EM"
-    },
-    {
-        "name": "Marcel Bauer",
-        "email": "bauer@gmail.com",
-        "phone": "+49 7777 777 77 7",
-        "fillColor": "rgba(31, 215, 77, 1)",
-        "nameLetters": "MB"
-    },
-    {
-        "name": "Tatjana Wolf",
-        "email": "wolf@gmail.com",
-        "phone": "+49 8888 888 88 8",
-        "fillColor": "rgba(71, 31, 215, 1)",
-        "nameLetters": "TW"
-    }
-]
-
+async function init() {
+    await loadContacts();
+    await loadTasks();
+}
 
 let priorityTaskActive = "medium";
 let currentAssignedTo = [];
@@ -100,12 +47,11 @@ function selectContact(index) {
     contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-checked')
     svgUncheckedRef.classList.toggle('d_none');
     svgCheckedRef.classList.toggle('d_none');
-    if(currentAssignedTo.includes(testContacts[index])) {
-        currentAssignedTo.splice(currentAssignedTo.findIndex(contact => contact.name == testContacts[index].name && contact.email == testContacts[index].email) ,1);
+    if(currentAssignedTo.includes(contacts[index])) {
+        currentAssignedTo.splice(currentAssignedTo.findIndex(contact => contact.name == contacts[index].name && contact.email == contacts[index].email) ,1);
     } else {
-        currentAssignedTo.push(testContacts[index]);
-    }
-    console.log(currentAssignedTo);
+        currentAssignedTo.push(contacts[index]);
+    } 
 }
 
 function toggleAssignedToContactList() {
@@ -121,20 +67,20 @@ function toggleAssignedToContactList() {
 function renderContactsInList() {
     let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     addTaskAssignedToList.innerHTML = "";
-    for (let index = 0; index < testContacts.length; index++) {
-        addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(testContacts, index);
+    for (let index = 0; index < contacts.length; index++) {
+        addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(index);
     }
 }
 
-function getAddTaskAssignedToListItem(testContacts, index) {
+function getAddTaskAssignedToListItem(index) {
     return `<li id="${index}"
                                             class="add-task-form-assigned-to-dropdown-contacts-default-hover-class"
                                             onclick="selectContact(${index})">
                                             <div class="add-task-form-assigned-to-dropdown-list-contact">
-                                                <div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${testContacts[index].fillColor}">
-                                                    <p>${testContacts[index].nameLetters}</p>
+                                                <div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${contacts[index].fillColor}">
+                                                    <p>${contacts[index].nameLetters}</p>
                                                 </div>
-                                                <p>${testContacts[index].name}</p>
+                                                <p>${contacts[index].name}</p>
                                             </div>
                                             <div id="${index}_unchecked" class="">
                                                 <svg 

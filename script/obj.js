@@ -172,3 +172,12 @@
 //         'date': '2025-10-17'
 //     },
 // ];
+
+let userList = [
+    { "username": "Guest User",
+        "e-mail": "guest@example.com",
+        "password": "guest123",
+        "tasklist": [],
+        "contactlist": []
+    }
+];

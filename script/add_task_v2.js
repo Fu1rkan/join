@@ -72,7 +72,7 @@ function renderCurrentAssignedTo() {
         for (let index = 0; index < 4; index++) {
             currentAssignedToListRef.innerHTML += getCurrentAssignedContactTemplate(index);
         }
-        if(currentAssignedTo.length > 4) {
+        if (currentAssignedTo.length > 4) {
             currentAssignedToListRef.innerHTML += `+${currentAssignedTo.length - 4}`;
         }
     }
@@ -97,7 +97,7 @@ function renderContactsInList() {
         }
         return;
     }
-    renderChangedContaktList(addTaskAssignedToList); 
+    renderChangedContaktList(addTaskAssignedToList);
 }
 
 function renderChangedContaktList(addTaskAssignedToList) {
@@ -107,11 +107,21 @@ function renderChangedContaktList(addTaskAssignedToList) {
 
     for (let i = 0; i < contacts.length; i++) {
         if (activeContactIndices.includes(i)) {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToActiveListItem(i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
+            markAsChecked(i);
         } else {
             addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
         }
     }
+}
+
+function markAsChecked(i) {
+    let contactRef = document.getElementById(`add_task_assigned_to_contact_${i}`);
+    let svgUncheckedRef = document.getElementById(`${i}_unchecked`);
+    let svgCheckedRef = document.getElementById(`${i}_checked`);
+    contactRef.classList.add('add-task-form-assigned-to-dropdown-contacts-checked');
+    svgUncheckedRef.classList.add('d_none');
+    svgCheckedRef.classList.remove('d_none');
 }
 
 function toggleCategoryList() {
@@ -276,11 +286,11 @@ function closeDropdownMenus(ev) {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
     let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
+    closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
 }
 
-function closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef) {
+function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef) {
     if (!inputFieldAssignedToRef.contains(ev.target) && !inputFieldAssignedToContactListRef.contains(ev.target) || !inputFieldCategoryRef.contains(ev.target) && !inputFieldCategoryListRef.contains(ev.target)) {
         inputFieldAssignedToContactListRef.classList.add('d_none');
         inputFieldCategoryListRef.classList.add('d_none');

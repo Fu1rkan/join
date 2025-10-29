@@ -59,7 +59,7 @@
   }
 
   100% {
-    transform: translateX(0) translateY(96px);
+    transform: translateX(-110px) translateY(96px);
     opacity: 1;
   }
 }
@@ -67,7 +67,7 @@
 /* Keyframes for slide-out animation to right */
 @keyframes slideOutToRight {
   0% {
-    transform: translateX(0) translateY(96px);
+    transform: translateX(-110px) translateY(96px);
     opacity: 1;
   }
 

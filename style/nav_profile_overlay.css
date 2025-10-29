@@ -6,7 +6,6 @@ body {
 .nav-profile-container {
   position: absolute;
   top: 0;
-  right: 50px;
   width: 150px;
   height: 150px;
   background-color: var(--side-color);

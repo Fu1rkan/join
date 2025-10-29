@@ -331,7 +331,7 @@ function emptyTaskList() {
 
 function taskTemp(i) {
     return `
-        <div class="task" draggable="true" ondragstart="startDragging(${i.id})" onclick="toggleTaskOverlay('${i.id}')" id="task-id-${i.id}">
+        <div class="task" draggable="true" ondragstart="startDragging(${i.id})" onclick="toggleTaskOverlay('${i.id}')" id="task-id-${i.id}" onpointerdown="startPress(${i.id})" onpointerup="endPress(${i.id})">
             <p class="task-label" id="task-card-type-${i.id}">${i.type}</p>
             <h5>${i.name}</h5>
             <p class="task-desc" id="task-card-desc-${i.id}"></p>
@@ -340,6 +340,9 @@ function taskTemp(i) {
                 <div class="task-assignees" id="task-card-participants-${i.id}"></div>
                 <div class="task-priority" id="task-card-prio-${i.id}"></div>
             </footer>
+            <div class="resp-menu-task" id="resp-menu-task-${i.id}">
+
+            </div>
         </div>
     `
 }

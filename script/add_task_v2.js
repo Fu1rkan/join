@@ -46,11 +46,11 @@ function highlightPriorityButton(para, buttonRef, svgRef) {
 
 
 function selectContact(index) {
-    let contactRef = document.getElementById(index);
+    let contactRef = document.getElementById(`add_task_assigned_to_contact_${index}`);
     let svgUncheckedRef = document.getElementById(`${index}_unchecked`);
     let svgCheckedRef = document.getElementById(`${index}_checked`);
-    contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-default-hover-class')
-    contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-checked')
+    contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-default-hover-class');
+    contactRef.classList.toggle('add-task-form-assigned-to-dropdown-contacts-checked');
     svgUncheckedRef.classList.toggle('d_none');
     svgCheckedRef.classList.toggle('d_none');
     if (currentAssignedTo.includes(contacts[index])) {
@@ -58,11 +58,34 @@ function selectContact(index) {
     } else {
         currentAssignedTo.push(contacts[index]);
     }
+    renderCurrentAssignedTo();
+}
+
+function renderCurrentAssignedTo() {
+    let currentAssignedToSectionRef = document.getElementById('add_task_form_assigned_to_section');
+    let currentAssignedToListRef = document.getElementById('current_assigned_to_contacts');
+    currentAssignedToSectionRef.classList.remove('h-130');
+    currentAssignedToListRef.classList.add('d_none');
+    currentAssignedToListRef.innerHTML = "";
+    if (currentAssignedTo.length > 0) {
+        currentAssignedToSectionRef.classList.add('h-130');
+        currentAssignedToListRef.classList.remove('d_none');
+        for (let index = 0; index < currentAssignedTo.length; index++) {
+            currentAssignedToListRef.innerHTML += getCurrentAssignedContactTemplate(index);
+        }
+    }
+}
+
+function getCurrentAssignedContactTemplate(index) {
+    return `<div class="current-assigned-to-contact" style="background-color:${currentAssignedTo[index].fillColor}">
+                                        <p>${currentAssignedTo[index].nameLetters}</p>
+                                    </div>`
 }
 
 function toggleAssignedToContactList() {
     let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
+    // overlayRef.classList.toggle('d_none');
     addTaskAssignedToList.classList.toggle('d_none');
     addTaskAssignedToArrow.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
     if (!addTaskAssignedToList.classList.contains('d_none')) {
@@ -79,7 +102,7 @@ function renderContactsInList() {
 }
 
 function getAddTaskAssignedToListItem(index) {
-    return `<li id="${index}"
+    return `<li id="add_task_assigned_to_contact_${index}"
                                             class="add-task-form-assigned-to-dropdown-contacts-default-hover-class"
                                             onclick="selectContact(${index})">
                                             <div class="add-task-form-assigned-to-dropdown-list-contact">
@@ -260,20 +283,20 @@ function createNewTask() {
     let dueDateRef = document.getElementById('add_task_due_date');
     if (titleRef.value != "" && dueDateRef.value != "" && currentChoosedCategory != "") {
         taskList.push(
-        {
-            "id": taskList.length,
-            "name": titleRef.value,
-            "description": descriptionRef.value,
-            "date": dueDateRef.value,
-            "priority": priorityTaskActive,
-            "category": "to-do",
-            "type": currentChoosedCategory,
-            "participants": currentAssignedTo,
-            "subtasks": currentCreatedSubtasks
-        }
-    )
+            {
+                "id": taskList.length,
+                "name": titleRef.value,
+                "description": descriptionRef.value,
+                "date": dueDateRef.value,
+                "priority": priorityTaskActive,
+                "category": "to-do",
+                "type": currentChoosedCategory,
+                "participants": currentAssignedTo,
+                "subtasks": currentCreatedSubtasks
+            }
+        )
     }
-    
+
     priorityTaskActive = "medium";
     currentAssignedTo = [];
     currentChoosedCategory = "";
@@ -287,27 +310,4 @@ function createNewTask() {
 function clearForm() {
     let formRef = document.getElementById('add_task_form');
     formRef.reset();
-}
-
-
-async function postTask(path, data = {}) {    // "user/tasks/", testTasks
-  if (taskList.length > 0) {
-    let response = await fetch(BASE_URL + path + ".json", {
-    method: "PUT",
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return (responseToJson = await response.json());
-  } else {
-    let data = {
-      "placeholder" : "placeholder"
-    }
-    let response = await fetch(BASE_URL + path + ".json", {
-    method: "PUT",
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return (responseToJson = await response.json());
-  }
-
 }

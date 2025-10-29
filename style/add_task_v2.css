@@ -201,12 +201,23 @@
     scrollbar-width: thin;
 }
 
+.add-task-form-assigned-to-section {
+    position: relative;
+}
+
+.add-task-form-assigned-to-dropdown {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+}
+
 .add-task-form-assigned-to-dropdown-contacts {
-    z-index: 2;
+    z-index: 4;
 }
 
 .add-task-form-category-dropdown-category {
-    z-index: 1;
+    z-index: 4;
 }
 
 .add-task-form-assigned-to-dropdown-contacts li,
@@ -264,6 +275,30 @@
     color: #FFFFFF;
 }
 
+.current-assigned-to-contacts-container {
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+.current-assigned-to-contact {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    border: 2px solid #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-assigned-to-contact>p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
 .add-task-form-subtasks-btns,
 .add_task_form_subtasks_dropdown_subtasks-btns {
     display: flex;
@@ -291,19 +326,29 @@
 
 .add-task-form-subtasks-dropdown-subtasks {
     /* list-style: disc; */
-    padding-left: 44px;
+    /* padding-left: 44px; */
 }
 
 .list-style-none {
     list-style: none;
-    /* padding: 0; */
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item {
-    list-style: disc;
-    /* padding-left: 44px; */
-    padding: 6px 16px 16px 0;
+    list-style: none;
+    padding: 6px 16px 6px 40px;
     height: 32px;
+    position: relative;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item::before {
+    content: "•";
+    position: absolute;
+    left: 24px;
+    top: 14px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #2A3647;
+    pointer-events: none;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title {
@@ -338,7 +383,8 @@
 }
 
 .add-task-inputfield-highlight {
-    border-color: #29ABE2; 
+    border-color: #29ABE2;
+    /* cursor: pointer;  */
 }
 
 .add-task-footer-and-btns {
@@ -438,12 +484,17 @@
     height: 136px;
 }
 
+
 .h-96 {
     height: 96px;
 }
 
 .h-80 {
     height: 80px;
+}
+
+.h-130 {
+    height: 130px;
 }
 
 .h-16 {

@@ -37,18 +37,20 @@ function renderTasks() {
 
 
 function toggleTaskOverlay(i) {
-    document.getElementById('bleur-bg').classList.toggle('d_none');
-    document.getElementById('task-dialog').classList.toggle('tf_tlx100');
-    document.body.classList.toggle('of_hidden');
-    if (checkOverlay == 0) {
-        let task = taskList.find(t => t['id'] == i);
-        document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
-        checkTaskOverlayInfos(task)
-        checkOverlay += 1;
-    } else {
-        checkOverlay = 0;
-        taskEditor = undefined;
-        renderTasks();
+    if (!longPress) {
+        document.getElementById('bleur-bg').classList.toggle('d_none');
+        document.getElementById('task-dialog').classList.toggle('tf_tlx100');
+        document.body.classList.toggle('of_hidden');
+        if (checkOverlay == 0) {
+            let task = taskList.find(t => t['id'] == i);
+            document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
+            checkTaskOverlayInfos(task)
+            checkOverlay += 1;
+        } else {
+            checkOverlay = 0;
+            taskEditor = undefined;
+            renderTasks();
+        }
     }
 }
 
@@ -557,15 +559,23 @@ function openDatePicker() {
     input.focus();
 }
 
+let longPress = false;
 
-function startPress(taskId) {
+
+function startPress(i) {
+    longPress = false;
     pressTimer = setTimeout(() => {
-        let task = taskList.find(t => t['id'] == taskId);
-        document.getElementById(`task-id-${taskId}`).classList.add(`resp-menu-task-${taskId}`);
+        openTaskRespMenu(i);
+        longPress = true;
     }, 500);
 }
 
 
-function endPress() {
+function endPress(i) {
     clearTimeout(pressTimer);
+}
+
+
+function openTaskRespMenu(i) {
+    document.getElementById(`resp-menu-task-${i}`).classList.toggle('d_none');
 }

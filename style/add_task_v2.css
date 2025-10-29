@@ -512,6 +512,20 @@
     width: 100%;
 }
 
+#add_task_title,
+#add_task_description,
+#add_task_due_date,
+#add_task_assigned_to,
+#add_task_category,
+#add_task_subtasks {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#add_task_description {
+    font-size: 21px;
+}
+
 .d_none {
     display: none;
 }

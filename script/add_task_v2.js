@@ -69,8 +69,11 @@ function renderCurrentAssignedTo() {
     if (currentAssignedTo.length > 0) {
         currentAssignedToSectionRef.classList.add('h-130');
         currentAssignedToListRef.classList.remove('d_none');
-        for (let index = 0; index < currentAssignedTo.length; index++) {
+        for (let index = 0; index < 4; index++) {
             currentAssignedToListRef.innerHTML += getCurrentAssignedContactTemplate(index);
+        }
+        if(currentAssignedTo.length > 4) {
+            currentAssignedToListRef.innerHTML += `+${currentAssignedTo.length - 4}`;
         }
     }
 }
@@ -262,6 +265,7 @@ function resetGlobalVariables() {
 function clearForm() {
     let formRef = document.getElementById('add_task_form');
     formRef.reset();
+    activatePriority();
 }
 
 function closeDropdownMenus(ev) {
@@ -271,15 +275,17 @@ function closeDropdownMenus(ev) {
     let inputFieldCategoryListRef = document.getElementById('add_task_form_category_dropdown_category');
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
-    closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef);
+    let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
+    closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
 }
 
-function closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef) {
+function closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef) {
     if (!inputFieldAssignedToRef.contains(ev.target) && !inputFieldAssignedToContactListRef.contains(ev.target) || !inputFieldCategoryRef.contains(ev.target) && !inputFieldCategoryListRef.contains(ev.target)) {
         inputFieldAssignedToContactListRef.classList.add('d_none');
         inputFieldCategoryListRef.classList.add('d_none');
         addTaskAssignedToArrow.classList.remove('add-task-form-assigned-to-arrow-up-svg');
         addTaskCategoryArrowRef.classList.remove('add-task-form-assigned-to-arrow-up-svg');
+        addTaskSubtasksBtnsRef.classList.add('d_none');
     }
 }

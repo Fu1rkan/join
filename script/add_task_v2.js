@@ -272,6 +272,7 @@ function closeDropdownMenus(ev) {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
     closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef);
+    removeHighlightInputFields();
 }
 
 function closeMenus(ev,inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef) {

@@ -4,7 +4,6 @@ let currentDraggedElement;
 
 let taskEditor;
 
-let pressTimer;
 
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
@@ -37,20 +36,18 @@ function renderTasks() {
 
 
 function toggleTaskOverlay(i) {
-    if (!longPress) {
-        document.getElementById('bleur-bg').classList.toggle('d_none');
-        document.getElementById('task-dialog').classList.toggle('tf_tlx100');
-        document.body.classList.toggle('of_hidden');
-        if (checkOverlay == 0) {
-            let task = taskList.find(t => t['id'] == i);
-            document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
-            checkTaskOverlayInfos(task)
-            checkOverlay += 1;
-        } else {
-            checkOverlay = 0;
-            taskEditor = undefined;
-            renderTasks();
-        }
+    document.getElementById('bleur-bg').classList.toggle('d_none');
+    document.getElementById('task-dialog').classList.toggle('tf_tlx100');
+    document.body.classList.toggle('of_hidden');
+    if (checkOverlay == 0) {
+        let task = taskList.find(t => t['id'] == i);
+        document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
+        checkTaskOverlayInfos(task)
+        checkOverlay += 1;
+    } else {
+        checkOverlay = 0;
+        taskEditor = undefined;
+        renderTasks();
     }
 }
 
@@ -559,23 +556,15 @@ function openDatePicker() {
     input.focus();
 }
 
-let longPress = false;
-
-
-function startPress(i) {
-    longPress = false;
-    pressTimer = setTimeout(() => {
-        openTaskRespMenu(i);
-        longPress = true;
-    }, 500);
-}
-
-
-function endPress(i) {
-    clearTimeout(pressTimer);
-}
-
-
 function openTaskRespMenu(i) {
-    document.getElementById(`resp-menu-task-${i}`).classList.toggle('d_none');
+    document.getElementById(`resp-menu-task-${i}`).classList.remove('d_none');
+    setTimeout(() => {
+        document.body.setAttribute('onclick', `closeTaskMenus(${i})`);
+    }, 100)
+}
+
+function closeTaskMenus(i) {
+    let menus = document.querySelectorAll('[id^="resp-menu-task-"]');
+    menus.forEach(m => m.classList.add('d_none'));
+    document.body.removeAttribute('onclick');
 }

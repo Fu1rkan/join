@@ -27,7 +27,7 @@
 
 @media (max-width: 950px) {
 
-    .resp-header{
+    .resp-header {
         position: fixed;
         z-index: 2;
     }
@@ -61,6 +61,10 @@
         min-width: 218px;
         max-width: 218px;
         box-sizing: content-box;
+    }
+
+    .task header button {
+        display: flex;
     }
 
     .board-header {

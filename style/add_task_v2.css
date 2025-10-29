@@ -213,11 +213,11 @@
 }
 
 .add-task-form-assigned-to-dropdown-contacts {
-    z-index: 4;
+    z-index: 3;
 }
 
 .add-task-form-category-dropdown-category {
-    z-index: 4;
+    z-index: 2;
 }
 
 .add-task-form-assigned-to-dropdown-contacts li,
@@ -324,10 +324,10 @@
     width: 24px;
 }
 
-.add-task-form-subtasks-dropdown-subtasks {
-    /* list-style: disc; */
-    /* padding-left: 44px; */
-}
+/* .add-task-form-subtasks-dropdown-subtasks {
+    list-style: disc; 
+    padding-left: 44px;
+} */
 
 .list-style-none {
     list-style: none;
@@ -491,10 +491,12 @@
 
 .h-80 {
     height: 80px;
+    transition: height 150ms ease-out;
 }
 
 .h-130 {
     height: 130px;
+    transition: height 150ms ease-out;
 }
 
 .h-16 {

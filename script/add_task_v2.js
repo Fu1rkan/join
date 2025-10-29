@@ -85,7 +85,6 @@ function getCurrentAssignedContactTemplate(index) {
 function toggleAssignedToContactList() {
     let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
-    // overlayRef.classList.toggle('d_none');
     addTaskAssignedToList.classList.toggle('d_none');
     addTaskAssignedToArrow.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
     if (!addTaskAssignedToList.classList.contains('d_none')) {
@@ -94,11 +93,58 @@ function toggleAssignedToContactList() {
 }
 
 function renderContactsInList() {
-    let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
+    const addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     addTaskAssignedToList.innerHTML = "";
-    for (let index = 0; index < contacts.length; index++) {
-        addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(index);
+
+    if (currentAssignedTo.length === 0) {
+        for (let index = 0; index < contacts.length; index++) {
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(index);
+        }
+        return;
     }
+    const activeContactIndices = contacts
+        .map((contact, i) => (currentAssignedTo.includes(contact) ? i : -1))
+        .filter(i => i !== -1);
+
+    for (let i = 0; i < contacts.length; i++) {
+        if (activeContactIndices.includes(i)) {
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToActiveListItem(i);
+        } else {
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
+        }
+    }
+}
+
+function getAddTaskAssignedToActiveListItem(index) {
+    return `<li id="add_task_assigned_to_contact_${index}"
+                                            class="add-task-form-assigned-to-dropdown-contacts-checked"
+                                            onclick="selectContact(${index})">
+                                            <div class="add-task-form-assigned-to-dropdown-list-contact">
+                                                <div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${contacts[index].fillColor}">
+                                                    <p>${contacts[index].nameLetters}</p>
+                                                </div>
+                                                <p>${contacts[index].name}</p>
+                                            </div>
+                                            <div id="${index}_unchecked" class="d_none">
+                                                <svg 
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647"
+                                                        stroke-width="2" />
+                                                </svg>
+                                            </div>
+                                            <div id="${index}_checked" class="">
+                                                <svg 
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M20 11V17C20 18.6569 18.6569 20 17 20H7C5.34315 20 4 18.6569 4 17V7C4 5.34315 5.34315 4 7 4H15"
+                                                        stroke="white" stroke-width="2" stroke-linecap="round" />
+                                                    <path d="M8 12L12 16L20 4.5" stroke="white" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                        </li>`
 }
 
 function getAddTaskAssignedToListItem(index) {

@@ -171,6 +171,8 @@
     position: absolute;
     bottom: 0;
     right: 16px;
+    height: 24px;
+    width: 24px;
 }
 
 .add-task-form-assigned-to-arrow-down-svg {

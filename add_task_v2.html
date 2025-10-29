@@ -10,7 +10,7 @@
     <title>Add Task</title>
 </head>
 
-<body onload="init()">
+<body onload="init()" onclick="closeDropdownMenus(event)">
     <div class="layout">
         <nav class="navbar">
             <svg width="102" height="122" viewBox="0 0 102 122" fill="none">
@@ -263,66 +263,75 @@
                                 </div>
 
                             </div>
-                            <div id="add_task_form_assigned_to_section" class="add-task-form-assigned-to-section h-80">
-                                <label for="add_task_assigned_to" class="add-task-assigned-to-category-label">
+                            <div id="add_task_form_assigned_to_section" class="add-task-form-assigned-to-section h-80" onclick="event.stopPropagation()">
+                                <label for="add_task_assigned_to" class="add-task-assigned-to-category-label" onclick="toggleAssignedToContactList()">
                                     <p>Assigned to</p>
                                     <input id="add_task_assigned_to"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black"
-                                        type="text" onclick="toggleAssignedToContactList()"
+                                        type="text" 
                                         onfocus="highlightInputFields('add_task_assigned_to')"
                                         placeholder="Select contacts to assign">
-                                    <svg id="add_task_form_assigned_to_arrow_svg"
+                                    <div id="add_task_form_assigned_to_arrow_svg"
                                         class="add-task-form-assigned-to-arrow-down-svg"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse"
-                                            x="0" y="0" width="24" height="24">
-                                            <rect width="24" height="24" fill="#D9D9D9" />
-                                        </mask>
-                                        <g mask="url(#mask0_387837_1520)">
-                                            <path
-                                                d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
-                                                fill="#2A3647" />
-                                        </g>
-                                    </svg>
+                                        onclick="event.stopPropagation()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <mask id="mask0_387837_1520" style="mask-type:alpha"
+                                                maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                                                <rect width="24" height="24" fill="#D9D9D9" />
+                                            </mask>
+                                            <g mask="url(#mask0_387837_1520)">
+                                                <path
+                                                    d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
+                                                    fill="#2A3647" />
+                                            </g>
+                                        </svg>
+                                    </div>
+
                                 </label>
-                                <div class="add-task-form-assigned-to-dropdown" >
+                                <div class="add-task-form-assigned-to-dropdown">
                                     <ul id="add_task_form_assigned_to_dropdown_contacts"
+                                        onclick="event.stopPropagation()"
                                         class="add-task-form-assigned-to-dropdown-contacts d_none">
                                     </ul>
                                 </div>
-                                <div id="current_assigned_to_contacts" class="current-assigned-to-contacts-container d_none">
-                                    
+                                <div id="current_assigned_to_contacts"
+                                    class="current-assigned-to-contacts-container d_none">
+
                                 </div>
-                                
+
                             </div>
-                            <div class="h-80">
-                                <label for="add_task_category" class="add-task-assigned-to-category-label">
+                            <div class="h-80" onclick="event.stopPropagation()">
+                                <label for="add_task_category" class="add-task-assigned-to-category-label"
+                                    onclick="toggleCategoryList()">
                                     <div class="add-task-required-label-head">
                                         <p>Category</p>
                                         <p class="add-task-form-required">*</p>
                                     </div>
                                     <input id="add_task_category"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black"
-                                        type="text" placeholder="Select task category" onclick="toggleCategoryList()"
+                                        type="text" placeholder="Select task category"
                                         onfocus="highlightInputFields('add_task_category')">
-                                    <svg id="add_task_form_category_arrow_svg"
+                                    <div id="add_task_form_category_arrow_svg"
                                         class="add-task-form-assigned-to-arrow-down-svg"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse"
-                                            x="0" y="0" width="24" height="24">
-                                            <rect width="24" height="24" fill="#D9D9D9" />
-                                        </mask>
-                                        <g mask="url(#mask0_387837_1520)">
-                                            <path
-                                                d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
-                                                fill="#2A3647" />
-                                        </g>
-                                    </svg>
+                                        onclick="event.stopPropagation()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <mask id="mask0_387837_1520" style="mask-type:alpha"
+                                                maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                                                <rect width="24" height="24" fill="#D9D9D9" />
+                                            </mask>
+                                            <g mask="url(#mask0_387837_1520)">
+                                                <path
+                                                    d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
+                                                    fill="#2A3647" />
+                                            </g>
+                                        </svg>
+                                    </div>
+
                                 </label>
                                 <div class="add-task-form-category-dropdown">
-                                    <ul id="add_task_form_category_dropdown_category"
+                                    <ul id="add_task_form_category_dropdown_category" onclick="event.stopPropagation()"
                                         class="add-task-form-category-dropdown-category d_none">
                                         <li onclick="chooseCategory('Technical Task')"
                                             class="add-task-form-assigned-to-dropdown-contacts-default-hover-class">
@@ -378,7 +387,7 @@
                                 <div class="add-task-subtaks-dropdown">
                                     <ul id="add_task_form_subtasks_dropdown_subtasks"
                                         class="add-task-form-subtasks-dropdown-subtasks ">
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -424,6 +433,7 @@
 
     </div>
     <script src="./script/test_contacts.js"></script>
+    <script src="./script/add_task_v2_templates.js"></script>
     <script src="./script/add_task_v2.js"></script>
 </body>
 

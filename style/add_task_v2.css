@@ -125,7 +125,7 @@
 
 .add-task-priority-btns button {
     cursor: pointer;
-    width: 136px;
+    width: 30%;
     height: 56px;
     display: flex;
     align-items: center;

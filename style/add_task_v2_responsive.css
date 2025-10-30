@@ -10,6 +10,16 @@
     }
 }
 
+@media (max-width: 1050px) {
+    #add_task_priority_urgent,
+    #add_task_priority_medium,
+    #add_task_priority_low {
+        height: auto;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
 @media (max-width: 850px) {
     .add-task-main {
         padding: 0 0 10px 0;
@@ -55,14 +65,6 @@
 }
 
 @media (max-width: 550px) {
-    #add_task_priority_urgent,
-    #add_task_priority_medium,
-    #add_task_priority_low {
-        height: auto;
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
     .add-task-form-btns {
         gap: 8px;
     }

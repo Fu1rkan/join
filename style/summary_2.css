@@ -1,6 +1,7 @@
 .summary-main {
     height: calc(100vh - 96px);
     padding: 80px;
+    width: 1208px;
 }
 
 .summary-header2 {
@@ -22,6 +23,7 @@
 
 .summary-main-section{
     display: flex;
+    justify-content: space-between;
 }
 
 .summary-card {
@@ -158,4 +160,20 @@
     width: 100%;
     font-size: 20px;
     color: rgba(42, 54, 71, 1);
+}
+
+.greeting-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.greeting-section span{
+    font-size: 47px;
+    font-weight: 500;
+    color: rgba(42, 54, 71, 1);
+}
+
+.greeting-section h3{
+    color: rgba(41, 171, 226, 1);
 }

@@ -4,7 +4,6 @@ let currentDraggedElement;
 
 let taskEditor;
 
-let pressTimer;
 
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
@@ -74,7 +73,7 @@ function checkTaskType(i, taskCard) {
 
 function checkTaskDesc(i, taskCard) {
     if (i.description != false) {
-        document.getElementById(`${taskCard}-desc-${i.id}`).innerHTML += i.description;
+        document.getElementById(`${taskCard}-desc-${i.id}`).innerText += i.description;
     }
 }
 
@@ -115,7 +114,7 @@ function checkPrio(i, taskCard) {
 
 function checkSubtasksMainOverlay(task, taskProgress) {
     for (let index = 0; index < task.subtasks.length; index++) {
-        taskProgress.innerHTML += task.subtasks[index].name;
+        taskProgress.innerText += task.subtasks[index].name;
     }
 }
 
@@ -247,6 +246,7 @@ function ckeckTitleValue() {
         document.getElementById('empty-title-text').classList.add('d_none');
     }
 }
+
 
 function ckeckDateValue() {
     let date = document.getElementById('input-date').value;
@@ -507,7 +507,6 @@ function searchtasks() {
     for (let index = 0; index < tasks.length; index++) {
         document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none')
     }
-
 }
 
 
@@ -558,14 +557,66 @@ function openDatePicker() {
 }
 
 
-function startPress(taskId) {
-    pressTimer = setTimeout(() => {
-        let task = taskList.find(t => t['id'] == taskId);
-        document.getElementById(`task-id-${taskId}`).classList.add(`resp-menu-task-${taskId}`);
-    }, 500);
+function openTaskRespMenu(i) {
+    document.getElementById(`resp-menu-task-${i}`).classList.remove('d_none');
+    setTimeout(() => {
+        document.body.setAttribute('onclick', `closeTaskMenus(${i})`);
+    }, 100)
+
+    let task = taskList.findIndex(t => t.id == i);
+    if (taskList[task].category == "to-do") {
+        document.getElementById(`switch-up-${i}`).classList.add('resp-menu-task-deactive');
+        document.getElementById(`switch-up-path-${i}`).classList.add('resp-menu-task-deactive');
+    } else if (taskList[task].category == "done") {
+        document.getElementById(`switch-down-${i}`).classList.add('resp-menu-task-deactive');
+        document.getElementById(`switch-down-path-${i}`).classList.add('resp-menu-task-deactive');
+    }
 }
 
 
-function endPress() {
-    clearTimeout(pressTimer);
+function closeTaskMenus(i) {
+    let menus = document.querySelectorAll('[id^="resp-menu-task-"]');
+    menus.forEach(m => m.classList.add('d_none'));
+    document.body.removeAttribute('onclick');
+}
+
+
+function switchDown(i) {
+    let task = taskList.findIndex(t => t.id == i);
+
+    if (taskList[task].category == "to-do") {
+        taskList[task].category = "in-progress";
+    } else if (taskList[task].category == "in-progress") {
+        taskList[task].category = "await-feedback";
+    } else if (taskList[task].category == "await-feedback") {
+        taskList[task].category = "done"
+    } else {
+        console.log('is done');
+    }
+    renderTasks();
+}
+
+
+function switchUp(i) {
+    let task = taskList.findIndex(t => t.id == i);
+
+    if (taskList[task].category == "in-progress") {
+        taskList[task].category = "to-do";
+    } else if (taskList[task].category == "await-feedback") {
+        taskList[task].category = "in-progress"
+    } else if (taskList[task].category == "done") {
+        taskList[task].category = "await-feedback"
+    }else{
+        console.log('is To Do');
+    }
+    renderTasks();
+}
+
+function escapeHTML(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }

@@ -59,7 +59,7 @@
     background-color: rgba(41, 171, 226, 1);
 }
 
-.board-actions > button {
+.board-actions>button {
     background-color: rgba(42, 54, 71, 1);
     border-radius: 10px;
     border: none;
@@ -75,7 +75,7 @@
     text-wrap-mode: nowrap;
 }
 
-.board-actions > button:hover {
+.board-actions>button:hover {
     background-color: rgba(41, 171, 226, 1);
 }
 
@@ -237,6 +237,23 @@
     color: rgba(168, 168, 168, 1);
 }
 
+.task header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task header button{
+    background-color: transparent;
+    border: none;
+    width: 24px;
+    height: 26px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+}
+
 .task-label {
     width: fit-content;
     padding: 4px 16px;
@@ -351,11 +368,50 @@
     pointer-events: none;
 }
 
-.resp-menu-task{
-    width: 80px;
-    height: 80px;
-    background-color: #29abe2;
-    position: fixed;
-    overflow: visible;
-    box-sizing: content-box;
+.resp-menu-task {
+    background-color: #2A3647;
+    position: absolute;
+    right: 0;
+    transform: translateX(50%);
+    z-index: 1;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    gap: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.resp-menu-task > span{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.resp-menu-task button div{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resp-menu-task button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    gap: 8px;
+    padding: 4px 5px 4px 2px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+}
+
+.resp-menu-task-deactive{
+    color: grey;
+    fill: gray;
 }

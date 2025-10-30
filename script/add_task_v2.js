@@ -7,6 +7,19 @@ let priorityTaskActive = "medium";
 let currentAssignedTo = [];
 let currentChoosedCategory = "";
 let currentCreatedSubtasks = [];
+let requiredTitleRef = document.getElementById('required_msg_title');
+let requiredDueDateRef = document.getElementById('required_msg_due_date');
+let requiredCategoryRef = document.getElementById('required_msg_category');
+let overlayRef = document.getElementById('add_task_overlay');
+let createdMsgRef = document.getElementById('overlay_add_task_created_msg');
+
+function openAddTaskOverlay() {
+    overlayRef.classList.remove('d_none');
+}
+
+function closeAddTaskOverlay() {
+    overlayRef.classList.add('d_none');
+}
 
 function openCalender() {
     let calenderRef = document.getElementById('add_task_due_date')
@@ -34,16 +47,15 @@ function resetPriorityButtonHighlight() {
         btn.classList.add('add-task-priority-btns-hover-class');
     });
     document.querySelectorAll('.add-task-priority-btns-container button svg').forEach(svg => {
-        svg.classList.remove('add_task_priority_active_svg');
+        svg.classList.remove('add-task-priority-active-svg');
     })
 }
 
 function highlightPriorityButton(para, buttonRef, svgRef) {
     buttonRef.classList.remove('add-task-priority-btns-hover-class');
     buttonRef.classList.add(`add-task-priority-btn-${para}-active`);
-    svgRef.classList.add(`add_task_priority_active_svg`);
+    svgRef.classList.add(`add-task-priority-active-svg`);
 }
-
 
 function selectContact(index) {
     let contactRef = document.getElementById(`add_task_assigned_to_contact_${index}`);
@@ -70,16 +82,13 @@ function renderCurrentAssignedTo() {
     if (currentAssignedTo.length > 0) {
         currentAssignedToSectionRef.classList.add('h-130');
         currentAssignedToListRef.classList.remove('d_none');
-        for (let index = 0; index < currentAssignedTo.length; index++) {
+        for (let index = 0; index < currentAssignedTo.length && index < 4; index++) {
             currentAssignedToListRef.innerHTML += getCurrentAssignedContactTemplate(index);
         }
+        if (currentAssignedTo.length > 4) {
+            currentAssignedToListRef.innerHTML += `+${currentAssignedTo.length - 4}`;
+        }
     }
-}
-
-function getCurrentAssignedContactTemplate(index) {
-    return `<div class="current-assigned-to-contact" style="background-color:${currentAssignedTo[index].fillColor}">
-                                        <p>${currentAssignedTo[index].nameLetters}</p>
-                                    </div>`
 }
 
 function toggleAssignedToContactList() {
@@ -95,88 +104,37 @@ function toggleAssignedToContactList() {
 function renderContactsInList() {
     const addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     addTaskAssignedToList.innerHTML = "";
-
     if (currentAssignedTo.length === 0) {
         for (let index = 0; index < contacts.length; index++) {
             addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(index);
         }
         return;
     }
+    renderChangedContaktList(addTaskAssignedToList);
+}
+
+function renderChangedContaktList(addTaskAssignedToList) {
     const activeContactIndices = contacts
         .map((contact, i) => (currentAssignedTo.includes(contact) ? i : -1))
         .filter(i => i !== -1);
 
     for (let i = 0; i < contacts.length; i++) {
         if (activeContactIndices.includes(i)) {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToActiveListItem(i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
+            markAsChecked(i);
         } else {
             addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
         }
     }
 }
 
-function getAddTaskAssignedToActiveListItem(index) {
-    return `<li id="add_task_assigned_to_contact_${index}"
-                                            class="add-task-form-assigned-to-dropdown-contacts-checked"
-                                            onclick="selectContact(${index})">
-                                            <div class="add-task-form-assigned-to-dropdown-list-contact">
-                                                <div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${contacts[index].fillColor}">
-                                                    <p>${contacts[index].nameLetters}</p>
-                                                </div>
-                                                <p>${contacts[index].name}</p>
-                                            </div>
-                                            <div id="${index}_unchecked" class="d_none">
-                                                <svg 
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647"
-                                                        stroke-width="2" />
-                                                </svg>
-                                            </div>
-                                            <div id="${index}_checked" class="">
-                                                <svg 
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M20 11V17C20 18.6569 18.6569 20 17 20H7C5.34315 20 4 18.6569 4 17V7C4 5.34315 5.34315 4 7 4H15"
-                                                        stroke="white" stroke-width="2" stroke-linecap="round" />
-                                                    <path d="M8 12L12 16L20 4.5" stroke="white" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </div>
-                                        </li>`
-}
-
-function getAddTaskAssignedToListItem(index) {
-    return `<li id="add_task_assigned_to_contact_${index}"
-                                            class="add-task-form-assigned-to-dropdown-contacts-default-hover-class"
-                                            onclick="selectContact(${index})">
-                                            <div class="add-task-form-assigned-to-dropdown-list-contact">
-                                                <div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${contacts[index].fillColor}">
-                                                    <p>${contacts[index].nameLetters}</p>
-                                                </div>
-                                                <p>${contacts[index].name}</p>
-                                            </div>
-                                            <div id="${index}_unchecked" class="">
-                                                <svg 
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647"
-                                                        stroke-width="2" />
-                                                </svg>
-                                            </div>
-                                            <div id="${index}_checked" class="d_none">
-                                                <svg 
-                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M20 11V17C20 18.6569 18.6569 20 17 20H7C5.34315 20 4 18.6569 4 17V7C4 5.34315 5.34315 4 7 4H15"
-                                                        stroke="white" stroke-width="2" stroke-linecap="round" />
-                                                    <path d="M8 12L12 16L20 4.5" stroke="white" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </div>
-                                        </li>`
+function markAsChecked(i) {
+    let contactRef = document.getElementById(`add_task_assigned_to_contact_${i}`);
+    let svgUncheckedRef = document.getElementById(`${i}_unchecked`);
+    let svgCheckedRef = document.getElementById(`${i}_checked`);
+    contactRef.classList.add('add-task-form-assigned-to-dropdown-contacts-checked');
+    svgUncheckedRef.classList.add('d_none');
+    svgCheckedRef.classList.remove('d_none');
 }
 
 function toggleCategoryList() {
@@ -191,14 +149,23 @@ function chooseCategory(categoryName) {
     toggleCategoryList();
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
+    checkRequiredInputs();
+}
+
+function showSubtaskMenuOptions(index) {
+    let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
+    let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+    currentSubtaskRoughMenuRef.classList.remove('d_none');
+    subtaskListItemRef.classList.add('list-style-none');
 }
 
 function changeCurrentSubtask(index) {
-    let subtaskListRef = document.getElementById('add_task_form_subtasks_dropdown_subtasks');
     let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
     let currentSubtaskValue = document.getElementById(`current_subtask_${index}`);
     let currentSubtaskChangeLabelRef = document.getElementById(`label_current_subtask_${index}`);
     let currentSubtaskChangeinputRef = document.getElementById(`change_current_element_${index}`);
+    let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+    currentSubtaskRoughMenuRef.classList.add('d_none');
     subtaskListItemRef.classList.add('list-style-none');
     subtaskListItemRef.classList.remove('add-task-form-subtasks-dropdown-subtasks-list-item');
     currentSubtaskValue.classList.add('d_none');
@@ -210,18 +177,30 @@ function highlightInputFields(activeInputField) {
     let inputFieldRef = document.getElementById(activeInputField);
     let inputFieldAddFormCalenderRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
+    requiredTitleRef.classList.add('d_none');
+    requiredDueDateRef.classList.add('d_none');
+    requiredCategoryRef.classList.add('d_none');
     inputFieldAddFormCalenderRef.classList.remove('d_none');
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
     inputFieldRef.classList.add('add-task-inputfield-highlight');
+    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderRef);
+}
 
+function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderRef) {
     switch (activeInputField) {
         case "add_task_subtasks":
             inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
             break;
-
         case "add_task_due_date":
             inputFieldAddFormCalenderRef.classList.add('d_none');
+            requiredDueDateRef.classList.remove('d_none');
+            break;
+        case "add_task_title":
+            requiredTitleRef.classList.remove('d_none');
+            break;
+            case "add_task_category":
+            requiredCategoryRef.classList.remove('d_none');
             break;
         default:
             break;
@@ -258,56 +237,6 @@ function renderCurrentCreatedSubtasks() {
     }
 }
 
-function getSubtaskTemplate(index) {
-    return `<li id="current_subtask_li_${index}" onclick="changeCurrentSubtask(${index})"
-                                            class="add-task-form-subtasks-dropdown-subtasks-list-item">
-                                            <div class="add-task-form-subtasks-dropdown-subtasks-item">
-                                                <p id="current_subtask_${index}"
-                                                    class="add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title">${currentCreatedSubtasks[index].name}</p>
-                                                <label id="label_current_subtask_${index}" for="change_current_element_${index}"
-                                                    class="d_none" onclick="event.stopPropagation()">
-                                                    <input id="change_current_element_${index}" type="text"
-                                                        class="add-task-form-subtasks-dropdown-subtasks-list-item-subtask-input">
-                                                    <section class="add_task_form_subtasks_dropdown_subtasks-btns">
-                                                        <button onclick="deleteCurrentSubtask(${index})">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <mask id="mask0_75601_14777" style="mask-type:alpha"
-                                                                    maskUnits="userSpaceOnUse" x="0" y="0" width="24"
-                                                                    height="24">
-                                                                    <rect width="24" height="24" fill="#D9D9D9" />
-                                                                </mask>
-                                                                <g mask="url(#mask0_75601_14777)">
-                                                                    <path
-                                                                        d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
-                                                                        fill="#2A3647" />
-                                                                </g>
-                                                            </svg>
-                                                        </button>
-                                                        <div class="add-task-subtasks-dropdown-subtasks-item-seperator">
-                                                        </div>
-                                                        <button onclick="saveChangedSubtask(${index})">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <mask id="mask0_75601_14779" style="mask-type:alpha"
-                                                                    maskUnits="userSpaceOnUse" x="0" y="0" width="24"
-                                                                    height="24">
-                                                                    <rect width="24" height="24" fill="#D9D9D9" />
-                                                                </mask>
-                                                                <g mask="url(#mask0_75601_14779)">
-                                                                    <path
-                                                                        d="M9.55021 15.15L18.0252 6.675C18.2252 6.475 18.4627 6.375 18.7377 6.375C19.0127 6.375 19.2502 6.475 19.4502 6.675C19.6502 6.875 19.7502 7.1125 19.7502 7.3875C19.7502 7.6625 19.6502 7.9 19.4502 8.1L10.2502 17.3C10.0502 17.5 9.81687 17.6 9.55021 17.6C9.28354 17.6 9.05021 17.5 8.85021 17.3L4.55021 13C4.35021 12.8 4.25437 12.5625 4.26271 12.2875C4.27104 12.0125 4.37521 11.775 4.57521 11.575C4.77521 11.375 5.01271 11.275 5.28771 11.275C5.56271 11.275 5.80021 11.375 6.00021 11.575L9.55021 15.15Z"
-                                                                        fill="#2A3647" />
-                                                                </g>
-                                                            </svg>
-                                                        </button>
-                                                    </section>
-                                                </label>
-
-                                            </div>
-                                        </li>`
-}
-
 function deleteCurrentSubtask(index) {
     currentCreatedSubtasks.splice(index, 1);
     renderCurrentCreatedSubtasks();
@@ -327,33 +256,105 @@ function createNewTask() {
     let titleRef = document.getElementById('add_task_title');
     let descriptionRef = document.getElementById('add_task_description');
     let dueDateRef = document.getElementById('add_task_due_date');
-    if (titleRef.value != "" && dueDateRef.value != "" && currentChoosedCategory != "") {
-        taskList.push(
-            {
-                "id": taskList.length,
-                "name": titleRef.value,
-                "description": descriptionRef.value,
-                "date": dueDateRef.value,
-                "priority": priorityTaskActive,
-                "category": "to-do",
-                "type": currentChoosedCategory,
-                "participants": currentAssignedTo,
-                "subtasks": currentCreatedSubtasks
-            }
-        )
-    }
+    checkArrayLength();
+    pushNewObject(titleRef, descriptionRef, dueDateRef);
+    // resetGlobalVariables();
+    // clearForm();
+    // init();
+}
 
+function checkArrayLength() {
+    if (currentAssignedTo.length == 0 && currentCreatedSubtasks.length == 0) {
+        currentAssignedTo = false;
+        currentCreatedSubtasks = false;
+    } else if (currentAssignedTo.length == 0) {
+        currentAssignedTo = false;
+    } else if (currentCreatedSubtasks.length == 0) {
+        currentCreatedSubtasks = false;
+    }
+}
+
+function checkRequiredInputs() {
+    let titleRef = document.getElementById('add_task_title');
+    let dueDateRef = document.getElementById('add_task_due_date');
+    let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
+if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
+        createNewTaskBtnRef.disabled = true;
+    } else {
+        createNewTaskBtnRef.disabled = false;
+    }
+}
+
+function pushNewObject(titleRef, descriptionRef, dueDateRef) {
+    taskList.push(
+        {
+            "id": taskList.length,
+            "name": titleRef.value,
+            "description": descriptionRef.value,
+            "date": dueDateRef.value,
+            "priority": priorityTaskActive,
+            "category": "to-do",
+            "type": currentChoosedCategory,
+            "participants": currentAssignedTo,
+            "subtasks": currentCreatedSubtasks
+        }
+    )
+    postTaskAndShowCreatedMsg();
+}
+
+function postTaskAndShowCreatedMsg() {
+    postTask("user/tasks/", taskList);
+    showTaskCreatedMsg();
+}
+
+function resetGlobalVariables() {
     priorityTaskActive = "medium";
     currentAssignedTo = [];
     currentChoosedCategory = "";
     currentCreatedSubtasks = [];
-    clearForm();
-    init();
-    activatePriority();
-    postTask("user/tasks/", taskList);
 }
 
 function clearForm() {
     let formRef = document.getElementById('add_task_form');
     formRef.reset();
+    activatePriority();
+}
+
+function showTaskCreatedMsg() {
+    openAddTaskOverlay();
+    createdMsgRef.classList.remove('add-task-created-msg-animate-out',);
+    setTimeout(() => {
+        createdMsgRef.classList.add('add-task-created-msg-animate-in');
+        setTimeout(() => {
+            createdMsgRef.classList.remove('add-task-created-msg-animate-in')
+            createdMsgRef.classList.add('add-task-created-msg-animate-out');
+            setTimeout(() => {
+                closeAddTaskOverlay();
+                window.location.href = "./board.html";
+            }, 300)
+        }, 1000)
+    }, 900)
+}
+
+function closeDropdownMenus(ev) {
+    let inputFieldAssignedToRef = document.getElementById('add_task_assigned_to');
+    let inputFieldAssignedToContactListRef = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
+    let inputFieldCategoryRef = document.getElementById('add_task_category');
+    let inputFieldCategoryListRef = document.getElementById('add_task_form_category_dropdown_category');
+    let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
+    let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
+    let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
+    closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
+    removeHighlightInputFields();
+    checkRequiredInputs();
+}
+
+function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef) {
+    if (!inputFieldAssignedToRef.contains(ev.target) && !inputFieldAssignedToContactListRef.contains(ev.target) || !inputFieldCategoryRef.contains(ev.target) && !inputFieldCategoryListRef.contains(ev.target)) {
+        inputFieldAssignedToContactListRef.classList.add('d_none');
+        inputFieldCategoryListRef.classList.add('d_none');
+        addTaskAssignedToArrow.classList.remove('add-task-form-assigned-to-arrow-up-svg');
+        addTaskCategoryArrowRef.classList.remove('add-task-form-assigned-to-arrow-up-svg');
+        addTaskSubtasksBtnsRef.classList.add('d_none');
+    }
 }

@@ -20,6 +20,10 @@
     font-size: 27px;
 }
 
+.summary-main-section{
+    display: flex;
+}
+
 .summary-card {
     display: flex;
     flex-direction: column;
@@ -40,6 +44,7 @@
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 1);
+    height: 168px;
 }
 
 .first-card-row-logo {
@@ -80,6 +85,7 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 1);
+    height: 168px;
 }
 
 .second-card-row-desc {
@@ -90,7 +96,7 @@
     width: 57px;
 }
 
-.second-card-row-desc span{
+.second-card-row-desc span {
     font-size: 16px;
     color: rgba(42, 54, 71, 1);
 }
@@ -111,24 +117,45 @@
     justify-content: center;
 }
 
-.summary-card-divider{
+.summary-card-divider {
     width: 2px;
     background-color: rgba(209, 209, 209, 1);
     height: 100%;
 }
 
-.deadline-section{
+.deadline-section {
     display: flex;
     flex-direction: column;
     gap: 16px;
     color: rgba(42, 54, 71, 1);
 }
 
-.deadline-section span{
+.deadline-section span {
     font-size: 21px;
     font-weight: 700;
 }
 
-.deadline-section p{
+.deadline-section p {
     font-size: 16px;
+}
+
+.third-card-row {
+    padding: 25px;
+    gap: 13px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 168px;
+    height: 168px;
+}
+
+.third-card-row span{
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    color: rgba(42, 54, 71, 1);
 }

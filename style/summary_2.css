@@ -1,0 +1,20 @@
+.summary-main {
+    height: calc(100vh - 96px);
+    padding: 80px;
+}
+
+.summary-header2 {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.summary-header2 div {
+    width: 3px;
+    height: 59px;
+    background-color: rgba(41, 171, 226, 1);
+}
+
+.summary-header2 span {
+    font-size: 27px;
+}

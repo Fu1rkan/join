@@ -125,7 +125,7 @@
 
 .add-task-priority-btns button {
     cursor: pointer;
-    width: 30%;
+    width: 136px;
     height: 56px;
     display: flex;
     align-items: center;
@@ -164,7 +164,7 @@
     font-weight: 400;
 }
 
-.add_task_priority_active_svg path {
+.add-task-priority-active-svg path {
     fill: white;
 }
 
@@ -541,6 +541,73 @@
 
 #add_task_description {
     font-size: 21px;
+}
+
+.add-task-overlay {
+    z-index: 6;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.add-tasl-overlay-board {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.add-task-created-msg {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    border-radius: 20px;
+    background-color: #2A3647;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    padding: 22px;
+    width: 309px; 
+}
+
+.add-task-created-msg-animate-in {
+    animation: fadeInCreatedTaskMsg 300ms linear forwards;
+    
+}
+
+.add-task-created-msg-animate-out {
+    animation: fadeOutCreatedTaskMsg 300ms linear forwards;
+}
+
+.add-task-created-msg>p {
+    font-size: 20px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+
+
+@keyframes fadeInCreatedTaskMsg {
+    from {
+        top: 120%;
+    }
+    to {
+        top: 50%;
+    }
+}
+
+@keyframes fadeOutCreatedTaskMsg {
+    from {
+        top: 50%;
+    }
+    to {
+        top: 120%;
+        
+    }
 }
 
 .d_none {

@@ -10,6 +10,16 @@ let currentCreatedSubtasks = [];
 let requiredTitleRef = document.getElementById('required_msg_title');
 let requiredDueDateRef = document.getElementById('required_msg_due_date');
 let requiredCategoryRef = document.getElementById('required_msg_category');
+let overlayRef = document.getElementById('add_task_overlay');
+let createdMsgRef = document.getElementById('overlay_add_task_created_msg');
+
+function openAddTaskOverlay() {
+    overlayRef.classList.remove('d_none');
+}
+
+function closeAddTaskOverlay() {
+    overlayRef.classList.add('d_none');
+}
 
 function openCalender() {
     let calenderRef = document.getElementById('add_task_due_date')
@@ -37,14 +47,14 @@ function resetPriorityButtonHighlight() {
         btn.classList.add('add-task-priority-btns-hover-class');
     });
     document.querySelectorAll('.add-task-priority-btns-container button svg').forEach(svg => {
-        svg.classList.remove('add_task_priority_active_svg');
+        svg.classList.remove('add-task-priority-active-svg');
     })
 }
 
 function highlightPriorityButton(para, buttonRef, svgRef) {
     buttonRef.classList.remove('add-task-priority-btns-hover-class');
     buttonRef.classList.add(`add-task-priority-btn-${para}-active`);
-    svgRef.classList.add(`add_task_priority_active_svg`);
+    svgRef.classList.add(`add-task-priority-active-svg`);
 }
 
 function selectContact(index) {
@@ -237,10 +247,9 @@ function createNewTask() {
     let dueDateRef = document.getElementById('add_task_due_date');
     checkArrayLength();
     checkValuesAndPushNewObject(titleRef, descriptionRef, dueDateRef);
-    resetGlobalVariables();
-    clearForm();
-    init();
-    activatePriority();
+    // resetGlobalVariables();
+    // clearForm();
+    // init();
 }
 
 function checkArrayLength() {
@@ -281,7 +290,12 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef) {
             "subtasks": currentCreatedSubtasks
         }
     )
+    postTaskAndShowCreatedMsg();
+}
+
+function postTaskAndShowCreatedMsg() {
     postTask("user/tasks/", taskList);
+    showTaskCreatedMsg();
 }
 
 function resetGlobalVariables() {
@@ -295,6 +309,22 @@ function clearForm() {
     let formRef = document.getElementById('add_task_form');
     formRef.reset();
     activatePriority();
+}
+
+function showTaskCreatedMsg() {
+    openAddTaskOverlay();
+    createdMsgRef.classList.remove('add-task-created-msg-animate-out', );
+    setTimeout(() => {
+        createdMsgRef.classList.add('add-task-created-msg-animate-in');
+        setTimeout(() => {
+            createdMsgRef.classList.remove('add-task-created-msg-animate-in')
+            createdMsgRef.classList.add('add-task-created-msg-animate-out');
+            setTimeout(() => {
+                closeAddTaskOverlay();
+                window.location.href = "./board.html";
+            },300)
+        },1000)
+    },900)
 }
 
 function closeDropdownMenus(ev) {

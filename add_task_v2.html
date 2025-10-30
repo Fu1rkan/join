@@ -11,6 +11,21 @@
 </head>
 
 <body onload="init()" onclick="closeDropdownMenus(event)">
+    <div id="add_task_overlay" class="add-task-overlay d_none">
+        <div class="add-tasl-overlay-board">
+            <div id="overlay_add_task_created_msg" class="add-task-created-msg">
+                <p>Task added to Board</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <path
+                        d="M22.9544 4.77273L22.9545 25.2271C22.9538 25.8296 22.7142 26.4074 22.2881 26.8334C21.862 27.2595 21.2843 27.4992 20.6817 27.4998L16.1363 27.4998C15.5338 27.4992 14.956 27.2595 14.53 26.8334C14.1039 26.4074 13.8642 25.8296 13.8636 25.2271L13.8636 4.77273C13.8642 4.17015 14.1039 3.59243 14.53 3.16635C14.956 2.74026 15.5338 2.50062 16.1363 2.50002L20.6817 2.50002C21.2843 2.50062 21.862 2.74026 22.2881 3.16635C22.7142 3.59243 22.9538 4.17015 22.9544 4.77273ZM16.1363 25.2271L20.6817 25.2271L20.6817 4.77273L16.1363 4.77273L16.1363 25.2271ZM16.1363 4.77273L16.1363 25.2271C16.1357 25.8296 15.8961 26.4073 15.47 26.8334C15.0439 27.2595 14.4662 27.4991 13.8636 27.4997L9.31823 27.4997C8.71566 27.4991 8.13794 27.2595 7.71185 26.8334C7.28577 26.4073 7.04613 25.8296 7.04553 25.227L7.04553 4.7727C7.04613 4.17013 7.28577 3.59241 7.71185 3.16632C8.13793 2.74024 8.71566 2.5006 9.31823 2.5L13.8636 2.5C14.4662 2.5006 15.0439 2.74024 15.47 3.16632C15.8961 3.59241 16.1357 4.17015 16.1363 4.77273ZM9.31823 25.227L13.8636 25.2271L13.8636 4.77273L9.31823 4.7727L9.31823 25.227ZM9.31823 4.7727L9.31823 25.227C9.31763 25.8296 9.07799 26.4073 8.65191 26.8334C8.22582 27.2595 7.6481 27.4991 7.04553 27.4997L2.50012 27.4997C1.89755 27.4991 1.31983 27.2595 0.893741 26.8334C0.467657 26.4073 0.228019 25.8296 0.227417 25.227L0.227416 4.7727C0.228018 4.17013 0.467656 3.59241 0.89374 3.16632C1.31982 2.74024 1.89755 2.5006 2.50012 2.5L7.04553 2.5C7.6481 2.5006 8.22582 2.74024 8.6519 3.16632C9.07799 3.59241 9.31763 4.17013 9.31823 4.7727ZM2.50012 25.227L7.04553 25.227L7.04553 4.7727L2.50012 4.7727L2.50012 25.227Z"
+                        fill="white" />
+                    <path
+                        d="M29.7726 4.77298L29.7726 25.2273C29.772 25.8299 29.5323 26.4076 29.1062 26.8337C28.6802 27.2598 28.1024 27.4994 27.4999 27.5L22.9545 27.5C22.3519 27.4994 21.7742 27.2598 21.3481 26.8337C20.922 26.4076 20.6824 25.8296 20.6817 25.2271L20.6817 4.77273C20.6823 4.17015 20.922 3.59268 21.3481 3.1666C21.7742 2.74051 22.3519 2.50088 22.9544 2.50027L27.4999 2.50027C28.1024 2.50088 28.6801 2.74051 29.1062 3.1666C29.5323 3.59268 29.772 4.1704 29.7726 4.77298ZM22.9545 25.2271L27.4999 25.2273L27.4999 4.77298L22.9544 4.77273L22.9545 25.2271Z"
+                        fill="white" />
+                </svg>
+            </div>
+        </div>
+    </div>
     <div class="layout">
         <nav class="navbar">
             <svg width="102" height="122" viewBox="0 0 102 122" fill="none">
@@ -157,7 +172,8 @@
                                         class="w-100 add-task-form-left-title-input add-task-form-input-placeholder-default"
                                         placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')">
                                     <div class="h-16">
-                                        <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field is required</p>
+                                        <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field
+                                            is required</p>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +211,8 @@
                                             onclick="openCalender('add_task_due_date')"
                                             onfocus="highlightInputFields('add_task_due_date')">
                                         <div class="h-16">
-                                            <p id="required_msg_due_date" class="add-tast-form-required-msg d_none">This field is required</p>
+                                            <p id="required_msg_due_date" class="add-tast-form-required-msg d_none">This
+                                                field is required</p>
                                         </div>
                                     </div>
                                     <svg class="add-task-due-date-label-calender-svg" xmlns="http://www.w3.org/2000/svg"
@@ -242,18 +259,18 @@
                                     <button id="add_task_priority_medium" class="add-task-priority-btn-medium-active"
                                         onclick="activatePriority('medium')">
                                         <p>Medium</p>
-                                        <svg id="add_task_priority_medium_svg" xmlns="http://www.w3.org/2000/svg"
-                                            width="20" height="8" viewBox="0 0 20 8" fill="none">
-                                            <g clip-path="url(#clip0_156_1104)">
+                                        <svg id="add_task_priority_medium_svg" class="add-task-priority-active-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="8" viewBox="0 0 20 8"
+                                            fill="none">
+                                            <g clip-path="url(#clip0_156_950)">
                                                 <path
-                                                    d="M18.9041 7.45098H1.09589C0.805242 7.45098 0.526498 7.33469 0.320979 7.12767C0.11546 6.92066 0 6.63989 0 6.34714C0 6.05438 0.11546 5.77361 0.320979 5.5666C0.526498 5.35958 0.805242 5.24329 1.09589 5.24329H18.9041C19.1948 5.24329 19.4735 5.35958 19.679 5.5666C19.8845 5.77361 20 6.05438 20 6.34714C20 6.63989 19.8845 6.92066 19.679 7.12767C19.4735 7.33469 19.1948 7.45098 18.9041 7.45098Z"
+                                                    d="M18.9041 7.45086H1.09589C0.805242 7.45086 0.526498 7.33456 0.320979 7.12755C0.11546 6.92054 0 6.63977 0 6.34701C0 6.05425 0.11546 5.77349 0.320979 5.56647C0.526498 5.35946 0.805242 5.24316 1.09589 5.24316H18.9041C19.1948 5.24316 19.4735 5.35946 19.679 5.56647C19.8845 5.77349 20 6.05425 20 6.34701C20 6.63977 19.8845 6.92054 19.679 7.12755C19.4735 7.33456 19.1948 7.45086 18.9041 7.45086Z"
                                                     fill="#FFA800" />
                                                 <path
                                                     d="M18.9041 2.2077H1.09589C0.805242 2.2077 0.526498 2.0914 0.320979 1.88439C0.11546 1.67738 0 1.39661 0 1.10385C0 0.81109 0.11546 0.530322 0.320979 0.32331C0.526498 0.116298 0.805242 0 1.09589 0L18.9041 0C19.1948 0 19.4735 0.116298 19.679 0.32331C19.8845 0.530322 20 0.81109 20 1.10385C20 1.39661 19.8845 1.67738 19.679 1.88439C19.4735 2.0914 19.1948 2.2077 18.9041 2.2077Z"
                                                     fill="#FFA800" />
                                             </g>
                                             <defs>
-                                                <clipPath id="clip0_156_1104">
+                                                <clipPath id="clip0_156_950">
                                                     <rect width="20" height="7.45098" fill="white" />
                                                 </clipPath>
                                             </defs>
@@ -339,8 +356,9 @@
                                     </div>
                                 </label>
                                 <div class="required-msg-category h-16">
-                                            <p id="required_msg_category" class="add-tast-form-required-msg d_none">This field is required</p>
-                                        </div>
+                                    <p id="required_msg_category" class="add-tast-form-required-msg d_none">This field
+                                        is required</p>
+                                </div>
                                 <div class="add-task-form-category-dropdown">
                                     <ul id="add_task_form_category_dropdown_category" onclick="event.stopPropagation()"
                                         class="add-task-form-category-dropdown-category d_none">
@@ -446,4 +464,5 @@
     <script src="./script/add_task_v2.js"></script>
     <script src="./script/script.js"></script>
 </body>
+
 </html>

@@ -406,7 +406,6 @@
 
 .add-task-inputfield-highlight {
     border-color: #29ABE2;
-    /* cursor: pointer;  */
 }
 
 .add-task-footer-and-btns {
@@ -435,11 +434,36 @@
     border-radius: 10px;
 }
 
-.add-task-form-clear-btn {
+.add-task-form-clear-btn,
+.add-task-form-create-btn {
+    cursor: pointer;
     padding: 12px 12px;
+}
+
+.add-task-form-clear-btn {
+    width: 104px;
     border-radius: 10px;
     border: 1px solid #2A3647;
+}
 
+.add-task-form-clear-btn:hover {
+    border: 2px solid #29ABE2;
+}
+
+.add-task-form-clear-btn:hover>p,
+.add-task-form-clear-btn:hover>svg path{
+    color: #29ABE2;
+    stroke: #29ABE2;
+}
+
+.add-task-form-clear-btn:active {
+    border: 1px solid #091931;
+}
+
+.add-task-form-clear-btn:active>p,
+.add-task-form-clear-btn:active>svg path{
+    color: #091931;
+    stroke: #091931;
 }
 
 .add-task-form-clear-btn>p {
@@ -448,9 +472,16 @@
 }
 
 .add-task-form-create-btn {
-    padding: 12px 12px;
     background-color: #2A3647;
     border-width: 0;
+}
+
+.add-task-form-create-btn:hover {
+    background-color: #29ABE2;
+}
+
+.add-task-form-create-btn:active {
+    background-color: #091931;
 }
 
 .add-task-form-create-btn>p {

@@ -175,23 +175,22 @@ function changeCurrentSubtask(index) {
 
 function highlightInputFields(activeInputField) {
     let inputFieldRef = document.getElementById(activeInputField);
-    let inputFieldAddFormCalenderRef = document.getElementById('add_task_due_date_label_placeholder_svg');
+    let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
     requiredMsgDNone();
-    inputFieldAddFormCalenderRef.classList.remove('d_none');
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
     inputFieldRef.classList.add('add-task-inputfield-highlight');
-    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderRef);
+    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
 }
 
-function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderRef) {
+function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef) {
     switch (activeInputField) {
         case "add_task_subtasks":
             inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
             break;
         case "add_task_due_date":
-            inputFieldAddFormCalenderRef.classList.add('d_none');
+            inputFieldAddFormCalenderSvgRef.classList.add('d_none');
             requiredDueDateRef.classList.remove('d_none');
             break;
         case "add_task_title":
@@ -309,9 +308,11 @@ function resetGlobalVariables() {
 
 function clearForm() {
     let formRef = document.getElementById('add_task_form');
+    let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     formRef.reset();
     activatePriority();
     resetGlobalVariables();
+    inputFieldAddFormCalenderSvgRef.classList.remove('d_none');
 }
 
 function showTaskCreatedMsg() {

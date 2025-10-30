@@ -149,6 +149,7 @@ function chooseCategory(categoryName) {
     toggleCategoryList();
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
+    checkRequiredInputs();
 }
 
 function showSubtaskMenuOptions(index) {
@@ -176,6 +177,9 @@ function highlightInputFields(activeInputField) {
     let inputFieldRef = document.getElementById(activeInputField);
     let inputFieldAddFormCalenderRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
+    requiredTitleRef.classList.add('d_none');
+    requiredDueDateRef.classList.add('d_none');
+    requiredCategoryRef.classList.add('d_none');
     inputFieldAddFormCalenderRef.classList.remove('d_none');
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
@@ -190,6 +194,13 @@ function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksB
             break;
         case "add_task_due_date":
             inputFieldAddFormCalenderRef.classList.add('d_none');
+            requiredDueDateRef.classList.remove('d_none');
+            break;
+        case "add_task_title":
+            requiredTitleRef.classList.remove('d_none');
+            break;
+            case "add_task_category":
+            requiredCategoryRef.classList.remove('d_none');
             break;
         default:
             break;
@@ -246,7 +257,7 @@ function createNewTask() {
     let descriptionRef = document.getElementById('add_task_description');
     let dueDateRef = document.getElementById('add_task_due_date');
     checkArrayLength();
-    checkValuesAndPushNewObject(titleRef, descriptionRef, dueDateRef);
+    pushNewObject(titleRef, descriptionRef, dueDateRef);
     // resetGlobalVariables();
     // clearForm();
     // init();
@@ -263,16 +274,14 @@ function checkArrayLength() {
     }
 }
 
-function checkValuesAndPushNewObject(titleRef, descriptionRef, dueDateRef) {
-    requiredTitleRef.classList.add('d_none');
-    requiredDueDateRef.classList.add('d_none');
-    requiredCategoryRef.classList.add('d_none');
-    if (titleRef.value != "" && dueDateRef.value != "" && currentChoosedCategory != "") {
-        pushNewObject(titleRef, descriptionRef, dueDateRef);
+function checkRequiredInputs() {
+    let titleRef = document.getElementById('add_task_title');
+    let dueDateRef = document.getElementById('add_task_due_date');
+    let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
+if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
+        createNewTaskBtnRef.disabled = true;
     } else {
-        requiredTitleRef.classList.remove('d_none');
-        requiredDueDateRef.classList.remove('d_none');
-        requiredCategoryRef.classList.remove('d_none');
+        createNewTaskBtnRef.disabled = false;
     }
 }
 
@@ -313,7 +322,7 @@ function clearForm() {
 
 function showTaskCreatedMsg() {
     openAddTaskOverlay();
-    createdMsgRef.classList.remove('add-task-created-msg-animate-out', );
+    createdMsgRef.classList.remove('add-task-created-msg-animate-out',);
     setTimeout(() => {
         createdMsgRef.classList.add('add-task-created-msg-animate-in');
         setTimeout(() => {
@@ -322,9 +331,9 @@ function showTaskCreatedMsg() {
             setTimeout(() => {
                 closeAddTaskOverlay();
                 window.location.href = "./board.html";
-            },300)
-        },1000)
-    },900)
+            }, 300)
+        }, 1000)
+    }, 900)
 }
 
 function closeDropdownMenus(ev) {
@@ -337,6 +346,7 @@ function closeDropdownMenus(ev) {
     let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
     closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
+    checkRequiredInputs();
 }
 
 function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef) {

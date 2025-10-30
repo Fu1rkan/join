@@ -157,7 +157,7 @@
                                         class="w-100 add-task-form-left-title-input add-task-form-input-placeholder-default"
                                         placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')">
                                     <div class="h-16">
-                                        <p class="add-tast-form-required-msg">This field is required</p>
+                                        <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field is required</p>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +195,7 @@
                                             onclick="openCalender('add_task_due_date')"
                                             onfocus="highlightInputFields('add_task_due_date')">
                                         <div class="h-16">
-                                            <p class="add-tast-form-required-msg">This field is required</p>
+                                            <p id="required_msg_due_date" class="add-tast-form-required-msg d_none">This field is required</p>
                                         </div>
                                     </div>
                                     <svg class="add-task-due-date-label-calender-svg" xmlns="http://www.w3.org/2000/svg"
@@ -273,7 +273,6 @@
                                         </svg>
                                     </button>
                                 </div>
-
                             </div>
                             <div id="add_task_form_assigned_to_section" class="add-task-form-assigned-to-section h-80"
                                 onclick="event.stopPropagation()">
@@ -300,7 +299,6 @@
                                             </g>
                                         </svg>
                                     </div>
-
                                 </label>
                                 <div class="add-task-form-assigned-to-dropdown">
                                     <ul id="add_task_form_assigned_to_dropdown_contacts"
@@ -310,11 +308,9 @@
                                 </div>
                                 <div id="current_assigned_to_contacts"
                                     class="current-assigned-to-contacts-container d_none">
-
                                 </div>
-
                             </div>
-                            <div class="h-80" onclick="event.stopPropagation()">
+                            <div class="add-task-form-assigned-to-section h-80" onclick="event.stopPropagation()">
                                 <label for="add_task_category" class="add-task-assigned-to-category-label"
                                     onclick="toggleCategoryList()">
                                     <div class="add-task-required-label-head">
@@ -341,8 +337,10 @@
                                             </g>
                                         </svg>
                                     </div>
-
                                 </label>
+                                <div class="required-msg-category h-16">
+                                            <p id="required_msg_category" class="add-tast-form-required-msg d_none">This field is required</p>
+                                        </div>
                                 <div class="add-task-form-category-dropdown">
                                     <ul id="add_task_form_category_dropdown_category" onclick="event.stopPropagation()"
                                         class="add-task-form-category-dropdown-category d_none">
@@ -396,7 +394,6 @@
                                         </button>
                                     </div>
                                 </label>
-
                                 <div class="add-task-subtaks-dropdown">
                                     <ul id="add_task_form_subtasks_dropdown_subtasks"
                                         class="add-task-form-subtasks-dropdown-subtasks ">
@@ -404,7 +401,6 @@
                                     </ul>
                                 </div>
                             </div>
-
                         </section>
                     </div>
                     <section class="add-task-footer-and-btns">
@@ -443,14 +439,11 @@
                 </form>
             </div>
         </main>
-
     </div>
-    
+
     <script src="./script/test_contacts.js"></script>
     <script src="./script/add_task_v2_templates.js"></script>
     <script src="./script/add_task_v2.js"></script>
     <script src="./script/script.js"></script>
-
 </body>
-
 </html>

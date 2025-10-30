@@ -7,6 +7,9 @@ let priorityTaskActive = "medium";
 let currentAssignedTo = [];
 let currentChoosedCategory = "";
 let currentCreatedSubtasks = [];
+let requiredTitleRef = document.getElementById('required_msg_title');
+let requiredDueDateRef = document.getElementById('required_msg_due_date');
+let requiredCategoryRef = document.getElementById('required_msg_category');
 
 function openCalender() {
     let calenderRef = document.getElementById('add_task_due_date')
@@ -69,7 +72,7 @@ function renderCurrentAssignedTo() {
     if (currentAssignedTo.length > 0) {
         currentAssignedToSectionRef.classList.add('h-130');
         currentAssignedToListRef.classList.remove('d_none');
-        for (let index = 0; index < 4; index++) {
+        for (let index = 0; index < currentAssignedTo.length && index < 4; index++) {
             currentAssignedToListRef.innerHTML += getCurrentAssignedContactTemplate(index);
         }
         if (currentAssignedTo.length > 4) {
@@ -138,11 +141,20 @@ function chooseCategory(categoryName) {
     currentChoosedCategory = categoryName;
 }
 
+function showSubtaskMenuOptions(index) {
+    let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
+    let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+    currentSubtaskRoughMenuRef.classList.remove('d_none');
+    subtaskListItemRef.classList.add('list-style-none');
+}
+
 function changeCurrentSubtask(index) {
     let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
     let currentSubtaskValue = document.getElementById(`current_subtask_${index}`);
     let currentSubtaskChangeLabelRef = document.getElementById(`label_current_subtask_${index}`);
     let currentSubtaskChangeinputRef = document.getElementById(`change_current_element_${index}`);
+    let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+    currentSubtaskRoughMenuRef.classList.add('d_none');
     subtaskListItemRef.classList.add('list-style-none');
     subtaskListItemRef.classList.remove('add-task-form-subtasks-dropdown-subtasks-list-item');
     currentSubtaskValue.classList.add('d_none');
@@ -229,7 +241,6 @@ function createNewTask() {
     clearForm();
     init();
     activatePriority();
-    postTask("user/tasks/", taskList);
 }
 
 function checkArrayLength() {
@@ -244,8 +255,15 @@ function checkArrayLength() {
 }
 
 function checkValuesAndPushNewObject(titleRef, descriptionRef, dueDateRef) {
+    requiredTitleRef.classList.add('d_none');
+    requiredDueDateRef.classList.add('d_none');
+    requiredCategoryRef.classList.add('d_none');
     if (titleRef.value != "" && dueDateRef.value != "" && currentChoosedCategory != "") {
         pushNewObject(titleRef, descriptionRef, dueDateRef);
+    } else {
+        requiredTitleRef.classList.remove('d_none');
+        requiredDueDateRef.classList.remove('d_none');
+        requiredCategoryRef.classList.remove('d_none');
     }
 }
 
@@ -263,6 +281,7 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef) {
             "subtasks": currentCreatedSubtasks
         }
     )
+    postTask("user/tasks/", taskList);
 }
 
 function resetGlobalVariables() {

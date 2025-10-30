@@ -77,6 +77,8 @@
     border: 1px solid #d1d1d1;
     border-radius: 10px;
     padding: 18px 16px;
+    resize: none;
+    scrollbar-width: thin;
 }
 
 .add-task-due-date-label,
@@ -195,8 +197,6 @@
     display: flex;
     flex-direction: column;
 }
-
-
 .add-task-form-assigned-to-dropdown-contacts,
 .add-task-form-category-dropdown-category {
     gap: 2px;
@@ -210,17 +210,21 @@
     position: relative;
 }
 
-.add-task-form-assigned-to-dropdown {
+.required-msg-category {
+    position: absolute;
+    bottom: -3px;
+    transform: translateY(50%);
+}
+
+.add-task-form-assigned-to-dropdown,
+.add-task-form-category-dropdown {
     position: absolute;
     top: 78px;
     left: 0;
     right: 0;
 }
 
-.add-task-form-assigned-to-dropdown-contacts {
-    z-index: 3;
-}
-
+.add-task-form-assigned-to-dropdown-contacts,
 .add-task-form-category-dropdown-category {
     z-index: 2;
 }
@@ -305,21 +309,33 @@
 }
 
 .add-task-form-subtasks-btns,
-.add_task_form_subtasks_dropdown_subtasks-btns {
+.add-task-form-subtasks-dropdown-subtasks-btns,
+.add-task-form-subtasks-dropdown-subtasks-edit-btns {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-.add-task-form-subtasks-btns {
+.add-task-form-subtasks-btns,
+.add-task-form-subtasks-dropdown-subtasks-btns {
     position: absolute;
-    bottom: 0;
-    right: 16px;
     transform: translateY(-50%);
 }
 
+.add-task-form-subtasks-btns {
+    bottom: 0;
+    right: 16px;
+    
+}
+
+.add-task-form-subtasks-dropdown-subtasks-btns {
+    right: 0;
+    top: 50%;
+}
+
 .add-task-form-subtasks-btns button,
-.add_task_form_subtasks_dropdown_subtasks-btns button {
+.add-task-form-subtasks-dropdown-subtasks-btns button,
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button {
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -365,6 +381,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item-subtask-input {
@@ -473,7 +490,7 @@
     position: relative;
 }
 
-.add_task_form_subtasks_dropdown_subtasks-btns {
+.add-task-form-subtasks-dropdown-subtasks-edit-btns {
     position: absolute;
     right: 16px;
     top: 50%;

@@ -170,7 +170,7 @@
                                 <div class="add-tast-form-input-required-container">
                                     <input id="add_task_title" type="text"
                                         class="w-100 add-task-form-left-title-input add-task-form-input-placeholder-default"
-                                        placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')" onkeyup="checkRequiredInputs()">
+                                        placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')" onchange="checkRequiredInputs()">
                                     <div class="h-16">
                                         <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field
                                             is required</p>
@@ -185,7 +185,7 @@
                                 <div class="h-136">
                                     <textarea name="" id="add_task_description" placeholder="Enter a Description"
                                         class="w-100 add-task-form-textarea add-task-form-input-placeholder-default"
-                                        onfocus="highlightInputFields('add_task_description')" onkeyup="checkRequiredInputs()"></textarea>
+                                        onfocus="highlightInputFields('add_task_description')"></textarea>
                                     <div class="h-16"></div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                                             class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-default"
                                             type="date" placeholder="dd/mm/yyyy"
                                             onclick="openCalender('add_task_due_date')"
-                                            onfocus="highlightInputFields('add_task_due_date')" onkeyup="checkRequiredInputs()">
+                                            onfocus="highlightInputFields('add_task_due_date')" onchange="checkRequiredInputs()">
                                         <div class="h-16">
                                             <p id="required_msg_due_date" class="add-tast-form-required-msg d_none">This
                                                 field is required</p>
@@ -298,7 +298,7 @@
                                     <p>Assigned to</p>
                                     <input id="add_task_assigned_to"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black"
-                                        type="text" onfocus="highlightInputFields('add_task_assigned_to')" onkeyup="checkRequiredInputs()"
+                                        type="text" onfocus="highlightInputFields('add_task_assigned_to')"
                                         placeholder="Select contacts to assign">
                                     <div id="add_task_form_assigned_to_arrow_svg"
                                         class="add-task-form-assigned-to-arrow-down-svg"
@@ -337,7 +337,7 @@
                                     <input id="add_task_category"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black"
                                         type="text" placeholder="Select task category"
-                                        onfocus="highlightInputFields('add_task_category')" onkeyup="checkRequiredInputs()">
+                                        onfocus="highlightInputFields('add_task_category')" onchange="checkRequiredInputs()">
                                     <div id="add_task_form_category_arrow_svg"
                                         class="add-task-form-assigned-to-arrow-down-svg"
                                         onclick="event.stopPropagation()">
@@ -379,7 +379,7 @@
                                     <input id="add_task_subtasks"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-default"
                                         type="text" placeholder="Add new subtask"
-                                        onfocus="highlightInputFields('add_task_subtasks')" onkeyup="checkRequiredInputs()">
+                                        onfocus="highlightInputFields('add_task_subtasks')">
                                     <div id="add_task_form_subtasks_btns" class="add-task-form-subtasks-btns d_none">
                                         <button onclick="resetAddTaskSubtasksInputField()">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

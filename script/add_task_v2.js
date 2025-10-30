@@ -177,9 +177,7 @@ function highlightInputFields(activeInputField) {
     let inputFieldRef = document.getElementById(activeInputField);
     let inputFieldAddFormCalenderRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    requiredTitleRef.classList.add('d_none');
-    requiredDueDateRef.classList.add('d_none');
-    requiredCategoryRef.classList.add('d_none');
+    requiredMsgDNone();
     inputFieldAddFormCalenderRef.classList.remove('d_none');
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
@@ -245,8 +243,6 @@ function deleteCurrentSubtask(index) {
 function saveChangedSubtask(index) {
     let subtaskListRef = document.getElementById('add_task_form_subtasks_dropdown_subtasks');
     let inputChangedSubtaskRef = document.getElementById(`change_current_element_${index}`);
-    let labelChangedSubtaskRef = document.getElementById(`label_current_subtask_${index}`);
-    let valueChangedSubtaskRef = document.getElementById(`current_subtask_${index}`);
     currentCreatedSubtasks[index].name = inputChangedSubtaskRef.value;
     subtaskListRef.classList.remove('list-style-none');
     renderCurrentCreatedSubtasks();
@@ -258,9 +254,6 @@ function createNewTask() {
     let dueDateRef = document.getElementById('add_task_due_date');
     checkArrayLength();
     pushNewObject(titleRef, descriptionRef, dueDateRef);
-    // resetGlobalVariables();
-    // clearForm();
-    // init();
 }
 
 function checkArrayLength() {
@@ -318,6 +311,7 @@ function clearForm() {
     let formRef = document.getElementById('add_task_form');
     formRef.reset();
     activatePriority();
+    resetGlobalVariables();
 }
 
 function showTaskCreatedMsg() {
@@ -344,6 +338,7 @@ function closeDropdownMenus(ev) {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
     let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
+    requiredMsgDNone();
     closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
     checkRequiredInputs();
@@ -357,4 +352,10 @@ function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactList
         addTaskCategoryArrowRef.classList.remove('add-task-form-assigned-to-arrow-up-svg');
         addTaskSubtasksBtnsRef.classList.add('d_none');
     }
+}
+
+function requiredMsgDNone() {
+    requiredTitleRef.classList.add('d_none');
+    requiredDueDateRef.classList.add('d_none');
+    requiredCategoryRef.classList.add('d_none');
 }

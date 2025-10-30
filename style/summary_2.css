@@ -18,3 +18,9 @@
 .summary-header2 span {
     font-size: 27px;
 }
+
+@media (min-width: 900px) {
+  .animated-overlay {
+    display: none !important;
+  }
+}

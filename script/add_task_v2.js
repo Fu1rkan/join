@@ -149,7 +149,7 @@ function chooseCategory(categoryName) {
     toggleCategoryList();
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
-    checkRequiredInputs();
+    checkRequiredInputs('add_task_category');
 }
 
 function showSubtaskMenuOptions(index) {
@@ -196,7 +196,7 @@ function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksB
         case "add_task_title":
             requiredTitleRef.classList.remove('d_none');
             break;
-            case "add_task_category":
+        case "add_task_category":
             requiredCategoryRef.classList.remove('d_none');
             break;
         default:
@@ -266,15 +266,42 @@ function checkArrayLength() {
     }
 }
 
-function checkRequiredInputs() {
+function checkRequiredInputs(currentElement) {
     let titleRef = document.getElementById('add_task_title');
     let dueDateRef = document.getElementById('add_task_due_date');
+    let categoryRef = document.getElementById('add_task_category');
     let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
-if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
+    if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
         createNewTaskBtnRef.disabled = true;
     } else {
         createNewTaskBtnRef.disabled = false;
     }
+    removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef);
+}
+
+function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef) {
+     switch (currentElement) {
+        case 'add_task_title':
+            if (titleRef.value.length > 0) {
+                requiredTitleRef.classList.add('d_none');
+            }
+            break;
+        case 'add_task_due_date':
+            if (dueDateRef.value.length > 0) {
+                requiredDueDateRef.classList.add('d_none');
+            }
+            
+            break;
+        case 'add_task_category':
+            if (categoryRef.value.length > 0) {
+                requiredCategoryRef.classList.add('d_none');
+            }
+            break;
+
+        default:
+            break;
+    }
+
 }
 
 function pushNewObject(titleRef, descriptionRef, dueDateRef) {
@@ -342,7 +369,6 @@ function closeDropdownMenus(ev) {
     requiredMsgDNone();
     closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
-    checkRequiredInputs();
 }
 
 function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef) {

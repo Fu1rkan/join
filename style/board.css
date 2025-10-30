@@ -15,11 +15,9 @@
     background-color: rgba(246, 247, 248, 1);
 }
 
-
 .resp-header {
     box-shadow: none !important;
 }
-
 
 .search-section {
     display: flex;
@@ -186,9 +184,10 @@
 
 .kanban-board {
     display: flex;
-    width: calc(100% - 160px);
-    margin: 0 80px;
+    width: 100%;
+    padding: 0 80px;
     justify-content: space-between;
+    max-height: calc(100vh - 290px);
 }
 
 .task-list::-webkit-scrollbar {
@@ -202,7 +201,6 @@
     align-items: center;
     gap: 16px;
     overflow-y: auto;
-    max-height: calc(100vh - 314px);
     padding: 10px;
     border: 1px dashed transparent;
 }

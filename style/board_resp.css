@@ -16,27 +16,24 @@
     }
 
     .kanban-board {
-        margin: 0 60px;
-        width: calc(100% - 120px);
+        padding: 0 30px;
     }
 
     .board-header {
-        padding: 60px 60px 40px 60px;
+        padding: 60px 30px 40px 30px;
     }
 }
 
 @media (max-width: 950px) {
 
-    .resp-header {
-        position: fixed;
-        z-index: 2;
+    .board-header{
+        padding: 60px 20px 40px 20px;
     }
 
     .kanban-board {
         flex-direction: column;
-        overflow: auto;
-        padding: 305px 0 80px 0;
-        width: calc(100% - 16px) !important;
+        padding: 0 20px 80px 20px;
+        max-height: none;
     }
 
     .kanban-board::-webkit-scrollbar {
@@ -65,17 +62,6 @@
 
     .task header button {
         display: flex;
-    }
-
-    .board-header {
-        padding: 120px 20px 20px 20px;
-        position: fixed;
-        z-index: 1;
-    }
-
-    .kanban-board {
-        width: calc(100% - 40px);
-        margin: 0 20px;
     }
 
     .search-section {
@@ -176,10 +162,10 @@
 
 @media (max-width: 500px) {
     .board-header {
-        padding: 120px 8px 20px 8px;
+        padding: 32px 8px 20px 8px;
     }
 
     .kanban-board {
-        margin: 0 8px;
+        padding: 0 8px 80px 8px;
     }
 }

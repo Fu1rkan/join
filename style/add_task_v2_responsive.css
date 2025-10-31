@@ -11,6 +11,7 @@
 }
 
 @media (max-width: 1050px) {
+
     #add_task_priority_urgent,
     #add_task_priority_medium,
     #add_task_priority_low {
@@ -31,13 +32,15 @@
 
     .add-task-form {
         margin: 20px 0 0 0;
+        padding: 0 0 20px 0;
         height: 71vh;
+        overflow-x: auto;
+        scrollbar-width: thin;
     }
 
     .add-task-form-main {
         scrollbar-width: none;
         max-height: 100vh;
-        overflow-x: auto;
         align-items: center;
     }
 

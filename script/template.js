@@ -165,7 +165,7 @@ function signUpTemplate() {
                         <li>
                             <form action="password_input" class="password_input" id="password_repeat_input_id">
                                 <label for="password_repeat_input">
-                                    <input class="password_input" type="password" id="password_repeat" name="password_repeat" placeholder="Password">
+                                    <input class="password_input" type="password" id="password_repeat" name="password_repeat" placeholder="Confirm Password">
                                     <div id="toggle_password_repeat_button">
                                         <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                             viewBox="0 0 17 22" fill="none">

@@ -129,7 +129,7 @@ function renderContactsInList(array = contacts) {
 }
 
 function renderChangedContaktList(addTaskAssignedToList, array = contacts) {
-    const activeContactIndices = contacts
+    const activeContactIndices = array
         .map((contact, i) => (currentAssignedTo.includes(contact) ? i : -1))
         .filter(i => i !== -1);
 

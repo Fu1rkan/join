@@ -56,6 +56,10 @@ body {
   flex-direction: column;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 h2 {
   font-size: 61px;
   font-weight: 700;

@@ -196,28 +196,28 @@ function highlightInputFields(activeInputField) {
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
     inputFieldRef.classList.add('add-task-inputfield-highlight');
-    // switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
+    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
 }
 
-// function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef) {
-//     switch (activeInputField) {
-//         case "add_task_subtasks":
-//             inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
-//             break;
-//         case "add_task_due_date":
-//             inputFieldAddFormCalenderSvgRef.classList.add('d_none');
-//             requiredDueDateRef.classList.remove('d_none');
-//             break;
-//         case "add_task_title":
-//             requiredTitleRef.classList.remove('d_none');
-//             break;
-//         case "add_task_category":
-//             requiredCategoryRef.classList.remove('d_none');
-//             break;
-//         default:
-//             break;
-//     }
-// }
+function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef) {
+    switch (activeInputField) {
+        case "add_task_subtasks":
+            inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
+            break;
+        case "add_task_due_date":
+            inputFieldAddFormCalenderSvgRef.classList.add('d_none');
+            // requiredDueDateRef.classList.remove('d_none');
+            break;
+        case "add_task_title":
+            // requiredTitleRef.classList.remove('d_none');
+            break;
+        case "add_task_category":
+            // requiredCategoryRef.classList.remove('d_none');
+            break;
+        default:
+            break;
+    }
+}
 
 function removeHighlightInputFields() {
     document.querySelectorAll('.add-task-form input').forEach(el => el.classList.remove('add-task-inputfield-highlight'));

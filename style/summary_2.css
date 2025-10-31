@@ -49,6 +49,7 @@
     background-color: rgba(255, 255, 255, 1);
     height: 168px;
     transition: 100ms;
+    cursor: pointer;
 }
 
 .first-card-row:hover {
@@ -123,6 +124,7 @@
     height: 168px;
     width: 100%;
     transition: 100ms;
+    cursor: pointer;
 }
 
 .second-card-row:hover {
@@ -204,6 +206,7 @@
     max-width: 168px;
     height: 168px;
     transition: 100ms;
+    cursor: pointer;
 }
 
 .third-card-row:hover {

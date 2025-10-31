@@ -1,6 +1,6 @@
 @import url(./standart.css);
 @import url(./summary.css);
-@import url(./summary_responsive.css);
+@import url(./summary_resp.css);
 @import url(./board.css);
 @import url(./navbar.css);
 @import url(./contacts.css);
@@ -20,4 +20,3 @@
 @import url(./header.css);
 @import url(./board_resp.css);
 @import url(./task_overlay_resp.css);
-@import url(./summary_2.css);

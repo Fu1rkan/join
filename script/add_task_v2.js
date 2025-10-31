@@ -96,9 +96,9 @@ function toggleAssignedToContactList() {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     addTaskAssignedToList.classList.toggle('d_none');
     addTaskAssignedToArrow.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
-        if (!addTaskAssignedToList.classList.contains('d_none')) {
-            renderContactsInList();
-        }
+    if (!addTaskAssignedToList.classList.contains('d_none')) {
+        renderContactsInList();
+    }
 }
 
 function filterInputValue() {
@@ -108,12 +108,12 @@ function filterInputValue() {
     addTaskAssignedToArrow.classList.add('add-task-form-assigned-to-arrow-up-svg');
     let addTaskAssignedToInputRef = document.getElementById('add_task_assigned_to');
     if (addTaskAssignedToInputRef.value.length > 1) {
-        let filtered = contacts.filter((c) => {return c.name.toLowerCase().includes(addTaskAssignedToInputRef.value.toLowerCase())}); 
+        let filtered = contacts.filter((c) => { return c.name.toLowerCase().includes(addTaskAssignedToInputRef.value.toLowerCase()) });
         renderContactsInList(filtered);
     } else {
         renderContactsInList();
     }
-    
+
 }
 
 function renderContactsInList(array = contacts) {
@@ -135,10 +135,10 @@ function renderChangedContaktList(addTaskAssignedToList, array = contacts) {
 
     for (let i = 0; i < array.length; i++) {
         if (activeContactIndices.includes(i)) {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array,i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, i);
             markAsChecked(i);
         } else {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array,i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, i);
         }
     }
 }
@@ -164,7 +164,7 @@ function chooseCategory(categoryName) {
     toggleCategoryList();
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
-    checkRequiredInputs('add_task_category');
+    // checkRequiredInputs('add_task_category');
 }
 
 function showSubtaskMenuOptions(index) {
@@ -192,32 +192,32 @@ function highlightInputFields(activeInputField) {
     let inputFieldRef = document.getElementById(activeInputField);
     let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    requiredMsgDNone();
+    // requiredMsgDNone();
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
     inputFieldRef.classList.add('add-task-inputfield-highlight');
-    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
+    // switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
 }
 
-function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef) {
-    switch (activeInputField) {
-        case "add_task_subtasks":
-            inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
-            break;
-        case "add_task_due_date":
-            inputFieldAddFormCalenderSvgRef.classList.add('d_none');
-            requiredDueDateRef.classList.remove('d_none');
-            break;
-        case "add_task_title":
-            requiredTitleRef.classList.remove('d_none');
-            break;
-        case "add_task_category":
-            requiredCategoryRef.classList.remove('d_none');
-            break;
-        default:
-            break;
-    }
-}
+// function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef) {
+//     switch (activeInputField) {
+//         case "add_task_subtasks":
+//             inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
+//             break;
+//         case "add_task_due_date":
+//             inputFieldAddFormCalenderSvgRef.classList.add('d_none');
+//             requiredDueDateRef.classList.remove('d_none');
+//             break;
+//         case "add_task_title":
+//             requiredTitleRef.classList.remove('d_none');
+//             break;
+//         case "add_task_category":
+//             requiredCategoryRef.classList.remove('d_none');
+//             break;
+//         default:
+//             break;
+//     }
+// }
 
 function removeHighlightInputFields() {
     document.querySelectorAll('.add-task-form input').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
@@ -266,8 +266,14 @@ function createNewTask() {
     let titleRef = document.getElementById('add_task_title');
     let descriptionRef = document.getElementById('add_task_description');
     let dueDateRef = document.getElementById('add_task_due_date');
+    requiredMsgDNone();
     checkArrayLength();
-    pushNewObject(titleRef, descriptionRef, dueDateRef);
+    if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
+        showRequiredMsg();
+    } else {
+        pushNewObject(titleRef, descriptionRef, dueDateRef);
+    }
+
 }
 
 function checkArrayLength() {
@@ -281,43 +287,44 @@ function checkArrayLength() {
     }
 }
 
-function checkRequiredInputs(currentElement) {
-    let titleRef = document.getElementById('add_task_title');
-    let dueDateRef = document.getElementById('add_task_due_date');
-    let categoryRef = document.getElementById('add_task_category');
-    let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
-    if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
-        createNewTaskBtnRef.disabled = true;
-    } else {
-        createNewTaskBtnRef.disabled = false;
-    }
-    removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef);
-}
+// function checkRequiredInputs(currentElement) {
+//     let titleRef = document.getElementById('add_task_title');
+//     let dueDateRef = document.getElementById('add_task_due_date');
+//     let categoryRef = document.getElementById('add_task_category');
+//     let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
+// if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
+//     createNewTaskBtnRef.disabled = true;
 
-function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef) {
-    switch (currentElement) {
-        case 'add_task_title':
-            if (titleRef.value.length > 0) {
-                requiredTitleRef.classList.add('d_none');
-            }
-            break;
-        case 'add_task_due_date':
-            if (dueDateRef.value.length > 0) {
-                requiredDueDateRef.classList.add('d_none');
-            }
+// } else {
+//     createNewTaskBtnRef.disabled = false;
+// }
+// removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef);
+// }
 
-            break;
-        case 'add_task_category':
-            if (categoryRef.value.length > 0) {
-                requiredCategoryRef.classList.add('d_none');
-            }
-            break;
+// function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef) {
+//     switch (currentElement) {
+//         case 'add_task_title':
+//             if (titleRef.value.length > 0) {
+//                 requiredTitleRef.classList.add('d_none');
+//             }
+//             break;
+//         case 'add_task_due_date':
+//             if (dueDateRef.value.length > 0) {
+//                 requiredDueDateRef.classList.add('d_none');
+//             }
 
-        default:
-            break;
-    }
+//             break;
+//         case 'add_task_category':
+//             if (categoryRef.value.length > 0) {
+//                 requiredCategoryRef.classList.add('d_none');
+//             }
+//             break;
 
-}
+//         default:
+//             break;
+//     }
+
+// }
 
 function pushNewObject(titleRef, descriptionRef, dueDateRef) {
     taskList.push(
@@ -381,7 +388,7 @@ function closeDropdownMenus(ev) {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
     let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    requiredMsgDNone();
+    // requiredMsgDNone();
     closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
 }
@@ -400,4 +407,10 @@ function requiredMsgDNone() {
     requiredTitleRef.classList.add('d_none');
     requiredDueDateRef.classList.add('d_none');
     requiredCategoryRef.classList.add('d_none');
+}
+
+function showRequiredMsg() {
+    requiredTitleRef.classList.remove('d_none');
+    requiredDueDateRef.classList.remove('d_none');
+    requiredCategoryRef.classList.remove('d_none');
 }

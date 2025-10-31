@@ -48,6 +48,34 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 1);
     height: 168px;
+    transition: 100ms;
+}
+
+.first-card-row:hover {
+    background-color: rgba(42, 54, 71, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(1.06);
+    color: white !important;
+
+    span {
+        color: white;
+    }
+
+    .first-card-row-logo {
+        background-color: white;
+    }
+
+    .first-card-row-logo svg path{
+        fill: rgba(42, 54, 71, 1);
+    }
+
+    .done-svg path{
+        fill: white !important;
+    }
+
+    .done-svg path{
+        stroke: rgba(42, 54, 71, 1);
+    }
 }
 
 .first-card-row-logo {
@@ -94,6 +122,22 @@
     background-color: rgba(255, 255, 255, 1);
     height: 168px;
     width: 100%;
+    transition: 100ms;
+}
+
+.second-card-row:hover {
+    background-color: rgba(42, 54, 71, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(1.06);
+    color: white;
+
+    span {
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
 }
 
 .second-card-row-desc {
@@ -159,6 +203,18 @@
     align-items: center;
     max-width: 168px;
     height: 168px;
+    transition: 100ms;
+}
+
+.third-card-row:hover {
+    background-color: rgba(42, 54, 71, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(1.06);
+    color: white !important;
+
+    span {
+        color: white;
+    }
 }
 
 .third-card-row span {

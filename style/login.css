@@ -145,6 +145,11 @@ body {
     outline: 1px solid #29ABE2;
 }
 
+/* red outline for required input fields */
+.login_section .input_group form.required-outline {
+    outline: 1px solid #FF0000;
+}
+
 /* input field with icon align */
 .login_section .input_group form label {
     display: flex;
@@ -247,4 +252,11 @@ body {
 
 .main_footer a:hover {
     color: #29ABE2;
+}
+
+/* required field design */
+.required-field {
+    color: #FF0000;
+    font-size: 12px;
+    margin-top: 0;
 }

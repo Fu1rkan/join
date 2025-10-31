@@ -76,6 +76,11 @@
     outline: 1px solid #29ABE2;
 }
 
+/* red outline for required input fields */
+.sign_up_section .sign_up_input_group form.required-outline {
+    outline: 1px solid #FF0000;
+}
+
 /* input label design */
 .sign_up_section .sign_up_input_group form label {
     display: flex;

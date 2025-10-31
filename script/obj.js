@@ -173,32 +173,32 @@
 //     },
 // ];
 
-// let userList = [
-//    { 
-//      (auth key) : {
-//                     "username": "Guest User",
-//                     "e-mail": "guest@example.com",
-//                      password                        - wird ausgelagert und ist über auth key abrufbar
-//                     "tasklist": [],
-//                     "contactlist": []
-//         }
-//     },
-//    { 
-//      (auth key) : {
-//                     "username": "User One",
-//                     "e-mail": "userone@example.com",
-//                      password                        - wird ausgelagert und ist über auth key abrufbar
-//                     "tasklist": [],
-//                     "contactlist": []
-//         }
-//     },
-//    { 
-//      (auth key) : {
-//                     "username": "User Two",
-//                     "e-mail": "usertwo@example.com",
-//                      password                        - wird ausgelagert und ist über auth key abrufbar
-//                     "tasklist": [],
-//                     "contactlist": []
-//         }
-//     }
-// ];
+let userList = [
+   { 
+    "user1" : {
+                    "username": "Guest User",
+                    "e-mail": "guest@example.com",
+                    "password": "guest123",
+                    "tasklist": [],
+                    "contactlist": []
+        }
+    },
+   { 
+    "user2" : {
+                    "username": "User One",
+                    "e-mail": "userone@example.com",
+                    "password": "userone123",
+                    "tasklist": [],
+                    "contactlist": []
+        }
+    },
+   { 
+    "user2" : {
+                    "username": "User Two",
+                    "e-mail": "usertwo@example.com",
+                    "password": "usertwo123",
+                    "tasklist": [],
+                    "contactlist": []
+        }
+    }
+];

@@ -96,34 +96,49 @@ function toggleAssignedToContactList() {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     addTaskAssignedToList.classList.toggle('d_none');
     addTaskAssignedToArrow.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
-    if (!addTaskAssignedToList.classList.contains('d_none')) {
-        renderContactsInList();
-    }
+        if (!addTaskAssignedToList.classList.contains('d_none')) {
+            renderContactsInList();
+        }
 }
 
-function renderContactsInList() {
+function filterInputValue() {
+    let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
+    let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
+    addTaskAssignedToList.classList.remove('d_none');
+    addTaskAssignedToArrow.classList.add('add-task-form-assigned-to-arrow-up-svg');
+    let addTaskAssignedToInputRef = document.getElementById('add_task_assigned_to');
+    if (addTaskAssignedToInputRef.value.length > 1) {
+        let filtered = contacts.filter((c) => {return c.name.toLowerCase().includes(addTaskAssignedToInputRef.value.toLowerCase())}); 
+        renderContactsInList(filtered);
+    } else {
+        renderContactsInList();
+    }
+    
+}
+
+function renderContactsInList(array = contacts) {
     const addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     addTaskAssignedToList.innerHTML = "";
     if (currentAssignedTo.length === 0) {
-        for (let index = 0; index < contacts.length; index++) {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(index);
+        for (let index = 0; index < array.length; index++) {
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, index);
         }
         return;
     }
-    renderChangedContaktList(addTaskAssignedToList);
+    renderChangedContaktList(addTaskAssignedToList, array);
 }
 
-function renderChangedContaktList(addTaskAssignedToList) {
+function renderChangedContaktList(addTaskAssignedToList, array = contacts) {
     const activeContactIndices = contacts
         .map((contact, i) => (currentAssignedTo.includes(contact) ? i : -1))
         .filter(i => i !== -1);
 
-    for (let i = 0; i < contacts.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         if (activeContactIndices.includes(i)) {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array,i);
             markAsChecked(i);
         } else {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array,i);
         }
     }
 }
@@ -280,7 +295,7 @@ function checkRequiredInputs(currentElement) {
 }
 
 function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef) {
-     switch (currentElement) {
+    switch (currentElement) {
         case 'add_task_title':
             if (titleRef.value.length > 0) {
                 requiredTitleRef.classList.add('d_none');
@@ -290,7 +305,7 @@ function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categor
             if (dueDateRef.value.length > 0) {
                 requiredDueDateRef.classList.add('d_none');
             }
-            
+
             break;
         case 'add_task_category':
             if (categoryRef.value.length > 0) {

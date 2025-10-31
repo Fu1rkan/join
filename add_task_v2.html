@@ -171,7 +171,7 @@
                                 <div class="add-tast-form-input-required-container">
                                     <input id="add_task_title" type="text"
                                         class="w-100 add-task-form-left-title-input add-task-form-input-placeholder-default"
-                                        placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')" onkeyup="checkRequiredInputs('add_task_title')">
+                                        placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')">
                                     <div class="h-16">
                                         <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field
                                             is required</p>
@@ -210,7 +210,7 @@
                                             class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-default"
                                             type="date" placeholder="dd/mm/yyyy"
                                             onclick="openCalender('add_task_due_date')"
-                                            onfocus="highlightInputFields('add_task_due_date')" onchange="checkRequiredInputs('add_task_due_date')">
+                                            onfocus="highlightInputFields('add_task_due_date')">
                                         <div class="h-16">
                                             <p id="required_msg_due_date" class="add-tast-form-required-msg d_none">This
                                                 field is required</p>
@@ -338,7 +338,7 @@
                                     <input id="add_task_category"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black"
                                         type="text" placeholder="Select task category"
-                                        onfocus="highlightInputFields('add_task_category')" onchange="checkRequiredInputs('add_task_category')">
+                                        onfocus="highlightInputFields('add_task_category')">
                                     <div id="add_task_form_category_arrow_svg"
                                         class="add-task-form-assigned-to-arrow-down-svg"
                                         onclick="event.stopPropagation()">
@@ -438,7 +438,7 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </button>
-                            <button id="add_task_form_create_btn" class="add-task-form-create-btn" onclick="createNewTask()" disabled>
+                            <button id="add_task_form_create_btn" class="add-task-form-create-btn" onclick="createNewTask()">
                                 <p>Create Task</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">

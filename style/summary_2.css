@@ -21,6 +21,12 @@
     font-size: 27px;
 }
 
+@media (min-width: 900px) {
+  .animated-overlay {
+    display: none !important;
+  }
+}
+
 .summary-main-section{
     display: flex;
     justify-content: space-between;
@@ -176,4 +182,5 @@
 
 .greeting-section h3{
     color: rgba(41, 171, 226, 1);
+
 }

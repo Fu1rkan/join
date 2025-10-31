@@ -21,13 +21,7 @@
     font-size: 27px;
 }
 
-@media (min-width: 900px) {
-  .animated-overlay {
-    display: none !important;
-  }
-}
-
-.summary-main-section{
+.summary-main-section {
     display: flex;
     justify-content: space-between;
 }
@@ -47,7 +41,8 @@
 .first-card-row {
     display: flex;
     align-items: center;
-    padding: 28px 60px;
+    justify-content: center;
+    width: 47%;
     gap: 18px;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
@@ -63,6 +58,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.resp-pen {
+    display: none;
 }
 
 .first-card-row-desc {
@@ -88,12 +87,13 @@
 .second-card-row {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 61px;
-    padding: 28px 60px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 1);
     height: 168px;
+    width: 100%;
 }
 
 .second-card-row-desc {
@@ -128,7 +128,7 @@
 .summary-card-divider {
     width: 2px;
     background-color: rgba(209, 209, 209, 1);
-    height: 100%;
+    height: 60%;
 }
 
 .deadline-section {
@@ -148,7 +148,7 @@
 }
 
 .third-card-row {
-    padding: 25px;
+    width: 30%;
     gap: 13px;
     border-radius: 30px;
     background-color: rgb(255, 255, 255);
@@ -161,26 +161,239 @@
     height: 168px;
 }
 
-.third-card-row span{
+.third-card-row span {
     text-align: center;
     width: 100%;
     font-size: 20px;
     color: rgba(42, 54, 71, 1);
 }
 
-.greeting-section{
+.greeting-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.greeting-section span{
+.greeting-section span {
     font-size: 47px;
     font-weight: 500;
     color: rgba(42, 54, 71, 1);
 }
 
-.greeting-section h3{
+.greeting-section h3 {
     color: rgba(41, 171, 226, 1);
+}
 
+@media (max-width: 1150px) {
+    .summary-main {
+        height: calc(100vh - 96px);
+        padding: 40px;
+    }
+
+    .greeting-section span {
+        font-size: 36px;
+    }
+
+    .greeting-section h3 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 950px) {
+    .greeting-section {
+        display: none;
+    }
+
+    .summary-main {
+        align-items: center;
+    }
+}
+
+@media (min-width: 900px) {
+    .animated-overlay {
+        display: none !important;
+    }
+}
+
+@media (max-width: 630px) {
+    .summary-main {
+        height: calc(100vh - 80px);
+        padding: 40px 20px;
+    }
+
+    .summary-header2 {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 16px;
+        margin-bottom: 48px;
+    }
+
+    .summary-header2 div {
+        width: 90px;
+        height: 3px;
+        order: 1;
+    }
+
+    .summary-header2 span {
+        font-size: 20px;
+    }
+
+    .summary-main-section {
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 47px;
+    }
+
+    .first-card-row {
+        justify-content: center;
+        gap: 10px;
+        height: 140px;
+    }
+
+    .first-card-row span {
+        font-size: 18px;
+    }
+
+    .first-card-row-logo {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(42, 54, 71, 1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .second-card-row {
+        gap: 20px;
+        height: 140px;
+        justify-content: center;
+    }
+
+    .second-card-row span {
+        font-size: 20px;
+    }
+
+    .third-card-row {
+        padding: 25px;
+        max-width: 168px;
+        height: 140px;
+        width: 30%;
+        gap: 0;
+    }
+
+    .third-card-row span {
+        text-align: center;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .summary-card {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .summary-header2 {
+        margin-bottom: 32px;
+    }
+
+    .summary-main {
+        padding: 40px 16px;
+    }
+
+    .done-svg {
+        width: 21px;
+        height: 16px;
+    }
+
+    .pen {
+        display: none;
+    }
+
+    .resp-pen {
+        display: block;
+    }
+
+    .first-card-row {
+        justify-content: center;
+        gap: 10px;
+        height: 110px;
+    }
+
+    .first-card-row span {
+        font-size: 14px;
+    }
+
+    .first-card-row-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .second-card-row {
+        height: 110px;
+        gap: 14px;
+    }
+
+    .summary-category {
+        gap: 0;
+    }
+
+    .summary-category-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .summary-category-logo svg {
+        width: 23px;
+        height: 17px;
+    }
+
+    .second-card-row-desc span {
+        font-size: 14px;
+    }
+
+    .deadline-section {
+        gap: 8px;
+    }
+
+    .deadline-section span {
+        font-size: 16px;
+    }
+
+    .deadline-section p {
+        font-size: 14px;
+    }
+
+
+    .third-card-row {
+        width: 30%;
+        border-radius: 30px;
+        height: 110px;
+        padding: 10px;
+    }
+
+    .third-card-row span {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 750px) {
+    .summary-header2 {
+        margin-bottom: 16px;
+        gap: 8px;
+    }
+
+    .summary-main {
+        padding: 16px;
+        max-width: 1208px;
+    }
+
+    .summary-card {
+        gap: 16px;
+    }
 }

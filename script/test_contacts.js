@@ -3,21 +3,19 @@ const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatab
 let contacts = [];
 let taskList = [];
 
-async function getUsers() {
+async function getUsers(email, password) {
   let response = await fetch(BASE_URL + ".json");
   let responseToJson = await response.json();
-  // console.log(responseToJson);
-
-  // Objekt -> Array konvertieren
   let users = Object.values(responseToJson);
-  // console.log(users);
-
-  let email = "csinner31@gmail.com";
-  let password = "123456";
-
   let currentUserIndex = users.findIndex(u => u.email === email && u.password === password);
-  // console.log(currentUserIndex);
 
+  if (currentUserIndex === -1) {
+    document.getElementById('required_password').innerHTML = `<p id="password_invalid_field" class="required-field-text">LogIn failed. Please check your email and password.</p>`;
+    document.getElementById('password_input_id').classList.add('required-outline');
+  } else {
+    document.getElementById('required_password').innerHTML = '';
+    document.getElementById('password_input_id').classList.remove('required-outline');
+  }
   let keys = Object.keys(responseToJson);
 
   let userPath = keys[currentUserIndex];
@@ -29,13 +27,14 @@ async function loadContacts(userPath) {
   let currentUserPath = userPath + "/";
 
   let currentUrl = BASE_URL + currentUserPath;
-  
-  
+  console.log(currentUrl);
+
+
   let userContacts = "contacts/";
   let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
   let responseToJson = await response.json();
   // console.log(responseToJson);
-  
+
   pushUserContactsToArray(responseToJson);
 }
 

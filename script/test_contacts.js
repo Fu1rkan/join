@@ -1,5 +1,8 @@
 const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/user/";
 
+let contacts = [];
+let taskList = [];
+
 async function getUsers() {
   let response = await fetch(BASE_URL + ".json");
   let responseToJson = await response.json();
@@ -18,20 +21,14 @@ async function getUsers() {
   let keys = Object.keys(responseToJson);
 
   let userPath = keys[currentUserIndex];
-  console.log(userPath);
   await loadContacts(userPath);
   await loadTasks(userPath);
 }
 
-let contacts = [];
-let taskList = [];
-
 async function loadContacts(userPath) {
   let currentUserPath = userPath + "/";
-  console.log(currentUserPath);
 
   let currentUrl = BASE_URL + currentUserPath;
-  console.log(currentUrl);
   
   
   let userContacts = "contacts/";
@@ -47,7 +44,6 @@ function pushUserContactsToArray(responseToJson) {
   for (let index = 0; index < responseToJson.length; index++) {
     contacts.push(responseToJson[index]);
   }
-  console.log(contacts);
   
 }
 

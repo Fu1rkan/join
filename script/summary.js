@@ -3,6 +3,12 @@ let urlParams = new URLSearchParams(window.location.search);
 let showOverlay = urlParams.get('showOverlay');
 let loginType = urlParams.get('loginType');
 
+
+async function summaryInit(){
+    await init();
+    loadCardInfos();
+}
+
 function checkAndShowOverlay() {
     if (showOverlay === 'true' && window.innerWidth < 900) {
         let overlay = document.getElementById('animated_overlay_id');
@@ -60,21 +66,20 @@ function filterTasksByCategory() {
     let tasksInProgress = document.getElementById('tasks-in-progress');
     let tasksInAwaitingFeedback = document.getElementById('tasks-in-awaiting-feedback');
     let allDoneTasks = document.getElementById('all-done-tasks');
-    let allTasksFromPriority = document.getElementById('all-tasks-from-priority');
-    renderCountstoSummaryCards(allTasks, allToDoTasks, tasksInProgress, tasksInAwaitingFeedback, allDoneTasks, allTasksFromPriority, toDos, inProgressTasks, awaitFeddbackTasks, doneTasks);
+    renderCountstoSummaryCards(allTasks, allToDoTasks, tasksInProgress, tasksInAwaitingFeedback, allDoneTasks, toDos, inProgressTasks, awaitFeddbackTasks, doneTasks);
 }
 
-function renderCountstoSummaryCards(allTasks, allToDoTasks, tasksInProgress, tasksInAwaitingFeedback, allDoneTasks, allTasksFromPriority, toDos, inProgressTasks, awaitFeddbackTasks, doneTasks) {
+function renderCountstoSummaryCards(allTasks, allToDoTasks, tasksInProgress, tasksInAwaitingFeedback, allDoneTasks, toDos, inProgressTasks, awaitFeddbackTasks, doneTasks) {
     allTasks.innerHTML = taskList.length;
     allToDoTasks.innerHTML = toDos.length;
     tasksInProgress.innerHTML = inProgressTasks.length;
     tasksInAwaitingFeedback.innerHTML = awaitFeddbackTasks.length;
     allDoneTasks.innerHTML = doneTasks.length;
-    allTasksFromPriority.innerHTML = urgentTasks.length;
 }
 
 function renderUpcomingDeadline() {
     let dateOfDeadline = document.getElementById('date-of-deadline');
+    let allTasksFromPriority = document.getElementById('all-tasks-from-priority');
     let urgentTasks = taskList.filter(t => t.priority == 'urgent');
     let dates = Math.min(...urgentTasks.map(d => new Date(d.date)));
     let smallest = urgentTasks.filter(d => new Date(d.date).getTime() === dates);
@@ -86,4 +91,5 @@ function renderUpcomingDeadline() {
     );
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     dateOfDeadline.innerHTML = date.toLocaleDateString('en-US', options);
+    allTasksFromPriority.innerHTML = urgentTasks.length;
 }

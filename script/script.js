@@ -1,6 +1,5 @@
 async function init() {
-    await loadContacts();
-    await loadTasks();
+    await getUsers();
 }
 
 

@@ -7,6 +7,11 @@ let taskEditor;
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
 
+async function boardInit(){
+    await init();
+    renderTasks();
+}
+
 function renderTasks() {
     for (let index = 0; index < ids.length; index++) {
         let categoryTasks = taskList.filter(t => t['category'] == ids[index]);
@@ -159,7 +164,7 @@ async function deleteTask(i) {
     taskList.splice(task, 1);
     toggleTaskOverlay(i);
     await postTask("user/tasks/", taskList);
-    await init();
+    await boardInit();
 }
 
 
@@ -434,7 +439,7 @@ async function pushEditedTaskToJSON(index) {
         toggleTaskOverlay(task);
         toggleTaskOverlay(task);
         await postTask("user/tasks/", taskList);
-        await init();
+        await boardInit();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
 

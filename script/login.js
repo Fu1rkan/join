@@ -123,13 +123,9 @@ function checkSignUpInputFields() {
         let passwordInput = document.getElementById('password');
         let passwordRepeatInput = document.getElementById('password_repeat');
         
-        // Step 2: Validate email and password format
         if (validateEmailAndPassword(emailInput.value, passwordInput.value)) {
-            // Step 3: Check if passwords match
             if (validatePasswordMatch(passwordInput.value, passwordRepeatInput.value)) {
-                // Step 4: Check privacy policy checkbox
                 if (checkPrivacyPolicyCheckbox()) {
-                    // Step 5: Only open overlay if everything is valid
                     openSignUpOverlay();
                 }
             }

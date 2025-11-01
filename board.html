@@ -9,15 +9,13 @@
     <link rel="stylesheet" href="./style/style.css" />
 
     <script src="./script/script.js"></script>
-    <script src="./script/obj.js"></script>
     <script src="./script/template.js"></script>
     <script src="./script/add_task.js"></script>
-    <script src="./script/add_task_template.js"></script>
+    <script src="./script/add_task_templates.js"></script>
     <script src="./script/test_contacts.js"></script> <!-- Muss auf obj.js geändert werden -->
-    <script src="./script/summary.js"></script>
 </head>
 
-<body onload="init()">
+<body onload="init(); renderTasks()">
 
     <div class="layout">
         <section id="overlay_board" class="overlay-board d_none" onclick="closeOverlayBoard()">
@@ -54,7 +52,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="navbar-link" href="./add_task_v2.html">
+                    <a class="navbar-link" href="./add_task.html">
                         <div class="category-logo">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
                                 <mask id="mask0_373102_726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -276,8 +274,6 @@
 
     <div class="dialog" id="task-dialog"></div>
 
-    <script src="./script/add_task_v2_templates.js"></script>
-    <script src="./script/add_task_v2.js"></script>
     <script src="./script/overlay_board.js"></script>
     <script src="./script/board.js"></script>
 </body>

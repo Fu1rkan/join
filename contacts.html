@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./assets/svg/favicon.svg">
     <link rel="stylesheet" href="./style/style.css">
+    <script src="./script/script.js"></script>
     <title>Contacts</title>
 </head>
 
-<body class="contacts-body" onload="init()">
+<body class="contacts-body" onload="init(); filterContacts()">
     <section class="layout">
         <section id="overlay_contacts" class="overlay-contacts d_none" onclick="closeResponsiveContactEditMenu()">
             <div id="overlay_contacts_content" class="overlay-shadow-pos-rel-container">
@@ -45,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="navbar-link" href="./add_task_v2.html">
+                    <a class="navbar-link" href="./add_task.html">
                         <div class="category-logo">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
                                 <mask id="mask0_373102_726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -219,7 +220,6 @@
     <script src="./script/test_contacts.js"></script>
     <script src="./script/contact_templates.js"></script>
     <script src="./script/contact.js"></script>
-    <script src="./script/script.js"></script>
 </body>
 
 

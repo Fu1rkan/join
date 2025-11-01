@@ -6,11 +6,6 @@ const contactAreaRef = document.getElementById('contact_area');
 const templateRef = document.getElementById("contact_template");
 
 
-async function init() {
-    await loadContacts();
-    filterContacts();
-}
-
 function openOverlay() {
     overlayRef.classList.remove('d_none');
 }

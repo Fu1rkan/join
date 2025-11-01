@@ -44,13 +44,7 @@ function updateGreeting() {
 updateGreeting();
 setInterval(updateGreeting, 60);
 
-// stop propagation on menu click
-function stopPropagation(event) {
-    event.stopPropagation();
-}
-
 async function loadCardInfos() {
-    await loadTasks();
     filterTasksByCategory();
     renderUpcomingDeadline();
 }

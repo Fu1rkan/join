@@ -4,19 +4,7 @@ let currentDraggedElement;
 
 let taskEditor;
 
-
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
-
-function stopPropagation(event) {
-    event.stopPropagation();
-}
-
-
-async function init() {
-    await loadContacts();
-    await loadTasks();
-    renderTasks();
-}
 
 
 function renderTasks() {
@@ -185,28 +173,6 @@ function toggleSubtaskStatus(i, index) {
     }
     checkTaskOverlaySubtasks(taskList[task], 'task-overlay')
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function openEditTaskOverlay(id) {
@@ -385,6 +351,7 @@ function toggleContactList() {
     document.getElementById('participants-list').classList.toggle('d_none');
 }
 
+
 function openContactList() {
     document.getElementById('change-participants-button').classList.add('tf_r180');
     document.getElementById('participants-list').classList.remove('d_none');
@@ -470,35 +437,6 @@ async function pushEditedTaskToJSON(index) {
         await init();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function searchtasks() {
@@ -606,17 +544,67 @@ function switchUp(i) {
         taskList[task].category = "in-progress"
     } else if (taskList[task].category == "done") {
         taskList[task].category = "await-feedback"
-    }else{
+    } else {
         console.log('is To Do');
     }
     renderTasks();
 }
 
-function escapeHTML(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+
+(function addHorizontalFades() {
+    const lists = document.querySelectorAll('.kanban-board .task-list');
+
+    lists.forEach((list) => {
+        // Wrapper erzeugen und list hineinverschieben
+        const wrap = document.createElement('div');
+        wrap.className = 'hs-wrap';
+        list.parentNode.insertBefore(wrap, list);
+        wrap.appendChild(list);
+
+        // Fade-Overlays erstellen
+        const fadeLeft = document.createElement('div');
+        const fadeRight = document.createElement('div');
+        fadeLeft.className = 'hs-fade hs-fade--left';
+        fadeRight.className = 'hs-fade hs-fade--right';
+        wrap.appendChild(fadeLeft);
+        wrap.appendChild(fadeRight);
+
+        // Update-Logik je nach Scrollposition
+        const update = () => {
+            // nur bei mobiler Ansicht relevant – dein Overflow ist dort aktiv
+            const max = list.scrollWidth - list.clientWidth;
+            const hasOverflow = max > 1;
+
+            wrap.classList.toggle('has-overflow', hasOverflow);
+
+            if (!hasOverflow) {
+                fadeLeft.style.opacity = '0';
+                fadeRight.style.opacity = '0';
+                return;
+            }
+
+            const atStart = list.scrollLeft <= 1;
+            const atEnd = list.scrollLeft >= max - 1;
+
+            // Am Anfang: nur rechter Fade sichtbar
+            // In der Mitte: beide sichtbar
+            // Am Ende: nur linker Fade sichtbar
+            fadeLeft.style.opacity = atStart ? '0' : '1';
+            fadeRight.style.opacity = atEnd ? '0' : '1';
+        };
+
+        // Events
+        list.addEventListener('scroll', update, { passive: true });
+
+        // Resize/Font/Layouträume können sich ändern
+        const ro = new ResizeObserver(update);
+        ro.observe(list);
+
+        // Tasks können dynamisch dazu kommen/entfernt werden
+        const mo = new MutationObserver(update);
+        mo.observe(list, { childList: true, subtree: true });
+
+        // Initial
+        update();
+    });
+})();

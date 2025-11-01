@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css" />
+    <script src="./script/script.js"></script>
     <script src="./script/test_contacts.js"></script>
-    <script src="./script/board.js"></script>
     <title>Summary</title>
 </head>
 
-<body onload="loadCardInfos()">
+<body onload="init(); loadCardInfos()">
     <section class="layout">
 
         <nav class="navbar">
@@ -45,7 +45,7 @@
                 </li>
 
                 <li>
-                    <a class="navbar-link" href="./add_task_v2.html">
+                    <a class="navbar-link" href="./add_task.html">
                         <div class="category-logo">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
                                 <mask id="mask0_373102_726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"

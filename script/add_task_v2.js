@@ -1,4 +1,4 @@
-async function init() {
+async function initAddTask() {
     await loadContacts();
     await loadTasks();
 }
@@ -7,9 +7,6 @@ let priorityTaskActive = "medium";
 let currentAssignedTo = [];
 let currentChoosedCategory = "";
 let currentCreatedSubtasks = [];
-let requiredTitleRef = document.getElementById('required_msg_title');
-let requiredDueDateRef = document.getElementById('required_msg_due_date');
-let requiredCategoryRef = document.getElementById('required_msg_category');
 let overlayRef = document.getElementById('add_task_overlay');
 let createdMsgRef = document.getElementById('overlay_add_task_created_msg');
 
@@ -164,7 +161,6 @@ function chooseCategory(categoryName) {
     toggleCategoryList();
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
-    // checkRequiredInputs('add_task_category');
 }
 
 function showSubtaskMenuOptions(index) {
@@ -192,7 +188,6 @@ function highlightInputFields(activeInputField) {
     let inputFieldRef = document.getElementById(activeInputField);
     let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    // requiredMsgDNone();
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
     inputFieldRef.classList.add('add-task-inputfield-highlight');
@@ -206,13 +201,8 @@ function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksB
             break;
         case "add_task_due_date":
             inputFieldAddFormCalenderSvgRef.classList.add('d_none');
-            // requiredDueDateRef.classList.remove('d_none');
             break;
         case "add_task_title":
-            // requiredTitleRef.classList.remove('d_none');
-            break;
-        case "add_task_category":
-            // requiredCategoryRef.classList.remove('d_none');
             break;
         default:
             break;
@@ -262,7 +252,7 @@ function saveChangedSubtask(index) {
     renderCurrentCreatedSubtasks();
 }
 
-function createNewTask() {
+function createNewTask(paraOverlay = "") {
     let titleRef = document.getElementById('add_task_title');
     let descriptionRef = document.getElementById('add_task_description');
     let dueDateRef = document.getElementById('add_task_due_date');
@@ -271,9 +261,8 @@ function createNewTask() {
     if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
         showRequiredMsg();
     } else {
-        pushNewObject(titleRef, descriptionRef, dueDateRef);
+        pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay);
     }
-
 }
 
 function checkArrayLength() {
@@ -287,46 +276,7 @@ function checkArrayLength() {
     }
 }
 
-// function checkRequiredInputs(currentElement) {
-//     let titleRef = document.getElementById('add_task_title');
-//     let dueDateRef = document.getElementById('add_task_due_date');
-//     let categoryRef = document.getElementById('add_task_category');
-//     let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
-// if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
-//     createNewTaskBtnRef.disabled = true;
-
-// } else {
-//     createNewTaskBtnRef.disabled = false;
-// }
-// removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef);
-// }
-
-// function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef) {
-//     switch (currentElement) {
-//         case 'add_task_title':
-//             if (titleRef.value.length > 0) {
-//                 requiredTitleRef.classList.add('d_none');
-//             }
-//             break;
-//         case 'add_task_due_date':
-//             if (dueDateRef.value.length > 0) {
-//                 requiredDueDateRef.classList.add('d_none');
-//             }
-
-//             break;
-//         case 'add_task_category':
-//             if (categoryRef.value.length > 0) {
-//                 requiredCategoryRef.classList.add('d_none');
-//             }
-//             break;
-
-//         default:
-//             break;
-//     }
-
-// }
-
-function pushNewObject(titleRef, descriptionRef, dueDateRef) {
+function pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay = "") {
     taskList.push(
         {
             "id": taskList.length,
@@ -340,12 +290,20 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef) {
             "subtasks": currentCreatedSubtasks
         }
     )
-    postTaskAndShowCreatedMsg();
+    resetGlobalVariables();
+    postTaskAndShowCreatedMsg(paraOverlay);
 }
 
-function postTaskAndShowCreatedMsg() {
-    postTask("user/tasks/", taskList);
-    showTaskCreatedMsg();
+function postTaskAndShowCreatedMsg(paraOverlay = "") {
+    if (paraOverlay = "overlay_board") {
+        postTask("user/tasks/", taskList);
+        closeOverlayBoard();
+        init();
+    } else {
+        postTask("user/tasks/", taskList);
+        showTaskCreatedMsg();
+    }
+
 }
 
 function resetGlobalVariables() {
@@ -388,7 +346,6 @@ function closeDropdownMenus(ev) {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
     let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    // requiredMsgDNone();
     closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
 }
@@ -404,13 +361,22 @@ function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactList
 }
 
 function requiredMsgDNone() {
+    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef } = takeRequiredMsgRefs();
     requiredTitleRef.classList.add('d_none');
     requiredDueDateRef.classList.add('d_none');
     requiredCategoryRef.classList.add('d_none');
 }
 
 function showRequiredMsg() {
+    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef } = takeRequiredMsgRefs();
     requiredTitleRef.classList.remove('d_none');
     requiredDueDateRef.classList.remove('d_none');
     requiredCategoryRef.classList.remove('d_none');
+}
+
+function takeRequiredMsgRefs() {
+    let requiredTitleRef = document.getElementById('required_msg_title');
+    let requiredDueDateRef = document.getElementById('required_msg_due_date');
+    let requiredCategoryRef = document.getElementById('required_msg_category');
+    return { requiredTitleRef, requiredDueDateRef, requiredCategoryRef };
 }

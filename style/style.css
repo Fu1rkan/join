@@ -16,6 +16,9 @@
 @import url(./contacts_overlay.css);
 @import url(./contacts_overlay_responsiv.css);
 @import url(./overlay_board_template.css);
+@import url(./add_task_v2.css);
+@import url(./add_task_v2_overlay.css);
+@import url(./add_task_v2_responsive.css);
 @import url(./add_task.css);
 @import url(./header.css);
 @import url(./board_resp.css);

@@ -218,6 +218,22 @@
     position: relative;
 }
 
+.add-task-subtaks-dropdown {
+    background-color: #FFFFFF;
+    
+}
+
+.add-task-subtaks-dropdown ul {
+    background-color: #FFFFFF;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 80px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
 .required-msg-category {
     position: absolute;
     bottom: -3px;
@@ -357,10 +373,16 @@
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item {
+    cursor: pointer;
     list-style: none;
     padding: 6px 16px 6px 40px;
     height: 32px;
     position: relative;
+    border-radius: 10px;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item:hover {
+    background-color: #EEEEEE;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item::before {

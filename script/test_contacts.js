@@ -1,41 +1,74 @@
+const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/user/";
+
+async function getUsers() {
+  let response = await fetch(BASE_URL + ".json");
+  let responseToJson = await response.json();
+  // console.log(responseToJson);
+
+  // Objekt -> Array konvertieren
+  let users = Object.values(responseToJson);
+  // console.log(users);
+
+  let email = "csinner31@gmail.com";
+  let password = "123456";
+
+  let currentUserIndex = users.findIndex(u => u.email === email && u.password === password);
+  // console.log(currentUserIndex);
+
+  let keys = Object.keys(responseToJson);
+
+  let userPath = keys[currentUserIndex];
+  console.log(userPath);
+  await loadContacts(userPath);
+  await loadTasks(userPath);
+}
+
 let contacts = [];
 let taskList = [];
 
-const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/";
+async function loadContacts(userPath) {
+  let currentUserPath = userPath + "/";
+  console.log(currentUserPath);
 
-async function loadContacts() {
-    let user = "user/";
-    let userContacts = "contacts/";
-    let response = await fetch(BASE_URL + user + userContacts + ".json");
-    let responseToJson = await response.json();
-    pushUserContactsToArray(responseToJson);
+  let currentUrl = BASE_URL + currentUserPath;
+  console.log(currentUrl);
+  
+  
+  let userContacts = "contacts/";
+  let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
+  let responseToJson = await response.json();
+  // console.log(responseToJson);
+  
+  pushUserContactsToArray(responseToJson);
 }
 
 function pushUserContactsToArray(responseToJson) {
-    contacts = [];
-    for (let index = 0; index < responseToJson.length; index++) {
-        contacts.push(responseToJson[index]);
-    }
+  contacts = [];
+  for (let index = 0; index < responseToJson.length; index++) {
+    contacts.push(responseToJson[index]);
+  }
+  console.log(contacts);
+  
 }
 
 
 //Tasks
 
-async function loadTasks() {
-    let user = "user/";
-    let userContacts = "tasks/";
-    let response = await fetch(BASE_URL + user + userContacts + ".json");
-    let responseToJson = await response.json();
-    pushUserTaskToArray(responseToJson);
+async function loadTasks(userPath) {
+  let currentUserPath = userPath + "/";
+  let userContacts = "tasks/";
+  let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
+  let responseToJson = await response.json();
+  pushUserTaskToArray(responseToJson);
 }
 
 function pushUserTaskToArray(responseToJson) {
   if (responseToJson.length > 0) {
     taskList = [];
     for (let index = 0; index < responseToJson.length; index++) {
-        taskList.push(responseToJson[index]);
+      taskList.push(responseToJson[index]);
     }
-  }  
+  }
 }
 
 
@@ -43,90 +76,90 @@ function pushUserTaskToArray(responseToJson) {
 
 //Kopie von Svens Code zum Task erstellen
 
-function checkNPost(formId, dateId) {
-  let title = document.getElementById("title");
-  let description = document.getElementById("description").value;
-  let dueDate = document.getElementById(dateId);
-  let priority = document.getElementById("priority").value;
-  let category = document.getElementById("category_input");
+// function checkNPost(formId, dateId) {
+//   let title = document.getElementById("title");
+//   let description = document.getElementById("description").value;
+//   let dueDate = document.getElementById(dateId);
+//   let priority = document.getElementById("priority").value;
+//   let category = document.getElementById("category_input");
 
-  if (title.value.length < 1 || dueDate.value.length < 1 || category.value.length < 1) {
-    requiredNotice(title, "title");
-    requiredNotice(dueDate, "due_date");
-    requiredNotice(category, "category");
+//   if (title.value.length < 1 || dueDate.value.length < 1 || category.value.length < 1) {
+//     requiredNotice(title, "title");
+//     requiredNotice(dueDate, "due_date");
+//     requiredNotice(category, "category");
 
-  } else {
-    // postTask("", {
-    // "name": title.value,
-    // "description": description,
-    // "date": dueDate.value,
-    // "priority": priority,
-    // "assigned_to": "placeholder",
-    // "category": category.value,
-    // "subtask": ["text1", "text2", "text3"],
-    //   /* add the other inputs */
+//   } else {
+//     postTask("", {
+//     "name": title.value,
+//     "description": description,
+//     "date": dueDate.value,
+//     "priority": priority,
+//     "assigned_to": "placeholder",
+//     "category": category.value,
+//     "subtask": ["text1", "text2", "text3"],
+//       /* add the other inputs */
 
-    let newestTask = {
-      "id" : taskList.length,
-      "name": title.value,
-      "description": description,
-      "date": dueDate.value,
-      "priority": priority,
-      "participants": false,
-      "type": category.value,
-      "category": "to-do",
-      "subtasks": false,
-    }
+//     let newestTask = {
+//       "id" : taskList.length,
+//       "name": title.value,
+//       "description": description,
+//       "date": dueDate.value,
+//       "priority": priority,
+//       "participants": false,
+//       "type": category.value,
+//       "category": "to-do",
+//       "subtasks": false,
+//     }
 
-    taskList.push(newestTask);
-    clearFormAddTask(formId)
-    
-    postTask("user/tasks/", taskList);
-    init();
-  };
-}
+//     taskList.push(newestTask);
+//     clearFormAddTask(formId)
+
+//     postTask("user/tasks/", taskList);
+//     init();
+//   };
+// }
 
 async function postTask(path, data = {}) {    // "user/tasks/", testTasks
   if (taskList.length > 0) {
     let response = await fetch(BASE_URL + path + ".json", {
-    method: "PUT",
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return (responseToJson = await response.json());
+      method: "PUT",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return (responseToJson = await response.json());
   } else {
     let data = {
-      "placeholder" : "placeholder"
+      "placeholder": "placeholder"
     }
     let response = await fetch(BASE_URL + path + ".json", {
-    method: "PUT",
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return (responseToJson = await response.json());
+      method: "PUT",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return (responseToJson = await response.json());
   }
 
 }
 
 
-async function putCurrentContacts(path, data = {}) {    
+async function putCurrentContacts(path, data = {}) {
   if (contacts.length > 0) {
     let response = await fetch(BASE_URL + path + ".json", {
-    method: "PUT",
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return (responseToJson = await response.json());
+      method: "PUT",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return (responseToJson = await response.json());
   } else {
     let data = {
-      "placeholder" : "placeholder"
+      "placeholder": "placeholder"
     }
     let response = await fetch(BASE_URL + path + ".json", {
-    method: "PUT",
-    header: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return (responseToJson = await response.json());
+      method: "PUT",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return (responseToJson = await response.json());
   }
 
 }

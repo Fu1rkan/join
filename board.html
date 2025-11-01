@@ -14,6 +14,7 @@
     <script src="./script/add_task.js"></script>
     <script src="./script/add_task_template.js"></script>
     <script src="./script/test_contacts.js"></script> <!-- Muss auf obj.js geändert werden -->
+    <script src="./script/summary.js"></script>
 </head>
 
 <body onload="init()">
@@ -196,7 +197,7 @@
                     </section>
                 </header>
                 <section class="kanban-board">
-                    <section class="column">
+                    <section class="column" id="to-do-board">
 
                         <header>
                             <h4>To do</h4>
@@ -249,7 +250,7 @@
 
                     </section>
 
-                    <section class="column">
+                    <section class="column" id="done-board">
 
                         <header>
                             <h4>Done</h4>

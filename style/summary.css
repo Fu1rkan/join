@@ -248,6 +248,7 @@
     height: 168px;
     transition: 100ms;
     cursor: pointer;
+    padding: 0 20px;
 }
 
 .third-card-row:hover {

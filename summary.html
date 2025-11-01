@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css" />
+    <script src="./script/test_contacts.js"></script>
+    <script src="./script/board.js"></script>
     <title>Summary</title>
 </head>
 
-<body>
+<body onload="loadCardInfos()">
     <section class="layout">
 
         <nav class="navbar">
@@ -151,9 +153,11 @@
                     </div>
                 </div>
             </header>
+
             <section onclick="stopPropagation(event)" class="animated-overlay-background">
                 <div class="animated-overlay" id="animated_overlay_id"></div>
             </section>
+
             <main class="summary-main">
                 <header class="summary-header2">
                     <h2>Join 360</h2>
@@ -166,7 +170,7 @@
                     <section class="summary-card">
                         <div class="card-row">
 
-                            <div class="first-card-row">
+                            <a class="first-card-row" href="./board.html#to-do-board">
                                 <div class="first-card-row-logo">
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="pen">
                                         <mask id="mask0_390335_1376" style="mask-type:alpha" maskUnits="userSpaceOnUse"
@@ -189,12 +193,12 @@
                                     </svg>
                                 </div>
                                 <div class="first-card-row-desc">
-                                    <h3>1</h3>
+                                    <h3 id="all-to-do-tasks"></h3>
                                     <span>To-do</span>
                                 </div>
-                            </div>
+                            </a>
 
-                            <div class="first-card-row">
+                            <a class="first-card-row" href="./board.html#done-board">
 
                                 <div class="first-card-row-logo">
                                     <svg width="37" height="30" viewBox="0 0 37 30" fill="none" class="done-svg">
@@ -204,19 +208,19 @@
                                 </div>
 
                                 <div class="first-card-row-desc">
-                                    <h3>1</h3>
+                                    <h3 id="all-done-tasks"></h3>
                                     <span>Done</span>
                                 </div>
 
-                            </div>
+                            </a>
 
                         </div>
 
-                        <div class="second-card-row">
+                        <a class="second-card-row" href="./board.html">
 
                             <section class="summary-category">
                                 <div class="summary-category-logo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" viewBox="0 0 35 26"
+                                    <svg width="35" height="26" viewBox="0 0 35 26"
                                         fill="none">
                                         <path
                                             d="M32.3128 25.1162C31.9118 25.1169 31.5211 24.9873 31.1982 24.7465L17.093 14.2167L2.98773 24.7465C2.78971 24.8947 2.56479 25.0019 2.32583 25.062C2.08687 25.1222 1.83854 25.1341 1.59502 25.0971C1.3515 25.0602 1.11755 24.975 0.906549 24.8466C0.695544 24.7181 0.511607 24.5489 0.365241 24.3485C0.218876 24.1481 0.112947 23.9205 0.0535029 23.6787C-0.00594092 23.4369 -0.0177355 23.1856 0.0187927 22.9391C0.0925645 22.4415 0.358687 21.9938 0.758615 21.6947L15.9784 10.3213C16.301 10.0796 16.6917 9.94922 17.093 9.94922C17.4943 9.94922 17.885 10.0796 18.2075 10.3213L33.4274 21.6947C33.7452 21.9317 33.9808 22.2642 34.1007 22.6448C34.2207 23.0254 34.2187 23.4347 34.0951 23.8141C33.9715 24.1935 33.7326 24.5237 33.4125 24.7575C33.0925 24.9913 32.7076 25.1169 32.3128 25.1162Z"
@@ -227,7 +231,7 @@
                                     </svg>
                                 </div>
                                 <div class="second-card-row-desc">
-                                    <h3>1</h3>
+                                    <h3 id="all-tasks-from-priority"></h3>
                                     <span>Urgent</span>
                                 </div>
                             </section>
@@ -235,25 +239,25 @@
                             <div class="summary-card-divider"></div>
 
                             <section class="deadline-section">
-                                <span>October 30, 2025</span>
+                                <span id="date-of-deadline">October 30, 2025</span>
                                 <p>Upcoming Deadline</p>
                             </section>
 
-                        </div>
+                        </a>
 
                         <div class="card-row">
-                            <div class="third-card-row">
-                                <h3>5</h3>
+                            <a class="third-card-row" href="./board.html">
+                                <h3 id="all-tasks"></h3>
                                 <span>Tasks in Board</span>
-                            </div>
-                            <div class="third-card-row">
-                                <h3>5</h3>
-                                <span>Tasks in Board</span>
-                            </div>
-                            <div class="third-card-row">
-                                <h3>5</h3>
-                                <span>Tasks in Board</span>
-                            </div>
+                            </a>
+                            <a class="third-card-row" href="./board.html">
+                                <h3 id="tasks-in-progress"></h3>
+                                <span>Tasks in Progress</span>
+                            </a>
+                            <a class="third-card-row" href="./board.html">
+                                <h3 id="tasks-in-awaiting-feedback"></h3>
+                                <span>Awaiting Feedback</span>
+                            </a>
                         </div>
                     </section>
 

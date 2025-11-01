@@ -12,7 +12,7 @@ function closeOverlayBoard() {
 }
 
 function boardAddTaskTemplate() {
-  return `<div class="add-task-main add-task-card" onclick="event.stopPropagation()">
+  return `<div class="add-task-main add-task-card" onclick="event.stopPropagation(); closeDropdownMenus(event)">
     <div class="add-task-header">
         <h2>Add Task</h2>
         <div class="close-board-overlay" onclick="closeOverlayBoard()">

@@ -7,16 +7,10 @@
 .board-header {
     width: 100%;
     background-color: transparent;
-    box-shadow: none;
     height: auto;
     display: flex;
     flex-direction: column;
     padding: 80px 80px 40px 80px;
-    background-color: rgba(246, 247, 248, 1);
-}
-
-.resp-header {
-    box-shadow: none !important;
 }
 
 .search-section {

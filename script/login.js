@@ -1,7 +1,6 @@
 let logoAnimated = false;
 
 function init() {
-    renderLogIn();
     if (!logoAnimated) {
         setTimeout(() => {
             renderJoinLogo();
@@ -123,20 +122,60 @@ function checkPrivacyPolicyCheckbox() {
 function openSignUpOverlay() {
     document.getElementById('signup-overlay-id').innerHTML = signUpSuccessfull();
     closeSignUpOverlay();
+    
 }
 
 function closeSignUpOverlay() {
     setTimeout(() => {
         document.getElementById('signup-overlay-id').classList.add('d_none');
+        renderLogIn();
     }, 1000);
 }
 
 // Login with user data
 function openSummary() {
-    window.location.href = './summary.html?showOverlay=true&loginType=user';
+        window.location.href = './summary.html?showOverlay=true&loginType=user';
 }
 
 // Guest login without user data  
 function openGuestSummary() {
     window.location.href = './summary.html?showOverlay=true&loginType=guest';
+}
+
+// Helper function to handle field validation
+function handleFieldValidation(inputId, formId, requiredId, fieldName) {
+    let input = document.getElementById(inputId);
+    let form = document.getElementById(formId);
+    let isEmpty = input.value.length < 1;
+    
+    if (isEmpty) {
+        document.getElementById(requiredId).innerHTML = `<p id="${fieldName}_required_field" class="required-field-text">This field is required.</p>`;
+        form.classList.add('required-outline');
+    } else {
+        document.getElementById(requiredId).innerHTML = '';
+        form.classList.remove('required-outline');
+    }
+    return isEmpty;
+}
+
+// login input field requirements check
+function checkLoginInputFields() {
+    let isEmailEmpty = handleFieldValidation('email', 'input_email', 'required_email', 'email');
+    let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
+    
+    if (!isEmailEmpty && !isPasswordEmpty) {
+        openSummary();
+    }
+}
+
+// signup input field requirements check
+function checkSignUpInputFields() {
+    let isUsernameEmpty = handleFieldValidation('username', 'username_input_id', 'required_username', 'username');
+    let isEmailEmpty = handleFieldValidation('email', 'email_input_id', 'required_email', 'email');
+    let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
+    let isRepeatPasswordEmpty = handleFieldValidation('password_repeat', 'password_repeat_input_id', 'required_password_repeat', 'password_repeat');
+    
+    if (!isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty) {
+        checkPrivacyPolicyCheckbox();
+    }
 }

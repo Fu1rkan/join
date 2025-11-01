@@ -4,15 +4,15 @@ function getCurrentAssignedContactTemplate(index) {
                                     </div>`
 }
 
-function getAddTaskAssignedToListItem(index) {
+function getAddTaskAssignedToListItem(array, index) {
     return `<li id="add_task_assigned_to_contact_${index}"
                                             class="add-task-form-assigned-to-dropdown-contacts-default-hover-class"
                                             onclick="selectContact(${index})">
                                             <div class="add-task-form-assigned-to-dropdown-list-contact">
-                                                <div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${contacts[index].fillColor}">
-                                                    <p>${contacts[index].nameLetters}</p>
+                                                <div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${array[index].fillColor}">
+                                                    <p>${array[index].nameLetters}</p>
                                                 </div>
-                                                <p>${contacts[index].name}</p>
+                                                <p>${array[index].name}</p>
                                             </div>
                                             <div id="${index}_unchecked" class="">
                                                 <svg 

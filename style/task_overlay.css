@@ -50,7 +50,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .task-overlay {
     width: 525px;
-    height: fit-content;
     border-radius: 30px;
     padding: 48px 40px;
     display: flex;
@@ -73,7 +72,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 24px;
 }
 
-.task-overlay main::-webkit-scrollbar{
+.task-overlay main::-webkit-scrollbar {
     display: none;
 }
 
@@ -699,5 +698,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .included-participants:empty {
         margin: 0 0 16px 0;
+    }
+
+    .task-overlay {
+        max-height: 70%;
     }
 }

@@ -20,18 +20,15 @@
     <section class="overlay_animation">
         <div class="animation_join_logo">
             <svg xmlns="http://www.w3.org/2000/svg" width="274" height="335" viewBox="0 0 274 335" fill="none">
-                <path d="M196.314 0H135.623V69.8251H196.314V0Z" 
-                    class="logo_color" />
+                <path d="M196.314 0H135.623V69.8251H196.314V0Z" class="logo_color" />
                 <path
                     d="M135.623 126.614H196.315V225.091C196.592 248.787 189.848 272.031 176.94 291.868C164.195 311.141 139.591 334.072 94.0723 334.072C44.4917 334.072 15.5931 310.626 0 297.777L38.2825 250.554C53.5021 262.981 68.1615 273.204 94.3057 273.204C114.101 273.204 121.99 265.138 126.612 258.104C132.896 248.334 136.146 236.908 135.95 225.279L135.623 126.614Z"
                     class="logo_color" />
-                <path d="M104.67 82.5332H43.9781V143.495H104.67V82.5332Z" 
-                    fill="#29ABE2" />
+                <path d="M104.67 82.5332H43.9781V143.495H104.67V82.5332Z" fill="#29ABE2" />
                 <path
                     d="M228.108 305.467C228.108 318.456 221.525 325.444 212.328 325.444C203.131 325.444 197.108 317.143 197.108 306.123C197.108 295.103 203.318 286.381 212.842 286.381C222.366 286.381 228.108 294.962 228.108 305.467ZM204.158 305.983C204.158 313.814 207.286 319.582 212.655 319.582C218.024 319.582 221.058 313.486 221.058 305.514C221.058 298.526 218.257 291.961 212.655 291.961C207.053 291.961 204.158 298.292 204.158 305.983Z"
                     class="logo_color" />
-                <path d="M240.153 286.944V324.834H233.43V286.944H240.153Z" 
-                    class="logo_color" />
+                <path d="M240.153 286.944V324.834H233.43V286.944H240.153Z" class="logo_color" />
                 <path
                     d="M247.436 324.834V286.944H254.905L262.935 302.56C265.002 306.643 266.842 310.838 268.444 315.127C268.024 310.438 267.837 305.045 267.837 299.042V286.944H274V324.834H267.044L258.92 308.89C256.77 304.702 254.853 300.397 253.178 295.994C253.178 300.684 253.505 305.983 253.505 312.501V324.787L247.436 324.834Z"
                     class="logo_color" />
@@ -41,6 +38,74 @@
 
     <main id="main" class="login_page">
         <!-- Log In and Sign Up will be render here -->
+
+        <section id="main_header">
+            <!-- The join logo will be rendered here -->
+        </section>
+
+        <section class="sign_up_header">
+            <p>Not a Join user?</p>
+            <button type="" onclick="renderSignUp()">Sign Up</button>
+        </section>
+
+
+        <section class="login_section">
+            <section class="title_headline">
+                <h1>Log in</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
+                    <path d="M152 1.5L2 1.5" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
+                </svg>
+            </section>
+
+
+            <section class="input_group">
+                <section class="email_input_section">
+                    <form class="email_input" id="input_email">
+                        <label for="input_email">
+                            <input class="email_input" type="text" id="email" name="Email" required placeholder="Email">
+                            <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16"
+                                viewBox="0 0 20 16" fill="none">
+                                <path
+                                    d="M2 16.5C1.45 16.5 0.979167 16.3042 0.5875 15.9125C0.195833 15.5208 0 15.05 0 14.5V2.5C0 1.95 0.195833 1.47917 0.5875 1.0875C0.979167 0.695833 1.45 0.5 2 0.5H18C18.55 0.5 19.0208 0.695833 19.4125 1.0875C19.8042 1.47917 20 1.95 20 2.5V14.5C20 15.05 19.8042 15.5208 19.4125 15.9125C19.0208 16.3042 18.55 16.5 18 16.5H2ZM18 4.5L10.525 9.175C10.4417 9.225 10.3542 9.2625 10.2625 9.2875C10.1708 9.3125 10.0833 9.325 10 9.325C9.91667 9.325 9.82917 9.3125 9.7375 9.2875C9.64583 9.2625 9.55833 9.225 9.475 9.175L2 4.5V14.5H18V4.5ZM10 7.5L18 2.5H2L10 7.5ZM2 4.75V3.275V3.3V3.2875V4.75Z"
+                                    fill="#A8A8A8" />
+                            </svg>
+                        </label>
+                    </form>
+                    <div class="required-field" id="required_email"></div>
+                </section>
+
+                <section class="password_input_section">
+
+                    <form action="password_input" class="password_input" id="password_input_id">
+                        <label for="password_input_id">
+                            <input class="password_input" type="password" id="password" name="password" required
+                                placeholder="Password">
+                            <div id="toggle_password_visibility_button">
+                                <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="21" viewBox="0 0 17 22" fill="none">
+                                    <path
+                                        d="M2.14453 21.8083C1.59453 21.8083 1.1237 21.6125 0.732031 21.2208C0.340365 20.8292 0.144531 20.3583 0.144531 19.8083V9.80835C0.144531 9.25835 0.340365 8.78752 0.732031 8.39585C1.1237 8.00418 1.59453 7.80835 2.14453 7.80835H3.14453V5.80835C3.14453 4.42502 3.63203 3.24585 4.60703 2.27085C5.58203 1.29585 6.7612 0.80835 8.14453 0.80835C9.52786 0.80835 10.707 1.29585 11.682 2.27085C12.657 3.24585 13.1445 4.42502 13.1445 5.80835V7.80835H14.1445C14.6945 7.80835 15.1654 8.00418 15.557 8.39585C15.9487 8.78752 16.1445 9.25835 16.1445 9.80835V19.8083C16.1445 20.3583 15.9487 20.8292 15.557 21.2208C15.1654 21.6125 14.6945 21.8083 14.1445 21.8083H2.14453ZM2.14453 19.8083H14.1445V9.80835H2.14453V19.8083ZM8.14453 16.8083C8.69453 16.8083 9.16537 16.6125 9.55703 16.2208C9.9487 15.8292 10.1445 15.3583 10.1445 14.8083C10.1445 14.2583 9.9487 13.7875 9.55703 13.3959C9.16537 13.0042 8.69453 12.8083 8.14453 12.8083C7.59453 12.8083 7.1237 13.0042 6.73203 13.3959C6.34036 13.7875 6.14453 14.2583 6.14453 14.8083C6.14453 15.3583 6.34036 15.8292 6.73203 16.2208C7.1237 16.6125 7.59453 16.8083 8.14453 16.8083ZM5.14453 7.80835H11.1445V5.80835C11.1445 4.97502 10.8529 4.26668 10.2695 3.68335C9.6862 3.10002 8.97786 2.80835 8.14453 2.80835C7.3112 2.80835 6.60286 3.10002 6.01953 3.68335C5.4362 4.26668 5.14453 4.97502 5.14453 5.80835V7.80835Z"
+                                        fill="#A8A8A8" />
+                                </svg>
+                            </div>
+                        </label>
+
+                    </form>
+                    <div class="required-field" id="required_password"></div>
+                </section>
+            </section>
+
+            <section class="login_buttons">
+                <button class="login_button" type="" onclick="checkLoginInputFields()">Log in</button>
+                <button class="guest_login_button" type="" onclick="openGuestSummary()">Guest Log in</button>
+            </section>
+        </section>
+
+
+        <footer class="main_footer">
+            <a href="./privacy_policy.html">Privacy Policy</a>
+            <a href="./legal_notice.html">Legal notice</a>
+        </footer>
     </main>
 
 </body>

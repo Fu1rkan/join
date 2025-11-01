@@ -101,29 +101,44 @@ function toggleAssignedToContactList() {
     }
 }
 
-function renderContactsInList() {
+function filterInputValue() {
+    let addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
+    let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
+    addTaskAssignedToList.classList.remove('d_none');
+    addTaskAssignedToArrow.classList.add('add-task-form-assigned-to-arrow-up-svg');
+    let addTaskAssignedToInputRef = document.getElementById('add_task_assigned_to');
+    if (addTaskAssignedToInputRef.value.length > 1) {
+        let filtered = contacts.filter((c) => { return c.name.toLowerCase().includes(addTaskAssignedToInputRef.value.toLowerCase()) });
+        renderContactsInList(filtered);
+    } else {
+        renderContactsInList();
+    }
+
+}
+
+function renderContactsInList(array = contacts) {
     const addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     addTaskAssignedToList.innerHTML = "";
     if (currentAssignedTo.length === 0) {
-        for (let index = 0; index < contacts.length; index++) {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(index);
+        for (let index = 0; index < array.length; index++) {
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, index);
         }
         return;
     }
-    renderChangedContaktList(addTaskAssignedToList);
+    renderChangedContaktList(addTaskAssignedToList, array);
 }
 
-function renderChangedContaktList(addTaskAssignedToList) {
-    const activeContactIndices = contacts
+function renderChangedContaktList(addTaskAssignedToList, array = contacts) {
+    const activeContactIndices = array
         .map((contact, i) => (currentAssignedTo.includes(contact) ? i : -1))
         .filter(i => i !== -1);
 
-    for (let i = 0; i < contacts.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         if (activeContactIndices.includes(i)) {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, i);
             markAsChecked(i);
         } else {
-            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(i);
+            addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, i);
         }
     }
 }
@@ -149,7 +164,7 @@ function chooseCategory(categoryName) {
     toggleCategoryList();
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
-    checkRequiredInputs();
+    // checkRequiredInputs('add_task_category');
 }
 
 function showSubtaskMenuOptions(index) {
@@ -175,32 +190,29 @@ function changeCurrentSubtask(index) {
 
 function highlightInputFields(activeInputField) {
     let inputFieldRef = document.getElementById(activeInputField);
-    let inputFieldAddFormCalenderRef = document.getElementById('add_task_due_date_label_placeholder_svg');
+    let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    requiredTitleRef.classList.add('d_none');
-    requiredDueDateRef.classList.add('d_none');
-    requiredCategoryRef.classList.add('d_none');
-    inputFieldAddFormCalenderRef.classList.remove('d_none');
+    // requiredMsgDNone();
     inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
     removeHighlightInputFields();
     inputFieldRef.classList.add('add-task-inputfield-highlight');
-    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderRef);
+    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
 }
 
-function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderRef) {
+function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef) {
     switch (activeInputField) {
         case "add_task_subtasks":
             inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
             break;
         case "add_task_due_date":
-            inputFieldAddFormCalenderRef.classList.add('d_none');
-            requiredDueDateRef.classList.remove('d_none');
+            inputFieldAddFormCalenderSvgRef.classList.add('d_none');
+            // requiredDueDateRef.classList.remove('d_none');
             break;
         case "add_task_title":
-            requiredTitleRef.classList.remove('d_none');
+            // requiredTitleRef.classList.remove('d_none');
             break;
-            case "add_task_category":
-            requiredCategoryRef.classList.remove('d_none');
+        case "add_task_category":
+            // requiredCategoryRef.classList.remove('d_none');
             break;
         default:
             break;
@@ -245,8 +257,6 @@ function deleteCurrentSubtask(index) {
 function saveChangedSubtask(index) {
     let subtaskListRef = document.getElementById('add_task_form_subtasks_dropdown_subtasks');
     let inputChangedSubtaskRef = document.getElementById(`change_current_element_${index}`);
-    let labelChangedSubtaskRef = document.getElementById(`label_current_subtask_${index}`);
-    let valueChangedSubtaskRef = document.getElementById(`current_subtask_${index}`);
     currentCreatedSubtasks[index].name = inputChangedSubtaskRef.value;
     subtaskListRef.classList.remove('list-style-none');
     renderCurrentCreatedSubtasks();
@@ -256,11 +266,14 @@ function createNewTask() {
     let titleRef = document.getElementById('add_task_title');
     let descriptionRef = document.getElementById('add_task_description');
     let dueDateRef = document.getElementById('add_task_due_date');
+    requiredMsgDNone();
     checkArrayLength();
-    pushNewObject(titleRef, descriptionRef, dueDateRef);
-    // resetGlobalVariables();
-    // clearForm();
-    // init();
+    if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
+        showRequiredMsg();
+    } else {
+        pushNewObject(titleRef, descriptionRef, dueDateRef);
+    }
+
 }
 
 function checkArrayLength() {
@@ -274,16 +287,44 @@ function checkArrayLength() {
     }
 }
 
-function checkRequiredInputs() {
-    let titleRef = document.getElementById('add_task_title');
-    let dueDateRef = document.getElementById('add_task_due_date');
-    let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
-if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
-        createNewTaskBtnRef.disabled = true;
-    } else {
-        createNewTaskBtnRef.disabled = false;
-    }
-}
+// function checkRequiredInputs(currentElement) {
+//     let titleRef = document.getElementById('add_task_title');
+//     let dueDateRef = document.getElementById('add_task_due_date');
+//     let categoryRef = document.getElementById('add_task_category');
+//     let createNewTaskBtnRef = document.getElementById('add_task_form_create_btn');
+// if (titleRef.value == "" || dueDateRef.value == "" || currentChoosedCategory == "") {
+//     createNewTaskBtnRef.disabled = true;
+
+// } else {
+//     createNewTaskBtnRef.disabled = false;
+// }
+// removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef);
+// }
+
+// function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef) {
+//     switch (currentElement) {
+//         case 'add_task_title':
+//             if (titleRef.value.length > 0) {
+//                 requiredTitleRef.classList.add('d_none');
+//             }
+//             break;
+//         case 'add_task_due_date':
+//             if (dueDateRef.value.length > 0) {
+//                 requiredDueDateRef.classList.add('d_none');
+//             }
+
+//             break;
+//         case 'add_task_category':
+//             if (categoryRef.value.length > 0) {
+//                 requiredCategoryRef.classList.add('d_none');
+//             }
+//             break;
+
+//         default:
+//             break;
+//     }
+
+// }
 
 function pushNewObject(titleRef, descriptionRef, dueDateRef) {
     taskList.push(
@@ -316,8 +357,11 @@ function resetGlobalVariables() {
 
 function clearForm() {
     let formRef = document.getElementById('add_task_form');
+    let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
     formRef.reset();
     activatePriority();
+    resetGlobalVariables();
+    inputFieldAddFormCalenderSvgRef.classList.remove('d_none');
 }
 
 function showTaskCreatedMsg() {
@@ -344,9 +388,9 @@ function closeDropdownMenus(ev) {
     let addTaskAssignedToArrow = document.getElementById('add_task_form_assigned_to_arrow_svg');
     let addTaskCategoryArrowRef = document.getElementById('add_task_form_category_arrow_svg');
     let addTaskSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
+    // requiredMsgDNone();
     closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef);
     removeHighlightInputFields();
-    checkRequiredInputs();
 }
 
 function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactListRef, inputFieldCategoryRef, inputFieldCategoryListRef, addTaskAssignedToArrow, addTaskCategoryArrowRef, addTaskSubtasksBtnsRef) {
@@ -357,4 +401,16 @@ function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactList
         addTaskCategoryArrowRef.classList.remove('add-task-form-assigned-to-arrow-up-svg');
         addTaskSubtasksBtnsRef.classList.add('d_none');
     }
+}
+
+function requiredMsgDNone() {
+    requiredTitleRef.classList.add('d_none');
+    requiredDueDateRef.classList.add('d_none');
+    requiredCategoryRef.classList.add('d_none');
+}
+
+function showRequiredMsg() {
+    requiredTitleRef.classList.remove('d_none');
+    requiredDueDateRef.classList.remove('d_none');
+    requiredCategoryRef.classList.remove('d_none');
 }

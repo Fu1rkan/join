@@ -42,7 +42,7 @@ function toggleTaskOverlay(i) {
     if (checkOverlay == 0) {
         let task = taskList.find(t => t['id'] == i);
         document.getElementById('task-dialog').innerHTML = taskOverlayTemp(task);
-        checkTaskOverlayInfos(task)
+        checkTaskOverlayInfos(task);
         checkOverlay += 1;
     } else {
         checkOverlay = 0;

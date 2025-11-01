@@ -62,6 +62,7 @@ async function loadTasks(userPath) {
   pushUserTaskToArray(responseToJson);
 }
 
+// push tasks to array
 function pushUserTaskToArray(responseToJson) {
   if (responseToJson.length > 0) {
     taskList = [];
@@ -119,6 +120,7 @@ function pushUserTaskToArray(responseToJson) {
 //   };
 // }
 
+// post tasks to database
 async function postTask(path, data = {}) {    // "user/tasks/", testTasks
   if (taskList.length > 0) {
     let response = await fetch(BASE_URL + path + ".json", {
@@ -141,7 +143,6 @@ async function postTask(path, data = {}) {    // "user/tasks/", testTasks
 
 }
 
-
 async function putCurrentContacts(path, data = {}) {
   if (contacts.length > 0) {
     let response = await fetch(BASE_URL + path + ".json", {
@@ -161,5 +162,23 @@ async function putCurrentContacts(path, data = {}) {
     });
     return (responseToJson = await response.json());
   }
+}
 
+// add new user 
+async function addNewUser(username, email, password) {
+  let user = {
+    "username": username,
+    "email": email,
+    "password": password,
+    "tasklist": [],
+    "contactlist": []
+  };
+
+  let response = await fetch(BASE_URL + "user.json", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+
+  return (responseToJson = await response.json());
 }

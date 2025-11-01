@@ -172,33 +172,3 @@
 //         'date': '2025-10-17'
 //     },
 // ];
-
-let userList = [
-   { 
-    "user1" : {
-                    "username": "Guest User",
-                    "e-mail": "guest@example.com",
-                    "password": "guest123",
-                    "tasklist": [],
-                    "contactlist": []
-        }
-    },
-   { 
-    "user2" : {
-                    "username": "User One",
-                    "e-mail": "userone@example.com",
-                    "password": "userone123",
-                    "tasklist": [],
-                    "contactlist": []
-        }
-    },
-   { 
-    "user2" : {
-                    "username": "User Two",
-                    "e-mail": "usertwo@example.com",
-                    "password": "usertwo123",
-                    "tasklist": [],
-                    "contactlist": []
-        }
-    }
-];

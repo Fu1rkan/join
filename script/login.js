@@ -11,6 +11,8 @@ function init() {
     }
 }
 
+// RENDER FUNCTIONS
+
 // render LogIn incl. password show and hide functions
 function renderLogIn() {
     document.getElementById('main').innerHTML = '';
@@ -35,18 +37,7 @@ function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
 }
 
-// changes checkbox accepted
-function acceptCheckbox() {
-    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
-    privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
-    privacyPolicyCheckbox.classList.remove('red_border');
-}
-
-// changes checkbox refuse
-function refuseCheckbox() {
-    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
-    privacyPolicyCheckbox.innerHTML = refuseCheckboxTemplate();
-}
+// TOGGLE FUNCTIONS
 
 // toggles password visibility
 function togglePasswordVisibility() {
@@ -108,61 +99,13 @@ function addRepeatPasswordListener() {
     }
 }
 
-function checkPrivacyPolicyCheckbox() {
-    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
-    if (privacyPolicyCheckbox.getAttribute('aria-checked') === 'true') {
-        privacyPolicyCheckbox.classList.remove('red_border');
-        openSignUpOverlay();
-    } else {
-        privacyPolicyCheckbox.classList.add('red_border');
-    }
-}
-
-// open and close Sign Up Successfull Overlay
-function openSignUpOverlay() {
-    document.getElementById('signup-overlay-id').innerHTML = signUpSuccessfull();
-    closeSignUpOverlay();
-    
-}
-
-function closeSignUpOverlay() {
-    setTimeout(() => {
-        document.getElementById('signup-overlay-id').classList.add('d_none');
-        renderLogIn();
-    }, 1000);
-}
-
-// Login with user data
-function openSummary() {
-        window.location.href = './summary.html?showOverlay=true&loginType=user';
-}
-
-// Guest login without user data  
-function openGuestSummary() {
-    window.location.href = './summary.html?showOverlay=true&loginType=guest';
-}
-
-// Helper function to handle field validation
-function handleFieldValidation(inputId, formId, requiredId, fieldName) {
-    let input = document.getElementById(inputId);
-    let form = document.getElementById(formId);
-    let isEmpty = input.value.length < 1;
-    
-    if (isEmpty) {
-        document.getElementById(requiredId).innerHTML = `<p id="${fieldName}_required_field" class="required-field-text">This field is required.</p>`;
-        form.classList.add('required-outline');
-    } else {
-        document.getElementById(requiredId).innerHTML = '';
-        form.classList.remove('required-outline');
-    }
-    return isEmpty;
-}
+// CHECK INPUT FUNCTIONS
 
 // login input field requirements check
 function checkLoginInputFields() {
     let isEmailEmpty = handleFieldValidation('email', 'input_email', 'required_email', 'email');
     let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
-    
+
     if (!isEmailEmpty && !isPasswordEmpty) {
         openSummary();
     }
@@ -174,8 +117,129 @@ function checkSignUpInputFields() {
     let isEmailEmpty = handleFieldValidation('email', 'email_input_id', 'required_email', 'email');
     let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
     let isRepeatPasswordEmpty = handleFieldValidation('password_repeat', 'password_repeat_input_id', 'required_password_repeat', 'password_repeat');
-    
+
     if (!isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty) {
-        checkPrivacyPolicyCheckbox();
+        let emailInput = document.getElementById('email');
+        let passwordInput = document.getElementById('password');
+        let passwordRepeatInput = document.getElementById('password_repeat');
+        
+        if (validateEmailAndPassword(emailInput.value, passwordInput.value)) {
+            if (validatePasswordMatch(passwordInput.value, passwordRepeatInput.value)) {
+                if (checkPrivacyPolicyCheckbox()) {
+                    openSignUpOverlay();
+                }
+            }
+        }
     }
+    return !isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty;
 }
+
+// Helper function to handle field validation
+function handleFieldValidation(inputId, formId, requiredId, fieldName) {
+    let input = document.getElementById(inputId);
+    let form = document.getElementById(formId);
+    let isEmpty = input.value.length < 1;
+
+    if (isEmpty) {
+        document.getElementById(requiredId).innerHTML = `<p id="${fieldName}_required_field" class="required-field-text">This field is required.</p>`;
+        form.classList.add('required-outline');
+    } else {
+        document.getElementById(requiredId).innerHTML = '';
+        form.classList.remove('required-outline');
+    }
+    return isEmpty;
+}
+
+// check email and password validity
+function validateEmailAndPassword(email, password) {
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let isEmailValid = emailRegex.test(email);
+    let isPasswordValid = password.length >= 6;
+
+    if (!isEmailValid) {
+        document.getElementById('required_email').innerHTML = `<p id="email_invalid_field" class="required-field-text">Please enter a valid email address.</p>`;
+        document.getElementById('email_input_id').classList.add('required-outline');
+    } else {
+        document.getElementById('required_email').innerHTML = '';
+        document.getElementById('email_input_id').classList.remove('required-outline');
+    }
+    if (!isPasswordValid) {
+        document.getElementById('required_password').innerHTML = `<p id="password_invalid_field" class="required-field-text">Password must be at least 6 characters long.</p>`;
+        document.getElementById('password_input_id').classList.add('required-outline');
+    } else {
+        document.getElementById('required_password').innerHTML = '';
+        document.getElementById('password_input_id').classList.remove('required-outline');
+    }
+    return isEmailValid && isPasswordValid;
+}
+
+// check if password and password repeat match
+function validatePasswordMatch(password, passwordRepeat) {
+    let passwordsMatch = password === passwordRepeat;
+    
+    if (!passwordsMatch) {
+        document.getElementById('required_password_repeat').innerHTML = `<p id="password_match_field" class="required-field-text">Both passwords must be the same.</p>`;
+        document.getElementById('password_repeat_input_id').classList.add('required-outline');
+    } else {
+        document.getElementById('required_password_repeat').innerHTML = '';
+        document.getElementById('password_repeat_input_id').classList.remove('required-outline');
+    }
+    return passwordsMatch;
+}
+
+// checks if privacy policy checkbox is checked
+function checkPrivacyPolicyCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
+    let isChecked = privacyPolicyCheckbox.getAttribute('aria-checked') === 'true';
+
+    if (isChecked) {
+        privacyPolicyCheckbox.classList.remove('red_border');
+    } else {
+        privacyPolicyCheckbox.classList.add('red_border');
+    }
+    return isChecked;
+}
+
+// changes checkbox accepted
+function acceptCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
+    privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
+    privacyPolicyCheckbox.classList.remove('red_border');
+}
+
+// changes checkbox refuse
+function refuseCheckbox() {
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
+    privacyPolicyCheckbox.innerHTML = refuseCheckboxTemplate();
+}
+
+// open and close Sign Up Successfull Overlay
+function openSignUpOverlay() {
+    document.getElementById('signup-overlay-id').innerHTML = signUpSuccessfull();
+    closeSignUpOverlay();
+}
+
+// Login with user data
+function openSummary() {
+    window.location.href = './summary.html?showOverlay=true&loginType=user';
+}
+
+// Guest login without guest user data
+function openGuestSummary() {
+    window.location.href = './summary.html?showOverlay=true&loginType=guest';
+}
+
+// close sign up overlay 
+function closeSignUpOverlay() {
+    let usernameInput = document.getElementById('username');
+    let emailInput = document.getElementById('email');
+    let passwordInput = document.getElementById('password');
+    
+    addNewUser(usernameInput.value, emailInput.value, passwordInput.value);
+    
+    setTimeout(() => {
+        document.getElementById('signup-overlay-id').classList.add('d_none');
+        renderLogIn();
+    }, 1000);
+}
+

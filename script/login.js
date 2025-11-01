@@ -121,9 +121,17 @@ function checkSignUpInputFields() {
     if (!isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty) {
         let emailInput = document.getElementById('email');
         let passwordInput = document.getElementById('password');
+        let passwordRepeatInput = document.getElementById('password_repeat');
+        
+        // Step 2: Validate email and password format
         if (validateEmailAndPassword(emailInput.value, passwordInput.value)) {
-            if (checkPrivacyPolicyCheckbox()) {
-                openSignUpOverlay();
+            // Step 3: Check if passwords match
+            if (validatePasswordMatch(passwordInput.value, passwordRepeatInput.value)) {
+                // Step 4: Check privacy policy checkbox
+                if (checkPrivacyPolicyCheckbox()) {
+                    // Step 5: Only open overlay if everything is valid
+                    openSignUpOverlay();
+                }
             }
         }
     }
@@ -169,6 +177,20 @@ function validateEmailAndPassword(email, password) {
     return isEmailValid && isPasswordValid;
 }
 
+// check if password and password repeat match
+function validatePasswordMatch(password, passwordRepeat) {
+    let passwordsMatch = password === passwordRepeat;
+    
+    if (!passwordsMatch) {
+        document.getElementById('required_password_repeat').innerHTML = `<p id="password_match_field" class="required-field-text">Both passwords must be the same.</p>`;
+        document.getElementById('password_repeat_input_id').classList.add('required-outline');
+    } else {
+        document.getElementById('required_password_repeat').innerHTML = '';
+        document.getElementById('password_repeat_input_id').classList.remove('required-outline');
+    }
+    return passwordsMatch;
+}
+
 // checks if privacy policy checkbox is checked
 function checkPrivacyPolicyCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
@@ -181,8 +203,6 @@ function checkPrivacyPolicyCheckbox() {
     }
     return isChecked;
 }
-
-
 
 // changes checkbox accepted
 function acceptCheckbox() {
@@ -213,10 +233,14 @@ function openGuestSummary() {
     window.location.href = './summary.html?showOverlay=true&loginType=guest';
 }
 
-
-
 // close sign up overlay 
 function closeSignUpOverlay() {
+    let usernameInput = document.getElementById('username');
+    let emailInput = document.getElementById('email');
+    let passwordInput = document.getElementById('password');
+    
+    addNewUser(usernameInput.value, emailInput.value, passwordInput.value);
+    
     setTimeout(() => {
         document.getElementById('signup-overlay-id').classList.add('d_none');
         renderLogIn();

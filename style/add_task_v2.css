@@ -342,6 +342,14 @@
     border-width: 0;
     height: 24px;
     width: 24px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+}
+
+.add-task-form-subtasks-btns button:hover,
+.add-task-form-subtasks-dropdown-subtasks-btns button:hover,
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button:hover {
+    background-color: #EEEEEE;
 }
 
 .list-style-none {
@@ -567,5 +575,5 @@
 }
 
 .d_none {
-    display: none;
+    display: none !important;
 }

@@ -56,7 +56,7 @@ body {
   flex-direction: column;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -65,7 +65,7 @@ h2 {
   font-weight: 700;
 }
 
-h3{
+h3 {
   font-size: 64px;
   font-weight: 600;
 }
@@ -97,16 +97,21 @@ main {
   display: none;
 }
 
-.of_hidden{
+.of_hidden {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media (max-width: 800px) {
-  body{
+  body {
     overflow: auto;
   }
 
-  .layout{
+  .layout {
     flex-direction: column-reverse;
   }
 }

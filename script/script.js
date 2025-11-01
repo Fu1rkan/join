@@ -71,3 +71,5 @@ function toggleBurgerMenu() {
         menu.classList.add('show');
     }
 }
+
+let doneLoader = false;

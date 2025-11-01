@@ -100,3 +100,32 @@ async function addNewUser(username, email, password) {
 
   return (responseToJson = await response.json());
 }
+
+// // Load all users
+// async function loadAllUsers() {
+//   try {
+//     let response = await fetch(BASE_URL + "user.json");
+//     let allUsers = await response.json();
+//     return allUsers;
+//   } catch (error) {
+//     console.error("Error loading users:", error);
+//     return null;
+//   }
+// }
+
+// // Find user by email
+// async function findUserByEmail(email) {
+//   let allUsers = await loadAllUsers();
+
+//   for (let userId in allUsers) {
+//     if (allUsers[userId].email === email) {
+//       return {
+//         userId: userId,
+//         user: allUsers[userId]
+//       };
+//     }
+//     console.log(allUsers[userId].email);
+//   }
+// }
+
+// console.log(findUserByEmail());

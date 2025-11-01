@@ -7,7 +7,7 @@ const templateRef = document.getElementById("contact_template");
 
 
 async function init() {
-    await loadContacts();
+    await getUsers();
     filterContacts();
 }
 

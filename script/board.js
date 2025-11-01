@@ -13,8 +13,9 @@ function stopPropagation(event) {
 
 
 async function init() {
-    await loadContacts();
-    await loadTasks();
+    await getUsers();
+    // await loadContacts();
+    // await loadTasks();
     renderTasks();
 }
 
@@ -606,17 +607,17 @@ function switchUp(i) {
         taskList[task].category = "in-progress"
     } else if (taskList[task].category == "done") {
         taskList[task].category = "await-feedback"
-    }else{
+    } else {
         console.log('is To Do');
     }
     renderTasks();
 }
 
 function escapeHTML(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }

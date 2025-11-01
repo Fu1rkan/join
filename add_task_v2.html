@@ -5,13 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/add_task_v2.css">
-    <link rel="stylesheet" href="./style/add_task_v2_overlay.css">
-    <link rel="stylesheet" href="./style/add_task_v2_responsive.css">
     <title>Add Task</title>
 </head>
 
-<body onload="init()" onclick="closeDropdownMenus(event)">
+<body onload="initAddTask()" onclick="closeDropdownMenus(event)">
     <div id="add_task_overlay" class="add-task-overlay d_none">
         <div class="add-tasl-overlay-board">
             <div id="overlay_add_task_created_msg" class="add-task-created-msg">
@@ -260,7 +257,8 @@
                                     <button id="add_task_priority_medium" class="add-task-priority-btn-medium-active"
                                         onclick="activatePriority('medium')">
                                         <p>Medium</p>
-                                        <svg id="add_task_priority_medium_svg" class="add-task-priority-active-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="8" viewBox="0 0 20 8"
+                                        <svg id="add_task_priority_medium_svg" class="add-task-priority-active-svg"
+                                            xmlns="http://www.w3.org/2000/svg" width="20" height="8" viewBox="0 0 20 8"
                                             fill="none">
                                             <g clip-path="url(#clip0_156_950)">
                                                 <path
@@ -438,7 +436,8 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </button>
-                            <button id="add_task_form_create_btn" class="add-task-form-create-btn" onclick="createNewTask()">
+                            <button id="add_task_form_create_btn" class="add-task-form-create-btn"
+                                onclick="createNewTask()">
                                 <p>Create Task</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">

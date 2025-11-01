@@ -105,9 +105,13 @@ function addRepeatPasswordListener() {
 function checkLoginInputFields() {
     let isEmailEmpty = handleFieldValidation('email', 'input_email', 'required_email', 'email');
     let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
+    let emailInput = document.getElementById('email');
+    let passwordInput = document.getElementById('password');
 
     if (!isEmailEmpty && !isPasswordEmpty) {
-        openSummary();
+        getUsers(emailInput.value, passwordInput.value).then(() => {
+            openSummary();
+        });
     }
 }
 
@@ -242,4 +246,3 @@ function closeSignUpOverlay() {
         renderLogIn();
     }, 1000);
 }
-

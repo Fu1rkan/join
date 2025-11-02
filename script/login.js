@@ -7,8 +7,6 @@ function logInInit() {
     }, 980);
 }
 
-// RENDER FUNCTIONS
-
 // render LogIn incl. password show and hide functions
 function renderLogIn() {
     document.getElementById('main').innerHTML = '';
@@ -32,8 +30,6 @@ function renderSignUp() {
 function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
 }
-
-// TOGGLE FUNCTIONS
 
 // toggles password visibility
 function togglePasswordVisibility() {
@@ -94,8 +90,6 @@ function addRepeatPasswordListener() {
         });
     }
 }
-
-// CHECK INPUT FUNCTIONS
 
 // login input field requirements check
 function checkLoginInputFields() {

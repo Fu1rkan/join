@@ -181,7 +181,6 @@
     width: 100%;
     padding: 0 80px;
     justify-content: space-between;
-    max-height: calc(100vh - 290px);
 }
 
 .task-list::-webkit-scrollbar {
@@ -197,6 +196,9 @@
     overflow-y: auto;
     padding: 10px;
     border: 1px dashed transparent;
+    max-height: calc(100vh - 315px);
+    min-height: calc(100vh - 315px);
+    
 }
 
 .task {
@@ -229,13 +231,13 @@
     color: rgba(168, 168, 168, 1);
 }
 
-.task header{
+.task header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.task header button{
+.task header button {
     background-color: transparent;
     border: none;
     width: 24px;
@@ -377,12 +379,12 @@
     color: white;
 }
 
-.resp-menu-task > span{
+.resp-menu-task>span {
     font-size: 16px;
     font-weight: 700;
 }
 
-.resp-menu-task button div{
+.resp-menu-task button div {
     width: 20px;
     height: 20px;
     display: flex;
@@ -403,7 +405,7 @@
     width: 100%;
 }
 
-.resp-menu-task-deactive{
+.resp-menu-task-deactive {
     color: grey;
     fill: gray;
 }

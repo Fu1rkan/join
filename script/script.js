@@ -1,6 +1,6 @@
-async function init() {
-    // await getUsers();
-}
+// async function init() {
+//     // await getUsers();
+// }
 
 
 function stopPropagation(event) {

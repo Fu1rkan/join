@@ -7,6 +7,7 @@ let createdMsgRef = document.getElementById('overlay_add_task_created_msg');
 
 async function addTaskInit() {
     await loadTasks();
+    await loadContacts();
 }
 
 function openAddTaskOverlay() {
@@ -220,7 +221,8 @@ function resetAddTaskSubtasksInputField(activeInputField = "add_task_subtasks") 
 
 function setSubtask(activeInputField = "add_task_subtasks") {
     let subtasksInputField = document.getElementById(activeInputField);
-    currentCreatedSubtasks.push(
+    if (subtasksInputField.value.length > 0) {
+        currentCreatedSubtasks.push(
         {
             "name": subtasksInputField.value,
             "status": false
@@ -228,6 +230,8 @@ function setSubtask(activeInputField = "add_task_subtasks") {
     );
     resetAddTaskSubtasksInputField();
     renderCurrentCreatedSubtasks();
+    }
+    
 }
 
 function renderCurrentCreatedSubtasks() {
@@ -241,6 +245,11 @@ function renderCurrentCreatedSubtasks() {
 function deleteCurrentSubtask(index) {
     currentCreatedSubtasks.splice(index, 1);
     renderCurrentCreatedSubtasks();
+    // resetSubtaskList();
+}
+
+function resetSubtaskList() {
+    // document.querySelectorAll('.add-task-form-subtasks-dropdown-subtasks-btns').forEach(el => el.classList.add('d_none'));
 }
 
 function saveChangedSubtask(index) {
@@ -249,6 +258,7 @@ function saveChangedSubtask(index) {
     currentCreatedSubtasks[index].name = inputChangedSubtaskRef.value;
     subtaskListRef.classList.remove('list-style-none');
     renderCurrentCreatedSubtasks();
+    // resetSubtaskList();
 }
 
 function createNewTask(paraOverlay = "") {

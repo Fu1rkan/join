@@ -8,7 +8,8 @@ const templateRef = document.getElementById("contact_template");
 
 async function initContacts(){
     //await init();
-    await loadContacts()
+    await loadContacts();
+    rederProfilHeaderIcon();
     filterContacts();
 }
 
@@ -393,4 +394,3 @@ function closeResponsiveContactEditMenu(time = 290) {
         }
     }
 }
-

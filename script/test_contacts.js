@@ -12,6 +12,12 @@ async function getUsers(email, password) {
   let keys = Object.keys(responseToJson);
   let userPath = keys[currentUserIndex];
   let userId = userPath + "/";
+  let userResponse = await fetch(BASE_URL + userId + ".json");
+  let userResponseToJson = await userResponse.json();
+  let userName = userResponseToJson["userNameLetters"];
+
+  localStorage.setItem("userName", JSON.stringify(userName));
+  
   localStorage.setItem("userId", JSON.stringify(userId));
   if (users[currentUserIndex].email === email && users[currentUserIndex].password === password) {
     openSummary();
@@ -151,8 +157,11 @@ async function putPlaceholderInFirebase(contactsPath) {
 
 // add new user 
 async function addNewUser(username, email, password) {
+  let capitalizedName = generatecapitalizedName(username);
+  let userNameLetters = generateLetters(capitalizedName);
   let user = {
-    "username": username,
+    "username": capitalizedName,
+    "userNameLetters" : userNameLetters,
     "email": email,
     "password": password,
     "tasklist": { "placeholder": "placeholder" },
@@ -166,4 +175,34 @@ async function addNewUser(username, email, password) {
   });
 
   return (responseToJson = await response.json());
+}
+
+    function generatecapitalizedName(createName) {
+    let nameArray = createName.split(" ");
+    let capitalizedArray = nameArray.map((word) => {
+        if (word != "") {
+            let firstLetter = word.charAt(0).toUpperCase();
+            let restName = word.slice(1);
+            return firstLetter + restName;
+        } else {
+            return word;
+        }
+    });
+    let resultFullName = capitalizedArray.join(" ");
+    return resultFullName;
+}
+
+function generateLetters(capitolName) {
+    let createtFullName = capitolName;
+    let nameArray = createtFullName.split(" ");
+    if (nameArray.length >= 2) {
+        let firstNameLetter = nameArray[0];
+        let lastNameletter = nameArray[nameArray.length - 1];
+        let firstLetters = firstNameLetter.charAt(0).concat(lastNameletter.charAt(0));
+        return firstLetters;
+    } else {
+        let singleLetter = nameArray[0].charAt(0);
+        return singleLetter;
+    }
+
 }

@@ -36,8 +36,10 @@ async function loadContacts() {
 
 function pushUserContactsToArray(responseToJson) {
   contacts = [];
-  for (let index = 0; index < responseToJson.length; index++) {
-    contacts.push(responseToJson[index]);
+  if (responseToJson != null) {
+    for (let index = 0; index < responseToJson.length; index++) {
+      contacts.push(responseToJson[index]);
+    }
   }
 }
 
@@ -53,12 +55,22 @@ async function loadTasks() {
 
 // push tasks to array
 function pushUserTaskToArray(responseToJson) {
-  if (responseToJson.length > 0) {
+  if (responseToJson != null) {
     taskList = [];
     for (let index = 0; index < responseToJson.length; index++) {
       taskList.push(responseToJson[index]);
     }
   }
+}
+
+//username
+async function loadUsername() {
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let tasksPath = userId + "username";
+  let response = await fetch(BASE_URL + tasksPath + ".json");
+  let responseToJson = await response.json();
+  document.getElementById('username').innerHTML = responseToJson;
 }
 
 // put tasks to database
@@ -88,14 +100,14 @@ async function putTasksInFirebase(data, tasksPath) {
 
 async function putPlaceholderInFirebase(tasksPath) {
   let data = {
-      "placeholder": "placeholder"
-    }
-    let response = await fetch(BASE_URL + tasksPath + ".json", {
-      method: "PUT",
-      header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    return (responseToJson = await response.json());
+    "placeholder": "placeholder"
+  }
+  let response = await fetch(BASE_URL + tasksPath + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
 }
 
 async function putContacts(data = {}) {

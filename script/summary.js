@@ -5,7 +5,9 @@ let loginType = urlParams.get('loginType');
 
 
 async function summaryInit(){
-    await init();
+    // await init();
+    let storage = localStorage.getItem("taskList");
+    taskList = JSON.parse(storage);
     loadCardInfos();
 }
 

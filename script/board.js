@@ -8,7 +8,11 @@ let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
 
 async function boardInit(){
-    await init();
+    // await init();
+    let storageTaskList = localStorage.getItem("taskList");
+    taskList = JSON.parse(storageTaskList);
+    let storageContactList = localStorage.getItem("contacts");
+    contacts = JSON.parse(storageContactList);
     renderTasks();
 }
 

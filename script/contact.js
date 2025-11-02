@@ -7,7 +7,9 @@ const templateRef = document.getElementById("contact_template");
 
 
 async function initContacts(){
-    await init();
+    //await init();
+    let storageContactList = localStorage.getItem("contacts");
+    contacts = JSON.parse(storageContactList);
     filterContacts();
 }
 

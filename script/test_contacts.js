@@ -34,7 +34,6 @@ async function loadContacts(userPath) {
   let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
   let responseToJson = await response.json();
   // console.log(responseToJson);
-
   pushUserContactsToArray(responseToJson);
 }
 
@@ -43,7 +42,8 @@ function pushUserContactsToArray(responseToJson) {
   for (let index = 0; index < responseToJson.length; index++) {
     contacts.push(responseToJson[index]);
   }
-  
+  localStorage.setItem("contacts", JSON.stringify(contacts));
+  console.log(contacts);
 }
 
 //Tasks
@@ -63,11 +63,12 @@ function pushUserTaskToArray(responseToJson) {
     for (let index = 0; index < responseToJson.length; index++) {
       taskList.push(responseToJson[index]);
     }
+    localStorage.setItem("taskList", JSON.stringify(taskList));
   }
 }
 
 // post tasks to database
-async function postTask(path, data = {}) {    // "user/tasks/", testTasks
+async function postTask(path, data = {}) {    
   if (taskList.length > 0) {
     let response = await fetch(BASE_URL + path + ".json", {
       method: "PUT",

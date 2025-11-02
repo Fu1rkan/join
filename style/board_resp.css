@@ -13,6 +13,7 @@
 
     .task-list {
         max-height: calc(100vh - 360px);
+        min-height: calc(100vh - 360px);
     }
 
     .kanban-board {
@@ -26,7 +27,7 @@
 
 @media (max-width: 950px) {
 
-    .board-header{
+    .board-header {
         padding: 60px 20px 40px 20px;
     }
 
@@ -49,7 +50,7 @@
         flex-direction: row;
         align-items: flex-start;
         overflow-x: scroll;
-        padding-right: 20%;
+        min-height: auto;
     }
 
     .task {
@@ -113,6 +114,10 @@
     .subtasks {
         font-size: 14px;
         display: block;
+    }
+
+    .resp-menu-task{
+        display: flex;
     }
 
     /* Wrapper + Fades only in mobile */

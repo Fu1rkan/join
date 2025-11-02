@@ -12,220 +12,312 @@ function closeOverlayBoard() {
 }
 
 function boardAddTaskTemplate() {
-  return `<section class="ad add-task-card" onclick="event.stopPropagation(); closeContactlist(); closeCategoryList()">
-        <div class="add-task-header">
+  return `<div class="add-task-main add-task-card" onclick="event.stopPropagation(); closeDropdownMenus(event)">
+    <div class="add-task-header">
         <h2>Add Task</h2>
         <div class="close-board-overlay" onclick="closeOverlayBoard()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<mask id="mask0_71720_5535" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
-<rect x="4" y="4" width="24" height="24" fill="#D9D9D9"/>
-</mask>
-<g mask="url(#mask0_71720_5535)">
-<path d="M16 17.4L11.1 22.3C10.9167 22.4834 10.6833 22.575 10.4 22.575C10.1167 22.575 9.88333 22.4834 9.7 22.3C9.51667 22.1167 9.425 21.8834 9.425 21.6C9.425 21.3167 9.51667 21.0834 9.7 20.9L14.6 16L9.7 11.1C9.51667 10.9167 9.425 10.6834 9.425 10.4C9.425 10.1167 9.51667 9.88338 9.7 9.70005C9.88333 9.51672 10.1167 9.42505 10.4 9.42505C10.6833 9.42505 10.9167 9.51672 11.1 9.70005L16 14.6L20.9 9.70005C21.0833 9.51672 21.3167 9.42505 21.6 9.42505C21.8833 9.42505 22.1167 9.51672 22.3 9.70005C22.4833 9.88338 22.575 10.1167 22.575 10.4C22.575 10.6834 22.4833 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4833 21.0834 22.575 21.3167 22.575 21.6C22.575 21.8834 22.4833 22.1167 22.3 22.3C22.1167 22.4834 21.8833 22.575 21.6 22.575C21.3167 22.575 21.0833 22.4834 20.9 22.3L16 17.4Z" fill="#2A3647"/>
-</g>
-</svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <mask id="mask0_71720_5535" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24"
+                    height="24">
+                    <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_71720_5535)">
+                    <path
+                        d="M16 17.4L11.1 22.3C10.9167 22.4834 10.6833 22.575 10.4 22.575C10.1167 22.575 9.88333 22.4834 9.7 22.3C9.51667 22.1167 9.425 21.8834 9.425 21.6C9.425 21.3167 9.51667 21.0834 9.7 20.9L14.6 16L9.7 11.1C9.51667 10.9167 9.425 10.6834 9.425 10.4C9.425 10.1167 9.51667 9.88338 9.7 9.70005C9.88333 9.51672 10.1167 9.42505 10.4 9.42505C10.6833 9.42505 10.9167 9.51672 11.1 9.70005L16 14.6L20.9 9.70005C21.0833 9.51672 21.3167 9.42505 21.6 9.42505C21.8833 9.42505 22.1167 9.51672 22.3 9.70005C22.4833 9.88338 22.575 10.1167 22.575 10.4C22.575 10.6834 22.4833 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4833 21.0834 22.575 21.3167 22.575 21.6C22.575 21.8834 22.4833 22.1167 22.3 22.3C22.1167 22.4834 21.8833 22.575 21.6 22.575C21.3167 22.575 21.0833 22.4834 20.9 22.3L16 17.4Z"
+                        fill="#2A3647" />
+                </g>
+            </svg>
         </div>
     </div>
-        <form id="add_task_form_board_overlay" action="" novalidate onsubmit="return false;">
-          <div class="form_wrapper">
-            <div class="input_container w100">
-              <!-- Title -->
-              <div class="w100">
-                <label for="title">Title <span style="color: red">*</span></label>
-                <br />
+    <form id="add_task_form" class="add-task-form" action="" onsubmit="return false;">
+        <div class="add-task-form-main">
+            <section class="add-task-form-left">
+                <div class="h-96" onclick="event.stopPropagation()">
+                    <label for="add_task_title">
+                        <p>Titel</p>
+                        <p class="add-task-form-required">*</p>
 
-                <input type="text" id="title" name="title" placeholder="Enter a title" required />
-
-                <p class="required_notice d_none " id="required_notice_title">This field is required</p>
-              </div>
-              <!-- Description -->
-              <div class="w100">
-                <label for="description">Description</label> <br />
-                <textarea id="description" name="description" placeholder="Enter a Description"></textarea>
-              </div>
-              <!-- Due Date -->
-              <div class="w100">
-                <label for="date">Due Date <span style="color: red">*</span></label>
-                <br />
-                <div class="datepicker" onclick="openCalender('add_tast_template_date')">
-                  <input type="text" id="add_tast_template_date" placeholder="dd/mm/yyyy" onfocus="this.type='date'" required lang="en-GB"
-                    value="" />
-                  <!-- event.svg -->
-                  <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M11.7485 16C11.0485 16 10.4569 15.7583 9.97354 15.275C9.4902 14.7917 9.24854 14.2 9.24854 13.5C9.24854 12.8 9.4902 12.2083 9.97354 11.725C10.4569 11.2417 11.0485 11 11.7485 11C12.4485 11 13.0402 11.2417 13.5235 11.725C14.0069 12.2083 14.2485 12.8 14.2485 13.5C14.2485 14.2 14.0069 14.7917 13.5235 15.275C13.0402 15.7583 12.4485 16 11.7485 16ZM2.24854 20C1.69854 20 1.2277 19.8042 0.836035 19.4125C0.444369 19.0208 0.248535 18.55 0.248535 18V4C0.248535 3.45 0.444369 2.97917 0.836035 2.5875C1.2277 2.19583 1.69854 2 2.24854 2H3.24854V1C3.24854 0.716667 3.34437 0.479167 3.53604 0.2875C3.7277 0.0958333 3.9652 0 4.24854 0C4.53187 0 4.76937 0.0958333 4.96104 0.2875C5.1527 0.479167 5.24854 0.716667 5.24854 1V2H13.2485V1C13.2485 0.716667 13.3444 0.479167 13.536 0.2875C13.7277 0.0958333 13.9652 0 14.2485 0C14.5319 0 14.7694 0.0958333 14.961 0.2875C15.1527 0.479167 15.2485 0.716667 15.2485 1V2H16.2485C16.7985 2 17.2694 2.19583 17.661 2.5875C18.0527 2.97917 18.2485 3.45 18.2485 4V18C18.2485 18.55 18.0527 19.0208 17.661 19.4125C17.2694 19.8042 16.7985 20 16.2485 20H2.24854ZM2.24854 18H16.2485V8H2.24854V18ZM2.24854 6H16.2485V4H2.24854V6Z"
-                      fill="#2A3647" />
-                  </svg>
+                    </label>
+                    <div class="add-tast-form-input-required-container">
+                        <input id="add_task_title" type="text"
+                            class="w-100 add-task-form-left-title-input add-task-form-input-placeholder-default"
+                            placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')">
+                        <div class="h-16">
+                            <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field
+                                is required</p>
+                        </div>
+                    </div>
                 </div>
-                <p class="required_notice d_none " id="required_notice_due_date">This field is required</p>
-              </div>
+
+                <div onclick="event.stopPropagation()">
+                    <label for="add_task_description">
+                        <p>Description</p>
+                    </label>
+                    <div class="h-136">
+                        <textarea name="" id="add_task_description" placeholder="Enter a Description"
+                            class="w-100 add-task-form-textarea add-task-form-input-placeholder-default"
+                            onfocus="highlightInputFields('add_task_description')"></textarea>
+                        <div class="h-16"></div>
+                    </div>
+                </div>
+                <div class="h-96" onclick="event.stopPropagation()">
+                    <label for="add_task_due_date" class="add-task-due-date-label">
+                        <div class="add-task-required-label-head">
+                            <p>Due date</p>
+                            <p class="add-task-form-required">*</p>
+                        </div>
+                        <div class="add-task-form-input-required-container">
+                            <div id="add_task_due_date_label_placeholder_svg"
+                                class="add-task-due-date-label-placeholder-svg">
+                                <svg class="" xmlns="http://www.w3.org/2000/svg" width="117" height="20"
+                                    viewBox="0 0 117 20" fill="none">
+                                    <path
+                                        d="M4.6307 15.4543C3.72161 15.4543 2.91906 15.2247 2.22303 14.7654C1.52701 14.3014 0.982503 13.648 0.589511 12.8052C0.196518 11.9576 2.22623e-05 10.9562 2.22623e-05 9.80091C2.22623e-05 8.65508 0.196518 7.66076 0.589511 6.81796C0.982503 5.97516 1.52938 5.32411 2.23014 4.86483C2.93089 4.40555 3.74055 4.17591 4.65911 4.17591C5.36934 4.17591 5.93042 4.29429 6.34235 4.53103C6.75902 4.76304 7.07625 5.02819 7.29406 5.32648C7.51659 5.62004 7.68942 5.86152 7.81252 6.05091H7.95457V0.681596H9.6307V15.2271H8.01139V13.5509H7.81252C7.68942 13.7498 7.51423 14.0007 7.28695 14.3038C7.05968 14.6021 6.73534 14.8696 6.31394 15.1063C5.89254 15.3383 5.33146 15.4543 4.6307 15.4543ZM4.85798 13.9486C5.53033 13.9486 6.09851 13.7735 6.56252 13.4231C7.02654 13.068 7.37928 12.5779 7.62076 11.9529C7.86224 11.3232 7.98298 10.5964 7.98298 9.77251C7.98298 8.95811 7.86461 8.24552 7.62786 7.63472C7.39112 7.01919 7.04074 6.54097 6.57673 6.20006C6.11271 5.85442 5.5398 5.6816 4.85798 5.6816C4.14775 5.6816 3.55589 5.86389 3.08241 6.22847C2.61366 6.58832 2.26091 7.07838 2.02417 7.69864C1.79216 8.31417 1.67616 9.00546 1.67616 9.77251C1.67616 10.549 1.79453 11.2545 2.03127 11.889C2.27275 12.5187 2.62786 13.0206 3.09661 13.3947C3.5701 13.764 4.15722 13.9486 4.85798 13.9486ZM17.0526 15.4543C16.1435 15.4543 15.3409 15.2247 14.6449 14.7654C13.9489 14.3014 13.4044 13.648 13.0114 12.8052C12.6184 11.9576 12.4219 10.9562 12.4219 9.80091C12.4219 8.65508 12.6184 7.66076 13.0114 6.81796C13.4044 5.97516 13.9513 5.32411 14.652 4.86483C15.3528 4.40555 16.1624 4.17591 17.081 4.17591C17.7912 4.17591 18.3523 4.29429 18.7642 4.53103C19.1809 4.76304 19.4981 5.02819 19.7159 5.32648C19.9385 5.62004 20.1113 5.86152 20.2344 6.05091H20.3764V0.681596H22.0526V15.2271H20.4333V13.5509H20.2344C20.1113 13.7498 19.9361 14.0007 19.7088 14.3038C19.4816 14.6021 19.1572 14.8696 18.7358 15.1063C18.3144 15.3383 17.7533 15.4543 17.0526 15.4543ZM17.2799 13.9486C17.9522 13.9486 18.5204 13.7735 18.9844 13.4231C19.4484 13.068 19.8012 12.5779 20.0426 11.9529C20.2841 11.3232 20.4049 10.5964 20.4049 9.77251C20.4049 8.95811 20.2865 8.24552 20.0497 7.63472C19.813 7.01919 19.4626 6.54097 18.9986 6.20006C18.5346 5.85442 17.9617 5.6816 17.2799 5.6816C16.5696 5.6816 15.9778 5.86389 15.5043 6.22847C15.0355 6.58832 14.6828 7.07838 14.446 7.69864C14.214 8.31417 14.098 9.00546 14.098 9.77251C14.098 10.549 14.2164 11.2545 14.4531 11.889C14.6946 12.5187 15.0497 13.0206 15.5185 13.3947C15.992 13.764 16.5791 13.9486 17.2799 13.9486ZM30.4972 -0.000222921L25.8097 17.4146H24.2756L28.9631 -0.000222921H30.4972ZM32.484 15.2271V4.31796H34.1034V6.02251H34.2454C34.4727 5.44012 34.8396 4.98794 35.3463 4.66597C35.8529 4.33927 36.4613 4.17591 37.1715 4.17591C37.8912 4.17591 38.4902 4.33927 38.9684 4.66597C39.4514 4.98794 39.8278 5.44012 40.0977 6.02251H40.2113C40.4907 5.45906 40.9097 5.01161 41.4684 4.68018C42.0271 4.344 42.6971 4.17591 43.4784 4.17591C44.4537 4.17591 45.2516 4.48131 45.8718 5.09211C46.4921 5.69817 46.8022 6.64277 46.8022 7.92591V15.2271H45.1261V7.92591C45.1261 7.12099 44.9059 6.54571 44.4656 6.20006C44.0252 5.85442 43.5068 5.6816 42.9102 5.6816C42.1431 5.6816 41.5489 5.9136 41.1275 6.37762C40.7061 6.8369 40.4954 7.41929 40.4954 8.12478V15.2271H38.7909V7.75546C38.7909 7.13519 38.5896 6.63567 38.1872 6.25688C37.7847 5.87336 37.2662 5.6816 36.6318 5.6816C36.1962 5.6816 35.789 5.7976 35.4102 6.02961C35.0361 6.26161 34.7331 6.58358 34.5011 6.99552C34.2738 7.40271 34.1602 7.87383 34.1602 8.40887V15.2271H32.484ZM49.8669 15.2271V4.31796H51.4862V6.02251H51.6282C51.8555 5.44012 52.2224 4.98794 52.7291 4.66597C53.2357 4.33927 53.8441 4.17591 54.5544 4.17591C55.2741 4.17591 55.873 4.33927 56.3512 4.66597C56.8342 4.98794 57.2106 5.44012 57.4805 6.02251H57.5941C57.8735 5.45906 58.2925 5.01161 58.8512 4.68018C59.4099 4.344 60.0799 4.17591 60.8612 4.17591C61.8366 4.17591 62.6344 4.48131 63.2546 5.09211C63.8749 5.69817 64.185 6.64277 64.185 7.92591V15.2271H62.5089V7.92591C62.5089 7.12099 62.2887 6.54571 61.8484 6.20006C61.408 5.85442 60.8896 5.6816 60.293 5.6816C59.5259 5.6816 58.9317 5.9136 58.5103 6.37762C58.0889 6.8369 57.8782 7.41929 57.8782 8.12478V15.2271H56.1737V7.75546C56.1737 7.13519 55.9724 6.63567 55.57 6.25688C55.1675 5.87336 54.6491 5.6816 54.0146 5.6816C53.579 5.6816 53.1718 5.7976 52.793 6.02961C52.4189 6.26161 52.1159 6.58358 51.8839 6.99552C51.6566 7.40271 51.543 7.87383 51.543 8.40887V15.2271H49.8669ZM72.3917 -0.000222921L67.7042 17.4146H66.1701L70.8576 -0.000222921H72.3917ZM75.4581 19.318C75.174 19.318 74.9207 19.2943 74.6982 19.2469C74.4756 19.2043 74.3218 19.1617 74.2365 19.1191L74.6627 17.6418C75.0699 17.746 75.4297 17.7839 75.7422 17.7555C76.0547 17.7271 76.3317 17.5874 76.5732 17.3364C76.8194 17.0902 77.0443 16.6901 77.2479 16.1361L77.5604 15.2839L73.5263 4.31796H75.3445L78.3558 13.0111H78.4695L81.4808 4.31796H83.299L78.6683 16.818C78.46 17.3814 78.202 17.8478 77.8942 18.2171C77.5864 18.5912 77.229 18.8681 76.8218 19.0481C76.4193 19.228 75.9647 19.318 75.4581 19.318ZM86.5909 19.318C86.3068 19.318 86.0535 19.2943 85.831 19.2469C85.6085 19.2043 85.4546 19.1617 85.3693 19.1191L85.7955 17.6418C86.2027 17.746 86.5625 17.7839 86.875 17.7555C87.1875 17.7271 87.4645 17.5874 87.706 17.3364C87.9522 17.0902 88.1771 16.6901 88.3807 16.1361L88.6932 15.2839L84.6591 4.31796H86.4773L89.4887 13.0111H89.6023L92.6137 4.31796H94.4318L89.8012 16.818C89.5928 17.3814 89.3348 17.8478 89.027 18.2171C88.7192 18.5912 88.3618 18.8681 87.9546 19.0481C87.5521 19.228 87.0976 19.318 86.5909 19.318ZM97.7237 19.318C97.4397 19.318 97.1863 19.2943 96.9638 19.2469C96.7413 19.2043 96.5874 19.1617 96.5022 19.1191L96.9283 17.6418C97.3355 17.746 97.6953 17.7839 98.0078 17.7555C98.3203 17.7271 98.5973 17.5874 98.8388 17.3364C99.085 17.0902 99.3099 16.6901 99.5135 16.1361L99.826 15.2839L95.7919 4.31796H97.6101L100.621 13.0111H100.735L103.746 4.31796H105.565L100.934 16.818C100.726 17.3814 100.468 17.8478 100.16 18.2171C99.8521 18.5912 99.4946 18.8681 99.0874 19.0481C98.6849 19.228 98.2304 19.318 97.7237 19.318ZM108.857 19.318C108.572 19.318 108.319 19.2943 108.097 19.2469C107.874 19.2043 107.72 19.1617 107.635 19.1191L108.061 17.6418C108.468 17.746 108.828 17.7839 109.141 17.7555C109.453 17.7271 109.73 17.5874 109.972 17.3364C110.218 17.0902 110.443 16.6901 110.646 16.1361L110.959 15.2839L106.925 4.31796H108.743L111.754 13.0111H111.868L114.879 4.31796H116.697L112.067 16.818C111.858 17.3814 111.6 17.8478 111.293 18.2171C110.985 18.5912 110.627 18.8681 110.22 19.0481C109.818 19.228 109.363 19.318 108.857 19.318Z"
+                                        fill="#D1D1D1" />
+                                </svg>
+                            </div>
+                            <input id="add_task_due_date"
+                                class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-default"
+                                type="date" placeholder="dd/mm/yyyy" onclick="openCalender('add_task_due_date')"
+                                onfocus="highlightInputFields('add_task_due_date')">
+                            <div class="h-16">
+                                <p id="required_msg_due_date" class="add-tast-form-required-msg d_none">This
+                                    field is required</p>
+                            </div>
+                        </div>
+                        <svg class="add-task-due-date-label-calender-svg" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none">
+                            <mask id="mask0_387837_2602" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="24" height="24">
+                                <rect width="24" height="24" fill="#D9D9D9" />
+                            </mask>
+                            <g mask="url(#mask0_387837_2602)">
+                                <path
+                                    d="M14.5 18C13.8 18 13.2083 17.7583 12.725 17.275C12.2417 16.7917 12 16.2 12 15.5C12 14.8 12.2417 14.2083 12.725 13.725C13.2083 13.2417 13.8 13 14.5 13C15.2 13 15.7917 13.2417 16.275 13.725C16.7583 14.2083 17 14.8 17 15.5C17 16.2 16.7583 16.7917 16.275 17.275C15.7917 17.7583 15.2 18 14.5 18ZM5 22C4.45 22 3.97917 21.8042 3.5875 21.4125C3.19583 21.0208 3 20.55 3 20V6C3 5.45 3.19583 4.97917 3.5875 4.5875C3.97917 4.19583 4.45 4 5 4H6V3C6 2.71667 6.09583 2.47917 6.2875 2.2875C6.47917 2.09583 6.71667 2 7 2C7.28333 2 7.52083 2.09583 7.7125 2.2875C7.90417 2.47917 8 2.71667 8 3V4H16V3C16 2.71667 16.0958 2.47917 16.2875 2.2875C16.4792 2.09583 16.7167 2 17 2C17.2833 2 17.5208 2.09583 17.7125 2.2875C17.9042 2.47917 18 2.71667 18 3V4H19C19.55 4 20.0208 4.19583 20.4125 4.5875C20.8042 4.97917 21 5.45 21 6V20C21 20.55 20.8042 21.0208 20.4125 21.4125C20.0208 21.8042 19.55 22 19 22H5ZM5 20H19V10H5V20ZM5 8H19V6H5V8Z"
+                                    fill="#2A3647" />
+                            </g>
+                        </svg>
+                    </label>
+                </div>
+            </section>
+            <div class="add-task-form-seperator">
             </div>
+            <section class="add-task-form-right">
+                <div class="add-task-priority-btns-container">
+                    <p>Priority</p>
+                    <div class="add-task-priority-btns">
+                        <button id="add_task_priority_urgent" class="add-task-priority-btns-hover-class"
+                            onclick="activatePriority('urgent')">
+                            <p>Urgent</p>
+                            <svg id="add_task_priority_urgent_svg" xmlns="http://www.w3.org/2000/svg" width="20"
+                                height="15" viewBox="0 0 20 15" fill="none">
+                                <g clip-path="url(#clip0_387837_1593)">
+                                    <path
+                                        d="M18.9043 14.5096C18.6696 14.51 18.4411 14.4351 18.2522 14.2961L10.0001 8.21288L1.74809 14.2961C1.63224 14.3816 1.50066 14.4435 1.36086 14.4783C1.22106 14.513 1.07577 14.5199 0.933305 14.4986C0.790837 14.4772 0.653973 14.428 0.530528 14.3538C0.407083 14.2796 0.299474 14.1818 0.213845 14.0661C0.128216 13.9503 0.0662437 13.8188 0.0314671 13.6791C-0.00330956 13.5394 -0.0102098 13.3943 0.0111604 13.2519C0.0543195 12.9644 0.21001 12.7058 0.443982 12.533L9.34809 5.96249C9.53679 5.8229 9.76536 5.74756 10.0001 5.74756C10.2349 5.74756 10.4635 5.8229 10.6522 5.96249L19.5563 12.533C19.7422 12.6699 19.8801 12.862 19.9503 13.0819C20.0204 13.3018 20.0193 13.5382 19.9469 13.7573C19.8746 13.9765 19.7349 14.1673 19.5476 14.3024C19.3604 14.4375 19.1352 14.51 18.9043 14.5096Z"
+                                        fill="#FF3D00" />
+                                    <path
+                                        d="M18.9043 8.76057C18.6696 8.76097 18.4411 8.68612 18.2522 8.54702L10.0002 2.46386L1.7481 8.54702C1.51412 8.71983 1.22104 8.79269 0.93331 8.74956C0.645583 8.70643 0.386785 8.55086 0.213849 8.31706C0.0409137 8.08326 -0.0319941 7.79039 0.011165 7.50288C0.054324 7.21536 0.210015 6.95676 0.443986 6.78395L9.3481 0.213471C9.5368 0.0738799 9.76537 -0.00146484 10.0002 -0.00146484C10.2349 -0.00146484 10.4635 0.0738799 10.6522 0.213471L19.5563 6.78395C19.7422 6.92087 19.8801 7.11298 19.9503 7.33286C20.0204 7.55274 20.0193 7.78914 19.947 8.00832C19.8746 8.22751 19.7349 8.41826 19.5476 8.55335C19.3604 8.68844 19.1352 8.76096 18.9043 8.76057Z"
+                                        fill="#FF3D00" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_387837_1593">
+                                        <rect width="20" height="14.5098" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </button>
+                        <button id="add_task_priority_medium" class="add-task-priority-btn-medium-active"
+                            onclick="activatePriority('medium')">
+                            <p>Medium</p>
+                            <svg id="add_task_priority_medium_svg" class="add-task-priority-active-svg"
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="8" viewBox="0 0 20 8" fill="none">
+                                <g clip-path="url(#clip0_156_950)">
+                                    <path
+                                        d="M18.9041 7.45086H1.09589C0.805242 7.45086 0.526498 7.33456 0.320979 7.12755C0.11546 6.92054 0 6.63977 0 6.34701C0 6.05425 0.11546 5.77349 0.320979 5.56647C0.526498 5.35946 0.805242 5.24316 1.09589 5.24316H18.9041C19.1948 5.24316 19.4735 5.35946 19.679 5.56647C19.8845 5.77349 20 6.05425 20 6.34701C20 6.63977 19.8845 6.92054 19.679 7.12755C19.4735 7.33456 19.1948 7.45086 18.9041 7.45086Z"
+                                        fill="#FFA800" />
+                                    <path
+                                        d="M18.9041 2.2077H1.09589C0.805242 2.2077 0.526498 2.0914 0.320979 1.88439C0.11546 1.67738 0 1.39661 0 1.10385C0 0.81109 0.11546 0.530322 0.320979 0.32331C0.526498 0.116298 0.805242 0 1.09589 0L18.9041 0C19.1948 0 19.4735 0.116298 19.679 0.32331C19.8845 0.530322 20 0.81109 20 1.10385C20 1.39661 19.8845 1.67738 19.679 1.88439C19.4735 2.0914 19.1948 2.2077 18.9041 2.2077Z"
+                                        fill="#FFA800" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_156_950">
+                                        <rect width="20" height="7.45098" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </button>
+                        <button id="add_task_priority_low" class="add-task-priority-btns-hover-class"
+                            onclick="activatePriority('low')">
+                            <p>Low</p>
+                            <svg id="add_task_priority_low_svg" xmlns="http://www.w3.org/2000/svg" width="20"
+                                height="15" viewBox="0 0 20 15" fill="none">
+                                <path
+                                    d="M10 8.76077C9.7654 8.76118 9.53687 8.68634 9.34802 8.54726L0.444913 1.97752C0.329075 1.89197 0.231235 1.78445 0.15698 1.66111C0.0827245 1.53777 0.033508 1.40102 0.0121402 1.25868C-0.031014 0.971193 0.0418855 0.678356 0.214802 0.444584C0.387718 0.210811 0.646486 0.0552534 0.934181 0.0121312C1.22188 -0.0309911 1.51493 0.0418545 1.74888 0.214643L10 6.29712L18.2511 0.214643C18.367 0.129087 18.4985 0.0671675 18.6383 0.0324205C18.7781 -0.00232646 18.9234 -0.00922079 19.0658 0.0121312C19.2083 0.0334832 19.3451 0.0826633 19.4685 0.156864C19.592 0.231064 19.6996 0.328831 19.7852 0.444584C19.8708 0.560336 19.9328 0.691806 19.9676 0.831488C20.0023 0.97117 20.0092 1.11633 19.9879 1.25868C19.9665 1.40102 19.9173 1.53777 19.843 1.66111C19.7688 1.78445 19.6709 1.89197 19.5551 1.97752L10.652 8.54726C10.4631 8.68634 10.2346 8.76118 10 8.76077Z"
+                                    fill="#7AE229" />
+                                <path
+                                    d="M10 14.5093C9.7654 14.5097 9.53687 14.4349 9.34802 14.2958L0.444913 7.72606C0.210967 7.55327 0.0552944 7.29469 0.0121402 7.00721C-0.031014 6.71973 0.0418855 6.42689 0.214802 6.19312C0.387718 5.95935 0.646486 5.80379 0.934181 5.76067C1.22188 5.71754 1.51493 5.79039 1.74888 5.96318L10 12.0457L18.2511 5.96318C18.4851 5.79039 18.7781 5.71754 19.0658 5.76067C19.3535 5.80379 19.6123 5.95935 19.7852 6.19312C19.9581 6.42689 20.031 6.71973 19.9879 7.00721C19.9447 7.29469 19.789 7.55327 19.5551 7.72606L10.652 14.2958C10.4631 14.4349 10.2346 14.5097 10 14.5093Z"
+                                    fill="#7AE229" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="add_task_form_assigned_to_section" class="add-task-form-assigned-to-section h-80"
+                    onclick="event.stopPropagation()">
+                    <label for="add_task_assigned_to" class="add-task-assigned-to-category-label"
+                        onclick="toggleAssignedToContactList()" onkeyup="filterInputValue()">
+                        <p>Assigned to</p>
+                        <input id="add_task_assigned_to"
+                            class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black" type="text"
+                            onfocus="highlightInputFields('add_task_assigned_to')"
+                            placeholder="Select contacts to assign">
+                        <div id="add_task_form_assigned_to_arrow_svg" class="add-task-form-assigned-to-arrow-down-svg"
+                            onclick="event.stopPropagation()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                    y="0" width="24" height="24">
+                                    <rect width="24" height="24" fill="#D9D9D9" />
+                                </mask>
+                                <g mask="url(#mask0_387837_1520)">
+                                    <path
+                                        d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
+                                        fill="#2A3647" />
+                                </g>
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="add-task-form-assigned-to-dropdown">
+                        <ul id="add_task_form_assigned_to_dropdown_contacts" onclick="event.stopPropagation()"
+                            class="add-task-form-assigned-to-dropdown-contacts d_none">
+                        </ul>
+                    </div>
+                    <div id="current_assigned_to_contacts" class="current-assigned-to-contacts-container d_none">
+                    </div>
+                </div>
+                <div class="add-task-form-assigned-to-section h-80" onclick="event.stopPropagation()">
+                    <label for="add_task_category" class="add-task-assigned-to-category-label"
+                        onclick="toggleCategoryList()">
+                        <div class="add-task-required-label-head">
+                            <p>Category</p>
+                            <p class="add-task-form-required">*</p>
+                        </div>
+                        <input id="add_task_category"
+                            class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black" type="text"
+                            placeholder="Select task category" onfocus="highlightInputFields('add_task_category')">
+                        <div id="add_task_form_category_arrow_svg" class="add-task-form-assigned-to-arrow-down-svg"
+                            onclick="event.stopPropagation()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <mask id="mask0_387837_1520" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                    y="0" width="24" height="24">
+                                    <rect width="24" height="24" fill="#D9D9D9" />
+                                </mask>
+                                <g mask="url(#mask0_387837_1520)">
+                                    <path
+                                        d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
+                                        fill="#2A3647" />
+                                </g>
+                            </svg>
+                        </div>
+                    </label>
+                    <div class="required-msg-category h-16">
+                        <p id="required_msg_category" class="add-tast-form-required-msg d_none">This field
+                            is required</p>
+                    </div>
+                    <div class="add-task-form-category-dropdown">
+                        <ul id="add_task_form_category_dropdown_category" onclick="event.stopPropagation()"
+                            class="add-task-form-category-dropdown-category d_none">
+                            <li onclick="chooseCategory('Technical Task')"
+                                class="add-task-form-assigned-to-dropdown-contacts-default-hover-class">
+                                <p>Technical Task</p>
+                            </li>
+                            <li onclick="chooseCategory('User Story')"
+                                class="add-task-form-assigned-to-dropdown-contacts-default-hover-class">
+                                <p>User Story</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="h-80" onclick="event.stopPropagation()">
+                    <label for="add_task_subtasks" class="add-task-assigned-to-category-label">
+                        <p>Subtasks</p>
+                        <input id="add_task_subtasks"
+                            class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-default"
+                            type="text" placeholder="Add new subtask"
+                            onfocus="highlightInputFields('add_task_subtasks')">
+                        <div id="add_task_form_subtasks_btns" class="add-task-form-subtasks-btns d_none">
+                            <button onclick="resetAddTaskSubtasksInputField()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <mask id="mask0_75601_14760" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                        x="0" y="0" width="24" height="24">
+                                        <rect width="24" height="24" fill="#D9D9D9" />
+                                    </mask>
+                                    <g mask="url(#mask0_75601_14760)">
+                                        <path
+                                            d="M11.9998 13.4L7.0998 18.3C6.91647 18.4834 6.68314 18.575 6.3998 18.575C6.11647 18.575 5.88314 18.4834 5.6998 18.3C5.51647 18.1167 5.4248 17.8834 5.4248 17.6C5.4248 17.3167 5.51647 17.0834 5.6998 16.9L10.5998 12L5.6998 7.10005C5.51647 6.91672 5.4248 6.68338 5.4248 6.40005C5.4248 6.11672 5.51647 5.88338 5.6998 5.70005C5.88314 5.51672 6.11647 5.42505 6.3998 5.42505C6.68314 5.42505 6.91647 5.51672 7.0998 5.70005L11.9998 10.6L16.8998 5.70005C17.0831 5.51672 17.3165 5.42505 17.5998 5.42505C17.8831 5.42505 18.1165 5.51672 18.2998 5.70005C18.4831 5.88338 18.5748 6.11672 18.5748 6.40005C18.5748 6.68338 18.4831 6.91672 18.2998 7.10005L13.3998 12L18.2998 16.9C18.4831 17.0834 18.5748 17.3167 18.5748 17.6C18.5748 17.8834 18.4831 18.1167 18.2998 18.3C18.1165 18.4834 17.8831 18.575 17.5998 18.575C17.3165 18.575 17.0831 18.4834 16.8998 18.3L11.9998 13.4Z"
+                                            fill="#2A3647" />
+                                    </g>
+                                </svg>
+                            </button>
+                            <div class="add-task-subtasks-input-seperator"></div>
+                            <button onclick="setSubtask()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <mask id="mask0_75601_14762" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                        x="0" y="0" width="24" height="24">
+                                        <rect width="24" height="24" fill="#D9D9D9" />
+                                    </mask>
+                                    <g mask="url(#mask0_75601_14762)">
+                                        <path
+                                            d="M9.55021 15.15L18.0252 6.675C18.2252 6.475 18.4627 6.375 18.7377 6.375C19.0127 6.375 19.2502 6.475 19.4502 6.675C19.6502 6.875 19.7502 7.1125 19.7502 7.3875C19.7502 7.6625 19.6502 7.9 19.4502 8.1L10.2502 17.3C10.0502 17.5 9.81687 17.6 9.55021 17.6C9.28354 17.6 9.05021 17.5 8.85021 17.3L4.55021 13C4.35021 12.8 4.25437 12.5625 4.26271 12.2875C4.27104 12.0125 4.37521 11.775 4.57521 11.575C4.77521 11.375 5.01271 11.275 5.28771 11.275C5.56271 11.275 5.80021 11.375 6.00021 11.575L9.55021 15.15Z"
+                                            fill="#2A3647" />
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </label>
+                    <div class="add-task-subtaks-dropdown">
+                        <ul id="add_task_form_subtasks_dropdown_subtasks"
+                            class="add-task-form-subtasks-dropdown-subtasks ">
 
-            <hr />
-
-            <div class="input_container w100">
-              <!-- Priority -->
-              <div class="mb16">
-                <label for="">Priority</label>
-                <input type="hidden" id="priority" />
-                <div class="priority_wrapper">
-                  <button type="button" class="urgent_btn" id="urgent_btn" onclick="buttonActive('urgent')">
-                    Urgent
-                    <!-- Prio_urgent_red.svg -->
-                    <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g clip-path="url(#clip0_369684_5802)">
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="add-task-footer-and-btns">
+            <div class="add-task-form-info-container">
+                <p class="add-task-form-required">*</p>
+                <p>This fiels is required</p>
+            </div>
+            <div class="add-task-form-btns">
+                <button class="add-task-form-clear-btn" onclick="clearForm()">
+                    <p>Clear</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path
-                          d="M19.6528 15.2547C19.4182 15.2551 19.1896 15.1803 19.0007 15.0412L10.7487 8.958L2.49663 15.0412C2.38078 15.1267 2.24919 15.1887 2.10939 15.2234C1.96959 15.2582 1.82431 15.2651 1.68184 15.2437C1.53937 15.2223 1.40251 15.1732 1.27906 15.099C1.15562 15.0247 1.04801 14.927 0.96238 14.8112C0.876751 14.6954 0.814779 14.5639 0.780002 14.4243C0.745226 14.2846 0.738325 14.1394 0.759696 13.997C0.802855 13.7095 0.958545 13.4509 1.19252 13.2781L10.0966 6.70761C10.2853 6.56802 10.5139 6.49268 10.7487 6.49268C10.9835 6.49268 11.212 6.56802 11.4007 6.70761L20.3048 13.2781C20.4908 13.415 20.6286 13.6071 20.6988 13.827C20.7689 14.0469 20.7678 14.2833 20.6955 14.5025C20.6232 14.7216 20.4834 14.9124 20.2962 15.0475C20.1089 15.1826 19.8837 15.2551 19.6528 15.2547Z"
-                          fill="#FF3D00" />
-                        <path
-                          d="M19.6528 9.50568C19.4182 9.50609 19.1896 9.43124 19.0007 9.29214L10.7487 3.20898L2.49663 9.29214C2.26266 9.46495 1.96957 9.5378 1.68184 9.49468C1.39412 9.45155 1.13532 9.29597 0.962385 9.06218C0.789449 8.82838 0.716541 8.53551 0.7597 8.24799C0.802859 7.96048 0.95855 7.70187 1.19252 7.52906L10.0966 0.958588C10.2853 0.818997 10.5139 0.743652 10.7487 0.743652C10.9835 0.743652 11.212 0.818997 11.4007 0.958588L20.3048 7.52906C20.4908 7.66598 20.6286 7.85809 20.6988 8.07797C20.769 8.29785 20.7678 8.53426 20.6955 8.75344C20.6232 8.97262 20.4834 9.16338 20.2962 9.29847C20.1089 9.43356 19.8837 9.50608 19.6528 9.50568Z"
-                          fill="#FF3D00" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_369684_5802">
-                          <rect width="20" height="14.5098" fill="white" transform="translate(0.748535 0.745117)" />
-                        </clipPath>
-                      </defs>
+                            d="M12.0011 11.9998L17.2441 17.2428M6.75806 17.2428L12.0011 11.9998L6.75806 17.2428ZM17.2441 6.75684L12.0001 11.9998L17.2441 6.75684ZM12.0001 11.9998L6.75806 6.75684L12.0001 11.9998Z"
+                            stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                  </button>
-                  <button type="button" class="medium_btn" id="medium_btn" onclick="buttonActive('medium')">
-                    Medium
-                    <!-- Prio_medium_orange.svg -->
-                    <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M19.7596 7.91693H1.95136C1.66071 7.91693 1.38197 7.80063 1.17645 7.59362C0.970928 7.3866 0.855469 7.10584 0.855469 6.81308C0.855469 6.52032 0.970928 6.23955 1.17645 6.03254C1.38197 5.82553 1.66071 5.70923 1.95136 5.70923H19.7596C20.0502 5.70923 20.329 5.82553 20.5345 6.03254C20.74 6.23955 20.8555 6.52032 20.8555 6.81308C20.8555 7.10584 20.74 7.3866 20.5345 7.59362C20.329 7.80063 20.0502 7.91693 19.7596 7.91693Z"
-                        fill="#FFA800" />
-                      <path
-                        d="M19.7596 2.67376H1.95136C1.66071 2.67376 1.38197 2.55746 1.17645 2.35045C0.970928 2.14344 0.855469 1.86267 0.855469 1.56991C0.855469 1.27715 0.970928 0.996386 1.17645 0.789374C1.38197 0.582363 1.66071 0.466064 1.95136 0.466064L19.7596 0.466064C20.0502 0.466064 20.329 0.582363 20.5345 0.789374C20.74 0.996386 20.8555 1.27715 20.8555 1.56991C20.8555 1.86267 20.74 2.14344 20.5345 2.35045C20.329 2.55746 20.0502 2.67376 19.7596 2.67376Z"
-                        fill="#FFA800" />
+                </button>
+                <button id="add_task_form_create_btn" class="add-task-form-create-btn" onclick="createNewTask('overlay_board')">
+                    <p>Create Task</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <mask id="mask0_387746_82" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                            width="24" height="24">
+                            <rect width="24" height="24" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_387746_82)">
+                            <path
+                                d="M9.55069 15.15L18.0257 6.675C18.2257 6.475 18.4632 6.375 18.7382 6.375C19.0132 6.375 19.2507 6.475 19.4507 6.675C19.6507 6.875 19.7507 7.1125 19.7507 7.3875C19.7507 7.6625 19.6507 7.9 19.4507 8.1L10.2507 17.3C10.0507 17.5 9.81736 17.6 9.55069 17.6C9.28403 17.6 9.05069 17.5 8.85069 17.3L4.5507 13C4.3507 12.8 4.25486 12.5625 4.2632 12.2875C4.27153 12.0125 4.3757 11.775 4.5757 11.575C4.7757 11.375 5.0132 11.275 5.2882 11.275C5.5632 11.275 5.80069 11.375 6.00069 11.575L9.55069 15.15Z"
+                                fill="white" />
+                        </g>
                     </svg>
-                  </button>
-                  <button type="button" class="low_btn" id="low_btn" onclick="buttonActive('low')">
-                    Low
-                    <!-- Prio_low_green.svg -->
-                    <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.2485 9.50589C10.0139 9.5063 9.7854 9.43145 9.59655 9.29238L0.693448 2.72264C0.57761 2.63708 0.47977 2.52957 0.405515 2.40623C0.33126 2.28289 0.282043 2.14614 0.260675 2.00379C0.217521 1.71631 0.290421 1.42347 0.463337 1.1897C0.636253 0.955928 0.895022 0.800371 1.18272 0.757248C1.47041 0.714126 1.76347 0.786972 1.99741 0.95976L10.2485 7.04224L18.4997 0.95976C18.6155 0.874204 18.7471 0.812285 18.8869 0.777538C19.0266 0.742791 19.1719 0.735896 19.3144 0.757248C19.4568 0.7786 19.5937 0.82778 19.7171 0.901981C19.8405 0.976181 19.9481 1.07395 20.0337 1.1897C20.1194 1.30545 20.1813 1.43692 20.2161 1.57661C20.2509 1.71629 20.2578 1.86145 20.2364 2.00379C20.215 2.14614 20.1658 2.28289 20.0916 2.40623C20.0173 2.52957 19.9195 2.63708 19.8036 2.72264L10.9005 9.29238C10.7117 9.43145 10.4831 9.5063 10.2485 9.50589Z"
-                        fill="#7AE229" />
-                      <path
-                        d="M10.2485 15.2544C10.0139 15.2548 9.7854 15.18 9.59655 15.0409L0.693448 8.47117C0.459502 8.29839 0.30383 8.03981 0.260675 7.75233C0.217521 7.46485 0.290421 7.17201 0.463337 6.93824C0.636253 6.70446 0.895021 6.54891 1.18272 6.50578C1.47041 6.46266 1.76347 6.53551 1.99741 6.7083L10.2485 12.7908L18.4997 6.7083C18.7336 6.53551 19.0267 6.46266 19.3144 6.50578C19.602 6.54891 19.8608 6.70446 20.0337 6.93824C20.2066 7.17201 20.2795 7.46485 20.2364 7.75233C20.1932 8.03981 20.0376 8.29839 19.8036 8.47117L10.9005 15.0409C10.7117 15.18 10.4831 15.2548 10.2485 15.2544Z"
-                        fill="#7AE229" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <!-- Assigned to -->
-              <div class="asssigned_to mb16" onclick="closeProtection(event), closeCategoryList() ">
-                <label for="">Assigned to</label> <br />
-                <div class="input-wrapper z4">
-                  <input type="text" placeholder="Select contacts to assign" onfocus="openContactlist()" />
-                  <!-- arrow_drop_down.svg -->
-                  <svg class="arrow" id="arrow" width="8" height="5" viewBox="0 0 8 5" fill="none"
-                    xmlns="http://www.w3.org/2000/svg" onclick="openContactList()">
-                    <path
-                      d="M3.54851 4.3L0.94851 1.7C0.631844 1.38333 0.56101 1.02083 0.73601 0.6125C0.91101 0.204167 1.22351 0 1.67351 0H6.82351C7.27351 0 7.58601 0.204167 7.76101 0.6125C7.93601 1.02083 7.86518 1.38333 7.54851 1.7L4.94851 4.3C4.84851 4.4 4.74018 4.475 4.62351 4.525C4.50684 4.575 4.38184 4.6 4.24851 4.6C4.11518 4.6 3.99018 4.575 3.87351 4.525C3.75684 4.475 3.64851 4.4 3.54851 4.3Z"
-                      fill="#2A3647" />
-                  </svg>
-                </div>
-                <ul class="contacts z3" id="task_contacts">
-                  
-                </ul>
-              </div>
-              <!-- Category -->
-              <div class="asssigned_to mb16" onclick="closeProtection(event), closeContactlist() ">
-                <label for="">Category <span style="color: red">*</span></label>
-                <br />
-                <div class="input-wrapper z2">
-                  <input id="category_input" type="text" placeholder="Select task category" onfocus="openCategoryList()"
-                    readonly="" />
-                  <!-- arrow_drop_down.svg -->
-                  <svg class="arrow" id="arrow2" width="8" height="5" viewBox="0 0 8 5" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M3.54851 4.3L0.94851 1.7C0.631844 1.38333 0.56101 1.02083 0.73601 0.6125C0.91101 0.204167 1.22351 0 1.67351 0H6.82351C7.27351 0 7.58601 0.204167 7.76101 0.6125C7.93601 1.02083 7.86518 1.38333 7.54851 1.7L4.94851 4.3C4.84851 4.4 4.74018 4.475 4.62351 4.525C4.50684 4.575 4.38184 4.6 4.24851 4.6C4.11518 4.6 3.99018 4.575 3.87351 4.525C3.75684 4.475 3.64851 4.4 3.54851 4.3Z"
-                      fill="#2A3647" />
-                  </svg>
-                </div>
-
-                <ul class="contacts z1" id="categorys">
-                  <li class="single_contact" onclick="closeCategoryList(), selectCategory('Technical Task')">
-                    <p>Technical Task</p>
-                  </li>
-                  <li class="single_contact" onclick="closeCategoryList(), selectCategory('User Story')">
-                    <p>User Story</p>
-                  </li>
-                </ul>
-
-                <p class="required_notice d_none " id="required_notice_category">This field is required</p>
-              </div>
-              <!-- Subtask -->
-              <div>
-                <label for="subtask">Subtask</label> <br />
-                <div class="subtask_input_wrapper">
-                  <input type="text" name="subtask" id="subtask" placeholder="Add new subtask" />
-
-                  <div class="subtask_input_button">
-                    <!-- close_black.svg -->
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M7.14434 8.40005L2.24434 13.3C2.061 13.4834 1.82767 13.575 1.54434 13.575C1.261 13.575 1.02767 13.4834 0.844336 13.3C0.661003 13.1167 0.569336 12.8834 0.569336 12.6C0.569336 12.3167 0.661003 12.0834 0.844336 11.9L5.74434 7.00005L0.844336 2.10005C0.661003 1.91672 0.569336 1.68338 0.569336 1.40005C0.569336 1.11672 0.661003 0.883382 0.844336 0.700049C1.02767 0.516715 1.261 0.425049 1.54434 0.425049C1.82767 0.425049 2.061 0.516715 2.24434 0.700049L7.14434 5.60005L12.0443 0.700049C12.2277 0.516715 12.461 0.425049 12.7443 0.425049C13.0277 0.425049 13.261 0.516715 13.4443 0.700049C13.6277 0.883382 13.7193 1.11672 13.7193 1.40005C13.7193 1.68338 13.6277 1.91672 13.4443 2.10005L8.54434 7.00005L13.4443 11.9C13.6277 12.0834 13.7193 12.3167 13.7193 12.6C13.7193 12.8834 13.6277 13.1167 13.4443 13.3C13.261 13.4834 13.0277 13.575 12.7443 13.575C12.461 13.575 12.2277 13.4834 12.0443 13.3L7.14434 8.40005Z"
-                        fill="#2A3647" />
-                    </svg>
-                    <hr />
-                    <!-- check_black.svg -->
-                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M5.69474 9.15L14.1697 0.675C14.3697 0.475 14.6072 0.375 14.8822 0.375C15.1572 0.375 15.3947 0.475 15.5947 0.675C15.7947 0.875 15.8947 1.1125 15.8947 1.3875C15.8947 1.6625 15.7947 1.9 15.5947 2.1L6.39474 11.3C6.19474 11.5 5.96141 11.6 5.69474 11.6C5.42807 11.6 5.19474 11.5 4.99474 11.3L0.694738 7C0.494738 6.8 0.398905 6.5625 0.407238 6.2875C0.415572 6.0125 0.519738 5.775 0.719738 5.575C0.919738 5.375 1.15724 5.275 1.43224 5.275C1.70724 5.275 1.94474 5.375 2.14474 5.575L5.69474 9.15Z"
-                        fill="#2A3647" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="subtask_list">
-
-              </div>
-              <div class="required_info">
-                <span style="color: red">*</span>
-                <p>This field is required</p>
-              </div>
+                </button>
             </div>
-          </div>
-
-
-
-          <div class="submit_container">
-
-
-            <div class="submit_butn_wrapper">
-              <button class="clear_btn" onclick="clearFormAddTask('add_task_form_board_overlay')">
-                Clear
-                <!-- iconoir_cancel.svg -->
-                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M12.2496 11.9998L17.4926 17.2428M7.00659 17.2428L12.2496 11.9998L7.00659 17.2428ZM17.4926 6.75684L12.2486 11.9998L17.4926 6.75684ZM12.2486 11.9998L7.00659 6.75684L12.2486 11.9998Z"
-                    stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-              <button type="button" class="creat_task_btn" onclick="checkNPost('add_task_form_board_overlay', 'add_tast_template_date')">
-                <!--closeProtection(event),   entfernt-->
-                Create Task
-                <!-- check.svg -->
-                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <mask id="mask0_369684_6294" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                    width="25" height="24">
-                    <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
-                  </mask>
-                  <g mask="url(#mask0_369684_6294)">
-                    <path
-                      d="M9.79923 15.15L18.2742 6.675C18.4742 6.475 18.7117 6.375 18.9867 6.375C19.2617 6.375 19.4992 6.475 19.6992 6.675C19.8992 6.875 19.9992 7.1125 19.9992 7.3875C19.9992 7.6625 19.8992 7.9 19.6992 8.1L10.4992 17.3C10.2992 17.5 10.0659 17.6 9.79923 17.6C9.53256 17.6 9.29923 17.5 9.09923 17.3L4.79923 13C4.59923 12.8 4.5034 12.5625 4.51173 12.2875C4.52006 12.0125 4.62423 11.775 4.82423 11.575C5.02423 11.375 5.26173 11.275 5.53673 11.275C5.81173 11.275 6.04923 11.375 6.24923 11.575L9.79923 15.15Z"
-                      fill="white" />
-                  </g>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </form>
-      </section>`
+        </section>
+    </form>
+</div>`
 }
 
 

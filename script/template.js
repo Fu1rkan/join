@@ -102,11 +102,12 @@ function signUpTemplate() {
 
             <section class="sign_up_section">
                 <section class="title_headline">
-                    <svg class="sign_up_back_arrow" tabindex="0" onclick="renderLogIn()"
-                    onkeydown="if(event.code==='Space'){renderLogIn();}" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
-                    </svg>
-                        <div class="sign_up_logo">
+                    <div class="sign_up_back_arrow" tabindex="0" onclick="renderLogIn()"onkeydown="if(event.code==='Space'){renderLogIn();}">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
+                        </svg>
+                    </div>
+                    <div class="sign_up_logo">
                             <h1>Sign Up</h1>
                             <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
                                 <path d="M152 1.5L2 1.5" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
@@ -342,9 +343,7 @@ function summaryOverlayTemplate() {
 
           <div class="summary-greeting" id="greeting-text"></div>
 
-          <div class="summary-greeting" id="summary-greeting-name">
-            Sofia Müller
-          </div>
+          <div class="summary-greeting" id="summary-greeting-name"></div>
         </section>`;
 }
 
@@ -385,24 +384,24 @@ function taskTemp(i) {
                 <div class="task-assignees" id="task-card-participants-${i.id}"></div>
                 <div class="task-priority" id="task-card-prio-${i.id}"></div>
             </footer>
-            <div class="resp-menu-task d_none" id="resp-menu-task-${i.id}">
+            <div class="resp-menu-task o_0" id="resp-menu-task-${i.id}" onclick="stopPropagation(event)">
                 <span>Move to</span>
                 <div>
-                    <button onclick="switchUp(${i.id}); stopPropagation(event)">
+                    <button onclick="switchUp(${i.id})" id="switch-up-button-${i.id}">
                         <div>
                             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                                 <path id="switch-up-path-${i.id}"d="M5.49 2.83333L1.40667 6.91667C1.24 7.08333 1.04556 7.16319 0.823333 7.15625C0.601111 7.14931 0.406667 7.0625 0.24 6.89583C0.0872222 6.72917 0.00736111 6.53472 0.000416667 6.3125C-0.00652778 6.09028 0.0733333 5.89583 0.24 5.72917L5.74 0.229167C5.82333 0.145833 5.91361 0.0868056 6.01083 0.0520833C6.10806 0.0173611 6.21222 0 6.32333 0C6.43444 0 6.53861 0.0173611 6.63583 0.0520833C6.73306 0.0868056 6.82333 0.145833 6.90667 0.229167L12.4067 5.72917C12.5594 5.88194 12.6358 6.07292 12.6358 6.30208C12.6358 6.53125 12.5594 6.72917 12.4067 6.89583C12.24 7.0625 12.0421 7.14583 11.8129 7.14583C11.5838 7.14583 11.3858 7.0625 11.2192 6.89583L7.15667 2.83333V12.1458C7.15667 12.3819 7.07681 12.5799 6.91708 12.7396C6.75736 12.8993 6.55944 12.9792 6.32333 12.9792C6.08722 12.9792 5.88931 12.8993 5.72958 12.7396C5.56986 12.5799 5.49 12.3819 5.49 12.1458V2.83333Z" fill="white"/>
                             </svg>
                         </div>
-                        <span id="switch-up-${i.id}">Up</span>
+                        <span id="switch-up-${i.id}"></span>
                     </button>
-                    <button onclick="switchDown(${i.id}); stopPropagation(event)">
+                    <button onclick="switchDown(${i.id})" id="switch-down-button-${i.id}">
                         <div>
                             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                                 <path id="switch-down-path-${i.id}" d="M5.47917 10.1458V0.833333C5.47917 0.597222 5.55903 0.399306 5.71875 0.239583C5.87847 0.0798611 6.07639 0 6.3125 0C6.54861 0 6.74653 0.0798611 6.90625 0.239583C7.06597 0.399306 7.14583 0.597222 7.14583 0.833333V10.1458L11.2292 6.0625C11.3958 5.89583 11.5903 5.81597 11.8125 5.82292C12.0347 5.82986 12.2292 5.91667 12.3958 6.08333C12.5486 6.25 12.6285 6.44444 12.6354 6.66667C12.6424 6.88889 12.5625 7.08333 12.3958 7.25L6.89583 12.75C6.8125 12.8333 6.72222 12.8924 6.625 12.9271C6.52778 12.9618 6.42361 12.9792 6.3125 12.9792C6.20139 12.9792 6.09722 12.9618 6 12.9271C5.90278 12.8924 5.8125 12.8333 5.72917 12.75L0.229167 7.25C0.0763889 7.09722 0 6.90625 0 6.67708C0 6.44792 0.0763889 6.25 0.229167 6.08333C0.395833 5.91667 0.59375 5.83333 0.822917 5.83333C1.05208 5.83333 1.25 5.91667 1.41667 6.08333L5.47917 10.1458Z" fill="white"/>
                             </svg>
                         </div>
-                        <span  id="switch-down-${i.id}">Down</span>
+                        <span  id="switch-down-${i.id}"></span>
                     </button>
                 </div>
             </div>
@@ -419,7 +418,7 @@ function progressTemp(taskCount, trueCount) {
     `
 }
 
-function participantsTemp(inclContacts) {
+function participantsTemp(inclContacts) {    
     return `
         <div class="user-logo" style="background-color: ${inclContacts.fillColor};">${inclContacts.nameLetters}</div>
     `
@@ -455,7 +454,7 @@ function lowPrioTemp() {
 
 function mediumPrioTemp() {
     return `
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="8" viewBox="0 0 18 8" fill="none">
+        <svg width="18" height="8" viewBox="0 0 18 8" fill="none">
             <g clip-path="url(#clip0_378808_2069)">
                 <path d="M16.5685 7.16658L1.43151 7.16658C1.18446 7.16658 0.947523 7.06773 0.772832 6.89177C0.598141 6.71581 0.5 6.47716 0.5 6.22831C0.5 5.97947 0.598141 5.74081 0.772832 5.56485C0.947523 5.38889 1.18446 5.29004 1.43151 5.29004L16.5685 5.29004C16.8155 5.29004 17.0525 5.38889 17.2272 5.56485C17.4019 5.74081 17.5 5.97947 17.5 6.22831C17.5 6.47716 17.4019 6.71581 17.2272 6.89177C17.0525 7.06773 16.8155 7.16658 16.5685 7.16658Z" fill="#FFA800"/>
                 <path d="M16.5685 2.7098L1.43151 2.7098C1.18446 2.7098 0.947523 2.61094 0.772832 2.43498C0.598141 2.25902 0.5 2.02037 0.5 1.77152C0.5 1.52268 0.598141 1.28403 0.772832 1.10807C0.947523 0.932105 1.18446 0.833252 1.43151 0.833252L16.5685 0.833252C16.8155 0.833252 17.0525 0.932105 17.2272 1.10807C17.4019 1.28403 17.5 1.52268 17.5 1.77152C17.5 2.02037 17.4019 2.25902 17.2272 2.43498C17.0525 2.61094 16.8155 2.7098 16.5685 2.7098Z" fill="#FFA800"/>
@@ -751,8 +750,8 @@ function noContactsTemp() {
 
 function renderSubtasksTemp(index) {
     return `
-        <div class="change-subtasks" ondblclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">
-            <div class="edit-subtask d_none" id="edit-subtask-${index}">
+        <div class="change-subtasks" id="change-subtasks-${index}">
+            <div class="edit-subtask d_none" onclick="stopPropagation(event)" id="edit-subtask-${index}">
                 <input placeholder"Edit Subtask" id="edit-subtask-input-${index}">
                 <div class="confirm-buttons-add-subtasks">
                     <button onclick="deleteSubtask(${index})">
@@ -770,7 +769,7 @@ function renderSubtasksTemp(index) {
                     </button>
                 </div> 
             </div>
-            <span id="subtask-span-${index}">• ${escapeHTML(taskEditor.subtasks[index].name)}</span>
+            <span id="subtask-span-${index}" ondblclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">• ${escapeHTML(taskEditor.subtasks[index].name)}</span>
             <div class="confirm-buttons-add-subtasks" id="subtask-edit-${index}">
                 <button onclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">
                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none">

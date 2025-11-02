@@ -1,3 +1,24 @@
+.add-task-form,
+.add-task-form-left,
+.add-task-form-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.add-task-main,
+.add-task-form-left>div,
+.add-task-form-right>div,
+.add-task-form-assigned-to-dropdown,
+.add-task-form-assigned-to-dropdown-contacts,
+.add-task-form-category-dropdown,
+.add-task-form-category-dropdown-category,
+.add-task-subtaks-dropdown,
+.add-task-form-subtasks-dropdown-subtasks {
+    display: flex;
+    flex-direction: column;
+}
+
 .add-task-main {
     height: 82vh;
     max-width: calc(1440px - 232px);
@@ -7,8 +28,7 @@
 
 .add-task-form {
     margin-top: 48px;
-    display: flex;
-    flex-direction: column;
+    flex: 1;
 }
 
 .add-task-form label {
@@ -35,16 +55,11 @@
 .add-task-form-left,
 .add-task-form-right {
     width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 
 .add-task-form-left>div,
 .add-task-form-right>div {
-    display: flex;
-    flex-direction: column;
     width: 100%;
     gap: 8px;
 }
@@ -196,15 +211,6 @@
     transform: translateY(-50%) rotate(180deg);
 }
 
-.add-task-form-assigned-to-dropdown,
-.add-task-form-assigned-to-dropdown-contacts,
-.add-task-form-category-dropdown,
-.add-task-form-category-dropdown-category,
-.add-task-subtaks-dropdown,
-.add-task-form-subtasks-dropdown-subtasks {
-    display: flex;
-    flex-direction: column;
-}
 .add-task-form-assigned-to-dropdown-contacts,
 .add-task-form-category-dropdown-category {
     gap: 2px;
@@ -216,6 +222,22 @@
 
 .add-task-form-assigned-to-section {
     position: relative;
+}
+
+.add-task-subtaks-dropdown {
+    background-color: #FFFFFF;
+    
+}
+
+.add-task-subtaks-dropdown ul {
+    background-color: #FFFFFF;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 80px;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .required-msg-category {
@@ -342,6 +364,14 @@
     border-width: 0;
     height: 24px;
     width: 24px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+}
+
+.add-task-form-subtasks-btns button:hover,
+.add-task-form-subtasks-dropdown-subtasks-btns button:hover,
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button:hover {
+    background-color: #EEEEEE;
 }
 
 .list-style-none {
@@ -349,10 +379,16 @@
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item {
+    cursor: pointer;
     list-style: none;
     padding: 6px 16px 6px 40px;
     height: 32px;
     position: relative;
+    border-radius: 10px;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item:hover {
+    background-color: #EEEEEE;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item::before {
@@ -567,5 +603,5 @@
 }
 
 .d_none {
-    display: none;
+    display: none !important;
 }

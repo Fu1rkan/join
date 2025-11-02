@@ -95,6 +95,10 @@ body {
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
+.sign_up_header button:focus {
+    outline: #29ABE2 solid 2px;
+}
+
 /* login section align and structure */
 .login_section {
     display: flex;
@@ -183,6 +187,10 @@ body {
     gap: 35px;
 }
 
+.login_section .login_buttons .login_button:focus {
+    outline: #29ABE2 solid 2px;
+}
+
 /* login section login button design incl hover and after click */
 .login_section .login_buttons .login_button {
     color: #ffffff;
@@ -227,6 +235,10 @@ body {
     color: #2A3647;
     border: 2px solid #2A3647;
     box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.login_section .login_buttons .guest_login_button:focus {
+    outline: #29ABE2 solid 2px;
 }
 
 /* main footer design and align */

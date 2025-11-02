@@ -1,5 +1,5 @@
 .overlay-board {
-    z-index: 1;
+    z-index: 3;
     position: absolute;
     top: 0;
     left: 0;
@@ -16,10 +16,11 @@
     height: 870px; /*870px*/
     border-radius: 30px;
     background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
 }
 
 .add-task-header {
-    margin: 64px 40px 32px 10%;
     display: flex;
     justify-content: space-between;
 }

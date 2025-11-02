@@ -372,7 +372,7 @@
     border-bottom-left-radius: 20px;
     gap: 16px;
     padding: 16px;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     color: white;
@@ -398,11 +398,18 @@
     background-color: transparent;
     border: none;
     gap: 8px;
-    padding: 4px 5px 4px 2px;
+    padding: 6px 10px;
     border-radius: 8px;
     color: white;
     font-size: 14px;
     width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 100ms;
+}
+
+.resp-menu-task button:hover{
+    background-color: rgba(9, 25, 49, 1);
 }
 
 .resp-menu-task-deactive {

@@ -68,6 +68,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .task-overlay main {
     height: 70%;
+    min-height: auto;
     overflow: auto;
     gap: 24px;
 }
@@ -527,13 +528,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.change-subtasks-active{
+.change-subtasks-active {
     padding: 4px 16px 3px 16px;
     border-radius: 0;
     border-bottom: 1px solid rgba(0, 93, 255, 1) !important;
 }
 
-.change-subtasks-active:hover{
+.change-subtasks-active:hover {
     background-color: white !important;
 }
 
@@ -571,7 +572,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* border-bottom: 1px solid rgba(41, 171, 226, 1);                              zu change Subtasks rein, wenn edit Subtask aktiv ist */
 }
 
 .edit-subtask input {

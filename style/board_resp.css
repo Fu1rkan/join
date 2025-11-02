@@ -116,6 +116,10 @@
         display: block;
     }
 
+    .resp-menu-task{
+        display: flex;
+    }
+
     /* Wrapper + Fades only in mobile */
     .hs-wrap {
         position: relative;

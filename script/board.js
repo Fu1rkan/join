@@ -399,7 +399,7 @@ function deleteSubtask(index) {
         taskEditor.subtasks.splice(index, 1);
         renderSubtaskList(taskEditor);
         document.body.removeAttribute('onclick');
-    },50)
+    }, 50)
 }
 
 
@@ -515,6 +515,7 @@ function openDatePicker() {
 
 
 function openTaskRespMenu(i) {
+    closeTaskMenus(i);
     document.getElementById(`resp-menu-task-${i}`).classList.remove('o_0');
     setTimeout(() => {
         document.body.setAttribute('onclick', `closeTaskMenus(${i})`);
@@ -522,11 +523,17 @@ function openTaskRespMenu(i) {
 
     let task = taskList.findIndex(t => t.id == i);
     if (taskList[task].category == "to-do") {
-        document.getElementById(`switch-up-${i}`).classList.add('resp-menu-task-deactive');
-        document.getElementById(`switch-up-path-${i}`).classList.add('resp-menu-task-deactive');
+        document.getElementById(`switch-up-button-${i}`).classList.add('d_none');
+        document.getElementById(`switch-down-${i}`).innerHTML = 'In progress';
     } else if (taskList[task].category == "done") {
-        document.getElementById(`switch-down-${i}`).classList.add('resp-menu-task-deactive');
-        document.getElementById(`switch-down-path-${i}`).classList.add('resp-menu-task-deactive');
+        document.getElementById(`switch-down-button-${i}`).classList.add('d_none');
+        document.getElementById(`switch-up-${i}`).innerHTML = 'Await feedback';
+    } else if (taskList[task].category == "in-progress") {
+        document.getElementById(`switch-down-${i}`).innerHTML = 'Await feedback';
+        document.getElementById(`switch-up-${i}`).innerHTML = 'To do';
+    } else {
+        document.getElementById(`switch-up-${i}`).innerHTML = 'In progress';
+        document.getElementById(`switch-down-${i}`).innerHTML = 'done';
     }
 }
 

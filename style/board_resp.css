@@ -13,6 +13,7 @@
 
     .task-list {
         max-height: calc(100vh - 360px);
+        min-height: auto;
     }
 
     .kanban-board {
@@ -49,7 +50,6 @@
         flex-direction: row;
         align-items: flex-start;
         overflow-x: scroll;
-        padding-right: 20%;
     }
 
     .task {

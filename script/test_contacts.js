@@ -63,51 +63,75 @@ function pushUserTaskToArray(responseToJson) {
 
 // put tasks to database
 async function putTask(data = {}) {
-  let path = localStorage.getItem("userId");
-  let userId = JSON.parse(path);
-  let tasksPath = userId + "tasks/";
+  let tasksPath = getUserIdAndPathForTasks();
   if (taskList.length > 0) {
-    let response = await fetch(BASE_URL + tasksPath + ".json", {
-      method: "PUT",
-      header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    return (responseToJson = await response.json());
+    await getUserIdAndPathForTasks(data, tasksPath);
   } else {
-    let data = {
-      "placeholder": "placeholder"
-    }
-    let response = await fetch(BASE_URL + tasksPath + ".json", {
-      method: "PUT",
-      header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    return (responseToJson = await response.json());
+    await putPlaceholderInFirebase(tasksPath);
   }
 }
 
-async function putContacts(data = {}) {
+function getUserIdAndPathForTasks() {
   let path = localStorage.getItem("userId");
   let userId = JSON.parse(path);
-  let contactsPath = userId + "contacts/";
-  if (contacts.length > 0) {
-    let response = await fetch(BASE_URL + contactsPath + ".json", {
-      method: "PUT",
-      header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    return (responseToJson = await response.json());
-  } else {
-    let data = {
+  return userId + "tasks/";
+}
+
+async function getUserIdAndPathForTasks(data, tasksPath) {
+  let response = await fetch(BASE_URL + tasksPath + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+}
+
+async function putPlaceholderInFirebase(tasksPath) {
+  let data = {
       "placeholder": "placeholder"
     }
-    let response = await fetch(BASE_URL + contactsPath + ".json", {
+    let response = await fetch(BASE_URL + tasksPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     return (responseToJson = await response.json());
+}
+
+async function putContacts(data = {}) {
+  let contactsPath = getUserIdAndPathForContacts();
+  if (contacts.length > 0) {
+    await putContactsInFirebase(data, contactsPath);
+  } else {
+    await putPlaceholderInFirebase(contactsPath);
   }
+}
+
+function getUserIdAndPathForContacts() {
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  return userId + "contacts/";
+}
+
+async function putContactsInFirebase(data, contactsPath) {
+  let response = await fetch(BASE_URL + contactsPath + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
+}
+
+async function putPlaceholderInFirebase(contactsPath) {
+  let data = {
+    "placeholder": "placeholder"
+  }
+  let response = await fetch(BASE_URL + contactsPath + ".json", {
+    method: "PUT",
+    header: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return (responseToJson = await response.json());
 }
 
 // add new user 

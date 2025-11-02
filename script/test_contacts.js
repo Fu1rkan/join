@@ -73,7 +73,7 @@ async function putTask(data = {}) {
     let response = await fetch(BASE_URL + tasksPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(taskList),
+      body: JSON.stringify(data),
     });
     return (responseToJson = await response.json());
   } else {
@@ -97,7 +97,7 @@ async function putContacts(data = {}) {
     let response = await fetch(BASE_URL + contactsPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(contacts),
+      body: JSON.stringify(data),
     });
     return (responseToJson = await response.json());
   } else {

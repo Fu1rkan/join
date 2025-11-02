@@ -8,6 +8,7 @@ let createdMsgRef = document.getElementById('overlay_add_task_created_msg');
 async function addTaskInit() {
     await loadTasks();
     await loadContacts();
+    rederProfilHeaderIcon();
 }
 
 function openAddTaskOverlay() {

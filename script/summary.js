@@ -7,7 +7,8 @@ let loginType = urlParams.get('loginType');
 async function summaryInit() {
     // await init();
     await loadTasks();
-    await loadUsername()
+    await loadUsername();
+    rederProfilHeaderIcon();
     loadCardInfos();
     updateGreeting();
     setInterval(updateGreeting, 60);

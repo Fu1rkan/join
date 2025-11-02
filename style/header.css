@@ -40,6 +40,7 @@
   border: 2px solid rgba(42, 54, 71, 1);
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 

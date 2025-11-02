@@ -102,11 +102,12 @@ function signUpTemplate() {
 
             <section class="sign_up_section">
                 <section class="title_headline">
-                    <svg class="sign_up_back_arrow" tabindex="0" onclick="renderLogIn()"
-                    onkeydown="if(event.code==='Space'){renderLogIn();}" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
-                    </svg>
-                        <div class="sign_up_logo">
+                    <div class="sign_up_back_arrow" tabindex="0" onclick="renderLogIn()"onkeydown="if(event.code==='Space'){renderLogIn();}">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.43701 8.63255H19.333C20.0694 8.63255 20.6663 9.2295 20.6663 9.96588C20.6663 10.7023 20.0694 11.2992 19.333 11.2992H4.43701L10.6463 17.5085C11.167 18.0292 11.167 18.8733 10.6463 19.3939C10.1257 19.9145 9.28163 19.9145 8.76101 19.3939L0.74722 11.3801C-0.0338288 10.599 -0.0338272 9.33272 0.747221 8.55167L8.76101 0.537881C9.28163 0.0172601 10.1257 0.0172609 10.6463 0.537881C11.167 1.0585 11.167 1.90259 10.6463 2.42322L4.43701 8.63255Z" fill="#29ABE2"/>
+                        </svg>
+                    </div>
+                    <div class="sign_up_logo">
                             <h1>Sign Up</h1>
                             <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
                                 <path d="M152 1.5L2 1.5" stroke="#29ABE2" stroke-width="3" stroke-linecap="round" />
@@ -419,7 +420,7 @@ function progressTemp(taskCount, trueCount) {
     `
 }
 
-function participantsTemp(inclContacts) {
+function participantsTemp(inclContacts) {    
     return `
         <div class="user-logo" style="background-color: ${inclContacts.fillColor};">${inclContacts.nameLetters}</div>
     `

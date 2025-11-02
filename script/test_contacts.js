@@ -8,14 +8,14 @@ async function getUsers(email, password) {
   let responseToJson = await response.json();
   let users = Object.values(responseToJson);
   let currentUserIndex = users.findIndex(u => u.email === email && u.password === password);
-  checkLoginValues();
+  checkLoginValues(currentUserIndex);
   let keys = Object.keys(responseToJson);
   let userPath = keys[currentUserIndex];
   let userId = userPath + "/";
   localStorage.setItem("userId", JSON.stringify(userId));
 }
 
-function checkLoginValues() {
+function checkLoginValues(currentUserIndex) {
   if (currentUserIndex === -1) {
     document.getElementById('required_password').innerHTML = `<p id="password_invalid_field" class="required-field-text">LogIn failed. Please check your email and password.</p>`;
     document.getElementById('password_input_id').classList.add('required-outline');

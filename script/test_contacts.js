@@ -164,8 +164,8 @@ async function addNewUser(username, email, password) {
     "userNameLetters" : userNameLetters,
     "email": email,
     "password": password,
-    "tasklist": { "placeholder": "placeholder" },
-    "contactlist": { "placeholder": "placeholder" }
+    "tasks": { "placeholder": "placeholder" },
+    "contacts": { "placeholder": "placeholder" }
   };
 
   let response = await fetch(BASE_URL + ".json", {

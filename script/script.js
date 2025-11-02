@@ -33,8 +33,8 @@ function escapeHTML(str) {
         .replace(/'/g, "&#039;");
 }
 
-function rederProfilHeaderIcon() {
+function rederProfilHeaderIcon(id) {
     let userNameLetters = JSON.parse(localStorage.getItem("userName"));
-    let profilIconRef = document.getElementById('profil_header');
+    let profilIconRef = document.getElementById(id);
     profilIconRef.innerHTML = `<p>${userNameLetters}</p>`
 }

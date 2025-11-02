@@ -8,7 +8,7 @@ async function summaryInit() {
     // await init();
     await loadTasks();
     await loadUsername();
-    rederProfilHeaderIcon();
+    rederProfilHeaderIcon('profil_header_summary');
     loadCardInfos();
     updateGreeting();
     setInterval(updateGreeting, 60);

@@ -13,6 +13,9 @@ async function getUsers(email, password) {
   let userPath = keys[currentUserIndex];
   let userId = userPath + "/";
   localStorage.setItem("userId", JSON.stringify(userId));
+  if (users[currentUserIndex].email === email && users[currentUserIndex].password === password) {
+    openSummary();
+  }
 }
 
 function checkLoginValues(currentUserIndex) {

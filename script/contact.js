@@ -220,7 +220,8 @@ function createNewContact() {
 
 function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg) {
     if (createName != "" && createEmail != "" && createEmail.includes('@')) {
-        createContactAndHighlight(createName, createEmail, createPhone)
+        createContactAndHighlight(createName, createEmail, createPhone);
+        putContacts(contacts);
     } else if (createName == "" && createEmail != "") {
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
     } else if (createName != "" && createEmail == "") {

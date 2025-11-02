@@ -1,3 +1,24 @@
+.add-task-form,
+.add-task-form-left,
+.add-task-form-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.add-task-main,
+.add-task-form-left>div,
+.add-task-form-right>div,
+.add-task-form-assigned-to-dropdown,
+.add-task-form-assigned-to-dropdown-contacts,
+.add-task-form-category-dropdown,
+.add-task-form-category-dropdown-category,
+.add-task-subtaks-dropdown,
+.add-task-form-subtasks-dropdown-subtasks {
+    display: flex;
+    flex-direction: column;
+}
+
 .add-task-main {
     height: 82vh;
     max-width: calc(1440px - 232px);
@@ -7,8 +28,7 @@
 
 .add-task-form {
     margin-top: 48px;
-    display: flex;
-    flex-direction: column;
+    flex: 1;
 }
 
 .add-task-form label {
@@ -35,16 +55,11 @@
 .add-task-form-left,
 .add-task-form-right {
     width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 
 .add-task-form-left>div,
 .add-task-form-right>div {
-    display: flex;
-    flex-direction: column;
     width: 100%;
     gap: 8px;
 }
@@ -196,15 +211,6 @@
     transform: translateY(-50%) rotate(180deg);
 }
 
-.add-task-form-assigned-to-dropdown,
-.add-task-form-assigned-to-dropdown-contacts,
-.add-task-form-category-dropdown,
-.add-task-form-category-dropdown-category,
-.add-task-subtaks-dropdown,
-.add-task-form-subtasks-dropdown-subtasks {
-    display: flex;
-    flex-direction: column;
-}
 .add-task-form-assigned-to-dropdown-contacts,
 .add-task-form-category-dropdown-category {
     gap: 2px;

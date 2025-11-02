@@ -516,7 +516,7 @@ function openDatePicker() {
 
 function openTaskRespMenu(i) {
     closeTaskMenus(i);
-    document.getElementById(`resp-menu-task-${i}`).classList.remove('o_0');
+    document.getElementById(`resp-menu-task-${i}`).classList.remove('t_t_150');
     setTimeout(() => {
         document.body.setAttribute('onclick', `closeTaskMenus(${i})`);
     }, 100)
@@ -540,7 +540,7 @@ function openTaskRespMenu(i) {
 
 function closeTaskMenus(i) {
     let menus = document.querySelectorAll('[id^="resp-menu-task-"]');
-    menus.forEach(m => m.classList.add('o_0'));
+    menus.forEach(m => m.classList.add('t_t_150'));
     document.body.removeAttribute('onclick');
 }
 

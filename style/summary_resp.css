@@ -23,7 +23,7 @@
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 951px) {
     .animated-overlay {
         display: none !important;
     }

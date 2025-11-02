@@ -14,31 +14,37 @@ async function summaryInit() {
     setInterval(updateGreeting, 60);
 }
 
+
 function checkAndShowOverlay() {
-    if (showOverlay === 'true' && window.innerWidth < 900) {
+    if (showOverlay === 'true' && window.innerWidth < 951) {
         let overlay = document.getElementById('animated_overlay_id');
+        let overlayBg = document.getElementById('animated-overlay-parent');
         if (loginType === 'guest') {
             overlay.innerHTML = summaryGuestOverlayTemplate();
         } else {
             overlay.innerHTML = summaryOverlayTemplate();
         }
+        overlay.classList.remove('o_0');
+        overlayBg.classList.remove('d_none');
         setTimeout(() => {
-            updateGreeting();
-        }, 10);
-        overlay.classList.add('show');
-        setTimeout(() => {
-            overlay.classList.remove('show');
-        }, 3000);
+            overlay.classList.add('o_0');
+            setTimeout(()=>{
+                overlayBg.classList.add('d_none');
+            }, 1000)
+        }, 1500);
     }
     let newUrl = window.location.pathname;
     window.history.replaceState(null, '', newUrl);
 }
 
+
 function openBoard() {
     window.location.href = './board.html';
 }
 
+
 checkAndShowOverlay();
+
 
 function getGreetingByHour(h) {
     if (h >= 5 && h <= 11) return "Good morning,";
@@ -47,10 +53,15 @@ function getGreetingByHour(h) {
     return "Good night,";
 }
 
+
 function updateGreeting() {
     let now = new Date();
     let hour = now.getHours();
     document.getElementById("greeting-text").textContent = getGreetingByHour(hour);
+    respGreeting = document.getElementById("resp-greeting-text");
+    if (respGreeting != null) {
+        respGreeting.textContent = getGreetingByHour(hour);
+    }
 }
 
 

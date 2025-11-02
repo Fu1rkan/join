@@ -19,19 +19,18 @@ async function getUsers(email, password) {
   let keys = Object.keys(responseToJson);
 
   let userPath = keys[currentUserIndex];
-  await loadContacts(userPath);
-  await loadTasks(userPath);
+  let userId = userPath + "/";
+  localStorage.setItem("userId", JSON.stringify(userId));
+  // await loadContacts(userPath);
+  // await loadTasks(userPath);
 }
 
-async function loadContacts(userPath) {
-  let currentUserPath = userPath + "/";
-
-  let currentUrl = BASE_URL + currentUserPath;
-  console.log(currentUrl);
-
-
-  let userContacts = "contacts/";
-  let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
+async function loadContacts() {
+  
+let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let contactsPath = userId + "contacts/";
+  let response = await fetch(BASE_URL + contactsPath + ".json");
   let responseToJson = await response.json();
   // console.log(responseToJson);
   pushUserContactsToArray(responseToJson);
@@ -48,10 +47,11 @@ function pushUserContactsToArray(responseToJson) {
 
 //Tasks
 
-async function loadTasks(userPath) {
-  let currentUserPath = userPath + "/";
-  let userContacts = "tasks/";
-  let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
+async function loadTasks() {
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let tasksPath = userId + "tasks/";
+  let response = await fetch(BASE_URL + tasksPath + ".json");
   let responseToJson = await response.json();
   pushUserTaskToArray(responseToJson);
 }
@@ -63,49 +63,53 @@ function pushUserTaskToArray(responseToJson) {
     for (let index = 0; index < responseToJson.length; index++) {
       taskList.push(responseToJson[index]);
     }
-    localStorage.setItem("taskList", JSON.stringify(taskList));
   }
 }
 
-// post tasks to database
-async function postTask(path, data = {}) {    
+// put tasks to database
+async function putTask() {    
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let tasksPath = userId + "tasks/";
   if (taskList.length > 0) {
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + tasksPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(taskList),
     });
     return (responseToJson = await response.json());
   } else {
     let data = {
       "placeholder": "placeholder"
     }
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + tasksPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(taskList),
     });
     return (responseToJson = await response.json());
   }
-
 }
 
-async function putCurrentContacts(path, data = {}) {
+async function putContacts() {
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let contactsPath = userId + "contacts/";
   if (contacts.length > 0) {
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + contactsPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(contacts),
     });
     return (responseToJson = await response.json());
   } else {
     let data = {
       "placeholder": "placeholder"
     }
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + contactsPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(contacts),
     });
     return (responseToJson = await response.json());
   }

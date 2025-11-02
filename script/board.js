@@ -9,10 +9,8 @@ let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
 async function boardInit(){
     // await init();
-    let storageTaskList = localStorage.getItem("taskList");
-    taskList = JSON.parse(storageTaskList);
-    let storageContactList = localStorage.getItem("contacts");
-    contacts = JSON.parse(storageContactList);
+    await loadContacts();
+    await loadTasks();
     renderTasks();
 }
 
@@ -167,7 +165,7 @@ async function deleteTask(i) {
     let task = taskList.findIndex(t => t['id'] == i);
     taskList.splice(task, 1);
     toggleTaskOverlay(i);
-    await postTask("user/tasks/", taskList);
+    await putTask();
     await boardInit();
 }
 
@@ -442,7 +440,7 @@ async function pushEditedTaskToJSON(index) {
         taskList[task] = taskEditor;
         toggleTaskOverlay(task);
         toggleTaskOverlay(task);
-        await postTask("user/tasks/", taskList);
+        await putTask();
         await boardInit();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////

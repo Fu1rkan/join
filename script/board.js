@@ -165,7 +165,7 @@ async function deleteTask(i) {
     let task = taskList.findIndex(t => t['id'] == i);
     taskList.splice(task, 1);
     toggleTaskOverlay(i);
-    await putTask();
+    await putTask(taskList);
     await boardInit();
 }
 
@@ -440,7 +440,7 @@ async function pushEditedTaskToJSON(index) {
         taskList[task] = taskEditor;
         toggleTaskOverlay(task);
         toggleTaskOverlay(task);
-        await putTask();
+        await putTask(taskList);
         await boardInit();
     }
 } ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////

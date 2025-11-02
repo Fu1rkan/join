@@ -131,7 +131,7 @@ async function saveChangedContact(name, email) {
     contactRef.name = contactName;
     contactRef.email = contactEmail;
     contactRef.phone = contactPhone;
-    await putContacts();
+    await putContacts(contacts);
     filterContacts();
     templateRef.innerHTML = getContactTemplate(contactRef);
     const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
@@ -349,8 +349,8 @@ function showCreatedContactTemplate(newContact) {
 async function deleteCurrentContact(name, email) {
     let currentWidth = window.innerWidth;
     contacts.splice(contacts.findIndex(t => t.name == name && t.email == email), 1);
-    await putContacts()
-    init();
+    await putContacts(contacts)
+    initContacts();
     templateRef.classList.add('d_none');
 
     if (currentWidth <= 960) {

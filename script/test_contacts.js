@@ -65,7 +65,7 @@ function pushUserTaskToArray(responseToJson) {
 }
 
 // put tasks to database
-async function putTask() {    
+async function putTask(data = {}) {    
   let path = localStorage.getItem("userId");
   let userId = JSON.parse(path);
   let tasksPath = userId + "tasks/";
@@ -83,13 +83,13 @@ async function putTask() {
     let response = await fetch(BASE_URL + tasksPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(taskList),
+      body: JSON.stringify(data),
     });
     return (responseToJson = await response.json());
   }
 }
 
-async function putContacts() {
+async function putContacts(data = {}) {
   let path = localStorage.getItem("userId");
   let userId = JSON.parse(path);
   let contactsPath = userId + "contacts/";
@@ -107,7 +107,7 @@ async function putContacts() {
     let response = await fetch(BASE_URL + contactsPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
-      body: JSON.stringify(contacts),
+      body: JSON.stringify(data),
     });
     return (responseToJson = await response.json());
   }
@@ -123,7 +123,7 @@ async function addNewUser(username, email, password) {
     "contactlist": []
   };
 
-  let response = await fetch(BASE_URL + "user.json", {
+  let response = await fetch(BASE_URL + ".json", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user)

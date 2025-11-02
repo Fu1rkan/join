@@ -295,11 +295,11 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay = "") {
 
 async function putTaskAndShowCreatedMsg(paraOverlay = "") {
     if (paraOverlay = "overlay_board") {
-        await putTask();
+        await putTask(taskList);
         closeOverlayBoard();
         boardInit();
     } else {
-        await putTask();
+        await putTask(taskList);
         showTaskCreatedMsg();
     }
 

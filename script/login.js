@@ -1,10 +1,10 @@
 let logoAnimated = false;
 
 function logInInit() {
-        setTimeout(() => {
-            renderJoinLogo();
-            logoAnimated = true;
-        }, 980);
+    setTimeout(() => {
+        renderJoinLogo();
+        logoAnimated = true;
+    }, 980);
 }
 
 // RENDER FUNCTIONS
@@ -105,9 +105,7 @@ function checkLoginInputFields() {
     let passwordInput = document.getElementById('password');
 
     if (!isEmailEmpty && !isPasswordEmpty) {
-        getUsers(emailInput.value, passwordInput.value).then(() => {
-            openSummary();
-        });
+        getUsers(emailInput.value, passwordInput.value);
     }
 }
 
@@ -122,7 +120,7 @@ function checkSignUpInputFields() {
         let emailInput = document.getElementById('email');
         let passwordInput = document.getElementById('password');
         let passwordRepeatInput = document.getElementById('password_repeat');
-        
+
         if (validateEmailAndPassword(emailInput.value, passwordInput.value)) {
             if (validatePasswordMatch(passwordInput.value, passwordRepeatInput.value)) {
                 if (checkPrivacyPolicyCheckbox()) {
@@ -176,7 +174,7 @@ function validateEmailAndPassword(email, password) {
 // check if password and password repeat match
 function validatePasswordMatch(password, passwordRepeat) {
     let passwordsMatch = password === passwordRepeat;
-    
+
     if (!passwordsMatch) {
         document.getElementById('required_password_repeat').innerHTML = `<p id="password_match_field" class="required-field-text">Both passwords must be the same.</p>`;
         document.getElementById('password_repeat_input_id').classList.add('required-outline');
@@ -234,9 +232,9 @@ function closeSignUpOverlay() {
     let usernameInput = document.getElementById('username');
     let emailInput = document.getElementById('email');
     let passwordInput = document.getElementById('password');
-    
+
     addNewUser(usernameInput.value, emailInput.value, passwordInput.value);
-    
+
     setTimeout(() => {
         document.getElementById('signup-overlay-id').classList.add('d_none');
         renderLogIn();

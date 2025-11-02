@@ -343,9 +343,7 @@ function summaryOverlayTemplate() {
 
           <div class="summary-greeting" id="greeting-text"></div>
 
-          <div class="summary-greeting" id="summary-greeting-name">
-            Sofia Müller
-          </div>
+          <div class="summary-greeting" id="summary-greeting-name"></div>
         </section>`;
 }
 

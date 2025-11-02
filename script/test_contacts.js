@@ -41,8 +41,6 @@ function pushUserContactsToArray(responseToJson) {
   for (let index = 0; index < responseToJson.length; index++) {
     contacts.push(responseToJson[index]);
   }
-  localStorage.setItem("contacts", JSON.stringify(contacts));
-  console.log(contacts);
 }
 
 //Tasks

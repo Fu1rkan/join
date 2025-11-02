@@ -65,7 +65,7 @@ function pushUserTaskToArray(responseToJson) {
 async function putTask(data = {}) {
   let tasksPath = getUserIdAndPathForTasks();
   if (taskList.length > 0) {
-    await getUserIdAndPathForTasks(data, tasksPath);
+    await putTasksInFirebase(data, tasksPath);
   } else {
     await putPlaceholderInFirebase(tasksPath);
   }
@@ -77,7 +77,7 @@ function getUserIdAndPathForTasks() {
   return userId + "tasks/";
 }
 
-async function getUserIdAndPathForTasks(data, tasksPath) {
+async function putTasksInFirebase(data, tasksPath) {
   let response = await fetch(BASE_URL + tasksPath + ".json", {
     method: "PUT",
     header: { "Content-Type": "application/json" },

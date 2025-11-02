@@ -15,6 +15,7 @@ async function boardInit() {
     renderTasks();
 }
 
+
 function renderTasks() {
     for (let index = 0; index < ids.length; index++) {
         let categoryTasks = taskList.filter(t => t['category'] == ids[index]);
@@ -514,7 +515,7 @@ function openDatePicker() {
 
 
 function openTaskRespMenu(i) {
-    document.getElementById(`resp-menu-task-${i}`).classList.remove('d_none');
+    document.getElementById(`resp-menu-task-${i}`).classList.remove('o_0');
     setTimeout(() => {
         document.body.setAttribute('onclick', `closeTaskMenus(${i})`);
     }, 100)
@@ -532,7 +533,7 @@ function openTaskRespMenu(i) {
 
 function closeTaskMenus(i) {
     let menus = document.querySelectorAll('[id^="resp-menu-task-"]');
-    menus.forEach(m => m.classList.add('d_none'));
+    menus.forEach(m => m.classList.add('o_0'));
     document.body.removeAttribute('onclick');
 }
 

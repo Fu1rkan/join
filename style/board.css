@@ -376,6 +376,7 @@
     flex-direction: column;
     justify-content: space-between;
     color: white;
+    transition: 100ms;
 }
 
 .resp-menu-task>span {

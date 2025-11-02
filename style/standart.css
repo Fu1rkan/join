@@ -107,6 +107,11 @@ a {
   color: inherit;
 }
 
+.o_0 {
+  opacity: 0;
+  transform: translateX(150%) !important;
+}
+
 @media (max-width: 800px) {
   body {
     overflow: auto;

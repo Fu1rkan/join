@@ -22,9 +22,14 @@
 .sign_up_section .sign_up_back_arrow {
     cursor: pointer;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 10px;
     left: -150px;
     z-index: 2;
+    width: 30px;
+    height: 30px;
 }
 
 .sign_up_section .sign_up_back_arrow:hover {
@@ -34,7 +39,7 @@
 }
 
 .sign_up_section .sign_up_back_arrow:focus {
-    outline: none;
+    border-radius: 50px;
 }
 
 /* sign up section title_headline h1 and underline align */
@@ -142,9 +147,16 @@
     background-color: #EDF2FA;
 }
 
+.sign_up_section .sign_up_input_group .privacy_policy_checkbox_group .pp_checkbox:focus {
+    outline: #29ABE2 solid 2px;
+    border-radius: 5px;
+}
+
 .red_border {
     outline: 1px solid red !important;
+    border-radius: 10px;    
 }
+
 /* span design inside input group */
 .sign_up_section .sign_up_input_group span {
     font-weight: 400;
@@ -186,6 +198,10 @@
 .sign_up_section .sign_up_button_group .sign_up_button:active {
     background-color: #091931;
     box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.sign_up_section .sign_up_button_group .sign_up_button:focus {
+    outline: #29ABE2 solid 2px;
 }
 
 .signup-overlay-background {

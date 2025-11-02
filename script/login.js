@@ -1,14 +1,10 @@
 let logoAnimated = false;
 
-function init() {
-    if (!logoAnimated) {
+function logInInit() {
         setTimeout(() => {
             renderJoinLogo();
             logoAnimated = true;
         }, 980);
-    } else {
-        renderJoinLogo();
-    }
 }
 
 // RENDER FUNCTIONS

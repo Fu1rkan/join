@@ -67,7 +67,7 @@ async function putTask(data = {}) {
   if (taskList.length > 0) {
     await getUserIdAndPathForTasks(data, tasksPath);
   } else {
-    await putPlaceholderInFirebase(contactsPath);
+    await putPlaceholderInFirebase(tasksPath);
   }
 }
 

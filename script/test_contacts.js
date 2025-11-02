@@ -167,4 +167,3 @@ async function addNewUser(username, email, password) {
 
   return (responseToJson = await response.json());
 }
-

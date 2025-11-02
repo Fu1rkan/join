@@ -9,6 +9,8 @@ async function summaryInit() {
     await loadTasks();
     await loadUsername()
     loadCardInfos();
+    updateGreeting();
+    setInterval(updateGreeting, 60);
 }
 
 function checkAndShowOverlay() {
@@ -50,9 +52,6 @@ function updateGreeting() {
     document.getElementById("greeting-text").textContent = getGreetingByHour(hour);
 }
 
-updateGreeting();
-setInterval(updateGreeting, 60);
-
 
 async function loadCardInfos() {
     filterTasksByCategory();
@@ -90,7 +89,7 @@ function renderUpcomingDeadline() {
     let urgentTasks = taskList.filter(t => t.priority == 'urgent');
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     console.log(taskList);
-    
+
     if (taskList.length > 0) {
         let dates = Math.min(...taskList.map(d => new Date(d.date)));
         let smallest = taskList.filter(d => new Date(d.date).getTime() === dates);

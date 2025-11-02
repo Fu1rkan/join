@@ -9,7 +9,7 @@ const templateRef = document.getElementById("contact_template");
 async function initContacts(){
     //await init();
     await loadContacts();
-    rederProfilHeaderIcon();
+    rederProfilHeaderIcon('profil_header_contacts');
     filterContacts();
 }
 

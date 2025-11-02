@@ -11,6 +11,7 @@ async function boardInit() {
     // await init();
     await loadContacts();
     await loadTasks();
+    rederProfilHeaderIcon('profil_header_board');
     renderTasks();
 }
 

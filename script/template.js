@@ -750,7 +750,7 @@ function noContactsTemp() {
 
 function renderSubtasksTemp(index) {
     return `
-        <div class="change-subtasks" ondblclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">
+        <div class="change-subtasks" ondblclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')" id="change-subtasks-${index}">
             <div class="edit-subtask d_none" id="edit-subtask-${index}">
                 <input placeholder"Edit Subtask" id="edit-subtask-input-${index}">
                 <div class="confirm-buttons-add-subtasks">

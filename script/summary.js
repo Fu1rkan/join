@@ -88,7 +88,6 @@ function renderUpcomingDeadline() {
     let allTasksFromPriority = document.getElementById('all-tasks-from-priority');
     let urgentTasks = taskList.filter(t => t.priority == 'urgent');
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
-    console.log(taskList);
 
     if (taskList.length > 0) {
         let dates = Math.min(...taskList.map(d => new Date(d.date)));

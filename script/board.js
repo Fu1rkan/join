@@ -366,12 +366,13 @@ function openContactList() {
 
 
 function activeEditTask(index, subtask) {
-    document.getElementById(`edit-subtask-${index}`).classList.remove('d_none');
-    document.getElementById(`edit-subtask-input-${index}`).classList.remove('d_none');
+    document.getElementById(`edit-subtask-${index}`).classList.toggle('d_none');
+    document.getElementById(`edit-subtask-input-${index}`).classList.toggle('d_none');
     document.getElementById(`edit-subtask-input-${index}`).value = subtask;
     document.getElementById(`edit-subtask-input-${index}`).focus();
-    document.getElementById(`subtask-span-${index}`).classList.add('d_none');
-    document.getElementById(`subtask-edit-${index}`).classList.add('d_none');
+    document.getElementById(`subtask-span-${index}`).classList.toggle('d_none');
+    document.getElementById(`subtask-edit-${index}`).classList.toggle('d_none');
+    document.getElementById(`change-subtasks-${index}`).classList.toggle('change-subtasks-active');
 }
 
 

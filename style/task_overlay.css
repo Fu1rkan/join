@@ -527,6 +527,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+.change-subtasks-active{
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 93, 255, 1) !important;
+}
+
+.change-subtasks-active:hover{
+    background-color: white !important;
+}
+
 .change-subtasks:hover {
     background-color: rgba(238, 238, 238, 1);
 }

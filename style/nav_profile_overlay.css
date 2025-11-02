@@ -44,6 +44,7 @@ body {
   flex-direction: column;
   gap: 8px;
   list-style-type: none;
+  cursor: pointer;
 }
 
 .nav-profile-link-item a {

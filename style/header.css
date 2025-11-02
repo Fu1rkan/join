@@ -40,6 +40,7 @@
   border: 2px solid rgba(42, 54, 71, 1);
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 /* Main header container - full width header with shadow */

@@ -528,6 +528,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .change-subtasks-active{
+    padding: 4px 16px 3px 16px;
     border-radius: 0;
     border-bottom: 1px solid rgba(0, 93, 255, 1) !important;
 }
@@ -541,7 +542,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .change-subtasks span {
-    width: calc(100% - 70px);
+    flex: 1;
 }
 
 .edit-task-footer {

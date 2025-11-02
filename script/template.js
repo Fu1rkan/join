@@ -750,8 +750,8 @@ function noContactsTemp() {
 
 function renderSubtasksTemp(index) {
     return `
-        <div class="change-subtasks" ondblclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')" id="change-subtasks-${index}">
-            <div class="edit-subtask d_none" id="edit-subtask-${index}">
+        <div class="change-subtasks" id="change-subtasks-${index}">
+            <div class="edit-subtask d_none" onclick="stopPropagation(event)" id="edit-subtask-${index}">
                 <input placeholder"Edit Subtask" id="edit-subtask-input-${index}">
                 <div class="confirm-buttons-add-subtasks">
                     <button onclick="deleteSubtask(${index})">
@@ -769,7 +769,7 @@ function renderSubtasksTemp(index) {
                     </button>
                 </div> 
             </div>
-            <span id="subtask-span-${index}">• ${escapeHTML(taskEditor.subtasks[index].name)}</span>
+            <span id="subtask-span-${index}" ondblclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">• ${escapeHTML(taskEditor.subtasks[index].name)}</span>
             <div class="confirm-buttons-add-subtasks" id="subtask-edit-${index}">
                 <button onclick="activeEditTask(${index}, '${taskEditor.subtasks[index].name}')">
                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none">

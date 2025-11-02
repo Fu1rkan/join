@@ -11,7 +11,6 @@ async function boardInit() {
     // await init();
     await loadContacts();
     await loadTasks();
-    rederProfilHeaderIcon();
     renderTasks();
 }
 
@@ -367,13 +366,17 @@ function openContactList() {
 
 
 function activeEditTask(index, subtask) {
-    document.getElementById(`edit-subtask-${index}`).classList.toggle('d_none');
-    document.getElementById(`edit-subtask-input-${index}`).classList.toggle('d_none');
-    document.getElementById(`edit-subtask-input-${index}`).value = subtask;
-    document.getElementById(`edit-subtask-input-${index}`).focus();
-    document.getElementById(`subtask-span-${index}`).classList.toggle('d_none');
-    document.getElementById(`subtask-edit-${index}`).classList.toggle('d_none');
-    document.getElementById(`change-subtasks-${index}`).classList.toggle('change-subtasks-active');
+    setTimeout(() => {
+        document.getElementById(`edit-subtask-${index}`).classList.remove('d_none');
+        document.getElementById(`edit-subtask-input-${index}`).value = subtask;
+        document.getElementById(`edit-subtask-input-${index}`).focus();
+        document.getElementById(`subtask-span-${index}`).classList.toggle('d_none');
+        document.getElementById(`subtask-edit-${index}`).classList.toggle('d_none');
+        document.getElementById(`change-subtasks-${index}`).classList.toggle('change-subtasks-active');
+        setTimeout(() => {
+            document.body.setAttribute('onclick', `acceptEditedTask(${index})`);
+        }, 100)
+    }, 50)
 }
 
 
@@ -385,12 +388,16 @@ function acceptEditedTask(index) {
     } else {
         deleteSubtask(index);
     }
+    document.body.removeAttribute('onclick');
 }
 
 
 function deleteSubtask(index) {
-    taskEditor.subtasks.splice(index, 1);
-    renderSubtaskList(taskEditor);
+    setTimeout(() => {
+        taskEditor.subtasks.splice(index, 1);
+        renderSubtaskList(taskEditor);
+        document.body.removeAttribute('onclick');
+    },50)
 }
 
 

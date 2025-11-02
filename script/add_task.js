@@ -297,7 +297,7 @@ async function putTaskAndShowCreatedMsg(paraOverlay = "") {
     if (paraOverlay = "overlay_board") {
         await putTask();
         closeOverlayBoard();
-        init();
+        boardInit();
     } else {
         await putTask();
         showTaskCreatedMsg();

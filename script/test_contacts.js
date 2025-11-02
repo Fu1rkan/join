@@ -19,22 +19,20 @@ async function getUsers(email, password) {
   let keys = Object.keys(responseToJson);
 
   let userPath = keys[currentUserIndex];
-  await loadContacts(userPath);
-  await loadTasks(userPath);
+  let userId = userPath + "/";
+  localStorage.setItem("userId", JSON.stringify(userId));
+  // await loadContacts(userPath);
+  // await loadTasks(userPath);
 }
 
-async function loadContacts(userPath) {
-  let currentUserPath = userPath + "/";
-
-  let currentUrl = BASE_URL + currentUserPath;
-  console.log(currentUrl);
-
-
-  let userContacts = "contacts/";
-  let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
+async function loadContacts() {
+  
+let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let contactsPath = userId + "contacts/";
+  let response = await fetch(BASE_URL + contactsPath + ".json");
   let responseToJson = await response.json();
   // console.log(responseToJson);
-
   pushUserContactsToArray(responseToJson);
 }
 
@@ -43,15 +41,15 @@ function pushUserContactsToArray(responseToJson) {
   for (let index = 0; index < responseToJson.length; index++) {
     contacts.push(responseToJson[index]);
   }
-  
 }
 
 //Tasks
 
-async function loadTasks(userPath) {
-  let currentUserPath = userPath + "/";
-  let userContacts = "tasks/";
-  let response = await fetch(BASE_URL + currentUserPath + userContacts + ".json");
+async function loadTasks() {
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let tasksPath = userId + "tasks/";
+  let response = await fetch(BASE_URL + tasksPath + ".json");
   let responseToJson = await response.json();
   pushUserTaskToArray(responseToJson);
 }
@@ -66,10 +64,13 @@ function pushUserTaskToArray(responseToJson) {
   }
 }
 
-// post tasks to database
-async function postTask(path, data = {}) {    // "user/tasks/", testTasks
+// put tasks to database
+async function putTask(data = {}) {    
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let tasksPath = userId + "tasks/";
   if (taskList.length > 0) {
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + tasksPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -79,19 +80,21 @@ async function postTask(path, data = {}) {    // "user/tasks/", testTasks
     let data = {
       "placeholder": "placeholder"
     }
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + tasksPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     return (responseToJson = await response.json());
   }
-
 }
 
-async function putCurrentContacts(path, data = {}) {
+async function putContacts(data = {}) {
+  let path = localStorage.getItem("userId");
+  let userId = JSON.parse(path);
+  let contactsPath = userId + "contacts/";
   if (contacts.length > 0) {
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + contactsPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -101,7 +104,7 @@ async function putCurrentContacts(path, data = {}) {
     let data = {
       "placeholder": "placeholder"
     }
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_URL + contactsPath + ".json", {
       method: "PUT",
       header: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -116,11 +119,11 @@ async function addNewUser(username, email, password) {
     "username": username,
     "email": email,
     "password": password,
-    "tasklist": [],
-    "contactlist": []
+    "tasklist": {"placeholder": "placeholder"},
+    "contactlist": {"placeholder": "placeholder"}
   };
 
-  let response = await fetch(BASE_URL + "user.json", {
+  let response = await fetch(BASE_URL + ".json", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user)

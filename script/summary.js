@@ -5,7 +5,8 @@ let loginType = urlParams.get('loginType');
 
 
 async function summaryInit(){
-    await init();
+    // await init();
+    await loadTasks();
     loadCardInfos();
 }
 

@@ -5,6 +5,10 @@ let currentCreatedSubtasks = [];
 let overlayRef = document.getElementById('add_task_overlay');
 let createdMsgRef = document.getElementById('overlay_add_task_created_msg');
 
+async function addTaskInit() {
+    await loadTasks();
+}
+
 function openAddTaskOverlay() {
     overlayRef.classList.remove('d_none');
 }
@@ -286,16 +290,16 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay = "") {
         }
     )
     resetGlobalVariables();
-    postTaskAndShowCreatedMsg(paraOverlay);
+    putTaskAndShowCreatedMsg(paraOverlay);
 }
 
-function postTaskAndShowCreatedMsg(paraOverlay = "") {
+async function putTaskAndShowCreatedMsg(paraOverlay = "") {
     if (paraOverlay = "overlay_board") {
-        postTask("user/tasks/", taskList);
+        await putTask(taskList);
         closeOverlayBoard();
-        init();
+        boardInit();
     } else {
-        postTask("user/tasks/", taskList);
+        await putTask(taskList);
         showTaskCreatedMsg();
     }
 

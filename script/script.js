@@ -1,5 +1,5 @@
 async function init() {
-    await getUsers();
+    // await getUsers();
 }
 
 

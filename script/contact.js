@@ -7,7 +7,8 @@ const templateRef = document.getElementById("contact_template");
 
 
 async function initContacts(){
-    await init();
+    //await init();
+    await loadContacts()
     filterContacts();
 }
 
@@ -122,7 +123,7 @@ function animationOverlayCardFadeOut(target) {
     }, 300)
 }
 
-function saveChangedContact(name, email) {
+async function saveChangedContact(name, email) {
     const contactRef = contacts.find(t => t.name === name && t.email === email);
     let contactName = document.getElementById('edit_name').value;
     let contactEmail = document.getElementById('edit_email').value;
@@ -130,7 +131,7 @@ function saveChangedContact(name, email) {
     contactRef.name = contactName;
     contactRef.email = contactEmail;
     contactRef.phone = contactPhone;
-    putCurrentContacts("user/contacts/", contacts);
+    await putContacts(contacts);
     filterContacts();
     templateRef.innerHTML = getContactTemplate(contactRef);
     const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
@@ -294,7 +295,7 @@ async function createObjectNewContact(createName, createEmail, createPhone, name
             "nameLetters": nameLetters
         }
         contacts.push(newContact);
-        await putCurrentContacts("user/contacts/", contacts);
+        await putContacts();
         showCreatedContactTemplate(newContact);
     }
 }
@@ -348,8 +349,8 @@ function showCreatedContactTemplate(newContact) {
 async function deleteCurrentContact(name, email) {
     let currentWidth = window.innerWidth;
     contacts.splice(contacts.findIndex(t => t.name == name && t.email == email), 1);
-    await putCurrentContacts("user/contacts/", contacts);
-    init();
+    await putContacts(contacts)
+    initContacts();
     templateRef.classList.add('d_none');
 
     if (currentWidth <= 960) {

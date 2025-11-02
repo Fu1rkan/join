@@ -419,7 +419,7 @@ function progressTemp(taskCount, trueCount) {
     `
 }
 
-function participantsTemp(inclContacts) {
+function participantsTemp(inclContacts) {    
     return `
         <div class="user-logo" style="background-color: ${inclContacts.fillColor};">${inclContacts.nameLetters}</div>
     `

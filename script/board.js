@@ -7,7 +7,7 @@ let taskEditor;
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
 
-async function boardInit(){
+async function boardInit() {
     // await init();
     await loadContacts();
     await loadTasks();
@@ -475,13 +475,14 @@ function allowDrop(card) {
 }
 
 
-function moveTo(categoryTo, id) {
+async function moveTo(categoryTo, id) {
     let task = taskList.find(t => t['id'] == currentDraggedElement);
     let categoryFrom = task['category'];
     task['category'] = categoryTo;
     document.getElementById(id).classList.remove('drag-area-highlight');
     ids = [categoryFrom, categoryTo]
-    renderTasks();
+    await putTask(taskList);
+    await boardInit();
 }
 
 

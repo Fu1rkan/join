@@ -1,6 +1,12 @@
+@media (max-width: 1440px) {
+    .summary-main {
+        height: calc(100vh - 80px);
+    }
+}
+
 @media (max-width: 1150px) {
     .summary-main {
-        height: calc(100vh - 96px);
+        height: calc(100vh - 80px);
         padding: 40px;
     }
 

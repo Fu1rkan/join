@@ -1,5 +1,6 @@
 .summary-main {
     height: calc(100vh - 96px);
+    min-height: auto;
     padding: 60px 80px;
     max-width: 1208px;
     width: 100% !important;
@@ -290,6 +291,10 @@
     font-size: 47px;
     font-weight: 500;
     color: rgba(42, 54, 71, 1);
+}
+
+.greeting-section h3 {
+    color: rgba(41, 171, 226, 1);
 }
 
 .animated-overlay {

@@ -21,6 +21,8 @@ function closeAddTaskOverlay() {
 
 function openCalender() {
     let calenderRef = document.getElementById('add_task_due_date')
+     const today = new Date().toISOString().split("T")[0];
+     calenderRef.setAttribute("min", today);
     calenderRef.showPicker();
 }
 
@@ -269,7 +271,7 @@ function createNewTask(paraOverlay = "") {
     requiredMsgDNone();
     checkArrayLength();
     if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
-        showRequiredMsg();
+        showRequiredMsg(titleRef, dueDateRef, currentChoosedCategory);
     } else {
         pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay);
     }
@@ -371,22 +373,39 @@ function closeMenus(ev, inputFieldAssignedToRef, inputFieldAssignedToContactList
 }
 
 function requiredMsgDNone() {
-    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef } = takeRequiredMsgRefs();
+    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef, categoryInput,titleInput, dateInput  } = takeRequiredMsgRefs();
     requiredTitleRef.classList.add('d_none');
     requiredDueDateRef.classList.add('d_none');
     requiredCategoryRef.classList.add('d_none');
+    categoryInput.classList.remove('add-task-red-border')
+    titleInput.classList.remove('add-task-red-border')
+    dateInput.classList.remove('add-task-red-border')
 }
 
-function showRequiredMsg() {
-    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef } = takeRequiredMsgRefs();
-    requiredTitleRef.classList.remove('d_none');
-    requiredDueDateRef.classList.remove('d_none');
-    requiredCategoryRef.classList.remove('d_none');
+function showRequiredMsg(titleRef, dueDateRef, currentChoosedCategory) {
+    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef, categoryInput, titleInput, dateInput  } = takeRequiredMsgRefs();
+
+    if (titleRef.value == 0) {
+         requiredTitleRef.classList.remove('d_none');
+         titleInput.classList.add('add-task-red-border')
+    }
+      if (dueDateRef.value == 0) {
+         requiredDueDateRef.classList.remove('d_none');
+         dateInput.classList.add('add-task-red-border')
+    }
+      if (currentChoosedCategory == "") {
+         requiredCategoryRef.classList.remove('d_none');
+         categoryInput.classList.add('add-task-red-border')
+    }
+   
 }
 
 function takeRequiredMsgRefs() {
     let requiredTitleRef = document.getElementById('required_msg_title');
     let requiredDueDateRef = document.getElementById('required_msg_due_date');
     let requiredCategoryRef = document.getElementById('required_msg_category');
-    return { requiredTitleRef, requiredDueDateRef, requiredCategoryRef };
+    let categoryInput = document.getElementById('add_task_category') 
+    let titleInput = document.getElementById('add_task_title')
+    let dateInput =  document.getElementById('add_task_due_date')
+    return { requiredTitleRef, requiredDueDateRef, requiredCategoryRef, categoryInput, titleInput, dateInput };
 }

@@ -223,23 +223,16 @@ function checkCreateValuesAndCreateContact(createEmail, createPhone, createName,
     if (createName != "" && createEmail != "" && createEmail.includes('@')) {
         createContactAndHighlight(createName, createEmail, createPhone);
         putContacts(contacts);
-    } else {
-        if (createName === "") {
-        createNameRequiredMsg.innerText = "This field is required"
+    } else if (createName == "" && createEmail != "") {
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
     } else if (createName != "" && createEmail == "") {
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     } else if (createName == "" && createEmail == "") {
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
-        }
-        if(createEmail != "" &! createEmail.includes('@') ){
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+    } else {
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
         createEmailRequiredMsg.innerText = "Email must include '@'";
-        }
-        if (createEmail === "") {
-        createEmailRequiredMsg.innerHTML = "This field is required"
-        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-        }    
     }
 }
 

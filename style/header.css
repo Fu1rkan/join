@@ -44,6 +44,16 @@
   cursor: pointer;
 }
 
+.profil-header>p {
+    color: #29ABE2;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .profil-header:hover {
+    background-color: rgba(12, 46, 98, 0.12);
+  }
+
 /* Main header container - full width header with shadow */
 .summary-header {
   width: 100%;
@@ -179,6 +189,11 @@
     width: 40px;
     height: 40px;
   }
+
+  .profil-header>p {
+    font-size: 16px;
+  }
+
 }
 
 @media(max-width: 950px) {

@@ -525,10 +525,6 @@
     color: #E60026;
 }
 
-.add-task-red-border{
-    border-color: #E60026 !important; 
-}
-
 .add-task-form-input-placeholder-default::placeholder,
 .add-task-form-input-placeholder-black::placeholder {
     font-size: 20px;

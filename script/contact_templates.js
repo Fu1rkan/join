@@ -16,7 +16,7 @@ function getSmallContactTemplate(array, index, keys) {
                     </div>
                     <div class="contact-info">
                         <h5 class="contact-name">${array[index].name}</h5>
-                        <a class="contact-e-mail" href="mailto:${array[index].email}">${array[index].email}</a>
+                        <a class="contact-e-mail">${array[index].email}</a>
                     </div>
                 </div>
             </li>`
@@ -68,7 +68,7 @@ function getContactTemplate(contact) {
     <section class="contact-informations">
         <div>
             <h5>Email</h5>
-            <a href="mailto:antom@gmail.com">${contact.email}</a>
+            <a href="mailto:${contact.email}">${contact.email}</a>
         </div>
         <div>
             <h5>Phone</h5>

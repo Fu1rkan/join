@@ -6,7 +6,7 @@ const contactAreaRef = document.getElementById('contact_area');
 const templateRef = document.getElementById("contact_template");
 
 
-async function initContacts(){
+async function initContacts() {
     //await init();
     await loadContacts();
     rederProfilHeaderIcon('profil_header_contacts');
@@ -209,30 +209,48 @@ function renderContactList(keys) {
 function createNewContact() {
     document.querySelectorAll('.create-form-label').forEach(el => el.classList.remove('create-form-label-highlight'));
     document.querySelectorAll('.create-form-inputfields-required-msg').forEach(el => el.classList.add('d_none'));
-    let createName = document.getElementById('create_name').value;
-    let createEmail = document.getElementById('create_email').value;
-    let createPhone = document.getElementById('create_phone').value;
+    let createName = document.getElementById('create_name').value.trim();
+    let createEmail = document.getElementById('create_email').value.trim();
+    let createPhone = document.getElementById('create_phone').value.trim();
     let createNameRequiredMsg = document.getElementById('create_name_required_msg');
     let createEmailRequiredMsg = document.getElementById('create_email_required_msg');
-    let createFormLabelNameRef = document.getElementById('create-form-label-name');
-    let createFormLabelEmailRef = document.getElementById('create-form-label-email');
-    checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg);
+    let createPhoneRequiredMsg = document.getElementById('create_phone_required_msg');
+    let createFormLabelNameRef = document.getElementById('create_form_label_name');
+    let createFormLabelEmailRef = document.getElementById('create_form_label_email');
+    let createFormLabelPhoneRef = document.getElementById('create_form_label_phone');
+    let correctPhoneValue = checkPhoneValue(createPhone);
+    checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, correctPhoneValue);
 }
 
-function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg) {
-    if (createName != "" && createEmail != "" && createEmail.includes('@')) {
+function checkPhoneValue(createPhone) {
+    return createPhone === "" || /^[0-9]+$/.test(createPhone);
+}
+
+function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, correctPhoneValue) {
+    let hasName = createName != "";
+    let hasEmail = createEmail != "";
+    let emailValid = hasEmail && createEmail.includes("@");
+    let phoneValid = createPhone == "" || correctPhoneValue;
+
+    if (hasName && emailValid && phoneValid) {
         createContactAndHighlight(createName, createEmail, createPhone);
-        putContacts(contacts);
-    } else if (createName == "" && createEmail != "") {
+        return;
+    }
+    highlightRequiredInputs(hasName, hasEmail, emailValid, createPhone, phoneValid, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
+}
+
+function highlightRequiredInputs(hasName, hasEmail, emailValid, createPhone, phoneValid, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg) {
+    if (!hasName) {
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
-    } else if (createName != "" && createEmail == "") {
+    }
+    if (!hasEmail) {
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-    } else if (createName == "" && createEmail == "") {
-        showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
-        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-    } else {
-        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+    } else if (!emailValid) {
         createEmailRequiredMsg.innerText = "Email must include '@'";
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+    }
+    if (createPhone !== "" && !phoneValid) {
+        showRequiredMsgAndHighlight(createFormLabelPhoneRef, createPhoneRequiredMsg);
     }
 }
 
@@ -297,7 +315,7 @@ async function createObjectNewContact(createName, createEmail, createPhone, name
             "nameLetters": nameLetters
         }
         contacts.push(newContact);
-        await putContacts();
+        await putContacts(contacts);
         showCreatedContactTemplate(newContact);
     }
 }

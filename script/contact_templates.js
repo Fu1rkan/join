@@ -184,7 +184,7 @@ function showAddContactCard() {
                 <form action="" class="create-form" onsubmit="closeOverlay();return false">
                     <section class="create-form-inputfields">
                     <div class="create-form-inputfields-container">
-                        <label id="create-form-label-name" class="create-form-label" for="create_name">
+                        <label id="create_form_label_name" class="create-form-label" for="create_name">
                             <input id="create_name" placeholder="Name" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -202,7 +202,7 @@ function showAddContactCard() {
                         <div class="create-form-inputfields-required"><p id="create_name_required_msg" class="create-form-inputfields-required-msg d_none">This field is required</p></div> 
                     </div>
                     <div class="create-form-inputfields-container">    
-                        <label id="create-form-label-email" class="create-form-label" for="create_email">
+                        <label id="create_form_label_email" class="create-form-label" for="create_email">
                             <input id="create_email" placeholder="Email" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -220,7 +220,7 @@ function showAddContactCard() {
                         <div class="create-form-inputfields-required"><p id="create_email_required_msg" class="create-form-inputfields-required-msg d_none">This field is required</p></div>
                     </div>
                     <div class="create-form-inputfields-container">    
-                        <label for="create_phone" class="create-form-label">
+                        <label id="create_form_label_phone" for="create_phone" class="create-form-label">
                             <input id="create_phone" placeholder="Phone" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -235,6 +235,7 @@ function showAddContactCard() {
                                 </g>
                             </svg>
                         </label>
+                        <div class="create-form-inputfields-required"><p id="create_phone_required_msg" class="create-form-inputfields-required-msg d_none">This field must include only Numbers</p></div>
                     </div>    
                     </section>
 

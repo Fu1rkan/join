@@ -149,17 +149,17 @@ function changeEditedContact(contactRef, createName, createEmail, createPhone) {
 
 function showChangedTemplateAndHiglightIt(contactRef) {
     templateRef.innerHTML = getContactTemplate(contactRef);
-            const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
-            contactInfoBigTemplateRef.classList.remove('fade-in-template');
-            highlightChangedContact(contactRef);
+    const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
+    contactInfoBigTemplateRef.classList.remove('fade-in-template');
+    highlightChangedContact(contactRef);
 }
 
-function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts) {
+async function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts) {
     changeEditedContact(contactRef, createName, createEmail, createPhone);
-            putContacts(contacts);
-            closeOverlay();
-            filterContacts();
-            showChangedTemplateAndHiglightIt(contactRef)
+    await putContacts(contacts);
+    closeOverlay();
+    filterContacts();
+    showChangedTemplateAndHiglightIt(contactRef)
 }
 
 function highlightChangedContact(contactRef) {
@@ -256,11 +256,10 @@ function checkCreateValuesAndCreateContact(createEmail, createPhone, createName,
         }
     } else {
         if (createName != "" && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
-            changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts); 
+            changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts);
             return;
         }
     }
-
     highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
 }
 

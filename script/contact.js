@@ -154,12 +154,12 @@ function showChangedTemplateAndHiglightIt(contactRef) {
     highlightChangedContact(contactRef);
 }
 
-async function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts) {
+async function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone) {
     changeEditedContact(contactRef, createName, createEmail, createPhone);
     await putContacts(contacts);
     closeOverlay();
     filterContacts();
-    showChangedTemplateAndHiglightIt(contactRef)
+    showChangedTemplateAndHiglightIt(contactRef);
 }
 
 function highlightChangedContact(contactRef) {
@@ -256,7 +256,7 @@ function checkCreateValuesAndCreateContact(createEmail, createPhone, createName,
         }
     } else {
         if (createName != "" && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
-            changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts);
+            changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone);
             return;
         }
     }

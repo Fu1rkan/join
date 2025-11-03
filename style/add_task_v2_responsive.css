@@ -6,7 +6,7 @@
 
 @media (max-width: 1140px) {
     .add-task-main {
-        padding: 40px 60px 0 60px;
+        padding: 40px 60px;
     }
 }
 
@@ -59,10 +59,23 @@
         gap: 24px;
     }
 
+    .add-task-subtaks-dropdown {
+        background-color: #FFFFFF;
+    }
+
+    .add-task-subtaks-dropdown ul {
+        max-height: 120px;
+        /* overflow-y: visible; */
+    }
+
     .add-task-footer-and-btns {
         flex-direction: column;
         gap: 12px;
         margin: 10px 10px 0 10px;
+    }
+
+    .h-80 {
+        height: auto;
     }
 
 }

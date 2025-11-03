@@ -111,7 +111,7 @@
 }
 
 .add-new-contact-btn,
-.add-new-contact-btn h3,
+.add-new-contact-btn span,
 .contacts-header>h2 {
     font-weight: var(--weight-700);
 }

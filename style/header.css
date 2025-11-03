@@ -154,6 +154,10 @@
 }
 
 @media(max-width: 1400px) {
+  .main-header {
+    z-index: 2;
+  }
+
   .main-header svg {
     display: flex;
   }

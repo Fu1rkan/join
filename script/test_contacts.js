@@ -17,7 +17,7 @@ async function getUsers(email, password) {
   let userName = userResponseToJson["userNameLetters"];
 
   localStorage.setItem("userName", JSON.stringify(userName));
-  
+
   localStorage.setItem("userId", JSON.stringify(userId));
   if (users[currentUserIndex].email === email && users[currentUserIndex].password === password) {
     openSummary();
@@ -80,6 +80,10 @@ async function loadUsername() {
   let response = await fetch(BASE_URL + tasksPath + ".json");
   let responseToJson = await response.json();
   document.getElementById('username').innerHTML = responseToJson;
+  let respGreeting = document.getElementById("summary-greeting-name");  
+  if (respGreeting != null) {
+    respGreeting.innerHTML = responseToJson;
+  }
 }
 
 // put tasks to database
@@ -161,7 +165,7 @@ async function addNewUser(username, email, password) {
   let userNameLetters = generateLetters(capitalizedName);
   let user = {
     "username": capitalizedName,
-    "userNameLetters" : userNameLetters,
+    "userNameLetters": userNameLetters,
     "email": email,
     "password": password,
     "tasks": { "placeholder": "placeholder" },
@@ -177,32 +181,32 @@ async function addNewUser(username, email, password) {
   return (responseToJson = await response.json());
 }
 
-    function generatecapitalizedName(createName) {
-    let nameArray = createName.split(" ");
-    let capitalizedArray = nameArray.map((word) => {
-        if (word != "") {
-            let firstLetter = word.charAt(0).toUpperCase();
-            let restName = word.slice(1);
-            return firstLetter + restName;
-        } else {
-            return word;
-        }
-    });
-    let resultFullName = capitalizedArray.join(" ");
-    return resultFullName;
+function generatecapitalizedName(createName) {
+  let nameArray = createName.split(" ");
+  let capitalizedArray = nameArray.map((word) => {
+    if (word != "") {
+      let firstLetter = word.charAt(0).toUpperCase();
+      let restName = word.slice(1);
+      return firstLetter + restName;
+    } else {
+      return word;
+    }
+  });
+  let resultFullName = capitalizedArray.join(" ");
+  return resultFullName;
 }
 
 function generateLetters(capitolName) {
-    let createtFullName = capitolName;
-    let nameArray = createtFullName.split(" ");
-    if (nameArray.length >= 2) {
-        let firstNameLetter = nameArray[0];
-        let lastNameletter = nameArray[nameArray.length - 1];
-        let firstLetters = firstNameLetter.charAt(0).concat(lastNameletter.charAt(0));
-        return firstLetters;
-    } else {
-        let singleLetter = nameArray[0].charAt(0);
-        return singleLetter;
-    }
+  let createtFullName = capitolName;
+  let nameArray = createtFullName.split(" ");
+  if (nameArray.length >= 2) {
+    let firstNameLetter = nameArray[0];
+    let lastNameletter = nameArray[nameArray.length - 1];
+    let firstLetters = firstNameLetter.charAt(0).concat(lastNameletter.charAt(0));
+    return firstLetters;
+  } else {
+    let singleLetter = nameArray[0].charAt(0);
+    return singleLetter;
+  }
 
 }

@@ -41,7 +41,6 @@ function removeActiveClass() {
 }
 
 function highlightContactAndOpenContactTemplate(contactCardRef, contactRef, isActive) {
-
     if (!isActive) {
         contactCardRef.classList.add("active-contact");
         contactCardRef.classList.remove("contact-container-hoverclass");
@@ -331,7 +330,6 @@ function highlightContact(firstLetter, index) {
 }
 
 async function createObjectNewContact(createName, createEmail, createPhone, nameLetters, fillColor) {
-
     if (createName != "") {
         let newContact = {
             "name": createName,
@@ -358,7 +356,6 @@ function generateLetters(capitolName) {
         let singleLetter = nameArray[0].charAt(0);
         return singleLetter;
     }
-
 }
 
 function getRandomColor() {
@@ -379,7 +376,6 @@ function getRandomColor() {
 
 function showCreatedContactTemplate(newContact) {
     let currentWidth = window.innerWidth;
-
     if (currentWidth <= 960) {
         contactListAreaRef.classList.add('d_none');
         contactAreaRef.style.display = "flex";
@@ -389,7 +385,6 @@ function showCreatedContactTemplate(newContact) {
     setTimeout(() => {
         fadeInCreateMsg();
     }, 800);
-
 }
 
 async function deleteCurrentContact(name, email) {
@@ -398,7 +393,6 @@ async function deleteCurrentContact(name, email) {
     await putContacts(contacts)
     initContacts();
     templateRef.classList.add('d_none');
-
     if (currentWidth <= 960) {
         closeOverlay();
         backToContactList();
@@ -406,7 +400,6 @@ async function deleteCurrentContact(name, email) {
 }
 
 function backToContactList() {
-
     contactListAreaRef.classList.remove('d_none');
     contactAreaRef.style.display = "";
     removeActiveClass();

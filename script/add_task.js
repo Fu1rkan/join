@@ -21,8 +21,6 @@ function closeAddTaskOverlay() {
 
 function openCalender() {
     let calenderRef = document.getElementById('add_task_due_date')
-     const today = new Date().toISOString().split("T")[0];
-     calenderRef.setAttribute("min", today);
     calenderRef.showPicker();
 }
 

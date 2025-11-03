@@ -217,7 +217,7 @@ function renderContacts(groupedContacts) {
 }
 
 function renderContactList(keys) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890#/-.*%&$§(){}=?`<>'!|@".split("");
     contactListRef.innerHTML = "";
     alphabet.forEach(letter => {
         const section = document.createElement("section");

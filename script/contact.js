@@ -7,7 +7,6 @@ const templateRef = document.getElementById("contact_template");
 
 
 async function initContacts() {
-    //await init();
     await loadContacts();
     rederProfilHeaderIcon('profil_header_contacts');
     filterContacts();
@@ -126,18 +125,41 @@ function animationOverlayCardFadeOut(target) {
 
 async function saveChangedContact(name, email) {
     const contactRef = contacts.find(t => t.name === name && t.email === email);
-    let contactName = document.getElementById('edit_name').value;
-    let contactEmail = document.getElementById('edit_email').value;
-    let contactPhone = document.getElementById('edit_phone').value;
-    contactRef.name = contactName;
-    contactRef.email = contactEmail;
-    contactRef.phone = contactPhone;
-    await putContacts(contacts);
-    filterContacts();
+    let contactName = document.getElementById('edit_name').value.trim();
+    let contactEmail = document.getElementById('edit_email').value.trim();
+    let contactPhone = document.getElementById('edit_phone').value.trim();
+
+    let editFormLabelNameRef = document.getElementById('edit_form_label_name');
+    let editFormLabelEmailRef = document.getElementById('edit_form_label_email');
+    let editFormLabelPhoneRef = document.getElementById('edit_form_label_phone');
+
+    let editNameRequiredMsg = document.getElementById('edit_name_required_msg');
+    let editEmailRequiredMsg = document.getElementById('edit_email_required_msg');
+    let editPhoneRequiredMsg = document.getElementById('edit_phone_required_msg');
+
+    let correctPhoneValue = checkPhoneValue(contactPhone);
+    checkCreateValuesAndCreateContact(contactEmail, contactPhone, contactName, editFormLabelNameRef, editNameRequiredMsg, editFormLabelEmailRef, editEmailRequiredMsg, editFormLabelPhoneRef, editPhoneRequiredMsg, correctPhoneValue, "change", contactRef)
+}
+
+function changeEditedContact(contactRef, createName, createEmail, createPhone) {
+    contactRef.name = createName;
+    contactRef.email = createEmail;
+    contactRef.phone = createPhone;
+}
+
+function showChangedTemplateAndHiglightIt(contactRef) {
     templateRef.innerHTML = getContactTemplate(contactRef);
-    const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
-    contactInfoBigTemplateRef.classList.remove('fade-in-template');
-    highlightChangedContact(contactRef);
+            const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
+            contactInfoBigTemplateRef.classList.remove('fade-in-template');
+            highlightChangedContact(contactRef);
+}
+
+function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts) {
+    changeEditedContact(contactRef, createName, createEmail, createPhone);
+            putContacts(contacts);
+            closeOverlay();
+            filterContacts();
+            showChangedTemplateAndHiglightIt(contactRef)
 }
 
 function highlightChangedContact(contactRef) {
@@ -226,30 +248,33 @@ function checkPhoneValue(createPhone) {
     return createPhone === "" || /^[0-9]+$/.test(createPhone);
 }
 
-function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, correctPhoneValue) {
-    let hasName = createName != "";
-    let hasEmail = createEmail != "";
-    let emailValid = hasEmail && createEmail.includes("@");
-    let phoneValid = createPhone == "" || correctPhoneValue;
-
-    if (hasName && emailValid && phoneValid) {
-        createContactAndHighlight(createName, createEmail, createPhone);
-        return;
+function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, correctPhoneValue, param = "add", contactRef = {}) {
+    if (param == "add") {
+        if (createName != "" && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
+            createContactAndHighlight(createName, createEmail, createPhone);
+            return;
+        }
+    } else {
+        if (createName != "" && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
+            changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts); 
+            return;
+        }
     }
-    highlightRequiredInputs(hasName, hasEmail, emailValid, createPhone, phoneValid, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
+
+    highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
 }
 
-function highlightRequiredInputs(hasName, hasEmail, emailValid, createPhone, phoneValid, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg) {
-    if (!hasName) {
+function highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg) {
+    if (!(createName != "")) {
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
     }
-    if (!hasEmail) {
+    if (!(createEmail != "")) {
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-    } else if (!emailValid) {
+    } else if (!(createEmail != "" && createEmail.includes("@"))) {
         createEmailRequiredMsg.innerText = "Email must include '@'";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     }
-    if (createPhone !== "" && !phoneValid) {
+    if (createPhone !== "" && !(createPhone == "" || correctPhoneValue)) {
         showRequiredMsgAndHighlight(createFormLabelPhoneRef, createPhoneRequiredMsg);
     }
 }

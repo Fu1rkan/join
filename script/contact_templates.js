@@ -329,7 +329,7 @@ function showContactEditCard(toEditContact) {
                 <form action="" class="create-form" onsubmit="return false">
                     <section class="create-form-inputfields responsiv-edit-create-form-inputfields">
                     <div class="create-form-inputfields-container">
-                        <label class="create-form-label">
+                        <label id="edit_form_label_name" class="create-form-label">
                             <input id="edit_name" placeholder="Name" value="${toEditContact.name}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -344,9 +344,10 @@ function showContactEditCard(toEditContact) {
                                 </g>
                             </svg>
                         </label>
+                        <div class="create-form-inputfields-required"><p id="edit_name_required_msg" class="create-form-inputfields-required-msg d_none">This field is required</p></div>
                     </div>
                     <div class="create-form-inputfields-container">
-                        <label class="create-form-label">
+                        <label id="edit_form_label_email" class="create-form-label">
                             <input id="edit_email" placeholder="Email" value="${toEditContact.email}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -361,9 +362,10 @@ function showContactEditCard(toEditContact) {
                                 </g>
                             </svg>
                         </label>
+                        <div class="create-form-inputfields-required"><p id="edit_email_required_msg" class="create-form-inputfields-required-msg d_none">This field is required</p></div>
                     </div>
                     <div class="create-form-inputfields-container">    
-                        <label class="create-form-label">
+                        <label id="edit_form_label_phone" class="create-form-label">
                             <input id="edit_phone" placeholder="Phone" value="${toEditContact.phone}" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -378,6 +380,7 @@ function showContactEditCard(toEditContact) {
                                 </g>
                             </svg>
                         </label>
+                        <div class="create-form-inputfields-required"><p id="edit_phone_required_msg" class="create-form-inputfields-required-msg d_none">This field must include only Numbers</p></div>
                     </div>    
                     </section>
 
@@ -385,7 +388,7 @@ function showContactEditCard(toEditContact) {
                         <button class="edit-contact-delete-btn" onclick="closeOverlay(); deleteCurrentContact('${toEditContact.name}','${toEditContact.email}')">
                             <p class="edti-contact-delete-btn-txt">Delete</p>
                         </button>
-                        <button class="edit-contact-save-contact-btn" onclick=" closeOverlay(); saveChangedContact('${toEditContact.name}','${toEditContact.email}')">
+                        <button class="edit-contact-save-contact-btn" onclick="saveChangedContact('${toEditContact.name}','${toEditContact.email}')">
                             <p class="edit-contact-save-contact-btn-txt">Save</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">

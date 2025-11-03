@@ -220,16 +220,16 @@ function createNewContact() {
 }
 
 function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg) {
-    if (createName != "" && createEmail != "" && createEmail.includes('@') && /^[A-Za-z]/.test(createName.trim())) {
+    if (createName != "" && createEmail != "" && createEmail.includes('@')) {
         createContactAndHighlight(createName, createEmail, createPhone);
         putContacts(contacts);
     } else {
         if (createName === "") {
         createNameRequiredMsg.innerText = "This field is required"
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
-        }
-        if (!/^[A-Za-z]/.test(createName.trim()) &! createName == "") {
-            createNameRequiredMsg.innerText = "Name must start with a letter."
+    } else if (createName != "" && createEmail == "") {
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+    } else if (createName == "" && createEmail == "") {
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
         }
         if(createEmail != "" &! createEmail.includes('@') ){

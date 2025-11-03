@@ -271,7 +271,6 @@ function highlightRequiredInputs(createName, createEmail, createPhone, correctPh
     }
     if (!(createEmail != "")) {
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-        createEmailRequiredMsg.innerText = "This Field is required";
     } else if (!(createEmail != "" && createEmail.includes("@"))) {
         createEmailRequiredMsg.innerText = "Email must include '@'";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);

@@ -124,19 +124,17 @@ function animationOverlayCardFadeOut(target) {
 }
 
 async function saveChangedContact(name, email) {
+    removeHiglightFromLabelsAndHideRequiredMsg();
     const contactRef = contacts.find(t => t.name === name && t.email === email);
     let contactName = document.getElementById('edit_name').value.trim();
     let contactEmail = document.getElementById('edit_email').value.trim();
     let contactPhone = document.getElementById('edit_phone').value.trim();
-
     let editFormLabelNameRef = document.getElementById('edit_form_label_name');
     let editFormLabelEmailRef = document.getElementById('edit_form_label_email');
     let editFormLabelPhoneRef = document.getElementById('edit_form_label_phone');
-
     let editNameRequiredMsg = document.getElementById('edit_name_required_msg');
     let editEmailRequiredMsg = document.getElementById('edit_email_required_msg');
     let editPhoneRequiredMsg = document.getElementById('edit_phone_required_msg');
-
     let correctPhoneValue = checkPhoneValue(contactPhone);
     checkCreateValuesAndCreateContact(contactEmail, contactPhone, contactName, editFormLabelNameRef, editNameRequiredMsg, editFormLabelEmailRef, editEmailRequiredMsg, editFormLabelPhoneRef, editPhoneRequiredMsg, correctPhoneValue, "change", contactRef)
 }
@@ -149,17 +147,17 @@ function changeEditedContact(contactRef, createName, createEmail, createPhone) {
 
 function showChangedTemplateAndHiglightIt(contactRef) {
     templateRef.innerHTML = getContactTemplate(contactRef);
-            const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
-            contactInfoBigTemplateRef.classList.remove('fade-in-template');
-            highlightChangedContact(contactRef);
+    const contactInfoBigTemplateRef = document.getElementById('contact_info_big_template');
+    contactInfoBigTemplateRef.classList.remove('fade-in-template');
+    highlightChangedContact(contactRef);
 }
 
-function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts) {
+async function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone) {
     changeEditedContact(contactRef, createName, createEmail, createPhone);
-            putContacts(contacts);
-            closeOverlay();
-            filterContacts();
-            showChangedTemplateAndHiglightIt(contactRef)
+    await putContacts(contacts);
+    closeOverlay();
+    filterContacts();
+    showChangedTemplateAndHiglightIt(contactRef);
 }
 
 function highlightChangedContact(contactRef) {
@@ -229,8 +227,7 @@ function renderContactList(keys) {
 }
 
 function createNewContact() {
-    document.querySelectorAll('.create-form-label').forEach(el => el.classList.remove('create-form-label-highlight'));
-    document.querySelectorAll('.create-form-inputfields-required-msg').forEach(el => el.classList.add('d_none'));
+    removeHiglightFromLabelsAndHideRequiredMsg();
     let createName = document.getElementById('create_name').value.trim();
     let createEmail = document.getElementById('create_email').value.trim();
     let createPhone = document.getElementById('create_phone').value.trim();
@@ -242,6 +239,11 @@ function createNewContact() {
     let createFormLabelPhoneRef = document.getElementById('create_form_label_phone');
     let correctPhoneValue = checkPhoneValue(createPhone);
     checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, correctPhoneValue);
+}
+
+function removeHiglightFromLabelsAndHideRequiredMsg() {
+    document.querySelectorAll('.create-form-label').forEach(el => el.classList.remove('create-form-label-highlight'));
+    document.querySelectorAll('.create-form-inputfields-required-msg').forEach(el => el.classList.add('d_none'));
 }
 
 function checkPhoneValue(createPhone) {
@@ -256,11 +258,10 @@ function checkCreateValuesAndCreateContact(createEmail, createPhone, createName,
         }
     } else {
         if (createName != "" && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
-            changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone, contacts); 
+            changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone);
             return;
         }
     }
-
     highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
 }
 

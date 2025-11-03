@@ -220,20 +220,39 @@ function createNewContact() {
 }
 
 function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg) {
-    if (createName != "" && createEmail != "" && createEmail.includes('@')) {
+    if (createName != "" && createEmail != "" && createEmail.includes('@') && /^[A-Za-z]/.test(createName.trim())) {
         createContactAndHighlight(createName, createEmail, createPhone);
         putContacts(contacts);
-    } else if (createName == "" && createEmail != "") {
+    } else /* if (createName == "" || createEmail == "" || /^[A-Za-z]/.test(createName.trim()) ) */ {
+        if (createName === "") {
+        createNameRequiredMsg.innerText = "This field is required"
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
-    } else if (createName != "" && createEmail == "") {
-        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-    } else if (createName == "" && createEmail == "") {
+        }
+        if (!/^[A-Za-z]/.test(createName.trim()) &! createName == "") {
+            createNameRequiredMsg.innerText = "Name must start with a letter."
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
-        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-    } else {
+        }
+        if(createEmail != "" &! createEmail.includes('@') )
+
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
         createEmailRequiredMsg.innerText = "Email must include '@'";
     }
+        if (createEmail === "") {
+        createEmailRequiredMsg.innerHTML = "This field is required"
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+        }
+     /*  else {
+        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
+        createEmailRequiredMsg.innerText = "Email must include '@'";
+    } */
+
+
+
+
+
+
+
+
 }
 
 function createContactAndHighlight(createName, createEmail, createPhone) {

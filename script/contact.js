@@ -223,7 +223,7 @@ function checkCreateValuesAndCreateContact(createEmail, createPhone, createName,
     if (createName != "" && createEmail != "" && createEmail.includes('@') && /^[A-Za-z]/.test(createName.trim())) {
         createContactAndHighlight(createName, createEmail, createPhone);
         putContacts(contacts);
-    } else /* if (createName == "" || createEmail == "" || /^[A-Za-z]/.test(createName.trim()) ) */ {
+    } else {
         if (createName === "") {
         createNameRequiredMsg.innerText = "This field is required"
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
@@ -232,27 +232,15 @@ function checkCreateValuesAndCreateContact(createEmail, createPhone, createName,
             createNameRequiredMsg.innerText = "Name must start with a letter."
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
         }
-        if(createEmail != "" &! createEmail.includes('@') )
-
+        if(createEmail != "" &! createEmail.includes('@') ){
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
         createEmailRequiredMsg.innerText = "Email must include '@'";
-    }
+        }
         if (createEmail === "") {
         createEmailRequiredMsg.innerHTML = "This field is required"
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-        }
-     /*  else {
-        showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-        createEmailRequiredMsg.innerText = "Email must include '@'";
-    } */
-
-
-
-
-
-
-
-
+        }    
+    }
 }
 
 function createContactAndHighlight(createName, createEmail, createPhone) {

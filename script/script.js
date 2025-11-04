@@ -1,3 +1,8 @@
+const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/user/";
+
+let contacts = [];
+let taskList = [];
+
 function stopPropagation(event) {
     event.stopPropagation();
 }
@@ -32,11 +37,6 @@ function rederProfilHeaderIcon(id) {
     let profilIconRef = document.getElementById(id);
     profilIconRef.innerHTML = `<p>${userNameLetters}</p>`
 }
-
-const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatabase.app/user/";
-
-let contacts = [];
-let taskList = [];
 
 async function getUsers(email, password) {
   let response = await fetch(BASE_URL + ".json");

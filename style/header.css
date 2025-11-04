@@ -45,40 +45,13 @@
 }
 
 .profil-header>p {
-    color: #29ABE2;
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .profil-header:hover {
-    background-color: rgba(12, 46, 98, 0.12);
-  }
-
-/* Main header container - full width header with shadow */
-.summary-header {
-  width: 100%;
-  height: 96px;
-  background-color: var(--header-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Header text styling - left aligned title text */
-.summary-header-text {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  color: #29ABE2;
   font-size: 20px;
-  color: var(--text-color);
-  margin-left: 120px;
+  font-weight: 700;
 }
 
-/* Profile section container - holds help icon and profile header */
-.summary-profil {
-  display: flex;
-  gap: 16px;
+.profil-header:hover {
+  background-color: rgba(12, 46, 98, 0.12);
 }
 
 /* Navigation container - static positioned menu container */
@@ -160,6 +133,47 @@
 
 /* Link styling for navigation menu items - light gray text color */
 .nav-link-item a {
+  color: #cdcdcd;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Navigation profile container - slide-in menu from right side */
+.nav-profile-container {
+  position: absolute;
+  top: 0;
+  padding: 20px;
+  background-color: var(--side-color);
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px 0 16px 16px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transform: translateY(96px);
+  display: none;
+  opacity: 0;
+}
+
+/* Visible state - slides in from right */
+.nav-profile-container.show {
+  display: flex;
+  animation: slideInFromRight 0.3s ease-out forwards;
+}
+
+/* Hidden state - slides out to right */
+.nav-profile-container.hide {
+  display: flex;
+  animation: slideOutToRight 0.3s ease-in forwards;
+}
+
+.nav-profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style-type: none;
+  cursor: pointer;
   color: #cdcdcd;
 }
 

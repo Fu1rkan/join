@@ -1,10 +1,15 @@
 let logoAnimated = false;
 
 function logInInit() {
-    setTimeout(() => {
+    if (!logoAnimated) {
+        setTimeout(() => {
+            renderJoinLogo();
+            logoAnimated = true;
+        }, 980);
+    } else {
         renderJoinLogo();
-        logoAnimated = true;
-    }, 980);
+    }
+    setupEnterKeyLogin();
 }
 
 // render LogIn incl. password show and hide functions
@@ -233,4 +238,18 @@ function closeSignUpOverlay() {
         document.getElementById('signup-overlay-id').classList.add('d_none');
         renderLogIn();
     }, 1000);
+}
+
+// logion by pressing Enter key
+function setupEnterKeyLogin() {
+    document.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            let email = document.getElementById('email');
+            let password = document.getElementById('password');
+            if (email && password) {
+                event.preventDefault();
+                checkLoginInputFields();
+            }
+        }
+    });
 }

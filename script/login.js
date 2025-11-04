@@ -234,10 +234,3 @@ function closeSignUpOverlay() {
         renderLogIn();
     }, 1000);
 }
-
-//logout from the Site
-function logOut(){
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userId");
-    window.location.href = './index.html';
-}

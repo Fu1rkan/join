@@ -437,7 +437,7 @@ function taskTemp(i) {
                 <div class="task-assignees" id="task-card-participants-${i.id}"></div>
                 <div class="task-priority" id="task-card-prio-${i.id}"></div>
             </footer>
-            <div class="resp-menu-task o_0" id="resp-menu-task-${i.id}" onclick="stopPropagation(event)">
+            <div class="resp-menu-task t_t_150" id="resp-menu-task-${i.id}" onclick="stopPropagation(event)">
                 <span>Move to</span>
                 <div>
                     <button onclick="switchUp(${i.id})" id="switch-up-button-${i.id}">

@@ -45,14 +45,14 @@
 }
 
 .profil-header>p {
-  color: #29ABE2;
-  font-size: 20px;
-  font-weight: 700;
-}
+    color: #29ABE2;
+    font-size: 20px;
+    font-weight: 700;
+  }
 
-.profil-header:hover {
-  background-color: rgba(12, 46, 98, 0.12);
-}
+  .profil-header:hover {
+    background-color: rgba(12, 46, 98, 0.12);
+  }
 
 /* Navigation container - static positioned menu container */
 .nav-container {
@@ -135,12 +135,6 @@
 .nav-link-item a {
   color: #cdcdcd;
 }
-/* Header Profile Help Link in Menu remove*/
-@media (min-width: 1400px) {
-    .nav-profile-link-item:has(a[href*="help"]) {
-        display: none;
-    }
-}
 
 body {
   overflow-x: hidden;
@@ -181,6 +175,10 @@ body {
   list-style-type: none;
   cursor: pointer;
   color: #cdcdcd;
+}
+
+.nav-profile-links li a{
+  text-wrap: nowrap;
 }
 
 @media(max-width: 1400px) {

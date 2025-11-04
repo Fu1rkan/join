@@ -91,3 +91,18 @@
 p .highlight-join {
   color: #29abe2;
 }
+
+.j_c_start
+{
+  justify-content: flex-start;
+}
+
+.h_96{
+  height: 96px;
+}
+
+.flex_center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

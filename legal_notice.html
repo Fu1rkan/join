@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Legal Notice</title>
   <link rel="icon" type="image/x-icon" href="./assets/svg/favicon.svg" />
-  <link rel="stylesheet" href="./style/style.css" />
   <link rel="stylesheet" href="./style/help.css" />
+  <link rel="stylesheet" href="./style/style.css" />
 </head>
 
-<body class="help">
+<body class="help" onload="rederProfilHeaderIcon('profil_header_legal_notice')">
   <div class="layout">
     <nav class="navbar">
       <svg width="102" height="122" viewBox="0 0 102 122" fill="none">
@@ -94,7 +94,7 @@
       </ul>
       <ul class="navbar-footer">
         <li>
-          <a class="navbar-footer-link" href="./privacy_police.html">Private Policy</a>
+          <a class="navbar-footer-link" href="./privacy_policy.html">Private Policy</a>
         </li>
         <li class="navbar-active">
           <a class="navbar-footer-link" href="./legal_notice.html">Legal Notice</a>
@@ -134,7 +134,7 @@
                                 fill="#A8A8A8" />
                         </svg>
 
-                        <div class="profil-header" onclick="toggleBurgerMenu()"></div>
+                        <div id="profil_header_legal_notice" class="profil-header" onclick="toggleBurgerMenu()"></div>
 
                         <div class="nav-profile-container" id="profile-menu">
                             <div class="nav-profile-link-container">

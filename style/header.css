@@ -162,6 +162,12 @@
 .nav-link-item a {
   color: #cdcdcd;
 }
+/* Header Profile Help Link in Menu remove*/
+@media (min-width: 1400px) {
+    .nav-profile-link-item:has(a[href*="help"]) {
+        display: none;
+    }
+}
 
 @media(max-width: 1400px) {
   .main-header {

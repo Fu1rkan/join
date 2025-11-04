@@ -45,14 +45,14 @@
 }
 
 .profil-header>p {
-    color: #29ABE2;
-    font-size: 20px;
-    font-weight: 700;
-  }
+  color: #29ABE2;
+  font-size: 20px;
+  font-weight: 700;
+}
 
-  .profil-header:hover {
-    background-color: rgba(12, 46, 98, 0.12);
-  }
+.profil-header:hover {
+  background-color: rgba(12, 46, 98, 0.12);
+}
 
 /* Navigation container - static positioned menu container */
 .nav-container {
@@ -177,11 +177,19 @@ body {
   color: #cdcdcd;
 }
 
-.nav-profile-links li a{
+.nav-profile-links>li:first-child {
+  display: none;
+}
+
+.nav-profile-links li a {
   text-wrap: nowrap;
 }
 
 @media(max-width: 1400px) {
+  .nav-profile-links>li:first-child {
+    display: block;
+  }
+
   .main-header {
     z-index: 2;
   }

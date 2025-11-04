@@ -333,6 +333,7 @@ function clearForm() {
     activatePriority();
     resetGlobalVariables();
     inputFieldAddFormCalenderSvgRef.classList.remove('d_none');
+    renderCurrentAssignedTo()
     renderCurrentCreatedSubtasks()
 }
 

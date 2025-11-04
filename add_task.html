@@ -172,7 +172,7 @@
                                 <div class="add-tast-form-input-required-container">
                                     <input id="add_task_title" type="text"
                                         class="w-100 add-task-form-left-title-input add-task-form-input-placeholder-default"
-                                        placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')">
+                                        placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')" maxlength="40" >
                                     <div class="h-16">
                                         <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field
                                             is required</p>
@@ -187,7 +187,7 @@
                                 <div class="h-136">
                                     <textarea name="" id="add_task_description" placeholder="Enter a Description"
                                         class="w-100 add-task-form-textarea add-task-form-input-placeholder-default"
-                                        onfocus="highlightInputFields('add_task_description')"></textarea>
+                                        onfocus="highlightInputFields('add_task_description')" maxlength="200" ></textarea>
                                     <div class="h-16"></div>
                                 </div>
                             </div>
@@ -382,9 +382,10 @@
                                     <input id="add_task_subtasks"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-default"
                                         type="text" placeholder="Add new subtask"
-                                        onfocus="highlightInputFields('add_task_subtasks')">
+                                        onfocus="highlightInputFields('add_task_subtasks')"
+                                        maxlength="40">
                                     <div id="add_task_form_subtasks_btns" class="add-task-form-subtasks-btns d_none">
-                                        <button onclick="resetAddTaskSubtasksInputField()">
+                                        <button onclick="resetAddTaskSubtasksInputField()" type="button">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
                                                 <mask id="mask0_75601_14760" style="mask-type:alpha"
@@ -430,7 +431,7 @@
                             <p>This fiels is required</p>
                         </div>
                         <div class="add-task-form-btns">
-                            <button class="add-task-form-clear-btn" onclick="clearForm()" type="button">
+                            <button class="add-task-form-clear-btn" onclick="clearForm()" type="reset">
                                 <p>Clear</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
@@ -441,7 +442,7 @@
                                 </svg>
                             </button>
                             <button id="add_task_form_create_btn" class="add-task-form-create-btn"
-                                onclick="createNewTask()">
+                                onclick="createNewTask()" type="submit">
                                 <p>Create Task</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">

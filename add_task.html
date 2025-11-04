@@ -237,7 +237,7 @@
                                 <p>Priority</p>
                                 <div class="add-task-priority-btns">
                                     <button id="add_task_priority_urgent" class="add-task-priority-btns-hover-class"
-                                        onclick="activatePriority('urgent')">
+                                        onclick="activatePriority('urgent')" type="button">
                                         <p>Urgent</p>
                                         <svg id="add_task_priority_urgent_svg" xmlns="http://www.w3.org/2000/svg"
                                             width="20" height="15" viewBox="0 0 20 15" fill="none">
@@ -257,7 +257,7 @@
                                         </svg>
                                     </button>
                                     <button id="add_task_priority_medium" class="add-task-priority-btn-medium-active"
-                                        onclick="activatePriority('medium')">
+                                        onclick="activatePriority('medium')" type="button">
                                         <p>Medium</p>
                                         <svg id="add_task_priority_medium_svg" class="add-task-priority-active-svg"
                                             xmlns="http://www.w3.org/2000/svg" width="20" height="8" viewBox="0 0 20 8"
@@ -278,7 +278,7 @@
                                         </svg>
                                     </button>
                                     <button id="add_task_priority_low" class="add-task-priority-btns-hover-class"
-                                        onclick="activatePriority('low')">
+                                        onclick="activatePriority('low')" type="button">
                                         <p>Low</p>
                                         <svg id="add_task_priority_low_svg" xmlns="http://www.w3.org/2000/svg"
                                             width="20" height="15" viewBox="0 0 20 15" fill="none">
@@ -300,7 +300,7 @@
                                     <input id="add_task_assigned_to"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black"
                                         type="text" onfocus="highlightInputFields('add_task_assigned_to')"
-                                        placeholder="Select contacts to assign">
+                                        placeholder="Select contacts to assign" readonly>
                                     <div id="add_task_form_assigned_to_arrow_svg"
                                         class="add-task-form-assigned-to-arrow-down-svg"
                                         onclick="event.stopPropagation()">
@@ -338,7 +338,7 @@
                                     <input id="add_task_category"
                                         class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black"
                                         type="text" placeholder="Select task category"
-                                        onfocus="highlightInputFields('add_task_category')">
+                                        onfocus="highlightInputFields('add_task_category')" readonly>
                                     <div id="add_task_form_category_arrow_svg"
                                         class="add-task-form-assigned-to-arrow-down-svg"
                                         onclick="event.stopPropagation()">
@@ -428,7 +428,7 @@
                             <p>This fiels is required</p>
                         </div>
                         <div class="add-task-form-btns">
-                            <button class="add-task-form-clear-btn" onclick="clearForm()">
+                            <button class="add-task-form-clear-btn" onclick="clearForm()" type="button">
                                 <p>Clear</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">

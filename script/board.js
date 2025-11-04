@@ -545,7 +545,7 @@ function closeTaskMenus(i) {
 }
 
 
-async function switchDown(i) {
+    async function switchDown(i) {
     let task = taskList.findIndex(t => t.id == i);
 
     if (taskList[task].category == "to-do") {
@@ -557,13 +557,12 @@ async function switchDown(i) {
     } else {
         console.log('is done');
     }
-     await putTask(taskList);
+    await putTask(taskList);
     await boardInit();
-    renderTasks();
 }
 
 
-async function switchUp(i) {
+    async function switchUp(i) {
     let task = taskList.findIndex(t => t.id == i);
 
     if (taskList[task].category == "in-progress") {
@@ -575,9 +574,8 @@ async function switchUp(i) {
     } else {
         console.log('is To Do');
     }
-     await putTask(taskList);
+    await putTask(taskList);
     await boardInit();
-    renderTasks();
 }
 
 

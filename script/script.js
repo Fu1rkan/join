@@ -244,3 +244,9 @@ function generateLetters(capitolName) {
     return singleLetter;
   }
 }
+
+//logout from the Site
+function logOut(){
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+}

@@ -1,8 +1,3 @@
-@media (min-width: 1400px) {
-    .nav-profile-link-item:has(a[href*="help"]) {
-        display: none;
-    }
-}
 @media (max-width: 1440px) {
     .summary-main {
         height: calc(100vh - 80px);

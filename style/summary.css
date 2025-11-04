@@ -4,6 +4,7 @@
     padding: 60px 80px;
     max-width: 1208px;
     width: 100% !important;
+    animation: blendIn 0.2s ease-in-out;
 }
 
 .summary-header2 {

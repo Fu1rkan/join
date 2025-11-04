@@ -17,6 +17,7 @@
 .add-task-form-subtasks-dropdown-subtasks {
     display: flex;
     flex-direction: column;
+    animation: blendIn 0.2s ease-in-out;
 }
 
 .add-task-main {
@@ -226,7 +227,7 @@
 
 .add-task-subtaks-dropdown {
     background-color: #FFFFFF;
-    
+
 }
 
 .add-task-subtaks-dropdown ul {
@@ -349,7 +350,7 @@
 .add-task-form-subtasks-btns {
     bottom: 0;
     right: 16px;
-    
+
 }
 
 .add-task-form-subtasks-dropdown-subtasks-btns {
@@ -480,7 +481,7 @@
 }
 
 .add-task-form-clear-btn:hover>p,
-.add-task-form-clear-btn:hover>svg path{
+.add-task-form-clear-btn:hover>svg path {
     color: #29ABE2;
     stroke: #29ABE2;
 }
@@ -490,7 +491,7 @@
 }
 
 .add-task-form-clear-btn:active>p,
-.add-task-form-clear-btn:active>svg path{
+.add-task-form-clear-btn:active>svg path {
     color: #091931;
     stroke: #091931;
 }
@@ -526,7 +527,7 @@
 }
 
 .add-task-red-border {
-    border-color: #E60026; 
+    border-color: #E60026;
 }
 
 .add-task-form-input-placeholder-default::placeholder,

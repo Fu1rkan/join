@@ -13,6 +13,7 @@
 .contacts-content {
     flex: 1;
     display: flex;
+    animation: blendIn 0.2s ease-in-out;
 }
 
 .add-new-contact-btn-container,
@@ -46,7 +47,7 @@
 
 .contacts-contact-section {
     width: calc(1440px - (232px + 456px));
-    
+
 }
 
 .contact-rightside-big-container {
@@ -274,4 +275,3 @@
     font-size: var(--font-size-27);
     color: var(--inter-text-color);
 }
-

@@ -12,6 +12,7 @@
   overflow: auto;
   scrollbar-width: none; 
   -ms-overflow-style: none; 
+  animation: blendIn 0.2s ease-in-out;
 }
 
 .help section::-webkit-scrollbar {

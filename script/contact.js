@@ -134,8 +134,7 @@ async function saveChangedContact(name, email) {
     let editNameRequiredMsg = document.getElementById('edit_name_required_msg');
     let editEmailRequiredMsg = document.getElementById('edit_email_required_msg');
     let editPhoneRequiredMsg = document.getElementById('edit_phone_required_msg');
-    let correctPhoneValue = checkPhoneValue(contactPhone);
-    checkCreateValuesAndCreateContact(contactEmail, contactPhone, contactName, editFormLabelNameRef, editNameRequiredMsg, editFormLabelEmailRef, editEmailRequiredMsg, editFormLabelPhoneRef, editPhoneRequiredMsg, correctPhoneValue, "change", contactRef)
+    checkCreateValuesAndCreateContact(contactEmail, contactPhone, contactName, editFormLabelNameRef, editNameRequiredMsg, editFormLabelEmailRef, editEmailRequiredMsg, editFormLabelPhoneRef, editPhoneRequiredMsg, "change", contactRef)
 }
 
 function changeEditedContact(contactRef, createName, createEmail, createPhone) {
@@ -216,7 +215,7 @@ function renderContacts(groupedContacts) {
 }
 
 function renderContactList(keys) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890#/-.*%&$§(){}=?`<>'!|@".split("");
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     contactListRef.innerHTML = "";
     alphabet.forEach(letter => {
         const section = document.createElement("section");
@@ -236,8 +235,7 @@ function createNewContact() {
     let createFormLabelNameRef = document.getElementById('create_form_label_name');
     let createFormLabelEmailRef = document.getElementById('create_form_label_email');
     let createFormLabelPhoneRef = document.getElementById('create_form_label_phone');
-    let correctPhoneValue = checkPhoneValue(createPhone);
-    checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, correctPhoneValue);
+    checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
 }
 
 function removeHiglightFromLabelsAndHideRequiredMsg() {
@@ -246,35 +244,46 @@ function removeHiglightFromLabelsAndHideRequiredMsg() {
 }
 
 function checkPhoneValue(createPhone) {
-    return createPhone === "" || /^[0-9]+$/.test(createPhone);
+    return /^[0-9]+$/.test(createPhone);
 }
 
-function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, correctPhoneValue, param = "add", contactRef = {}) {
+function checkNameValue(createName) {
+    return /^[A-Za-z]/.test(createName);
+}
+
+function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, param = "add", contactRef = {}) {
+    let correctPhoneValue = checkPhoneValue(createPhone);
+    let correctNameValue = checkNameValue(createName);
     if (param == "add") {
-        if (createName != "" && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
+        if (createName != "" && correctNameValue && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
             createContactAndHighlight(createName, createEmail, createPhone);
             return;
         }
     } else {
-        if (createName != "" && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
+        if (createName != "" && correctNameValue && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
             changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone);
             return;
         }
     }
-    highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
+    highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, correctNameValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
 }
 
-function highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg) {
+function highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, correctNameValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg) {
     if (!(createName != "")) {
+        createNameRequiredMsg.innerText = "This field is required";
+        showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
+    } else if (!correctNameValue) {
+        createNameRequiredMsg.innerText = "First Sign must be a Letter";
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
     }
     if (!(createEmail != "")) {
+        createEmailRequiredMsg.innerText = "This field is required";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     } else if (!(createEmail != "" && createEmail.includes("@"))) {
         createEmailRequiredMsg.innerText = "Email must include '@'";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     }
-    if (createPhone !== "" && !(createPhone == "" || correctPhoneValue)) {
+    if (createPhone != "" && !(createPhone == "" || correctPhoneValue)) {
         showRequiredMsgAndHighlight(createFormLabelPhoneRef, createPhoneRequiredMsg);
     }
 }

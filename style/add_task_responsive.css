@@ -27,14 +27,12 @@
     }
 
     .add-task-main h2 {
-        margin: 20px 0 0 20px;
+        padding: 20px 0 0 10px;
     }
 
     .add-task-form {
         margin: 20px 0 0 0;
         padding: 0 0 20px 0;
-        height: 71vh;
-        overflow-x: auto;
         scrollbar-width: thin;
     }
 

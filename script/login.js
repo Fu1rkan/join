@@ -290,6 +290,7 @@ function openSummary() {
  * Opens summary page with overlay enabled and guest login type
  */
 function openGuestSummary() {
+    initializeGuestSession(); // Guest initialization
     window.location.href = './summary.html?showOverlay=true&loginType=guest';
 }
 

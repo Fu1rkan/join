@@ -70,12 +70,16 @@ function checkLoginValues(currentUserIndex) {
 }
 
 async function loadContacts() {
-  let path = localStorage.getItem("userId");
-  let userId = JSON.parse(path);
-  let contactsPath = userId + "contacts/";
-  let response = await fetch(BASE_URL + contactsPath + ".json");
-  let responseToJson = await response.json();
-  pushUserContactsToArray(responseToJson);
+    if (isGuestUser()) {
+        loadGuestContacts();
+    } else {
+        let path = localStorage.getItem("userId");
+        let userId = JSON.parse(path);
+        let contactsPath = userId + "contacts/";
+        let response = await fetch(BASE_URL + contactsPath + ".json");
+        let responseToJson = await response.json();
+        pushUserContactsToArray(responseToJson);
+    }
 }
 
 function pushUserContactsToArray(responseToJson) {
@@ -87,14 +91,17 @@ function pushUserContactsToArray(responseToJson) {
   }
 }
 
-//Tasks
 async function loadTasks() {
-  let path = localStorage.getItem("userId");
-  let userId = JSON.parse(path);
-  let tasksPath = userId + "tasks/";
-  let response = await fetch(BASE_URL + tasksPath + ".json");
-  let responseToJson = await response.json();
-  pushUserTaskToArray(responseToJson);
+    if (isGuestUser()) {
+        loadGuestTasks();
+    } else {
+        let path = localStorage.getItem("userId");
+        let userId = JSON.parse(path);
+        let tasksPath = userId + "tasks/";
+        let response = await fetch(BASE_URL + tasksPath + ".json");
+        let responseToJson = await response.json();
+        pushUserTaskToArray(responseToJson);
+    }
 }
 
 // push tasks to array
@@ -107,28 +114,34 @@ function pushUserTaskToArray(responseToJson) {
   }
 }
 
-//username
 async function loadUsername() {
-  let path = localStorage.getItem("userId");
-  let userId = JSON.parse(path);
-  let tasksPath = userId + "username";
-  let response = await fetch(BASE_URL + tasksPath + ".json");
-  let responseToJson = await response.json();
-  document.getElementById('username').innerHTML = responseToJson;
-  let respGreeting = document.getElementById("summary-greeting-name");  
-  if (respGreeting != null) {
-    respGreeting.innerHTML = responseToJson;
-  }
+    if (isGuestUser()) {
+        loadGuestUsername();
+    } else {
+        let path = localStorage.getItem("userId");
+        let userId = JSON.parse(path);
+        let tasksPath = userId + "username";
+        let response = await fetch(BASE_URL + tasksPath + ".json");
+        let responseToJson = await response.json();
+        document.getElementById('username').innerHTML = responseToJson;
+        let respGreeting = document.getElementById("summary-greeting-name");  
+        if (respGreeting != null) {
+            respGreeting.innerHTML = responseToJson;
+        }
+    }
 }
 
-// put tasks to database
 async function putTask(data = {}) {
-  let tasksPath = getUserIdAndPathForTasks();
-  if (taskList.length > 0) {
-    await putTasksInFirebase(data, tasksPath);
-  } else {
-    await putPlaceholderInFirebase(tasksPath);
-  }
+    if (isGuestUser()) {
+        await putGuestTasks(taskList);
+    } else {
+        let tasksPath = getUserIdAndPathForTasks();
+        if (taskList.length > 0) {
+            await putTasksInFirebase(data, tasksPath);
+        } else {
+            await putPlaceholderInFirebase(tasksPath);
+        }
+    }
 }
 
 function getUserIdAndPathForTasks() {
@@ -158,13 +171,17 @@ async function putPlaceholderInFirebase(tasksPath) {
   return (responseToJson = await response.json());
 }
 
-async function putContacts(data = {}) {
-  let contactsPath = getUserIdAndPathForContacts();
-  if (contacts.length > 0) {
-    await putContactsInFirebase(data, contactsPath);
-  } else {
-    await putPlaceholderInFirebase(contactsPath);
-  }
+  async function putContacts(data = {}) {
+    if (isGuestUser()) {
+        await putGuestContacts(contacts);
+    } else {
+        let contactsPath = getUserIdAndPathForContacts();
+        if (contacts.length > 0) {
+            await putContactsInFirebase(data, contactsPath);
+        } else {
+            await putPlaceholderInFirebase(contactsPath);
+        }
+    }
 }
 
 function getUserIdAndPathForContacts() {
@@ -247,6 +264,8 @@ function generateLetters(capitolName) {
 
 //logout from the Site
 function logOut(){
+    clearGuestData();
     localStorage.removeItem("userName");
     localStorage.removeItem("userId");
+    window.location.href = './index.html';
 }

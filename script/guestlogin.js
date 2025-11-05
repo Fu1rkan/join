@@ -34,9 +34,16 @@ function loadGuestTasks() {
     taskList = guestTasksArray; // Setze globale Variable
 }
 
-//add new guest task to localStorage
-function addGuestTasks(guestTasksToSave){
-    let guestTasksString = JSON.stringify(guestTasksToSave);
+// Save guest contacts to localStorage - Name korrigieren
+function putGuestContacts(guestContactsToSave) {
+    const guestContactsString = JSON.stringify(guestContactsToSave);
+    localStorage.setItem("guestContacts", guestContactsString);
+    return Promise.resolve();
+}
+
+// Save guest tasks to localStorage - Name korrigieren  
+function putGuestTasks(guestTasksToSave) {
+    const guestTasksString = JSON.stringify(guestTasksToSave);
     localStorage.setItem("guestTasks", guestTasksString);
     return Promise.resolve();
 }

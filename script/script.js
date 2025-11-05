@@ -69,14 +69,27 @@ function checkLoginValues(currentUserIndex) {
   }
 }
 
-async function loadContacts() {
+/* async function loadContacts() {
   let path = localStorage.getItem("userId");
   let userId = JSON.parse(path);
   let contactsPath = userId + "contacts/";
   let response = await fetch(BASE_URL + contactsPath + ".json");
   let responseToJson = await response.json();
   pushUserContactsToArray(responseToJson);
+} */
+async function loadContacts() {
+    if (isGuestUser()) {
+        loadGuestContacts(); // Verwendet guestContactsArray etc.
+    } else {
+        let path = localStorage.getItem("userId");
+        let userId = JSON.parse(path);
+        let contactsPath = userId + "contacts/";
+        let response = await fetch(BASE_URL + contactsPath + ".json");
+        let responseToJson = await response.json();
+        pushUserContactsToArray(responseToJson);
+    }
 }
+
 
 function pushUserContactsToArray(responseToJson) {
   contacts = [];
@@ -158,13 +171,25 @@ async function putPlaceholderInFirebase(tasksPath) {
   return (responseToJson = await response.json());
 }
 
-async function putContacts(data = {}) {
+/* async function putContacts(data = {}) {
   let contactsPath = getUserIdAndPathForContacts();
   if (contacts.length > 0) {
     await putContactsInFirebase(data, contactsPath);
   } else {
     await putPlaceholderInFirebase(contactsPath);
   }
+} */
+async function putContacts(data = {}) {
+    if (isGuestUser()) {
+        await putGuestContacts(data); // Verwendet guestContactsToSave
+    } else {
+        let contactsPath = getUserIdAndPathForContacts();
+        if (contacts.length > 0) {
+            await putContactsInFirebase(data, contactsPath);
+        } else {
+            await putPlaceholderInFirebase(contactsPath);
+        }
+    }
 }
 
 function getUserIdAndPathForContacts() {
@@ -247,6 +272,7 @@ function generateLetters(capitolName) {
 
 //logout from the Site
 function logOut(){
+      clearGuestData(); // Verwendet currentGuestId, isCurrentUserGuest
     localStorage.removeItem("userName");
     localStorage.removeItem("userId");
 }

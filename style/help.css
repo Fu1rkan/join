@@ -20,9 +20,9 @@
 }
 
 .go_back {
-  position: fixed;
+  position: absolute;
   top: 204px;
-  left: 1272px;
+  left: 90%;
   opacity: 1;
   height: 37px;
   width: 37px;

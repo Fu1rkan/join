@@ -36,14 +36,14 @@ function loadGuestTasks() {
 
 // Save guest contacts to localStorage - Name korrigieren
 function putGuestContacts(guestContactsToSave) {
-    const guestContactsString = JSON.stringify(guestContactsToSave);
+    let guestContactsString = JSON.stringify(guestContactsToSave);
     localStorage.setItem("guestContacts", guestContactsString);
     return Promise.resolve();
 }
 
 // Save guest tasks to localStorage - Name korrigieren  
 function putGuestTasks(guestTasksToSave) {
-    const guestTasksString = JSON.stringify(guestTasksToSave);
+    let guestTasksString = JSON.stringify(guestTasksToSave);
     localStorage.setItem("guestTasks", guestTasksString);
     return Promise.resolve();
 }

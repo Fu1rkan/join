@@ -113,9 +113,19 @@ a {
   z-index: -1;
 }
 
-.t_t_150{
+.t_t_150 {
   opacity: 0;
   transform: translateX(150%) !important;
+}
+
+@media (max-width: 950) {
+  h2 {
+    font-size: 47px;
+  }
+  
+  h4 {
+    font-size: 27px;
+  }
 }
 
 @media (max-width: 800px) {

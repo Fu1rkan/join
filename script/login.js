@@ -223,6 +223,7 @@ function openSummary() {
 
 // Guest login without guest user data
 function openGuestSummary() {
+    initializeGuestSession(); // Guest initialization
     window.location.href = './summary.html?showOverlay=true&loginType=guest';
 }
 

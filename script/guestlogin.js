@@ -100,12 +100,3 @@ function getGuestTasksCount() {
     let guestTasksCountArray = guestTasksForCount ? JSON.parse(guestTasksForCount) : [];
     return guestTasksCountArray.length;
 }
-
-
-
-
-
-
-
-
-

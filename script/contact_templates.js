@@ -1,3 +1,9 @@
+/**
+ * Renders the contact list template for a specific letter section
+ * @param {Array} keys - Array of letters that have contacts
+ * @param {string} letter - The letter for this section
+ * @returns {string} HTML template for contact list section with header and separator
+ */
 function contactListTemplates(keys, letter) {
     return `<div class="contact-list-head ${keys.includes(letter) ? "" : " d_none"}">
         <h4 class="contact-list-section-head">${letter}</h4>
@@ -8,6 +14,13 @@ function contactListTemplates(keys, letter) {
     <ul id="letter_${letter.toLowerCase()}" class="list-items"></ul>`
 }
 
+/**
+ * Renders a small contact template for the contact list
+ * @param {Array} array - Array of contacts for the current letter group
+ * @param {number} index - Index of the contact within the letter group
+ * @param {string} keys - The letter key for the contact group
+ * @returns {string} HTML template for a small contact card with avatar and basic info
+ */
 function getSmallContactTemplate(array, index, keys) {
     return `<li>
                 <div id="letter_${keys}_${index}" onclick="toggleContact('${array[index].name}', '${array[index].email}', '${keys}', '${index}')" class="contact-container contact-container-hoverclass">
@@ -22,6 +35,16 @@ function getSmallContactTemplate(array, index, keys) {
             </li>`
 }
 
+/**
+ * Renders the detailed contact template with full contact information
+ * @param {Object} contact - The contact object containing all contact details
+ * @param {string} contact.name - Contact's full name
+ * @param {string} contact.email - Contact's email address
+ * @param {string} contact.phone - Contact's phone number
+ * @param {string} contact.fillColor - Background color for contact avatar
+ * @param {string} contact.nameLetters - Initials for contact avatar
+ * @returns {string} Complete HTML template for detailed contact view with edit/delete options
+ */
 function getContactTemplate(contact) {
     return `<div id="contact_info_big_template" class="contact-info-big-container fade-in-template">
     <section class="contact-info-big">
@@ -100,6 +123,10 @@ function getContactTemplate(contact) {
 </div>`;
 }
 
+/**
+ * Renders the add new contact overlay card template
+ * @returns {string} Complete HTML template for the add contact overlay with form fields and buttons
+ */
 function showAddContactCard() {
     return `<div class="overlay-edit-contact-card-container" onclick="hideAddContactCard()">
     <section id="overlay_add_contact_card" class="overlay-card" onclick="event.stopPropagation()">
@@ -273,6 +300,16 @@ function showAddContactCard() {
     </section>`;
 }
 
+/**
+ * Renders the edit contact overlay card template with pre-filled contact data
+ * @param {Object} toEditContact - The contact object to be edited
+ * @param {string} toEditContact.name - Contact's current name
+ * @param {string} toEditContact.email - Contact's current email
+ * @param {string} toEditContact.phone - Contact's current phone number
+ * @param {string} toEditContact.fillColor - Contact's avatar background color
+ * @param {string} toEditContact.nameLetters - Contact's initials for avatar
+ * @returns {string} Complete HTML template for edit contact overlay with pre-filled form and mobile menu
+ */
 function showContactEditCard(toEditContact) {
     return `<div id="overlay_edit_contact_card_container" class="overlay-edit-contact-card-container" onclick="hideEditContactCard(), event.stopPropagation()">
     <section id="overlay_edit_contact_card" class="overlay-card" onclick="event.stopPropagation()">

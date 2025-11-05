@@ -3,7 +3,11 @@ let urlParams = new URLSearchParams(window.location.search);
 let showOverlay = urlParams.get('showOverlay');
 let loginType = urlParams.get('loginType');
 
-
+/**
+ * Initializes the summary page with all necessary data and UI updates
+ * Loads tasks, username, profile icon, card information and sets up greeting updates
+ * @returns {Promise<void>} Promise that resolves when initialization is complete
+ */
 async function summaryInit() {
     // await init();
     await loadTasks();
@@ -14,7 +18,11 @@ async function summaryInit() {
     setInterval(updateGreeting, 60);
 }
 
-
+/**
+ * Checks URL parameters and displays animated overlay for mobile devices
+ * Shows different overlay templates based on user type (guest or regular user)
+ * Automatically hides overlay after animation and cleans up URL parameters
+ */
 function checkAndShowOverlay() {
     if (showOverlay === 'true' && window.innerWidth < 951) {
         let overlay = document.getElementById('animated_overlay_id');
@@ -37,7 +45,10 @@ function checkAndShowOverlay() {
     window.history.replaceState(null, '', newUrl);
 }
 
-
+/**
+ * Redirects the user to the board page
+ * Opens the board.html page in the current window
+ */
 function openBoard() {
     window.location.href = './board.html';
 }
@@ -45,7 +56,11 @@ function openBoard() {
 
 checkAndShowOverlay();
 
-
+/**
+ * Returns appropriate greeting text based on the hour of day
+ * @param {number} h - Hour of the day (0-23)
+ * @returns {string} Greeting message corresponding to the time of day
+ */
 function getGreetingByHour(h) {
     if (h >= 5 && h <= 11) return "Good morning,";
     if (h >= 12 && h <= 16) return "Good afternoon,";
@@ -53,7 +68,10 @@ function getGreetingByHour(h) {
     return "Good night,";
 }
 
-
+/**
+ * Updates the greeting text elements based on current time
+ * Updates both main greeting and responsive greeting elements if they exist
+ */
 function updateGreeting() {
     let now = new Date();
     let hour = now.getHours();
@@ -64,13 +82,20 @@ function updateGreeting() {
     }
 }
 
-
+/**
+ * Loads and displays card information on the summary page
+ * Filters tasks by category and renders upcoming deadline information
+ * @returns {Promise<void>} Promise that resolves when card information is loaded
+ */
 async function loadCardInfos() {
     filterTasksByCategory();
     renderUpcomingDeadline();
 }
 
-
+/**
+ * Filters tasks by their categories and renders counts to summary cards
+ * Categorizes tasks into to-do, in-progress, await-feedback, and done
+ */
 function filterTasksByCategory() {
     let toDos = taskList.filter(t => t.category == 'to-do');
     let inProgressTasks = taskList.filter(t => t.category == 'in-progress');
@@ -85,7 +110,18 @@ function filterTasksByCategory() {
     renderCountstoSummaryCards(allTasks, allToDoTasks, tasksInProgress, tasksInAwaitingFeedback, allDoneTasks, toDos, inProgressTasks, awaitFeddbackTasks, doneTasks);
 }
 
-
+/**
+ * Renders task counts to the summary cards in the UI
+ * @param {HTMLElement} allTasks - Element to display total task count
+ * @param {HTMLElement} allToDoTasks - Element to display to-do task count
+ * @param {HTMLElement} tasksInProgress - Element to display in-progress task count
+ * @param {HTMLElement} tasksInAwaitingFeedback - Element to display awaiting feedback task count
+ * @param {HTMLElement} allDoneTasks - Element to display done task count
+ * @param {Array} toDos - Array of to-do tasks
+ * @param {Array} inProgressTasks - Array of in-progress tasks
+ * @param {Array} awaitFeddbackTasks - Array of awaiting feedback tasks
+ * @param {Array} doneTasks - Array of done tasks
+ */
 function renderCountstoSummaryCards(allTasks, allToDoTasks, tasksInProgress, tasksInAwaitingFeedback, allDoneTasks, toDos, inProgressTasks, awaitFeddbackTasks, doneTasks) {
     allTasks.innerHTML = taskList.length;
     allToDoTasks.innerHTML = toDos.length;
@@ -94,7 +130,11 @@ function renderCountstoSummaryCards(allTasks, allToDoTasks, tasksInProgress, tas
     allDoneTasks.innerHTML = doneTasks.length;
 }
 
-
+/**
+ * Renders the upcoming deadline information and urgent task count
+ * Finds the earliest deadline from all tasks and displays it in a formatted date
+ * Also displays the count of urgent priority tasks
+ */
 function renderUpcomingDeadline() {
     let dateOfDeadline = document.getElementById('date-of-deadline');
     let allTasksFromPriority = document.getElementById('all-tasks-from-priority');

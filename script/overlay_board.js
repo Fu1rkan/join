@@ -1,16 +1,28 @@
 const overlayBoardRef = document.getElementById('overlay_board');
 const overlayBoardContentRef = document.getElementById('overlay_board_content');
 
+/**
+ * Opens the add task overlay and loads task data
+ * Displays the board add task template and initializes task loading
+ */
 function openAddTask() {
   overlayBoardRef.classList.remove('d_none');
   overlayBoardContentRef.innerHTML = boardAddTaskTemplate();
   loadTasks();
 }
 
+/**
+ * Closes the overlay board by adding the hidden class
+ * Hides the overlay board interface from view
+ */
 function closeOverlayBoard() {
   overlayBoardRef.classList.add('d_none');
 }
 
+/**
+ * Returns the HTML template for the board add task overlay
+ * @returns {string} Complete HTML template for the add task form in the board overlay
+ */
 function boardAddTaskTemplate() {
   return `<div class="add-task-main add-task-card" onclick="event.stopPropagation(); closeDropdownMenus(event)">
     <div class="add-task-header">
@@ -319,5 +331,3 @@ function boardAddTaskTemplate() {
     </form>
 </div>`
 }
-
-

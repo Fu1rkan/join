@@ -3,11 +3,18 @@ const BASE_URL = "https://testjoin-36a23-default-rtdb.europe-west1.firebasedatab
 let contacts = [];
 let taskList = [];
 
+/**
+ * Prevents event bubbling by stopping event propagation
+ * @param {Event} event - The event object to stop propagation for
+ */
 function stopPropagation(event) {
     event.stopPropagation();
 }
 
-// Toggle Burger Menu functionality
+/**
+ * Toggles the visibility of the burger menu with animation
+ * Shows/hides the profile menu with smooth transitions
+ */
 function toggleBurgerMenu() {
     let menu = document.getElementById('profile-menu');
     if (menu.classList.contains('show')) {
@@ -23,6 +30,11 @@ function toggleBurgerMenu() {
     }
 }
 
+/**
+ * Escapes HTML special characters to prevent XSS attacks
+ * @param {string} str - The string to escape HTML characters from
+ * @returns {string} The escaped string safe for HTML insertion
+ */
 function escapeHTML(str) {
     return str
         .replace(/&/g, "&amp;")
@@ -32,12 +44,22 @@ function escapeHTML(str) {
         .replace(/'/g, "&#039;");
 }
 
+/**
+ * Renders the profile header icon with user's initials from localStorage
+ * @param {string} id - The ID of the element to render the profile icon in
+ */
 function rederProfilHeaderIcon(id) {
     let userNameLetters = JSON.parse(localStorage.getItem("userName"));
     let profilIconRef = document.getElementById(id);
     profilIconRef.innerHTML = `<p>${userNameLetters}</p>`
 }
 
+/**
+ * Authenticates user credentials against Firebase database
+ * @param {string} email - User's email address
+ * @param {string} password - User's password
+ * @returns {Promise<void>} Promise that resolves when authentication is complete
+ */
 async function getUsers(email, password) {
   let response = await fetch(BASE_URL + ".json");
   let responseToJson = await response.json();
@@ -59,6 +81,10 @@ async function getUsers(email, password) {
   }
 }
 
+/**
+ * Validates login credentials and displays error messages if authentication fails
+ * @param {number} currentUserIndex - Index of the user in the database (-1 if not found)
+ */
 function checkLoginValues(currentUserIndex) {
   if (currentUserIndex === -1) {
     document.getElementById('required_password').innerHTML = `<p id="password_invalid_field" class="required-field-text">LogIn failed. Please check your email and password.</p>`;
@@ -69,6 +95,10 @@ function checkLoginValues(currentUserIndex) {
   }
 }
 
+/**
+ * Loads contacts from Firebase database or guest data depending on user type
+ * @returns {Promise<void>} Promise that resolves when contacts are loaded
+ */
 async function loadContacts() {
     if (isGuestUser()) {
         loadGuestContacts();
@@ -82,6 +112,10 @@ async function loadContacts() {
     }
 }
 
+/**
+ * Populates the contacts array with data from Firebase response
+ * @param {Object|null} responseToJson - The JSON response from Firebase containing contacts data
+ */
 function pushUserContactsToArray(responseToJson) {
   contacts = [];
   if (responseToJson != null) {
@@ -91,6 +125,10 @@ function pushUserContactsToArray(responseToJson) {
   }
 }
 
+/**
+ * Loads tasks from Firebase database or guest data depending on user type
+ * @returns {Promise<void>} Promise that resolves when tasks are loaded
+ */
 async function loadTasks() {
     if (isGuestUser()) {
         loadGuestTasks();
@@ -104,7 +142,10 @@ async function loadTasks() {
     }
 }
 
-// push tasks to array
+/**
+ * Populates the taskList array with data from Firebase response
+ * @param {Object|null} responseToJson - The JSON response from Firebase containing tasks data
+ */
 function pushUserTaskToArray(responseToJson) {
   if (responseToJson != null) {
     taskList = [];
@@ -114,6 +155,11 @@ function pushUserTaskToArray(responseToJson) {
   }
 }
 
+/**
+ * Loads and displays username from Firebase or guest data
+ * Updates username display and greeting elements if they exist
+ * @returns {Promise<void>} Promise that resolves when username is loaded
+ */
 async function loadUsername() {
     if (isGuestUser()) {
         loadGuestUsername();
@@ -131,6 +177,11 @@ async function loadUsername() {
     }
 }
 
+/**
+ * Saves tasks to Firebase database or guest storage
+ * @param {Object} data - The task data to save (defaults to empty object)
+ * @returns {Promise<void>} Promise that resolves when tasks are saved
+ */
 async function putTask(data = {}) {
     if (isGuestUser()) {
         await putGuestTasks(taskList);
@@ -144,12 +195,22 @@ async function putTask(data = {}) {
     }
 }
 
+/**
+ * Constructs the Firebase path for user's tasks based on stored user ID
+ * @returns {string} The Firebase path for the user's tasks
+ */
 function getUserIdAndPathForTasks() {
   let path = localStorage.getItem("userId");
   let userId = JSON.parse(path);
   return userId + "tasks/";
 }
 
+/**
+ * Sends task data to Firebase database via PUT request
+ * @param {Object} data - The task data to save
+ * @param {string} tasksPath - The Firebase path for tasks
+ * @returns {Promise<Object>} Promise that resolves with Firebase response
+ */
 async function putTasksInFirebase(data, tasksPath) {
   let response = await fetch(BASE_URL + tasksPath + ".json", {
     method: "PUT",
@@ -159,6 +220,11 @@ async function putTasksInFirebase(data, tasksPath) {
   return (responseToJson = await response.json());
 }
 
+/**
+ * Saves a placeholder object to Firebase when no actual data exists
+ * @param {string} tasksPath - The Firebase path to save the placeholder
+ * @returns {Promise<Object>} Promise that resolves with Firebase response
+ */
 async function putPlaceholderInFirebase(tasksPath) {
   let data = {
     "placeholder": "placeholder"
@@ -171,7 +237,12 @@ async function putPlaceholderInFirebase(tasksPath) {
   return (responseToJson = await response.json());
 }
 
-  async function putContacts(data = {}) {
+/**
+ * Saves contacts to Firebase database or guest storage
+ * @param {Object} data - The contact data to save (defaults to empty object)
+ * @returns {Promise<void>} Promise that resolves when contacts are saved
+ */
+async function putContacts(data = {}) {
     if (isGuestUser()) {
         await putGuestContacts(contacts);
     } else {
@@ -184,12 +255,22 @@ async function putPlaceholderInFirebase(tasksPath) {
     }
 }
 
+/**
+ * Constructs the Firebase path for user's contacts based on stored user ID
+ * @returns {string} The Firebase path for the user's contacts
+ */
 function getUserIdAndPathForContacts() {
   let path = localStorage.getItem("userId");
   let userId = JSON.parse(path);
   return userId + "contacts/";
 }
 
+/**
+ * Sends contact data to Firebase database via PUT request
+ * @param {Object} data - The contact data to save
+ * @param {string} contactsPath - The Firebase path for contacts
+ * @returns {Promise<Object>} Promise that resolves with Firebase response
+ */
 async function putContactsInFirebase(data, contactsPath) {
   let response = await fetch(BASE_URL + contactsPath + ".json", {
     method: "PUT",
@@ -199,6 +280,11 @@ async function putContactsInFirebase(data, contactsPath) {
   return (responseToJson = await response.json());
 }
 
+/**
+ * Saves a placeholder object to Firebase when no contact data exists
+ * @param {string} contactsPath - The Firebase path to save the placeholder
+ * @returns {Promise<Object>} Promise that resolves with Firebase response
+ */
 async function putPlaceholderInFirebase(contactsPath) {
   let data = {
     "placeholder": "placeholder"
@@ -211,7 +297,13 @@ async function putPlaceholderInFirebase(contactsPath) {
   return (responseToJson = await response.json());
 }
 
-// add new user 
+/**
+ * Creates a new user account in Firebase database
+ * @param {string} username - The user's full name
+ * @param {string} email - The user's email address
+ * @param {string} password - The user's password
+ * @returns {Promise<Object>} Promise that resolves with Firebase response
+ */
 async function addNewUser(username, email, password) {
   let capitalizedName = generatecapitalizedName(username);
   let userNameLetters = generateLetters(capitalizedName);
@@ -233,6 +325,11 @@ async function addNewUser(username, email, password) {
   return (responseToJson = await response.json());
 }
 
+/**
+ * Converts a name string to proper capitalization format
+ * @param {string} createName - The name string to capitalize
+ * @returns {string} The properly capitalized name
+ */
 function generatecapitalizedName(createName) {
   let nameArray = createName.split(" ");
   let capitalizedArray = nameArray.map((word) => {
@@ -248,6 +345,11 @@ function generatecapitalizedName(createName) {
   return resultFullName;
 }
 
+/**
+ * Generates user initials from a capitalized name
+ * @param {string} capitolName - The capitalized full name
+ * @returns {string} User initials (first and last name letters, or single letter)
+ */
 function generateLetters(capitolName) {
   let createtFullName = capitolName;
   let nameArray = createtFullName.split(" ");
@@ -262,7 +364,10 @@ function generateLetters(capitolName) {
   }
 }
 
-//logout from the Site
+/**
+ * Logs out the current user and redirects to the login page
+ * Clears guest data, removes localStorage items, and navigates to index.html
+ */
 function logOut(){
     clearGuestData();
     localStorage.removeItem("userName");

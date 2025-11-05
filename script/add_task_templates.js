@@ -1,9 +1,20 @@
+/**
+ * Renders a template for a currently assigned contact with avatar
+ * @param {number} index - The index of the contact in the currentAssignedTo array
+ * @returns {string} HTML template for assigned contact with colored avatar and initials
+ */
 function getCurrentAssignedContactTemplate(index) {
     return `<div class="current-assigned-to-contact" style="background-color:${currentAssignedTo[index].fillColor}">
                                         <p>${currentAssignedTo[index].nameLetters}</p>
                                     </div>`
 }
 
+/**
+ * Renders a list item template for the assigned contacts dropdown
+ * @param {Array} array - Array of contacts to choose from
+ * @param {number} index - The index of the contact in the array
+ * @returns {string} HTML template for contact list item with avatar, name, and checkbox
+ */
 function getAddTaskAssignedToListItem(array, index) {
     return `<li id="add_task_assigned_to_contact_${index}"
                                             class="add-task-form-assigned-to-dropdown-contacts-default-hover-class"
@@ -36,6 +47,11 @@ function getAddTaskAssignedToListItem(array, index) {
                                         </li>`
 }
 
+/**
+ * Renders a template for a subtask list item with edit and delete functionality
+ * @param {number} index - The index of the subtask in the currentCreatedSubtasks array
+ * @returns {string} HTML template for subtask with title, edit/delete buttons, and input field for editing
+ */
 function getSubtaskTemplate(index) {
     return `<li id="current_subtask_li_${index}" onclick="showSubtaskMenuOptions(${index})" ondblclick="changeCurrentSubtask(${index})"
     class="add-task-form-subtasks-dropdown-subtasks-list-item">

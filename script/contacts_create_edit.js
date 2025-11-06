@@ -45,6 +45,8 @@ function animationOverlayCardDesktop(toEditContact) {
     overlayContentRef.innerHTML = showContactEditCard(toEditContact);
     const editContactCardRef = document.getElementById('overlay_edit_contact_card');
     animationOverlayCardFadeIn(editContactCardRef);
+    // Setup Enter key functionality for the edit form
+    setupEnterKeyContact(toEditContact.name, toEditContact.email);
 }
 
 /**
@@ -59,6 +61,8 @@ function animationOverlayCardMobile(toEditContact) {
     contactCardContainerRef.classList.add('z-2');
     const editContactCardRef = document.getElementById('overlay_edit_contact_card');
     animationOverlayCardFadeIn(editContactCardRef);
+    // Setup Enter key functionality for the edit form
+    setupEnterKeyContact(toEditContact.name, toEditContact.email);
 }
 
 /**
@@ -78,6 +82,8 @@ function animationOverlayCardFadeOut(target) {
     target.classList.remove('overlay-card-fadeIn');
     target.classList.add('overlay-card-fadeOut');
     setTimeout(() => {
+        // Remove Enter key listener when closing overlay
+        removeEnterKeyContactListener();
         closeOverlay();
     }, 300)
 }
@@ -95,6 +101,8 @@ function hideEditContactCard() {
         editContactCardRef.classList.add('overlay-card-fadeOut');
         setTimeout(() => {
             editCardContainerRef.classList.add('d_none');
+            // Remove Enter key listener when closing overlay
+            removeEnterKeyContactListener();
         }, 300)
     } else {
         const editContactCardRef = document.getElementById('overlay_edit_contact_card');

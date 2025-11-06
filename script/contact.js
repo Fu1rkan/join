@@ -9,7 +9,7 @@ const templateRef = document.getElementById("contact_template");
  * Initializes the contacts page with data loading and UI setup
  * Loads contacts, renders profile header icon, and filters/displays contacts
  * @returns {Promise<void>} Promise that resolves when initialization is complete
- */
+*/
 async function initContacts() {
     await loadContacts();
     rederProfilHeaderIcon('profil_header_contacts');
@@ -19,17 +19,19 @@ async function initContacts() {
 /**
  * Opens the contact overlay by removing the hidden class
  * Makes the overlay visible to the user
- */
+*/
 function openOverlay() {
     overlayRef.classList.remove('d_none');
 }
 
 /**
  * Closes the contact overlay by adding the hidden class
- * Hides the overlay from the user view
+ * Hides the overlay from the user view and cleans up event listeners
  */
 function closeOverlay() {
     overlayRef.classList.add('d_none');
+    // Remove Enter key listener when closing overlay
+    removeEnterKeyContactListener();
 }
 
 /**
@@ -331,6 +333,8 @@ function openResponsiveContactEditMenu(name, email, phone) {
     smallResponsivMenuRef.classList.remove('animate-smallMenuOut');
     smallResponsivMenuRef.classList.remove('d_none');
     smallResponsivMenuRef.classList.add('animate-smallMenuIn');
+    // Setup Enter key functionality for the edit form
+    setupEnterKeyContact(toEditContact.name, toEditContact.email);
 }
 
 /**
@@ -346,8 +350,39 @@ function closeResponsiveContactEditMenu(time = 290) {
             smallResponsivMenuRef.classList.add('animate-smallMenuOut');
             setTimeout(() => {
                 smallResponsivMenuRef.classList.add('d_none');
+                // Remove Enter key listener when closing overlay
+                removeEnterKeyContactListener();
                 closeOverlay();
             }, time);
         }
+    }
+}
+
+/**
+ * Sets up Enter key functionality for contact editing
+ * Allows saving contact changes by pressing Enter key in any input field
+ * @param {string} originalName - The original contact name for identification
+ * @param {string} originalEmail - The original contact email for identification
+ */
+function setupEnterKeyContact(originalName, originalEmail) {
+    document.removeEventListener('keypress', handleEnterKeyForContact);
+    function handleEnterKeyForContact(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            saveChangedContact(originalName, originalEmail);
+        }
+    }
+    document.addEventListener('keypress', handleEnterKeyForContact);
+    setupEnterKeyContact.currentHandler = handleEnterKeyForContact;
+}
+
+/**
+ * Removes the Enter key event listener for contact editing
+ * Cleans up the event listener to prevent memory leaks
+ */
+function removeEnterKeyContactListener() {
+    if (setupEnterKeyContact.currentHandler) {
+        document.removeEventListener('keypress', setupEnterKeyContact.currentHandler);
+        setupEnterKeyContact.currentHandler = null;
     }
 }

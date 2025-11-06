@@ -43,7 +43,7 @@ function loadGuestContacts(){
 function loadGuestTasks() {
     let guestTasksData = localStorage.getItem("guestTasks");
     let guestTasksArray = guestTasksData ? JSON.parse(guestTasksData) : [];
-    taskList = guestTasksArray; // Setze globale Variable
+    taskList = guestTasksArray;
 }
 
 /**

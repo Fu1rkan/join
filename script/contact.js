@@ -364,12 +364,17 @@ function closeResponsiveContactEditMenu(time = 290) {
  * @param {string} originalName - The original contact name for identification
  * @param {string} originalEmail - The original contact email for identification
  */
-function setupEnterKeyContact(originalName, originalEmail) {
+function setupEnterKeyContact(originalName, originalEmail, editForm = "edit") {
     document.removeEventListener('keypress', handleEnterKeyForContact);
     function handleEnterKeyForContact(event) {
         if (event.key === 'Enter') {
             event.preventDefault();
-            saveChangedContact(originalName, originalEmail);
+            if (editForm == "edit") {
+                saveChangedContact(originalName, originalEmail);
+            } else {
+                createNewContact(originalName, originalEmail)
+            }
+
         }
     }
     document.addEventListener('keypress', handleEnterKeyForContact);

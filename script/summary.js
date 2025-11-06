@@ -9,7 +9,6 @@ let loginType = urlParams.get('loginType');
  * @returns {Promise<void>} Promise that resolves when initialization is complete
  */
 async function summaryInit() {
-    // await init();
     await loadTasks();
     await loadUsername();
     rederProfilHeaderIcon('profil_header_summary');
@@ -20,27 +19,39 @@ async function summaryInit() {
 
 /**
  * Checks URL parameters and displays animated overlay for mobile devices
- * Shows different overlay templates based on user type (guest or regular user)
- * Automatically hides overlay after animation and cleans up URL parameters
  */
 function checkAndShowOverlay() {
     if (showOverlay === 'true' && window.innerWidth < 951) {
-        let overlay = document.getElementById('animated_overlay_id');
-        let overlayBg = document.getElementById('animated-overlay-parent');
-        if (loginType === 'guest') {
-            overlay.innerHTML = summaryGuestOverlayTemplate();
-        } else {
-            overlay.innerHTML = summaryOverlayTemplate();
-        }
-        overlay.classList.remove('o_0');
-        overlayBg.classList.remove('d_none');
-        setTimeout(() => {
-            overlay.classList.add('o_0');
-            setTimeout(()=>{
-                overlayBg.classList.add('d_none');
-            }, 1000)
-        }, 1500);
+        showMobileOverlay();
     }
+    cleanUpUrl();
+}
+
+/**
+ * Shows animated overlay for mobile devices with appropriate template
+ * @description Renders overlay based on loginType, shows for 1.5s, then fades out over 1s
+ * @throws {Error} If required DOM elements are not found
+ */
+function showMobileOverlay() {
+    let overlay = document.getElementById('animated_overlay_id');
+    let overlayBg = document.getElementById('animated-overlay-parent');
+    
+    overlay.innerHTML = loginType === 'guest' ? summaryGuestOverlayTemplate() : summaryOverlayTemplate();
+    overlay.classList.remove('o_0');
+    overlayBg.classList.remove('d_none');
+    
+    setTimeout(() => {
+        overlay.classList.add('o_0');
+        setTimeout(() => overlayBg.classList.add('d_none'), 1000);
+    }, 1500);
+}
+
+/**
+ * Automatically hides overlay after animation and cleans up URL parameters
+ * @description Removes URL parameters from address bar without page reload
+ * @example cleanUpUrl(); // Changes /summary.html?showOverlay=true to /summary.html
+ */
+function cleanUpUrl() {
     let newUrl = window.location.pathname;
     window.history.replaceState(null, '', newUrl);
 }
@@ -139,20 +150,24 @@ function renderUpcomingDeadline() {
     let dateOfDeadline = document.getElementById('date-of-deadline');
     let allTasksFromPriority = document.getElementById('all-tasks-from-priority');
     let urgentTasks = taskList.filter(t => t.priority == 'urgent');
-    let options = { year: 'numeric', month: 'long', day: 'numeric' };
-
-    if (taskList.length > 0) {
-        let dates = Math.min(...taskList.map(d => new Date(d.date)));
-        let smallest = taskList.filter(d => new Date(d.date).getTime() === dates);
-        let dateStr = smallest[0].date.replace(/-/g, "");
-        let date = new Date(
-            dateStr.slice(0, 4),
-            dateStr.slice(4, 6) - 1,
-            dateStr.slice(6, 8)
-        );
-        dateOfDeadline.innerHTML = date.toLocaleDateString('en-US', options);
-    } else {
-        dateOfDeadline.innerHTML = 'no Tasks'
-    }
+    
+    dateOfDeadline.innerHTML = taskList.length > 0 ? getFormattedEarliestDate() : 'no Tasks';
     allTasksFromPriority.innerHTML = urgentTasks.length;
+}
+
+/**
+ * Gets the earliest deadline from all tasks and returns it formatted
+ * @returns {string} Formatted date string of earliest deadline
+ */
+function getFormattedEarliestDate() {
+    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+    let dates = Math.min(...taskList.map(d => new Date(d.date)));
+    let smallest = taskList.filter(d => new Date(d.date).getTime() === dates);
+    let dateStr = smallest[0].date.replace(/-/g, "");
+    let date = new Date(
+        dateStr.slice(0, 4),
+        dateStr.slice(4, 6) - 1,
+        dateStr.slice(6, 8)
+    );
+    return date.toLocaleDateString('en-US', options);
 }

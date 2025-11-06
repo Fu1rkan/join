@@ -20,6 +20,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transition: 125ms ease-in-out;
     transform: translateX(100%);
     z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tf_tlx100 {

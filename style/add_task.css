@@ -169,6 +169,8 @@
     gap: 8px;
     border-radius: 10px;
     border-width: 0;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .add-task-priority-btns-hover-class:hover {
@@ -176,15 +178,15 @@
 }
 
 .add-task-priority-btn-urgent-active {
-    background-color: #FF3D00;
+    background-color: #FF3D00 !important;
 }
 
 .add-task-priority-btn-medium-active {
-    background-color: #FFA800;
+    background-color: #FFA800 !important;
 }
 
 .add-task-priority-btn-low-active {
-    background-color: #7AE229;
+    background-color: #7AE229 !important;
 }
 
 .add-task-priority-btn-urgent-active p,
@@ -616,6 +618,7 @@
 #add_task_subtasks {
     font-size: 20px;
     font-weight: 400;
+    background-color: white;
 }
 
 #add_task_description {

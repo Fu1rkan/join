@@ -22,7 +22,7 @@
 
 .add-task-main {
     max-width: calc(1440px - 232px);
-    padding: 60px 80px 20px 80px;
+    padding: 60px 80px 60px 80px;
     z-index: 1;
 }
 
@@ -159,6 +159,10 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-btns button:hover{
+    transform: translateY(1px);
 }
 
 .add-task-priority-btns button {
@@ -421,10 +425,15 @@
     pointer-events: none;
 }
 
-.add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title,
+.add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title{
+    font-size: 16px;
+    font-weight: 400;
+}
+
 .add-task-form-subtasks-dropdown-subtasks-list-item-subtask-input {
     font-size: 16px;
     font-weight: 400;
+    background-color: white;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-item {
@@ -577,6 +586,14 @@
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button {
+    background-color: transparent;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button:hover {
+    background-color: #EEEEEE;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-item input {

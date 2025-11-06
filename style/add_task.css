@@ -522,9 +522,11 @@
     stroke: #091931;
 }
 
-.add-task-form-clear-btn>p {
+.add-task-form-clear-btn>p,
+.add-task-form-input-placeholder-default::placeholder,
+.add-task-form-input-placeholder-black::placeholder {
     font-size: 20px;
-    font-weight: 400px;
+    font-weight: 400;
 }
 
 .add-task-form-create-btn {
@@ -558,8 +560,6 @@
 
 .add-task-form-input-placeholder-default::placeholder,
 .add-task-form-input-placeholder-black::placeholder {
-    font-size: 20px;
-    font-weight: 400;
     color: #D1D1D1;
 }
 

@@ -72,7 +72,7 @@ function setMenuPosition(profileMenu, profileButton) {
  */
 function getResponsiveOffsets() {
     if (window.innerWidth <= 950) {
-        return { top: -95, left: 10 };
+        return { top: -75, left: 10 };
     } else if (window.innerWidth <= 1400) {
         return { top: -75, left: 10 };
     } else {

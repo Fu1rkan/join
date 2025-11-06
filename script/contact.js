@@ -360,17 +360,24 @@ function closeResponsiveContactEditMenu(time = 290) {
 }
 
 /**
- * Sets up Enter key functionality for contact editing
- * Allows saving contact changes by pressing Enter key in any input field
- * @param {string} originalName - The original contact name for identification
- * @param {string} originalEmail - The original contact email for identification
+ * Sets up Enter key functionality for contact forms (both editing and creating)
+ * Allows saving contact changes or creating new contacts by pressing Enter key in any input field
+ * Automatically removes previous event listeners to prevent duplicates
+ * @param {string} originalName - The original contact name for identification (used in edit mode)
+ * @param {string} originalEmail - The original contact email for identification (used in edit mode)
+ * @param {string} editForm - The form mode: "edit" for editing existing contacts, other values for creating new contacts
  */
-function setupEnterKeyContact(originalName, originalEmail) {
+function setupEnterKeyContact(originalName, originalEmail, editForm = "edit") {
     document.removeEventListener('keypress', handleEnterKeyForContact);
     function handleEnterKeyForContact(event) {
         if (event.key === 'Enter') {
             event.preventDefault();
-            saveChangedContact(originalName, originalEmail);
+            if (editForm == "edit") {
+                saveChangedContact(originalName, originalEmail);
+            } else {
+                createNewContact(originalName, originalEmail)
+            }
+
         }
     }
     document.addEventListener('keypress', handleEnterKeyForContact);

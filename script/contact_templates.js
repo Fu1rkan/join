@@ -55,7 +55,7 @@ function getContactTemplate(contact) {
             <p class="contact-info-big-name">${contact.name}</p>
             <div class="contact-info-big-edit">
                 <button class="contact-btn contact-edit-btn"
-                    onclick="editContact('${contact.name}', '${contact.email}', '${contact.phone}')">
+                    onclick="editContact('${contact.name}', '${contact.email}')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <mask id="mask0_373102_2514" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                             width="24" height="24">
@@ -447,7 +447,7 @@ function showContactEditCard(toEditContact) {
     </section>
     </div>
         <div id="responsiv_contact_edit_small_menu" class="responsiv-edit-delete-menu d_none" onclick="event.stopPropagation()">
-            <button onclick="editContact('${toEditContact.name}', '${toEditContact.email}', '${toEditContact.phone}', 'true')">
+            <button onclick="editContact('${toEditContact.name}', '${toEditContact.email}', 'true')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <mask id="mask0_71395_18215" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                         width="24" height="24">

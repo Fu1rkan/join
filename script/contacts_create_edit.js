@@ -8,6 +8,7 @@ function addNewContact() {
     overlayContentRef.innerHTML = showAddContactCard();
     const addContactCardRef = document.getElementById('overlay_add_contact_card');
     animationOverlayCardFadeIn(addContactCardRef);
+    setupEnterKeyContact("", "", "add");
 }
 
 /**
@@ -26,7 +27,7 @@ function animationOverlayCardFadeIn(target) {
  * @param {string} phone - The contact's phone number
  * @param {string} mobile - Whether this is a mobile view ("false" by default)
  */
-function editContact(name, email, phone, mobile = "false") {
+function editContact(name, email, mobile = "false") {
     let toEditContact = contacts.find(c => c.name == name && c.email == email);
     overlayRef.classList.remove('d_none', 'overlay-contacts-bckgrnd-animation');
     if (mobile == "false") {
@@ -45,8 +46,6 @@ function animationOverlayCardDesktop(toEditContact) {
     overlayContentRef.innerHTML = showContactEditCard(toEditContact);
     const editContactCardRef = document.getElementById('overlay_edit_contact_card');
     animationOverlayCardFadeIn(editContactCardRef);
-    // Setup Enter key functionality for the edit form
-    setupEnterKeyContact(toEditContact.name, toEditContact.email);
 }
 
 /**
@@ -61,8 +60,6 @@ function animationOverlayCardMobile(toEditContact) {
     contactCardContainerRef.classList.add('z-2');
     const editContactCardRef = document.getElementById('overlay_edit_contact_card');
     animationOverlayCardFadeIn(editContactCardRef);
-    // Setup Enter key functionality for the edit form
-    setupEnterKeyContact(toEditContact.name, toEditContact.email);
 }
 
 /**
@@ -82,8 +79,6 @@ function animationOverlayCardFadeOut(target) {
     target.classList.remove('overlay-card-fadeIn');
     target.classList.add('overlay-card-fadeOut');
     setTimeout(() => {
-        // Remove Enter key listener when closing overlay
-        removeEnterKeyContactListener();
         closeOverlay();
     }, 300)
 }
@@ -101,8 +96,6 @@ function hideEditContactCard() {
         editContactCardRef.classList.add('overlay-card-fadeOut');
         setTimeout(() => {
             editCardContainerRef.classList.add('d_none');
-            // Remove Enter key listener when closing overlay
-            removeEnterKeyContactListener();
         }, 300)
     } else {
         const editContactCardRef = document.getElementById('overlay_edit_contact_card');

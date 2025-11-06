@@ -143,7 +143,6 @@ body {
 /* Navigation profile container - slide-in menu from right side */
 .nav-profile-container {
   position: absolute;
-  top: 0;
   padding: 20px;
   background-color: var(--side-color);
   justify-content: center;
@@ -151,10 +150,10 @@ body {
   border-radius: 16px 0 16px 16px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   z-index: 2;
-  transform: translateY(96px);
   display: none;
   opacity: 0;
 }
+
 
 /* Visible state - slides in from right */
 .nav-profile-container.show {

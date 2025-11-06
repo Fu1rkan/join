@@ -12,6 +12,7 @@ const templateRef = document.getElementById("contact_template");
 */
 async function initContacts() {
     await loadContacts();
+    await loadTasks();
     rederProfilHeaderIcon('profil_header_contacts');
     filterContacts();
 }

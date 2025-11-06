@@ -299,4 +299,22 @@ async function deleteCurrentContact(name, email) {
         closeOverlay();
         backToContactList();
     }
+    deleteContactFromTask(name);
 }
+
+function deleteContactFromTask(nameIndex){    
+    
+    let task = taskList.filter(t => t.participants && t.participants.some(p => p.name === nameIndex));
+    
+    for (let index = 0; index < task.length; index++) {
+        let i = task[index].participants.findIndex(c => c.name == nameIndex);
+        task[index].participants.splice(i, 1);
+        
+        console.log(task[index].participants.length);
+        
+        if (task[index].participants.length == 0) {
+            task[index].participants = false;
+        }
+    }
+    putTask(taskList);
+};

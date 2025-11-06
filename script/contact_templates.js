@@ -269,7 +269,6 @@ function showAddContactCard() {
                     <section class="add-contact-buttons">
                         <button class="add-contact-cancel-btn" onclick="hideAddContactCard(); return false">
                             <p class="add-contact-cancel-btn-txt">Cancel</p>
-                            <!--<div class="add-contact-btn-svg add-contact-btn-cancel-svg"></div>-->
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
                                 <path

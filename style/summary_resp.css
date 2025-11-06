@@ -1,6 +1,15 @@
-@media (max-width: 1440px) {
-    .summary-main {
-        height: calc(100vh - 80px);
+@media (max-width: 1400px) {
+    .first-card-row {
+        height: 130px;
+    }
+
+    .second-card-row{
+        height: 130px;
+    }
+    
+    .third-card-row{
+        height: 130px;
+        gap: 0;
     }
 }
 
@@ -8,6 +17,7 @@
     .summary-main {
         height: calc(100vh - 80px);
         padding: 40px;
+        max-width: 100%;
     }
 
     .greeting-section span {
@@ -20,6 +30,10 @@
 }
 
 @media (max-width: 950px) {
+    .summary-header2 {
+        gap: 8px;
+    }
+
     .greeting-section {
         display: none;
     }
@@ -38,15 +52,19 @@
 @media (max-width: 630px) {
     .summary-main {
         height: calc(100vh - 80px);
-        padding: 40px 20px;
+        padding: 8px 20px;
     }
 
     .summary-header2 {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        gap: 16px;
-        margin-bottom: 48px;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .summary-header2 h2{
+        font-size: 47px;
     }
 
     .summary-header2 div {
@@ -70,7 +88,10 @@
     .first-card-row {
         justify-content: center;
         gap: 10px;
-        height: 140px;
+    }
+
+    .first-card-row h3{
+        font-size: 36px;
     }
 
     .first-card-row span {
@@ -89,8 +110,11 @@
 
     .second-card-row {
         gap: 20px;
-        height: 140px;
         justify-content: center;
+    }
+
+    .second-card-row h3{
+        font-size: 36px;
     }
 
     .second-card-row span {
@@ -99,10 +123,13 @@
 
     .third-card-row {
         max-width: 168px;
-        height: 140px;
         width: 30%;
         gap: 0;
     }
+
+    .third-card-row h3{
+        font-size: 36px;
+    }   
 
     .third-card-row span {
         text-align: center;
@@ -111,19 +138,11 @@
     }
 
     .summary-card {
-        gap: 24px;
+        gap: 16px;
     }
 }
 
 @media (max-width: 450px) {
-
-    .summary-header2 {
-        margin-bottom: 32px;
-    }
-
-    .summary-main {
-        padding: 40px 16px;
-    }
 
     .done-svg {
         width: 21px;
@@ -198,21 +217,5 @@
 
     .third-card-row span {
         font-size: 14px;
-    }
-}
-
-@media (max-height: 750px) {
-    .summary-header2 {
-        margin-bottom: 16px;
-        gap: 8px;
-    }
-
-    .summary-main {
-        padding: 16px;
-        max-width: 1208px;
-    }
-
-    .summary-card {
-        gap: 16px;
     }
 }

@@ -318,12 +318,8 @@ function closeSignUpOverlay() {
 function setupEnterKeyLogin() {
     document.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
-            let email = document.getElementById('email');
-            let password = document.getElementById('password');
-            if (email && password) {
                 event.preventDefault();
                 checkLoginInputFields();
             }
-        }
     });
 }

@@ -1,4 +1,12 @@
-// LogIn page template
+/**
+ * @fileoverview Template functions for rendering HTML content
+ * @description Contains all HTML template functions used throughout the Join application
+ */
+
+/**
+ * Renders the complete login page template with form fields and animations
+ * @returns {string} HTML string for the login page including logo animation, input fields, and buttons
+ */
 function logInTemplate() {
     return `
         <section class="overlay_animation">
@@ -95,7 +103,10 @@ function logInTemplate() {
         </footer>`;
 }
 
-// SignUp page template
+/**
+ * Renders the sign up page template with form fields and validation
+ * @returns {string} HTML string for the sign up page
+ */
 function signUpTemplate() {
     return `
         <section id="main_header">
@@ -213,7 +224,10 @@ function signUpTemplate() {
         </section>`;
 }
 
-//  join logo (top left) template
+/**
+ * Renders the Join logo for the header section
+ * @returns {string} HTML string containing the Join logo SVG
+ */
 function joinLogoTemplate() {
     return `<div class="join_logo">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 274 335" fill="none">
@@ -233,7 +247,10 @@ function joinLogoTemplate() {
             </div>`;
 }
 
-// privacy policy accept checkbox template
+/**
+ * Renders the accepted state of the privacy policy checkbox
+ * @returns {string} HTML string for checked privacy policy checkbox
+ */
 function acceptCheckboxTemplate() {
     return `<label role="checkbox" aria-checked="true" id="pp_checkbox_label">
                 <svg class="pp_checkbox" onclick="refuseCheckbox()" tabindex="0"
@@ -245,7 +262,10 @@ function acceptCheckboxTemplate() {
             </label>`;
 }
 
-// privacy policy refuse checkbox template
+/**
+ * Renders the unchecked state of the privacy policy checkbox
+ * @returns {string} HTML string for unchecked privacy policy checkbox
+ */
 function refuseCheckboxTemplate() {
     return `<label role="checkbox" aria-checked="false" id="pp_checkbox_label">
                 <svg class="pp_checkbox" onclick="acceptCheckbox()" tabindex="0"
@@ -256,7 +276,10 @@ function refuseCheckboxTemplate() {
             </label>`;
 }
 
-// password lock icon - inside input field
+/**
+ * Renders the password lock icon for input fields
+ * @returns {string} HTML string for password lock SVG icon
+ */
 function showPasswordLock() {
     return `<svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
         viewBox="0 0 17 22" fill="none">
@@ -268,7 +291,10 @@ function showPasswordLock() {
     </svg>`;
 }
 
-// show password eye icon for rgular password input
+/**
+ * Renders the show password eye icon (password hidden state)
+ * @returns {string} HTML string for show password SVG icon
+ */
 function showPasswordTemplate() {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 20" fill="none"  onclick="togglePasswordVisibility()"> 
                 <path d="M15.1 10.3001L13.65 8.8501C13.8 8.06676 13.575 7.33343 12.975 6.6501C12.375 5.96676 11.6 
@@ -287,7 +313,9 @@ function showPasswordTemplate() {
             </svg>`;
 }
 
-// hide password eye icon for rgular password input
+/** Renders the hide password eye icon (password visible state)
+ * @returns {string} HTML string for hide password SVG icon
+ */
 function hidePasswordTemplate() {
     return `<svg width="22" height="21" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg"  onclick="togglePasswordVisibility()">
                 <path d="M11 12C12.25 12 13.3125 11.5625 14.1875 10.6875C15.0625 9.8125 15.5 8.75 15.5 7.5C15.5 6.25 15.0625 5.1875 14.1875 
@@ -299,7 +327,9 @@ function hidePasswordTemplate() {
             </svg>`;
 }
 
-// show password eye icon for password repeat input
+/** Renders the show password eye icon for password repeat input field
+ * @returns {string} HTML string for show password repeat SVG icon
+ */
 function showPasswordRepeatTemplate() {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 20" fill="none"  onclick="toggleRepeatPasswordVisibility()"> 
                 <path d="M15.1 10.3001L13.65 8.8501C13.8 8.06676 13.575 7.33343 12.975 6.6501C12.375 5.96676 11.6 
@@ -318,7 +348,9 @@ function showPasswordRepeatTemplate() {
             </svg>`;
 }
 
-// hide password eye icon for password repeat input
+/** Renders the hide password eye icon for password repeat input
+ * @returns {string} HTML string for hide password SVG icon
+ */
 function hidePasswordRepeatTemplate() {
     return `<svg width="22" height="21" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg"  onclick="toggleRepeatPasswordVisibility()">
                 <path d="M11 12C12.25 12 13.3125 11.5625 14.1875 10.6875C15.0625 9.8125 15.5 8.75 15.5 7.5C15.5 6.25 15.0625 5.1875 14.1875 
@@ -330,7 +362,10 @@ function hidePasswordRepeatTemplate() {
             </svg>`;
 }
 
-// sign up successfull template - animated dialog 
+/**
+ * Renders the sign-up success overlay template
+ * @returns {string} HTML string for sign-up success overlay
+ */
 function signUpSuccessfull() {
     return `    
         <div class="signup-overlay-background slideInFromBottom">
@@ -340,6 +375,10 @@ function signUpSuccessfull() {
         </div>`;
 }
 
+/**
+ * Renders the summary overlay template for logged in users
+ * @returns {string} HTML string for user greeting overlay
+ */
 function summaryOverlayTemplate() {
     return `
         <section class="overlay-greeting-container">
@@ -348,6 +387,10 @@ function summaryOverlayTemplate() {
         </section>`;
 }
 
+/**
+ * Renders the summary overlay template for guest users
+ * @returns {string} HTML string for guest greeting overlay
+ */
 function summaryGuestOverlayTemplate() {
     return `
          <section class="overlay-greeting-container">
@@ -355,15 +398,24 @@ function summaryGuestOverlayTemplate() {
         </section>`;
 }
 
-// task templates
-
+/**
+ * Renders empty task list placeholder
+ * @returns {string} HTML string for empty task message
+ */
 function emptyTaskList() {
     return `
         <div class="no-task">No tasks${'To do'}</div>
     `
 }
 
-
+/**
+ * Renders a task card for the board view
+ * @param {Object} i - Task object containing task data
+ * @param {number} i.id - Unique task identifier
+ * @param {string} i.type - Task category/type
+ * @param {string} i.name - Task title
+ * @returns {string} HTML string for task card
+ */
 function taskTemp(i) {
     return `
         <div class="task" draggable="true" ondragstart="startDragging(${i.id})" onclick="toggleTaskOverlay(${i.id})" id="task-id-${i.id}">
@@ -385,7 +437,7 @@ function taskTemp(i) {
                 <div class="task-assignees" id="task-card-participants-${i.id}"></div>
                 <div class="task-priority" id="task-card-prio-${i.id}"></div>
             </footer>
-            <div class="resp-menu-task o_0" id="resp-menu-task-${i.id}" onclick="stopPropagation(event)">
+            <div class="resp-menu-task t_t_150" id="resp-menu-task-${i.id}" onclick="stopPropagation(event)">
                 <span>Move to</span>
                 <div>
                     <button onclick="switchUp(${i.id})" id="switch-up-button-${i.id}">
@@ -410,6 +462,12 @@ function taskTemp(i) {
     `
 }
 
+/**
+ * Renders progress bar for task subtasks
+ * @param {number} taskCount - Total number of subtasks
+ * @param {number} trueCount - Number of completed subtasks
+ * @returns {string} HTML string for progress bar and counter
+ */
 function progressTemp(taskCount, trueCount) {
     return `
         <div class="progress-track">
@@ -419,12 +477,23 @@ function progressTemp(taskCount, trueCount) {
     `
 }
 
+/**
+ * Renders participant avatar for task cards
+ * @param {Object} inclContacts - Contact object
+ * @param {string} inclContacts.fillColor - Background color for avatar
+ * @param {string} inclContacts.nameLetters - Initials to display
+ * @returns {string} HTML string for participant avatar
+ */
 function participantsTemp(inclContacts) {
     return `
         <div class="user-logo" style="background-color: ${inclContacts.fillColor};">${inclContacts.nameLetters}</div>
     `
 }
 
+/**
+ * Renders "more participants" indicator when there are additional assignees
+ * @returns {string} HTML string for additional participants indicator
+ */
 function moreParticipantsTemp() {
     return `
         <div class="more-user-logo">
@@ -435,6 +504,10 @@ function moreParticipantsTemp() {
     `
 }
 
+/**
+ * Renders urgent priority icon
+ * @returns {string} HTML string for urgent priority SVG
+ */
 function urgentPrioTemp() {
     return `
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
@@ -444,6 +517,10 @@ function urgentPrioTemp() {
     `
 }
 
+/**
+ * Renders low priority icon
+ * @returns {string} HTML string for low priority SVG
+ */
 function lowPrioTemp() {
     return `
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
@@ -453,6 +530,10 @@ function lowPrioTemp() {
     `
 }
 
+/**
+ * Renders medium priority icon
+ * @returns {string} HTML string for medium priority SVG
+ */
 function mediumPrioTemp() {
     return `
         <svg width="18" height="8" viewBox="0 0 18 8" fill="none">
@@ -469,6 +550,15 @@ function mediumPrioTemp() {
     `
 }
 
+/**
+ * Renders detailed task overlay
+ * @param {Object} i - Task object containing task data
+ * @param {number} i.id - Unique task identifier
+ * @param {string} i.type - Task category/type
+ * @param {string} i.name - Task title
+ * @param {string} i.date - Task due date
+ * @returns {string} HTML string for task overlay
+ */
 function taskOverlayTemp(i) {
     return `
         <div class="open-close-dialog" onmousedown="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
@@ -520,6 +610,11 @@ function taskOverlayTemp(i) {
     `
 }
 
+/** Renders edit task overlay
+ * @param {Object} i - Task object containing task data
+ * @param {number} i.id - Unique task identifier
+ * @returns {string} HTML string for edit task overlay
+ */
 function taskEditOverlayTemp(i) {
     return `
         <div class="open-close-dialog" onmousedown="toggleTaskOverlay('task-dialog')" id="task-overlay-${i.id}">
@@ -638,6 +733,11 @@ function taskEditOverlayTemp(i) {
     `
 }
 
+/** Renders priority section in task overlay
+ * @param {Object} i - Task object containing task data
+ * @param {string} type - HTML string representing the priority icon
+ * @returns {string} HTML string for priority section in task overlay
+ */
 function prioTaskOverlayTemp(i, type) {
     return `
         <p class="task-info-type">Priority:</p>
@@ -648,6 +748,10 @@ function prioTaskOverlayTemp(i, type) {
     `
 }
 
+/** Renders participants section in task overlay
+ * @param {Object} i - Task object containing task data
+ * @returns {string} HTML string for participants section in task overlay
+ */
 function participantsTaskOverlayTemp(i) {
     return `
         <p class="task-info-type">Assigned To:</p>
@@ -655,6 +759,13 @@ function participantsTaskOverlayTemp(i) {
     `
 }
 
+/** Renders individual participant in task overlay
+ * @param {Object} participant - Participant object containing participant data
+ * @param {string} participant.fillColor - Background color for participant logo
+ * @param {string} participant.nameLetters - Initials of the participant's name
+ * @param {string} participant.name - Full name of the participant
+ * @returns {string} HTML string for individual participant in task overlay
+ */
 function participantTemp(participant) {
     return `
         <div class="assigned">
@@ -664,6 +775,10 @@ function participantTemp(participant) {
     `
 }
 
+/** Renders subtasks section in task overlay
+ * @param {Object} i - Task object containing task data
+ * @returns {string} HTML string for subtasks section in task overlay
+ */
 function subtasksTaskOverlay(i) {
     return `
         <p class="task-info-type">Subtasks</p>
@@ -671,6 +786,12 @@ function subtasksTaskOverlay(i) {
     `
 }
 
+/** Renders individual subtask in task overlay 
+ * @param {Object} i - Task object containing task data
+ * @param {number} index - Index of the subtask in the subtasks array
+ * @param {string} status - HTML string representing the subtask status icon
+ * @returns {string} HTML string for individual subtask in task overlay
+ */
 function subtaskListTemp(i, index, status) {
     return `
         <div class="subtask">
@@ -680,6 +801,9 @@ function subtaskListTemp(i, index, status) {
     `
 }
 
+/** Renders check participant icon 
+ * @returns {string} HTML string for check participant icon
+*/
 function checkParticipantTemp() {
     return `
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -689,6 +813,9 @@ function checkParticipantTemp() {
     `
 }
 
+/** Renders subtask done icon
+ * @returns {string} HTML string for subtask done icon
+*/
 function subtaskDoneTemp() {
     return `
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -698,6 +825,9 @@ function subtaskDoneTemp() {
     `
 }
 
+/** Renders subtask to do icon
+ * @returns {string} HTML string for subtask to do icon
+*/
 function subtaskToDoTemp() {
     return `
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -706,13 +836,22 @@ function subtaskToDoTemp() {
     `
 }
 
+/** Renders participant logo for edit task overlay
+ * @param {Object} participant - Participant object containing participant data
+ * @param {string} participant.fillColor - Background color for participant logo
+ * @param {string} participant.nameLetters - Initials of the participant's name
+ * @returns {string} HTML string for participant logo in edit task overlay
+ */
 function participantLogoTemp(participant) {
     return `
         <span class="asssigned-person-logo" style="background-color: ${participant.fillColor};">${participant.nameLetters}</span>
     `
 }
 
-
+/** Renders more participants logo for edit task overlay
+ * @param {number} participantsCount - Number of additional participants
+ * @returns {string} HTML string for more participants logo in edit task overlay
+ */
 function moreParticipantsEditTaskTemp(participantsCount) {
     return `
         <div class="more-asssigned-person-logo">
@@ -724,7 +863,14 @@ function moreParticipantsEditTaskTemp(participantsCount) {
     `
 }
 
-
+/** Renders contact template for selecting participants
+ * @param {Object} contact - Contact object containing contact data
+ * @param {string} contact.fillColor - Background color for contact logo
+ * @param {string} contact.nameLetters - Initials of the contact's name
+ * @param {string} contact.name - Full name of the contact
+ * @param {number} index - Index of the contact in the contacts array
+ * @returns {string} HTML string for contact template
+ */
 function renderContactsTemp(contact, index) {
     return `
         <div class="choose-paticipant" id="contact-layout-${index}" onclick="putContactAsParticipant(${index})">
@@ -741,14 +887,21 @@ function renderContactsTemp(contact, index) {
     `
 }
 
-
+/**
+ * Renders a "no contacts found" message template
+ * @returns {string} HTML string displaying a red "No results" message
+ */
 function noContactsTemp() {
     return `
         <p class="color_red">No results</p>
     `
 }
 
-
+/**
+ * Renders a subtask template with edit and delete functionality
+ * @param {number} index - The index of the subtask in the array
+ * @returns {string} HTML string for a subtask with edit/delete controls
+ */
 function renderSubtasksTemp(index) {
     return `
         <div class="change-subtasks" id="change-subtasks-${index}">

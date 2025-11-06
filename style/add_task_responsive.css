@@ -1,6 +1,11 @@
 @media (max-width: 1400px) {
     .add-task-main {
         max-width: 100%;
+        padding: 40px 40px 20px 40px;
+    }
+
+    .add-task-form{
+        height: 550px;
     }
 }
 
@@ -27,55 +32,78 @@
     }
 
     .add-task-main h2 {
-        margin: 20px 0 0 20px;
+        padding: 20px 0 0 20px;
     }
 
     .add-task-form {
         margin: 20px 0 0 0;
-        padding: 0 0 20px 0;
-        height: 71vh;
-        overflow-x: auto;
+        padding: 0 20px 80px;
         scrollbar-width: thin;
-    }
-
-    .add-task-form-main {
-        scrollbar-width: none;
-        max-height: 100vh;
-        align-items: center;
+        height: auto;
     }
 
     .add-task-form-main {
         flex-direction: column;
-        gap: 24px;
+        scrollbar-width: none;
+        align-items: center;
+        height: auto;
+        gap: 0;
     }
 
     .add-task-form-seperator {
         display: none;
     }
 
-    .add-task-form-left,
-    .add-task-form-right {
-        width: 95%;
-        gap: 24px;
+    .add-task-form-left{
+        width: 100%;
+        justify-content: unset;
+        height: auto;
     }
 
-    .add-task-subtaks-dropdown {
-        background-color: #FFFFFF;
+    .h-96{
+        height: auto;
+    }
+
+    .h-16{
+        height: 24px;
+    }
+
+    .h-136{
+        height: auto;
+    }
+
+    .add-task-form-right {
+        width: 100%;
+        gap: 24px;
+        height: auto;
+    }
+
+    .add-task-priority-btns-container{
+        height: auto;
+        background-color: transparent;
     }
 
     .add-task-subtaks-dropdown ul {
-        max-height: 120px;
-        /* overflow-y: visible; */
+        max-height: fit-content;
+        overflow: visible;
     }
 
     .add-task-footer-and-btns {
         flex-direction: column;
+        margin-top: 24px;
         gap: 12px;
-        margin: 10px 10px 0 10px;
     }
 
     .h-80 {
         height: auto;
+    }
+
+    .add-task-priority-btns{
+        justify-content: space-between;
+    }
+
+    .add-task-form-info-container{
+        display: none;
     }
 
 }

@@ -1,13 +1,25 @@
 let logoAnimated = false;
 
+/**
+ * Initializes the login page with logo animation control
+ * Sets up logo animation timing and enter key functionality
+ */
 function logInInit() {
-    setTimeout(() => {
+    if (!logoAnimated) {
+        setTimeout(() => {
+            renderJoinLogo();
+            logoAnimated = true;
+        }, 980);
+    } else {
         renderJoinLogo();
-        logoAnimated = true;
-    }, 980);
+    }
+    setupEnterKeyLogin();
 }
 
-// render LogIn incl. password show and hide functions
+/**
+ * Renders the login page template with password visibility controls
+ * Clears main content and displays login form with logo if animated
+ */
 function renderLogIn() {
     document.getElementById('main').innerHTML = '';
     document.getElementById('main').innerHTML += logInTemplate();
@@ -17,7 +29,10 @@ function renderLogIn() {
     addPasswordInputListener();
 }
 
-// render SignUp incl. password show and hide functions
+/**
+ * Renders the sign-up page template with password visibility controls
+ * Displays registration form with logo and password input listeners
+ */
 function renderSignUp() {
     document.getElementById('main').innerHTML = '';
     document.getElementById('main').innerHTML += signUpTemplate();
@@ -26,12 +41,18 @@ function renderSignUp() {
     addRepeatPasswordListener();
 }
 
-// renders main Join Logo top left corner after animation
+/**
+ * Renders the main Join logo in the top left corner after animation
+ * Displays the logo template in the main header section
+ */
 function renderJoinLogo() {
     document.getElementById('main_header').innerHTML += joinLogoTemplate();
 }
 
-// toggles password visibility
+/**
+ * Toggles password visibility between hidden and visible states
+ * Changes input type and updates the visibility toggle button icon
+ */
 function togglePasswordVisibility() {
     let passwordInput = document.getElementById('password');
     let toggleButton = document.getElementById('toggle_password_visibility_button');
@@ -44,7 +65,10 @@ function togglePasswordVisibility() {
     }
 }
 
-// toggles password visibility for repeat password input / sign up page
+/**
+ * Toggles password visibility for the repeat password input on sign-up page
+ * Changes input type and updates the visibility toggle button icon
+ */
 function toggleRepeatPasswordVisibility() {
     let repeatInput = document.getElementById('password_repeat');
     let toggleButton = document.getElementById('toggle_password_repeat_button');
@@ -57,7 +81,10 @@ function toggleRepeatPasswordVisibility() {
     }
 }
 
-// toggles lock and eye icon (eye icon for visibility)
+/**
+ * Adds input event listener to password field for dynamic icon switching
+ * Toggles between lock icon (empty field) and eye icon (with content)
+ */
 function addPasswordInputListener() {
     let passwordInput = document.getElementById('password');
     let toggleButton = document.getElementById('toggle_password_visibility_button');
@@ -73,7 +100,10 @@ function addPasswordInputListener() {
     }
 }
 
-// toggles lock and eye icon (eye icon for visibility) on repeat password input / sign up page
+/**
+ * Adds input event listener to repeat password field for dynamic icon switching
+ * Toggles between lock icon (empty field) and eye icon (with content) on sign-up page
+ */
 function addRepeatPasswordListener() {
     let repeatInput = document.getElementById('password_repeat');
     let passwordRepeatButton = document.getElementById('toggle_password_repeat_button');
@@ -91,7 +121,10 @@ function addRepeatPasswordListener() {
     }
 }
 
-// login input field requirements check
+/**
+ * Validates login input fields and initiates user authentication
+ * Checks email and password fields, calls getUsers if validation passes
+ */
 function checkLoginInputFields() {
     let isEmailEmpty = handleFieldValidation('email', 'input_email', 'required_email', 'email');
     let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
@@ -103,7 +136,11 @@ function checkLoginInputFields() {
     }
 }
 
-// signup input field requirements check
+/**
+ * Validates all sign-up input fields and processes registration
+ * Checks username, email, password, password repeat and privacy policy agreement
+ * @returns {boolean} True if all validations pass, false otherwise
+ */
 function checkSignUpInputFields() {
     let isUsernameEmpty = handleFieldValidation('username', 'username_input_id', 'required_username', 'username');
     let isEmailEmpty = handleFieldValidation('email', 'email_input_id', 'required_email', 'email');
@@ -126,7 +163,14 @@ function checkSignUpInputFields() {
     return !isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty;
 }
 
-// Helper function to handle field validation
+/**
+ * Helper function to handle individual field validation with visual feedback
+ * @param {string} inputId - ID of the input field to validate
+ * @param {string} formId - ID of the form container for styling
+ * @param {string} requiredId - ID of the element to display error messages
+ * @param {string} fieldName - Name of the field for error message generation
+ * @returns {boolean} True if field is empty, false if field has content
+ */
 function handleFieldValidation(inputId, formId, requiredId, fieldName) {
     let input = document.getElementById(inputId);
     let form = document.getElementById(formId);
@@ -142,7 +186,12 @@ function handleFieldValidation(inputId, formId, requiredId, fieldName) {
     return isEmpty;
 }
 
-// check email and password validity
+/**
+ * Validates email format and password length requirements
+ * @param {string} email - Email address to validate
+ * @param {string} password - Password to validate (minimum 6 characters)
+ * @returns {boolean} True if both email and password are valid
+ */
 function validateEmailAndPassword(email, password) {
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let isEmailValid = emailRegex.test(email);
@@ -165,7 +214,12 @@ function validateEmailAndPassword(email, password) {
     return isEmailValid && isPasswordValid;
 }
 
-// check if password and password repeat match
+/**
+ * Validates that password and password repeat fields match
+ * @param {string} password - Original password input
+ * @param {string} passwordRepeat - Password confirmation input
+ * @returns {boolean} True if passwords match, false otherwise
+ */
 function validatePasswordMatch(password, passwordRepeat) {
     let passwordsMatch = password === passwordRepeat;
 
@@ -179,7 +233,10 @@ function validatePasswordMatch(password, passwordRepeat) {
     return passwordsMatch;
 }
 
-// checks if privacy policy checkbox is checked
+/**
+ * Checks if privacy policy checkbox is checked and provides visual feedback
+ * @returns {boolean} True if checkbox is checked, false otherwise
+ */
 function checkPrivacyPolicyCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
     let isChecked = privacyPolicyCheckbox.getAttribute('aria-checked') === 'true';
@@ -192,36 +249,55 @@ function checkPrivacyPolicyCheckbox() {
     return isChecked;
 }
 
-// changes checkbox accepted
+/**
+ * Changes checkbox to accepted state with visual confirmation
+ * Updates checkbox template and removes error styling
+ */
 function acceptCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
     privacyPolicyCheckbox.innerHTML = acceptCheckboxTemplate();
     privacyPolicyCheckbox.classList.remove('red_border');
 }
 
-// changes checkbox refuse
+/**
+ * Changes checkbox to refused/unchecked state
+ * Updates checkbox template to show unchecked appearance
+ */
 function refuseCheckbox() {
     let privacyPolicyCheckbox = document.getElementById('pp_checkbox_id');
     privacyPolicyCheckbox.innerHTML = refuseCheckboxTemplate();
 }
 
-// open and close Sign Up Successfull Overlay
+/**
+ * Opens the sign-up success overlay and initiates auto-close sequence
+ * Displays success message and triggers overlay closure after user registration
+ */
 function openSignUpOverlay() {
     document.getElementById('signup-overlay-id').innerHTML = signUpSuccessfull();
     closeSignUpOverlay();
 }
 
-// Login with user data
+/**
+ * Redirects to summary page with user login parameters
+ * Opens summary page with overlay enabled and user login type
+ */
 function openSummary() {
     window.location.href = './summary.html?showOverlay=true&loginType=user';
 }
 
-// Guest login without guest user data
+/**
+ * Redirects to summary page with guest login parameters
+ * Opens summary page with overlay enabled and guest login type
+ */
 function openGuestSummary() {
+    initializeGuestSession(); // Guest initialization
     window.location.href = './summary.html?showOverlay=true&loginType=guest';
 }
 
-// close sign up overlay 
+/**
+ * Closes sign-up overlay after user registration and redirects to login
+ * Adds new user to database, hides overlay after delay, and shows login page
+ */
 function closeSignUpOverlay() {
     let usernameInput = document.getElementById('username');
     let emailInput = document.getElementById('email');
@@ -233,4 +309,21 @@ function closeSignUpOverlay() {
         document.getElementById('signup-overlay-id').classList.add('d_none');
         renderLogIn();
     }, 1000);
+}
+
+/**
+ * Sets up Enter key functionality for login form submission
+ * Adds event listener to trigger login validation when Enter is pressed
+ */
+function setupEnterKeyLogin() {
+    document.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            let email = document.getElementById('email');
+            let password = document.getElementById('password');
+            if (email && password) {
+                event.preventDefault();
+                checkLoginInputFields();
+            }
+        }
+    });
 }

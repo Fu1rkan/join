@@ -6,7 +6,11 @@ let taskEditor;
 
 let ids = ['to-do', 'in-progress', 'await-feedback', 'done'];
 
-
+/**
+ * Initializes the board page by loading necessary data and rendering tasks
+ * Loads contacts and tasks from database, sets up profile header icon, and renders all tasks
+ * @returns {Promise<void>} Promise that resolves when board initialization is complete
+ */
 async function boardInit() {
     // await init();
     await loadContacts();
@@ -15,7 +19,10 @@ async function boardInit() {
     renderTasks();
 }
 
-
+/**
+ * Renders all tasks in their respective Kanban board columns
+ * Filters tasks by category and displays them in appropriate columns or shows empty state
+ */
 function renderTasks() {
     for (let index = 0; index < ids.length; index++) {
         let categoryTasks = taskList.filter(t => t['category'] == ids[index]);
@@ -31,7 +38,11 @@ function renderTasks() {
     }
 }
 
-
+/**
+ * Toggles the task detail overlay visibility and manages overlay state
+ * Opens or closes task overlay, renders task details, and manages body scroll
+ * @param {number} i - The ID of the task to display in the overlay
+ */
 function toggleTaskOverlay(i) {
     document.getElementById('bleur-bg').classList.toggle('d_none');
     document.getElementById('task-dialog').classList.toggle('tf_tlx100');
@@ -48,7 +59,11 @@ function toggleTaskOverlay(i) {
     }
 }
 
-
+/**
+ * Checks and applies all task information to the task card display
+ * Orchestrates the display of task type, description, progress, participants, and priority
+ * @param {Object} i - The task object containing all task information
+ */
 function checkTaskInfos(i) {
     const taskCard = 'task-card';
     checkTaskType(i, taskCard);
@@ -58,7 +73,12 @@ function checkTaskInfos(i) {
     checkPrio(i, taskCard);
 }
 
-
+/**
+ * Sets the background color of the task type indicator based on task type
+ * Applies blue color for User Story tasks and teal for Technical Task
+ * @param {Object} i - The task object containing type information
+ * @param {string} taskCard - The CSS class prefix for the task card elements
+ */
 function checkTaskType(i, taskCard) {
     if (i.type.includes('User')) {
         document.getElementById(`${taskCard}-type-${i.id}`).style.backgroundColor = 'rgba(0, 56, 255, 1)';
@@ -67,14 +87,24 @@ function checkTaskType(i, taskCard) {
     }
 }
 
-
+/**
+ * Displays the task description in the task card if available
+ * Adds the task description text to the description element
+ * @param {Object} i - The task object containing description information
+ * @param {string} taskCard - The CSS class prefix for the task card elements
+ */
 function checkTaskDesc(i, taskCard) {
     if (i.description != false) {
         document.getElementById(`${taskCard}-desc-${i.id}`).innerText += i.description;
     }
 }
 
-
+/**
+ * Displays subtask progress bar in the task card if subtasks exist
+ * Calculates completed subtasks and renders progress bar template
+ * @param {Object} i - The task object containing subtasks information
+ * @param {string} taskCard - The CSS class prefix for the task card elements
+ */
 function checkProgress(i, taskCard) {
     if (i.subtasks != false) {
         let trueCount = i.subtasks.filter(s => s.status === true).length;
@@ -82,7 +112,12 @@ function checkProgress(i, taskCard) {
     }
 }
 
-
+/**
+ * Displays participant avatars in the task card if participants exist
+ * Shows up to 3 participant avatars and a "+more" indicator for additional participants
+ * @param {Object} i - The task object containing participants information
+ * @param {string} taskCard - The CSS class prefix for the task card elements
+ */
 function checkParticipants(i, taskCard) {
     if (i.participants != false) {
         let inclContacts = contacts.filter(c => i.participants.some(p => p.name === c.name));
@@ -97,7 +132,12 @@ function checkParticipants(i, taskCard) {
     }
 }
 
-
+/**
+ * Displays the appropriate priority icon in the task card
+ * Shows urgent, medium, or low priority icon based on task priority level
+ * @param {Object} i - The task object containing priority information
+ * @param {string} taskCard - The CSS class prefix for the task card elements
+ */
 function checkPrio(i, taskCard) {
     if (i.priority.includes('urgent')) {
         document.getElementById(`${taskCard}-prio-${i.id}`).innerHTML = urgentPrioTemp();
@@ -108,14 +148,23 @@ function checkPrio(i, taskCard) {
     }
 }
 
-
+/**
+ * Displays subtask names in the main overlay (currently unused function)
+ * Appends all subtask names to the task progress element
+ * @param {Object} task - The task object containing subtasks
+ * @param {HTMLElement} taskProgress - The element to display subtask progress
+ */
 function checkSubtasksMainOverlay(task, taskProgress) {
     for (let index = 0; index < task.subtasks.length; index++) {
         taskProgress.innerText += task.subtasks[index].name;
     }
 }
 
-
+/**
+ * Checks and applies all task information to the task overlay display
+ * Orchestrates the display of task details in the overlay including type, description, priority, participants, and subtasks
+ * @param {Object} i - The task object containing all task information
+ */
 function checkTaskOverlayInfos(i) {
     const taskOverlay = 'task-overlay';
     checkTaskType(i, taskOverlay);
@@ -125,7 +174,12 @@ function checkTaskOverlayInfos(i) {
     checkTaskOverlaySubtasks(i, taskOverlay);
 }
 
-
+/**
+ * Displays the priority information in the task overlay
+ * Shows priority level with appropriate icon and styling in the overlay
+ * @param {Object} i - The task object containing priority information
+ * @param {string} taskOverlay - The CSS class prefix for the task overlay elements
+ */
 function checkTaskOverlayPrio(i, taskOverlay) {
     if (i.priority.includes('urgent')) {
         document.getElementById(`${taskOverlay}-prio-${i.id}`).innerHTML = prioTaskOverlayTemp(i, urgentPrioTemp());
@@ -136,7 +190,12 @@ function checkTaskOverlayPrio(i, taskOverlay) {
     }
 }
 
-
+/**
+ * Displays participant information in the task overlay
+ * Shows participant section and renders all assigned participants with their details
+ * @param {Object} i - The task object containing participants information
+ * @param {string} taskOverlay - The CSS class prefix for the task overlay elements
+ */
 function checkTaskOverlayParticipants(i, taskOverlay) {
     if (i.participants != false) {
         document.getElementById(`${taskOverlay}-participants-${i.id}`).innerHTML += participantsTaskOverlayTemp(i)
@@ -147,7 +206,12 @@ function checkTaskOverlayParticipants(i, taskOverlay) {
     }
 }
 
-
+/**
+ * Displays subtask information in the task overlay
+ * Shows subtasks section and renders all subtasks with their completion status
+ * @param {Object} i - The task object containing subtasks information
+ * @param {string} taskOverlay - The CSS class prefix for the task overlay elements
+ */
 function checkTaskOverlaySubtasks(i, taskOverlay) {
     if (i.subtasks != false) {
         document.getElementById(`${taskOverlay}-subtasks-${i.id}`).innerHTML = "";
@@ -162,7 +226,12 @@ function checkTaskOverlaySubtasks(i, taskOverlay) {
     }
 }
 
-
+/**
+ * Deletes a task from the task list and updates the database
+ * Removes the task from the array, closes overlay, and reinitializes the board
+ * @param {number} i - The ID of the task to delete
+ * @returns {Promise<void>} Promise that resolves when task is deleted and board is updated
+ */
 async function deleteTask(i) {
     let task = taskList.findIndex(t => t['id'] == i);
     taskList.splice(task, 1);
@@ -171,7 +240,12 @@ async function deleteTask(i) {
     await boardInit();
 }
 
-
+/**
+ * Toggles the completion status of a subtask
+ * Switches subtask status between completed and pending and updates the overlay display
+ * @param {number} i - The ID of the task containing the subtask
+ * @param {number} index - The index of the subtask to toggle
+ */
 function toggleSubtaskStatus(i, index) {
     let task = taskList.findIndex(t => t['id'] == i);
     if (taskList[task].subtasks[index].status == true) {
@@ -183,7 +257,11 @@ function toggleSubtaskStatus(i, index) {
     checkTaskOverlaySubtasks(taskList[task], 'task-overlay')
 }
 
-
+/**
+ * Opens the task editing overlay with current task data
+ * Creates a deep copy of the task for editing and renders the edit form with current values
+ * @param {number} id - The ID of the task to edit
+ */
 function openEditTaskOverlay(id) {
     let task = taskList.find(t => t['id'] == id);
     taskEditor = structuredClone(task);
@@ -200,7 +278,11 @@ function openEditTaskOverlay(id) {
     renderSubtaskList(task);
 }
 
-
+/**
+ * Closes the task editing overlay and returns to task detail view
+ * Resets the task editor and displays the original task overlay
+ * @param {number} id - The ID of the task being edited
+ */
 function closeEditTaskOverlay(id) {
     let task = taskList.find(t => t['id'] == id);
     taskEditor = undefined;
@@ -209,7 +291,10 @@ function closeEditTaskOverlay(id) {
     checkTaskOverlayInfos(task);
 }
 
-
+/**
+ * Validates the task title input field and shows error styling if empty
+ * Adds red border and shows error message for empty title field
+ */
 function ckeckTitleValue() {
     let title = document.getElementById('change-title');
     let titleValue = title.value;
@@ -222,7 +307,10 @@ function ckeckTitleValue() {
     }
 }
 
-
+/**
+ * Validates the task date input field and shows error styling if empty
+ * Adds red border and shows error message for empty date field
+ */
 function ckeckDateValue() {
     let date = document.getElementById('input-date').value;
     if (date.length <= 0) {
@@ -234,7 +322,11 @@ function ckeckDateValue() {
     }
 }
 
-
+/**
+ * Sets the visual state of priority buttons based on task priority
+ * Highlights the active priority button and sets appropriate colors
+ * @param {Object} task - The task object containing priority information
+ */
 function checkPriorityStatus(task) {
     if (task.priority.includes('urgent')) {
         document.getElementById(`prio-urgent`).classList.add('bc_r');
@@ -252,6 +344,10 @@ function checkPriorityStatus(task) {
 }
 //Bin unzufrieden damit... Wird optimiert, bald..
 
+/**
+ * Resets all priority buttons to their default visual state
+ * Removes active styling and restores default colors for all priority buttons
+ */
 function resetPriority() {
     document.getElementById(`prio-urgent`).classList.remove('bc_r');
     document.getElementById(`urgent-path`).style.fill = '#FF3D00';
@@ -264,14 +360,22 @@ function resetPriority() {
     document.getElementById(`low-path-2`).style.fill = '#7AE229';
 }
 
-
+/**
+ * Changes the priority of the task being edited
+ * Updates the task editor priority and refreshes the priority button display
+ * @param {string} prioType - The new priority type ('urgent', 'medium', or 'low')
+ */
 function changePriority(prioType) {
     taskEditor.priority = prioType;
     resetPriority();
     checkPriorityStatus(taskEditor);
 }
 
-
+/**
+ * Renders participant avatars in the edit task overlay
+ * Displays up to 4 participant logos and shows additional count if more participants exist
+ * @param {Object} task - The task object containing participants information
+ */
 function renderParticipantLogos(task) {
     document.getElementById('included-participants').innerHTML = "";
     if (task.participants != false) {
@@ -287,7 +391,11 @@ function renderParticipantLogos(task) {
     }
 }
 
-
+/**
+ * Renders the contact list in the edit task overlay
+ * Displays all available contacts with their selection status or shows no contacts message
+ * @param {Array} contacts - Array of contact objects to render
+ */
 function renderContactList(contacts) {
     if (contacts.length > 0) {
         document.getElementById('participants-list').innerHTML = "";
@@ -300,7 +408,12 @@ function renderContactList(contacts) {
     }
 }
 
-
+/**
+ * Checks and sets the selection status of a contact in the edit overlay
+ * Highlights selected contacts and shows checkmark for already assigned participants
+ * @param {string} contactIndex - The name of the contact to check
+ * @param {number} index - The index of the contact in the contacts array
+ */
 function checkContactStatus(contactIndex, index) {
     if (taskEditor.participants != false) {
         let task = taskEditor.participants.find(t => t['name'] == contactIndex);
@@ -313,7 +426,11 @@ function checkContactStatus(contactIndex, index) {
     }
 }
 
-
+/**
+ * Renders the subtask list in the edit task overlay
+ * Displays all subtasks for editing or initializes empty subtasks array
+ * @param {Object} task - The task object containing subtasks information
+ */
 function renderSubtaskList(task) {
     document.getElementById('change-subtasks-list').innerHTML = "";
     if (task.subtasks != false) {
@@ -325,7 +442,11 @@ function renderSubtaskList(task) {
     }
 }
 
-
+/**
+ * Toggles a contact's participation status in the task being edited
+ * Adds or removes contact from participants list and updates visual state
+ * @param {number} index - The index of the contact in the contacts array
+ */
 function putContactAsParticipant(index) {
     const contactLayout = document.getElementById(`contact-layout-${index}`).classList;
     if (!contactLayout.contains('bgc_j')) {
@@ -342,7 +463,10 @@ function putContactAsParticipant(index) {
     }
 }
 
-
+/**
+ * Searches and filters contacts based on search input
+ * Filters contacts by name and renders filtered results in the contact list
+ */
 function searchContact() {
     let word = document.getElementById('serchbar-edit-contacts').value;
     if (word.length > 1) {
@@ -354,19 +478,30 @@ function searchContact() {
     }
 }
 
-
+/**
+ * Toggles the visibility of the contact list dropdown in edit overlay
+ * Shows or hides the contact selection dropdown and rotates the arrow indicator
+ */
 function toggleContactList() {
     document.getElementById('change-participants-button').classList.toggle('tf_r180');
     document.getElementById('participants-list').classList.toggle('d_none');
 }
 
-
+/**
+ * Opens the contact list dropdown in edit overlay
+ * Shows the contact selection dropdown and rotates the arrow to up position
+ */
 function openContactList() {
     document.getElementById('change-participants-button').classList.add('tf_r180');
     document.getElementById('participants-list').classList.remove('d_none');
 }
 
-
+/**
+ * Activates edit mode for a specific subtask
+ * Shows edit input field, focuses on it, and sets up click handler for accepting changes
+ * @param {number} index - The index of the subtask to edit
+ * @param {string} subtask - The current subtask name/text
+ */
 function activeEditTask(index, subtask) {
     setTimeout(() => {
         document.getElementById(`edit-subtask-${index}`).classList.remove('d_none');
@@ -381,7 +516,11 @@ function activeEditTask(index, subtask) {
     }, 50)
 }
 
-
+/**
+ * Accepts and saves the edited subtask changes
+ * Updates the subtask name or deletes it if empty, then re-renders the subtask list
+ * @param {number} index - The index of the subtask being edited
+ */
 function acceptEditedTask(index) {
     let newSubtask = document.getElementById(`edit-subtask-input-${index}`).value;
     if (newSubtask.length > 0) {
@@ -393,7 +532,11 @@ function acceptEditedTask(index) {
     document.body.removeAttribute('onclick');
 }
 
-
+/**
+ * Deletes a subtask from the task being edited
+ * Removes the subtask from the array and re-renders the subtask list
+ * @param {number} index - The index of the subtask to delete
+ */
 function deleteSubtask(index) {
     setTimeout(() => {
         taskEditor.subtasks.splice(index, 1);
@@ -402,12 +545,18 @@ function deleteSubtask(index) {
     }, 50)
 }
 
-
+/**
+ * Clears the new subtask input field
+ * Resets the input field value to empty string
+ */
 function clearInputField() {
     document.getElementById('new-subtask-input').value = "";
 }
 
-
+/**
+ * Adds a new subtask to the task being edited
+ * Creates a new subtask from input value or shows error styling if empty
+ */
 function pushSubtask() {
     let newSubtask = document.getElementById('new-subtask-input').value;
     if (newSubtask.length > 0) {
@@ -423,14 +572,22 @@ function pushSubtask() {
     }
 }
 
-
+/**
+ * Resets the subtask input field placeholder and error styling
+ * Removes error styling and restores default placeholder text
+ */
 function resetPlaceholderSubtask() {
     document.getElementById('add-subtasks').classList.remove('empty-subtask-input');
     document.getElementById('new-subtask-input').classList.remove('empty-subtask-input');
     document.getElementById('new-subtask-input').placeholder = 'Add new Subtasks';
 }
 
-
+/**
+ * Saves the edited task to the database and updates the UI
+ * Validates required fields, updates the task in the list, and refreshes the board
+ * @param {number} index - The ID of the task being edited
+ * @returns {Promise<void>} Promise that resolves when task is saved and board is updated
+ */
 async function pushEditedTaskToJSON(index) {
     taskEditor.name = document.getElementById('change-title').value
     taskEditor.description = document.getElementById('change-desc').value
@@ -454,9 +611,12 @@ async function pushEditedTaskToJSON(index) {
         await putTask(taskList);
         await boardInit();
     }
-} ////////////    Wird noch optimiert, passt aber von der funktion :=) //////////////////////
+}
 
-
+/**
+ * Searches and filters tasks based on search input
+ * Hides tasks that don't match the search term in their name
+ */
 function searchtasks() {
     let input = document.getElementById('search-bar').value;
     let tasks = taskList.filter(t => !t.name.toLowerCase().includes(input.toLowerCase()))
@@ -465,7 +625,10 @@ function searchtasks() {
     }
 }
 
-
+/**
+ * Shows all tasks when search input is short
+ * Removes hidden class from all tasks when search term is less than 4 characters
+ */
 function showAllTasks() {
     let input = document.getElementById('search-bar').value;
     if (input.length < 4) {
@@ -475,17 +638,31 @@ function showAllTasks() {
     }
 }
 
-
+/**
+ * Starts the drag operation for a task card
+ * Sets the currently dragged element ID for drag and drop functionality
+ * @param {number} id - The ID of the task being dragged
+ */
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
-
+/**
+ * Allows dropping elements by preventing default drag behavior
+ * Prevents the default handling of drag events to enable custom drop functionality
+ * @param {Event} card - The drag event object
+ */
 function allowDrop(card) {
     card.preventDefault();
 }
 
-
+/**
+ * Moves a task to a different category column and updates the database
+ * Changes the task category, removes drag highlighting, and refreshes the board
+ * @param {string} categoryTo - The target category to move the task to
+ * @param {string} id - The ID of the drop zone element
+ * @returns {Promise<void>} Promise that resolves when task is moved and board is updated
+ */
 async function moveTo(categoryTo, id) {
     let task = taskList.find(t => t['id'] == currentDraggedElement);
     let categoryFrom = task['category'];
@@ -496,24 +673,39 @@ async function moveTo(categoryTo, id) {
     await boardInit();
 }
 
-
+/**
+ * Highlights a drop zone during drag operations
+ * Adds visual highlighting to indicate valid drop target
+ * @param {string} id - The ID of the element to highlight
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
 
-
+/**
+ * Removes highlight from a drop zone after drag operations
+ * Removes visual highlighting from drop target elements
+ * @param {string} id - The ID of the element to remove highlighting from
+ */
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-
+/**
+ * Opens the native date picker for the date input field
+ * Shows the date picker interface and focuses on the input field
+ */
 function openDatePicker() {
     const input = document.getElementById('input-date');
     input.showPicker?.();
     input.focus();
 }
 
-
+/**
+ * Opens the responsive task menu for mobile devices
+ * Shows task movement options and sets up click handler for menu closing
+ * @param {number} i - The ID of the task to show menu for
+ */
 function openTaskRespMenu(i) {
     closeTaskMenus(i);
     document.getElementById(`resp-menu-task-${i}`).classList.remove('t_t_150');
@@ -537,14 +729,22 @@ function openTaskRespMenu(i) {
     }
 }
 
-
+/**
+ * Closes all responsive task menus
+ * Hides all task menus and removes the body click handler
+ * @param {number} i - The ID of the task (currently unused in implementation)
+ */
 function closeTaskMenus(i) {
     let menus = document.querySelectorAll('[id^="resp-menu-task-"]');
     menus.forEach(m => m.classList.add('t_t_150'));
     document.body.removeAttribute('onclick');
 }
 
-
+/**
+ * Moves a task down one category in the workflow progression
+ * Advances task from to-do → in-progress → await-feedback → done
+ * @param {number} i - The ID of the task to move down
+ */
 function switchDown(i) {
     let task = taskList.findIndex(t => t.id == i);
 
@@ -560,7 +760,11 @@ function switchDown(i) {
     renderTasks();
 }
 
-
+/**
+ * Moves a task up one category in the workflow progression
+ * Moves task backwards: done → await-feedback → in-progress → to-do
+ * @param {number} i - The ID of the task to move up
+ */
 function switchUp(i) {
     let task = taskList.findIndex(t => t.id == i);
 
@@ -576,18 +780,19 @@ function switchUp(i) {
     renderTasks();
 }
 
-
+/**
+ * Immediately Invoked Function Expression (IIFE) that adds horizontal fade effects to Kanban board lists
+ * Creates fade overlays for horizontal scrolling in mobile view and manages their visibility based on scroll position
+ * Sets up scroll, resize, and mutation observers to update fade states dynamically
+ */
 (function addHorizontalFades() {
     const lists = document.querySelectorAll('.kanban-board .task-list');
 
     lists.forEach((list) => {
-        // Wrapper erzeugen und list hineinverschieben
         const wrap = document.createElement('div');
         wrap.className = 'hs-wrap';
         list.parentNode.insertBefore(wrap, list);
         wrap.appendChild(list);
-
-        // Fade-Overlays erstellen
         const fadeLeft = document.createElement('div');
         const fadeRight = document.createElement('div');
         fadeLeft.className = 'hs-fade hs-fade--left';
@@ -595,42 +800,25 @@ function switchUp(i) {
         wrap.appendChild(fadeLeft);
         wrap.appendChild(fadeRight);
 
-        // Update-Logik je nach Scrollposition
         const update = () => {
-            // nur bei mobiler Ansicht relevant – dein Overflow ist dort aktiv
             const max = list.scrollWidth - list.clientWidth;
             const hasOverflow = max > 1;
-
             wrap.classList.toggle('has-overflow', hasOverflow);
-
             if (!hasOverflow) {
                 fadeLeft.style.opacity = '0';
                 fadeRight.style.opacity = '0';
                 return;
             }
-
             const atStart = list.scrollLeft <= 1;
             const atEnd = list.scrollLeft >= max - 1;
-
-            // Am Anfang: nur rechter Fade sichtbar
-            // In der Mitte: beide sichtbar
-            // Am Ende: nur linker Fade sichtbar
             fadeLeft.style.opacity = atStart ? '0' : '1';
             fadeRight.style.opacity = atEnd ? '0' : '1';
         };
-
-        // Events
         list.addEventListener('scroll', update, { passive: true });
-
-        // Resize/Font/Layouträume können sich ändern
         const ro = new ResizeObserver(update);
         ro.observe(list);
-
-        // Tasks können dynamisch dazu kommen/entfernt werden
         const mo = new MutationObserver(update);
         mo.observe(list, { childList: true, subtree: true });
-
-        // Initial
         update();
     });
 })();

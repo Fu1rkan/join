@@ -76,3 +76,18 @@
     opacity: 0;
   }
 }
+
+/* keyframes for blend in animation */
+@keyframes blendIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.blend-in {
+  animation: blendIn 0.5s ease-in forwards;
+}

@@ -17,18 +17,19 @@
 .add-task-form-subtasks-dropdown-subtasks {
     display: flex;
     flex-direction: column;
+    animation: blendIn 0.2s ease-in-out;
 }
 
 .add-task-main {
-    height: 82vh;
     max-width: calc(1440px - 232px);
     padding: 60px 80px 20px 80px;
     z-index: 1;
 }
 
 .add-task-form {
+    height: 580px;
     margin-top: 48px;
-    flex: 1;
+    justify-content: space-between;
 }
 
 .add-task-form label {
@@ -50,6 +51,7 @@
     width: 100%;
     display: flex;
     gap: 48px;
+    height: 400px;
 }
 
 .add-task-form-left,
@@ -144,13 +146,19 @@
 .add-task-form-assigned-to-arrow-down-svg,
 .add-task-form-assigned-to-arrow-up-svg,
 .add-task-form-subtasks-btns button,
-.add-task-form-subtasks-dropdown-subtasks-btns button,
 .add-task-form-subtasks-dropdown-subtasks-edit-btns button,
 .add-task-form-assigned-to-dropdown-contacts-icon,
 .current-assigned-to-contact {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-btns button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
 }
 
 .add-task-priority-btns button {
@@ -224,20 +232,36 @@
     position: relative;
 }
 
-.add-task-subtaks-dropdown {
-    background-color: #FFFFFF;
-    
-}
-
 .add-task-subtaks-dropdown ul {
-    background-color: #FFFFFF;
-    /* z-index: 2; */
     display: flex;
     flex-direction: column;
     gap: 8px;
     max-height: 80px;
     overflow-y: auto;
     scrollbar-width: thin;
+    scrollbar-color: rgba(42, 54, 71, 1) transparent;
+}
+
+.add-task-form-subtasks-btns button{
+    background-color: transparent;
+}
+
+.add-task-form-subtasks-btns button:hover{
+    background-color: rgb(238, 238, 238);
+}
+
+.add-task-form-assigned-to-arrow-down-svg:hover{
+    background-color: rgb(238, 238, 238);
+    border-radius: 50%;
+}
+
+.add-task-due-date-label-calender-svg:hover{
+    background-color: rgb(238, 238, 238);
+    border-radius: 50%;
+}
+
+.add-task-subtaks-dropdown ul::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .required-msg-category {
@@ -349,7 +373,7 @@
 .add-task-form-subtasks-btns {
     bottom: 0;
     right: 16px;
-    
+
 }
 
 .add-task-form-subtasks-dropdown-subtasks-btns {
@@ -365,13 +389,6 @@
     height: 24px;
     width: 24px;
     border-radius: 50%;
-    background-color: #FFFFFF;
-}
-
-.add-task-form-subtasks-btns button:hover,
-.add-task-form-subtasks-dropdown-subtasks-btns button:hover,
-.add-task-form-subtasks-dropdown-subtasks-edit-btns button:hover {
-    background-color: #EEEEEE;
 }
 
 .list-style-none {
@@ -438,7 +455,6 @@
 }
 
 .add-task-footer-and-btns {
-    margin-top: 56px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -480,7 +496,7 @@
 }
 
 .add-task-form-clear-btn:hover>p,
-.add-task-form-clear-btn:hover>svg path{
+.add-task-form-clear-btn:hover>svg path {
     color: #29ABE2;
     stroke: #29ABE2;
 }
@@ -490,7 +506,7 @@
 }
 
 .add-task-form-clear-btn:active>p,
-.add-task-form-clear-btn:active>svg path{
+.add-task-form-clear-btn:active>svg path {
     color: #091931;
     stroke: #091931;
 }
@@ -526,7 +542,7 @@
 }
 
 .add-task-red-border {
-    border-color: #E60026; 
+    border-color: #E60026;
 }
 
 .add-task-form-input-placeholder-default::placeholder,

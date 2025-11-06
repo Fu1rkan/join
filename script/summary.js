@@ -29,6 +29,8 @@ function checkAndShowOverlay() {
 
 /**
  * Shows animated overlay for mobile devices with appropriate template
+ * @description Renders overlay based on loginType, shows for 1.5s, then fades out over 1s
+ * @throws {Error} If required DOM elements are not found
  */
 function showMobileOverlay() {
     let overlay = document.getElementById('animated_overlay_id');
@@ -46,6 +48,8 @@ function showMobileOverlay() {
 
 /**
  * Automatically hides overlay after animation and cleans up URL parameters
+ * @description Removes URL parameters from address bar without page reload
+ * @example cleanUpUrl(); // Changes /summary.html?showOverlay=true to /summary.html
  */
 function cleanUpUrl() {
     let newUrl = window.location.pathname;

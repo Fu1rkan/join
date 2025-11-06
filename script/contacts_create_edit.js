@@ -8,8 +8,6 @@ function addNewContact() {
     overlayContentRef.innerHTML = showAddContactCard();
     const addContactCardRef = document.getElementById('overlay_add_contact_card');
     animationOverlayCardFadeIn(addContactCardRef);
-
-    // enable Enter key to submit the create form (use "add" mode so handler calls createNewContact)
     setupEnterKeyContact("", "", "add");
 }
 

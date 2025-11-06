@@ -411,17 +411,17 @@ function saveChangedSubtask(index) {
  * Validates form inputs and creates task object if all required fields are filled
  * @param {string} paraOverlay - Optional parameter indicating if task is created from overlay, defaults to empty string
  */
-function createNewTask(paraOverlay = "") {
+function createNewTask(progress, fromBoard) {
     let titleRef = document.getElementById('add_task_title');
     let descriptionRef = document.getElementById('add_task_description');
     let dueDateRef = document.getElementById('add_task_due_date');
-    let categoryRef = document.getElementById('add_task_category')
+    let categoryRef = document.getElementById('add_task_category');
     requiredMsgDNone(titleRef, dueDateRef, categoryRef);
     checkArrayLength();
     if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
         showRequiredMsg(titleRef, dueDateRef, categoryRef);
     } else {
-        pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay);
+        pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard);
     }
 }
 
@@ -448,7 +448,7 @@ function checkArrayLength() {
  * @param {HTMLElement} dueDateRef - Reference to the due date input element
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  */
-function pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay = "") {
+function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard) {
     taskList.push(
         {
             "id": taskList.length,
@@ -456,14 +456,14 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay = "") {
             "description": descriptionRef.value,
             "date": dueDateRef.value,
             "priority": priorityTaskActive,
-            "category": "to-do",
+            "category": progress,
             "type": currentChoosedCategory,
             "participants": currentAssignedTo,
             "subtasks": currentCreatedSubtasks
         }
     )
     resetGlobalVariables();
-    putTaskAndShowCreatedMsg(paraOverlay);
+    putTaskAndShowCreatedMsg(fromBoard);
 }
 
 /**
@@ -472,10 +472,10 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, paraOverlay = "") {
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  * @returns {Promise<void>} Promise that resolves when task is saved and UI is updated
  */
-async function putTaskAndShowCreatedMsg(paraOverlay = "") {
-    if (paraOverlay == "overlay_board") {
+async function putTaskAndShowCreatedMsg(fromBoard) {    
+    if (fromBoard !== undefined) {
         await putTask(taskList);
-        closeOverlayBoard();
+        toggleAddTaskOverlay(true);
         boardInit();
     } else {
         await putTask(taskList);

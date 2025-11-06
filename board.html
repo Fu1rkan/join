@@ -14,11 +14,6 @@
 <body onload="boardInit()">
 
     <div class="layout">
-        <section id="overlay_board" class="overlay-board d_none" onclick="closeOverlayBoard()">
-            <div id="overlay_board_content" class="overlay-shadow-pos-rel-container">
-
-            </div>
-        </section>
         <nav class="navbar">
             <svg width="102" height="122" viewBox="0 0 102 122" fill="none">
                 <path d="M72.6549 0H50.4971V25.4923H72.6549V0Z" fill="white" />
@@ -155,7 +150,7 @@
                     <section class="search-section">
                         <div class="resp-add-task-button">
                             <h2>Board</h2>
-                            <button onclick="openAddTask()">
+                            <button onclick="toggleAddTaskOverlay('to-do')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
                                     fill="none">
                                     <path
@@ -180,7 +175,7 @@
                                     </div>
                                 </label>
                             </div>
-                            <button onclick="openAddTask()">
+                            <button onclick="toggleAddTaskOverlay('to-do')">
                                 <p>Add task</p>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path
@@ -196,7 +191,7 @@
 
                         <header>
                             <h4>To do</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="toggleAddTaskOverlay('to-do')">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
                                 <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
@@ -213,7 +208,7 @@
 
                         <header>
                             <h4>In progress</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="toggleAddTaskOverlay('in-progress')">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
                                 <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
@@ -231,7 +226,7 @@
 
                         <header>
                             <h4>Await feedback</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="toggleAddTaskOverlay('await-feedback')">
                                 <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
                                 <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
                                 <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
@@ -249,11 +244,6 @@
 
                         <header>
                             <h4>Done</h4>
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" onclick="openAddTask()">
-                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke-width="2" />
-                                <path d="M12 8.5V16.5" stroke-width="2" stroke-linecap="round" />
-                                <path d="M16 12.5754L8 12.5754" stroke-width="2" stroke-linecap="round" />
-                            </svg>
                         </header>
                         <section class="task-list" id="done-kanban" ondrop="moveTo('done', 'done-kanban')"
                             ondragenter="highlight('done-kanban')" ondragleave="removeHighlight('done-kanban')"
@@ -268,13 +258,11 @@
     </div>
 
     <div class="bleur-bg d_none" id="bleur-bg"></div>
-
     <div class="dialog" id="task-dialog"></div>
 
     <script src="./script/template.js"></script>
     <script src="./script/add_task.js"></script>
     <script src="./script/add_task_templates.js"></script>
-    <script src="./script/overlay_board.js"></script>
     <script src="./script/board.js"></script>
     <script src="./script/script.js"></script>
     <script src="./script/guestlogin.js"></script>

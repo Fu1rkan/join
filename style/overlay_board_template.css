@@ -12,12 +12,13 @@
 }
 
 .add-task-card {
-    width: 1116px; /*1116px*/
-    height: 870px; /*870px*/
+    max-width: 90%;
+    max-height: 70%;
     border-radius: 30px;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 .add-task-header {

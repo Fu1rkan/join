@@ -91,8 +91,7 @@ function getSubtaskTemplate(index) {
                         </svg>
                     </button>
                 </div>
-                <label id="label_current_subtask_${index}" for="change_current_element_${index}" class="d_none"
-                    onclick="event.stopPropagation()">
+                <label id="label_current_subtask_${index}" for="change_current_element_${index}" class="d_none">
                     <input id="change_current_element_${index}" type="text"
                         class="add-task-form-subtasks-dropdown-subtasks-list-item-subtask-input">
                     <section class="add-task-form-subtasks-dropdown-subtasks-edit-btns">

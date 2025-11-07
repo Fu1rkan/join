@@ -1046,7 +1046,7 @@ function boardAddTaskTemplate(progress) {
                                 </div>
                                 <input id="add_task_category"
                                     class="w-100 add-task-form-default-inputs add-task-form-input-placeholder-black" type="text"
-                                    placeholder="Select task category" onfocus="highlightInputFields('add_task_category')">
+                                    placeholder="Select task category" onfocus="highlightInputFields('add_task_category')" readonly>
                                 <div id="add_task_form_category_arrow_svg" class="add-task-form-assigned-to-arrow-down-svg"
                                     onclick="event.stopPropagation()">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

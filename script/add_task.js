@@ -260,10 +260,28 @@ function renderSubtasks() {
  * @param {number} index - The index of the subtask to show options for
  */
 function showSubtaskMenuOptions(index) {
-    let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
-    let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
-    currentSubtaskRoughMenuRef.classList.remove('d_none');
-    subtaskListItemRef.classList.add('list-style-none');
+    for (let i = 0; i < currentCreatedSubtasks.length; i++) {
+        closeSubtaskMenuOptions(i);
+    }
+    setTimeout(() => {
+        let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
+        let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+        document.body.setAttribute('onclick', `closeSubtaskMenuOptions(${index})`)
+        if (currentSubtaskRoughMenuRef != undefined || subtaskListItemRef != undefined) {
+            subtaskListItemRef.classList.add('list-style-none');
+            currentSubtaskRoughMenuRef.classList.remove('d_none');
+        }
+    }, 50);
+}
+
+function closeSubtaskMenuOptions(index){
+    if (currentCreatedSubtasks.length > 0) {
+        let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
+        let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+        currentSubtaskRoughMenuRef.classList.add('d_none');
+        subtaskListItemRef.classList.remove('list-style-none');
+    }
+    document.body.removeAttribute('onclick');
 }
 
 /**
@@ -272,17 +290,34 @@ function showSubtaskMenuOptions(index) {
  * @param {number} index - The index of the subtask to change
  */
 function changeCurrentSubtask(index) {
-    let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
-    let currentSubtaskValue = document.getElementById(`current_subtask_${index}`);
-    let currentSubtaskChangeLabelRef = document.getElementById(`label_current_subtask_${index}`);
-    let currentSubtaskChangeinputRef = document.getElementById(`change_current_element_${index}`);
-    let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
-    currentSubtaskRoughMenuRef.classList.add('d_none');
-    subtaskListItemRef.classList.add('list-style-none');
-    subtaskListItemRef.classList.remove('add-task-form-subtasks-dropdown-subtasks-list-item');
-    currentSubtaskValue.classList.add('d_none');
-    currentSubtaskChangeLabelRef.classList.remove('d_none');
-    currentSubtaskChangeinputRef.value = currentSubtaskValue.innerText;
+    for (let i = 0; i < currentCreatedSubtasks.length; i++) {
+        closeCurrentSubtask(i);
+    }
+    setTimeout(() => {
+        let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
+        let currentSubtaskValue = document.getElementById(`current_subtask_${index}`);
+        let currentSubtaskChangeLabelRef = document.getElementById(`label_current_subtask_${index}`);
+        let currentSubtaskChangeinputRef = document.getElementById(`change_current_element_${index}`);
+        let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+        currentSubtaskRoughMenuRef.classList.toggle('d_none');
+        subtaskListItemRef.classList.toggle('list-style-none');
+        subtaskListItemRef.classList.toggle('add-task-form-subtasks-dropdown-subtasks-list-item');
+        currentSubtaskValue.classList.toggle('d_none');
+        currentSubtaskChangeLabelRef.classList.toggle('d_none');
+        currentSubtaskChangeinputRef.value = currentSubtaskValue.innerText;
+        currentSubtaskChangeinputRef.focus();
+        setTimeout(() => {
+            document.body.setAttribute('onclick', `closeCurrentSubtask(${index})`);
+        }, 50);
+    }, 50);
+}
+
+function closeCurrentSubtask(index) {
+    document.getElementById(`current_subtask_li_${index}`).classList.remove('list-style-none');
+    document.getElementById(`current_subtask_li_${index}`).classList.add('add-task-form-subtasks-dropdown-subtasks-list-item');
+    document.getElementById(`current_subtask_${index}`).classList.remove('d_none');
+    document.getElementById(`label_current_subtask_${index}`).classList.add('d_none');
+    document.body.removeAttribute('onclick');
 }
 
 /**
@@ -350,15 +385,15 @@ function setSubtask(activeInputField = "add_task_subtasks") {
     let subtasksInputField = document.getElementById(activeInputField);
     if (subtasksInputField.value.length > 0) {
         currentCreatedSubtasks.push(
-        {
-            "name": subtasksInputField.value,
-            "status": false
-        }
-    );
-    resetAddTaskSubtasksInputField();
-    renderCurrentCreatedSubtasks();
+            {
+                "name": subtasksInputField.value,
+                "status": false
+            }
+        );
+        resetAddTaskSubtasksInputField();
+        renderCurrentCreatedSubtasks();
     }
-    
+
 }
 
 /**
@@ -472,7 +507,7 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  * @returns {Promise<void>} Promise that resolves when task is saved and UI is updated
  */
-async function putTaskAndShowCreatedMsg(fromBoard) {    
+async function putTaskAndShowCreatedMsg(fromBoard) {
     if (fromBoard !== undefined) {
         await putTask(taskList);
         toggleAddTaskOverlay(true);
@@ -595,17 +630,17 @@ function requiredMsgDNone(titleRef, dueDateRef, categoryRef) {
  */
 function showRequiredMsg(titleRef, dueDateRef, categoryRef) {
     const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef } = takeRequiredMsgRefs();
-     if (titleRef.value == 0) {
-         requiredTitleRef.classList.remove('d_none');
-         titleRef.classList.add('add-task-red-border');
+    if (titleRef.value == 0) {
+        requiredTitleRef.classList.remove('d_none');
+        titleRef.classList.add('add-task-red-border');
     }
-      if (dueDateRef.value == 0) {
-         requiredDueDateRef.classList.remove('d_none');
-         dueDateRef.classList.add('add-task-red-border');
+    if (dueDateRef.value == 0) {
+        requiredDueDateRef.classList.remove('d_none');
+        dueDateRef.classList.add('add-task-red-border');
     }
-      if (categoryRef.value == "") {
-         requiredCategoryRef.classList.remove('d_none');
-         categoryRef.classList.add('add-task-red-border');
+    if (categoryRef.value == "") {
+        requiredCategoryRef.classList.remove('d_none');
+        categoryRef.classList.add('add-task-red-border');
     }
 }
 

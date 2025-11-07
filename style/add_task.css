@@ -415,7 +415,6 @@
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item::before {
-    content: "•";
     position: absolute;
     left: 24px;
     top: 14px;

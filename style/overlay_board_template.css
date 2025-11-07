@@ -1,24 +1,20 @@
-.overlay-board {
-    z-index: 3;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.15);
-}
-
 .add-task-card {
     max-width: 90%;
-    max-height: 70%;
+    min-width: 1000px;
+    max-height: 90%;
     border-radius: 30px;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     overflow: auto;
+    padding: 48px;
+}
+
+.add-task-form-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 550px;
 }
 
 .add-task-header {
@@ -64,4 +60,124 @@
     margin-left: 3%;
     white-space: nowrap;
     font-size: 21px;
+}
+
+.d_f{
+    display: flex;
+}
+
+.h-96 label {
+    display: flex;
+}
+
+.add-task-form-left-title-input {
+    outline: none;
+}
+
+.add-task-form-textarea {
+    outline: none;
+}
+
+.add-task-form-default-inputs {
+    outline: none;
+}
+
+.add-task-assigned-to-category-label {
+    display: flex;
+    gap: 8px;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-item input{
+    outline: none;
+}
+
+@media (max-width: 1050px) {
+    .add-task-card {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 850px) {
+    .add-task-card {
+        padding: 24px;
+        max-height: 70%;
+        width: 90%;
+    }
+
+    .add-task-form-overlay {
+        min-height: auto;
+    }
+
+    .add-task-header h2 {
+        font-size: 47px;
+    }
+
+    .add-task-form-left-title-input {
+        font-size: 14px !important;
+    }
+
+    .add-task-form-left-title-input:focus {
+        font-size: 14px !important;
+    }
+
+    .add-task-form-left-title-input::placeholder {
+        font-size: 14px !important;
+    }
+
+    .add-task-form-textarea {
+        font-size: 14px !important;
+    }
+
+    .add-task-form-textarea::placeholder {
+        font-size: 14px !important;
+    }
+
+    .add-task-form-default-inputs::placeholder {
+        font-size: 14px !important;
+    }
+
+    .add-task-form-default-inputs {
+        font-size: 14px !important;
+        padding-right: 80px !important;
+    }
+
+    .add-task-priority-btns svg {
+        height: 15px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .add-task-priority-btns p {
+        font-size: 14px !important
+    }
+
+
+    .add-task-header>h2 {
+        height: auto;
+        padding-bottom: 24px;
+    }
+
+    .add-task-header h2 {
+        font-size: 36px;
+    }
+
+    .add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title {
+        padding-right: 40px;
+    }
+
+    .add-task-subtaks-dropdown ul {
+        list-style-type: none;
+        gap: 2px !important;
+    }
+
+    .add-task-subtaks-dropdown ul li {
+        height: auto;
+    }
+
+    .add-task-form-subtasks-dropdown-subtasks-list-item{
+        padding: 6px 10px !important;
+    }
+
 }

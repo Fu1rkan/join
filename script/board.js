@@ -835,15 +835,17 @@ function toggleAddTaskOverlay(progress) {
     if (checkOverlay == 0) {
         document.getElementById('task-dialog').innerHTML = boardAddTaskTemplate(progress);
         setTimeout(() => {
-            document.body.setAttribute('onclick', `toggleAddTaskOverlay()`);
+            document.getElementById('task-dialog').setAttribute('onclick', `toggleAddTaskOverlay()`);
         }, 50);
         checkOverlay += 1;
     } else if (progress == true) {
+        clearForm()
         renderTasks();
-        document.body.removeAttribute('onclick');
+        document.getElementById('task-dialog').removeAttribute('onclick');
         checkOverlay = 0;
     } else {
-        document.body.removeAttribute('onclick');
+        clearForm()
+        document.getElementById('task-dialog').removeAttribute('onclick');
         checkOverlay = 0;
     }
 }
@@ -855,7 +857,7 @@ function toggleAddTaskOverlay(progress) {
  */
 function boardAddTaskTemplate(progress) {
     return `
-        <div class="add-task-main add-task-card" onclick="event.stopPropagation(); closeDropdownMenus(event)">
+        <div class="add-task-card" onclick="event.stopPropagation(); closeDropdownMenus(event)">
             <div class="add-task-header">
                 <h2>Add Task</h2>
                 <div class="close-board-overlay" onclick="toggleAddTaskOverlay()">
@@ -872,7 +874,7 @@ function boardAddTaskTemplate(progress) {
                     </svg>
                 </div>
             </div>
-            <form id="add_task_form" class="add-task-form" action="" onsubmit="return false;">
+            <form id="add_task_form" class="add-task-form-overlay" action="" onsubmit="return false;">
                 <div class="add-task-form-main">
                     <section class="add-task-form-left">
                         <div class="h-96" onclick="event.stopPropagation()">

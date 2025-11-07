@@ -835,15 +835,17 @@ function toggleAddTaskOverlay(progress) {
     if (checkOverlay == 0) {
         document.getElementById('task-dialog').innerHTML = boardAddTaskTemplate(progress);
         setTimeout(() => {
-            document.body.setAttribute('onclick', `toggleAddTaskOverlay()`);
+            document.getElementById('task-dialog').setAttribute('onclick', `toggleAddTaskOverlay()`);
         }, 50);
         checkOverlay += 1;
     } else if (progress == true) {
+        clearForm()
         renderTasks();
-        document.body.removeAttribute('onclick');
+        document.getElementById('task-dialog').removeAttribute('onclick');
         checkOverlay = 0;
     } else {
-        document.body.removeAttribute('onclick');
+        clearForm()
+        document.getElementById('task-dialog').removeAttribute('onclick');
         checkOverlay = 0;
     }
 }

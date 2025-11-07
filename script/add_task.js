@@ -305,6 +305,7 @@ function changeCurrentSubtask(index) {
         currentSubtaskValue.classList.toggle('d_none');
         currentSubtaskChangeLabelRef.classList.toggle('d_none');
         currentSubtaskChangeinputRef.value = currentSubtaskValue.innerText;
+        document.getElementById(`current_subtask_style_${index}`).classList.add('d_none');
         currentSubtaskChangeinputRef.focus();
         setTimeout(() => {
             document.body.setAttribute('onclick', `closeCurrentSubtask(${index})`);
@@ -317,6 +318,7 @@ function closeCurrentSubtask(index) {
     document.getElementById(`current_subtask_li_${index}`).classList.add('add-task-form-subtasks-dropdown-subtasks-list-item');
     document.getElementById(`current_subtask_${index}`).classList.remove('d_none');
     document.getElementById(`label_current_subtask_${index}`).classList.add('d_none');
+    document.getElementById(`current_subtask_style_${index}`).classList.remove('d_none');
     document.body.removeAttribute('onclick');
 }
 

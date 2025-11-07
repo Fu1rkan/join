@@ -20,6 +20,10 @@
     animation: blendIn 0.2s ease-in-out;
 }
 
+.add-task-form-subtasks-dropdown-subtasks {
+    flex-direction: column-reverse !important;
+}
+
 .add-task-main {
     max-width: calc(1440px - 232px);
     padding: 60px 80px 60px 80px;
@@ -161,7 +165,7 @@
     background-color: transparent;
 }
 
-.add-task-form-subtasks-dropdown-subtasks-btns button:hover{
+.add-task-form-subtasks-dropdown-subtasks-btns button:hover {
     transform: translateY(1px);
 }
 
@@ -248,20 +252,20 @@
     scrollbar-color: rgba(42, 54, 71, 1) transparent;
 }
 
-.add-task-form-subtasks-btns button{
+.add-task-form-subtasks-btns button {
     background-color: transparent;
 }
 
-.add-task-form-subtasks-btns button:hover{
+.add-task-form-subtasks-btns button:hover {
     background-color: rgb(238, 238, 238);
 }
 
-.add-task-form-assigned-to-arrow-down-svg:hover{
+.add-task-form-assigned-to-arrow-down-svg:hover {
     background-color: rgb(238, 238, 238);
     border-radius: 50%;
 }
 
-.add-task-due-date-label-calender-svg:hover{
+.add-task-due-date-label-calender-svg:hover {
     background-color: rgb(238, 238, 238);
     border-radius: 50%;
 }
@@ -404,7 +408,7 @@
 .add-task-form-subtasks-dropdown-subtasks-list-item {
     cursor: pointer;
     list-style: none;
-    padding: 6px 16px 6px 40px;
+    padding: 6px 16px 6px 24px;
     height: 32px;
     position: relative;
     border-radius: 10px;
@@ -424,7 +428,7 @@
     pointer-events: none;
 }
 
-.add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title{
+.add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title {
     font-size: 16px;
     font-weight: 400;
 }
@@ -444,6 +448,10 @@
 
 .add-task-form-subtasks-dropdown-subtasks-list-item-subtask-input {
     padding: 4px 16px;
+}
+
+.add-task-subtaks-dropdown ul {
+    list-style: none;
 }
 
 .add-task-subtasks-input-seperator,
@@ -499,10 +507,11 @@
     width: 104px;
     border-radius: 10px;
     border: 1px solid #2A3647;
+    outline: none;
 }
 
 .add-task-form-clear-btn:hover {
-    border: 2px solid #29ABE2;
+    border: 1px solid #29ABE2;
 }
 
 .add-task-form-clear-btn:hover>p,
@@ -643,4 +652,12 @@
 
 .d_none {
     display: none !important;
+}
+
+.add-task-form-create-btn:hover{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.add-task-form-clear-btn:hover{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

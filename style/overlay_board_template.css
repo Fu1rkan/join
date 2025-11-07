@@ -64,6 +64,7 @@
 
 .d_f{
     display: flex;
+    gap: 2px;
 }
 
 .h-96 label {
@@ -180,4 +181,12 @@
         padding: 6px 10px !important;
     }
 
+    .add-task-form-create-btn p{
+        font-size: 16px !important;
+    }
+    
+    .add-task-form-clear-btn p{        
+        font-size: 16px !important;
+        outline: none;
+    }
 }

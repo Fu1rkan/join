@@ -62,7 +62,7 @@ function getSubtaskTemplate(index) {
             class="add-task-form-subtasks-dropdown-subtasks-list-item">
             <div class="add-task-form-subtasks-dropdown-subtasks-item">
                 <div class="d_f">
-                    <p>•</p>
+                    <p id="current_subtask_style_${index}">•</p>
                     <p id="current_subtask_${index}" class="add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title">${currentCreatedSubtasks[index].name}</p>
                 </div>
                 <div id="current_subtask_rough_menu_btns${index}" class="add-task-form-subtasks-dropdown-subtasks-btns d_none">

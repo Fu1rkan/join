@@ -8,8 +8,8 @@ function isGuestUser(){
 }
 
 /**
- * Initializes a guest user session with default values
- * Sets up localStorage with guest username, userId, and empty arrays for contacts and tasks
+ * Initializes a guest user session with default values and example data
+ * Sets up localStorage with guest username, userId, and example arrays for contacts and tasks
  */
 function initializeGuestSession(){
     let guestUserName = "G";
@@ -18,11 +18,14 @@ function initializeGuestSession(){
     localStorage.setItem("userName", JSON.stringify(guestUserName));
     localStorage.setItem("userId", JSON.stringify(guestUserId));
 
+    // Initialize with example data if no guest data exists
     if(!localStorage.getItem("guestContacts")){
-        localStorage.setItem("guestContacts", JSON.stringify([]));
+        const exampleContacts = createExampleContacts();
+        localStorage.setItem("guestContacts", JSON.stringify(exampleContacts));
     }
     if(!localStorage.getItem("guestTasks")){
-        localStorage.setItem("guestTasks", JSON.stringify([]));
+        const exampleTasks = createExampleTasks();
+        localStorage.setItem("guestTasks", JSON.stringify(exampleTasks));
     }
 }
 

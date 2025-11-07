@@ -204,7 +204,7 @@ function signUpTemplate() {
                         </svg>
                     </label>
                     </div>
-                        <span>I accept the <a href="./privacy_policy.html">Privacy policy</a></span>
+                        <span>I accept the <a href="./privacy_policy_from_login.html">Privacy policy</a></span>
                 </div>
             </div>
 
@@ -213,8 +213,8 @@ function signUpTemplate() {
             </div>
             
             <footer class="main_footer">
-                <a href="./privacy_policy.html">Privacy Policy</a>
-                <a href="./legal_notice.html">Legal notice</a>
+                <a href="./privacy_policy_from_login.html">Privacy Policy</a>
+                <a href="./legal_notice_from_login.html">Legal notice</a>
             </footer>
 
         </section>

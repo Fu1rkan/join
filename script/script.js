@@ -8,7 +8,7 @@ let taskList = [];
  * @param {Event} event - The event object to stop propagation for
  */
 function stopPropagation(event) {
-    event.stopPropagation();
+  event.stopPropagation();
 }
 
 /**
@@ -16,18 +16,18 @@ function stopPropagation(event) {
  * Shows/hides the profile menu with smooth transitions
  */
 function toggleBurgerMenu() {
-    let menu = document.getElementById('profile-menu');
-    if (menu.classList.contains('show')) {
-        menu.classList.remove('show');
-        menu.classList.add('hide');
-        setTimeout(() => {
-            if (menu.classList.contains('hide')) {
-                menu.classList.remove('hide');
-            }
-        }, 300);
-    } else {
-        menu.classList.add('show');
-    }
+  let menu = document.getElementById('profile-menu');
+  if (menu.classList.contains('show')) {
+    menu.classList.remove('show');
+    menu.classList.add('hide');
+    setTimeout(() => {
+      if (menu.classList.contains('hide')) {
+        menu.classList.remove('hide');
+      }
+    }, 300);
+  } else {
+    menu.classList.add('show');
+  }
 }
 
 /**
@@ -36,12 +36,12 @@ function toggleBurgerMenu() {
  * @returns {string} The escaped string safe for HTML insertion
  */
 function escapeHTML(str) {
-    return str
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 /**
@@ -49,9 +49,9 @@ function escapeHTML(str) {
  * @param {string} id - The ID of the element to render the profile icon in
  */
 function rederProfilHeaderIcon(id) {
-    let userNameLetters = JSON.parse(localStorage.getItem("userName"));
-    let profilIconRef = document.getElementById(id);
-    profilIconRef.innerHTML = `<p>${userNameLetters}</p>`
+  let userNameLetters = JSON.parse(localStorage.getItem("userName"));
+  let profilIconRef = document.getElementById(id);
+  profilIconRef.innerHTML = `<p>${userNameLetters}</p>`
 }
 
 /**
@@ -100,16 +100,16 @@ function checkLoginValues(currentUserIndex) {
  * @returns {Promise<void>} Promise that resolves when contacts are loaded
  */
 async function loadContacts() {
-    if (isGuestUser()) {
-        loadGuestContacts();
-    } else {
-        let path = localStorage.getItem("userId");
-        let userId = JSON.parse(path);
-        let contactsPath = userId + "contacts/";
-        let response = await fetch(BASE_URL + contactsPath + ".json");
-        let responseToJson = await response.json();
-        pushUserContactsToArray(responseToJson);
-    }
+  if (isGuestUser()) {
+    loadGuestContacts();
+  } else {
+    let path = localStorage.getItem("userId");
+    let userId = JSON.parse(path);
+    let contactsPath = userId + "contacts/";
+    let response = await fetch(BASE_URL + contactsPath + ".json");
+    let responseToJson = await response.json();
+    pushUserContactsToArray(responseToJson);
+  }
 }
 
 /**
@@ -130,16 +130,16 @@ function pushUserContactsToArray(responseToJson) {
  * @returns {Promise<void>} Promise that resolves when tasks are loaded
  */
 async function loadTasks() {
-    if (isGuestUser()) {
-        loadGuestTasks();
-    } else {
-        let path = localStorage.getItem("userId");
-        let userId = JSON.parse(path);
-        let tasksPath = userId + "tasks/";
-        let response = await fetch(BASE_URL + tasksPath + ".json");
-        let responseToJson = await response.json();
-        pushUserTaskToArray(responseToJson);
-    }
+  if (isGuestUser()) {
+    loadGuestTasks();
+  } else {
+    let path = localStorage.getItem("userId");
+    let userId = JSON.parse(path);
+    let tasksPath = userId + "tasks/";
+    let response = await fetch(BASE_URL + tasksPath + ".json");
+    let responseToJson = await response.json();
+    pushUserTaskToArray(responseToJson);
+  }
 }
 
 /**
@@ -161,20 +161,20 @@ function pushUserTaskToArray(responseToJson) {
  * @returns {Promise<void>} Promise that resolves when username is loaded
  */
 async function loadUsername() {
-    if (isGuestUser()) {
-        loadGuestUsername();
-    } else {
-        let path = localStorage.getItem("userId");
-        let userId = JSON.parse(path);
-        let tasksPath = userId + "username";
-        let response = await fetch(BASE_URL + tasksPath + ".json");
-        let responseToJson = await response.json();
-        document.getElementById('username').innerHTML = responseToJson;
-        let respGreeting = document.getElementById("summary-greeting-name");  
-        if (respGreeting != null) {
-            respGreeting.innerHTML = responseToJson;
-        }
+  if (isGuestUser()) {
+    loadGuestUsername();
+  } else {
+    let path = localStorage.getItem("userId");
+    let userId = JSON.parse(path);
+    let tasksPath = userId + "username";
+    let response = await fetch(BASE_URL + tasksPath + ".json");
+    let responseToJson = await response.json();
+    document.getElementById('username').innerHTML = responseToJson;
+    let respGreeting = document.getElementById("summary-greeting-name");
+    if (respGreeting != null) {
+      respGreeting.innerHTML = responseToJson;
     }
+  }
 }
 
 /**
@@ -183,16 +183,16 @@ async function loadUsername() {
  * @returns {Promise<void>} Promise that resolves when tasks are saved
  */
 async function putTask(data = {}) {
-    if (isGuestUser()) {
-        await putGuestTasks(taskList);
+  if (isGuestUser()) {
+    await putGuestTasks(taskList);
+  } else {
+    let tasksPath = getUserIdAndPathForTasks();
+    if (taskList.length > 0) {
+      await putTasksInFirebase(data, tasksPath);
     } else {
-        let tasksPath = getUserIdAndPathForTasks();
-        if (taskList.length > 0) {
-            await putTasksInFirebase(data, tasksPath);
-        } else {
-            await putPlaceholderInFirebase(tasksPath);
-        }
+      await putPlaceholderInFirebase(tasksPath);
     }
+  }
 }
 
 /**
@@ -243,16 +243,16 @@ async function putPlaceholderInFirebase(tasksPath) {
  * @returns {Promise<void>} Promise that resolves when contacts are saved
  */
 async function putContacts(data = {}) {
-    if (isGuestUser()) {
-        await putGuestContacts(contacts);
+  if (isGuestUser()) {
+    await putGuestContacts(contacts);
+  } else {
+    let contactsPath = getUserIdAndPathForContacts();
+    if (contacts.length > 0) {
+      await putContactsInFirebase(data, contactsPath);
     } else {
-        let contactsPath = getUserIdAndPathForContacts();
-        if (contacts.length > 0) {
-            await putContactsInFirebase(data, contactsPath);
-        } else {
-            await putPlaceholderInFirebase(contactsPath);
-        }
+      await putPlaceholderInFirebase(contactsPath);
     }
+  }
 }
 
 /**
@@ -315,7 +315,6 @@ async function addNewUser(username, email, password) {
     "tasks": { "placeholder": "placeholder" },
     "contacts": { "placeholder": "placeholder" }
   };
-
   let response = await fetch(BASE_URL + ".json", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -365,12 +364,55 @@ function generateLetters(capitolName) {
 }
 
 /**
+ * Adds example data (tasks and contacts) for new users or guest users
+ * Creates 5 example tasks and 10 example contacts to demonstrate application features
+ * Compatible with both regular users and guest users
+ * @returns {Promise<void>} Promise that resolves when example data is added
+ */
+async function addExampleData() {
+  const exampleTasks = createExampleTasks();
+  taskList = [...taskList, ...exampleTasks];
+  await putTask(taskList);
+  const exampleContacts = createExampleContacts();
+  contacts = [...contacts, ...exampleContacts];
+  await putContacts(contacts);
+}
+
+/**
+ * Creates a new user account with example data in Firebase database
+ * @param {string} username - The user's full name
+ * @param {string} email - The user's email address
+ * @param {string} password - The user's password
+ * @returns {Promise<Object>} Promise that resolves with Firebase response
+ */
+async function addNewUser(username, email, password) {
+  let capitalizedName = generatecapitalizedName(username);
+  let userNameLetters = generateLetters(capitalizedName);
+  const exampleTasks = createExampleTasks();
+  const exampleContacts = createExampleContacts();
+  let user = {
+    "username": capitalizedName,
+    "userNameLetters": userNameLetters,
+    "email": email,
+    "password": password,
+    "tasks": exampleTasks,
+    "contacts": exampleContacts
+  };
+  let response = await fetch(BASE_URL + ".json", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+  return (responseToJson = await response.json());
+}
+
+/**
  * Logs out the current user and redirects to the login page
  * Clears guest data, removes localStorage items, and navigates to index.html
  */
-function logOut(){
-    clearGuestData();
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userId");
-    window.location.href = './index.html';
+function logOut() {
+  clearGuestData();
+  localStorage.removeItem("userName");
+  localStorage.removeItem("userId");
+  window.location.href = './index.html';
 }

@@ -33,8 +33,6 @@ function checkAndShowOverlay() {
  * @throws {Error} If required DOM elements are not found
  */
 function showMobileOverlay() {
-    console.log(document.getElementById('animated_overlay_id'));
-    
     let overlay = document.getElementById('animated_overlay_id');
     let overlayBg = document.getElementById('animated-overlay-parent');
     

@@ -55,14 +55,21 @@
     width: 100%;
     display: flex;
     gap: 48px;
-    height: 400px;
 }
 
 .add-task-form-left,
 .add-task-form-right {
     width: 50%;
+    gap: 24px;
 }
 
+.add-task-form-left {
+    height: 376px;
+}
+
+.add-task-form-right {
+    height: 400px;
+}
 
 .add-task-form-left>div,
 .add-task-form-right>div {
@@ -274,10 +281,13 @@
     background: transparent;
 }
 
-.required-msg-category {
+.required-msg {
     position: absolute;
     bottom: -3px;
     transform: translateY(50%);
+    font-size: 14px;
+    font-weight: 400;
+    color: #E60026;
 }
 
 .add-task-form-assigned-to-dropdown,
@@ -556,12 +566,6 @@
     color: #FFFFFF;
 }
 
-.add-tast-form-required-msg {
-    font-size: 14px;
-    font-weight: 400;
-    color: #E60026;
-}
-
 .add-task-red-border {
     border-color: #E60026;
 }
@@ -620,6 +624,8 @@
 .h-80 {
     height: 80px;
     transition: height 150ms ease-out;
+
+    position: relative;
 }
 
 .h-130 {
@@ -627,9 +633,9 @@
     transition: height 150ms ease-out;
 }
 
-.h-16 {
+/* .h-16 {
     height: 16px;
-}
+} */
 
 .w-100 {
     width: 100%;

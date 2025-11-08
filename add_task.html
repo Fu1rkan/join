@@ -163,7 +163,7 @@
                 <form id="add_task_form" class="add-task-form" action="" onsubmit="return false;">
                     <div class="add-task-form-main">
                         <section class="add-task-form-left">
-                            <div class="h-96" onclick="event.stopPropagation()">
+                            <div class="h-80" onclick="event.stopPropagation()">
                                 <label for="add_task_title">
                                     <p>Titel</p>
                                     <p class="add-task-form-required">*</p>
@@ -173,7 +173,7 @@
                                         class="w-100 add-task-form-left-title-input add-task-form-input-placeholder-default"
                                         placeholder="Enter a Title" onfocus="highlightInputFields('add_task_title')" maxlength="40" >
                                     <div class="h-16">
-                                        <p id="required_msg_title" class="add-tast-form-required-msg d_none">This field
+                                        <p id="required_msg_title" class="required-msg d_none">This field
                                             is required</p>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                     <div class="h-16"></div>
                                 </div>
                             </div>
-                            <div class="h-96" onclick="event.stopPropagation()">
+                            <div class="h-80" onclick="event.stopPropagation()">
                                 <label for="add_task_due_date" class="add-task-due-date-label">
                                     <div class="add-task-required-label-head">
                                         <p>Due date</p>
@@ -211,10 +211,6 @@
                                             type="date" placeholder="dd/mm/yyyy"
                                             onclick="openCalender('add_task_due_date')"
                                             onfocus="highlightInputFields('add_task_due_date')">
-                                        <div class="h-16">
-                                            <p id="required_msg_due_date" class="add-tast-form-required-msg d_none">This
-                                                field is required</p>
-                                        </div>
                                     </div>
                                     <svg class="add-task-due-date-label-calender-svg" xmlns="http://www.w3.org/2000/svg"
                                         width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -229,6 +225,10 @@
                                         </g>
                                     </svg>
                                 </label>
+                                <div class="h-16">
+                                            <p id="required_msg_due_date" class="required-msg d_none">This
+                                                field is required</p>
+                                        </div>
                             </div>
                         </section>
                         <div class="add-task-form-seperator">
@@ -358,8 +358,7 @@
                                     </div>
                                 </label>
                                 <div class="required-msg-category h-16">
-                                    <p id="required_msg_category" class="add-tast-form-required-msg d_none">This field
-                                        is required</p>
+                                    <p id="required_msg_category" class="required-msg d_none">This field is required</p>
                                 </div>
                                 <div class="add-task-form-category-dropdown">
                                     <ul id="add_task_form_category_dropdown_category" onclick="event.stopPropagation()"

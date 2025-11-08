@@ -28,6 +28,7 @@
 
 @media (max-width: 850px) {
     .add-task-main {
+        margin-top: 80px;
         padding: 0 0 10px 0;
     }
 

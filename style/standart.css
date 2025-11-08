@@ -140,6 +140,13 @@ a {
   }
 }
 
+@media (max-width: 850px) {
+  .main-header{
+    position: fixed;
+    top: 0;
+  }
+}
+
 @media (max-width: 800px) {
   body {
     overflow: auto;

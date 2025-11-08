@@ -49,6 +49,12 @@
     }
 }
 
+@media (max-width: 850px) {
+    .summary-main{
+        margin-top: 80px;
+    }
+}
+
 @media (max-width: 630px) {
     .summary-main {
         height: calc(100vh - 80px);

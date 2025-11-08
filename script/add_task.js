@@ -175,7 +175,7 @@ function filterInputValue() {
 function renderContactsInList(array = contacts) {
     const addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     addTaskAssignedToList.innerHTML = "";
-    if (currentAssignedTo.length === 0) {
+    if (currentAssignedTo == []) {
         for (let index = 0; index < array.length; index++) {
             addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, index);
         }
@@ -351,8 +351,6 @@ function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksB
             break;
         case "add_task_due_date":
             inputFieldAddFormCalenderSvgRef.classList.add('d_none');
-            break;
-        case "add_task_title":
             break;
         default:
             break;

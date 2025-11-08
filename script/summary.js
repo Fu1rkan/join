@@ -73,10 +73,12 @@ checkAndShowOverlay();
  * @returns {string} Greeting message corresponding to the time of day
  */
 function getGreetingByHour(h) {
-    if (h >= 5 && h <= 11) return "Good morning,";
-    if (h >= 12 && h <= 16) return "Good afternoon,";
-    if (h >= 17 && h <= 21) return "Good evening,";
-    return "Good night,";
+    let punctuation = isGuestUser() ? "!" : ",";
+    
+    if (h >= 5 && h <= 11) return "Good morning" + punctuation;
+    if (h >= 12 && h <= 16) return "Good afternoon" + punctuation;
+    if (h >= 17 && h <= 21) return "Good evening" + punctuation;
+    return "Good night" + punctuation;
 }
 
 /**

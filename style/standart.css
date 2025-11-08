@@ -93,12 +93,17 @@ main {
   min-height: 100vh;
 }
 
-input{
+input {
   background-color: inherit;
   color: inherit;
 }
 
-button{
+button {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
   color: inherit;
 }
 
@@ -108,11 +113,6 @@ button{
 
 .of_hidden {
   overflow: hidden;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }
 
 .o_0 {
@@ -125,11 +125,16 @@ a {
   transform: translateX(150%) !important;
 }
 
+.empty-input::placeholder {
+  color: red;
+  font-size: 14px;
+}
+
 @media (max-width: 950) {
   h2 {
     font-size: 47px;
   }
-  
+
   h4 {
     font-size: 27px;
   }

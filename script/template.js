@@ -402,9 +402,9 @@ function summaryGuestOverlayTemplate() {
  * Renders empty task list placeholder
  * @returns {string} HTML string for empty task message
  */
-function emptyTaskList() {
+function emptyTaskList(status) {
     return `
-        <div class="no-task">No tasks${'To do'}</div>
+        <div class="no-task">No tasks ${status}</div>
     `
 }
 

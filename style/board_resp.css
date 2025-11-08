@@ -67,7 +67,7 @@
 
     .search-section {
         flex-direction: column;
-        gap: 40px;
+        gap: 24px;
         margin-bottom: 20px;
     }
 
@@ -162,7 +162,7 @@
 
 @media (max-width: 500px) {
     .board-header {
-        padding: 20px 8px;
+        padding: 8px 8px;
     }
 
     .kanban-board {

@@ -775,7 +775,7 @@ function closeTaskMenus(i) {
  * Advances task from to-do → in-progress → await-feedback → done
  * @param {number} i - The ID of the task to move down
  */
-function switchDown(i) {
+async function switchDown(i) {
     let task = taskList.findIndex(t => t.id == i);
 
     if (taskList[task].category == "to-do") {
@@ -787,6 +787,7 @@ function switchDown(i) {
     } else {
         console.log('is done');
     }
+    await putTask(taskList);
     renderTasks();
 }
 
@@ -795,7 +796,7 @@ function switchDown(i) {
  * Moves task backwards: done → await-feedback → in-progress → to-do
  * @param {number} i - The ID of the task to move up
  */
-function switchUp(i) {
+async function switchUp(i) {
     let task = taskList.findIndex(t => t.id == i);
 
     if (taskList[task].category == "in-progress") {
@@ -807,6 +808,7 @@ function switchUp(i) {
     } else {
         console.log('is To Do');
     }
+    await putTask(taskList);
     renderTasks();
 }
 

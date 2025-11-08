@@ -404,7 +404,7 @@ function summaryGuestOverlayTemplate() {
  */
 function emptyTaskList(status) {
     return `
-        <div class="no-task">No tasks ${status}</div>
+        <div class="no-task">No tasks ${status.replace('-',' ').toUpperCase().slice(0, 1) + status.replace('-',' ').slice(1)}</div>
     `
 }
 

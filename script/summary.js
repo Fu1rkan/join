@@ -33,6 +33,8 @@ function checkAndShowOverlay() {
  * @throws {Error} If required DOM elements are not found
  */
 function showMobileOverlay() {
+    console.log(document.getElementById('animated_overlay_id'));
+    
     let overlay = document.getElementById('animated_overlay_id');
     let overlayBg = document.getElementById('animated-overlay-parent');
     
@@ -63,9 +65,6 @@ function cleanUpUrl() {
 function openBoard() {
     window.location.href = './board.html';
 }
-
-
-checkAndShowOverlay();
 
 /**
  * Returns appropriate greeting text based on the hour of day
@@ -173,3 +172,5 @@ function getFormattedEarliestDate() {
     );
     return date.toLocaleDateString('en-US', options);
 }
+
+checkAndShowOverlay();

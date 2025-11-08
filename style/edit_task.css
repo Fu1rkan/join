@@ -1,0 +1,343 @@
+.main-task-edit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.main-task-edit:hover p,
+.main-task-edit:hover svg path {
+    color: rgba(41, 171, 226, 1);
+    fill: rgba(41, 171, 226, 1);
+}
+
+
+.edit-logo {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-logo svg {
+    fill: #2A3647;
+}
+
+.edit-divider {
+    width: 1px;
+    height: 24px;
+    background-color: rgba(209, 209, 209, 1);
+}
+
+.inter-text-color {
+    color: rgba(42, 54, 71, 1) !important;
+}
+
+.edit-task-overlay {
+    gap: 0 !important;
+}
+
+.edit-task-header {
+    justify-content: flex-end !important;
+}
+
+.task-overlay button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-task-overlay .task-info-type {
+    color: black;
+}
+
+.change-title {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 21px;
+    border: 1px solid rgba(209, 209, 209, 1);
+    outline: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    margin: 8px 0 32px 0;
+}
+
+.change-title:focus {
+    border-color: rgba(41, 171, 226, 1);
+}
+
+.change-desc {
+    width: 100%;
+    border-radius: 10px;
+    padding: 18px 21px;
+    border: 1px solid rgba(209, 209, 209, 1);
+    width: 396;
+    min-height: 88px;
+    font-size: 16px;
+    font-family: 'Inter';
+    width: 100%;
+    margin: 8px 0 32px 0;
+    resize: none;
+    outline: none;
+}
+
+.change-desc:focus {
+    border-color: rgba(41, 171, 226, 1);
+}
+
+.date-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(209, 209, 209, 1);
+    border-radius: 10px;
+    padding: 10px 21px;
+    margin: 8px 0 32px 0;
+    cursor: pointer;
+}
+
+.date-input:focus-within {
+    border-color: rgba(41, 171, 226, 1);
+}
+
+.date-input input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Inter';
+    cursor: pointer;
+}
+
+.date-input button {
+    height: 24px;
+    width: 24px;
+    transition: 100ms;
+}
+
+.change-priority {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0 32px 0;
+}
+
+.change-priority button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    gap: 8px;
+    width: 30%;
+    border-radius: 10px;
+    padding: 18px 10px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.change-priority button:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.change-participants {
+    width: 100%;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border: 1px solid #2A3647;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.change-participants:focus-within {
+    border-color: rgba(41, 171, 226, 1);
+}
+
+.change-participants input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.change-participants button {
+    width: 24px;
+    height: 24px;
+    transition: 125ms;
+}
+
+.change-participants button:hover {
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 50%;
+}
+
+.participants-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 8px;
+}
+
+.choose-paticipant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.choose-paticipant:hover {
+    background-color: #EEEEEE;
+}
+
+.logo-and-name-participant {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.included-participants {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0 32px 0;
+}
+
+.included-participants:empty {
+    margin: 0 0 32px 0;
+}
+
+.more-asssigned-person-logo {
+    width: 42px;
+    height: 42px;
+    border: 2px solid white;
+    background-color: rgba(231, 231, 231, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+    gap: 2px;
+}
+
+.add-subtasks {
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border: 1px solid #2A3647;
+    margin: 8px 0;
+}
+
+
+.add-subtasks:focus-within {
+    border-color: rgba(41, 171, 226, 1);
+}
+
+.confirm-buttons-add-subtasks {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.confirm-buttons-add-subtasks button {
+    width: 24px;
+    height: 24px;
+    transition: 100ms;
+}
+
+.confirm-buttons-add-subtasks button:hover {
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 50%;
+}
+
+.change-task-divider {
+    height: 100%;
+    width: 1px;
+    background-color: rgba(209, 209, 209, 1);
+}
+
+.add-subtasks input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 80%;
+}
+
+.change-subtasks-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-subtasks {
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding: 4px 16px;
+    cursor: pointer;
+}
+
+.change-subtasks-active {
+    padding: 4px 16px 3px 16px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 93, 255, 1) !important;
+}
+
+.change-subtasks-active:hover {
+    background-color: white !important;
+}
+
+.change-subtasks:hover {
+    background-color: rgba(238, 238, 238, 1);
+}
+
+.change-subtasks span {
+    flex: 1;
+}
+
+.edit-task-footer {
+    justify-content: flex-end;
+}
+
+.edit-task-footer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 4px;
+    padding: 18px 10px;
+    color: white;
+    background-color: rgba(42, 54, 71, 1);
+    font-size: 21px;
+    transition: 100ms;
+}
+
+.edit-task-footer button:hover {
+    background-color: rgba(41, 171, 226, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.edit-subtask {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-subtask input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: calc(100% - 64px);
+}

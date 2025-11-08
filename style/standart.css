@@ -130,6 +130,80 @@ a {
   font-size: 14px;
 }
 
+.bc_r {
+  background-color: rgba(255, 61, 0, 1) !important;
+  font-weight: 700;
+  color: white;
+}
+
+.bc_o {
+  background-color: rgba(255, 168, 0, 1) !important;
+  font-weight: 700;
+  color: white;
+}
+
+.bc_g {
+  background-color: rgba(122, 226, 41, 1) !important;
+  font-weight: 700;
+  color: white;
+}
+
+.bc_r:hover {
+  box-shadow: none !important;
+}
+
+.bc_o:hover {
+  box-shadow: none !important;
+}
+
+.bc_g:hover {
+  box-shadow: none !important;
+}
+
+.fill_red {
+  fill: white !important;
+}
+
+.tf_r180 {
+  transform: rotate(180deg);
+}
+
+.bgc_j {
+  background-color: #2A3647;
+  color: white;
+}
+
+.bgc_j:hover {
+  background-color: #091931;
+}
+
+.bo_c_r {
+  border-color: red;
+  margin-bottom: 0;
+}
+
+.empty-field {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.empty-subtask-input {
+  border-color: red;
+}
+
+.empty-subtask-input:focus-within {
+  border-color: red;
+}
+
+.color_red {
+  color: red;
+}
+
+.empty-subtask-input::placeholder {
+  color: red;
+}
+
 @media (max-width: 950) {
   h2 {
     font-size: 47px;
@@ -141,7 +215,7 @@ a {
 }
 
 @media (max-width: 850px) {
-  .main-header{
+  .main-header {
     position: fixed;
     top: 0;
   }

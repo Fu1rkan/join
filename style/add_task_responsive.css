@@ -48,7 +48,7 @@
         scrollbar-width: none;
         align-items: center;
         height: auto;
-        gap: 0;
+        gap: 24px;
     }
 
     .add-task-form-seperator {
@@ -65,9 +65,9 @@
         height: auto;
     }
 
-    .h-16{
+    /* .h-16{
         height: 24px;
-    }
+    } */
 
     .h-136{
         height: auto;
@@ -95,9 +95,9 @@
         gap: 12px;
     }
 
-    .h-80 {
+    /* .h-80 {
         height: auto;
-    }
+    } */
 
     .add-task-priority-btns{
         justify-content: space-between;

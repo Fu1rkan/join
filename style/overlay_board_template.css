@@ -6,7 +6,6 @@
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
-    overflow: auto;
     padding: 48px;
 }
 
@@ -15,6 +14,8 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 550px;
+    max-height: 550px;
+    overflow: auto;
 }
 
 .add-task-header {

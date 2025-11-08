@@ -208,9 +208,9 @@ function renderChangedContaktList(addTaskAssignedToList, array = contacts) {
 /**
  * Marks a contact as checked/selected in the dropdown list
  * Updates the visual state to show the contact is currently assigned
- * @param {number} index - The index of the contact to mark as checked
+ * @param {number} i - The index of the contact to mark as checked
  */
-function markAsChecked(index) {
+function markAsChecked(i) {
     let contactRef = document.getElementById(`add_task_assigned_to_contact_${i}`);
     let svgUncheckedRef = document.getElementById(`${i}_unchecked`);
     let svgCheckedRef = document.getElementById(`${i}_checked`);

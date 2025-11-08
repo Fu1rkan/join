@@ -175,7 +175,7 @@ function filterInputValue() {
 function renderContactsInList(array = contacts) {
     const addTaskAssignedToList = document.getElementById('add_task_form_assigned_to_dropdown_contacts');
     addTaskAssignedToList.innerHTML = "";
-    if (currentAssignedTo == []) {
+    if (currentAssignedTo.length === 0) {
         for (let index = 0; index < array.length; index++) {
             addTaskAssignedToList.innerHTML += getAddTaskAssignedToListItem(array, index);
         }
@@ -454,6 +454,9 @@ function createNewTask(progress, fromBoard) {
     requiredMsgDNone(titleRef, dueDateRef, categoryRef);
     checkArrayLength();
     if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
+        if(!currentAssignedTo) {
+            currentAssignedTo = [];
+        }
         showRequiredMsg(titleRef, dueDateRef, categoryRef);
     } else {
         pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard);

@@ -71,7 +71,7 @@
         margin-bottom: 20px;
     }
 
-    .board-actions button {
+    .board-actions > button {
         display: none;
     }
 

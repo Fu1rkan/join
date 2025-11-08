@@ -9,6 +9,7 @@ function addNewContact() {
     const addContactCardRef = document.getElementById('overlay_add_contact_card');
     animationOverlayCardFadeIn(addContactCardRef);
     setupEnterKeyContact("", "", "add");
+    document.body.classList.add('of_hidden');
 }
 
 /**
@@ -81,6 +82,7 @@ function animationOverlayCardFadeOut(target) {
     setTimeout(() => {
         closeOverlay();
     }, 300)
+    document.body.classList.remove('of_hidden');
 }
 
 /**

@@ -578,7 +578,7 @@ function taskOverlayTemp(i) {
                     <p class="main-task-description" id="task-overlay-desc-${i.id}">
                     <section class="main-task-date">
                         <p class="task-info-type">Due date:</p>
-                        <p class="task-info">${i.date}</p>
+                        <p class="task-info" id="task-date"></p>
                     </section>
                     <section class="main-task-priority" id="task-overlay-prio-${i.id}"></section>
                     <section class="main-task-assigned-list" id="task-overlay-participants-${i.id}"></section>

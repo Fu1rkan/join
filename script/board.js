@@ -169,9 +169,16 @@ function checkTaskOverlayInfos(i) {
     const taskOverlay = 'task-overlay';
     checkTaskType(i, taskOverlay);
     checkTaskDesc(i, taskOverlay);
+    checkTaskDate(i);
     checkTaskOverlayPrio(i, taskOverlay);
     checkTaskOverlayParticipants(i, taskOverlay);
     checkTaskOverlaySubtasks(i, taskOverlay);
+}
+
+
+function checkTaskDate(i) {
+    let [year, month, day] = i.date.split('-');
+    document.getElementById('task-date').innerHTML = `${day}/${month}/${year}`
 }
 
 /**
@@ -623,7 +630,7 @@ function searchtasks() {
     let tasks = taskList.filter(t => !t.name.toLowerCase().includes(inputValue.toLowerCase()));
     let tasksResult = taskList.filter(t => t.name.toLowerCase().includes(inputValue.toLowerCase()));
 
-    if (inputValue.length > 0) {        
+    if (inputValue.length > 0) {
         if (tasks.length !== taskList.length) {
             for (let index = 0; index < tasks.length; index++) {
                 document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none');
@@ -631,16 +638,16 @@ function searchtasks() {
             for (let index = 0; index < ids.length; index++) {
                 let taskCategory = tasksResult.filter(c => c.category == ids[index]);
                 if (taskCategory.length === 0) {
-                    document.getElementById(`${ids[index]}-kanban`).innerHTML = emptyTaskList(`${ids[index]}`);   
+                    document.getElementById(`${ids[index]}-kanban`).innerHTML = emptyTaskList(`${ids[index]}`);
                 }
             }
-        }else{
+        } else {
             document.getElementById('to-do-kanban').innerHTML = emptyTaskList('To do');
             document.getElementById('in-progress-kanban').innerHTML = emptyTaskList('In progress');
             document.getElementById('await-feedback-kanban').innerHTML = emptyTaskList('Await feedback');
             document.getElementById('done-kanban').innerHTML = emptyTaskList('Done');
         }
-    }else{
+    } else {
         input.placeholder = 'This field is required';
         input.classList.add('empty-input');
     }

@@ -394,10 +394,11 @@ function summaryOverlayTemplate() {
 function summaryGuestOverlayTemplate() {
     return `
          <section class="overlay-greeting-container">
-          <div class="summary-greeting" id="greeting-text"></div>
+          <span id="resp-greeting-text"></span>
+          <h2 id="overlay-username">Guest</h2>
         </section>`;
 }
-
+/*<div class="summary-greeting" id="greeting-text"></div>*/
 /**
  * Renders empty task list placeholder
  * @returns {string} HTML string for empty task message

@@ -1,0 +1,51 @@
+@media (max-width: 600px) {
+    .change-title {
+        margin: 6px 0 16px 0;
+    }
+
+    .change-desc {
+        margin: 6px 0 16px 0;
+    }
+
+    .date-input {
+        margin: 6px 0 16px 0;
+    }
+
+    .change-priority {
+        margin: 6px 0 16px 0;
+    }
+
+    .included-participants {
+        margin-bottom: 16px;
+    }
+
+    .add-subtasks {
+        margin: 6px 0;
+    }
+
+    .gap_8 {
+        gap: 8px;
+    }
+
+    .change-participants {
+        margin-top: 6px;
+    }
+
+    .participants-list {
+        margin-top: 6px;
+    }
+
+    .included-participants {
+        display: flex;
+        gap: 8px;
+        margin: 6px 0 16px 0;
+    }
+
+    .included-participants:empty {
+        margin: 0 0 16px 0;
+    }
+
+    .task-overlay {
+        max-height: 70%;
+    }
+}

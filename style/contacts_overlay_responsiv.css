@@ -14,7 +14,7 @@
 
     .overlay-right-side {
         width: 61%;
-         position: relative;
+        position: relative;
     }
 
     .overlay-character-icon,
@@ -25,7 +25,7 @@
     }
 }
 
-@media (max-width: 1100px) { 
+@media (max-width: 1100px) {
     .overlay-card {
         height: 80%;
         width: 396px;
@@ -137,7 +137,7 @@
     .add-contact-create-contact-btn,
     .edit-contact-d-s-buttons button {
         padding: 18px 10px;
-    } 
+    }
 
     .add-contact-create-contact-btn,
     .edit-contact-delete-btn,
@@ -155,13 +155,65 @@
 
 }
 
-@media (max-width:400px) {
+@media (max-width: 520px) {
+    
     .overlay-card {
-        width: 100%;
+        width: 90%;
+        height: auto;
+    }
+
+    .responsiv-overlay-card-close-btn-container {
+        top: 16px;
+        right: 16px;
+    }
+
+    .overlay-left-side {
+        height: auto;
+        max-height: auto;
+        padding: 32px 24px 48px;
+        align-items: flex-start;
+    }
+
+    .add-contact-card-headline {
+        height: auto;
+        gap: 8px;
+    }
+
+    .add-contact-card-title {
+        font-size: 36px;
+        height: auto;
+    }
+
+    .add-contact-card-txt{
+        font-size: 16px;
+        height: auto;
+    }
+
+    .overlay-character-icon {
+        height: 80px;
+        width: 80px;
+    }
+
+    .overlay-right-side{
+        height: auto;
     }
 
     .add-contact-content-container {
         width: 90%;
+        padding: 48px 0 20px;
+        height: auto;
+    }
+
+    .create-form{
+        height: auto;
+    }
+
+    .create-form-inputfields{
+        height: auto;
+    }
+
+    .add-contact-buttons{
+        margin: 0;
     }
 
     .add-contact-card-headline,

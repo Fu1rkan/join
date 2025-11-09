@@ -1,0 +1,210 @@
+.add-task-priority-btns-container {
+    height: 88px;
+}
+
+.add-task-priority-btns {
+    display: flex;
+    gap: 16px;
+}
+
+.add-task-priority-btns button,
+.add-task-form-subtasks-btns button,
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-task-priority-btns button {
+    cursor: pointer;
+    width: 30%;
+    height: 56px;
+    padding: 16px 10px;
+    gap: 8px;
+    border-radius: 10px;
+    border-width: 0;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.add-task-priority-btns-hover-class:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.add-task-priority-btns button>p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.add-task-form-subtasks-btns button {
+    background-color: transparent;
+}
+
+.add-task-form-subtasks-btns button:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.add-task-form-subtasks-btns,
+.add-task-form-subtasks-dropdown-subtasks-btns,
+.add-task-form-subtasks-dropdown-subtasks-edit-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.add-task-form-subtasks-btns,
+.add-task-form-subtasks-dropdown-subtasks-btns {
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.add-task-form-subtasks-btns {
+    bottom: 0;
+    right: 16px;
+}
+
+.add-task-form-subtasks-btns button,
+.add-task-form-subtasks-dropdown-subtasks-btns button,
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button {
+    cursor: pointer;
+    border-width: 0;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-edit-btns {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button {
+    background-color: transparent;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-edit-btns button:hover {
+    background-color: #EEEEEE;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-btns button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.add-task-priority-btn-urgent-active {
+    background-color: #FF3D00 !important;
+}
+
+.add-task-priority-btn-medium-active {
+    background-color: #FFA800 !important;
+}
+
+.add-task-priority-btn-low-active {
+    background-color: #7AE229 !important;
+}
+
+.add-task-priority-btn-urgent-active p,
+.add-task-priority-btn-medium-active p,
+.add-task-priority-btn-low-active p {
+    color: #FFFFFF;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-btns {
+    right: 0;
+    top: 50%;
+    display: none;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item:hover .add-task-form-subtasks-dropdown-subtasks-btns {
+    display: flex;
+}
+
+.add-task-footer-and-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.add-task-form-btns {
+    display: flex;
+    justify-content: center;
+    height: 56px;
+    gap: 16px;
+}
+
+.add-task-form-btns>button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+}
+
+.add-task-form-clear-btn,
+.add-task-form-create-btn {
+    cursor: pointer;
+    padding: 12px 12px;
+}
+
+.add-task-form-clear-btn {
+    width: 104px;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    outline: none;
+}
+
+.add-task-form-clear-btn:hover {
+    border: 1px solid #29ABE2;
+}
+
+.add-task-form-clear-btn>p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.add-task-form-clear-btn:hover>p,
+.add-task-form-clear-btn:hover>svg path {
+    color: #29ABE2;
+    stroke: #29ABE2;
+}
+
+.add-task-form-clear-btn:active {
+    border: 1px solid #091931;
+}
+
+.add-task-form-clear-btn:active>p,
+.add-task-form-clear-btn:active>svg path {
+    color: #091931;
+    stroke: #091931;
+}
+
+.add-task-form-create-btn {
+    background-color: #2A3647;
+    border-width: 0;
+}
+
+.add-task-form-create-btn:hover {
+    background-color: #29ABE2;
+}
+
+.add-task-form-create-btn:active {
+    background-color: #091931;
+}
+
+.add-task-form-create-btn>p {
+    font-size: 21px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.add-task-form-create-btn:hover{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.add-task-form-clear-btn:hover{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

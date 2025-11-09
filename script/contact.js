@@ -223,6 +223,12 @@ function checkNameValue(createName) {
     return /^[A-Za-z]/.test(createName);
 }
 
+function checkEmailValue(createEmail) {
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let isEmailValid = emailRegex.test(createEmail);
+    return isEmailValid;
+}
+
 /** * Highlights required input fields based on validation results
  * @param {string} createName - The name input value
  * @param {string} createEmail - The email input value
@@ -236,7 +242,7 @@ function checkNameValue(createName) {
  * @param {HTMLElement} createFormLabelPhoneRef - The phone label element
  * @param {HTMLElement} createPhoneRequiredMsg - The phone error message element
  */
-function highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, correctNameValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg) {
+function highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, correctNameValue, correctEmailValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg) {
     if (!(createName != "")) {
         createNameRequiredMsg.innerText = "This field is required";
         showRequiredMsgAndHighlight(createFormLabelNameRef, createNameRequiredMsg);
@@ -247,8 +253,8 @@ function highlightRequiredInputs(createName, createEmail, createPhone, correctPh
     if (!(createEmail != "")) {
         createEmailRequiredMsg.innerText = "This field is required";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
-    } else if (!(createEmail != "" && createEmail.includes("@"))) {
-        createEmailRequiredMsg.innerText = "Email must include '@'";
+    } else if (!(createEmail != "" && correctEmailValue)) {
+        createEmailRequiredMsg.innerText = "Please enter a valid email address";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     }
     if (createPhone != "" && !(createPhone == "" || correctPhoneValue)) {

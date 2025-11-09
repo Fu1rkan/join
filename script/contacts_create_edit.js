@@ -161,18 +161,19 @@ async function saveChangedContact(name, email) {
 function checkCreateValuesAndCreateContact(createEmail, createPhone, createName, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg, param = "add", contactRef = {}) {
     let correctPhoneValue = checkPhoneValue(createPhone);
     let correctNameValue = checkNameValue(createName);
+    let correctEmailValue = checkEmailValue(createEmail);
     if (param == "add") {
-        if (createName != "" && correctNameValue && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
+        if (createName != "" && correctNameValue && createEmail != "" && correctEmailValue && (createPhone == "" || correctPhoneValue)) {
             createContactAndHighlight(createName, createEmail, createPhone);
             return;
         }
     } else {
-        if (createName != "" && correctNameValue && createEmail != "" && createEmail.includes("@") && (createPhone == "" || correctPhoneValue)) {
+        if (createName != "" && correctNameValue && createEmail != "" && correctEmailValue && (createPhone == "" || correctPhoneValue)) {
             changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone);
             return;
         }
     }
-    highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, correctNameValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
+    highlightRequiredInputs(createName, createEmail, createPhone, correctPhoneValue, correctNameValue, correctEmailValue, createFormLabelNameRef, createNameRequiredMsg, createFormLabelEmailRef, createEmailRequiredMsg, createFormLabelPhoneRef, createPhoneRequiredMsg);
 }
 
 /** * Creates a new contact and highlights it in the contact list

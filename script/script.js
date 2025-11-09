@@ -417,6 +417,9 @@ function logOut() {
   window.location.href = './index.html';
 }
 
+/** Initializes an authentication guard to protect restricted pages
+ * Redirects to login page if no user is authenticated
+ */
 function initAuthGuard() {
   let userId = localStorage.getItem("userId");
   if (!userId) {

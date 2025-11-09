@@ -113,7 +113,13 @@ async function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fro
     }
 }
 
-
+/** Pushes a new task object to the global task list array
+ * Constructs the task object with provided form data and appends it to taskList
+ * @param {HTMLElement} titleRef - Reference to the title input element
+ * @param {HTMLElement} descriptionRef - Reference to the description textarea element
+ * @param {HTMLElement} dueDateRef - Reference to the due date input element
+ * @param {string} progress - The progress status of the task
+ */
 function pushTaskList(titleRef, descriptionRef, dueDateRef, progress) {
     taskList.push(
         {

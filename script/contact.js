@@ -223,6 +223,10 @@ function checkNameValue(createName) {
     return /^[A-Za-z]/.test(createName);
 }
 
+/** * Validates email format using regex
+ * @param {string} createEmail - The email address to validate
+ * @returns {boolean} True if email format is valid, false otherwise
+ */
 function checkEmailValue(createEmail) {
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let isEmailValid = emailRegex.test(createEmail);

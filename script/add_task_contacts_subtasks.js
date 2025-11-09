@@ -135,6 +135,10 @@ function toggleCategoryList() {
     addTaskCategoryArrowRef.classList.toggle('add-task-form-assigned-to-arrow-up-svg');
 }
 
+/** Closes the subtask options menu for a specific subtask
+ * Hides the options menu and restores the subtask list item style
+ * @param {number} index - The index of the subtask to close the menu for
+ */
 function closeSubtaskMenuOptions(index){
     if (currentCreatedSubtasks.length > 0) {
         let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);

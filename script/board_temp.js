@@ -9,6 +9,16 @@ function emptyTaskList(status) {
 }
 
 /**
+ * Renders no Results task list placeholder
+ * @returns {string} HTML string for no Results task message
+ */
+function noResultsTaskList() {
+    return `
+        <div class="no-task">No Results</div>
+    `
+}
+
+/**
  * Renders a task card for the board view
  * @param {Object} i - Task object containing task data
  * @param {number} i.id - Unique task identifier

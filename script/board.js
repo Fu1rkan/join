@@ -56,14 +56,14 @@ function searchtasks() {
             for (let index = 0; index < ids.length; index++) {
                 let taskCategory = tasksResult.filter(c => c.category == ids[index]);
                 if (taskCategory.length === 0) {
-                    document.getElementById(`${ids[index]}-kanban`).innerHTML = emptyTaskList(`${ids[index]}`);
+                    document.getElementById(`${ids[index]}-kanban`).innerHTML = noResultsTaskList();
                 }
             }
         } else {
-            document.getElementById('to-do-kanban').innerHTML = emptyTaskList('To do');
-            document.getElementById('in-progress-kanban').innerHTML = emptyTaskList('In progress');
-            document.getElementById('await-feedback-kanban').innerHTML = emptyTaskList('Await feedback');
-            document.getElementById('done-kanban').innerHTML = emptyTaskList('Done');
+            document.getElementById('to-do-kanban').innerHTML = noResultsTaskList();
+            document.getElementById('in-progress-kanban').innerHTML = noResultsTaskList();
+            document.getElementById('await-feedback-kanban').innerHTML = noResultsTaskList();
+            document.getElementById('done-kanban').innerHTML = noResultsTaskList();
         }
     } else {
         input.placeholder = 'This field is required';
@@ -80,7 +80,7 @@ function showAllTasks() {
     let inputValue = input.value;
     input.placeholder = 'Find Task';
     input.classList.remove('empty-input');
-    if (inputValue.length < 6) {
+    if (inputValue.length < 3) {
         renderTasks();
     }
 }

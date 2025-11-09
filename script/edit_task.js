@@ -302,7 +302,6 @@ function pushSubtask() {
         taskEditor.subtasks.push({ name: `${newSubtask}`, status: false });
         renderSubtaskList(taskEditor);
         clearInputField();
-        const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
     } else {
         document.getElementById('add-subtasks').classList.add('empty-subtask-input');
         document.getElementById('new-subtask-input').classList.add('empty-subtask-input');

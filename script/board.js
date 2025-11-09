@@ -45,8 +45,15 @@ function renderTasks() {
 function searchtasks() {
     let input = document.getElementById('search-bar');
     let inputValue = input.value;
-    let tasks = taskList.filter(t => !t.name.toLowerCase().includes(inputValue.toLowerCase()));
-    let tasksResult = taskList.filter(t => t.name.toLowerCase().includes(inputValue.toLowerCase()));
+    let tasks = taskList.filter(t =>
+        !t.name.toLowerCase().includes(inputValue.toLowerCase()) &&
+        !t.description.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    let tasksResult = taskList.filter(t => 
+        t.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+        t.description.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    
 
     if (inputValue.length > 0) {
         if (tasks.length !== taskList.length) {

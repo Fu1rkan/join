@@ -49,7 +49,7 @@ function openCalender() {
  * @param {string} para - The priority level to activate ('urgent', 'medium', or 'low'), defaults to 'medium'
  */
 function activatePriority(para = "medium") {
-    PriorityTaskActive = "";
+    priorityTaskActive = "";
     resetPriorityButtonHighlight();
     let buttonRef = document.getElementById(`add_task_priority_${para}`);
     let svgRef = document.getElementById(`add_task_priority_${para}_svg`);
@@ -98,7 +98,23 @@ function highlightPriorityButton(para, buttonRef, svgRef) {
  * @param {HTMLElement} dueDateRef - Reference to the due date input element
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  */
-function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard) {
+async function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard) {
+    pushTaskList(titleRef, descriptionRef, dueDateRef, progress);
+    if (fromBoard != undefined) {
+        document.getElementById('task-added-overlay-board').classList.remove('d_none');
+        await putTask(taskList);
+        setTimeout(() => {
+            toggleAddTaskOverlay(true);
+            boardInit();
+        }, 500)
+    }else{
+        resetGlobalVariables();
+        putTaskAndShowCreatedMsg();
+    }
+}
+
+
+function pushTaskList(titleRef, descriptionRef, dueDateRef, progress) {
     taskList.push(
         {
             "id": taskList.length,
@@ -112,8 +128,6 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard
             "subtasks": currentCreatedSubtasks
         }
     )
-    resetGlobalVariables();
-    putTaskAndShowCreatedMsg(fromBoard);
 }
 
 /**
@@ -122,16 +136,9 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  * @returns {Promise<void>} Promise that resolves when task is saved and UI is updated
  */
-async function putTaskAndShowCreatedMsg(fromBoard) {
-    if (fromBoard !== undefined) {
-        await putTask(taskList);
-        toggleAddTaskOverlay(true);
-        boardInit();
-    } else {
-        await putTask(taskList);
-        showTaskCreatedMsg();
-    }
-
+async function putTaskAndShowCreatedMsg() {
+    await putTask(taskList);
+    showTaskCreatedMsg();
 }
 
 /**

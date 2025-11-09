@@ -22,7 +22,7 @@ function taskEditOverlayTemp(i) {
                     <span class="empty-field d_none" id="empty-title-text">This field is required</span>
                     <label class="task-info-type" for="change-desc">Description</label>
                     <textarea class="change-desc" id="change-desc" placeholder="Write your Description"></textarea>
-                    <label class="task-info-type">Due date</label>
+                    <label class="task-info-type" for="input-date">Due date</label>
                     <div class="date-input" onclick="openDatePicker()" id="change-date">
                         <input type="date" id="input-date" onblur="ckeckDateValue()">
                         <button>
@@ -34,7 +34,7 @@ function taskEditOverlayTemp(i) {
                         </button>
                     </div>
                     <span class="empty-field d_none" id="empty-date-text">This field is required</span>
-                    <label class="task-info-type inter-text-color">Priority</label>
+                    <p class="task-info-type inter-text-color">Priority</p>
                     <div class="change-priority">
                         <button id="prio-urgent" onclick="changePriority('urgent', ${i.id})">
                             <p>Urgent</p>
@@ -70,7 +70,7 @@ function taskEditOverlayTemp(i) {
                             </svg>
                         </button>
                     </div>
-                    <label class="task-info-type inter-text-color">Assigned to</label>
+                    <label class="task-info-type inter-text-color" for="serchbar-edit-contacts">Assigned to</label>
                     <div class="change-participants">
                         <input type="text" placeholder="Select Contacts to assign" onkeyup="searchContact()" id="serchbar-edit-contacts">
                         <button onclick="toggleContactList()" id="change-participants-button">
@@ -83,7 +83,7 @@ function taskEditOverlayTemp(i) {
                     </div>
                     <div class="participants-list d_none" id="participants-list"></div>
                     <div class="included-participants" id="included-participants"></div>
-                    <label class="task-info-type inter-text-color" for="">Subtasks</label>
+                    <label class="task-info-type inter-text-color" for="new-subtask-input">Subtasks</label>
                     <div class="add-subtasks" id="add-subtasks">
                         <input type="text" placeholder="Add new Subtasks" id="new-subtask-input" onkeydown="resetPlaceholderSubtask(); if(event.key==='Enter'){ pushSubtask(); return false; }">
                         <div class="confirm-buttons-add-subtasks">

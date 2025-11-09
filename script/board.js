@@ -23,7 +23,7 @@ async function boardInit() {
  * Renders all tasks in their respective Kanban board columns
  * Filters tasks by category and displays them in appropriate columns or shows empty state
  */
-function renderTasks() {
+async function renderTasks() {
     for (let index = 0; index < ids.length; index++) {
         let categoryTasks = taskList.filter(t => t['category'] == ids[index]);
         document.getElementById(`${ids[index]}-kanban`).innerHTML = "";
@@ -49,32 +49,44 @@ function searchtasks() {
         !t.name.toLowerCase().includes(inputValue.toLowerCase()) &&
         !t.description.toLowerCase().includes(inputValue.toLowerCase())
     );
-    let tasksResult = taskList.filter(t => 
+    let tasksResult = taskList.filter(t =>
         t.name.toLowerCase().includes(inputValue.toLowerCase()) ||
         t.description.toLowerCase().includes(inputValue.toLowerCase())
     );
-    
+    checkInputLength(input, inputValue, tasks, tasksResult);
+}
 
+
+function checkInputLength(input, inputValue, tasks, tasksResult) {
     if (inputValue.length > 0) {
-        if (tasks.length !== taskList.length) {
-            for (let index = 0; index < tasks.length; index++) {
-                document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none');
-            }
-            for (let index = 0; index < ids.length; index++) {
-                let taskCategory = tasksResult.filter(c => c.category == ids[index]);
-                if (taskCategory.length === 0) {
-                    document.getElementById(`${ids[index]}-kanban`).innerHTML = noResultsTaskList();
-                }
-            }
-        } else {
-            document.getElementById('to-do-kanban').innerHTML = noResultsTaskList();
-            document.getElementById('in-progress-kanban').innerHTML = noResultsTaskList();
-            document.getElementById('await-feedback-kanban').innerHTML = noResultsTaskList();
-            document.getElementById('done-kanban').innerHTML = noResultsTaskList();
-        }
+        checkTaskLength(tasks, tasksResult);
     } else {
         input.placeholder = 'This field is required';
         input.classList.add('empty-input');
+    }
+}
+
+function checkTaskLength(tasks, tasksResult) {
+    if (tasks.length !== taskList.length) {
+        renderSearchedTasks(tasks, tasksResult);
+    } else {
+        document.getElementById('to-do-kanban').innerHTML = noResultsTaskList();
+        document.getElementById('in-progress-kanban').innerHTML = noResultsTaskList();
+        document.getElementById('await-feedback-kanban').innerHTML = noResultsTaskList();
+        document.getElementById('done-kanban').innerHTML = noResultsTaskList();
+    }
+}
+
+
+function renderSearchedTasks(tasks, tasksResult) {
+    for (let index = 0; index < tasks.length; index++) {
+        document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none');
+    }
+    for (let index = 0; index < ids.length; index++) {
+        let taskCategory = tasksResult.filter(c => c.category == ids[index]);
+        if (taskCategory.length === 0) {
+            document.getElementById(`${ids[index]}-kanban`).innerHTML = noResultsTaskList();
+        }
     }
 }
 
@@ -168,21 +180,32 @@ function openTaskRespMenu(i) {
     }, 100)
 
     let task = taskList.findIndex(t => t.id == i);
+    checkTaskStatus(task, i);
+}
+
+function checkTaskStatus(task, i) {
     if (taskList[task].category == "to-do") {
-        document.getElementById(`switch-up-button-${i}`).classList.add('d_none');
-        document.getElementById(`switch-down-${i}`).innerHTML = 'In progress';
+        disableChangeButton('up', 'down', 'In progress', i);
     } else if (taskList[task].category == "done") {
-        document.getElementById(`switch-down-button-${i}`).classList.add('d_none');
-        document.getElementById(`switch-up-${i}`).innerHTML = 'Await feedback';
+        disableChangeButton('down', 'up', 'Await feedback', i);
     } else if (taskList[task].category == "in-progress") {
-        document.getElementById(`switch-down-${i}`).innerHTML = 'Await feedback';
-        document.getElementById(`switch-up-${i}`).innerHTML = 'To do';
+        changeSwitchButton('To do', 'Await feedback', i);
     } else {
-        document.getElementById(`switch-up-${i}`).innerHTML = 'In progress';
-        document.getElementById(`switch-down-${i}`).innerHTML = 'done';
+        changeSwitchButton('In progress', 'done', i);
     }
 }
 
+
+function disableChangeButton(order, order2, category, i) {
+    document.getElementById(`switch-${order}-button-${i}`).classList.add('d_none');
+    document.getElementById(`switch-${order2}-${i}`).innerHTML = category;
+}
+
+
+function changeSwitchButton(up, down, i) {
+    document.getElementById(`switch-up-${i}`).innerHTML = up;
+    document.getElementById(`switch-down-${i}`).innerHTML = down;
+}
 
 /**
  * Closes all responsive task menus
@@ -209,11 +232,9 @@ async function switchDown(i) {
         taskList[task].category = "await-feedback";
     } else if (taskList[task].category == "await-feedback") {
         taskList[task].category = "done"
-    } else {
-        console.log('is done');
     }
     await putTask(taskList);
-    renderTasks();
+    await renderTasks();
 }
 
 /**
@@ -229,11 +250,9 @@ async function switchUp(i) {
         taskList[task].category = "in-progress"
     } else if (taskList[task].category == "done") {
         taskList[task].category = "await-feedback"
-    } else {
-        console.log('is To Do');
     }
     await putTask(taskList);
-    renderTasks();
+    await renderTasks();
 }
 
 /**
@@ -244,6 +263,11 @@ function toggleAddTaskOverlay(progress) {
     document.getElementById('bleur-bg').classList.toggle('d_none');
     document.getElementById('task-dialog').classList.toggle('tf_tlx100');
     document.body.classList.toggle('of_hidden');
+    checkAddTaskOverlayStatus(progress);
+}
+
+
+function checkAddTaskOverlayStatus(progress) {
     if (checkOverlay == 0) {
         document.getElementById('task-dialog').innerHTML = boardAddTaskTemplate(progress);
         setTimeout(() => {
@@ -251,13 +275,16 @@ function toggleAddTaskOverlay(progress) {
         }, 50);
         checkOverlay += 1;
     } else if (progress == true) {
-        clearForm()
+        resetAddTaskOverlay();
         renderTasks();
-        document.getElementById('task-dialog').removeAttribute('onclick');
-        checkOverlay = 0;
     } else {
-        clearForm()
-        document.getElementById('task-dialog').removeAttribute('onclick');
-        checkOverlay = 0;
+        resetAddTaskOverlay();
     }
+}
+
+
+function resetAddTaskOverlay() {
+    clearForm()
+    document.getElementById('task-dialog').removeAttribute('onclick');
+    checkOverlay = 0;
 }

@@ -17,7 +17,7 @@ function toggleTaskOverlay(i) {
         taskEditor = undefined;
         renderTasks();
     }
-}//////
+}
 
 /**
  * Checks and applies all task information to the task card display
@@ -135,7 +135,10 @@ function checkTaskOverlayInfos(i) {
     checkTaskOverlaySubtasks(i, taskOverlay);
 }
 
-
+/** * Displays the task date in the task overlay
+ * Formats and shows the task date in DD/MM/YYYY format
+ * @param {Object} i - The task object containing date information
+ */
 function checkTaskDate(i) {
     let [year, month, day] = i.date.split('-');
     document.getElementById('task-date').innerHTML = `${day}/${month}/${year}`

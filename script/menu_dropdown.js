@@ -9,6 +9,12 @@ function toggleBurgerMenu() {
     if (profileMenu && profileButton) {
         setMenuPosition(profileMenu, profileButton);
         toggleMenuVisibility(profileMenu);
+    
+        if (profileMenu.classList.contains('show')) {
+            addOutsideClickListener();
+        } else {
+            removeOutsideClickListener();
+        }
     }
 }
 
@@ -24,6 +30,39 @@ window.addEventListener('resize', function() {
         setMenuPosition(profileMenu, profileButton);
     }
 });
+
+/**
+ * Handles clicks outside the profile menu to close it
+ * @param {Event} event - The click event
+ */
+function handleOutsideClick(event) {
+    let profileMenu = document.getElementById('profile-menu');
+    let profileButton = getProfileButtonElement();
+    
+    if (profileMenu && profileButton && 
+        !profileMenu.contains(event.target) && 
+        !profileButton.contains(event.target)) {
+        
+        toggleMenuVisibility(profileMenu);
+        removeOutsideClickListener();
+    }
+}
+
+/**
+ * Adds outside click event listener with slight delay
+ */
+function addOutsideClickListener() {
+    setTimeout(() => {
+        document.addEventListener('click', handleOutsideClick);
+    }, 0);
+}
+
+/**
+ * Removes outside click event listener
+ */
+function removeOutsideClickListener() {
+    document.removeEventListener('click', handleOutsideClick);
+}
 
 /**
  * Gets the profile button element by searching for common ID patterns

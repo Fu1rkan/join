@@ -1,15 +1,13 @@
 /**
- * Toggles the visibility of the burger menu with dynamic positioning
+ * Toggles the visibility of the burger menu with dynamic positioning and outside clicking
  * @description Shows/hides profile menu with responsive positioning based on screen size
  */
 function toggleBurgerMenu() {
     let profileMenu = document.getElementById('profile-menu');
     let profileButton = getProfileButtonElement();
-
     if (profileMenu && profileButton) {
         setMenuPosition(profileMenu, profileButton);
         toggleMenuVisibility(profileMenu);
-    
         if (profileMenu.classList.contains('show')) {
             addOutsideClickListener();
         } else {
@@ -25,7 +23,6 @@ function toggleBurgerMenu() {
 window.addEventListener('resize', function() {
     let profileMenu = document.getElementById('profile-menu');
     let profileButton = getProfileButtonElement();
-
     if (profileMenu && profileButton && profileMenu.classList.contains('show')) {
         setMenuPosition(profileMenu, profileButton);
     }
@@ -38,11 +35,9 @@ window.addEventListener('resize', function() {
 function handleOutsideClick(event) {
     let profileMenu = document.getElementById('profile-menu');
     let profileButton = getProfileButtonElement();
-    
     if (profileMenu && profileButton && 
         !profileMenu.contains(event.target) && 
         !profileButton.contains(event.target)) {
-        
         toggleMenuVisibility(profileMenu);
         removeOutsideClickListener();
     }
@@ -78,14 +73,12 @@ function getProfileButtonElement() {
         'profil_header_privacy_policy',
         'profil_header_legal_notice'
     ];
-    
     for (let id of profileIds) {
         let element = document.getElementById(id);
         if (element) {
             return element;
         }
     }
-
     return document.querySelector('.profil-header');
 }
 
@@ -98,7 +91,6 @@ function setMenuPosition(profileMenu, profileButton) {
     let buttonRect = profileButton.getBoundingClientRect();
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     let offsets = getResponsiveOffsets();
-
     profileMenu.style.position = 'absolute';
     profileMenu.style.top = (buttonRect.bottom + scrollTop + offsets.top) + 'px';
     profileMenu.style.left = (buttonRect.left + offsets.left) + 'px';

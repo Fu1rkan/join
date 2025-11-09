@@ -56,7 +56,13 @@ function searchtasks() {
     checkInputLength(input, inputValue, tasks, tasksResult);
 }
 
-
+/** Checks the length of the search input and processes tasks accordingly
+ * If input length is greater than 0, checks task lengths; otherwise, shows placeholder for empty input
+ * @param {HTMLElement} input - The search input element
+ * @param {string} inputValue - The current value of the search input
+ * @param {Array} tasks - The list of tasks that do not match the search term
+ * @param {Array} tasksResult - The list of tasks that match the search term
+ */
 function checkInputLength(input, inputValue, tasks, tasksResult) {
     if (inputValue.length > 0) {
         checkTaskLength(tasks, tasksResult);
@@ -66,6 +72,11 @@ function checkInputLength(input, inputValue, tasks, tasksResult) {
     }
 }
 
+/** Checks if any tasks match the search criteria and updates the board display
+ * If matching tasks are found, hides non-matching tasks; otherwise, shows no results message
+ * @param {Array} tasks - The list of tasks that do not match the search term
+ * @param {Array} tasksResult - The list of tasks that match the search term
+ */
 function checkTaskLength(tasks, tasksResult) {
     if (tasks.length !== taskList.length) {
         renderSearchedTasks(tasks, tasksResult);
@@ -77,7 +88,11 @@ function checkTaskLength(tasks, tasksResult) {
     }
 }
 
-
+/** Renders tasks that match the search criteria and hides non-matching tasks
+ * Hides tasks that do not match the search term and shows no results message for empty categories
+ * @param {Array} tasks - The list of tasks that do not match the search term
+ * @param {Array} tasksResult - The list of tasks that match the search term
+ */
 function renderSearchedTasks(tasks, tasksResult) {
     for (let index = 0; index < tasks.length; index++) {
         document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none');
@@ -183,6 +198,11 @@ function openTaskRespMenu(i) {
     checkTaskStatus(task, i);
 }
 
+/** Checks the status of a task and updates responsive menu buttons accordingly
+ * Disables or changes buttons based on the current category of the task
+ * @param {number} task - The index of the task in the taskList array
+ * @param {number} i - The ID of the task
+ */
 function checkTaskStatus(task, i) {
     if (taskList[task].category == "to-do") {
         disableChangeButton('up', 'down', 'In progress', i);
@@ -195,13 +215,24 @@ function checkTaskStatus(task, i) {
     }
 }
 
-
+/** Disables a change button in the responsive task menu
+ * Hides the specified button and updates the other button's label
+ * @param {string} order - The button to disable ('up' or 'down')
+ * @param {string} order2 - The button to update ('up' or 'down')
+ * @param {string} category - The new label for the other button
+ * @param {number} i - The ID of the task
+ */
 function disableChangeButton(order, order2, category, i) {
     document.getElementById(`switch-${order}-button-${i}`).classList.add('d_none');
     document.getElementById(`switch-${order2}-${i}`).innerHTML = category;
 }
 
-
+/** Changes the labels of the switch buttons in the responsive task menu
+ * Updates the text of the up and down switch buttons based on task category
+ * @param {string} up - The new label for the up button
+ * @param {string} down - The new label for the down button
+ * @param {number} i - The ID of the task
+ */
 function changeSwitchButton(up, down, i) {
     document.getElementById(`switch-up-${i}`).innerHTML = up;
     document.getElementById(`switch-down-${i}`).innerHTML = down;
@@ -266,7 +297,10 @@ function toggleAddTaskOverlay(progress) {
     checkAddTaskOverlayStatus(progress);
 }
 
-
+/** Checks the status of the add task overlay and manages its state
+ * Loads the add task template on first open, resets or refreshes on subsequent interactions
+ * @param {boolean} progress - Indicates if a task was successfully added
+ */
 function checkAddTaskOverlayStatus(progress) {
     if (checkOverlay == 0) {
         document.getElementById('task-dialog').innerHTML = boardAddTaskTemplate(progress);
@@ -282,7 +316,9 @@ function checkAddTaskOverlayStatus(progress) {
     }
 }
 
-
+/** Resets the add task overlay to its initial state
+ * Clears the form, removes click handler, and resets overlay check status
+ */
 function resetAddTaskOverlay() {
     clearForm()
     document.getElementById('task-dialog').removeAttribute('onclick');

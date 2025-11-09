@@ -77,7 +77,11 @@ function checkPriorityStatus(task) {
     }
 }
 
-
+/** Changes the visual state of a priority button
+ * Adds active styling and changes colors for the specified priority button
+ * @param {string} prio - The priority type ('urgent', 'medium', or 'low')
+ * @param {string} color - The color class to apply ('bc_r', 'bc_o', or 'bc_g')
+ */
 function changePrioButtonColor(prio, color) {
     document.getElementById(`prio-${prio}`).classList.add(`${color}`);
     document.getElementById(`${prio}-path`).style.fill = 'white';
@@ -339,6 +343,9 @@ function pushEditedTaskToJSON(index) {
     }
 }
 
+/*** Checks and handles empty subtasks and participants arrays
+ * Sets subtasks or participants to false if they are empty arrays
+ */
 function checkEmptyArrays() {
     if (!taskEditor.subtasks.length > 0) {
         taskEditor.subtasks = false;
@@ -348,6 +355,11 @@ function checkEmptyArrays() {
     }
 }
 
+/** Saves the edited task to the database and updates the UI
+ * Validates required fields, updates the task in the list, and refreshes the board
+ * @param {number} index - The ID of the task being edited
+ * @returns {Promise<void>} Promise that resolves when task is saved and board is updated
+ */
 async function pushToFirebase(index) {
     checkEmptyArrays();
     let task = taskList.findIndex(t => t['id'] == index);

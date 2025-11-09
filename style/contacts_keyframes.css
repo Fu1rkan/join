@@ -29,21 +29,9 @@
     }
 }
 
-@keyframes overlayShadow {
-    from {
-        background-color: rgba(0, 0, 0, 0);
-    }
-
-    to {
-        background-color: rgba(0, 0, 0, 0.2);
-    }
-}
-
-@media (max-width: 1440px) {
-
-    @keyframes fadeIn {
+@keyframes fadeIn {
         from {
-            left: 100%;
+            left: 100vw;
         }
 
         to {
@@ -57,8 +45,17 @@
         }
 
         to {
-            left: 100%;
+            left: 100vw;
         }
+    }
+
+@keyframes overlayShadow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -89,21 +86,21 @@
 
     @keyframes fadeIn {
         from {
-            top: 100vh;
+            top: 150vh;
         }
 
         to {
-            top: 10%;
+            top: 50%;
         }
     }
 
     @keyframes fadeOut {
         from {
-            top: 10%;
+            top: 50%;
         }
 
         to {
-            top: 100vh;
+            top: 150vh;
         }
     }
 }

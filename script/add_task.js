@@ -49,7 +49,7 @@ function openCalender() {
  * @param {string} para - The priority level to activate ('urgent', 'medium', or 'low'), defaults to 'medium'
  */
 function activatePriority(para = "medium") {
-    PriorityTaskActive = "";
+    priorityTaskActive = "";
     resetPriorityButtonHighlight();
     let buttonRef = document.getElementById(`add_task_priority_${para}`);
     let svgRef = document.getElementById(`add_task_priority_${para}_svg`);
@@ -274,7 +274,7 @@ function showSubtaskMenuOptions(index) {
     }, 50);
 }
 
-function closeSubtaskMenuOptions(index){
+function closeSubtaskMenuOptions(index) {
     if (currentCreatedSubtasks.length > 0) {
         let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
         let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
@@ -454,10 +454,10 @@ function createNewTask(progress, fromBoard) {
     requiredMsgDNone(titleRef, dueDateRef, categoryRef);
     checkArrayLength();
     if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
-        if(!currentAssignedTo) {
+        if (!currentAssignedTo) {
             currentAssignedTo = [];
         }
-        if(!currentCreatedSubtasks) {
+        if (!currentCreatedSubtasks) {
             currentCreatedSubtasks = [];
         }
         showRequiredMsg(titleRef, dueDateRef, categoryRef);
@@ -489,7 +489,23 @@ function checkArrayLength() {
  * @param {HTMLElement} dueDateRef - Reference to the due date input element
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  */
-function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard) {
+async function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard) {
+    pushTaskList(titleRef, descriptionRef, dueDateRef, progress);
+    if (fromBoard != undefined) {
+        document.getElementById('task-added-overlay-board').classList.remove('d_none');
+        await putTask(taskList);
+        setTimeout(() => {
+            toggleAddTaskOverlay(true);
+            boardInit();
+        }, 500)
+    }else{
+        resetGlobalVariables();
+        putTaskAndShowCreatedMsg();
+    }
+}
+
+
+function pushTaskList(titleRef, descriptionRef, dueDateRef, progress) {
     taskList.push(
         {
             "id": taskList.length,
@@ -503,8 +519,6 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard
             "subtasks": currentCreatedSubtasks
         }
     )
-    resetGlobalVariables();
-    putTaskAndShowCreatedMsg(fromBoard);
 }
 
 /**
@@ -513,16 +527,9 @@ function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  * @returns {Promise<void>} Promise that resolves when task is saved and UI is updated
  */
-async function putTaskAndShowCreatedMsg(fromBoard) {
-    if (fromBoard !== undefined) {
-        await putTask(taskList);
-        toggleAddTaskOverlay(true);
-        boardInit();
-    } else {
-        await putTask(taskList);
-        showTaskCreatedMsg();
-    }
-
+async function putTaskAndShowCreatedMsg() {
+    await putTask(taskList);
+    showTaskCreatedMsg();
 }
 
 /**

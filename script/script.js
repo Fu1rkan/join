@@ -417,78 +417,9 @@ function logOut() {
   window.location.href = './index.html';
 }
 
-/**
- * Checks if user is authenticated and redirects to login page if not
- * Validates user authentication by checking localStorage and profile header content
- * Prevents unauthorized access to protected pages
- * @returns {boolean} True if user is authenticated, false if redirected to login
- */
-function checkUserAuthentication() {
-  // Check if we're already on the login page - no need to check auth
-  if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-    return true;
-  }
-  
-  // Check localStorage for user data
-  let userId = localStorage.getItem("userId");
-  let userName = localStorage.getItem("userName");
-  
-  // If no localStorage data, redirect to login
-  if (!userId || !userName || userId === "null" || userName === "null") {
-    redirectToLogin();
-    return false;
-  }
-  
-  // Additional check: Look for profile header element
-  let profileHeader = document.getElementById('username');
-  
-  // If profile header exists and is empty/null, redirect to login
-  if (profileHeader && (profileHeader.innerHTML === '' || profileHeader.innerHTML === 'null' || profileHeader.innerHTML.trim() === '')) {
-    redirectToLogin();
-    return false;
-  }
-  
-  // Check if user is guest and validate guest session
-  if (isGuestUser()) {
-    let guestUserId = localStorage.getItem("userId");
-    if (!guestUserId || (guestUserId !== '"1"' && guestUserId !== '1')) {
-      redirectToLogin();
-      return false;
-    }
-  }
-  
-  return true;
-}
-
-/**
- * Redirects user to login page and clears authentication data
- * Cleans up localStorage and guest data before redirect
- */
-function redirectToLogin() {
-  clearGuestData();
-  localStorage.removeItem("userName");
-  localStorage.removeItem("userId");
-  window.location.href = './index.html';
-}
-
-/**
- * Initializes authentication check for protected pages
- * Should be called on page load for all pages except login
- * Sets up periodic auth validation and initial check
- */
 function initAuthGuard() {
-  if (!checkUserAuthentication()) {
-    return;
+  let userId = localStorage.getItem("userId");
+  if (!userId) {
+    logOut();
   }
-  setInterval(() => {
-    checkUserAuthentication();
-  }, 30000);
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      setTimeout(() => {
-        checkUserAuthentication();
-      }, 100);
-    }
-  });
 }
-

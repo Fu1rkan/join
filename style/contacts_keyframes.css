@@ -31,21 +31,21 @@
 
 @keyframes fadeIn {
         from {
-            left: 100vw;
+            left: 150vw;
         }
 
         to {
-            left: 8%;
+            left: 50%;
         }
     }
 
     @keyframes fadeOut {
         from {
-            left: 8%;
+            left: 50%;
         }
 
         to {
-            left: 100vw;
+            left: 150vw;
         }
     }
 
@@ -56,29 +56,6 @@
 
     to {
         background-color: rgba(0, 0, 0, 0.2);
-    }
-}
-
-@media (max-width: 1400px) {
-
-    @keyframes fadeIn {
-        from {
-            left: 100%;
-        }
-
-        to {
-            left: 5%;
-        }
-    }
-
-    @keyframes fadeOut {
-        from {
-            left: 5%;
-        }
-
-        to {
-            left: 100%;
-        }
     }
 }
 

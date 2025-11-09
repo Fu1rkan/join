@@ -128,7 +128,7 @@ function getContactTemplate(contact) {
  * @returns {string} Complete HTML template for the add contact overlay with form fields and buttons
  */
 function showAddContactCard() {
-    return `<div class="overlay-edit-contact-card-container" onclick="hideAddContactCard()"><div class="overlay-contacts-card-container">
+    return `<div class="overlay-edit-contact-card-container" onclick="hideAddContactCard()">
     <section id="overlay_add_contact_card" class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
         <div class="responsiv-overlay-card-close-btn-container">
@@ -296,7 +296,7 @@ function showAddContactCard() {
             </section>
 
         </section>
-    </section></div></div>`;
+    </section></div>`;
 }
 
 /**
@@ -310,7 +310,7 @@ function showAddContactCard() {
  * @returns {string} Complete HTML template for edit contact overlay with pre-filled form and mobile menu
  */
 function showContactEditCard(toEditContact) {
-    return `<div id="overlay_edit_contact_card_container" class="overlay-edit-contact-card-container" onclick="hideEditContactCard(), event.stopPropagation()"><div class="overlay-contacts-card-container">
+    return `<div id="overlay_edit_contact_card_container" class="overlay-edit-contact-card-container" onclick="hideEditContactCard(), event.stopPropagation()">
     <section id="overlay_edit_contact_card" class="overlay-card" onclick="event.stopPropagation()">
         <section class="overlay-left-side">
             <div class="overlay-left-side-content">
@@ -445,7 +445,7 @@ function showContactEditCard(toEditContact) {
 
         </section>
     </section>
-    </div></div>
+    </div>
     </div>
         <div id="responsiv_contact_edit_small_menu" class="responsiv-edit-delete-menu d_none" onclick="event.stopPropagation()">
             <button onclick="editContact('${toEditContact.name}', '${toEditContact.email}', 'true')">

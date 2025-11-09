@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="screen-orientation" content="portrait">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="icon" type="image/x-icon" href="./assets/svg/favicon.svg" />
 
     <title>Add Task</title>
 </head>
 
-<body onclick="closeDropdownMenus(event)" onload="addTaskInit()">
+<body onclick="closeDropdownMenus(event)" onload="addTaskInit(); initAuthGuard();">
     <div id="add_task_overlay" class="add-task-overlay d_none">
         <div class="add-tasl-overlay-board">
             <div id="overlay_add_task_created_msg" class="add-task-created-msg">
@@ -374,7 +375,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="h-80" onclick="event.stopPropagation()">
+                            <div class="subtasks-container" onclick="event.stopPropagation()">
                                 <label for="add_task_subtasks" class="add-task-assigned-to-category-label">
                                     <p>Subtasks</p>
                                     <input id="add_task_subtasks"

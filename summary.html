@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="screen-orientation" content="portrait">
     <link rel="stylesheet" href="./style/style.css" />
     <link rel="icon" type="image/x-icon" href="./assets/svg/favicon.svg" />
     <title>Summary</title>
 </head>
 
-<body onload="summaryInit()">
+<body onload="summaryInit() ; initAuthGuard();">
     <section class="layout">
 
         <nav class="navbar">
@@ -267,7 +268,8 @@
 
         </main>
 
-        <section onclick="stopPropagation(event)" class="animated-overlay-background d_none" id="animated-overlay-parent">
+        <section onclick="stopPropagation(event)" class="animated-overlay-background d_none"
+            id="animated-overlay-parent">
             <div class="animated-overlay o.0" id="animated_overlay_id"></div>
         </section>
     </section>

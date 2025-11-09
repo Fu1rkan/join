@@ -416,3 +416,10 @@ function logOut() {
   localStorage.removeItem("userId");
   window.location.href = './index.html';
 }
+
+function initAuthGuard() {
+  let userId = localStorage.getItem("userId");
+  if (!userId) {
+    logOut();
+  }
+}

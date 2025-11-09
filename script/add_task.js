@@ -457,6 +457,9 @@ function createNewTask(progress, fromBoard) {
         if(!currentAssignedTo) {
             currentAssignedTo = [];
         }
+        if(!currentCreatedSubtasks) {
+            currentCreatedSubtasks = [];
+        }
         showRequiredMsg(titleRef, dueDateRef, categoryRef);
     } else {
         pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard);

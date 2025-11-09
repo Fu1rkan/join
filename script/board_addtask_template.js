@@ -95,7 +95,7 @@ function boardAddTaskTemplate(progress) {
                     </section>
                     <div class="add-task-form-seperator">
                     </div>
-                    <section class="add-task-form-right">
+                    <section id="add_task_form_right" class="add-task-form-right">
                         <div class="add-task-priority-btns-container">
                             <p>Priority</p>
                             <div class="add-task-priority-btns">

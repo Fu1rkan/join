@@ -85,7 +85,7 @@ function taskEditOverlayTemp(i) {
                     <div class="included-participants" id="included-participants"></div>
                     <label class="task-info-type inter-text-color" for="">Subtasks</label>
                     <div class="add-subtasks" id="add-subtasks">
-                        <input type="text" placeholder="Add new Subtasks" id="new-subtask-input" onkeydown="resetPlaceholderSubtask()">
+                        <input type="text" placeholder="Add new Subtasks" id="new-subtask-input" onkeydown="resetPlaceholderSubtask(); if(event.key==='Enter'){ pushSubtask(); return false; }">
                         <div class="confirm-buttons-add-subtasks">
                             <button onclick="clearInputField()">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

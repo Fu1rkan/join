@@ -303,7 +303,6 @@ function pushSubtask() {
         renderSubtaskList(taskEditor);
         clearInputField();
         const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
-        overlay.scrollTop = overlay.scrollHeight;
     } else {
         document.getElementById('add-subtasks').classList.add('empty-subtask-input');
         document.getElementById('new-subtask-input').classList.add('empty-subtask-input');
@@ -337,7 +336,7 @@ function pushEditedTaskToJSON(index) {
         const overlay = document.getElementById(`task-main-overlay-${taskEditor.id}`);
         overlay.scrollTop = 0;
     } else {
-        pushToFirebase();
+        pushToFirebase(index);
     }
 }
 
@@ -350,7 +349,7 @@ function checkEmptyArrays() {
     }
 }
 
-async function pushToFirebase() {
+async function pushToFirebase(index) {
     checkEmptyArrays();
     let task = taskList.findIndex(t => t['id'] == index);
     taskList[task] = taskEditor;

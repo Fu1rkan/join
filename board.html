@@ -150,7 +150,7 @@
                         <div class="resp-add-task-button">
                             <h2>Board</h2>
                             <button onclick="toggleAddTaskOverlay('to-do')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                <svg width="20" height="20" viewBox="0 0 20 20"
                                     fill="none">
                                     <path
                                         d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
@@ -160,7 +160,7 @@
                         </div>
                         <div class="board-actions">
                             <label for="search-bar" class="search-task">
-                                <input type="text" placeholder="Find Task" id="search-bar" onkeyup="showAllTasks()" />
+                                <input type="text" placeholder="Find Task" id="search-bar" onkeyup="showAllTasks(); if(event.key==='Enter'){ searchtasks(); return false; }"/>
                                 <div class="search-button-section">
                                     <div class="search-divider"></div>
                                     <button class="search-button" onclick="searchtasks()">

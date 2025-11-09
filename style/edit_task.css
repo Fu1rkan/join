@@ -58,7 +58,7 @@
 }
 
 .change-title {
-    width: 100%;
+    width: calc(100% - 1px);
     border-radius: 10px;
     padding: 10px 21px;
     border: 1px solid rgba(209, 209, 209, 1);
@@ -73,15 +73,13 @@
 }
 
 .change-desc {
-    width: 100%;
+    width: calc(100% - 1px);
     border-radius: 10px;
     padding: 18px 21px;
     border: 1px solid rgba(209, 209, 209, 1);
-    width: 396;
     min-height: 88px;
     font-size: 16px;
     font-family: 'Inter';
-    width: 100%;
     margin: 8px 0 32px 0;
     resize: none;
     outline: none;
@@ -92,7 +90,7 @@
 }
 
 .date-input {
-    width: 100%;
+    width: calc(100% - 1px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,7 +120,7 @@
 }
 
 .change-priority {
-    width: 100%;
+    width: calc(100% - 2px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -149,7 +147,7 @@
 }
 
 .change-participants {
-    width: 100%;
+    width: calc(100% - 1px);
     border-radius: 10px;
     justify-content: space-between;
     padding: 12px 16px;
@@ -239,6 +237,7 @@
     padding: 12px 16px;
     border: 1px solid #2A3647;
     margin: 8px 0;
+    width: calc(100% - 1px);
 }
 
 
@@ -278,7 +277,7 @@
 
 .change-subtasks-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 .change-subtasks {

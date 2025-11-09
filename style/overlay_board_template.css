@@ -97,6 +97,10 @@
     .add-task-card {
         min-width: auto;
     }
+
+    .add-task-subtaks-dropdown {
+        max-height: 60px;
+    }
 }
 
 @media (max-width: 850px) {
@@ -147,6 +151,9 @@
         height: 15px;
     }
 
+    .add-task-subtaks-dropdown {
+        max-height: none;
+    }
 }
 
 @media (max-width: 500px) {

@@ -58,14 +58,14 @@ function getAddTaskAssignedToListItem(array, index) {
  */
 function getSubtaskTemplate(index) {
     return `
-        <li id="current_subtask_li_${index}" onclick="showSubtaskMenuOptions(${index})" ondblclick="changeCurrentSubtask(${index})"
+        <li id="current_subtask_li_${index}" ondblclick="changeCurrentSubtask(${index})"
             class="add-task-form-subtasks-dropdown-subtasks-list-item">
             <div class="add-task-form-subtasks-dropdown-subtasks-item">
                 <div class="d_f">
                     <p id="current_subtask_style_${index}">•</p>
                     <p id="current_subtask_${index}" class="add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title">${escapeHTML(currentCreatedSubtasks[index].name)}</p>
                 </div>
-                <div id="current_subtask_rough_menu_btns${index}" class="add-task-form-subtasks-dropdown-subtasks-btns d_none">
+                <div id="current_subtask_rough_menu_btns${index}" class="add-task-form-subtasks-dropdown-subtasks-btns">
                     <button onclick="changeCurrentSubtask(${index})">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_75601_14818" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"

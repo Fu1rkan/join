@@ -1,28 +1,4 @@
 /**
- * Clears the entire add task form and resets all states
- * Resets form inputs, global variables, and UI elements to default state
- */
-function clearForm() {
-    let formRef = document.getElementById('add_task_form');
-    let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
-    formRef.reset();
-    activatePriority();
-    resetGlobalVariables();
-    inputFieldAddFormCalenderSvgRef.classList.remove('d_none');
-    renderCurrentAssignedTo();
-    renderCurrentCreatedSubtasks();
-}
-
-/**
- * Removes highlight styling from all input fields and textareas
- * Resets the visual state of all form input elements
- */
-function removeHighlightInputFields() {
-    document.querySelectorAll('.add-task-form input').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
-    document.querySelectorAll('.add-task-form textarea').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
-}
-
-/**
  * Resets the subtasks input field to empty state
  * Clears the input field value for creating new subtasks
  * @param {string} activeInputField - The ID of the subtasks input field, defaults to 'add_task_subtasks'
@@ -30,79 +6,6 @@ function removeHighlightInputFields() {
 function resetAddTaskSubtasksInputField(activeInputField = "add_task_subtasks") {
     let subtasksInputField = document.getElementById(activeInputField);
     subtasksInputField.value = "";
-}
-
-/**
- * Switches input field highlighting based on the active field type
- * Shows or hides specific UI elements based on which input field is active
- * @param {string} activeInputField - The ID of the currently active input field
- * @param {HTMLElement} inputFieldAddFormSubtasksBtnsRef - Reference to subtasks buttons container
- * @param {HTMLElement} inputFieldAddFormCalenderSvgRef - Reference to calendar SVG element
- */
-function switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef) {
-    switch (activeInputField) {
-        case "add_task_subtasks":
-            inputFieldAddFormSubtasksBtnsRef.classList.remove('d_none');
-            break;
-        case "add_task_due_date":
-            inputFieldAddFormCalenderSvgRef.classList.add('d_none');
-            break;
-        default:
-            break;
-    }
-}
-
-/**
- * Highlights active input field with appropriate styling
- * Adds focus styling and shows related UI elements
- * @param {string} activeInputField - The ID of the input field to highlight
- */
-function highlightInputFields(activeInputField) {
-    let inputFieldRef = document.getElementById(activeInputField);
-    let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
-    let inputFieldAddFormSubtasksBtnsRef = document.getElementById('add_task_form_subtasks_btns');
-    inputFieldAddFormSubtasksBtnsRef.classList.add('d_none');
-    removeHighlightInputFields();
-    inputFieldRef.classList.add('add-task-inputfield-highlight');
-    switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
-}
-
-/**
- * Shows required field validation messages and adds error styling
- * Displays error messages and red borders for empty required fields
- * @param {HTMLElement} titleRef - Reference to the title input element
- * @param {HTMLElement} dueDateRef - Reference to the due date input element
- * @param {HTMLElement} categoryRef - Reference to the category input element
- */
-function showRequiredMsg(titleRef, dueDateRef, categoryRef) {
-    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef } = takeRequiredMsgRefs();
-    if (titleRef.value == 0) {
-        requiredTitleRef.classList.remove('d_none');
-        titleRef.classList.add('add-task-red-border');
-    }
-    if (dueDateRef.value == 0) {
-        requiredDueDateRef.classList.remove('d_none');
-        dueDateRef.classList.add('add-task-red-border');
-    }
-    if (categoryRef.value == "") {
-        requiredCategoryRef.classList.remove('d_none');
-        categoryRef.classList.add('add-task-red-border');
-    }
-}
-
-/**
- * Checks and handles empty arrays for assigned contacts and subtasks
- * Sets arrays to false if empty to maintain consistent data structure
- */
-function checkArrayLength() {
-    if (currentAssignedTo.length == 0 && currentCreatedSubtasks.length == 0) {
-        currentAssignedTo = false;
-        currentCreatedSubtasks = false;
-    } else if (currentAssignedTo.length == 0) {
-        currentAssignedTo = false;
-    } else if (currentCreatedSubtasks.length == 0) {
-        currentCreatedSubtasks = false;
-    }
 }
 
 /**
@@ -369,19 +272,4 @@ function toggleAssignedToContactList() {
     if (!addTaskAssignedToList.classList.contains('d_none')) {
         renderContactsInList();
     }
-}
-
-/**
- * Gets references to all required field validation message elements
- * Returns an object containing references to error message elements
- * @returns {Object} Object containing required message element references
- * @returns {HTMLElement} Object.requiredTitleRef - Reference to title required message element
- * @returns {HTMLElement} Object.requiredDueDateRef - Reference to due date required message element  
- * @returns {HTMLElement} Object.requiredCategoryRef - Reference to category required message element
- */
-function takeRequiredMsgRefs() {
-    let requiredTitleRef = document.getElementById('required_msg_title');
-    let requiredDueDateRef = document.getElementById('required_msg_due_date');
-    let requiredCategoryRef = document.getElementById('required_msg_category');
-    return { requiredTitleRef, requiredDueDateRef, requiredCategoryRef };
 }

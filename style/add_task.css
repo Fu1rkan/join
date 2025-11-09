@@ -172,10 +172,6 @@
     background-color: transparent;
 }
 
-.add-task-form-subtasks-dropdown-subtasks-btns button:hover {
-    transform: translateY(1px);
-}
-
 .add-task-priority-btns button {
     cursor: pointer;
     width: 30%;
@@ -399,6 +395,7 @@
 .add-task-form-subtasks-dropdown-subtasks-btns {
     right: 0;
     top: 50%;
+    display: none;
 }
 
 .add-task-form-subtasks-btns button,
@@ -426,6 +423,10 @@
 
 .add-task-form-subtasks-dropdown-subtasks-list-item:hover {
     background-color: #EEEEEE;
+}
+
+.add-task-form-subtasks-dropdown-subtasks-list-item:hover .add-task-form-subtasks-dropdown-subtasks-btns {
+    display: flex;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item::before {

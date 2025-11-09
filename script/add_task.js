@@ -333,3 +333,27 @@ function highlightInputFields(activeInputField) {
     inputFieldRef.classList.add('add-task-inputfield-highlight');
     switchHighlightInputFields(activeInputField, inputFieldAddFormSubtasksBtnsRef, inputFieldAddFormCalenderSvgRef);
 }
+
+/**
+ * Clears the entire add task form and resets all states
+ * Resets form inputs, global variables, and UI elements to default state
+ */
+function clearForm() {
+    let formRef = document.getElementById('add_task_form');
+    let inputFieldAddFormCalenderSvgRef = document.getElementById('add_task_due_date_label_placeholder_svg');
+    formRef.reset();
+    activatePriority();
+    resetGlobalVariables();
+    inputFieldAddFormCalenderSvgRef.classList.remove('d_none');
+    renderCurrentAssignedTo();
+    renderCurrentCreatedSubtasks();
+}
+
+/**
+ * Removes highlight styling from all input fields and textareas
+ * Resets the visual state of all form input elements
+ */
+function removeHighlightInputFields() {
+    document.querySelectorAll('.add-task-form input').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
+    document.querySelectorAll('.add-task-form textarea').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
+}

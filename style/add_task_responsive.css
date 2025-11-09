@@ -4,7 +4,7 @@
         padding: 40px 40px 20px 40px;
     }
 
-    .add-task-form{
+    .add-task-form {
         height: 550px;
     }
 }
@@ -55,13 +55,13 @@
         display: none;
     }
 
-    .add-task-form-left{
+    .add-task-form-left {
         width: 100%;
         justify-content: unset;
         height: auto;
     }
 
-    .h-96{
+    .h-96 {
         height: auto;
     }
 
@@ -69,7 +69,7 @@
         height: 24px;
     } */
 
-    .h-136{
+    .h-136 {
         height: auto;
     }
 
@@ -79,7 +79,7 @@
         height: auto;
     }
 
-    .add-task-priority-btns-container{
+    .add-task-priority-btns-container {
         height: auto;
         background-color: transparent;
     }
@@ -99,11 +99,11 @@
         height: auto;
     } */
 
-    .add-task-priority-btns{
+    .add-task-priority-btns {
         justify-content: space-between;
     }
 
-    .add-task-form-info-container{
+    .add-task-form-info-container {
         display: none;
     }
 
@@ -112,5 +112,15 @@
 @media (max-width: 550px) {
     .add-task-form-btns {
         gap: 8px;
+    }
+
+    .task-added-overlay-board {
+        font-size: 14px;
+        padding: 16px;
+    }
+
+    .task-added-overlay-board svg {
+        width: 24px;
+        height: 16px;
     }
 }

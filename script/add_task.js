@@ -489,13 +489,19 @@ function checkArrayLength() {
  * @param {HTMLElement} dueDateRef - Reference to the due date input element
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  */
-function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard) {
-    document.getElementById('task-added-overlay-board').classList.remove('d_none');
-    setTimeout(() => {
-        pushTaskList(titleRef, descriptionRef, dueDateRef, progress);
+async function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fromBoard) {
+    pushTaskList(titleRef, descriptionRef, dueDateRef, progress);
+    if (fromBoard != undefined) {
+        document.getElementById('task-added-overlay-board').classList.remove('d_none');
+        await putTask(taskList);
+        setTimeout(() => {
+            toggleAddTaskOverlay(true);
+            boardInit();
+        }, 500)
+    }else{
         resetGlobalVariables();
-        putTaskAndShowCreatedMsg(fromBoard);
-    }, 500)
+        putTaskAndShowCreatedMsg();
+    }
 }
 
 
@@ -521,16 +527,9 @@ function pushTaskList(titleRef, descriptionRef, dueDateRef, progress) {
  * @param {string} paraOverlay - Optional parameter indicating overlay context, defaults to empty string
  * @returns {Promise<void>} Promise that resolves when task is saved and UI is updated
  */
-async function putTaskAndShowCreatedMsg(fromBoard) {
-    if (fromBoard !== undefined) {
-        await putTask(taskList);
-        toggleAddTaskOverlay(true);
-        boardInit();
-    } else {
-        await putTask(taskList);
-        showTaskCreatedMsg();
-    }
-
+async function putTaskAndShowCreatedMsg() {
+    await putTask(taskList);
+    showTaskCreatedMsg();
 }
 
 /**

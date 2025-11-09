@@ -99,7 +99,7 @@
     }
 
     .add-task-subtaks-dropdown {
-        max-height: 60px;
+        max-height: 55px;
     }
 }
 
@@ -153,6 +153,10 @@
 
     .add-task-subtaks-dropdown {
         max-height: none;
+    }
+
+    .g-8 {
+        gap: 24px;
     }
 }
 

@@ -242,12 +242,15 @@ function selectContact(index) {
  * Updates the display section with contact avatars and handles overflow with counter
  */
 function renderCurrentAssignedTo() {
+    let formBoardRightSideRef = document.getElementById('add_task_form_right');
     let currentAssignedToSectionRef = document.getElementById('add_task_form_assigned_to_section');
     let currentAssignedToListRef = document.getElementById('current_assigned_to_contacts');
+    formBoardRightSideRef.classList.remove('g-8');
     currentAssignedToSectionRef.classList.remove('h-130');
     currentAssignedToListRef.classList.add('d_none');
     currentAssignedToListRef.innerHTML = "";
     if (currentAssignedTo.length > 0) {
+        formBoardRightSideRef.classList.add('g-8');
         currentAssignedToSectionRef.classList.add('h-130');
         currentAssignedToListRef.classList.remove('d_none');
         for (let index = 0; index < currentAssignedTo.length && index < 4; index++) {

@@ -283,6 +283,10 @@
     width: 100%;
 }
 
+.g-8 {
+    gap: 8px;
+}
+
 .d_none {
     display: none !important;
 }

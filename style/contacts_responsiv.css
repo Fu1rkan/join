@@ -387,3 +387,13 @@
         left: 5%;
     }
 }
+
+@media(max-height : 704px) {
+    .succes-created-container {
+        position: unset;
+    }
+
+    .creates-msg {
+        top: 50%;
+    }
+}

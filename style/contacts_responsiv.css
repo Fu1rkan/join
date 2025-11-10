@@ -164,6 +164,18 @@
     }
 }
 
+@media (max-width: 550px) {
+    .delete-contact {
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+
+    .delete-contact svg{
+        width: 32px;
+        height: 32px;
+    }
+}
+
 @media (max-width: 525px) {
     .contact-list-container {
         margin-top: 100px;

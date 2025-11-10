@@ -90,9 +90,6 @@ function logInTemplate() {
  */
 function signUpTemplate() {
     return `
-        <section id="main_header">
-            <!-- The join logo will be rendered here -->
-        </section>
         <section class="sign_up_section">
             <section class="title_headline">
                 <div class="sign_up_back_arrow" tabindex="0" onclick="renderLogIn()"onkeydown="if(event.code==='Space'){renderLogIn();}">

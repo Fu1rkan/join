@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: add_task_templates.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: add_task_templates.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Renders a template for a currently assigned contact with avatar
+ * @param {number} index - The index of the contact in the currentAssignedTo array
+ * @returns {string} HTML template for assigned contact with colored avatar and initials
+ */
+function getCurrentAssignedContactTemplate(index) {
+    return `
+        &lt;div class="current-assigned-to-contact" style="background-color:${currentAssignedTo[index].fillColor}">
+            &lt;p>${currentAssignedTo[index].nameLetters}&lt;/p>
+        &lt;/div>
+    `
+}
+
+/**
+ * Renders a list item template for the assigned contacts dropdown
+ * @param {Array} array - Array of contacts to choose from
+ * @param {number} index - The index of the contact in the array
+ * @returns {string} HTML template for contact list item with avatar, name, and checkbox
+ */
+function getAddTaskAssignedToListItem(array, index) {
+    return `
+        &lt;li id="add_task_assigned_to_contact_${index}"
+            class="add-task-form-assigned-to-dropdown-contacts-default-hover-class"
+            onclick="selectContact(${index})">
+            &lt;div class="add-task-form-assigned-to-dropdown-list-contact">
+                &lt;div class="add-task-form-assigned-to-dropdown-contacts-icon" style="background-color:${array[index].fillColor}">
+                    &lt;p>${array[index].nameLetters}&lt;/p>
+                &lt;/div>
+                &lt;p>${array[index].name}&lt;/p>
+            &lt;/div>
+            &lt;div id="${index}_unchecked" class="">
+                &lt;svg 
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none">
+                    &lt;rect x="4" y="4" width="16" height="16" rx="3" stroke="#2A3647"
+                        stroke-width="2" />
+                &lt;/svg>
+            &lt;/div>
+            &lt;div id="${index}_checked" class="d_none">
+                &lt;svg 
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none">
+                    &lt;path
+                        d="M20 11V17C20 18.6569 18.6569 20 17 20H7C5.34315 20 4 18.6569 4 17V7C4 5.34315 5.34315 4 7 4H15"
+                        stroke="white" stroke-width="2" stroke-linecap="round" />
+                    &lt;path d="M8 12L12 16L20 4.5" stroke="white" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                &lt;/svg>
+            &lt;/div>
+        &lt;/li>
+    `
+}
+
+/**
+ * Renders a template for a subtask list item with edit and delete functionality
+ * @param {number} index - The index of the subtask in the currentCreatedSubtasks array
+ * @returns {string} HTML template for subtask with title, edit/delete buttons, and input field for editing
+ */
+function getSubtaskTemplate(index) {
+    return `
+        &lt;li id="current_subtask_li_${index}" ondblclick="changeCurrentSubtask(${index})"
+            class="add-task-form-subtasks-dropdown-subtasks-list-item">
+            &lt;div class="add-task-form-subtasks-dropdown-subtasks-item">
+                &lt;div class="d_f">
+                    &lt;p id="current_subtask_style_${index}">•&lt;/p>
+                    &lt;p id="current_subtask_${index}" class="add-task-form-subtasks-dropdown-subtasks-list-item-subtask-title">${escapeHTML(currentCreatedSubtasks[index].name)}&lt;/p>
+                &lt;/div>
+                &lt;div id="current_subtask_rough_menu_btns${index}" class="add-task-form-subtasks-dropdown-subtasks-btns">
+                    &lt;button onclick="changeCurrentSubtask(${index})">
+                        &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            &lt;mask id="mask0_75601_14818" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="24" height="24">
+                                &lt;rect width="24" height="24" fill="#D9D9D9" />
+                            &lt;/mask>
+                            &lt;g mask="url(#mask0_75601_14818)">
+                                &lt;path
+                                    d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
+                                    fill="#2A3647" />
+                            &lt;/g>
+                        &lt;/svg>
+                    &lt;/button>
+                    &lt;div class="add-task-subtasks-dropdown-subtasks-item-seperator">&lt;/div>
+                    &lt;button onclick="deleteCurrentSubtask(${index})">
+                        &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            &lt;mask id="mask0_75601_14820" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="24" height="24">
+                                &lt;rect width="24" height="24" fill="#D9D9D9" />
+                            &lt;/mask>
+                            &lt;g mask="url(#mask0_75601_14820)">
+                                &lt;path
+                                    d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
+                                    fill="#2A3647" />
+                            &lt;/g>
+                        &lt;/svg>
+                    &lt;/button>
+                &lt;/div>
+                &lt;label id="label_current_subtask_${index}" for="change_current_element_${index}" class="d_none">
+                    &lt;input id="change_current_element_${index}" type="text"
+                        class="add-task-form-subtasks-dropdown-subtasks-list-item-subtask-input">
+                    &lt;section class="add-task-form-subtasks-dropdown-subtasks-edit-btns">
+                        &lt;button onclick="deleteCurrentSubtask(${index})">
+                            &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                &lt;mask id="mask0_75601_14777" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="24" height="24">
+                                    &lt;rect width="24" height="24" fill="#D9D9D9" />
+                                &lt;/mask>
+                                &lt;g mask="url(#mask0_75601_14777)">
+                                    &lt;path
+                                        d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
+                                        fill="#2A3647" />
+                                &lt;/g>
+                            &lt;/svg>
+                        &lt;/button>
+                        &lt;div class="add-task-subtasks-dropdown-subtasks-item-seperator">
+                        &lt;/div>
+                        &lt;button onclick="saveChangedSubtask(${index})">
+                            &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                &lt;mask id="mask0_75601_14779" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="24" height="24">
+                                    &lt;rect width="24" height="24" fill="#D9D9D9" />
+                                &lt;/mask>
+                                &lt;g mask="url(#mask0_75601_14779)">
+                                    &lt;path
+                                        d="M9.55021 15.15L18.0252 6.675C18.2252 6.475 18.4627 6.375 18.7377 6.375C19.0127 6.375 19.2502 6.475 19.4502 6.675C19.6502 6.875 19.7502 7.1125 19.7502 7.3875C19.7502 7.6625 19.6502 7.9 19.4502 8.1L10.2502 17.3C10.0502 17.5 9.81687 17.6 9.55021 17.6C9.28354 17.6 9.05021 17.5 8.85021 17.3L4.55021 13C4.35021 12.8 4.25437 12.5625 4.26271 12.2875C4.27104 12.0125 4.37521 11.775 4.57521 11.575C4.77521 11.375 5.01271 11.275 5.28771 11.275C5.56271 11.275 5.80021 11.375 6.00021 11.575L9.55021 15.15Z"
+                                        fill="#2A3647" />
+                                &lt;/g>
+                            &lt;/svg>
+                        &lt;/button>
+                    &lt;/section>
+                &lt;/label>
+
+            &lt;/div>
+        &lt;/li>
+    `
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#acceptCheckbox">acceptCheckbox</a></li><li><a href="global.html#acceptCheckboxTemplate">acceptCheckboxTemplate</a></li><li><a href="global.html#acceptEditedTask">acceptEditedTask</a></li><li><a href="global.html#activatePriority">activatePriority</a></li><li><a href="global.html#activeEditTask">activeEditTask</a></li><li><a href="global.html#addNewContact">addNewContact</a></li><li><a href="global.html#addOutsideClickListener">addOutsideClickListener</a></li><li><a href="global.html#addPasswordInputListener">addPasswordInputListener</a></li><li><a href="global.html#addRepeatPasswordListener">addRepeatPasswordListener</a></li><li><a href="global.html#addTaskInit">addTaskInit</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#animationOverlayCardDesktop">animationOverlayCardDesktop</a></li><li><a href="global.html#animationOverlayCardFadeIn">animationOverlayCardFadeIn</a></li><li><a href="global.html#animationOverlayCardFadeOut">animationOverlayCardFadeOut</a></li><li><a href="global.html#animationOverlayCardMobile">animationOverlayCardMobile</a></li><li><a href="global.html#backToContactList">backToContactList</a></li><li><a href="global.html#boardAddTaskTemplate">boardAddTaskTemplate</a></li><li><a href="global.html#boardInit">boardInit</a></li><li><a href="global.html#builtAcc">builtAcc</a></li><li><a href="global.html#changeCurrentSubtask">changeCurrentSubtask</a></li><li><a href="global.html#changeEditedContact">changeEditedContact</a></li><li><a href="global.html#changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate">changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate</a></li><li><a href="global.html#changePrioButtonColor">changePrioButtonColor</a></li><li><a href="global.html#changePriority">changePriority</a></li><li><a href="global.html#changeSwitchButton">changeSwitchButton</a></li><li><a href="global.html#checkAddTaskOverlayStatus">checkAddTaskOverlayStatus</a></li><li><a href="global.html#checkAndShowOverlay">checkAndShowOverlay</a></li><li><a href="global.html#checkArrayLength">checkArrayLength</a></li><li><a href="global.html#checkContactStatus">checkContactStatus</a></li><li><a href="global.html#checkCreateValuesAndCreateContact">checkCreateValuesAndCreateContact</a></li><li><a href="global.html#checkEmailValue">checkEmailValue</a></li><li><a href="global.html#checkInputLength">checkInputLength</a></li><li><a href="global.html#checkLoginInputFields">checkLoginInputFields</a></li><li><a href="global.html#checkNameValue">checkNameValue</a></li><li><a href="global.html#checkParticipantTemp">checkParticipantTemp</a></li><li><a href="global.html#checkParticipants">checkParticipants</a></li><li><a href="global.html#checkPhoneValue">checkPhoneValue</a></li><li><a href="global.html#checkPrio">checkPrio</a></li><li><a href="global.html#checkPriorityStatus">checkPriorityStatus</a></li><li><a href="global.html#checkPrivacyPolicyCheckbox">checkPrivacyPolicyCheckbox</a></li><li><a href="global.html#checkProgress">checkProgress</a></li><li><a href="global.html#checkSignUpInputFields">checkSignUpInputFields</a></li><li><a href="global.html#checkSubtasksMainOverlay">checkSubtasksMainOverlay</a></li><li><a href="global.html#checkTaskDate">checkTaskDate</a></li><li><a href="global.html#checkTaskDesc">checkTaskDesc</a></li><li><a href="global.html#checkTaskInfos">checkTaskInfos</a></li><li><a href="global.html#checkTaskLength">checkTaskLength</a></li><li><a href="global.html#checkTaskOverlayInfos">checkTaskOverlayInfos</a></li><li><a href="global.html#checkTaskOverlayParticipants">checkTaskOverlayParticipants</a></li><li><a href="global.html#checkTaskOverlayPrio">checkTaskOverlayPrio</a></li><li><a href="global.html#checkTaskOverlaySubtasks">checkTaskOverlaySubtasks</a></li><li><a href="global.html#checkTaskStatus">checkTaskStatus</a></li><li><a href="global.html#checkTaskType">checkTaskType</a></li><li><a href="global.html#chooseCategory">chooseCategory</a></li><li><a href="global.html#ckeckDateValue">ckeckDateValue</a></li><li><a href="global.html#ckeckTitleValue">ckeckTitleValue</a></li><li><a href="global.html#cleanUpUrl">cleanUpUrl</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#clearGuestData">clearGuestData</a></li><li><a href="global.html#clearInputField">clearInputField</a></li><li><a href="global.html#closeAddTaskOverlay">closeAddTaskOverlay</a></li><li><a href="global.html#closeDropdownMenus">closeDropdownMenus</a></li><li><a href="global.html#closeEditTaskOverlay">closeEditTaskOverlay</a></li><li><a href="global.html#closeMenus">closeMenus</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeResponsiveContactEditMenu">closeResponsiveContactEditMenu</a></li><li><a href="global.html#closeSignUpOverlay">closeSignUpOverlay</a></li><li><a href="global.html#closeSubtaskMenuOptions">closeSubtaskMenuOptions</a></li><li><a href="global.html#closeTaskMenus">closeTaskMenus</a></li><li><a href="global.html#contactListTemplates">contactListTemplates</a></li><li><a href="global.html#createContactAndHighlight">createContactAndHighlight</a></li><li><a href="global.html#createExampleContacts">createExampleContacts</a></li><li><a href="global.html#createExampleTasks">createExampleTasks</a></li><li><a href="global.html#createNewContact">createNewContact</a></li><li><a href="global.html#createNewTask">createNewTask</a></li><li><a href="global.html#createObjectNewContact">createObjectNewContact</a></li><li><a href="global.html#deleteContactFromTask">deleteContactFromTask</a></li><li><a href="global.html#deleteCurrentSubtask">deleteCurrentSubtask</a></li><li><a href="global.html#deleteSubtask">deleteSubtask</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#disableChangeButton">disableChangeButton</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#emptyTaskList">emptyTaskList</a></li><li><a href="global.html#fadeInCreateMsg">fadeInCreateMsg</a></li><li><a href="global.html#filterContacts">filterContacts</a></li><li><a href="global.html#filterInputValue">filterInputValue</a></li><li><a href="global.html#filterTasksByCategory">filterTasksByCategory</a></li><li><a href="global.html#findNewestContactAndHighlightIt">findNewestContactAndHighlightIt</a></li><li><a href="global.html#generateLetters">generateLetters</a></li><li><a href="global.html#generatecapitalizedName">generatecapitalizedName</a></li><li><a href="global.html#getAddTaskAssignedToListItem">getAddTaskAssignedToListItem</a></li><li><a href="global.html#getContactTemplate">getContactTemplate</a></li><li><a href="global.html#getCurrentAssignedContactTemplate">getCurrentAssignedContactTemplate</a></li><li><a href="global.html#getFormattedEarliestDate">getFormattedEarliestDate</a></li><li><a href="global.html#getGreetingByHour">getGreetingByHour</a></li><li><a href="global.html#getGuestContactsCount">getGuestContactsCount</a></li><li><a href="global.html#getGuestTasksCount">getGuestTasksCount</a></li><li><a href="global.html#getProfileButtonElement">getProfileButtonElement</a></li><li><a href="global.html#getRandomColor">getRandomColor</a></li><li><a href="global.html#getResponsiveOffsets">getResponsiveOffsets</a></li><li><a href="global.html#getSmallContactTemplate">getSmallContactTemplate</a></li><li><a href="global.html#getSubtaskTemplate">getSubtaskTemplate</a></li><li><a href="global.html#handleFieldValidation">handleFieldValidation</a></li><li><a href="global.html#handleOutsideClick">handleOutsideClick</a></li><li><a href="global.html#hasGuestContacts">hasGuestContacts</a></li><li><a href="global.html#hasGuestTasks">hasGuestTasks</a></li><li><a href="global.html#hideAddContactCard">hideAddContactCard</a></li><li><a href="global.html#hideEditContactCard">hideEditContactCard</a></li><li><a href="global.html#hidePasswordRepeatTemplate">hidePasswordRepeatTemplate</a></li><li><a href="global.html#hidePasswordTemplate">hidePasswordTemplate</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#highlightChangedContact">highlightChangedContact</a></li><li><a href="global.html#highlightContact">highlightContact</a></li><li><a href="global.html#highlightContactAndOpenContactTemplate">highlightContactAndOpenContactTemplate</a></li><li><a href="global.html#highlightInputFields">highlightInputFields</a></li><li><a href="global.html#highlightPriorityButton">highlightPriorityButton</a></li><li><a href="global.html#highlightRequiredInputs">highlightRequiredInputs</a></li><li><a href="global.html#initContacts">initContacts</a></li><li><a href="global.html#initializeGuestSession">initializeGuestSession</a></li><li><a href="global.html#isGuestUser">isGuestUser</a></li><li><a href="global.html#joinLogoTemplate">joinLogoTemplate</a></li><li><a href="global.html#loadCardInfos">loadCardInfos</a></li><li><a href="global.html#loadGuestContacts">loadGuestContacts</a></li><li><a href="global.html#loadGuestTasks">loadGuestTasks</a></li><li><a href="global.html#loadGuestUsername">loadGuestUsername</a></li><li><a href="global.html#logInInit">logInInit</a></li><li><a href="global.html#logInTemplate">logInTemplate</a></li><li><a href="global.html#lowPrioTemp">lowPrioTemp</a></li><li><a href="global.html#markAsChecked">markAsChecked</a></li><li><a href="global.html#mediumPrioTemp">mediumPrioTemp</a></li><li><a href="global.html#moreParticipantsEditTaskTemp">moreParticipantsEditTaskTemp</a></li><li><a href="global.html#moreParticipantsTemp">moreParticipantsTemp</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#noContactsTemp">noContactsTemp</a></li><li><a href="global.html#noResultsTaskList">noResultsTaskList</a></li><li><a href="global.html#openAddTaskOverlay">openAddTaskOverlay</a></li><li><a href="global.html#openBoard">openBoard</a></li><li><a href="global.html#openCalender">openCalender</a></li><li><a href="global.html#openContactList">openContactList</a></li><li><a href="global.html#openDatePicker">openDatePicker</a></li><li><a href="global.html#openDeleteContactOverlay">openDeleteContactOverlay</a></li><li><a href="global.html#openEditTaskOverlay">openEditTaskOverlay</a></li><li><a href="global.html#openGuestSummary">openGuestSummary</a></li><li><a href="global.html#openOverlay">openOverlay</a></li><li><a href="global.html#openResponsiveContactEditMenu">openResponsiveContactEditMenu</a></li><li><a href="global.html#openSignUpOverlay">openSignUpOverlay</a></li><li><a href="global.html#openSummary">openSummary</a></li><li><a href="global.html#openTaskRespMenu">openTaskRespMenu</a></li><li><a href="global.html#participantLogoTemp">participantLogoTemp</a></li><li><a href="global.html#participantTemp">participantTemp</a></li><li><a href="global.html#participantsTaskOverlayTemp">participantsTaskOverlayTemp</a></li><li><a href="global.html#participantsTemp">participantsTemp</a></li><li><a href="global.html#prioTaskOverlayTemp">prioTaskOverlayTemp</a></li><li><a href="global.html#progressTemp">progressTemp</a></li><li><a href="global.html#pushEditedTaskToJSON">pushEditedTaskToJSON</a></li><li><a href="global.html#pushNewObject">pushNewObject</a></li><li><a href="global.html#pushSubtask">pushSubtask</a></li><li><a href="global.html#pushTaskList">pushTaskList</a></li><li><a href="global.html#pushToFirebase">pushToFirebase</a></li><li><a href="global.html#putContactAsParticipant">putContactAsParticipant</a></li><li><a href="global.html#putGuestContacts">putGuestContacts</a></li><li><a href="global.html#putGuestTasks">putGuestTasks</a></li><li><a href="global.html#putTaskAndShowCreatedMsg">putTaskAndShowCreatedMsg</a></li><li><a href="global.html#refuseCheckbox">refuseCheckbox</a></li><li><a href="global.html#refuseCheckboxTemplate">refuseCheckboxTemplate</a></li><li><a href="global.html#removeActiveClass">removeActiveClass</a></li><li><a href="global.html#removeEnterKeyContactListener">removeEnterKeyContactListener</a></li><li><a href="global.html#removeHighlight">removeHighlight</a></li><li><a href="global.html#removeHighlightInputFields">removeHighlightInputFields</a></li><li><a href="global.html#removeHiglightFromLabelsAndHideRequiredMsg">removeHiglightFromLabelsAndHideRequiredMsg</a></li><li><a href="global.html#removeOutsideClickListener">removeOutsideClickListener</a></li><li><a href="global.html#renderChangedContaktList">renderChangedContaktList</a></li><li><a href="global.html#renderContactList">renderContactList</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderContactsInList">renderContactsInList</a></li><li><a href="global.html#renderContactsTemp">renderContactsTemp</a></li><li><a href="global.html#renderCountstoSummaryCards">renderCountstoSummaryCards</a></li><li><a href="global.html#renderCurrentAssignedTo">renderCurrentAssignedTo</a></li><li><a href="global.html#renderCurrentCreatedSubtasks">renderCurrentCreatedSubtasks</a></li><li><a href="global.html#renderJoinLogo">renderJoinLogo</a></li><li><a href="global.html#renderLogIn">renderLogIn</a></li><li><a href="global.html#renderParticipantLogos">renderParticipantLogos</a></li><li><a href="global.html#renderSearchedTasks">renderSearchedTasks</a></li><li><a href="global.html#renderSignUp">renderSignUp</a></li><li><a href="global.html#renderSubtaskList">renderSubtaskList</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#renderSubtasksTemp">renderSubtasksTemp</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#renderUpcomingDeadline">renderUpcomingDeadline</a></li><li><a href="global.html#requiredMsgDNone">requiredMsgDNone</a></li><li><a href="global.html#resetAddTaskOverlay">resetAddTaskOverlay</a></li><li><a href="global.html#resetAddTaskSubtasksInputField">resetAddTaskSubtasksInputField</a></li><li><a href="global.html#resetGlobalVariables">resetGlobalVariables</a></li><li><a href="global.html#resetPlaceholderSubtask">resetPlaceholderSubtask</a></li><li><a href="global.html#resetPriority">resetPriority</a></li><li><a href="global.html#resetPriorityButtonHighlight">resetPriorityButtonHighlight</a></li><li><a href="global.html#saveChangedContact">saveChangedContact</a></li><li><a href="global.html#saveChangedSubtask">saveChangedSubtask</a></li><li><a href="global.html#searchContact">searchContact</a></li><li><a href="global.html#searchtasks">searchtasks</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#setMenuPosition">setMenuPosition</a></li><li><a href="global.html#setSubtask">setSubtask</a></li><li><a href="global.html#setupEnterKeyContact">setupEnterKeyContact</a></li><li><a href="global.html#setupEnterKeyLogin">setupEnterKeyLogin</a></li><li><a href="global.html#showAddContactCard">showAddContactCard</a></li><li><a href="global.html#showAllTasks">showAllTasks</a></li><li><a href="global.html#showChangedTemplateAndHiglightIt">showChangedTemplateAndHiglightIt</a></li><li><a href="global.html#showContactEditCard">showContactEditCard</a></li><li><a href="global.html#showCreatedContactTemplate">showCreatedContactTemplate</a></li><li><a href="global.html#showMobileOverlay">showMobileOverlay</a></li><li><a href="global.html#showPasswordLock">showPasswordLock</a></li><li><a href="global.html#showPasswordRepeatTemplate">showPasswordRepeatTemplate</a></li><li><a href="global.html#showPasswordTemplate">showPasswordTemplate</a></li><li><a href="global.html#showRequiredMsg">showRequiredMsg</a></li><li><a href="global.html#showRequiredMsgAndHighlight">showRequiredMsgAndHighlight</a></li><li><a href="global.html#showTaskCreatedMsg">showTaskCreatedMsg</a></li><li><a href="global.html#signUpSuccessfull">signUpSuccessfull</a></li><li><a href="global.html#signUpTemplate">signUpTemplate</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#subtaskDoneTemp">subtaskDoneTemp</a></li><li><a href="global.html#subtaskListTemp">subtaskListTemp</a></li><li><a href="global.html#subtaskToDoTemp">subtaskToDoTemp</a></li><li><a href="global.html#subtasksTaskOverlay">subtasksTaskOverlay</a></li><li><a href="global.html#summaryGuestOverlayTemplate">summaryGuestOverlayTemplate</a></li><li><a href="global.html#summaryInit">summaryInit</a></li><li><a href="global.html#summaryOverlayTemplate">summaryOverlayTemplate</a></li><li><a href="global.html#switchDown">switchDown</a></li><li><a href="global.html#switchHighlightInputFields">switchHighlightInputFields</a></li><li><a href="global.html#switchUp">switchUp</a></li><li><a href="global.html#takeRequiredMsgRefs">takeRequiredMsgRefs</a></li><li><a href="global.html#taskEditOverlayTemp">taskEditOverlayTemp</a></li><li><a href="global.html#taskOverlayTemp">taskOverlayTemp</a></li><li><a href="global.html#taskTemp">taskTemp</a></li><li><a href="global.html#toggleAddTaskOverlay">toggleAddTaskOverlay</a></li><li><a href="global.html#toggleAssignedToContactList">toggleAssignedToContactList</a></li><li><a href="global.html#toggleBurgerMenu">toggleBurgerMenu</a></li><li><a href="global.html#toggleCategoryList">toggleCategoryList</a></li><li><a href="global.html#toggleContact">toggleContact</a></li><li><a href="global.html#toggleContactList">toggleContactList</a></li><li><a href="global.html#toggleMenuVisibility">toggleMenuVisibility</a></li><li><a href="global.html#togglePasswordVisibility">togglePasswordVisibility</a></li><li><a href="global.html#toggleRepeatPasswordVisibility">toggleRepeatPasswordVisibility</a></li><li><a href="global.html#toggleSubtaskStatus">toggleSubtaskStatus</a></li><li><a href="global.html#toggleTaskOverlay">toggleTaskOverlay</a></li><li><a href="global.html#updateGreeting">updateGreeting</a></li><li><a href="global.html#urgentPrioTemp">urgentPrioTemp</a></li><li><a href="global.html#validateEmailAndPassword">validateEmailAndPassword</a></li><li><a href="global.html#validatePasswordMatch">validatePasswordMatch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Nov 10 2025 19:13:43 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -5,14 +5,6 @@ let logoAnimated = false;
  * Sets up logo animation timing and enter key functionality
  */
 function logInInit() {
-    if (!logoAnimated) {
-        setTimeout(() => {
-            renderJoinLogo();
-            logoAnimated = true;
-        }, 980);
-    } else {
-        renderJoinLogo();
-    }
     setupEnterKeyLogin();
     addPasswordInputListener();
 }

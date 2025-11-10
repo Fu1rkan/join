@@ -295,6 +295,11 @@ function openDeleteContactOverlay(name, email) {
     renderDeleteContactOverlay(name, email);
 }
 
+/** Deletes the specified contact and updates tasks accordingly
+ * @param {string} name - The contact's name
+ * @param {string} email - The contact's email
+ * @returns {Promise<void>} Promise that resolves when contact is deleted
+ */
 async function deleteCurrentContact(name, email) {
     let currentWidth = window.innerWidth;
     contacts.splice(contacts.findIndex(t => t.name == name && t.email == email), 1);
@@ -309,6 +314,7 @@ async function deleteCurrentContact(name, email) {
     closeDeleteContactOverlay();
 }
 
+/** Closes the delete contact overlay */
 function closeDeleteContactOverlay() {
     document.getElementById('delete-contact').classList.add('d_none');
     document.body.removeAttribute('onclick', 'closeDeleteContactOverlay()');

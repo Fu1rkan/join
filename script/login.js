@@ -9,7 +9,7 @@ function logInInit() {
         setTimeout(() => {
             renderJoinLogo();
             logoAnimated = true;
-        }, 980);
+        }, 990);
     } else {
         renderJoinLogo();
     }

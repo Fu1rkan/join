@@ -204,6 +204,10 @@ a {
   color: red;
 }
 
+.h_80{
+  height: 80px;
+}
+
 @media (max-width: 950) {
   h2 {
     font-size: 47px;

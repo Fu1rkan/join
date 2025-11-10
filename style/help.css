@@ -131,6 +131,12 @@
   }
 }
 
+@media (max-width: 850px) {
+  .help section {
+    margin: 80px 0;
+  }
+}
+
 @media (max-width: 768px) {
   .help section {
     padding-top: clamp(24px, 5vw, 40px);

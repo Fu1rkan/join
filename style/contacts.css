@@ -269,3 +269,44 @@
     font-size: var(--font-size-27);
     color: var(--inter-text-color);
 }
+
+.delete-contact {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2a3647;
+    border-radius: 24px;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    gap: 8px;
+    font-size: 24px;
+    z-index: 4;
+}
+
+.delete-contact-answer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.delete-contact-answer button {
+    background-color: transparent;
+    border: unset;
+    outline: unset;
+}
+
+.delete-contact-answer svg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.delete-contact-answer svg:hover {
+    background-color: #091931;
+}

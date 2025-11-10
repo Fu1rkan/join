@@ -285,6 +285,16 @@ async function changeEditedContactPutINContactsCloseOverlayFilterContactsAndShow
  * @param {string} email - The contact's email
  * @returns {Promise<void>} Promise that resolves when contact is deleted
  */
+function openDeleteContactOverlay(name, email) {
+    document.getElementById('delete-contact').classList.remove('d_none');
+    document.getElementById('delete-contact-answer').innerHTML = renderDeleteContactOverlay(name, email);
+    setTimeout(() => {
+        document.body.setAttribute('onclick', 'closeDeleteContactOverlay()')
+
+    }, 100)
+    renderDeleteContactOverlay(name, email);
+}
+
 async function deleteCurrentContact(name, email) {
     let currentWidth = window.innerWidth;
     contacts.splice(contacts.findIndex(t => t.name == name && t.email == email), 1);
@@ -296,6 +306,13 @@ async function deleteCurrentContact(name, email) {
         backToContactList();
     }
     deleteContactFromTask(name);
+    closeDeleteContactOverlay();
+}
+
+function closeDeleteContactOverlay() {
+    document.getElementById('delete-contact').classList.add('d_none');
+    document.body.removeAttribute('onclick', 'closeDeleteContactOverlay()');
+    document.getElementById('delete-contact-answer').innerHTML = "";
 }
 
 /**

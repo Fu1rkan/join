@@ -35,7 +35,7 @@ function logInTemplate() {
                 <section class="input_group">
                     <section class="email_input_section">
                         <form class="email_input" id="input_email">
-                            <label for="input_email">
+                            <label for="email">
                                 <input class="email_input" type="text" id="email" name="Email"  placeholder="Email">
                                 <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16"
                                     viewBox="0 0 20 16" fill="none">
@@ -51,7 +51,7 @@ function logInTemplate() {
                     <section class="password_input_section">
 
                         <form action="password_input" class="password_input" id="password_input_id">
-                            <label for="password_input_id">
+                            <label for="password">
                                 <input class="password_input" type="password" id="password" name="password" 
                                     placeholder="Password">
                                 <div id="toggle_password_visibility_button">
@@ -128,7 +128,7 @@ function signUpTemplate() {
                     </li>
                     <li>
                         <form action="email" class="email_input" id="email_input_id">
-                            <label for="email_input_id">
+                            <label for="email">
                                 <input type="Email" id="email" name="Email" placeholder="Email">
                                 <div>
                                 <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16" fill="none">
@@ -143,7 +143,7 @@ function signUpTemplate() {
                     </li>
                     <li>
                         <form action="password_input" class="password_input" id="password_input_id">
-                            <label for="password_input">
+                            <label for="password">
                                 <input class="password_input" type="password" id="password" name="password" placeholder="Password">
                                 <div id="toggle_password_visibility_button">
                                     <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
@@ -159,7 +159,7 @@ function signUpTemplate() {
                     </li>
                     <li>
                         <form action="password_input" class="password_input" id="password_repeat_input_id">
-                            <label for="password_repeat_input">
+                            <label for="password_repeat">
                                 <input class="password_input" type="password" id="password_repeat" name="password_repeat" placeholder="Confirm Password">
                                 <div id="toggle_password_repeat_button">
                                     <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"

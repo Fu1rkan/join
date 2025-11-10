@@ -136,6 +136,7 @@
 .creates-msg {
     height: 74px;
     width: 326px;
+    z-index: 1;
     position: absolute;
     left: 0;
     display: flex;

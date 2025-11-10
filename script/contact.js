@@ -228,7 +228,7 @@ function checkNameValue(createName) {
  * @returns {boolean} True if email format is valid, false otherwise
  */
 function checkEmailValue(createEmail) {
-    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let isEmailValid = emailRegex.test(createEmail);
     return isEmailValid;
 }
@@ -261,7 +261,11 @@ function highlightRequiredInputs(createName, createEmail, createPhone, correctPh
         createEmailRequiredMsg.innerText = "Please enter a valid email address";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     }
-    if (createPhone != "" && !(createPhone == "" || correctPhoneValue)) {
+    if(!(createPhone != "")) {
+        createPhoneRequiredMsg.innerText = "This field is required";
+        showRequiredMsgAndHighlight(createFormLabelPhoneRef, createPhoneRequiredMsg);
+    } else if (!(createPhone != "" && correctPhoneValue)){
+        createPhoneRequiredMsg.innerText = "This field must include only Numbers";
         showRequiredMsgAndHighlight(createFormLabelPhoneRef, createPhoneRequiredMsg);
     }
 }

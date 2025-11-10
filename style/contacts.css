@@ -208,6 +208,7 @@
 .contact-circle-img-small {
     height: 42px;
     width: 42px;
+    min-width: 42px;
     border-radius: 50%;
     border: 2px solid white;
 }
@@ -220,6 +221,7 @@
 .contact-info {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     gap: 5px;
     min-height: 48px;
 }

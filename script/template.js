@@ -178,6 +178,7 @@ function signUpTemplate() {
                 <div class="privacy_policy_checkbox_group">
                     <div class="privacy_policy_checkbox" id="pp_checkbox_id">
                     <label role="checkbox" aria-checked="false" id="pp_checkbox_label">
+                    <input type="checkbox" id="pp_checkbox_input" style="display:none;">
                         <svg class="pp_checkbox" onclick="acceptCheckbox()" tabindex="0"
                              onkeydown="if(event.code==='Space'||event.key===' '){acceptCheckbox();event.preventDefault();}" 
                              xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">

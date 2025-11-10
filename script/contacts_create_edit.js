@@ -163,12 +163,12 @@ function checkCreateValuesAndCreateContact(createEmail, createPhone, createName,
     let correctNameValue = checkNameValue(createName);
     let correctEmailValue = checkEmailValue(createEmail);
     if (param == "add") {
-        if (createName != "" && correctNameValue && createEmail != "" && correctEmailValue && (createPhone == "" || correctPhoneValue)) {
+        if (createName != "" && correctNameValue && createEmail != "" && correctEmailValue && createPhone != "" && correctPhoneValue) {
             createContactAndHighlight(createName, createEmail, createPhone);
             return;
         }
     } else {
-        if (createName != "" && correctNameValue && createEmail != "" && correctEmailValue && (createPhone == "" || correctPhoneValue)) {
+        if (createName != "" && correctNameValue && createEmail != "" && correctEmailValue && createPhone != "" && correctPhoneValue) {
             changeEditedContactPutINContactsCloseOverlayFilterContactsAndShowTemplate(contactRef, createName, createEmail, createPhone);
             return;
         }

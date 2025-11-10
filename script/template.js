@@ -36,7 +36,7 @@ function logInTemplate() {
                     <section class="email_input_section">
                         <form class="email_input" id="input_email">
                             <label for="email">
-                                <input class="email_input" type="text" id="email" name="Email"  placeholder="Email">
+                                <input class="email_input" type="text" id="email" name="Email"  placeholder="Email" autocomplete="new-email">
                                 <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16"
                                     viewBox="0 0 20 16" fill="none">
                                     <path
@@ -53,7 +53,7 @@ function logInTemplate() {
                         <form action="password_input" class="password_input" id="password_input_id">
                             <label for="password">
                                 <input class="password_input" type="password" id="password" name="password" 
-                                    placeholder="Password">
+                                    placeholder="Password" autocomplete="new-password">
                                 <div id="toggle_password_visibility_button">
                                     <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                         height="21" viewBox="0 0 17 22" fill="none">

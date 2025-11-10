@@ -16,9 +16,6 @@ function logInInit() {
 function renderLogIn() {
     document.getElementById('main').innerHTML = '';
     document.getElementById('main').innerHTML += logInTemplate();
-    if (logoAnimated) {
-        renderJoinLogo();
-    }
     addPasswordInputListener();
 }
 
@@ -29,18 +26,10 @@ function renderLogIn() {
 function renderSignUp() {
     document.getElementById('main').innerHTML = '';
     document.getElementById('main').innerHTML += signUpTemplate();
-    renderJoinLogo();
     addPasswordInputListener();
     addRepeatPasswordListener();
 }
 
-/**
- * Renders the main Join logo in the top left corner after animation
- * Displays the logo template in the main header section
- */
-function renderJoinLogo() {
-    document.getElementById('main_header').innerHTML += joinLogoTemplate();
-}
 
 /**
  * Toggles password visibility between hidden and visible states

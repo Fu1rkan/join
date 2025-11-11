@@ -5,7 +5,7 @@ let logoAnimated = false;
  * Sets up logo animation timing and enter key functionality
  */
 function logInInit() {
-    setupEnterKeyLogin();
+    setupEnterKeyLogin(); // Nur Login Enter-Key bei Init
     addPasswordInputListener();
 }
 
@@ -17,6 +17,7 @@ function renderLogIn() {
     document.getElementById('main').innerHTML = '';
     document.getElementById('main').innerHTML += logInTemplate();
     addPasswordInputListener();
+    setupEnterKeyLogin(); // Login Enter-Key hinzufügen
 }
 
 /**
@@ -28,6 +29,7 @@ function renderSignUp() {
     document.getElementById('main').innerHTML += signUpTemplate();
     addPasswordInputListener();
     addRepeatPasswordListener();
+    setupEnterKeySignUp(); // SignUp Enter-Key hinzufügen
 }
 
 
@@ -119,30 +121,40 @@ function checkLoginInputFields() {
 }
 
 /**
- * Validates all sign-up input fields and processes registration
- * Checks username, email, password, password repeat and privacy policy agreement
- * @returns {boolean} True if all validations pass, false otherwise
+ * Validates sign-up input fields and initiates user registration
+ * Checks username, email, password, and repeat password fields with validations
+ * @returns {boolean} True if all fields are valid and user registration initiated
  */
 function checkSignUpInputFields() {
     let isUsernameEmpty = handleFieldValidation('username', 'username_input_id', 'required_username', 'username');
     let isEmailEmpty = handleFieldValidation('email', 'email_input_id', 'required_email', 'email');
     let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
     let isRepeatPasswordEmpty = handleFieldValidation('password_repeat', 'password_repeat_input_id', 'required_password_repeat', 'password_repeat');
-
+    checkPrivacyPolicyCheckbox()
     if (!isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty) {
-        let emailInput = document.getElementById('email');
-        let passwordInput = document.getElementById('password');
-        let passwordRepeatInput = document.getElementById('password_repeat');
+        return processSignUpValidation();
+    }
+    return false;
+}
 
-        if (validateEmailAndPassword(emailInput.value, passwordInput.value)) {
-            if (validatePasswordMatch(passwordInput.value, passwordRepeatInput.value)) {
-                if (checkPrivacyPolicyCheckbox()) {
-                    openSignUpOverlay();
-                }
+/**
+ * Processes advanced sign-up validation after basic field validation
+ * Validates email format, password match, privacy policy and initiates registration
+ * @returns {boolean} True if all validations pass and registration is initiated
+ */
+function processSignUpValidation() {
+    let emailInput = document.getElementById('email');
+    let passwordInput = document.getElementById('password');
+    let passwordRepeatInput = document.getElementById('password_repeat');
+    if (validateEmailAndPassword(emailInput.value, passwordInput.value)) {
+        if (validatePasswordMatch(passwordInput.value, passwordRepeatInput.value)) {
+            if (checkPrivacyPolicyCheckbox()) {
+                openSignUpOverlay();
+                return true;
             }
         }
     }
-    return !isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty;
+    return false;
 }
 
 /**
@@ -157,7 +169,6 @@ function handleFieldValidation(inputId, formId, requiredId, fieldName) {
     let input = document.getElementById(inputId);
     let form = document.getElementById(formId);
     let isEmpty = input.value.length < 1;
-
     if (isEmpty) {
         document.getElementById(requiredId).innerHTML = `<p id="${fieldName}_required_field" class="required-field-text">This field is required.</p>`;
         form.classList.add('required-outline');
@@ -178,22 +189,45 @@ function validateEmailAndPassword(email, password) {
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let isEmailValid = emailRegex.test(email);
     let isPasswordValid = password.length >= 6;
-
     if (!isEmailValid) {
-        document.getElementById('required_email').innerHTML = `<p id="email_invalid_field" class="required-field-text">Please enter a valid email address.</p>`;
-        document.getElementById('email_input_id').classList.add('required-outline');
+        requireEmail();
     } else {
-        document.getElementById('required_email').innerHTML = '';
-        document.getElementById('email_input_id').classList.remove('required-outline');
+        removeRequiredEmail();
     }
     if (!isPasswordValid) {
-        document.getElementById('required_password').innerHTML = `<p id="password_invalid_field" class="required-field-text">Password must be at least 6 characters long.</p>`;
-        document.getElementById('password_input_id').classList.add('required-outline');
+        requirePassword();
     } else {
-        document.getElementById('required_password').innerHTML = '';
-        document.getElementById('password_input_id').classList.remove('required-outline');
+        removeRequiredPassword();
     }
     return isEmailValid && isPasswordValid;
+}
+
+/** * Displays required field message and styles for email input
+ */
+function requireEmail() {
+    document.getElementById('required_email').innerHTML = `<p id="email_invalid_field" class="required-field-text">Please enter a valid email address.</p>`;
+    document.getElementById('email_input_id').classList.add('required-outline');
+}
+
+/** * Displays required field message and styles for password input
+ */
+function requirePassword() {
+    document.getElementById('required_password').innerHTML = `<p id="password_invalid_field" class="required-field-text">Password must be at least 6 characters long.</p>`;
+    document.getElementById('password_input_id').classList.add('required-outline');
+}
+
+/** * Removes required field message and styles for email input
+ */
+function removeRequiredEmail() {
+    document.getElementById('required_email').innerHTML = '';
+    document.getElementById('email_input_id').classList.remove('required-outline');
+}
+
+/** * Removes required field message and styles for password input
+ */
+function removeRequiredPassword() {
+    document.getElementById('required_password').innerHTML = '';
+    document.getElementById('password_input_id').classList.remove('required-outline');
 }
 
 /**
@@ -220,7 +254,7 @@ function validatePasswordMatch(password, passwordRepeat) {
  * @returns {boolean} True if checkbox is checked, false otherwise
  */
 function checkPrivacyPolicyCheckbox() {
-    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_label');
+    let privacyPolicyCheckbox = document.getElementById('pp_checkbox_svg');
     let isChecked = privacyPolicyCheckbox.getAttribute('aria-checked') === 'true';
 
     if (isChecked) {
@@ -295,13 +329,37 @@ function closeSignUpOverlay() {
 
 /**
  * Sets up Enter key functionality for login form submission
- * Adds event listener to trigger login validation when Enter is pressed
+ * Adds event listener to trigger login validation when Enter is pressed on login page
  */
 function setupEnterKeyLogin() {
-    document.addEventListener('keypress', function(event) {
+    document.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
+            let emailInput = document.getElementById('email');
+            let passwordInput = document.getElementById('password');
+            
+            if (emailInput && passwordInput && !document.getElementById('username')) {
                 event.preventDefault();
                 checkLoginInputFields();
             }
+        }
     });
+}
+
+/**
+ * Sets up Enter key functionality for sign-up form submission
+ * Adds event listener to trigger sign-up validation when Enter is pressed on sign-up page
+ */
+function setupEnterKeySignUp() {
+    document.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            let usernameInput = document.getElementById('username');
+            let emailInput = document.getElementById('email');
+            let passwordInput = document.getElementById('password');
+            let passwordRepeatInput = document.getElementById('password_repeat');
+            
+            if (usernameInput && emailInput && passwordInput && passwordRepeatInput) {
+                event.preventDefault();
+                checkSignUpInputFields();
+            }
+        }});
 }

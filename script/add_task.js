@@ -384,17 +384,23 @@ function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categor
         case 'add_task_title':
             if (titleRef.value.length > 0) {
                 requiredTitleRef.classList.add('d_none');
+            } else {
+                requiredTitleRef.classList.remove('d_none');
             }
             break;
         case 'add_task_due_date':
             if (dueDateRef.value.length > 0) {
                 requiredDueDateRef.classList.add('d_none');
+            } else {
+                requiredDueDateRef.classList.remove('d_none');
             }
             
             break;
         case 'add_task_category':
             if (categoryRef.value.length > 0) {
                 requiredCategoryRef.classList.add('d_none');
+            } else {
+                requiredCategoryRef.classList.remove('d_none');
             }
             break;
 

@@ -107,7 +107,7 @@ async function pushNewObject(titleRef, descriptionRef, dueDateRef, progress, fro
             toggleAddTaskOverlay(true);
             boardInit();
         }, 500)
-    }else{
+    } else {
         resetGlobalVariables();
         putTaskAndShowCreatedMsg();
     }
@@ -230,10 +230,10 @@ function createNewTask(progress, fromBoard) {
     requiredMsgDNone(titleRef, dueDateRef, categoryRef);
     checkArrayLength();
     if (titleRef.value.length == 0 || dueDateRef.value.length == 0 || currentChoosedCategory == "") {
-        if(!currentAssignedTo) {
+        if (!currentAssignedTo) {
             currentAssignedTo = [];
         }
-        if(!currentCreatedSubtasks) {
+        if (!currentCreatedSubtasks) {
             currentCreatedSubtasks = [];
         }
         showRequiredMsg(titleRef, dueDateRef, categoryRef);
@@ -380,31 +380,41 @@ function checkRequiredInputs(currentElement) {
 }
 
 function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef, requiredTitleRef, requiredDueDateRef, requiredCategoryRef) {
-     switch (currentElement) {
+    switch (currentElement) {
         case 'add_task_title':
-            if (titleRef.value.length > 0) {
-                requiredTitleRef.classList.add('d_none');
-            } else {
-                requiredTitleRef.classList.remove('d_none');
-            }
+            showOrHideRequiredMsgTitle(titleRef, requiredTitleRef);
             break;
         case 'add_task_due_date':
-            if (dueDateRef.value.length > 0) {
-                requiredDueDateRef.classList.add('d_none');
-            } else {
-                requiredDueDateRef.classList.remove('d_none');
-            }
-            
+            showOrHideRequiredMsgDueDate(dueDateRef, requiredDueDateRef);
             break;
         case 'add_task_category':
-            if (categoryRef.value.length > 0) {
-                requiredCategoryRef.classList.add('d_none');
-            } else {
-                requiredCategoryRef.classList.remove('d_none');
-            }
+            showOrHideRequiredMsgCategory(categoryRef, requiredCategoryRef);
             break;
-
         default:
             break;
+    }
+}
+
+function showOrHideRequiredMsgTitle(titleRef, requiredTitleRef) {
+    if (titleRef.value.length > 0) {
+        requiredTitleRef.classList.add('d_none');
+    } else {
+        requiredTitleRef.classList.remove('d_none');
+    }
+}
+
+function showOrHideRequiredMsgDueDate(dueDateRef, requiredDueDateRef) {
+    if (dueDateRef.value.length > 0) {
+        requiredDueDateRef.classList.add('d_none');
+    } else {
+        requiredDueDateRef.classList.remove('d_none');
+    }
+}
+
+function showOrHideRequiredMsgCategory(categoryRef, requiredCategoryRef) {
+    if (categoryRef.value.length > 0) {
+        requiredCategoryRef.classList.add('d_none');
+    } else {
+        requiredCategoryRef.classList.remove('d_none');
     }
 }

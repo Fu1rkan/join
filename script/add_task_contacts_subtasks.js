@@ -28,16 +28,8 @@ function changeCurrentSubtask(index) {
         closeCurrentSubtask(i);
     }
     setTimeout(() => {
-        let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
-        let currentSubtaskValue = document.getElementById(`current_subtask_${index}`);
-        let currentSubtaskChangeLabelRef = document.getElementById(`label_current_subtask_${index}`);
-        let currentSubtaskChangeinputRef = document.getElementById(`change_current_element_${index}`);
-        let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
-        currentSubtaskRoughMenuRef.classList.toggle('d_none');
-        subtaskListItemRef.classList.toggle('list-style-none');
-        subtaskListItemRef.classList.toggle('add-task-form-subtasks-dropdown-subtasks-list-item');
-        currentSubtaskValue.classList.toggle('d_none');
-        currentSubtaskChangeLabelRef.classList.toggle('d_none');
+        const { subtaskListItemRef, currentSubtaskValue, currentSubtaskChangeLabelRef, currentSubtaskChangeinputRef, currentSubtaskRoughMenuRef } = takeNeededSubtasksRefs(index);
+        toggleSubtasksRef(currentSubtaskRoughMenuRef, subtaskListItemRef, currentSubtaskValue, currentSubtaskChangeLabelRef);
         currentSubtaskChangeinputRef.value = currentSubtaskValue.innerText;
         document.getElementById(`current_subtask_style_${index}`).classList.add('d_none');
         currentSubtaskChangeinputRef.focus();
@@ -45,6 +37,23 @@ function changeCurrentSubtask(index) {
             document.body.setAttribute('onclick', `closeCurrentSubtask(${index})`);
         }, 50);
     }, 50);
+}
+
+function takeNeededSubtasksRefs(index) {
+    let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
+    let currentSubtaskValue = document.getElementById(`current_subtask_${index}`);
+    let currentSubtaskChangeLabelRef = document.getElementById(`label_current_subtask_${index}`);
+    let currentSubtaskChangeinputRef = document.getElementById(`change_current_element_${index}`);
+    let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);
+    return { subtaskListItemRef, currentSubtaskValue, currentSubtaskChangeLabelRef, currentSubtaskChangeinputRef, currentSubtaskRoughMenuRef };
+}
+
+function toggleSubtasksRef(currentSubtaskRoughMenuRef, subtaskListItemRef, currentSubtaskValue, currentSubtaskChangeLabelRef) {
+    currentSubtaskRoughMenuRef.classList.toggle('d_none');
+    subtaskListItemRef.classList.toggle('list-style-none');
+    subtaskListItemRef.classList.toggle('add-task-form-subtasks-dropdown-subtasks-list-item');
+    currentSubtaskValue.classList.toggle('d_none');
+    currentSubtaskChangeLabelRef.classList.toggle('d_none');
 }
 
 function closeCurrentSubtask(index) {
@@ -140,7 +149,7 @@ function toggleCategoryList() {
  * Hides the options menu and restores the subtask list item style
  * @param {number} index - The index of the subtask to close the menu for
  */
-function closeSubtaskMenuOptions(index){
+function closeSubtaskMenuOptions(index) {
     if (currentCreatedSubtasks.length > 0) {
         let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
         let currentSubtaskRoughMenuRef = document.getElementById(`current_subtask_rough_menu_btns${index}`);

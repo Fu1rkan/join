@@ -174,9 +174,9 @@ function signUpTemplate() {
             
                 <div class="privacy_policy_checkbox_group">
                     <div class="privacy_policy_checkbox" id="pp_checkbox_id">
-                    <label role="checkbox" aria-checked="false" id="pp_checkbox_label">
-                    <input type="checkbox" id="pp_checkbox_input" style="display:none;">
-                        <svg class="pp_checkbox" onclick="acceptCheckbox()" tabindex="0"
+                    <label role="checkbox" id="pp_checkbox_label">
+                    <input type="checkbox" aria-checked="false" id="pp_checkbox_input" style="display:none;">
+                        <svg id="pp_checkbox_svg" class="pp_checkbox" onclick="acceptCheckbox()" tabindex="0"
                              onkeydown="if(event.code==='Space'||event.key===' '){acceptCheckbox();event.preventDefault();}" 
                              xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
                             <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>
@@ -231,8 +231,8 @@ function joinLogoTemplate() {
  * @returns {string} HTML string for checked privacy policy checkbox
  */
 function acceptCheckboxTemplate() {
-    return `<label role="checkbox" aria-checked="true" id="pp_checkbox_label">
-                <svg class="pp_checkbox" onclick="refuseCheckbox()" tabindex="0"
+    return `<label role="checkbox" id="pp_checkbox_label">
+                <svg aria-checked="true" id="pp_checkbox_svg"  class="pp_checkbox" onclick="refuseCheckbox()" tabindex="0"
                      onkeydown="if(event.code==='Space'||event.key===' '){refuseCheckbox();event.preventDefault();}" 
                      xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
                     <path d="M17 8.96582V14.9658C17 16.6227 15.6569 17.9658 14 17.9658H4C2.34315 17.9658 1 16.6227 1 14.9658V4.96582C1 3.30897 2.34315 1.96582 4 1.96582H12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
@@ -246,8 +246,8 @@ function acceptCheckboxTemplate() {
  * @returns {string} HTML string for unchecked privacy policy checkbox
  */
 function refuseCheckboxTemplate() {
-    return `<label role="checkbox" aria-checked="false" id="pp_checkbox_label">
-                <svg class="pp_checkbox" onclick="acceptCheckbox()" tabindex="0"
+    return `<label role="checkbox" id="pp_checkbox_label">
+                <svg aria-checked="false" id="pp_checkbox_svg"  class="pp_checkbox" onclick="acceptCheckbox()" tabindex="0"
                      onkeydown="if(event.code==='Space'||event.key===' '){acceptCheckbox();event.preventDefault();}" 
                      xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 18" fill="none">
                     <rect x="1" y="1" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2"/>

@@ -22,7 +22,7 @@ function boardAddTaskTemplate(progress) {
                     </svg>
                 </div>
             </div>
-            <form id="add_task_form" class="add-task-form" action="" onsubmit="return false;">
+            <form id="add_task_form" class="add-task-form padding-bottom-0" action="" onsubmit="return false;">
                 <div class="add-task-form-main">
                     <section class="add-task-form-left">
                         <div class="h-80" onclick="event.stopPropagation()">

@@ -122,6 +122,7 @@ function chooseCategory(categoryName) {
     toggleCategoryList();
     addTaskCategoryInputRef.value = categoryName;
     currentChoosedCategory = categoryName;
+    checkRequiredInputs('add_task_category');
 }
 
 /**

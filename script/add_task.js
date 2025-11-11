@@ -370,3 +370,35 @@ function removeHighlightInputFields() {
     document.querySelectorAll('.add-task-form input').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
     document.querySelectorAll('.add-task-form textarea').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
 }
+
+function checkRequiredInputs(currentElement) {
+    let titleRef = document.getElementById('add_task_title');
+    let dueDateRef = document.getElementById('add_task_due_date');
+    let categoryRef = document.getElementById('add_task_category');
+    const { requiredTitleRef, requiredDueDateRef, requiredCategoryRef } = takeRequiredMsgRefs();
+    removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef, requiredTitleRef, requiredDueDateRef, requiredCategoryRef);
+}
+
+function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef, requiredTitleRef, requiredDueDateRef, requiredCategoryRef) {
+     switch (currentElement) {
+        case 'add_task_title':
+            if (titleRef.value.length > 0) {
+                requiredTitleRef.classList.add('d_none');
+            }
+            break;
+        case 'add_task_due_date':
+            if (dueDateRef.value.length > 0) {
+                requiredDueDateRef.classList.add('d_none');
+            }
+            
+            break;
+        case 'add_task_category':
+            if (categoryRef.value.length > 0) {
+                requiredCategoryRef.classList.add('d_none');
+            }
+            break;
+
+        default:
+            break;
+    }
+}

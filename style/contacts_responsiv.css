@@ -170,10 +170,6 @@
 
 @media (max-width: 525px) {
     .contact-list-container {
-        margin-top: 100px;
-    }
-
-    .contact-list-container {
         position: relative;
     }
 

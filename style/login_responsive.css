@@ -1,0 +1,199 @@
+@media (max-width: 955px) {
+    .join_logo {
+        width: 64px;
+        height: 78px;
+        top: 25px;
+    }
+
+    @keyframes slideMidToLeft {
+        from {
+            width: 274px;
+            height: 335px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+
+        to {
+            width: 64px;
+            height: 78px;
+            position: absolute;
+            top: 25px;
+            left: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .sign_up_section {
+        padding-top: 18px;
+        padding-bottom: 18px;
+        gap: 18px;
+    }
+}
+
+@media (max-width: 665px) {
+    .login_section {
+        width: 94%;
+    }
+}
+
+@media (max-width: 614px) {
+    .sign_up_section {
+        width: 94%;
+    }
+
+    .sign_up_section .sign_up_back_arrow {
+        top: 10px;
+        left: -100px;
+    }
+}
+
+@media (max-width: 547px) {
+    @keyframes backgroundBlendOut {
+        from {
+            background-color: #2A3647;
+        }
+
+        to {
+            background-color: rgba(255, 255, 255, 0);
+            display: none;
+        }
+    }
+
+    @keyframes animatedLogoColor {
+        from {
+            fill: white;
+        }
+
+        to {
+            fill: #2A3647;
+        }
+    }
+
+    .sign_up_header {
+        top: 85%;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    .login_section .title_headline h1,
+    .sign_up_section .title_headline h1 {
+        font-size: 47px;
+    }
+
+    .login_section .title_headline svg,
+    .sign_up_section .title_headline .sign_up_logo svg {
+        width: 88px;
+    }
+
+    .login_section,
+    .sign_up_section {
+        padding: 32px 0;
+    }
+
+    .login_section .login_buttons {
+        flex-direction: column;
+        gap: 21px;
+    }
+
+    .login_section .login_buttons button,
+    .sign_up_section .sign_up_button_group button {
+        width: 180px;
+    }
+
+    .login_section .input_group {
+        width: 94%;
+    }
+
+    .sign_up_section .sign_up_input_group {
+        width: 100%;
+    }
+
+    .sign_up_section .sign_up_input_group ul {
+        width: 100%;
+    }
+
+    .sign_up_section .sign_up_input_group ul li {
+        width: 90%;
+    }
+
+    .sign_up_section .sign_up_input_group ul li form input {
+        width: 90%;
+    }
+
+    .sign_up_section .sign_up_button_group {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sign_up_section .sign_up_back_arrow {
+        top: 10px;
+        left: -80px;
+    }
+}
+
+@media (max-width: 440px) {
+    .sign_up_section .sign_up_back_arrow {
+        top: 10px;
+        left: -50px;
+    }
+}
+
+/* MAX HEIGHT */
+
+@media (max-height: 820px) {
+    .login_section {
+        padding-top: 18px;
+        padding-bottom: 18px;
+        gap: 18px;
+        margin: 0 0 24px 0;
+    }
+
+    .login_section .login_buttons {
+        gap: 12px;
+    }
+
+    .animation_join_logo {
+        height: 18px !important;
+        margin: 14px 0 0 0 !important;
+    }
+
+    .sign_up_section {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        margin-top: 10px;
+        gap: 12px;
+    }
+
+    .sign_up_input_group {
+        gap: 10px !important;
+    }
+
+    .sign_up_section .title_headline .sign_up_logo {
+        gap: 8px;
+    }
+
+    .login_section .title_headline h1,
+    .sign_up_section .title_headline h1 {
+        font-size: 38px;
+    }
+
+    .sign_up_section .sign_up_input_group ul {
+        gap: 10px;
+    }
+
+    .main_footer {
+        bottom: 15px;
+    }
+}

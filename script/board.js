@@ -42,18 +42,20 @@ async function renderTasks() {
  * Searches and filters tasks based on search input
  * Hides tasks that don't match the search term in their name
  */
-function searchtasks() {
+function searchTasks(button) {
     let input = document.getElementById('search-bar');
-    let inputValue = input.value;
+    let inputValue = input.value.toLowerCase();
     let tasks = taskList.filter(t =>
-        !t.name.toLowerCase().includes(inputValue.toLowerCase()) &&
-        !t.description.toLowerCase().includes(inputValue.toLowerCase())
+        !t.name.toLowerCase().includes(inputValue) &&
+        !(t.description?.toLowerCase().includes(inputValue))
     );
     let tasksResult = taskList.filter(t =>
-        t.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-        t.description.toLowerCase().includes(inputValue.toLowerCase())
+        t.name.toLowerCase().includes(inputValue) ||
+        (t.description?.toLowerCase().includes(inputValue))
     );
-    checkInputLength(input, inputValue, tasks, tasksResult);
+    if (button == 'button' || inputValue.length > 2) {        
+        checkInputLength(input, inputValue, tasks, tasksResult);
+    }
 }
 
 /** Checks the length of the search input and processes tasks accordingly
@@ -94,6 +96,7 @@ function checkTaskLength(tasks, tasksResult) {
  * @param {Array} tasksResult - The list of tasks that match the search term
  */
 function renderSearchedTasks(tasks, tasksResult) {
+    renderTasks();
     for (let index = 0; index < tasks.length; index++) {
         document.getElementById(`task-id-${tasks[index].id}`).classList.add('d_none');
     }
@@ -114,7 +117,7 @@ function showAllTasks() {
     let inputValue = input.value;
     input.placeholder = 'Find Task';
     input.classList.remove('empty-input');
-    if (inputValue.length < 3) {
+    if (inputValue.length < 1) {
         renderTasks();
     }
 }

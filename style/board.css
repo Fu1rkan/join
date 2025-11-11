@@ -353,6 +353,15 @@
     margin-left: -8px;
 }
 
+.more-user-logo p{
+    margin-left: -2px;
+}
+
+.more-user-logo svg{
+    width: 11px;
+    height: 11px;
+}
+
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 24px;

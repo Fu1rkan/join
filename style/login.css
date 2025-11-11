@@ -269,6 +269,7 @@ body {
 
 /* required field design */
 .required-field {
+    height: 14px;
     color: #FF0000;
     font-size: 12px;
     margin-top: 0;

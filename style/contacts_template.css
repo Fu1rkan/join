@@ -108,17 +108,18 @@
 .contact-informations {
     flex-direction: column;
     gap: 22px;
+    padding-right: 16px;
 }
 
 .contact-informations>div {
     flex-direction: column;
     gap: 15px;
-    height: 53px;
 }
 
 .contact-informations a {
     color: #007CEE;
     font-weight: var(--weight-400);
+    word-break: break-all;
 }
 
 .contact-informations-phone-number {

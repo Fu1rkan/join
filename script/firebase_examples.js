@@ -112,70 +112,70 @@ function createExampleContacts() {
         {
             "name": "Alice Johnson",
             "email": "alice.johnson@email.com",
-            "phone": "+1 (555) 123-4567",
+            "phone": "15551234567",
             "fillColor": "#FF6B6B",
             "nameLetters": "AJ"
         },
         {
             "name": "Bob Smith",
             "email": "bob.smith@email.com", 
-            "phone": "+1 (555) 234-5678",
+            "phone": "01552345678",
             "fillColor": "#4ECDC4",
             "nameLetters": "BS"
         },
         {
             "name": "Charlie Brown",
             "email": "charlie.brown@email.com",
-            "phone": "+1 (555) 345-6789",
+            "phone": "01553456789",
             "fillColor": "#45B7D1",
             "nameLetters": "CB"
         },
         {
             "name": "Diana Prince",
             "email": "diana.prince@email.com",
-            "phone": "+1 (555) 456-7890",
+            "phone": "01554567890",
             "fillColor": "#96CEB4",
             "nameLetters": "DP"
         },
         {
             "name": "Eva Martinez",
             "email": "eva.martinez@email.com",
-            "phone": "+1 (555) 567-8901",
+            "phone": "015557890123",
             "fillColor": "#FECA57",
             "nameLetters": "EM"
         },
         {
             "name": "Frank Wilson",
             "email": "frank.wilson@email.com",
-            "phone": "+1 (555) 678-9012",
+            "phone": "015556789012",
             "fillColor": "#FF9FF3",
             "nameLetters": "FW"
         },
         {
             "name": "Grace Lee",
             "email": "grace.lee@email.com",
-            "phone": "+1 (555) 789-0123",
+            "phone": "015557890123",
             "fillColor": "#54A0FF",
             "nameLetters": "GL"
         },
         {
             "name": "Henry Davis",
             "email": "henry.davis@email.com",
-            "phone": "+1 (555) 890-1234",
+            "phone": "015558901234",
             "fillColor": "#5F27CD",
             "nameLetters": "HD"
         },
         {
             "name": "Isabel Garcia",
             "email": "isabel.garcia@email.com",
-            "phone": "+1 (555) 901-2345",
+            "phone": "015559012345",
             "fillColor": "#00D2D3",
             "nameLetters": "IG"
         },
         {
             "name": "Jack Thompson",
             "email": "jack.thompson@email.com",
-            "phone": "+1 (555) 012-3456",
+            "phone": "015550123456",
             "fillColor": "#FF6348",
             "nameLetters": "JT"
         }

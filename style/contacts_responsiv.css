@@ -104,15 +104,6 @@
         position: fixed;
     }
 
-    .add-new-contact-btn-container {
-        position: fixed;
-        top: 80px;
-    }
-
-    .contact-list-container {
-        margin: 180px 0 80px 0;
-    }
-
     .contact-list-area,
     .add-new-contact-btn,
     .contact-list-container,
@@ -124,7 +115,8 @@
     }
 
     .contact-list-area {
-        height: auto;
+        margin-top: 80px;
+        height: calc(100vh - 160px);
     }
 
     .contacts-contact-section {

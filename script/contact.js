@@ -261,10 +261,10 @@ function highlightRequiredInputs(createName, createEmail, createPhone, correctPh
         createEmailRequiredMsg.innerText = "Please enter a valid email address";
         showRequiredMsgAndHighlight(createFormLabelEmailRef, createEmailRequiredMsg);
     }
-    if(!(createPhone != "")) {
+    if (!(createPhone != "")) {
         createPhoneRequiredMsg.innerText = "This field is required";
         showRequiredMsgAndHighlight(createFormLabelPhoneRef, createPhoneRequiredMsg);
-    } else if (!(createPhone != "" && correctPhoneValue)){
+    } else if (!(createPhone != "" && correctPhoneValue)) {
         createPhoneRequiredMsg.innerText = "This field must include only Numbers";
         showRequiredMsgAndHighlight(createFormLabelPhoneRef, createPhoneRequiredMsg);
     }
@@ -283,11 +283,15 @@ function showRequiredMsgAndHighlight(target, targetMsg) {
  * @param {string} createName - The name of the newly created contact
  */
 function findNewestContactAndHighlightIt(createName) {
-    removeActiveClass();
-    const groupedContacts = builtAcc();
-    const firstLetter = createName.trim().charAt(0).toUpperCase();
-    const index = groupedContacts[firstLetter].length - 1;
-    highlightContact(firstLetter, index);
+    let currentWidth = window.innerWidth;
+    if (currentWidth > 960) {
+        removeActiveClass();
+        const groupedContacts = builtAcc();
+        const firstLetter = createName.trim().charAt(0).toUpperCase();
+        const index = groupedContacts[firstLetter].length - 1;
+        highlightContact(firstLetter, index);
+    }
+
 }
 
 /** * Highlights a contact in the contact list by first letter and index

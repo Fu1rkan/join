@@ -3,10 +3,6 @@
         max-width: 100%;
         padding: 40px 40px 20px 40px;
     }
-
-    .add-task-form {
-        height: 550px;
-    }
 }
 
 @media (max-width: 1140px) {
@@ -65,10 +61,6 @@
         height: auto;
     }
 
-    /* .h-16{
-        height: 24px;
-    } */
-
     .h-136 {
         height: auto;
     }
@@ -84,20 +76,15 @@
         background-color: transparent;
     }
 
-    .add-task-subtaks-dropdown ul {
-        max-height: fit-content;
-        overflow: visible;
-    }
-
     .add-task-footer-and-btns {
         flex-direction: column;
         margin-top: 24px;
         gap: 12px;
     }
 
-    /* .h-80 {
-        height: auto;
-    } */
+    .add-task-subtaks-dropdown {
+        height: 120px;
+    }
 
     .add-task-priority-btns {
         justify-content: space-between;

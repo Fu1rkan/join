@@ -18,7 +18,6 @@
     display: flex;
     flex-direction: column;
     animation: blendIn 0.2s ease-in-out;
-    height: auto;
 }
 
 .add-task-form-subtasks-dropdown-subtasks {
@@ -32,7 +31,7 @@
 }
 
 .add-task-form {
-    height: 560px;
+    height: 580px;
     margin-top: 48px;
     justify-content: space-between;
 }
@@ -82,11 +81,15 @@
     position: relative;
 }
 
+.add-task-subtaks-dropdown {
+        max-height: 120px;
+        min-height: 16px;
+    }
+
 .add-task-subtaks-dropdown ul {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-height: 80px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(42, 54, 71, 1) transparent;
@@ -193,6 +196,10 @@
 
 .list-style-none {
     list-style: none;
+}
+
+.subtasks-container {
+    gap: 0px !important;
 }
 
 .add-task-form-subtasks-dropdown-subtasks-list-item {

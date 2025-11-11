@@ -85,7 +85,7 @@ function checkParticipants(i, taskCard) {
             if (index < 3) {
                 document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += participantsTemp(inclContacts[index])
             } else {
-                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += moreParticipantsTemp()
+                document.getElementById(`${taskCard}-participants-${i.id}`).innerHTML += moreParticipantsTemp(inclContacts);
                 break
             }
         }

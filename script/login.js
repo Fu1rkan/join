@@ -186,7 +186,7 @@ function handleFieldValidation(inputId, formId, requiredId, fieldName) {
  * @returns {boolean} True if both email and password are valid
  */
 function validateEmailAndPassword(email, password) {
-    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let isEmailValid = emailRegex.test(email);
     let isPasswordValid = password.length >= 6;
     if (!isEmailValid) {

@@ -13,9 +13,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 550px;
-    max-height: 550px;
+    min-height: 565px;
     overflow: auto;
+}
+
+.add-task-form-overlay label {
+    display: flex;
 }
 
 .add-task-header {

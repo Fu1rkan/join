@@ -297,3 +297,7 @@
 .d_none {
     display: none !important;
 }
+
+.d_flex {
+    display: flex;
+}

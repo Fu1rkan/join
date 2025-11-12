@@ -121,6 +121,13 @@
 /* ===== Breakpoints ===== */
 @media (max-width: 992px) {
   .help section {
+    height: auto;
+  }
+}
+
+/* ===== Breakpoints ===== */
+@media (max-width: 992px) {
+  .help section {
     min-height: auto;
   }
 

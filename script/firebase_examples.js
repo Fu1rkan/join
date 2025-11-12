@@ -112,7 +112,7 @@ function createExampleContacts() {
         {
             "name": "Alice Johnson",
             "email": "alice.johnson@email.com",
-            "phone": "15551234567",
+            "phone": "015551234567",
             "fillColor": "#FF6B6B",
             "nameLetters": "AJ"
         },

@@ -36,7 +36,7 @@ function logInTemplate() {
                     <section class="email_input_section">
                         <form class="email_input" id="input_email">
                             <label for="email">
-                                <input class="email_input" type="text" id="email" name="Email"  placeholder="Email" autocomplete="new-email">
+                                <input onkeyup="handleFieldValidation('email', 'input_email', 'required_email', 'email')" class="email_input" type="text" id="email" name="Email"  placeholder="Email" autocomplete="new-email">
                                 <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16"
                                     viewBox="0 0 20 16" fill="none">
                                     <path
@@ -52,8 +52,7 @@ function logInTemplate() {
 
                         <form action="password_input" class="password_input" id="password_input_id">
                             <label for="password">
-                                <input class="password_input" type="password" id="password" name="password" 
-                                    placeholder="Password" autocomplete="new-password">
+                                <input onkeyup="handleFieldValidation('password', 'password_input_id', 'required_password', 'password')" class="password_input" type="password" id="password" name="password" placeholder="Password" autocomplete="new-password">
                                 <div id="toggle_password_visibility_button">
                                     <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16"
                                         height="21" viewBox="0 0 17 22" fill="none">
@@ -111,7 +110,7 @@ function signUpTemplate() {
                     <li>
                         <form action="username" class="username_input" id="username_input_id">
                             <label>
-                                <input type="text" id="username" name="username" placeholder="Username" autocomplete="new-username">
+                                <input onkeyup="handleFieldValidation('username', 'username_input_id', 'required_username', 'username')" type="text" id="username" name="username" placeholder="Username" autocomplete="new-username">
                                 <div>
                                 <svg class="user_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path
@@ -126,7 +125,7 @@ function signUpTemplate() {
                     <li>
                         <form action="email" class="email_input" id="email_input_id">
                             <label for="email">
-                                <input type="Email" id="email" name="Email" placeholder="Email" autocomplete="new-email">
+                                <input onkeyup="handleFieldValidation('email', 'email_input_id', 'required_email', 'email')" type="Email" id="email" name="Email" placeholder="Email" autocomplete="new-email">
                                 <div>
                                 <svg class="email_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16" fill="none">
                                     <path
@@ -141,7 +140,7 @@ function signUpTemplate() {
                     <li>
                         <form action="password_input" class="password_input" id="password_input_id">
                             <label for="password">
-                                <input class="password_input" type="password" id="password" name="password" placeholder="Password" autocomplete="new-password">
+                                <input onkeyup="handleFieldValidation('password', 'password_input_id', 'required_password', 'password')" class="password_input" type="password" id="password" name="password" placeholder="Password" autocomplete="new-password">
                                 <div id="toggle_password_visibility_button">
                                     <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                         viewBox="0 0 17 22" fill="none">
@@ -157,7 +156,7 @@ function signUpTemplate() {
                     <li>
                         <form action="password_input" class="password_input" id="password_repeat_input_id">
                             <label for="password_repeat">
-                                <input class="password_input" type="password" id="password_repeat" name="password_repeat" placeholder="Confirm Password" autocomplete="new-password">
+                                <input onkeyup="handleFieldValidation('password_repeat', 'password_repeat_input_id', 'required_password_repeat', 'password_repeat')" class="password_input" type="password" id="password_repeat" name="password_repeat" placeholder="Confirm Password" autocomplete="new-password">
                                 <div id="toggle_password_repeat_button">
                                     <svg class="password_lock_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="21"
                                         viewBox="0 0 17 22" fill="none">

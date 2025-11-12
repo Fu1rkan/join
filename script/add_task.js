@@ -179,6 +179,10 @@ function showRequiredMsg(titleRef, dueDateRef, categoryRef) {
     }
 }
 
+/** Checks and updates required field validation messages based on user input
+ * Dynamically shows or hides error messages as user types in required fields
+ * @param {HTMLElement} currentElement - The input element currently being edited
+ */
 function checkRequiredInputs(currentElement) {
     let titleRef = document.getElementById('add_task_title');
     let dueDateRef = document.getElementById('add_task_due_date');
@@ -187,6 +191,26 @@ function checkRequiredInputs(currentElement) {
     removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef, requiredTitleRef, requiredDueDateRef, requiredCategoryRef);
 }
 
+/** Removes required field messages based on current input length
+ * Hides error messages and removes red borders when user inputs valid data
+ * @param {HTMLElement} currentElement - The input element currently being edited
+ */
+function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef, requiredTitleRef, requiredDueDateRef, requiredCategoryRef) {
+    if (currentElement === titleRef) {
+        showOrHideRequiredMsgTitle(titleRef, requiredTitleRef);
+    }
+    if (currentElement === dueDateRef) {
+        showOrHideRequiredMsgDueDate(dueDateRef, requiredDueDateRef);
+    }
+    if (currentElement === categoryRef) {
+        showOrHideRequiredMsgCategory(categoryRef, requiredCategoryRef);
+    }
+}
+
+/** Shows or hides the required title message based on input length
+ * @param {HTMLElement} titleRef - Reference to the title input element
+ * @param {HTMLElement} requiredTitleRef - Reference to the title required message element
+ */
 function showOrHideRequiredMsgTitle(titleRef, requiredTitleRef) {
     if (titleRef.value.length > 0) {
         requiredTitleRef.classList.add('d_none');
@@ -195,6 +219,10 @@ function showOrHideRequiredMsgTitle(titleRef, requiredTitleRef) {
     }
 }
 
+/** Shows or hides the required due date message based on input length
+ * @param {HTMLElement} dueDateRef - Reference to the due date input element
+ * @param {HTMLElement} requiredDueDateRef - Reference to the due date required message element
+ */
 function showOrHideRequiredMsgDueDate(dueDateRef, requiredDueDateRef) {
     if (dueDateRef.value.length > 0) {
         requiredDueDateRef.classList.add('d_none');
@@ -203,6 +231,10 @@ function showOrHideRequiredMsgDueDate(dueDateRef, requiredDueDateRef) {
     }
 }
 
+/** Shows or hides the required category message based on input length
+ * @param {HTMLElement} categoryRef - Reference to the category input element
+ * @param {HTMLElement} requiredCategoryRef - Reference to the category required message element
+ */
 function showOrHideRequiredMsgCategory(categoryRef, requiredCategoryRef) {
     if (categoryRef.value.length > 0) {
         requiredCategoryRef.classList.add('d_none');

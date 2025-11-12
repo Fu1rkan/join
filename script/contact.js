@@ -252,6 +252,12 @@ function highlightRequiredInputs(createName, createEmail, createPhone, correctPh
     showCreatePhoneRequiredMsg(createPhone, correctPhoneValue, createPhoneRequiredMsg, createFormLabelPhoneRef);
 }
 
+/** * Shows required message and highlights name label based on validation
+ * @param {string} createName - The name input value
+ * @param {boolean} correctNameValue - Whether the name input is valid
+ * @param {HTMLElement} createNameRequiredMsg - The name error message element
+ * @param {HTMLElement} createFormLabelNameRef - The name label element
+ */
 function showCreateNameRequiredMsg(createName, correctNameValue, createNameRequiredMsg, createFormLabelNameRef) {
     if (!(createName != "")) {
         createNameRequiredMsg.innerText = "This field is required";
@@ -262,6 +268,12 @@ function showCreateNameRequiredMsg(createName, correctNameValue, createNameRequi
     }
 }
 
+/** * Shows required message and highlights email label based on validation
+ * @param {string} createEmail - The email input value
+ * @param {boolean} correctEmailValue - Whether the email input is valid
+ * @param {HTMLElement} createEmailRequiredMsg - The email error message element
+ * @param {HTMLElement} createFormLabelEmailRef - The email label element
+ */
 function showCreateEmailRequiredMsg(createEmail, correctEmailValue, createEmailRequiredMsg, createFormLabelEmailRef) {
     if (!(createEmail != "")) {
         createEmailRequiredMsg.innerText = "This field is required";
@@ -272,6 +284,12 @@ function showCreateEmailRequiredMsg(createEmail, correctEmailValue, createEmailR
     }
 }
 
+/** * Shows required message and highlights phone label based on validation
+ * @param {string} createPhone - The phone input value
+ * @param {boolean} correctPhoneValue - Whether the phone input is valid
+ * @param {HTMLElement} createPhoneRequiredMsg - The phone error message element
+ * @param {HTMLElement} createFormLabelPhoneRef - The phone label element
+ */
 function showCreatePhoneRequiredMsg(createPhone, correctPhoneValue, createPhoneRequiredMsg, createFormLabelPhoneRef) {
     if (!(createPhone != "")) {
         createPhoneRequiredMsg.innerText = "This field is required";

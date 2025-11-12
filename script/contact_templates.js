@@ -479,6 +479,11 @@ function showContactEditCard(toEditContact) {
         </div>`;
 }
 
+/** Renders the delete contact overlay with confirmation buttons 
+ * @param {string} name - The name of the contact to be deleted.
+ * @param {string} email - The email of the contact to be deleted.
+ * @returns {string} - The HTML string for the delete contact overlay.
+ */
 function renderDeleteContactOverlay(name, email) {
     return `
         <button onclick="closeDeleteContactOverlay()">

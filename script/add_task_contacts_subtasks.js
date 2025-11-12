@@ -39,6 +39,11 @@ function changeCurrentSubtask(index) {
     }, 50);
 }
 
+/**
+ * Retrieves references to necessary DOM elements for a subtask
+ * @param {number} index - The index of the subtask to get references for
+ * @returns {Object} Object containing references to subtask elements
+ */
 function takeNeededSubtasksRefs(index) {
     let subtaskListItemRef = document.getElementById(`current_subtask_li_${index}`);
     let currentSubtaskValue = document.getElementById(`current_subtask_${index}`);
@@ -48,6 +53,10 @@ function takeNeededSubtasksRefs(index) {
     return { subtaskListItemRef, currentSubtaskValue, currentSubtaskChangeLabelRef, currentSubtaskChangeinputRef, currentSubtaskRoughMenuRef };
 }
 
+/** Toggles the edit mode for a subtask
+ * Switches between display and edit states for the subtask elements
+ * @param {HTMLElement} currentSubtaskRoughMenuRef - Reference to the subtask options menu element
+ */
 function toggleSubtasksRef(currentSubtaskRoughMenuRef, subtaskListItemRef, currentSubtaskValue, currentSubtaskChangeLabelRef) {
     currentSubtaskRoughMenuRef.classList.toggle('d_none');
     subtaskListItemRef.classList.toggle('list-style-none');
@@ -56,6 +65,10 @@ function toggleSubtasksRef(currentSubtaskRoughMenuRef, subtaskListItemRef, curre
     currentSubtaskChangeLabelRef.classList.toggle('d_none');
 }
 
+/** Closes the edit mode for a specific subtask
+ * Restores the display state and hides the edit input field
+ * @param {number} index - The index of the subtask to close
+ */
 function closeCurrentSubtask(index) {
     document.getElementById(`current_subtask_li_${index}`).classList.remove('list-style-none');
     document.getElementById(`current_subtask_li_${index}`).classList.add('add-task-form-subtasks-dropdown-subtasks-list-item');

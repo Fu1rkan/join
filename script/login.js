@@ -131,7 +131,7 @@ function checkSignUpInputFields() {
     let isPasswordEmpty = handleFieldValidation('password', 'password_input_id', 'required_password', 'password');
     let isRepeatPasswordEmpty = handleFieldValidation('password_repeat', 'password_repeat_input_id', 'required_password_repeat', 'password_repeat');
     checkPrivacyPolicyCheckbox()
-    if (!isUsernameEmpty && !isEmailEmpty && !isPasswordEmpty && !isRepeatPasswordEmpty) {
+    if (!isUsernameEmpty || !isEmailEmpty || !isPasswordEmpty|| !isRepeatPasswordEmpty) {
         return processSignUpValidation();
     }
     return false;

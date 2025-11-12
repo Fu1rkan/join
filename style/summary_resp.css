@@ -167,10 +167,11 @@
         justify-content: center;
         gap: 10px;
         height: 110px;
+        padding: 6px;
     }
 
     .first-card-row span {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .first-card-row-logo {
@@ -180,7 +181,8 @@
 
     .second-card-row {
         height: 110px;
-        gap: 14px;
+        gap: 16px;
+        padding: 6px;
     }
 
     .summary-category {
@@ -198,7 +200,7 @@
     }
 
     .second-card-row-desc span {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .deadline-section {
@@ -210,7 +212,7 @@
     }
 
     .deadline-section p {
-        font-size: 14px;
+        font-size: 16px;
     }
 
 
@@ -218,7 +220,7 @@
         width: 30%;
         border-radius: 30px;
         height: 110px;
-        padding: 10px;
+        padding: 6px;
     }
 
     .third-card-row span {

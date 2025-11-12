@@ -45,43 +45,6 @@ function escapeHTML(str) {
 }
 
 /**
- * Renders the profile header icon with user's initials from localStorage
- * @param {string} id - The ID of the element to render the profile icon in
- */
-function rederProfilHeaderIcon(id) {
-  let userNameLetters = JSON.parse(localStorage.getItem("userName"));
-  let profilIconRef = document.getElementById(id);
-  profilIconRef.innerHTML = `<p>${userNameLetters}</p>`
-}
-
-/**
- * Authenticates user credentials against Firebase database
- * @param {string} email - User's email address
- * @param {string} password - User's password
- * @returns {Promise<void>} Promise that resolves when authentication is complete
- */
-async function getUsers(email, password) {
-  let response = await fetch(BASE_URL + ".json");
-  let responseToJson = await response.json();
-  let users = Object.values(responseToJson);
-  let currentUserIndex = users.findIndex(u => u.email === email && u.password === password);
-  checkLoginValues(currentUserIndex);
-  let keys = Object.keys(responseToJson);
-  let userPath = keys[currentUserIndex];
-  let userId = userPath + "/";
-  let userResponse = await fetch(BASE_URL + userId + ".json");
-  let userResponseToJson = await userResponse.json();
-  let userName = userResponseToJson["userNameLetters"];
-
-  localStorage.setItem("userName", JSON.stringify(userName));
-
-  localStorage.setItem("userId", JSON.stringify(userId));
-  if (users[currentUserIndex].email === email && users[currentUserIndex].password === password) {
-    openSummary();
-  }
-}
-
-/**
  * Validates login credentials and displays error messages if authentication fails
  * @param {number} currentUserIndex - Index of the user in the database (-1 if not found)
  */
@@ -298,72 +261,6 @@ async function putPlaceholderInFirebase(contactsPath) {
 }
 
 /**
- * Creates a new user account in Firebase database
- * @param {string} username - The user's full name
- * @param {string} email - The user's email address
- * @param {string} password - The user's password
- * @returns {Promise<Object>} Promise that resolves with Firebase response
- */
-async function addNewUser(username, email, password) {
-  let capitalizedName = generatecapitalizedName(username);
-  let userNameLetters = generateLetters(capitalizedName);
-  let user = {
-    "username": capitalizedName,
-    "userNameLetters": userNameLetters,
-    "email": email,
-    "password": password,
-    "tasks": { "placeholder": "placeholder" },
-    "contacts": { "placeholder": "placeholder" }
-  };
-  let response = await fetch(BASE_URL + ".json", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user)
-  });
-
-  return (responseToJson = await response.json());
-}
-
-/**
- * Converts a name string to proper capitalization format
- * @param {string} createName - The name string to capitalize
- * @returns {string} The properly capitalized name
- */
-function generatecapitalizedName(createName) {
-  let nameArray = createName.split(" ");
-  let capitalizedArray = nameArray.map((word) => {
-    if (word != "") {
-      let firstLetter = word.charAt(0).toUpperCase();
-      let restName = word.slice(1);
-      return firstLetter + restName;
-    } else {
-      return word;
-    }
-  });
-  let resultFullName = capitalizedArray.join(" ");
-  return resultFullName;
-}
-
-/**
- * Generates user initials from a capitalized name
- * @param {string} capitolName - The capitalized full name
- * @returns {string} User initials (first and last name letters, or single letter)
- */
-function generateLetters(capitolName) {
-  let createtFullName = capitolName;
-  let nameArray = createtFullName.split(" ");
-  if (nameArray.length >= 2) {
-    let firstNameLetter = nameArray[0];
-    let lastNameletter = nameArray[nameArray.length - 1];
-    let firstLetters = firstNameLetter.charAt(0).concat(lastNameletter.charAt(0));
-    return firstLetters;
-  } else {
-    let singleLetter = nameArray[0].charAt(0);
-    return singleLetter;
-  }
-}
-
-/**
  * Adds example data (tasks and contacts) for new users or guest users
  * Creates 5 example tasks and 10 example contacts to demonstrate application features
  * Compatible with both regular users and guest users
@@ -376,34 +273,6 @@ async function addExampleData() {
   const exampleContacts = createExampleContacts();
   contacts = [...contacts, ...exampleContacts];
   await putContacts(contacts);
-}
-
-/**
- * Creates a new user account with example data in Firebase database
- * @param {string} username - The user's full name
- * @param {string} email - The user's email address
- * @param {string} password - The user's password
- * @returns {Promise<Object>} Promise that resolves with Firebase response
- */
-async function addNewUser(username, email, password) {
-  let capitalizedName = generatecapitalizedName(username);
-  let userNameLetters = generateLetters(capitalizedName);
-  const exampleTasks = createExampleTasks();
-  const exampleContacts = createExampleContacts();
-  let user = {
-    "username": capitalizedName,
-    "userNameLetters": userNameLetters,
-    "email": email,
-    "password": password,
-    "tasks": exampleTasks,
-    "contacts": exampleContacts
-  };
-  let response = await fetch(BASE_URL + ".json", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user)
-  });
-  return (responseToJson = await response.json());
 }
 
 /**

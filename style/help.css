@@ -118,7 +118,130 @@
   margin-bottom: clamp(40px, 7vw, 80px);
 }
 
+.navbar-without-login {
+  padding: 64px 0;
+  height: 100vh;
+  background-color: #2A3647;
+  min-width: 232px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.nav-list-without-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  gap: 15px;
+}
+
+.navbar-link-without-login {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  width: 100%;
+  height: 46px;
+  padding: 8px 56px;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.navbar-footer-without-login {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  height: 245px;
+  width: 100%;
+}
+
+.navbar-link-without-login>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-footer-without-login li {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-footer-without-login li:hover a {
+  color: #29ABE2;
+}
+
+.navbar-footer-without-login-link {
+  color: #A8A8A8;
+  padding: 8px;
+  margin-left: 52px;
+}
+
 /* ===== Breakpoints ===== */
+@media (max-width: 1400px) {
+  .navbar-without-login>svg {
+    display: none;
+  }
+
+  .navbar-without-login {
+    height: 80px;
+    width: 100%;
+    padding: 0 16px;
+    position: fixed;
+    bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+   .nav-list-without-login {
+    flex-direction: row;
+    height: 100%;
+    width: auto;
+    gap: 15px;
+    padding: 0px;
+  }
+
+  .nav-list-without-login li {
+    width: 80px;
+    height: 100%;
+  }
+
+  .navbar-footer-without-login {
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+  }
+
+  .navbar-footer-without-login li {
+    padding: 8px 12px;
+    justify-content: center;
+    border-radius: 16px;
+    height: 100%;
+  }
+
+  .navbar-footer-without-login-link {
+    margin: 0;
+    padding: 15px 0;
+    text-align: center;
+  }
+
+  .navbar-link-without-login {
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 15px 0;
+  }
+}
+
 @media (max-width: 992px) {
   .help section {
     min-height: auto;

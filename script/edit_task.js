@@ -222,8 +222,17 @@ function searchContact() {
 }
 
 /**
- * Toggles the visibility of the contact list dropdown in edit overlay
- * Shows or hides the contact selection dropdown and rotates the arrow indicator
+ * Add the visibility of the contact list dropdown in edit overlay
+ * Shows the contact selection dropdown and rotates the arrow indicator
+ */
+function openContactList() {
+    document.getElementById('change-participants-button').classList.add('tf_r180');
+    document.getElementById('participants-list').classList.remove('d_none');
+}
+
+/**
+ * Hide the visibility of the contact list dropdown in edit overlay
+ * hides the contact selection dropdown and rotates the arrow indicator
  */
 function toggleContactList() {
     document.getElementById('change-participants-button').classList.toggle('tf_r180');

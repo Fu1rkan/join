@@ -168,6 +168,17 @@ function removeHighlightInputFields() {
     document.querySelectorAll('.add-task-form textarea').forEach(el => el.classList.remove('add-task-inputfield-highlight'));
 }
 
+/**
+ * Removes required validation messages based on the current input field element
+ * Switches between different input field types and calls appropriate validation functions
+ * @param {string} currentElement - The ID of the current input field element
+ * @param {HTMLElement} titleRef - Reference to the title input field element
+ * @param {HTMLElement} dueDateRef - Reference to the due date input field element
+ * @param {HTMLElement} categoryRef - Reference to the category input field element
+ * @param {HTMLElement} requiredTitleRef - Reference to the title required message element
+ * @param {HTMLElement} requiredDueDateRef - Reference to the due date required message element
+ * @param {HTMLElement} requiredCategoryRef - Reference to the category required message element
+ */
 function removeRequiredMsgByLenght(currentElement, titleRef, dueDateRef, categoryRef, requiredTitleRef, requiredDueDateRef, requiredCategoryRef) {
     switch (currentElement) {
         case 'add_task_title':

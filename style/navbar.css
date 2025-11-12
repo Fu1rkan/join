@@ -1,4 +1,5 @@
-.navbar {
+.navbar,
+.navbar-without-login {
     padding: 64px 0;
     height: 100vh;
     background-color: #2A3647;
@@ -14,7 +15,8 @@
     width: 40%;
 }
 
-.nav-list {
+.nav-list,
+.nav-list-without-login {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -29,7 +31,8 @@
     width: 100%;
 }
 
-.navbar-link {
+.navbar-link,
+.navbar-link-without-login {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -50,7 +53,8 @@
     background-color: #2A3D59;
 }
 
-.navbar-footer {
+.navbar-footer,
+.navbar-footer-without-login {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -60,19 +64,33 @@
     width: 100%;
 }
 
+.navbar-link-without-login>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .navbar-footer li {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-.navbar-footer a {
+.navbar-footer-without-login li {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-footer a,
+.navbar-footer-without-login-link {
     color: #A8A8A8;
     padding: 8px;
     margin-left: 52px;
 }
 
-.navbar-footer-link:hover {
+.navbar-footer-link:hover,
+.navbar-footer-without-login li:hover a {
     color: #29ABE2;
 }
 
@@ -83,12 +101,63 @@
 }
 
 @media (max-width: 1400px) {
-    .navbar {
+    .navbar-without-login>svg {
+        display: none;
+    }
+
+    .navbar,
+    .navbar-without-login {
         height: 80px;
         width: 100%;
         padding: 0 16px;
         position: fixed;
         bottom: 0;
+    }
+
+    .navbar-without-login {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-list-without-login {
+        flex-direction: row;
+        height: 100%;
+        width: auto;
+        gap: 15px;
+        padding: 0px;
+    }
+
+    .nav-list-without-login li {
+        width: 80px;
+        height: 100%;
+    }
+
+    .navbar-footer-without-login {
+        flex-direction: row;
+        height: 100%;
+        align-items: center;
+    }
+
+    .navbar-footer-without-login li {
+        padding: 8px 12px;
+        justify-content: center;
+        border-radius: 16px;
+        height: 100%;
+    }
+
+    .navbar-footer-without-login-link {
+        margin: 0;
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    .navbar-link-without-login {
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+        border-radius: 16px;
+        font-size: 14px;
+        padding: 15px 0;
     }
 
     .navbar-content-limiter {
